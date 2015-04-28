@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Irrlicht Pong" />
+		<Option pch_mode="0" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="default">
+				<Option output="./Pong" prefix_auto="0" extension_auto="0" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectResourceIncludeDirsRelation="1" />
+			</Target>
+		</Build>
+		<VirtualTargets>
+			<Add alias="All" targets="default;" />
+		</VirtualTargets>
+		<Compiler>
+			<Add option="-O3" />
+			<Add option="-Wall" />
+			<Add option="-ansi" />
+			<Add option="-g" />
+			<Add option="-fpermissive" />
+			<Add option="`sdl-config --cflags`" />
+			<Add option="-DIRRLICHT_SVN" />
+			<Add directory="/home/Dev/libs/game/Irrlicht-SVN/include" />
+			<Add directory="recastnavigation-read-only/RecastDemo/Include" />
+			<Add directory="recastnavigation-read-only/DebugUtils/Include" />
+			<Add directory="recastnavigation-read-only/Recast/Include" />
+			<Add directory="recastnavigation-read-only/Detour/Include" />
+			<Add directory="recastnavigation-read-only/DetourCrowd/Include" />
+			<Add directory="recastnavigation-read-only/DetourTileCache/Include" />
+		</Compiler>
+		<Linker>
+			<Add option="-fpermissive" />
+			<Add library="GL" />
+			<Add library="m" />
+			<Add library="Irrlicht" />
+			<Add library="Xxf86vm" />
+			<Add library="Xext" />
+			<Add library="X11" />
+			<Add library="Recast" />
+			<Add library="Detour" />
+			<Add library="DebugUtils" />
+			<Add library="DetourCrowd" />
+			<Add library="DetourTileCache" />
+			<Add directory="/home/Dev/libs/game/Irrlicht-SVN/lib/Linux" />
+			<Add directory="recastnavigation-read-only/DebugUtils/" />
+			<Add directory="recastnavigation-read-only/Recast" />
+			<Add directory="recastnavigation-read-only/DetourCrowd" />
+			<Add directory="recastnavigation-read-only/DetourTileCache" />
+			<Add directory="recastnavigation-read-only/Detour" />
+		</Linker>
+		<Unit filename="recast_util.cpp" />
+		<Unit filename="recast_util.h" />
+		<Unit filename="recastmain.cpp" />
+		<Unit filename="recastnavigation-read-only/DebugUtils/Source/DebugDraw.cpp" />
+		<Unit filename="recastnavigation-read-only/DebugUtils/Source/RecastDebugDraw.cpp" />
+		<Unit filename="recastnavigation-read-only/DebugUtils/Source/RecastDump.cpp" />
+		<Unit filename="recastnavigation-read-only/Recast/Source/Recast.cpp" />
+		<Unit filename="recastnavigation-read-only/Recast/Source/RecastAlloc.cpp" />
+		<Unit filename="recastnavigation-read-only/Recast/Source/RecastArea.cpp" />
+		<Unit filename="recastnavigation-read-only/Recast/Source/RecastContour.cpp" />
+		<Unit filename="recastnavigation-read-only/Recast/Source/RecastFilter.cpp" />
+		<Unit filename="recastnavigation-read-only/Recast/Source/RecastLayers.cpp" />
+		<Unit filename="recastnavigation-read-only/Recast/Source/RecastMesh.cpp" />
+		<Unit filename="recastnavigation-read-only/Recast/Source/RecastMeshDetail.cpp" />
+		<Unit filename="recastnavigation-read-only/Recast/Source/RecastRasterization.cpp" />
+		<Unit filename="recastnavigation-read-only/Recast/Source/RecastRegion.cpp" />
+		<Unit filename="recastnavigation-read-only/RecastDemo/Source/PerfTimer.cpp" />
+		<Unit filename="recastnavigation-read-only/RecastDemo/Source/SampleInterfaces.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

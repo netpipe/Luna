@@ -1,0 +1,101 @@
+#				LUNA GAME ENGINE INITIALISE PYTHON SCRIPT
+#if your having trouble importing modules into the engine from define pyreturn as none
+
+import irr
+#irradd camera  << todo
+#irr.formationdemo(1)
+#irr.omaredemo(1)               #billboard clouds
+#rb = irr.ribbonscenenode  -> attach to node with enable and disable
+#irr.opensteer(1)
+#irr.occlusionTest(1)            #broken #impliment nodemanager here for python occlusion someway to turn on and off
+#irr.image2d(1)                   #crashes without player being added first ? goes to background try to bring it as an overlay
+#irr.addHUD(1)
+#irr.bullet(1)                      #its actually a recast test at the moment
+#irr.soundman(1)                # has to be loaded last or makes black screen
+#irr.addwater(1)
+#                           if i add this before sound then the sound doesnt work
+#irr.addPlayer(1)
+#irr.chatbox(1)                 # not really sure how to impliment fully yet needs some sort of server
+#irr.irc(1)
+#irr.atmosphere(1)              # set time of day / moonphase (i broke it)
+
+#irr.bulletBlend(1)    #has to be loaded before the car if you want it... not sure if i should even fix lol
+                            #needs to pass the sounds to the main loop or blackscreen... odd
+
+
+#irr.bitcloud(1)
+#irr.realCloud(1)
+#irr.skydome(1)
+#irr.loadTrack(1)
+irr.addTerrain(4,-3,5,0) # load last to make the physics work FIX
+#irr.ragman(1)
+irr.codeeditor(1)     #get script loading working and see about getting
+                            #reset working to reloadscripts ingame.
+
+#irr.lightning(1)  #try and get this mounted to a vehicle or shoot it from camera.
+#irr.beam(1)
+#irr.flag1(1)
+#irr.flag2(1)
+#irr.compass(1)
+#irr.tesselate(1) # deltatime needs work if its the only thing rendering then nothing happens.
+#       put these into the python
+#    /*! @param img       - The path to the image.
+#        @param startFr   - Vector defining the left(x1)/bottom(y1)/front(z1) position of the cube within the parts are being randomly positioned.
+#        @param startTo   - Vector defining the right(x2)/top(y2)/behind(z2) position of the cube with x2 > x1, y2 > y1, z2 > z1.
+#        @param targetPos - The bottom left position of the final compound image.
+#        @param speed     - Amount of units per seconds a part is moving to its target position.
+#        @param maxTes    - The maximum number of parts that should be used to split the image. If resolutionX * resolutionY < maxTes then a part represents more than one pixel.
+#        @param colChange - How quickly a part can correct its color to reach the final color, defined in 'one unit per RGB' per second.
+#        @param type      - What the parts should be made of, default is using a Billboard.
+#        @param dim       - The quadratic dimension of the billboard or the radius of the sphere. See parameter type.
+#        @param gap       - The gap between parts.
+#    */
+
+irr.addChopper(1) # type, physical properties - speed , weight etc..
+#irr.blindboids(1)
+#irr.decals(1)
+
+#irr.fpsweapon(1)
+#irr.lensFlare(1) # might not see without atmosphere enabled check pymain
+#irr.SPARK(1)
+
+#irr.addvideo("./media/bunny.ogg",10.0,10.0,10.0)	# has to be loaded after soundman or crash
+#irr.draw_text("Gavin Robinson",20,40,150,70)
+#cube_id = irr.add_cube(1,12.0,0.0,0.0,25.0,0.0,    0.0,0.0,1.0,1.0,1.0)
+#tex_id = irr.load_texture("media/crate.png")
+#print tex_id
+##print cube_id
+#irr.set_texture(cube_id,tex_id)
+#add billboardfunction
+
+
+
+#must load car before track for now FIX ?
+#simplify this by specitying car types
+irr.addCar( 1.0,1.0, 1.0,1.0,1.0,  1.5,1.5,2.0, 1.3,0.4,2.0,         500,100.0,2200,20.0,  0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
+
+#irr.addCar( 1.0,1.0, 1.0,1.0,1.0,  1.5,1.5,2.0, 1.3,0.4,2.0,         500,100.0,2200,20.0,  0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
+#irr.addCar( 1.0, 1.0, 			# scaleT,scaleE 	/ff
+#    1.0, 1.0, 1.0, 				# car scale vector 	/fff
+#	1.5, 1.5, 2.0,				# model scale 	/fff
+#    1.3, 0.4, 2.0,  			    # vehicle position  	/fff
+#    500, 100.0, 2200, 20.0, 	# weight, maxBreakingForce, maxEngineForce,SpeedINC /ifff
+#    0,							    #0=2RWD  3=2FWD  1=4wd  2=4wd+4wsteer 4=Trike 5=Bike /i
+#    -0.03, 6.0, 0.0, 0.7,
+#		#connectionHeight, suspensionStiffness ,
+#		#suspensionDamping, suspensionCompression /ffff
+#    -0.01, 100.0, 0.8, #rollInfluence, wheelFriction, wheelRadius,
+#	 0.6 ,0.1 ,0.45,	  #wheelWidth, steeringIncrement, steeringClamp /ffffff
+#    2.0, 0.3, 1.0    )  # cube_half_extents,wheelspacingx,wheelscale /fff
+
+#                      NotWorking
+#irr.addlight(1)
+#irr.flare(1)
+#irr.addTree(1)
+
+
+#maybe a for loop here that runs pre post keychecking network updating loops for rendering
+
+
+
+#End of FILE
