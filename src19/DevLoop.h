@@ -4,17 +4,9 @@
 if ( !device->run() ) return 0;
     guienv->clear();
     smgr->clear();
-//camera = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
-    #ifdef PostProcess
-     //PostProcessing
-        IPostProc* ppRenderer = new CRendererPostProc( smgr, dimension2du( 1024, 512 ),
-                                                    true, true, SColor( 255u, 100u, 101u, 140u ) );
-        CEffectPostProc* ppBlurDOF   = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), PP_BLURDOF );
-        CEffectPostProc* ppBlur          = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), PP_BLUR, 0.00081f );
-        ppBlur->setQuality( PPQ_GOOD );
-    #endif
 
-#define PYTHON
+
+    #define PYTHON
     #ifdef PYTHON
     //Python
         Python::registerIrrDevice(this,*device,m_cInGameEvents);
@@ -24,6 +16,19 @@ if ( !device->run() ) return 0;
          //Python::PyIrr_LoadVehicle(m_cVehicle);
         //Python::PyIrr_addTerrain("1");
     #endif
+
+//camera = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
+	//smgr->addCameraSceneNodeFPS();
+    #ifdef PostProcess
+     //PostProcessing
+        IPostProc* ppRenderer = new CRendererPostProc( smgr, dimension2du( 1024, 512 ),
+                                                    true, true, SColor( 255u, 100u, 101u, 140u ) );
+        CEffectPostProc* ppBlurDOF   = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), PP_BLURDOF );
+        CEffectPostProc* ppBlur          = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), PP_BLUR, 0.00081f );
+        ppBlur->setQuality( PPQ_GOOD );
+    #endif
+
+
 
     u32 then = device->getTimer()->getTime();
     int lastFPS;
@@ -59,7 +64,14 @@ device->getCursorControl()->setVisible(true);
 		frameDeltaTime = (f32)(now - then) / 1000.f; // Time in seconds
 		then = now;
 
+
+
         Python::PreRender();
+        ///todo check for empty or missing files or impliment the using command
+        // loop for key checking and loop for game  only execute script if there was an event
+        // may need to put the loop where the checkkeystates was (after endscene)
+    //            Python::ExecuteScript("./media/Lmain.pys");
+
         driver->beginScene ( true, true, SColor ( 0, 0, 0, 0 ) );
         Python::render();
         smgr->drawAll();
@@ -73,7 +85,10 @@ device->getCursorControl()->setVisible(true);
  //       rt->render();
         Python::preEnd();
         driver->endScene();
-        Python::CheckKeyStates();        //CheckKeyStates(); obsolete python does it above
+    //    Python::CheckKeyStates();        //CheckKeyStates(); obsolete python does it above
+                    Python::ExecuteScript("./media/Lmain.pys");
+//        Python::mainLoop();
+
 
         int fps = driver->getFPS();
 		if (lastFPS != fps)
@@ -157,27 +172,27 @@ clearBodies();
 #endif
 
 /*
-		// I'm just using a basic cube scene node for the glass pane, "scaled to flatness".
-		ISceneNode* GlassPane = smgr->addCubeSceneNode();
-		GlassPane->setScale(vector3df(100,150,1));
-		GlassPane->setPosition(core::vector3df(0,0,0));
-		GlassPane->setRotation(vector3df(0,60,0));
-
-		// Here I make a RTT for the refraction, you can use a higher res one if you want,
-		// I chose 512^2 for compatibility. I also load the normalmap.
-		ITexture* RTTTex = driver->addRenderTargetTexture(dimension2du(512,512));
-		ITexture* NormMap = driver->getTexture("shaders/glass-bubble/media/NormalMap.png");
-
-		GlassPane->setMaterialTexture(0, RTTTex);
-		GlassPane->setMaterialTexture(1, NormMap);
-
-		io::path vshader = "shaders/glass-bubble/GlassV.glsl";
-        io::path pshader = "shaders/glass-bubble/GlassP.glsl";
-
-		video::IGPUProgrammingServices* gpu = driver->getGPUProgrammingServices();
-
-		// I create the shader material for the glass pane.
-		s32 GlassMat = gpu->addHighLevelShaderMaterialFromFiles(vshader,"main",EVST_VS_2_0,pshader,"main",EPST_PS_2_0,0);
-
-		GlassPane->setMaterialType(E_MATERIAL_TYPE(GlassMat));
+//		// I'm just using a basic cube scene node for the glass pane, "scaled to flatness".
+//		ISceneNode* GlassPane = smgr->addCubeSceneNode();
+//		GlassPane->setScale(vector3df(100,150,1));
+//		GlassPane->setPosition(core::vector3df(0,0,0));
+//		GlassPane->setRotation(vector3df(0,60,0));
+//
+//		// Here I make a RTT for the refraction, you can use a higher res one if you want,
+//		// I chose 512^2 for compatibility. I also load the normalmap.
+//		ITexture* RTTTex = driver->addRenderTargetTexture(dimension2du(512,512));
+//		ITexture* NormMap = driver->getTexture("shaders/glass-bubble/media/NormalMap.png");
+//
+//		GlassPane->setMaterialTexture(0, RTTTex);
+//		GlassPane->setMaterialTexture(1, NormMap);
+//
+//		io::path vshader = "shaders/glass-bubble/GlassV.glsl";
+//        io::path pshader = "shaders/glass-bubble/GlassP.glsl";
+//
+//		video::IGPUProgrammingServices* gpu = driver->getGPUProgrammingServices();
+//
+//		// I create the shader material for the glass pane.
+//		s32 GlassMat = gpu->addHighLevelShaderMaterialFromFiles(vshader,"main",EVST_VS_2_0,pshader,"main",EPST_PS_2_0,0);
+//
+//		GlassPane->setMaterialType(E_MATERIAL_TYPE(GlassMat));
 */

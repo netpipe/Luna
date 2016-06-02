@@ -6,6 +6,11 @@ Focus List
 
 
 
+#scripting expansion list
+-
+-
+-
+-
 
 
 
@@ -16,21 +21,14 @@ TODO LIST - seems like good spot as any to putit
 
 
 
+
+
+
     - networking
         -chat support
         -time based movement to reduce lag issues
         -picture / file send support
         -self updater for specific files / maybe git ?
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -93,7 +93,7 @@ class Luna
 
     scene::IMetaTriangleSelector* metaSelector;
         scene::ISceneNodeAnimatorCollisionResponse* anim;
-        ICameraSceneNode* camera;
+  //      ICameraSceneNode* camera;
 
 	private:
 
