@@ -20,6 +20,8 @@ PyMethodDef irr_Physics[] = {
 	};
 
 	int osteerinit =0;
+
+
 PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){ //active camera
 
     opensteer = 1;
@@ -41,17 +43,26 @@ PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){ //active ca
         Py_RETURN_NONE;
 }
 
-PyObject * Python::PyIrr_addChopper(PyObject * self,PyObject * args) {//active camera
+
+
+PyObject * Python::PyIrr_addChopper(PyObject * self,PyObject * args) {
+// return scene node and assign camera vector or parrent camera to scene.
+
+//active camera
     #ifdef CHOPPER
     IAnimatedMesh* mesh = smgr->getMesh("data/models/vehicles/chopper/Helicopter 2.obj");
     IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
     chopperControl = new ChopperControl(device, node);
     chopperControl->setEventRec( &mEvent );
     chopperEnabled = true;
+ //   camera->bindTargetAndRotation(node);
     #endif
      //device->getSceneManager()->isCulled(node);
             return Py_BuildValue("l",chopperControl);
 }
+
+
+
 
 PyObject * Python::PyIrr_BulletBlend(PyObject * self,PyObject * args) {//active camera
 vector3df loc;

@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Luna" />
+		<Option title="Luna19" />
 		<Option makefile="makefile" />
 		<Option pch_mode="0" />
 		<Option default_target="Linux Debug" />

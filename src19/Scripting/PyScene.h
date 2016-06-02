@@ -32,12 +32,16 @@ PyObject * Python::PyIrr_addTree(PyObject * self,PyObject * args) { // if treepo
     // create a vector stack store the tree pointers in it
     // call add tree one by one push to treemanager.
     // render tree shadow bake to terrain
+      Terrain *terr;
 
     // open terrain tree layout could probably even load grass sametime.
-        if(btree == 1){
-            terr->MakeTrees();
-        }
-return Py_BuildValue("1");
+    PyArg_ParseTuple(args,"i",&terr);
+    vector3df aha = vector3df(3,3,3);
+          int tree =  terr->MakeTrees(aha , 1);
+      //  if(btree == 1){
+
+    //    }
+return Py_BuildValue("l",&tree);
 }
 
 
@@ -51,7 +55,45 @@ return Py_BuildValue("0");
 }
 
 
-//simple cube no physics. returns nodeid
+
+///
+PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
+    s32 node_id;
+    int x,y,z;
+    PyArg_ParseTuple(args,"llll",&node_id,&x,&y,&z);
+    ISceneNode * node = smgr->getSceneNodeFromId(node_id);
+    	if(node != NULL)
+	{
+    node->setPosition(vector3df(x,y,z));
+	}
+
+   // printf("%i",node_id);
+return Py_BuildValue("");
+}
+
+PyObject * Python::PyIrr_getPosition(PyObject * self,PyObject * args){
+    //not teste
+    s32 node_id;
+
+    PyArg_ParseTuple(args,"llll",&node_id);
+    ISceneNode *node = smgr->getSceneNodeFromId(node_id);
+    vector3df position = node->getPosition();
+return Py_BuildValue("l",position);
+}
+
+
+PyObject * Python::PyIrr_setVelocity(PyObject * self,PyObject * args){
+
+//    ISceneNode *node;
+//    int x,y,z;
+//	PyArg_ParseTuple(args,"slll",&node,&x,&y,&z);
+// if bullet or irrlicht scene node handle methods differently
+// inirtia calculation
+//	node->setPosition(vector3df(x,y,z));
+return Py_BuildValue("0");
+}
+
+
 PyObject * Python::PyIrr_AddCubeSceneNode(PyObject * self,PyObject * args){
 	s32 node_id;
 	float size;
@@ -67,13 +109,52 @@ PyObject * Python::PyIrr_AddCubeSceneNode(PyObject * self,PyObject * args){
                                 vector3df(sx,sy,sz));
 
 		node->setMaterialFlag(EMF_LIGHTING,false);
+
+		//node->setPosition(vector3df(50,50,50));
 	}
 	else
 	{
-		return Py_BuildValue("0");
+		return Py_BuildValue("");
 	};
 return Py_BuildValue("l",node_id);
 };
+
+
+PyObject * Python::PyIrr_addSphereNode(PyObject * self,PyObject * args){
+
+    int x,y,z;
+   // u8 texture;
+    float radius;
+	PyArg_ParseTuple(args,"sllll",&radius,&x,&y,&z);
+    scene::ISceneNode * node_id = smgr->addSphereSceneNode(20); //radius  polycount , parent , id , position,rotation, scale
+//IVideoDriver::createImageFromFile().  //textures and heightmap
+
+//return Py_BuildValue("");
+return Py_BuildValue("l",node_id);
+};
+
+
+PyObject * Python::PyIrr_addAnimatedMesh(PyObject * self,PyObject * args){
+IAnimatedMesh *mesh ;
+s32 meshPath;
+	PyArg_ParseTuple(args,"s",&meshPath);
+    mesh->getMesh(meshPath);
+
+return Py_BuildValue("l",mesh);
+};
+
+
+
+
+PyObject * Python::PyIrr_pauseGame(PyObject * self,PyObject * args){
+    luna->m_cInGameEvents.Quit=true;
+    }
+
+PyObject * Python::PyIrr_exit(PyObject * self,PyObject * args){
+    luna->m_cInGameEvents.Quit=true;
+}
+
+
 
 /*
 int setvideo (){// graphics combo

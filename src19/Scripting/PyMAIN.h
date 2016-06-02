@@ -11,6 +11,7 @@ namespace Python {
     IGUIEnvironment * guienv;
     InGameEventReceiver mEvent;
     IGUIFont * default_font;
+            SKeyMap keyMap[8]; // KEYMAP
 
     vector<ITexture *> texture_array; //Our array of textures
     void registerIrrDevice(Luna *luna, IrrlichtDevice &device,InGameEventReceiver event);
@@ -26,6 +27,13 @@ namespace Python {
 
     void preEnd();  //declared in PyFunctions2 for some reason... ?
     void CheckKeyStates();
+
+    int VehicleParam(int vehicle,int param,int ammount,int state);
+
+    int test();
+
+    bool CheckKeyState(int key);
+
 
     Vehicle   *m_cVehicle;
     btRigidBody *ha;
@@ -61,6 +69,7 @@ namespace Python {
     //Scene
     // would be sweet to have this done automatically somehow lol pita making 2 tables and a function
 
+    PyObject * PyIrr_addCamera(PyObject * self,PyObject * args);
     PyObject * PyIrr_LoadTexture(PyObject * self,PyObject * args);
     PyObject * PyIrr_SetTexture(PyObject * self,PyObject * args);
     PyObject * PyIrr_DrawText(PyObject * self,PyObject * args);
@@ -77,18 +86,21 @@ namespace Python {
     PyObject * PyIrr_LoadMesh(PyObject * self,PyObject * args);
     PyObject * PyIrr_tesselateImage(PyObject * self,PyObject * args);
     PyObject * PyIrr_addChopper(PyObject * self,PyObject * args);
-
+    PyObject * PyIrr_setPosition(PyObject * self,PyObject * args);
+    PyObject * PyIrr_getPosition(PyObject * self,PyObject * args);
     //Physics
-        PyObject * PyIrr_Bullet(PyObject * self,PyObject * args); // try to seperate
+    PyObject * PyIrr_Bullet(PyObject * self,PyObject * args); // try to seperate
     PyObject * PyIrr_RagMan(PyObject * self,PyObject * args);
     PyObject * PyIrr_LoadTrack(PyObject * self,PyObject * args);
     PyObject * PyIrr_BulletBlend(PyObject * self,PyObject * args);
     PyObject * PyIrr_LoadVehicle(PyObject * self,PyObject * args);
 
+    PyObject * PyIrr_setVelocity(PyObject * self,PyObject * args);
     PyObject * PyIrr_DecalManager(PyObject * self,PyObject * args);
     PyObject * PyIrr_SoundMan(PyObject * self,PyObject * args);
     PyObject * PyIrr_addPlayer(PyObject * self,PyObject * args);
     PyObject * PyIrr_OpenSteer(PyObject * self,PyObject * args);
+    PyObject * PyIrr_VehicleParams(PyObject * self,PyObject * args);
 
     //GUI
     PyObject * PyIrr_addCar(PyObject * self,PyObject * args);
@@ -98,6 +110,10 @@ namespace Python {
     //Terrain
     PyObject * PyIrr_addTree(PyObject * self,PyObject * args);
     PyObject * PyIrr_addTerrain(PyObject * self,PyObject * args);
+
+    //Scene
+    PyObject * PyIrr_addSphereNode(PyObject * self,PyObject * args);
+
 
     //Extras
     PyObject * PyIrr_realCloud(PyObject * self,PyObject * args);
@@ -125,6 +141,15 @@ namespace Python {
     PyObject * PyIrr_lensFlare(PyObject * self,PyObject * args);
 
     PyObject * PyIrr_SPARKA(PyObject * self,PyObject * args);
+    //input
+    PyObject * PyIrr_getKey(PyObject * self,PyObject * args);
+
+	// Model
+    PyObject * PyIrr_addAnimatedMesh(PyObject * self,PyObject * args);
+    PyObject * PyIrr_addMesh(PyObject * self,PyObject * args);
+    PyObject * PyIrr_pauseGame(PyObject * self,PyObject * args);
+    PyObject * PyIrr_exit(PyObject * self,PyObject * args);
+        PyObject * PyIrr_using(PyObject * self,PyObject * args);
 
     PyMODINIT_FUNC init_irr(void);
 
@@ -187,6 +212,8 @@ Application *app;
 //	if (cloudLayer2)		cloudLayer2->drop();
 //	if (cloudLayer3)		cloudLayer3->drop();
 };
+
+int Python::test(){};
 
 void Python::PreRender(){   // prerender
         #ifdef SPARKA //rain

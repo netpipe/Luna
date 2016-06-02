@@ -38,6 +38,7 @@ using namespace io;
         Py_InitModule("irr",irr_FlagMan);
 };
 
+/// need this for the using or include  keyword for chain linking python scripts
 void Python::ExecuteScript(irr::core::string<char> scriptname){
 	/*Using it this way because the methods using the FILE * structure tend to go wonky
 	  due to the fact that the FILE * datatype is not standardized, so you'll get problems

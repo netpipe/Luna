@@ -1,21 +1,388 @@
 #ifndef PYMAIN_H_INCLUDED
 #define PYMAIN_H_INCLUDED
 
+//device->sleep(5,0); python delay for mainloop possibly use timers
 
 
+PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
+    int param,state,Vehicle,ammount;
+    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+    VehicleParam(Vehicle,param,ammount,state);
+
+  return Py_BuildValue("");
+}
+
+PyObject * Python::PyIrr_getKey(PyObject * self,PyObject * args){
+//irr::EKEY_CODE StringToEKey_Code( std::string tempString )
+	s32 key;
+	 int keyValue,secondary;
+    std::string tempString;
+	char * tempString2;
+	//	EKEY_CODE ekey;
+	PyArg_ParseTuple(args,"s",&tempString2,&secondary);
+	tempString = tempString2;
+//  parse key_key from tempString  // use primary and secondary key checking for common keys
+
+/// tip from bobbo
+//Wouldn't it be quicker/better/easier to just use std::map<std::string, EKEY_CODE> or similar container?
+//Bobbo You'd basically have to setup your container, and then just do like `return keyMap.find(stringCode)->second;`
+
+//switch ( EKEY_CODE(tempString)){//    case  KEY_KEY_P: 'KEY_KEY_E'
+//    //mouse
+//    case KEY_KEY_E://
+//          keyValue = 0x45;
+//          break;
+//    case KEY_LBUTTON:
+//         keyValue = 0x01;
+//        break;
+//}
+
+    bool keystate ;
+ //   printf ("%s",tempString2);
+if (tempString2 > ""){   //not sure why but it seemed to speed things up a bit
+
+keyValue=-1;
+    if          ( tempString == "KEY_LBUTTON" )    {  keyValue = 0x01; }
+//    else if( tempString == "KEY_RBUTTON" )    {        keyValue = 0x02;}
+//    else if( tempString == "KEY_CANCEL" )    {        keyValue = 0x03;}
+//    else if( tempString == "KEY_MBUTTON" )    {        keyValue = 0x04;}
+//    else if( tempString == "KEY_XBUTTON1" )    {        keyValue = 0x05;}
+//    else if( tempString == "KEY_XBUTTON2" )    {        keyValue = 0x06;}
+//    else if( tempString == "KEY_BACK" )    {        keyValue = 0x08;}
+//    else if( tempString == "KEY_TAB" )    {        keyValue = 0x09;}
+//    else if( tempString == "KEY_CLEAR" )    {        keyValue = 0x0C;}
+       else if( tempString == "KEY_RETURN" )    {        keyValue = 0x0D;}
+//    else if( tempString == "KEY_SHIFT" )    {        keyValue = 0x10;}
+//    else if( tempString == "KEY_CONTROL" )    {        keyValue = 0x08;}
+//    else if( tempString == "KEY_MENU" )    {        keyValue = 0x12;}
+//    else if( tempString == "KEY_PAUSE" )    {        keyValue = 0x13;}
+//    else if( tempString == "KEY_CAPITAL" )    {        keyValue = 0x14;}
+//    else if( tempString == "KEY_KANA" )    {        keyValue = 0x15}
+//    else if( tempString == "KEY_HANGUEL" )    {        keyValue = 0x15;}
+//    else if( tempString == "KEY_HANGUL" )    {        keyValue = 0x15;}
+//    else if( tempString == "KEY_JUNJA" )    {        keyValue = 0x17;}
+//    else if( tempString == "KEY_FINAL" )    {        keyValue = 0x18;}
+//    else if( tempString == "KEY_HANJA" )    {        keyValue = 0x19;}
+//    else if( tempString == "KEY_KANJI" )    {        keyValue = 0x19;}
+    else if( tempString == "KEY_ESCAPE" )    {        keyValue = 0x1B;}
+//    else if( tempString == "KEY_CONVERT" )    {        keyValue = 0x1C;}
+//    else if( tempString == "KEY_NONCONVERT" )    {        keyValue = 0x1D;}
+//    else if( tempString == "KEY_ACCEPT" )    {        keyValue = 0x1E;}
+//    else if( tempString == "KEY_MODECHANGE" )    {        keyValue = 0x1F;}
+//
+//
+    else if( tempString == "KEY_SPACE" )    {        keyValue = 0x20;    }
+//    else if( tempString == "KEY_PRIOR" )    {        keyValue = 0x21;    }
+//    else if( tempString == "KEY_NEXT" )    {        keyValue = 0x22;    }
+//    else if( tempString == "KEY_END" )    {        keyValue = 0x23;    }
+//    else if( tempString == "KEY_HOME" )    {        keyValue = 0x24;    }
+    else if( tempString == "KEY_LEFT" )    {        keyValue = 0x25;    }
+    else if( tempString == "KEY_UP" )    {        keyValue = 0x26;    }
+    else if( tempString == "KEY_RIGHT" )    {        keyValue = 0x27;    }
+    else if( tempString == "KEY_DOWN" )    {        keyValue = 0x28;    }
+//    else if( tempString == "KEY_SELECT" )    {        keyValue = 0x29;    }
+//    else if( tempString == "KEY_PRINT" )    {        keyValue = 0x2A;    }
+//    else if( tempString == "KEY_EXECUT" )    {        keyValue = 0x2B;    }
+//    else if( tempString == "KEY_SNAPSHOT" )    {        keyValue = 0x2C;    }
+//    else if( tempString == "KEY_INSERT" )    {        keyValue = 0x2D;    }
+//    else if( tempString == "KEY_DELETE" )    {        keyValue = 0x2E;    }
+//    else if( tempString == "KEY_HELP" )    {        keyValue = 0x2F;    }
+
+//
+//    //numbers
+//    else if( tempString == "KEY_KEY_1" )    {        keyValue = 0x30;    }
+//    else if( tempString == "KEY_KEY_2" )    {        keyValue = 0x31;    }
+//    else if( tempString == "KEY_KEY_3" )    {        keyValue = 0x32;    }
+//    else if( tempString == "KEY_KEY_4" )    {        keyValue = 0x33;    }
+//    else if( tempString == "KEY_KEY_5" )    {        keyValue = 0x34;    }
+//    else if( tempString == "KEY_KEY_6" )    {        keyValue = 0x35;    }
+//    else if( tempString == "KEY_KEY_7" )    {        keyValue = 0x36;    }
+//    else if( tempString == "KEY_KEY_8" )    {        keyValue = 0x37;    }
+//    else if( tempString == "KEY_KEY_8" )    {        keyValue = 0x38;    }
+
+    //letters
+//    else if( tempString == "KEY_KEY_A" )    {        keyValue = 0x41;    }
+//    else if( tempString == "KEY_KEY_B" )    {        keyValue = 0x42;    }
+//    else if( tempString == "KEY_KEY_C" )    {        keyValue = 0x43;}
+//    else if( tempString == "KEY_KEY_D" )    {        keyValue = 0x44;}
+    else if( tempString == "KEY_KEY_E" )    {        keyValue = 0x45;}
+//    else if( tempString == "KEY_KEY_F" )    {        keyValue = 0x46;}
+//    else if( tempString == "KEY_KEY_G" )    {        keyValue = 0x47;}
+//    else if( tempString == "KEY_KEY_H" )    {        keyValue = 0x48;}
+//    else if( tempString == "KEY_KEY_I" )    {        keyValue = 0x49;}
+//    else if( tempString == "KEY_KEY_J" )    {        keyValue = 0x4A;}
+    else if( tempString == "KEY_KEY_A" )    {        keyValue = 0x41;    }
+//    else if( tempString == "KEY_KEY_B" )    {        keyValue = 0x42;    }
+//    else if( tempString == "KEY_KEY_C" )    {        keyValue = 0x43;}
+    else if( tempString == "KEY_KEY_D" )    {        keyValue = 0x44;}
+//    else if( tempString == "KEY_KEY_E" )    {        keyValue = 0x45;}
+//    else if( tempString == "KEY_KEY_F" )    {        keyValue = 0x46;}
+//    else if( tempString == "KEY_KEY_G" )    {        keyValue = 0x47;}
+//    else if( tempString == "KEY_KEY_H" )    {        keyValue = 0x48;}
+//    else if( tempString == "KEY_KEY_I" )    {        keyValue = 0x49;}
+//    else if( tempString == "KEY_KEY_J" )    {        keyValue = 0x4A;}
+//     else if( tempString == "KEY_KEY_K" )    {        keyValue = 0x43;}
+//    else if( tempString == "KEY_KEY_L" )    {        keyValue = 0x44;}
+//    else if( tempString == "KEY_KEY_M" )    {        keyValue = 0x45;}
+//    else if( tempString == "KEY_KEY_N" )    {        keyValue = 0x46;}
+//    else if( tempString == "KEY_KEY_O" )    {        keyValue = 0x47;}
+//    else if( tempString == "KEY_KEY_P" )    {        keyValue = 0x48;}
+//    else if( tempString == "KEY_KEY_Q" )    {        keyValue = 0x49;}
+       else if( tempString == "KEY_KEY_R" )    {        keyValue = 0x52;}
+       else if( tempString == "KEY_KEY_S" )    {        keyValue = 0x53;}
+//    else if( tempString == "KEY_KEY_T" )    {        keyValue = 0x54;}
+//    else if( tempString == "KEY_KEY_U" )    {        keyValue = 0x55;}
+//    else if( tempString == "KEY_KEY_V" )    {        keyValue = 0x56;}
+    else if( tempString == "KEY_KEY_W" )    {        keyValue = 0x57;}
+//    else if( tempString == "KEY_KEY_X" )    {        keyValue = 0x58;}
+//    else if( tempString == "KEY_KEY_Y" )    {        keyValue = 0x59;}
+//    else if( tempString == "KEY_KEY_Z" )    {        keyValue = 0x5A;}
+//
+//    //fkeys
+//    else if( tempString == "KEY_F1" )    {        keyValue = 0x70;}
+//    else if( tempString == "KEY_F2" )    {        keyValue = 0x71;}
+//    else if( tempString == "KEY_F3" )    {        keyValue = 0x72;}
+//    else if( tempString == "KEY_F4" )    {        keyValue = 0x73;}
+//    else if( tempString == "KEY_F5" )    {        keyValue = 0x74;}
+//    else if( tempString == "KEY_F6" )    {        keyValue = 0x75;}
+//    else if( tempString == "KEY_F7" )    {        keyValue = 0x76;}
+//    else if( tempString == "KEY_F8" )    {        keyValue = 0x77;}
+//    else if( tempString == "KEY_F9" )    {        keyValue = 0x78;}
+//    else if( tempString == "KEY_F10" )    {        keyValue = 0x79;}
+//    else if( tempString == "KEY_F11" )    {        keyValue = 0x7A;}
+//    else if( tempString == "KEY_F12" )    {        keyValue = 0x7B;}
+
+
+//    else if( tempString == "KEY_F13" )    {        keyValue = 0x7C;}
+//    else if( tempString == "KEY_F14" )    {        keyValue = 0x7D;}
+//    else if( tempString == "KEY_F15" )    {        keyValue = 0x7E;}
+//    else if( tempString == "KEY_F16" )    {        keyValue = 0x7F;}
+//KEY_F16
+//KEY_F17
+//KEY_F18
+//KEY_F19
+//KEY_F20
+//KEY_F21
+//KEY_F22
+//KEY_F23
+//KEY_F24
+
+    //numberpad
+
+//    else if( tempString == "KEY_LWIN" )    {        keyValue = 0x7E;}
+//    else if( tempString == "KEY_RWIN" )    {        keyValue = 0x7F;}
+//    else if( tempString == "KEY_APPS" )    {        keyValue = 0x7E;}
+//    else if( tempString == "KEY_SLEEP" )    {        keyValue = 0x7F;}
+//
+//    else if( tempString == "KEY_NUMPAD0" )    {        keyValue = 0x60;}
+//    else if( tempString == "KEY_NUMPAD1" )    {        keyValue = 0x61;}
+//    else if( tempString == "KEY_NUMPAD2" )    {        keyValue = 0x62;}
+//    else if( tempString == "KEY_NUMPAD3" )    {        keyValue = 0x63;}
+//    else if( tempString == "KEY_NUMPAD4" )    {        keyValue = 0x64;}
+//    else if( tempString == "KEY_NUMPAD5" )    {        keyValue = 0x65;}
+//    else if( tempString == "KEY_NUMPAD6" )    {        keyValue = 0x66;}
+//    else if( tempString == "KEY_NUMPAD7" )    {        keyValue = 0x67;}
+//    else if( tempString == "KEY_NUMPAD8" )    {        keyValue = 0x68;}
+//    else if( tempString == "KEY_NUMPAD9" )    {        keyValue = 0x69;}
+//    else if( tempString == "KEY_MULTIPLY" )    {        keyValue = 0x6A;}
+//    else if( tempString == "KEY_ADD" )    {        keyValue = 0x6B;}
+//    else if( tempString == "KEY_SEPARATOR" )    {        keyValue = 0x6C;}
+//    else if( tempString == "KEY_SUBTRACT" )    {        keyValue = 0x6D;}
+//    else if( tempString == "KEY_DECIMAL" )    {        keyValue = 0x6E;}
+//    else if( tempString == "KEY_DIVIDE" )    {        keyValue = 0x6F;}
+//
+//    else if( tempString == " KEY_NUMLOCK" )    {        keyValue = 0x90;}
+//    else if( tempString == "KEY_SCROLL" )    {        keyValue = 0x91;}
+//    else if( tempString == " KEY_LSHIFT" )    {        keyValue = 0xA0;}
+//    else if( tempString == "KEY_RSHIFT" )    {        keyValue = 0xA1;}
+//    else if( tempString == " KEY_LCONTROL" )    {        keyValue = 0xA2;}
+//    else if( tempString == "KEY_RCONTROL" )    {        keyValue = 0xA3;}
+//    else if( tempString == " KEY_LMENU" )    {        keyValue = 0xA4;}
+//    else if( tempString == "KEY_RMENU" )    {        keyValue = 0xA5;}
+//
+//    else if( tempString == " KEY_OEM_1" )    {        keyValue = 0xBA;}
+//    else if( tempString == "KEY_PLUS" )    {        keyValue = 0xBB;}
+//    else if( tempString == " KEY_COMMA" )    {        keyValue = 0xBC;}
+//    else if( tempString == "KEY_MINUS" )    {        keyValue = 0xBD;}
+//
+//    else if( tempString == " KEY_PERIOD" )    {        keyValue = 0xBE;}
+//    else if( tempString == "KEY_OEM_2" )    {        keyValue = 0xBF;}
+//    else if( tempString == " KEY_OEM_3" )    {        keyValue = 0xC0;}
+//    else if( tempString == "KEY_OEM_4" )    {        keyValue = 0xDB;}
+//    else if( tempString == " KEY_OEM_5" )    {        keyValue = 0xDC;}
+//    else if( tempString == "KEY_OEM_6" )    {        keyValue = 0xDD;}
+//    else if( tempString == " KEY_OEM_7" )    {        keyValue = 0xDE;}
+//    else if( tempString == "KEY_OEM_8" )    {        keyValue = 0xDF;}
+//    else if( tempString == "KEY_OEM_9" )    {        keyValue = 0xE0;}// NOT SURE ABOUT THIS KEYVALUE
+//
+//    else if( tempString == "KEY_OEM_AX" )    {        keyValue = 0xE1;}
+//    else if( tempString == " KEY_OEM_102" )    {        keyValue = 0xE2;}
+//    else if( tempString == "KEY_ATTN" )    {        keyValue = 0xF6;}
+//    else if( tempString == " KEY_CRSEL" )    {        keyValue = 0xF7;}
+//    else if( tempString == "KEY_EXSEL" )    {        keyValue = 0xF8;}
+//    else if( tempString == " KEY_EREOF" )    {        keyValue = 0xF9;}
+//    else if( tempString == "KEY_PLAY" )    {        keyValue = 0xFA;}
+//    else if( tempString == "KEY_ZOOM" )    {        keyValue = 0xFB;}
+//
+//    else if( tempString == "KEY_PA1" )    {        keyValue = 0xFC;}
+//    else if( tempString == " KEY_OEM_CLEAR" )    {        keyValue = 0xFE;}
+//    else if( tempString == "KEY_KEY_CODES_COUNT" )    {        keyValue = 0xFF;}
+    //extras
+
+    else
+    {
+          return Py_BuildValue("b",0);
+    // No keycode match for string.
+    }
+//keyValue=0;
+	if (keyValue >= -1){
+   keystate = CheckKeyState( keyValue );
+	}
+}
+
+	// bool keystate = mEvent.getKeyState(irr::EKEY_CODE(keyValue));
+
+ //  if (keystate == true ){printf("the key was pressed");}
+  return Py_BuildValue("b",keystate);
+}
+
+
+bool Python::CheckKeyState(int key){
+//EKEY_CODE akey;
+//printf("checking key state \n");
+//printf("value is %i \n",key);
+bool keystate = mEvent.getKeyState( irr::EKEY_CODE(key) );
+//if ( keystate == true  ){printf("pyKeyE pressed")};
+//irr::EKEY_CODE(KEY_KEY_P)
+//return irr::EKEY_CODE( keyValue );
+return (keystate);
+//return 1;
+}
+
+int Python::VehicleParam(int vehicle,int param,int ammount,int state)   // parameter editor// possibly a define value for get and set
+{
+//steering
+//acceleration
+//etc...
+int returnvar;
+printf("%i",param);
+if ( state==0 ){  // set var
+       switch (param){
+            case 0:
+                m_cVehicle->resetVehicle();
+                break;
+            case 1:
+                m_cVehicle->accelerate(1);
+            break;
+            case 2:
+                m_cVehicle->reverse(1);
+            case 3: //wind resistance
+                m_cVehicle->reverse(ammount);
+            break;
+            case 5:
+                                m_cVehicle->brake();
+//                   if (mEvent.getKeyState(    irr::EKEY_CODE( 0x26 ) ))//KEY_UP)  ) ///| getkey.keyUP
+//                            {m_cVehicle->accelerate(1);}// need gears or something haha
+//                    else if (!mEvent.getKeyState(  KEY_UP) && (m_cVehicle->getState() != EVEHICLE_REVERSING))
+//                            {m_cVehicle->accelerate(-1);}   //wind resistance
+        //        break;
+            case 6:
+         //       printf("steer right");
+                m_cVehicle->steer_right();
+                break;
+            case 7:
+                m_cVehicle->steer_left();
+                break;
+            case 8:
+                break;
+            case 9:
+                m_cVehicle->steer_reset();
+                break;
+            case 10:
+                printf ("case 10");
+                           //     luna->m_cPhysics->createBox( btVector3(pos.X, pos.Y, pos.Z), btVector3(scl.X, scl.Y, scl.Z), 10); //weight
+            break;
+
+       }
+
+} else if (state==1){   //get vars
+
+           switch (param){
+case 0:
+returnvar = m_cVehicle->getState();
+break;
+//case 1:
+           }
+
+
+} else if (state == 2){  //testing
+
+           switch (param){
+
+
+
+
+           }
+
+}
+
+
+//        vector3df pos = camera->getPosition();
+//        vector3df scl = vector3df(1,1,1);
+//        luna->m_cPhysics->createBox( btVector3(pos.X, pos.Y, pos.Z), btVector3(scl.X, scl.Y, scl.Z), 10); //weight
+//    if (bCarFollow) {
+//    // this is for putting the camera above the car
+//        btVector3 point = m_cVehicle->getVehiclePosition();
+//        camera->setPosition(vector3df(
+//          (f32)point[0],
+//          (f32)point[1]+10,
+//          (f32)point[2]-50));
+//    }
+
+//  //  else if (!mEvent.getKeyState(  KEY_UP) && (m_cVehicle->getState() != EVEHICLE_REVERSING))
+//      //              {m_cVehicle->accelerate(-1);}   //wind resistance
+//// not working just keeps accelerating moved to speed incs
+//
+//    if (mEvent.getKeyState(    KEY_DOWN))
+//                    {m_cVehicle->reverse(1);    }
+////    else if (!mEvent.getKeyState(  KEY_DOWN) && (m_cVehicle->getState() != EVEHICLE_ACCELERATING))
+////                    {m_cVehicle->reverse(0.3);}      // wind resistance
+
+//    if (!mEvent.getKeyState(   KEY_LEFT) && !mEvent.getKeyState(KEY_RIGHT))
+//                    {m_cVehicle->steer_reset(); }
+return returnvar;
+}
 
 void Python::CheckKeyStates(){
+
     #ifdef BITCLOUD
             clouds->render();
             #endif
 
 #ifdef CHOPPER
 if (chopperEnabled){
-        vector3df ha = chopperControl->Node->getAbsolutePosition();
+
         //  printf("Jump position: %f %f %f \n", pos[0], pos[1], pos[2]);
-        camera->setPosition(vector3df( ha.X, ha.Y+40, ha.Z));
-       chopperControl->checkKey();
+     //   camera->setPosition(vector3df( ha.X, ha.Y+40, ha.Z));
+        chopperControl->checkKey();
         chopperControl->update();
+        chopperControl->updateAbsolutePosition();
+
+       vector3df ha = chopperControl->RootEmpty->getPosition();
+        camera->bindTargetAndRotation(1);
+        camera->setParent(chopperControl->RootEmpty);
+
+
+        irr::core::matrix4 m;
+        m.setRotationDegrees(chopperControl->RootEmpty->getRotation());
+   //     irr::core::vector3df upv = irr::core::vector3df (0.0f, 1.0f, 0.0f);    m.transformVect(upv);
+        irr::core::vector3df frv = irr::core::vector3df (0.0f, 0.0f, 10.0f);    m.transformVect(frv);
+
+        camera->setTarget( ha+frv);
+        //camera->setPosition(ha);
+//        camera->setUpVector(upv); //set up vector of camera.
+        camera->setRotation(chopperControl->YawEmpty->getRotation());
+        camera->updateAbsolutePosition();
     }
 #endif
 
@@ -40,7 +407,7 @@ if (chopperEnabled){
 #define BULLETCAR  // needtofix global defines should not be here
     #ifdef BULLETCAR
     if (bCar){
-    if (mEvent.getKeyState(    KEY_KEY_P))
+    if (mEvent.getKeyState(    irr::EKEY_CODE(KEY_KEY_P)))
     {
         btVector3 pos = m_cVehicle->getVehiclePosition();
         vector3df ha = vector3df(pos[0], pos[1]+10, pos[2]);
@@ -215,7 +582,7 @@ if (chopperEnabled){
           (f32)point[1]+10,
           (f32)point[2]-50));
     }
-    if (mEvent.getKeyState(    KEY_UP))
+    if (mEvent.getKeyState(    irr::EKEY_CODE( 0x26 ) ))//KEY_UP)  ) ///| getkey.keyUP
                     {m_cVehicle->accelerate(1);}// need gears or something haha
   //  else if (!mEvent.getKeyState(  KEY_UP) && (m_cVehicle->getState() != EVEHICLE_REVERSING))
       //              {m_cVehicle->accelerate(-1);}   //wind resistance

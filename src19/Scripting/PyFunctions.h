@@ -138,25 +138,48 @@ loadlevel - subloader for tracks or levels
 ragdoll - needs a manager
 network connect / info / manager interface
 script reload and compile function
+reminder to actually check the names match with unstable ide's and whatnot
 */
 	{"set_texture",Python::PyIrr_SetTexture,METH_VARARGS,"Adds a texture to a scene node"},
 	{"draw_text",Python::PyIrr_DrawText,METH_VARARGS,"Renders text to the screen with default font"},
 	{"add_cube",Python::PyIrr_AddCubeSceneNode,METH_VARARGS,"Adds a cube scene node"},
 	{"load_texture",Python::PyIrr_LoadTexture,METH_VARARGS,"Loads a texture"},
+
+    {"addCamera",Python::PyIrr_addCamera,METH_VARARGS,"sets camera vector"},
+
     {"setCam",Python::PyIrr_SetCamera,METH_VARARGS,"sets camera vector"},
 	{"getCam",Python::PyIrr_GetCamera,METH_VARARGS,"getcamera vector"},
+
 	{"Reset",Python::PyIrr_Reset,METH_VARARGS,"Reset various parts of scripting system"},
-	{"amod",Python::PyIrr_LoadAnimatedMesh,METH_VARARGS,"PyIrr_LoadAnimatedMesh"},
-	{"amesh",Python::PyIrr_LoadMesh,METH_VARARGS,"PyIrr_LoadMesh"},
+	{"addAMesh",Python::PyIrr_LoadAnimatedMesh,METH_VARARGS,"PyIrr_addAnimatedMesh"},
+	{"addMesh",Python::PyIrr_LoadMesh,METH_VARARGS,"PyIrr_addMesh"},
+	//input
+    {"getKey",Python::PyIrr_getKey,METH_VARARGS,"get key state"},
+    {"using",Python::PyIrr_using,METH_VARARGS,"for opening scripts within scripts"},
+
+	//scene
     {"tesselate",Python::PyIrr_tesselateImage,METH_VARARGS,"PyIrr_tesselateImage"},
     {"atmosphere",Python::PyIrr_atmosphere,METH_VARARGS,"PyIrr_atmosphere"},
     {"soundman",Python::PyIrr_SoundMan,METH_VARARGS,"PyIrr_SoundMan"},
     {"addvideo",Python::PyIrr_addVideo,METH_VARARGS,"PyIrr_addVideo"},
     {"decals",Python::PyIrr_DecalManager,METH_VARARGS,"PyIrr_DecalManager"},
     {"addwater",Python::PyIrr_WaterPlane,METH_VARARGS,"water plane reflective"},
+    {"setPosition",Python::PyIrr_setPosition,METH_VARARGS,"setPosition"},
+    {"getPosition",Python::PyIrr_getPosition,METH_VARARGS,"getPosition"},
+    {"addSphereNode",Python::PyIrr_addSphereNode,METH_VARARGS,"addSphereNode"},
+
+    //Physics
+    {"setVelocity",Python::PyIrr_setVelocity,METH_VARARGS,"setVelocity"},
+        {"VehicleParams",Python::PyIrr_VehicleParams,METH_VARARGS,"VehicleParams"},
+
+    //gui
     {"chatbox",Python::PyIrr_ChatBox,METH_VARARGS,"chatbox for chatting in/with/alone"},
 //  {"render",Python::PyIrr_Render,METH_VARARGS,"PyIrr_Render"}
 //  {"chatbox",Python::PyIrr_Terrain,METH_VARARGS,"pyterrain"},
+    {"pauseGame",Python::PyIrr_pauseGame,METH_VARARGS,"pauseGame"},
+        {"exit",Python::PyIrr_exit,METH_VARARGS,"exit"},
+
+
 	{NULL,NULL,0,NULL}
 };
 
@@ -176,7 +199,12 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
     smgr   = device->getSceneManager();
     guienv = device->getGUIEnvironment();
     mEvent = event;
-    camera = smgr->addCameraSceneNodeFPS(0, 100, .050f, -1, luna->keyMap, 8);
+
+
+  //  camera = smgr->addCameraSceneNodeFPS(0, 100, .050f, -1, luna->keyMap, 8);
+//camera = smgr->addCameraSceneNode();
+
+
  //   camera->setFarValue(10000);
     //camera = smgr->addCameraSceneNodeFPS();
     //  camera->setFOV(PI/2);
@@ -236,6 +264,16 @@ PyObject * Python::PyIrr_WaterPlane(PyObject * self,PyObject * args){
 	water->m_RefractionFactor = 0.51f;
 	return Py_BuildValue("l",water);
 #endif
+return Py_BuildValue("");
+}
+
+PyObject * Python::PyIrr_using(PyObject * self,PyObject * args) //active camera
+{
+//ExecuteScript(irr::core::string<char> scriptname){
+char * script;
+    PyArg_ParseTuple(args,"s",&script);
+
+    ExecuteScript(script);
 return Py_BuildValue("");
 }
 

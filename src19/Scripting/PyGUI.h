@@ -11,9 +11,6 @@ PyObject * Python::PyIrr_ChatBox(PyObject * self,PyObject * args){
         chat->addItem(L"(john) Kill that thing...");
         chat->addItem(L"(firestaff) lol", video::SColor(250, 220, 255, 255));
         chat->addItem(L"(juli) that's too big", video::SColor(0, 220, 0, 255));
-        chat->addItem(L"(john) Kill that thing...");
-        chat->addItem(L"(firestaff) lol", video::SColor(220, 220, 255, 255));
-        chat->addItem(L"(juli) that's too big", video::SColor(0, 220, 0, 255));
     };
     //pretty basic needs some work....
 
@@ -30,12 +27,21 @@ PyObject * Python::PyIrr_2Dimage(PyObject * self,PyObject * args) {//active came
        // image->SetTransparent(true);
       //  image->SetTransparentColor(SColor(0,255,0,255),driver);
       //  image->SetBilinearFilter(true);
+
+//      draw2DImage ( const video::ITexture * texture,
+//const core::rect< s32 > & destRect,
+//const core::rect< s32 > & sourceRect,
+//const core::rect< s32 > * clipRect = 0,
+//const video::SColor *const colors = 0,
+//bool useAlphaChannelOfTexture = false
+//)
+
     #endif
         Py_RETURN_NONE;
 }
 
+
 PyObject * Python::PyIrr_LoadTexture(PyObject * self,PyObject * args){
-	//Watch this, tricky,remember to pass string ADDRESS to PyArg_ParseTuple
 	char * tex_name;
 	PyArg_ParseTuple(args,"s",&tex_name);
 	//printf("hmmm %s", tex_name);
@@ -71,10 +77,11 @@ IGUIFont * default_font;
 
 PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args){
 
+
 	//Must make this useful someday, not today
 	char * message;
 	s32 x,y,x1,y1;
-	PyArg_ParseTuple(args,"sllll",&message,&x,&y,&x1,&y1);
+	PyArg_ParseTuple(args,"sllll",&message,&x,&y,&x1,&y1); //may only need x,y when using ft2
 	//The next three lines more or less give the procedure from converting a string of
 	//type char* to wchar_t*...generally this is pretty useful in Irrlicht,so note well
 	int len = strlen(message) + 1;
@@ -83,7 +90,17 @@ PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args){
 	//guienv->addStaticText(conv_message,rect<s32>(x,y,x1,y1),SColor(255,255,255,255));
 	delete [] conv_message;
 	return Py_BuildValue("");
+
+//
+//	    CGUITTFont *font2;
+//    CGUITTFace face;
+//        font2 = new CGUITTFont(gui);
+//    font2->attach(&face,24); // scale this number with the screen
+//    font2->AntiAlias=1;
+
 };
+
+
 PyObject * Python::PyIrr_addHUD(PyObject * self,PyObject * args) //active camera
 {
     #ifdef HUD
