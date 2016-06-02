@@ -112,6 +112,7 @@ vector3df loc;
      Py_RETURN_NONE;
 }
 
+
 PyObject * Python::PyIrr_addCar(PyObject * self,PyObject * args){ //active camera
 vector3df loc; //drop point
 
@@ -146,7 +147,7 @@ PyArg_ParseTuple(args,"fffffffffffifffifffffffffffff",&scaleT,&scaleE,
 
     #ifdef BULLETCAR
     bCar=1;
-        m_cVehicle = new Vehicle;
+         m_cVehicle = new Vehicle;
          m_cVehicle->registerIrrDevice(*device);
          m_cVehicle->registerPhysics(*luna->m_cPhysics);
          m_cVehicle->registerScene(*m_cScene);
@@ -178,11 +179,15 @@ PyArg_ParseTuple(args,"fffffffffffifffifffffffffffff",&scaleT,&scaleE,
      //  btVector3 btCarScale = m_cVehicle2->btCarScale;
      //   node->setScale(vector3df(btCarScale[0],btCarScale[1],btCarScale[2]));
      //   node->setMaterialFlag(video::EMF_LIGHTING, false);
+
+
+     push_back(new RagDoll(luna->m_cPhysics->getDynamicsWorld(),smgr, btVector3(0,55,0), btScalar(5.0)));
 return Py_BuildValue("l",m_cVehicle);
 #else
 return Py_BuildValue("0");
 #endif
 }
+
 
 PyObject * Python::PyIrr_Bullet(PyObject * self,PyObject * args){
 //start physics #used for recast at the moment haha
@@ -223,7 +228,10 @@ PyObject * Python::PyIrr_Bullet(PyObject * self,PyObject * args){
 return Py_BuildValue("");
 }
 
-PyObject * Python::PyIrr_LoadShape(PyObject * self,PyObject * args){return Py_BuildValue("");}
+
+
+PyObject * Python::PyIrr_LoadShape(PyObject * self,PyObject * args){return Py_BuildValue("");}  // ??
+
 
 PyObject * Python::PyIrr_RagMan(PyObject * self,PyObject * args){
 // params node id and mesh ?
@@ -232,6 +240,7 @@ PyObject * Python::PyIrr_RagMan(PyObject * self,PyObject * args){
     #endif
 return Py_BuildValue("");
 }
+
 
 PyObject * Python::PyIrr_LoadAnimatedMesh(PyObject * self,PyObject * args)  {   return Py_BuildValue("");  }
 

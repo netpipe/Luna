@@ -139,11 +139,11 @@ keyValue=-1;
 //    else if( tempString == "KEY_KEY_Z" )    {        keyValue = 0x5A;}
 //
 //    //fkeys
-//    else if( tempString == "KEY_F1" )    {        keyValue = 0x70;}
-//    else if( tempString == "KEY_F2" )    {        keyValue = 0x71;}
-//    else if( tempString == "KEY_F3" )    {        keyValue = 0x72;}
-//    else if( tempString == "KEY_F4" )    {        keyValue = 0x73;}
-//    else if( tempString == "KEY_F5" )    {        keyValue = 0x74;}
+    else if( tempString == "KEY_F1" )    {        keyValue = 0x70;}
+    else if( tempString == "KEY_F2" )    {        keyValue = 0x71;}
+    else if( tempString == "KEY_F3" )    {        keyValue = 0x72;}
+    else if( tempString == "KEY_F4" )    {        keyValue = 0x73;}
+    else if( tempString == "KEY_F5" )    {        keyValue = 0x74;}
 //    else if( tempString == "KEY_F6" )    {        keyValue = 0x75;}
 //    else if( tempString == "KEY_F7" )    {        keyValue = 0x76;}
 //    else if( tempString == "KEY_F8" )    {        keyValue = 0x77;}
@@ -285,7 +285,7 @@ if ( state==0 ){  // set var
 //                            {m_cVehicle->accelerate(1);}// need gears or something haha
 //                    else if (!mEvent.getKeyState(  KEY_UP) && (m_cVehicle->getState() != EVEHICLE_REVERSING))
 //                            {m_cVehicle->accelerate(-1);}   //wind resistance
-        //        break;
+                break;
             case 6:
          //       printf("steer right");
                 m_cVehicle->steer_right();

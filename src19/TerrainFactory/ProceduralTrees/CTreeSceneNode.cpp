@@ -46,6 +46,7 @@ CTreeSceneNode::CTreeSceneNode( ISceneNode* parent, ISceneManager* manager, s32 
     BillboardMeshBuffer.Vertices.push_back( video::S3DVertex( 0,0,0,  0,1,0, video::SColor(255,255,255,255), 1,0 ) );
     BillboardMeshBuffer.Vertices.push_back( video::S3DVertex( 0,0,0,  0,1,0, video::SColor(255,255,255,255), 1,1 ) );
 
+///  return (  *parent );
 }
 
 CTreeSceneNode::~CTreeSceneNode()

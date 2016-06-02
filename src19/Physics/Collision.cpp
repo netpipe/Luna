@@ -2,6 +2,7 @@
 #include "../entities/player.h"
 #include "../Scene/Obstacle.hpp"
 #include "../Scene/Elevator.hpp"
+
 Collision *Collision::m_collision = NULL;
 Collision Collision::m_default_collision_buffer;
 
@@ -44,6 +45,7 @@ vector3df Collision::getEllipsoidRadius(void)
 }
 
 
+
 void Collision::recursiveFillMetaSelector(ISceneNode* node, IMetaTriangleSelector* meta )
 {
   //
@@ -60,6 +62,12 @@ void Collision::recursiveFillMetaSelector(ISceneNode* node, IMetaTriangleSelecto
     Elevator::Instance()->Add(node);
     Elevator::Instance()->elevatorStart = node->getAbsolutePosition();
   }
+
+//   if(strcmp(node->getName(), "wheel") == 0)
+//  {
+//		 vector3df wheels node->getAbsolutePosition();
+//		node->setPosition(wheels);
+//  }
 
   if(strcmp(node->getName(), "obstacle") == 0)
   {

@@ -37,6 +37,7 @@ class InGameEventReceiver : public IEventReceiver
 
 		bool getKeyState(EKEY_CODE key);
 
+
 	// Private functions.
 	private:
 };

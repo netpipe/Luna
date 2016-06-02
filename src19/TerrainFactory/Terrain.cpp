@@ -641,7 +641,7 @@ void Terrain::tick(const float &CamX, const float &CamY, const float &CamZ)
 */
 
 
-int Terrain::MakeTrees(){
+int Terrain::MakeTrees(vector3df aha,int treetype){
     // type of tree
     //make the treestack more global ?
 
@@ -722,6 +722,7 @@ bool lightsEnabled = 1;
         tree2[i]->drop(); //this was disabled not sure why
     }
     //return pointer to treenode
+//    return (tree2)
 }
 
 

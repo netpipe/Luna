@@ -360,8 +360,9 @@ irr::video::ITexture* CVideoMaster::addVideoClip(const irr::io::path           &
   else               pClip->stop();
 
   pClip->setAutoRestart(repeatPlayback);
-
-  const dimension2du sizeClip(pClip->getWidth(), pClip->getHeight());
+const dimension2du sizeClip(800, 400);
+//! tecan fix needed
+ // const dimension2du sizeClip(pClip->getWidth(), pClip->getHeight());
   const dimension2du sizeScreen(mDriver->getScreenSize());
 
   pImg = mDriver->createImage(ECF_A8R8G8B8, sizeClip);

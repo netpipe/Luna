@@ -449,6 +449,7 @@
             lineMaterial.Thickness = 2.0f;
             lineMaterial.FrontfaceCulling = false;
             lineMaterial.BackfaceCulling = false;
+            lineMaterial.Wireframe = true;
 ///            lineMaterial.ZBuffer = video::ECFN_NEVER;
 
             driver->setMaterial(lineMaterial);

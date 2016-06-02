@@ -121,16 +121,15 @@
 
             scene::ISceneNode* Node;
 
+            scene::ISceneNode* RootEmpty;
+            scene::ISceneNode* YawEmpty;
+            scene::ISceneNode* PitchEmpty;
+            scene::ISceneNode* RollEmpty;
             protected:
 
             private:
             IrrlichtDevice* Device;
             scene::ISceneManager* Smgr;
-
-            scene::ISceneNode* RootEmpty;
-            scene::ISceneNode* YawEmpty;
-            scene::ISceneNode* PitchEmpty;
-            scene::ISceneNode* RollEmpty;
 
 
             f32 PitchChange;

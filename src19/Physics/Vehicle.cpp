@@ -106,6 +106,58 @@ void Vehicle::renderme(){  //deltatime ?
         m_vehicle->updateWheelTransform(i,true);
     }
 
+
+
+//		 vector3df wheels node->getAbsolutePosition();
+//		node->setPosition(wheels);
+
+
+      ///IAnimatedMesh* CharMesh = smgr->getMesh("dwarf.x");
+
+
+//		jointSystem(IAnimatedMeshSceneNode wheelNode){
+//		   // Animate character manually
+//		         CharNode->setAnimationSpeed(10);
+//		   //      CharNode->setJointMode(EJUOR_CONTROL); //To write positions to
+//      //CharNode->animateJoints();
+//
+//
+//   // Get the Joint you want to MANIPULATE, and its Parent
+//
+//   // for loop load wheel positions
+//      IBoneSceneNode* thisJoint = wheelNode->getJointNode("wheels.00");
+//
+//      if( thisJoint )
+//      {
+//         ISceneNode* parentJoint = thisJoint->getParent();
+//
+//         if( parentJoint )
+//         {
+//         // Get the default (animated) Joint's position and rotation
+//            vector3df jointPos = thisJoint->getAbsolutePosition();
+//            vector3df jointRot = thisJoint->getAbsoluteTransformation().getRotationDegrees();
+//
+//         // Get the absolute INVERSE Transformation matrix of the parent
+//            matrix4 iparentTransform = parentJoint->getAbsoluteTransformation();
+//               iparentTransform.makeInverse();
+//
+//         // Set the Absolute Position or Rotation of the Joint without fear!
+//            vector3df newJointPos = jointPos + vector3df( 0, 1+(sin(headPosition)*2), 0 );
+//            vector3df newJointRot = vector3df( 0, headRotation, 0 );
+//
+//         // Transform the Position by the Parent's Inverse matrix before applying it
+//            iparentTransform.transformVect( newJointPos );
+//
+//         // APPLY
+//            thisJoint->setPosition( newJointPos );
+//            thisJoint->setRotation( newJointRot );
+//         }
+//      }
+//}
+
+
+
+
 //tecan try to add down force on wheel thats not connected{ taken from bullet forums}
 //           for (i=0;i<m_numWheels;i++)
 //        {
@@ -128,6 +180,7 @@ void Vehicle::renderme(){  //deltatime ?
     updateVehicleMovement();
     gEngineForce -= 0.1;  //wind resistance
 }
+
 
 btVector3 Vehicle::getVehiclePosition(void){
   if(!m_vehicle)
@@ -433,7 +486,7 @@ else if(driveType==5){ // Bikes
         tempNode->getMaterial(0).BackfaceCulling = false;
     }
     m_numWheels = m_vehicle->getNumWheels();
-
+//pushback (m_vehicle); // ?? untested
 }
 
 void Vehicle::updateVehicleMovement(void){
