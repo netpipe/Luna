@@ -23,6 +23,7 @@ PyArg_ParseTuple(args,"iiii",&a1f,&a2f,&a3f,&btree);
 return Py_BuildValue("0");
 }
 
+
 PyObject * Python::PyIrr_addTree(PyObject * self,PyObject * args) { // if treepointer passed remove it
     // change addTree to Trees so you can put more functionality into it
     // should be able to cull these aswell as remove them
@@ -41,9 +42,126 @@ PyObject * Python::PyIrr_addTree(PyObject * self,PyObject * args) { // if treepo
       //  if(btree == 1){
 
     //    }
-return Py_BuildValue("l",&tree);
+return Py_BuildValue("l",tree);
 }
 
+
+PyObject * Python::PyIrr_loadModel(PyObject * self,PyObject * args) { // if treepointer passed remove it
+
+// type/action ,     value,value   // could be path, or action aswell
+int value1,value2;
+char *type;
+
+    PyArg_ParseTuple(args,"sll",&type,&value1,&value2);
+    ISceneNode *node = smgr->getSceneNodeFromId(value1);
+    vector3df position = node->getPosition();
+
+
+    //OVERLAPPING TEXT MOVEMENT FUNCTION FOR  | |  LISTS
+//    3DS
+//    BLEND (Blender)
+//    DAE/Collada
+//    FBX
+//    IFC-STEP
+//    ASE
+//    DXF
+//    HMP
+//    MD2
+//    MD3
+//    MD5
+//    MDC
+//    MDL
+//    NFF
+//    PLY
+//    STL
+//    X
+//    OBJ
+//    OpenGEX
+//    SMD
+//    LWO
+//    LXO
+//    LWS
+//    TER
+//    AC3D
+//    MS3D
+//    COB
+//    Q3BSP
+//    XGL
+//    CSM
+//    BVH
+//    B3D
+//    NDO
+//    Ogre Binary
+//    Ogre XML
+//    Q3D
+//    ASSBIN (Assimp custom format)
+//    glTF (partial)
+//    3MF
+//
+//Additionally, some formats are supported by dependency on non-free code or external SDKs (not built by default):
+//
+//    C4D (https://github.com/acgessler/assimp-cinema4d)
+//
+//Exporters:
+//
+//    DAE (Collada)
+//    STL
+//    OBJ
+//    PLY
+//    X
+//    3DS
+//    JSON (for WebGl, via https://github.com/acgessler/assimp2json)
+//    ASSBIN
+//    STEP
+//    glTF (partial)
+
+
+if (type =="bvh"){
+	//device->setWindowCaption(L"IrrAssimp Demo");
+
+	IVideoDriver* driver = device->getVideoDriver();
+	ISceneManager* smgr = device->getSceneManager();
+	IGUIEnvironment* guienv = device->getGUIEnvironment();
+
+//	guienv->addStaticText(L"Hello World! This is the IrrAssimp demo!",
+//		rect<s32>(10,10,260,22), true);
+//tecan make sure that renamed files dont trick the parser into loading them.
+
+    // The assimp loader is in a separate system and not directly as a meshLoader to give the choice to use Irrlicht or Assimp for mesh loading to the user, in function of the format for example
+	IrrAssimp assimp(smgr);
+   // IAnimatedMesh* mesh = assimp.getMesh("Media/dwarf.x");
+        IAnimatedMesh* mesh = assimp.getMesh("Media/B02.bvh");
+    //IAnimatedMesh* meshNoAssimp = smgr->getMesh("Media/ninja.b3d");
+  //  assimp.exportMesh(mesh, "obj", "Media/export.obj");
+
+	if (!mesh /*|| !meshNoAssimp*/)
+	{
+		device->drop();
+///		return 1;
+	return Py_BuildValue("1");
+	}
+
+	IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+	node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
+	//IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode( meshNoAssimp );
+
+
+
+	if (node /*&& nodeNoAssimp*/)
+	{
+		//node->setMaterialFlag(EMF_LIGHTING, false);
+		node->setDebugDataVisible(scene::EDS_SKELETON | scene::EDS_BBOX_ALL);
+		//node->setScale(core::vector3df(100, 100, 100));
+
+        //nodeNoAssimp->setPosition(core::vector3df(100, 0, 0));
+		//nodeNoAssimp->setMaterialFlag(EMF_LIGHTING, false);
+		//node->setMD2Animation(scene::EMAT_STAND);
+		node->setMaterialTexture( 0, driver->getTexture("Media/lightmap.png") );
+	}
+
+}
+	return Py_BuildValue("l",node);
+}
 
 PyObject * Python::PyIrr_Reset(PyObject * self,PyObject * args){
     //would like to have a reset and compile function here maybe dynamically load all the
@@ -142,6 +260,7 @@ s32 meshPath;
 
 return Py_BuildValue("l",mesh);
 };
+
 
 
 

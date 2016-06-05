@@ -22,7 +22,7 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args)
 }
 
 
-PyObject * Python::PyIrr_SetCamera(PyObject * self,PyObject * args) //active camera
+PyObject * Python::PyIrr_SetCamera(PyObject * self,PyObject * args) //active camera // parameters for fov possibly shaders aswell
 {
 	s32 x,y,z,t;
 		    ICameraSceneNode *cam;
@@ -46,6 +46,22 @@ v = vector3df(x,y,z);
 //cam = smgr->getActiveCamera();
 return Py_BuildValue("lll",v.X,v.Y,v.Z);
 }
+
+//PyObject * Python::PyIrr_Camera(PyObject * self,PyObject * args)
+//{
+//
+//	s32 x,y,z,t;
+//	vector3df v;
+//			    ICameraSceneNode *cam;
+//	PyArg_ParseTuple(args,"sllll",cam,&x,&y,&z);
+//
+//v = vector3df(x,y,z);
+//
+//
+////vector3df v = t->getPosition();
+////cam = smgr->getActiveCamera();
+//return Py_BuildValue("l",v);
+//}
 
 
 //PyObject * Python::PyIrr_BindCamera(PyObject * self,PyObject * args)

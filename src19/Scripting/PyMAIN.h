@@ -113,6 +113,7 @@ namespace Python {
 
     //Scene
     PyObject * PyIrr_addSphereNode(PyObject * self,PyObject * args);
+        PyObject * PyIrr_loadModel(PyObject * self,PyObject * args);
 
 
     //Extras
@@ -145,6 +146,7 @@ namespace Python {
     PyObject * PyIrr_getKey(PyObject * self,PyObject * args);
 
 	// Model
+    PyObject * PyIrr_aBillBoard(PyObject * self,PyObject * args);
     PyObject * PyIrr_addAnimatedMesh(PyObject * self,PyObject * args);
     PyObject * PyIrr_addMesh(PyObject * self,PyObject * args);
     PyObject * PyIrr_pauseGame(PyObject * self,PyObject * args);
@@ -253,15 +255,16 @@ void Python::render() //active camera
 
         #ifdef BULLETCAR
         if (bCar){
-//                            for (std::vector<Vehicle*>::iterator it = m_cVehicle.begin(); it != m_cVehicle.end(); ++it)
+
+//            for (std::vector<Vehicle*>::iterator it = m_cVehicle.begin(); it != m_cVehicle.end(); ++it)
 //            (*it)->renderme();
 
             ///  btVector3 pos = m_cVehicle->getVehiclePosition();
             // m_cVehicle2->renderme(); // no need to update unless running 2 players from same computer
             m_cVehicle->renderme();
-            #ifdef CAR2
-                m_cVehicle2->renderme();
-            #endif
+//            #ifdef CAR2
+//                m_cVehicle2->renderme();
+//            #endif
             // m_cVehicle2->setVehiclePosition(vector3df(pos[0]+20,pos[1],pos[2])); //ghostCar
             // camera->setPosition( vector3df(pos[0],pos[1]+4,pos[2]));  //sticking the camera to the car
             }

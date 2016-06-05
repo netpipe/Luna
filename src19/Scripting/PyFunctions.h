@@ -95,6 +95,9 @@ RibbonTrailSceneNode* rt;
         using namespace SPK::IRR;
 //      #include "../Scene/RainMan.h"
     #endif
+    #include "../FileSystem/Model/IrrAssimp/IrrAssimp.h"
+
+
 
     using namespace std;
     using namespace irr;
@@ -154,6 +157,7 @@ reminder to actually check the names match with unstable ide's and whatnot
 	{"Reset",Python::PyIrr_Reset,METH_VARARGS,"Reset various parts of scripting system"},
 	{"addAMesh",Python::PyIrr_LoadAnimatedMesh,METH_VARARGS,"PyIrr_addAnimatedMesh"},
 	{"addMesh",Python::PyIrr_LoadMesh,METH_VARARGS,"PyIrr_addMesh"},
+		{"addModel",Python::PyIrr_loadModel,METH_VARARGS,"load model"},
 	//input
     {"getKey",Python::PyIrr_getKey,METH_VARARGS,"get key state"},
     {"using",Python::PyIrr_using,METH_VARARGS,"for opening scripts within scripts"},
@@ -168,12 +172,13 @@ reminder to actually check the names match with unstable ide's and whatnot
     {"setPosition",Python::PyIrr_setPosition,METH_VARARGS,"setPosition"},
     {"getPosition",Python::PyIrr_getPosition,METH_VARARGS,"getPosition"},
     {"addSphereNode",Python::PyIrr_addSphereNode,METH_VARARGS,"addSphereNode"},
-
+    {"aBillBoard",Python::PyIrr_aBillBoard,METH_VARARGS,"billboard"},
     //Physics
     {"setVelocity",Python::PyIrr_setVelocity,METH_VARARGS,"setVelocity"},
         {"VehicleParams",Python::PyIrr_VehicleParams,METH_VARARGS,"VehicleParams"},
 
     //gui
+
     {"chatbox",Python::PyIrr_ChatBox,METH_VARARGS,"chatbox for chatting in/with/alone"},
 //  {"render",Python::PyIrr_Render,METH_VARARGS,"PyIrr_Render"}
 //  {"chatbox",Python::PyIrr_Terrain,METH_VARARGS,"pyterrain"},

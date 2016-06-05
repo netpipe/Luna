@@ -165,7 +165,7 @@ PyArg_ParseTuple(args,"fffffffffffifffifffffffffffff",&scaleT,&scaleE,
         wheelSpacingX,wheelScaleFactor);
 
 
-       m_cVehicle->initPhysics();
+       m_cVehicle->initPhysics("data/models/vehicles/oldChevy-Truck.3ds","data/models/vehicles/CarBlends/oldChevy.bmp");
 
 //         m_cVehicle->setEventRec();
 //     //!testing second vehicle
@@ -181,7 +181,7 @@ PyArg_ParseTuple(args,"fffffffffffifffifffffffffffff",&scaleT,&scaleE,
      //   node->setMaterialFlag(video::EMF_LIGHTING, false);
 
 
-///     push_back(new Vehicle(m_cVehicle*);
+//     Vehicle->push_back(m_cVehicle);
 return Py_BuildValue("l",m_cVehicle);
 #else
 return Py_BuildValue("0");

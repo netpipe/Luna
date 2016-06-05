@@ -40,6 +40,22 @@ PyObject * Python::PyIrr_2Dimage(PyObject * self,PyObject * args) {//active came
         Py_RETURN_NONE;
 }
 
+PyObject * Python::PyIrr_aBillBoard(PyObject * self,PyObject * args) {//active camera
+
+	char * tex_name;
+	PyArg_ParseTuple(args,"s",&tex_name);
+
+   scene::ISceneManager* smgr = device->getSceneManager();
+
+    scene::IBillboardSceneNode * bill = smgr->addBillboardSceneNode();
+    bill->setPosition(core::vector3df(0, 0, 3));
+    bill->setMaterialTexture(0, driver->getTexture(tex_name));
+    bill->setMaterialFlag(video::EMF_LIGHTING, false);
+    bill->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
+    bill->setSize(core::dimension2d<f32>(250.0f, 250.0f));
+    bill->setScale(core::vector3df(1, 1, 1));
+
+}
 
 PyObject * Python::PyIrr_LoadTexture(PyObject * self,PyObject * args){
 	char * tex_name;
@@ -73,23 +89,28 @@ PyObject * Python::PyIrr_SetTexture(PyObject * self,PyObject * args){
 };
 
 
-IGUIFont * default_font;
-
 PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args){
 
-
+IGUIFont * default_font;
 	//Must make this useful someday, not today
 	char * message;
 	s32 x,y,x1,y1;
 	PyArg_ParseTuple(args,"sllll",&message,&x,&y,&x1,&y1); //may only need x,y when using ft2
 	//The next three lines more or less give the procedure from converting a string of
 	//type char* to wchar_t*...generally this is pretty useful in Irrlicht,so note well
-	int len = strlen(message) + 1;
-	wchar_t * conv_message = new wchar_t[len];
+//	int len = strlen(message) + 1;
+//	wchar_t * conv_message = new wchar_t[len];
 	///mbstowcs(0,conv_message,len,message,_TRUNCATE);
+
 	//guienv->addStaticText(conv_message,rect<s32>(x,y,x1,y1),SColor(255,255,255,255));
-	delete [] conv_message;
+//
+//	delete [] conv_message;
+
+//	guienv->addStaticText(L"sample text here!",rect<s32>(10,10,260,22), true);
+
 	return Py_BuildValue("");
+
+
 
 //
 //	    CGUITTFont *font2;
@@ -104,10 +125,23 @@ PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args){
 PyObject * Python::PyIrr_addHUD(PyObject * self,PyObject * args) //active camera
 {
     #ifdef HUD
-    HUDENABLED=true;
-        CHUD2->RegisterDevice(device);
-        CHUD2->LoadHUD("data/HUD.xml");
-    return Py_BuildValue("l",CHUD2);
+    int state, value;
+    char * loadFile;
+    PyArg_ParseTuple(args,"sf",&state,&value);
+    enum states {openFile=0,Position,Rotation,Play,Pause};
+  int istate =  states(state);
+
+    switch (istate){
+        case openFile:
+                HUDENABLED=true;
+                CHUD2->RegisterDevice(device);
+                CHUD2->LoadHUD("data/HUD.xml");
+            return Py_BuildValue("l",CHUD2);
+        break;
+        case 1:
+                    break;
+//        case 2:
+}
     #endif
 
 return Py_BuildValue("");
@@ -117,15 +151,14 @@ return Py_BuildValue("");
 PyObject * Python::PyIrr_addVideo(PyObject * self,PyObject * args){
 
 vector3df loc;
-
 char * videoFile;
-
 PyArg_ParseTuple(args,"sfff",&videoFile,&loc.X,&loc.Y,&loc.Z);
         #ifdef VIDEO
         vidmaster = new CVideoMaster(device, true, 1);
         ITexture* cubeDiffuse = vidmaster->addVideoClip(videoFile, "TV", ESM_NONE, true);
         IMeshSceneNode *TV = smgr->addCubeSceneNode(50);
         TV->setScale(vector3df(1.0f, 1.0f, 0.001f));
+        ///rotation ? perhaps hud /widget instance
         // Set video texture as diffuse
         TV->setMaterialTexture(0, cubeDiffuse);
         TV->setMaterialFlag(EMF_LIGHTING, false);
@@ -139,20 +172,8 @@ PyArg_ParseTuple(args,"sfff",&videoFile,&loc.X,&loc.Y,&loc.Z);
         //videoPlayer->setLoop(false);
         //   videoPlayer->play();
 
-       ///end of dont run list
-
 return Py_BuildValue("");
 }
-
-
-
-PyObject * Python::PyIrr_CodeEditor(PyObject * self,PyObject * args) {//active camera
-
-
-//    Py_RETURN_NONE;
-return Py_BuildValue("");
-}
-
 
 
 PyObject * Python::PyIrr_tesselateImage(PyObject * self,PyObject * args){

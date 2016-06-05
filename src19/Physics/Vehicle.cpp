@@ -325,12 +325,12 @@ Vehicle::~Vehicle(){
     delete m_vehicle;
 }
 
-void Vehicle::initPhysics() {  tr.setOrigin(m_vehiclePosition);  //pythonize model loading
+void Vehicle::initPhysics(stringc carMesh, stringc texture ) {  tr.setOrigin(m_vehiclePosition);  //pythonize model loading
     IAnimatedMesh *l_node;
     IAnimatedMeshSceneNode *l_node_chassi;
  // const stringc carMesh = "data/models/vehicles/CarBlends/DOHcaddy-car.x";
 //    const stringc carMesh = "data/models/vehicles/CarBlends/oldChevy-Truck.x";
-    const stringc carMesh = "data/models/vehicles/oldChevy-Truck.3ds";
+  //  const stringc carMesh = "data/models/vehicles/oldChevy-Truck.3ds";
 
    // const stringc carMesh = "data/models/vehicles/body.irrmesh";
 // //                 carMesh = "data/models/vehicles/C.obj";
@@ -359,7 +359,7 @@ void Vehicle::initPhysics() {  tr.setOrigin(m_vehiclePosition);  //pythonize mod
  //   l_node_chassi->setPosition(vector3df(0,100,0));
      l_node_chassi->setRotation(vector3df(0,1,0));
     l_node_chassi->setMaterialTexture(0,
-    m_irrDevice->getVideoDriver()->getTexture("data/models/vehicles/CarBlends/oldChevy.bmp"));
+    m_irrDevice->getVideoDriver()->getTexture(texture));
     m_cScene->setGenericMaterial(l_node_chassi, 0);
   //        l_node_chassi->getMaterial(0).ZWriteEnable=1;
   //    l_node_chassi->getMaterial(0).BackfaceCulling = true;
