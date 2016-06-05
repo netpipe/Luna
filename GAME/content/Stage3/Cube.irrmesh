@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<mesh xmlns="http://irrlicht.sourceforge.net/IRRMESH_09_2007" version="1.0">
+<!-- Created 12/14/2008 12:27 by irrb v0.3 - "Irrlicht/Blender Exporter" -->
+   <buffer>
+      <material bmat="unassigned">
+         <enum name="Type" value="solid"/>
+         <color name="Ambient" value="ffffffff"/>
+         <color name="Diffuse" value="ffffffff"/>
+         <color name="Emissive" value="00000000"/>
+         <float name="Shininess" value="0.000000"/>
+         <float name="Param1" value="0.000000"/>
+         <float name="Param2" value="0.000000"/>
+         <texture name="Texture1" value=""/>
+         <texture name="Texture2" value=""/>
+         <texture name="Texture3" value=""/>
+         <texture name="Texture4" value=""/>
+         <bool name="Wireframe" value="false"/>
+         <bool name="GouraudShading" value="true"/>
+         <bool name="Lighting" value="false"/>
+         <bool name="ZWriteEnable" value="true"/>
+         <int name="ZBuffer" value="1"/>
+         <bool name="BackfaceCulling" value="true"/>
+         <bool name="FogEnable" value="false"/>
+         <bool name="NormalizeNormals" value="false"/>
+         <bool name="BilinearFilter1" value="true"/>
+         <bool name="BilinearFilter2" value="true"/>
+         <bool name="BilinearFilter3" value="true"/>
+         <bool name="BilinearFilter4" value="true"/>
+         <bool name="TrilinearFilter1" value="false"/>
+         <bool name="TrilinearFilter2" value="false"/>
+         <bool name="TrilinearFilter3" value="false"/>
+         <bool name="TrilinearFilter4" value="false"/>
+         <bool name="AnisotropicFilter1" value="false"/>
+         <bool name="AnisotropicFilter2" value="false"/>
+         <bool name="AnisotropicFilter3" value="false"/>
+         <bool name="AnisotropicFilter4" value="false"/>
+         <enum name="TextureWrap1" value="texture_clamp_repeat"/>
+         <enum name="TextureWrap2" value="texture_clamp_repeat"/>
+         <enum name="TextureWrap3" value="texture_clamp_repeat"/>
+         <enum name="TextureWrap4" value="texture_clamp_repeat"/>
+      </material>
+      <vertices type="2tcoords" vertexCount="8">
+         1.000000 -1.000000 1.000000 0.577349 -0.577349 0.577349 ffffffff 0.000000 1.000000 0.000000 1.000000
+         1.000000 -1.000000 -1.000000 0.577349 -0.577349 -0.577349 ffffffff 0.000000 1.000000 0.000000 1.000000
+         -1.000000 -1.000000 -1.000000 -0.577349 -0.577349 -0.577349 ffffffff 0.000000 1.000000 0.000000 1.000000
+         -1.000000 -1.000000 1.000000 -0.577349 -0.577349 0.577349 ffffffff 0.000000 1.000000 0.000000 1.000000
+         1.000000 1.000000 0.999999 0.577349 0.577349 0.577349 ffffffff 0.000000 1.000000 0.000000 1.000000
+         -1.000000 1.000000 1.000000 -0.577349 0.577349 0.577349 ffffffff 0.000000 1.000000 0.000000 1.000000
+         -1.000000 1.000000 -1.000000 -0.577349 0.577349 -0.577349 ffffffff 0.000000 1.000000 0.000000 1.000000
+         0.999999 1.000000 -1.000001 0.577349 0.577349 -0.577349 ffffffff 0.000000 1.000000 0.000000 1.000000
+      </vertices>
+      <indices indexCount="36">
+         2 1 0 3 2 0 6 5 4 7 6 4 7 4 0 1 7 0 6 7 1 2 6 1 5 6 2 3 5 2 3 0 4 5 3 4
+      </indices>
+   </buffer>
+</mesh>

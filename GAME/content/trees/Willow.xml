@@ -1,0 +1,100 @@
+<tree>
+	
+	<branch id="1">
+		
+		<length value="160" />
+		
+		<radius value="15" />
+		
+		<radiusEnd value="0.50" />
+		
+		<child ref="2">
+			
+			<position min="0.5" max="0.85" />
+			
+			<orientation min="60" max="120" />
+			
+			<pitch min="30" max="45" />
+			
+			<count min="3" max="5" />
+			
+		</child>
+		
+		<child ref="2">
+			
+			<position value="0.95"/>
+			
+			<orientation min="90" max="120" />
+			
+			<pitch min="30" max="45" />
+			
+			<count value="3" />
+			
+		</child>
+		
+		<child ref="1" level="-2">
+			
+			<position value="0.95" />
+			
+			<pitch min="0" max="5" />
+			
+		</child>
+		
+	</branch>
+	
+	<branch id="2">
+		
+		<length value="130" />
+		
+		<radius value="15" />
+		
+		<leaf>
+		
+			<position min="0" max="1" />
+			
+			<width min="20" max="30" />
+			<height min="70" max="90" />
+			
+			<red min="200" max="255" />
+			<green value="255" />
+			<blue value="255" />
+			
+			<roll min="-10" max="10" />
+			
+			<axis value="0,1,0" />
+			
+			<anchor value="-0.95" />
+			
+			<count min="1" max="1" />
+			
+		</leaf>
+		
+		<child ref="2">
+			
+			<lengthScale value="0.60" />
+			
+			<position value="0.95" />
+			
+			<pitch value="0.0" />
+			
+			<gravity value="0.2" />
+			
+		</child>
+		
+		<child ref="2">
+			
+			<levelRange min="0" max="4" />
+			
+			<position min="0.5" max="1" />
+			
+			<pitch min="20" max="110" />
+			
+			<count min="0" max="2" />
+		
+		</child>
+		
+	</branch>
+	
+	<root ref="1" levels="6" />
+	
+</tree>

@@ -1,0 +1,69 @@
+import irr
+#maybe a for loop here that runs pre post keychecking network updating loops for rendering
+#count = 0
+#while (running & !paused):
+#   print 'The count is:', count
+#   count = count + 1
+
+
+#irr.using ('games/racing/game.py')
+#irr.using ('IDE')
+
+#keystate = irr.getKey('KEY_KEY_E')
+# print keystate
+
+
+#pyVehicle params &Vehicle,&param,&state,&ammount
+#car1 = 1
+
+#
+if irr.getKey('KEY_SPACE') :
+ irr.VehicleParams(car1,5,0,0)
+ print "setting cube position"
+
+if irr.getKey('KEY_KEY_W') :
+ irr.VehicleParams(car1,1,0,0) #acceleration
+# irr.VehicleParams(car2,2,0,0) #acceleration
+if irr.getKey('KEY_KEY_A') :
+ irr.VehicleParams(car1,7,0,0)
+
+if irr.getKey('KEY_KEY_D') :
+ irr.VehicleParams(car1,6,0,0)
+
+# ////    else if (!mEvent.getKeyState(  KEY_DOWN) && (m_cVehicle->getState() != EVEHICLE_ACCELERATING))
+if irr.getKey('KEY_KEY_S') or  irr.getKey('KEY_DOWN') :
+ irr.VehicleParams(car1,2,0,0)
+#elif
+elif irr.getKey('KEY_KEY_S')==0:
+  irr.VehicleParams(car1,9,0,0)
+
+
+if irr.getKey('KEY_KEY_R') :
+ print "setting cube position"
+ irr.VehicleParams(car1,0,0,0)
+
+if irr.getKey('KEY_KEY_E') :
+ irr.VehicleParams(car1,9,0,0) #acceleration
+
+if irr.getKey('KEY_UP') :
+ irr.VehicleParams(car1,1,0,0)
+ print "UP-ARROW"
+ #irr.setPosition(cube_id,50,55,50)
+
+
+if irr.getKey('KEY_F1') :
+ irr.codeeditor();
+#if irr.getKey('KEY_KEY_F2') :
+
+# irr.addTerrain(4,-3,5,0)
+#irr.flag1(1)
+ #irr.flag2(1)
+
+
+#irr.update(); #could set timing here, maybe smgr gui  etc  todo
+
+if irr.getKey('KEY_ESCAPE') :
+ paused=1
+ irr.exit()
+
+#irr.checkKeyState(){};

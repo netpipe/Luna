@@ -1,0 +1,320 @@
+<?xml version="1.0"?>
+<!-- Created 06/22/2009 00:23 by irrb v0.3 - "Irrlicht/Blender Exporter" -->
+<irr_scene>
+   <attributes>
+      <string name="Name" value="root" />
+      <int name="Id" value="-1" />
+      <vector3d name="Position" value="0.000000, 0.000000, 0.000000" />
+      <vector3d name="Rotation" value="0.000000, 0.000000, 0.000000" />
+      <vector3d name="Scale" value="1.000000, 1.000000, 1.000000" />
+      <bool name="Visible" value="true" />
+      <bool name="AutomaticCulling" value="true" />
+      <bool name="DebugDataVisible" value="false" />
+      <bool name="IsDebugObject" value="false" />
+   </attributes>
+   <userData>
+      <attributes>
+         <bool name="OccludesLight" value="false" />
+      </attributes>
+   </userData>
+   <node type="mesh">
+      <attributes>
+         <string name="Name" value="ShapeIndexedFaceS.101" />
+         <int name="Id" value="-1"/>
+         <vector3d name="Position" value="-1.561839, -0.286877, 4.068000" />
+         <vector3d name="Rotation" value="0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="1.000000, 1.000000, 1.000000" />
+         <bool name="Visible" value="true"/>
+         <enum name="AutomaticCulling" value="frustum_box"/>
+         <bool name="DebugDataVisible" value="false"/>
+         <bool name="IsDebugObject" value="false"/>
+         <bool name="ReadOnlyMaterials" value="false"/>
+         <string name="Mesh" value="ShapeIndexedFaceS.101.irrmesh" />
+      </attributes>
+      <userData>
+         <attributes>
+         </attributes>
+      </userData>
+   </node>
+   <node type="camera">
+      <attributes>
+         <string name="Name" value="Viewpoint.011" />
+         <int name="Id" value="-1"/>
+         <vector3d name="Position" value="0.300024, 15.800000, -3.199999" />
+         <vector3d name="Rotation" value="-0.000005, 179.999573, -0.000000" />
+         <vector3d name="Scale" value="1.000000, 1.000000, 1.000000" />
+         <bool name="Visible" value="true"/>
+         <enum name="AutomaticCulling" value="frustum_box"/>
+         <bool name="DebugDataVisible" value="false"/>
+         <bool name="IsDebugObject" value="false"/>
+         <bool name="ReadOnlyMaterials" value="false"/>
+         <vector3d name="Target" value="0.000000, 0.000000, 0.000000" />
+         <vector3d name="UpVector" value="0.000000, 1.000000, 0.000000" />
+         <float name="Fovy" value="0.785398" />
+         <float name="Aspect" value="1.250000" />
+         <float name="ZNear" value="0.10" />
+         <float name="ZFar" value="100.00" />
+      </attributes>
+   </node>
+   <node type="camera">
+      <attributes>
+         <string name="Name" value="Viewpoint.010" />
+         <int name="Id" value="-1"/>
+         <vector3d name="Position" value="-13.900000, -15.100001, -29.299999" />
+         <vector3d name="Rotation" value="0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="1.000000, 1.000000, 1.000000" />
+         <bool name="Visible" value="true"/>
+         <enum name="AutomaticCulling" value="frustum_box"/>
+         <bool name="DebugDataVisible" value="false"/>
+         <bool name="IsDebugObject" value="false"/>
+         <bool name="ReadOnlyMaterials" value="false"/>
+         <vector3d name="Target" value="0.000000, 0.000000, 0.000000" />
+         <vector3d name="UpVector" value="0.000000, 1.000000, 0.000000" />
+         <float name="Fovy" value="0.785398" />
+         <float name="Aspect" value="1.250000" />
+         <float name="ZNear" value="0.10" />
+         <float name="ZFar" value="100.00" />
+      </attributes>
+   </node>
+   <node type="camera">
+      <attributes>
+         <string name="Name" value="Viewpoint.009" />
+         <int name="Id" value="-1"/>
+         <vector3d name="Position" value="57.299831, -20.999998, 22.500429" />
+         <vector3d name="Rotation" value="-0.000005, 179.999573, -0.000000" />
+         <vector3d name="Scale" value="1.000000, 1.000000, 1.000000" />
+         <bool name="Visible" value="true"/>
+         <enum name="AutomaticCulling" value="frustum_box"/>
+         <bool name="DebugDataVisible" value="false"/>
+         <bool name="IsDebugObject" value="false"/>
+         <bool name="ReadOnlyMaterials" value="false"/>
+         <vector3d name="Target" value="0.000000, 0.000000, 0.000000" />
+         <vector3d name="UpVector" value="0.000000, 1.000000, 0.000000" />
+         <float name="Fovy" value="0.785398" />
+         <float name="Aspect" value="1.250000" />
+         <float name="ZNear" value="0.10" />
+         <float name="ZFar" value="100.00" />
+      </attributes>
+   </node>
+   <node type="camera">
+      <attributes>
+         <string name="Name" value="Viewpoint.008" />
+         <int name="Id" value="-1"/>
+         <vector3d name="Position" value="9.758099, -21.000000, -1.979774" />
+         <vector3d name="Rotation" value="-0.000001, 44.999271, -0.000000" />
+         <vector3d name="Scale" value="1.000000, 1.000000, 1.000000" />
+         <bool name="Visible" value="true"/>
+         <enum name="AutomaticCulling" value="frustum_box"/>
+         <bool name="DebugDataVisible" value="false"/>
+         <bool name="IsDebugObject" value="false"/>
+         <bool name="ReadOnlyMaterials" value="false"/>
+         <vector3d name="Target" value="0.000000, 0.000000, 0.000000" />
+         <vector3d name="UpVector" value="0.000000, 1.000000, 0.000000" />
+         <float name="Fovy" value="0.785398" />
+         <float name="Aspect" value="1.250000" />
+         <float name="ZNear" value="0.10" />
+         <float name="ZFar" value="100.00" />
+      </attributes>
+   </node>
+   <node type="camera">
+      <attributes>
+         <string name="Name" value="Viewpoint.007" />
+         <int name="Id" value="-1"/>
+         <vector3d name="Position" value="-33.021774, 13.850000, -8.839256" />
+         <vector3d name="Rotation" value="-0.000001, 44.999271, -0.000000" />
+         <vector3d name="Scale" value="1.000000, 1.000000, 1.000000" />
+         <bool name="Visible" value="true"/>
+         <enum name="AutomaticCulling" value="frustum_box"/>
+         <bool name="DebugDataVisible" value="false"/>
+         <bool name="IsDebugObject" value="false"/>
+         <bool name="ReadOnlyMaterials" value="false"/>
+         <vector3d name="Target" value="0.000000, 0.000000, 0.000000" />
+         <vector3d name="UpVector" value="0.000000, 1.000000, 0.000000" />
+         <float name="Fovy" value="0.785398" />
+         <float name="Aspect" value="1.250000" />
+         <float name="ZNear" value="0.10" />
+         <float name="ZFar" value="100.00" />
+      </attributes>
+   </node>
+   <node type="camera">
+      <attributes>
+         <string name="Name" value="Viewpoint.006" />
+         <int name="Id" value="-1"/>
+         <vector3d name="Position" value="-36.027103, -21.000000, 1.095683" />
+         <vector3d name="Rotation" value="-0.000004, 134.999466, 0.000000" />
+         <vector3d name="Scale" value="1.000000, 1.000000, 1.000000" />
+         <bool name="Visible" value="true"/>
+         <enum name="AutomaticCulling" value="frustum_box"/>
+         <bool name="DebugDataVisible" value="false"/>
+         <bool name="IsDebugObject" value="false"/>
+         <bool name="ReadOnlyMaterials" value="false"/>
+         <vector3d name="Target" value="0.000000, 0.000000, 0.000000" />
+         <vector3d name="UpVector" value="0.000000, 1.000000, 0.000000" />
+         <float name="Fovy" value="0.785398" />
+         <float name="Aspect" value="1.250000" />
+         <float name="ZNear" value="0.10" />
+         <float name="ZFar" value="100.00" />
+      </attributes>
+   </node>
+   <node type="camera">
+      <attributes>
+         <string name="Name" value="Viewpoint.005" />
+         <int name="Id" value="-1"/>
+         <vector3d name="Position" value="-31.799988, -6.600000, -1.000349" />
+         <vector3d name="Rotation" value="-0.000002, 89.999374, 0.000000" />
+         <vector3d name="Scale" value="1.000000, 1.000000, 1.000000" />
+         <bool name="Visible" value="true"/>
+         <enum name="AutomaticCulling" value="frustum_box"/>
+         <bool name="DebugDataVisible" value="false"/>
+         <bool name="IsDebugObject" value="false"/>
+         <bool name="ReadOnlyMaterials" value="false"/>
+         <vector3d name="Target" value="0.000000, 0.000000, 0.000000" />
+         <vector3d name="UpVector" value="0.000000, 1.000000, 0.000000" />
+         <float name="Fovy" value="0.785398" />
+         <float name="Aspect" value="1.250000" />
+         <float name="ZNear" value="0.10" />
+         <float name="ZFar" value="100.00" />
+      </attributes>
+   </node>
+   <node type="camera">
+      <attributes>
+         <string name="Name" value="Viewpoint.004" />
+         <int name="Id" value="-1"/>
+         <vector3d name="Position" value="34.800068, -4.800001, -6.399618" />
+         <vector3d name="Rotation" value="-0.000002, 89.999374, 0.000000" />
+         <vector3d name="Scale" value="1.000000, 1.000000, 1.000000" />
+         <bool name="Visible" value="true"/>
+         <enum name="AutomaticCulling" value="frustum_box"/>
+         <bool name="DebugDataVisible" value="false"/>
+         <bool name="IsDebugObject" value="false"/>
+         <bool name="ReadOnlyMaterials" value="false"/>
+         <vector3d name="Target" value="0.000000, 0.000000, 0.000000" />
+         <vector3d name="UpVector" value="0.000000, 1.000000, 0.000000" />
+         <float name="Fovy" value="0.785398" />
+         <float name="Aspect" value="1.250000" />
+         <float name="ZNear" value="0.10" />
+         <float name="ZFar" value="100.00" />
+      </attributes>
+   </node>
+   <node type="camera">
+      <attributes>
+         <string name="Name" value="Viewpoint.003" />
+         <int name="Id" value="-1"/>
+         <vector3d name="Position" value="-35.721451, 13.550000, -6.519243" />
+         <vector3d name="Rotation" value="-0.000004, -125.002205, -0.000000" />
+         <vector3d name="Scale" value="1.000000, 1.000000, 1.000000" />
+         <bool name="Visible" value="true"/>
+         <enum name="AutomaticCulling" value="frustum_box"/>
+         <bool name="DebugDataVisible" value="false"/>
+         <bool name="IsDebugObject" value="false"/>
+         <bool name="ReadOnlyMaterials" value="false"/>
+         <vector3d name="Target" value="0.000000, 0.000000, 0.000000" />
+         <vector3d name="UpVector" value="0.000000, 1.000000, 0.000000" />
+         <float name="Fovy" value="0.785398" />
+         <float name="Aspect" value="1.250000" />
+         <float name="ZNear" value="0.10" />
+         <float name="ZFar" value="100.00" />
+      </attributes>
+   </node>
+   <node type="camera">
+      <attributes>
+         <string name="Name" value="Viewpoint.002" />
+         <int name="Id" value="-1"/>
+         <vector3d name="Position" value="-35.900166, 13.800001, 43.899868" />
+         <vector3d name="Rotation" value="-0.000003, -90.000214, -0.000000" />
+         <vector3d name="Scale" value="1.000000, 1.000000, 1.000000" />
+         <bool name="Visible" value="true"/>
+         <enum name="AutomaticCulling" value="frustum_box"/>
+         <bool name="DebugDataVisible" value="false"/>
+         <bool name="IsDebugObject" value="false"/>
+         <bool name="ReadOnlyMaterials" value="false"/>
+         <vector3d name="Target" value="0.000000, 0.000000, 0.000000" />
+         <vector3d name="UpVector" value="0.000000, 1.000000, 0.000000" />
+         <float name="Fovy" value="0.785398" />
+         <float name="Aspect" value="1.250000" />
+         <float name="ZNear" value="0.10" />
+         <float name="ZFar" value="100.00" />
+      </attributes>
+   </node>
+   <node type="camera">
+      <attributes>
+         <string name="Name" value="Viewpoint.001" />
+         <int name="Id" value="-1"/>
+         <vector3d name="Position" value="31.799921, -6.599998, 20.800117" />
+         <vector3d name="Rotation" value="-0.000003, -90.000214, -0.000000" />
+         <vector3d name="Scale" value="1.000000, 1.000000, 1.000000" />
+         <bool name="Visible" value="true"/>
+         <enum name="AutomaticCulling" value="frustum_box"/>
+         <bool name="DebugDataVisible" value="false"/>
+         <bool name="IsDebugObject" value="false"/>
+         <bool name="ReadOnlyMaterials" value="false"/>
+         <vector3d name="Target" value="0.000000, 0.000000, 0.000000" />
+         <vector3d name="UpVector" value="0.000000, 1.000000, 0.000000" />
+         <float name="Fovy" value="0.785398" />
+         <float name="Aspect" value="1.250000" />
+         <float name="ZNear" value="0.10" />
+         <float name="ZFar" value="100.00" />
+      </attributes>
+   </node>
+   <node type="camera">
+      <attributes>
+         <string name="Name" value="Viewpoint" />
+         <int name="Id" value="-1"/>
+         <vector3d name="Position" value="9.499927, -2.199999, 19.600037" />
+         <vector3d name="Rotation" value="-0.000003, -90.000214, -0.000000" />
+         <vector3d name="Scale" value="1.000000, 1.000000, 1.000000" />
+         <bool name="Visible" value="true"/>
+         <enum name="AutomaticCulling" value="frustum_box"/>
+         <bool name="DebugDataVisible" value="false"/>
+         <bool name="IsDebugObject" value="false"/>
+         <bool name="ReadOnlyMaterials" value="false"/>
+         <vector3d name="Target" value="0.000000, 0.000000, 0.000000" />
+         <vector3d name="UpVector" value="0.000000, 1.000000, 0.000000" />
+         <float name="Fovy" value="0.785398" />
+         <float name="Aspect" value="1.250000" />
+         <float name="ZNear" value="0.10" />
+         <float name="ZFar" value="100.00" />
+      </attributes>
+   </node>
+   <node type="light">
+      <attributes>
+         <string name="Name" value="Lamp" />
+         <int name="Id" value="-1"/>
+         <vector3d name="Position" value="4.076245, 5.903862, 1.005454" />
+         <vector3d name="Rotation" value="42.466408, -107.220764, 10.743672" />
+         <vector3d name="Scale" value="1.000000, 1.000000, 1.000000" />
+         <bool name="Visible" value="true"/>
+         <enum name="AutomaticCulling" value="frustum_box"/>
+         <bool name="DebugDataVisible" value="false"/>
+         <bool name="IsDebugObject" value="false"/>
+         <bool name="ReadOnlyMaterials" value="false"/>
+         <enum name="LightType" value="Point" />
+         <colorf name="AmbientColor" value="0.000000,0.000000, 0.000000, 1.000000" />
+         <colorf name="DiffuseColor" value="1.000000, 1.000000, 1.000000 1.000000" />
+         <colorf name="SpecularColor" value="1.000000,1.000000, 1.000000, 1.000000" />
+         <vector3d name="Attenuation" value="0.000000 0.500000 0.000000" />
+         <float name="Radius" value="60.00" />
+         <bool name="CastShadows" value="true" />
+      </attributes>
+   </node>
+   <node type="camera">
+      <attributes>
+         <string name="Name" value="Camera" />
+         <int name="Id" value="-1"/>
+         <vector3d name="Position" value="7.481132, 5.343665, -6.507640" />
+         <vector3d name="Rotation" value="27.098164, -46.688389, -0.903519" />
+         <vector3d name="Scale" value="1.000000, 1.000000, 1.000000" />
+         <bool name="Visible" value="true"/>
+         <enum name="AutomaticCulling" value="frustum_box"/>
+         <bool name="DebugDataVisible" value="false"/>
+         <bool name="IsDebugObject" value="false"/>
+         <bool name="ReadOnlyMaterials" value="false"/>
+         <vector3d name="Target" value="0.000000, 0.000000, 0.000000" />
+         <vector3d name="UpVector" value="0.000000, 1.000000, 0.000000" />
+         <float name="Fovy" value="0.857556" />
+         <float name="Aspect" value="1.250000" />
+         <float name="ZNear" value="0.10" />
+         <float name="ZFar" value="100.00" />
+      </attributes>
+   </node>
+</irr_scene>

@@ -1,0 +1,340 @@
+<?xml version="1.0"?>
+<!-- Created 12/14/2008 12:27 by irrb v0.3 - "Irrlicht/Blender Exporter" -->
+<irr_scene>
+   <node type="mesh">
+      <attributes>
+         <string name="Name" value="level" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="-1071.426758, -781.905762, -435.684906" />
+         <vector3d name="Rotation" value="-0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="443.642578, 443.642578, 443.642578" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="Plane.001.irrmesh" />
+      </attributes>
+   </node>
+   <node type="mesh">
+      <attributes>
+         <string name="Name" value="elevator" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="1483.730347, -1023.749390, -8.231121" />
+         <vector3d name="Rotation" value="-0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="268.198792, 13.023813, -150.897598" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="ele.irrmesh" />
+      </attributes>
+   </node>
+   <node type="animatedMesh">
+      <attributes>
+         <string name="Name" value="powercell" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="-1249.548218, -1026.753418, -823.224182" />
+         <vector3d name="Rotation" value="-0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="18.451162, 18.451162, 18.451162" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="PCell.irrmesh" />
+      </attributes>
+   </node>
+   <node type="animatedMesh">
+      <attributes>
+         <string name="Name" value="powercell" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="-1249.548218, -1026.753418, -1165.040649" />
+         <vector3d name="Rotation" value="-0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="18.451162, 18.451162, 18.451162" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="PCell.irrmesh" />
+      </attributes>
+   </node>
+   <node type="animatedMesh">
+      <attributes>
+         <string name="Name" value="powercell" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="-654.694946, -1026.753418, -1165.040649" />
+         <vector3d name="Rotation" value="-0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="18.451162, 18.451162, 18.451162" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="PCell.irrmesh" />
+      </attributes>
+   </node>
+   <node type="animatedMesh">
+      <attributes>
+         <string name="Name" value="powercell.011" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="-1359.616699, -1022.735474, 203.818359" />
+         <vector3d name="Rotation" value="-0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="18.451162, 18.451162, 18.451162" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="PCell.irrmesh" />
+      </attributes>
+   </node>
+   <node type="animatedMesh">
+      <attributes>
+         <string name="Name" value="powercell" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="-1359.616699, -1022.735474, -125.403893" />
+         <vector3d name="Rotation" value="-0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="18.451162, 18.451162, 18.451162" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="PCell.irrmesh" />
+      </attributes>
+   </node>
+   <node type="animatedMesh">
+      <attributes>
+         <string name="Name" value="powercell" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="-1645.450195, -1022.735474, -125.403893" />
+         <vector3d name="Rotation" value="-0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="18.451162, 18.451162, 18.451162" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="PCell.irrmesh" />
+      </attributes>
+   </node>
+   <node type="animatedMesh">
+      <attributes>
+         <string name="Name" value="powercell" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="-1081.008911, -1022.735474, -125.403893" />
+         <vector3d name="Rotation" value="-0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="18.451162, 18.451162, 18.451162" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="PCell.irrmesh" />
+      </attributes>
+   </node>
+   <node type="animatedMesh">
+      <attributes>
+         <string name="Name" value="powercell" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="-773.765930, -719.883606, -125.403893" />
+         <vector3d name="Rotation" value="-0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="18.451162, 18.451162, 18.451162" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="PCell.irrmesh" />
+      </attributes>
+   </node>
+   <node type="animatedMesh">
+      <attributes>
+         <string name="Name" value="powercell" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="-1408.342163, -719.883606, -125.403893" />
+         <vector3d name="Rotation" value="-0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="18.451162, 18.451162, 18.451162" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="PCell.irrmesh" />
+      </attributes>
+   </node>
+   <node type="animatedMesh">
+      <attributes>
+         <string name="Name" value="powercell" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="-1411.667847, -720.845215, -800.143066" />
+         <vector3d name="Rotation" value="-0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="18.451162, 18.451162, 18.451162" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="PCell.irrmesh" />
+      </attributes>
+   </node>
+   <node type="animatedMesh">
+      <attributes>
+         <string name="Name" value="powercell" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="-943.998169, -721.169678, -798.030579" />
+         <vector3d name="Rotation" value="-0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="18.451162, 18.451162, 18.451162" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="PCell.irrmesh" />
+      </attributes>
+   </node>
+   <node type="animatedMesh">
+      <attributes>
+         <string name="Name" value="powercell" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="1357.615601, -921.689209, -87.438324" />
+         <vector3d name="Rotation" value="-0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="18.451162, 18.451162, 18.451162" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="PCell.irrmesh" />
+      </attributes>
+   </node>
+   <node type="animatedMesh">
+      <attributes>
+         <string name="Name" value="powercell" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="1518.279053, -1001.235596, 140.147339" />
+         <vector3d name="Rotation" value="-0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="18.451162, 18.451162, 18.451162" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="PCell.irrmesh" />
+      </attributes>
+   </node>
+   <node type="animatedMesh">
+      <attributes>
+         <string name="Name" value="powercell" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="783.645630, -1000.301392, 134.601151" />
+         <vector3d name="Rotation" value="-0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="18.451162, 18.451162, 18.451162" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="PCell.irrmesh" />
+      </attributes>
+   </node>
+   <node type="animatedMesh">
+      <attributes>
+         <string name="Name" value="powercell" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="-568.334534, -887.473328, -294.942902" />
+         <vector3d name="Rotation" value="-0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="18.451162, 18.451162, 18.451162" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="PCell.irrmesh" />
+      </attributes>
+   </node>
+   <node type="animatedMesh">
+      <attributes>
+         <string name="Name" value="Cube" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="-1071.426758, 90.491394, 1570.679077" />
+         <vector3d name="Rotation" value="90.000000, -0.000000, -90.000000" />
+         <vector3d name="Scale" value="404.025940, 54.740452, 54.740452" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="Cube.013.irrmesh" />
+      </attributes>
+   </node>
+   <node type="animatedMesh">
+      <attributes>
+         <string name="Name" value="windmillbase" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="-1071.426758, 90.491394, 1570.679077" />
+         <vector3d name="Rotation" value="90.000000, -0.000000, -90.000000" />
+         <vector3d name="Scale" value="404.025940, 54.740452, 54.740452" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="windbase.irrmesh" />
+      </attributes>
+   </node>
+   <node type="animatedMesh">
+      <attributes>
+         <string name="Name" value="windmillblade" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="-1071.426758, 90.491394, 1570.679077" />
+         <vector3d name="Rotation" value="90.000000, -0.000001, -120.831017" />
+         <vector3d name="Scale" value="404.025940, 54.740452, 54.740456" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="windblade.irrmesh" />
+      </attributes>
+   </node>
+   <node type="animatedMesh">
+      <attributes>
+         <string name="Name" value="playerstart" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="-259.186066, -895.718018, -1407.466431" />
+         <vector3d name="Rotation" value="-0.000000, -0.000000, 0.000000" />
+         <vector3d name="Scale" value="18.451162, 18.451162, 18.451162" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <string name="Mesh" value="Cube.irrmesh" />
+      </attributes>
+   </node>
+   <node type="light">
+      <attributes>
+         <string name="Name" value="Lamp" />
+         <int name="Id" value="-1" />
+         <vector3d name="Position" value="1689.181885, 1069.817139, -1549.039429" />
+         <vector3d name="Rotation" value="52.738953, -16.936317, 0.000000" />
+         <vector3d name="Scale" value="50.000000, 49.999996, 50.000004" />
+         <bool name="Visible" value="true" />
+         <enum name="AutomaticCulling" value="box" />
+         <bool name="DebugDataVisible" value="false" />
+         <bool name="IsDebugObject" value="false" />
+         <bool name="ReadOnlyMaterials" value="false" />
+         <enum name="LightType" value="Point" />
+         <colorf name="AmbientColor" value="0.000000,0.000000, 0.000000, 1.000000" />
+         <colorf name="DiffuseColor" value="1.000000, 1.000000, 1.000000 1.000000" />
+         <colorf name="SpecularColor" value="1.000000,1.000000, 1.000000, 1.000000" />
+         <vector3d name="Attenuation" value="0.000000 0.500000 0.000000" />
+         <float name="Radius" value="719.80" />
+         <bool name="CastShadows" value="true" />
+      </attributes>
+   </node>
+</irr_scene>
