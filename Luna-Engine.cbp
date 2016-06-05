@@ -9,8 +9,8 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Linux Debug">
-				<Option output="./Luna" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="./GAME/" />
+				<Option output="./GAME/Luna" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="GAME" />
 				<Option object_output=".dobjs" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -67,7 +67,7 @@
 				</Linker>
 			</Target>
 			<Target title="Linux Release">
-				<Option output="./dLuna" prefix_auto="0" extension_auto="0" />
+				<Option output="./GAME/dLuna" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="./GAME/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -143,7 +143,7 @@
 				</Linker>
 			</Target>
 			<Target title="WinDebug">
-				<Option output="./Luna_win.exe" prefix_auto="0" extension_auto="0" />
+				<Option output="./GAME/Luna_win.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="./GAME/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -198,7 +198,7 @@
 				</Linker>
 			</Target>
 			<Target title="WinRelease">
-				<Option output="./Azadi.exe" prefix_auto="0" extension_auto="0" />
+				<Option output="./GAME/Azadi.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="./GAME/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -247,8 +247,8 @@
 				</Linker>
 			</Target>
 			<Target title="mineDBG">
-				<Option output="./mdLuna" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="./GAME/" />
+				<Option output="./GAME/mdLuna" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="GAME" />
 				<Option object_output=".mdobjs" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -320,8 +320,8 @@
 				</Linker>
 			</Target>
 			<Target title="mineREL">
-				<Option output="./mLuna" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="./GAME/" />
+				<Option output="./GAME/mLuna" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="GAME" />
 				<Option object_output=".mobjs" />
 				<Option type="1" />
 				<Option compiler="gcc" />

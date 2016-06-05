@@ -1,9 +1,9 @@
 import irr
 
+#irr.checkKeyState(){}; # check event loop to see if any key was pressed
+irr.using ('./RACING/racer/keys.pys');
+
 #irr.update(); #could set timing here, maybe smgr gui  etc  todo
 
-if irr.getKey('KEY_ESCAPE') :
- paused=1
- irr.exit()
 
-#irr.checkKeyState(){};
+
