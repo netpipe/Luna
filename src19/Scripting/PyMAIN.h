@@ -253,8 +253,8 @@ void Python::render() //active camera
 
         #ifdef BULLETCAR
         if (bCar){
-                            for (std::vector<Vehicle*>::iterator it = Vehicle.begin(); it != Vehicle.end(); ++it)
-            (*it)->renderme();
+//                            for (std::vector<Vehicle*>::iterator it = m_cVehicle.begin(); it != m_cVehicle.end(); ++it)
+//            (*it)->renderme();
 
             ///  btVector3 pos = m_cVehicle->getVehiclePosition();
             // m_cVehicle2->renderme(); // no need to update unless running 2 players from same computer

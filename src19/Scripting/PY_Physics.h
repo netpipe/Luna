@@ -181,7 +181,7 @@ PyArg_ParseTuple(args,"fffffffffffifffifffffffffffff",&scaleT,&scaleE,
      //   node->setMaterialFlag(video::EMF_LIGHTING, false);
 
 
-     push_back(new RagDoll(luna->m_cPhysics->getDynamicsWorld(),smgr, btVector3(0,55,0), btScalar(5.0)));
+///     push_back(new Vehicle(m_cVehicle*);
 return Py_BuildValue("l",m_cVehicle);
 #else
 return Py_BuildValue("0");
