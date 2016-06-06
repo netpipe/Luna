@@ -351,6 +351,8 @@ return Py_BuildValue("");
 
 
 PyObject * Python::PyIrr_lensFlare(PyObject * self,PyObject * args){
+        int param,state,Vehicle,ammount;
+    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
    //     scene::IMeshSceneNode* sunMeshNode;
     sunMeshNode = smgr->addSphereSceneNode(1, 1, smgr->getRootSceneNode());
     sunMeshNode->setMaterialTexture(0, driver->getTexture("media/mesh.png"));
@@ -374,6 +376,8 @@ Py_RETURN_NONE;
 }
 
 PyObject * Python::PyIrr_realCloud(PyObject * self,PyObject * args){
+        int param,state,Vehicle,ammount;
+    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
 	// add 1st cloud layer
 	cloudLayer1 = new scene::CloudSceneNode(smgr->getRootSceneNode(), smgr);
 	cloudLayer1->setTranslation(core::vector2d<f32>(0.008f, 0.0f));
@@ -394,6 +398,8 @@ PyObject * Python::PyIrr_realCloud(PyObject * self,PyObject * args){
 };
 
 PyObject * Python::PyIrr_bitCloud(PyObject * self,PyObject * args){
+        int param,state,Vehicle,ammount;
+    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
 #ifndef Bitcloud
         clouds = new scene::CCloudSceneNode(
                 smgr->getRootSceneNode(), smgr,
@@ -420,6 +426,8 @@ PyObject * Python::PyIrr_bitCloud(PyObject * self,PyObject * args){
 };
 
 PyObject * Python::PyIrr_omareDemo(PyObject * self,PyObject * args){
+        int param,state,Vehicle,ammount;
+    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
         //Omare's CloudGen
         int nClouds =0;
         int max =10;
@@ -440,6 +448,8 @@ PyObject * Python::PyIrr_omareDemo(PyObject * self,PyObject * args){
 };
 
 PyObject * Python::PyIrr_beam(PyObject * self,PyObject * args){
+        int param,state,Vehicle,ammount;
+    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
 	scene::CBeamNode* beam = new scene::CBeamNode(smgr->getRootSceneNode(), smgr, -1, "./data/textures/sceneNodes/laserlf6.png" , "data/textures/sceneNodes/beam.png" );
 	beam->setLine(core::vector3df(0,0,0), core::vector3df(100,100,100), 5.0f);
 	beam->drop();
@@ -447,6 +457,9 @@ PyObject * Python::PyIrr_beam(PyObject * self,PyObject * args){
 }
 
 PyObject * Python::PyIrr_lightning(PyObject * self,PyObject * args){
+        int param,state,Vehicle,ammount;
+    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+
         ISceneNode* sphere = smgr->addSphereSceneNode(10);
         sphere->setPosition(vector3df(50,50,50));
         sphere->setMaterialFlag(EMF_LIGHTING,false);
@@ -455,17 +468,23 @@ PyObject * Python::PyIrr_lightning(PyObject * self,PyObject * args){
         irr::scene::CBoltSceneNode* lightning = new irr::scene::CBoltSceneNode(smgr->getRootSceneNode(), smgr, -1,"./data/textures/sceneNodes/light01_1.bmp");
         lightning->setLine(irr::core::vector3df(50,50,50), irr::core::vector3df(0,0,0), 100, 5,10,3, false,10.0f, irr::video::SColor(255,0,0,255));
         lightning->drop();
-    Py_RETURN_NONE;
+return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_skyDome(PyObject * self,PyObject * args){
+        int param,state,Vehicle,ammount;
+    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+
         smgr->addSkyDomeSceneNode(driver->getTexture( "data/textures/skydomes/skydome_1_2048x512.jpg" ), 60,60,1,2);
-    Py_RETURN_NONE;
+return Py_BuildValue("");
+
 }
 
 
 
 PyObject * Python::PyIrr_Occlusion(PyObject * self,PyObject * args) {//active camera
+        int param,state,Vehicle,ammount;
+    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
 #ifdef occlusion
         bOcclusion = 1;
         Renderer22 RenderMan(device, SColor(0, 10,10,10));
@@ -478,10 +497,12 @@ PyObject * Python::PyIrr_Occlusion(PyObject * self,PyObject * args) {//active ca
         // RenderMan.addMy3DScene("models/bedroom1/bedroom.my3d", 0,0,0);
         RenderMan.initGUI();
 #endif
-    Py_RETURN_NONE;
+return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_Compass(PyObject * self,PyObject * args) {//active camera
+        int param,state,Vehicle,ammount;
+    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
     #ifdef COMPASS
     bCompass=true;
         ///Compass
@@ -499,12 +520,15 @@ PyObject * Python::PyIrr_Compass(PyObject * self,PyObject * args) {//active came
             Compass1->SetCompassBodyTexture( CompassBodyTexture );
             Compass1->SetCompassNeedleTexture( CompassNeedleTexture );
     #endif
-           Py_RETURN_NONE;
+return Py_BuildValue("");
   }
 
 
 
 PyObject * Python::PyIrr_RelayChat(PyObject * self,PyObject * args) {//active camera
+    int param,state,Vehicle,ammount;
+    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+
     #ifdef IRRc
    //  device->getCursorControl()->setVisible(true);
     #endif
@@ -513,7 +537,7 @@ PyObject * Python::PyIrr_RelayChat(PyObject * self,PyObject * args) {//active ca
         app->registerIrrDevice(device);
         app->init();
     #endif
-        Py_RETURN_NONE;
+return Py_BuildValue("");
 }
 
 
@@ -522,7 +546,10 @@ PyObject * Python::PyIrr_RelayChat(PyObject * self,PyObject * args) {//active ca
 
 
 PyObject * Python::PyIrr_BlindBoids(PyObject * self,PyObject * args) {//active camera
+        int param,state,Vehicle,ammount;
+    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
 #ifdef BOIDS
+
     bBlindBoids = true;
         const irr::f32 borders[4] = { 1.0f, 222, 1.0f, 222}; //Xmin, Xmax, Zmin, Zmax
        // Flock* flock;

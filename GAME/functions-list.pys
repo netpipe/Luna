@@ -46,7 +46,7 @@ camera = irr.addCamera(2,1,0,1) # 1 regular , 2 FPS , 3 other types, 4 rpg, << t
 #irr.realCloud(1)
 #irr.skydome(1)
 
-track1 = irr.loadTrack(1)  # trackname , timeofday , lighting , track slot/stages
+track1 = irr.loadTrack('huge.3ds')  # trackname , timeofday , lighting , track slot/stages
 terrain=irr.addTerrain(4,-3,5,0) # load last to make the physics work FIX  // possibly a load terrain xml function
 #irr.addwater(1)
 #irr.addTree(terrain,5,5,5)

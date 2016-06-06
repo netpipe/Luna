@@ -250,9 +250,14 @@ PyObject * Python::PyIrr_LoadVehicle(PyObject * self,PyObject * args)   {   retu
 
 PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
 tr.setIdentity();
+    int param,state,ammount;
+    char * parth;
+    PyArg_ParseTuple(args,"liii",&path,&param,&ammount,&state);
+
     #ifdef LOADLEVELS
         //stringc track = "aa.irrmesh";
-        stringc track = "huge.3ds";
+       // stringc track = path.c_str(); //"huge.3ds";
+     //   stringc track =  "huge.3ds";
         device->getFileSystem()->changeWorkingDirectoryTo("data/Stage3/");
         device->getSceneManager()->loadScene("Stage3.irr");  // LOADSCENE not LOADTRACK
         device->getFileSystem()->changeWorkingDirectoryTo("../../");
@@ -263,7 +268,7 @@ tr.setIdentity();
     vector3df trackScale = vector3df(tscale,tscale,tscale); //50
     vector3df trackPosition = vector3df(0,0.0f,0);
 
-    IAnimatedMesh *mesh = device->getSceneManager()->getMesh(track.c_str());
+    IAnimatedMesh *mesh = device->getSceneManager()->getMesh(path.c_str());
     device->getSceneManager()->getMeshManipulator()->scaleMesh(mesh,trackScale);
     IAnimatedMeshSceneNode *node = device->getSceneManager()->addAnimatedMeshSceneNode(mesh);
 
