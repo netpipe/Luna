@@ -1,0 +1,98 @@
+Index: CFileSystem.cpp
+===================================================================
+--- CFileSystem.cpp	(revision 1286)
++++ CFileSystem.cpp	(working copy)
+@@ -16,6 +16,9 @@
+ #include "CAttributes.h"
+ #include "CMemoryReadFile.h"
+ 
++//Zeussy -- Include for CSQLReader.h
++#include "CSQLReader.h"
++
+ #if defined (_IRR_WINDOWS_API_)
+ 	#if !defined ( _WIN32_WCE )
+ 		#include <direct.h> // for _chdir
+@@ -65,6 +68,14 @@
+ 	IReadFile* file = 0;
+ 	u32 i;
+ 
++	//Zeussy -- Try to load from a DB
++	for ( i=0; i<SQLFileSystems.size(); ++i)
++	{
++		file = SQLFileSystems[i]->openFile(filename);
++		if (file)
++			return file;
++	}	
++	
+ 	for ( i=0; i<ZipFileSystems.size(); ++i)
+ 	{
+ 		file = ZipFileSystems[i]->openFile(filename);
+@@ -181,7 +192,23 @@
+ 	return false;
+ }
+ 
++//Zeussy
++bool CFileSystem::addSQLiteDatabase(const c8* filename, bool ignoreCase, bool ignorePaths, const u32* encryptKey)
++{
++	//Caswal -- This needs fixing
++	SQLFileSystems.push_back( new CSQLReader( filename, encryptKey ) );
+ 
++	return false;
++}
++
++bool CFileSystem::addSQLiteDatabase(const c8* filename, const u32* (*KeyGenFunc)(void), bool ignoreCase, bool ignorePaths)
++{
++	//Caswal -- This needs fixing
++	SQLFileSystems.push_back( new CSQLReader( filename, KeyGenFunc ) );
++
++	return false;
++}
++
+ //! Returns the string of the current working directory
+ const c8* CFileSystem::getWorkingDirectory()
+ {
+@@ -283,6 +310,10 @@
+ bool CFileSystem::existFile(const c8* filename) const
+ {
+ 	u32 i;
++	
++	for (i=0; i<SQLFileSystems.size(); ++i)
++		if (SQLFileSystems[i]->findFile(filename)!=-1)
++			return true;	
+ 
+ 	for (i=0; i<ZipFileSystems.size(); ++i)
+ 		if (ZipFileSystems[i]->findFile(filename)!=-1)
+Index: CFileSystem.h
+===================================================================
+--- CFileSystem.h	(revision 1286)
++++ CFileSystem.h	(working copy)
+@@ -16,6 +16,8 @@
+ 	class CZipReader;
+ 	class CPakReader;
+ 	class CUnZipReader;
++	//Zeussy -- Forwards Class Definition
++	class CSQLReader;
+ 	const s32 FILE_SYSTEM_MAX_PATH = 1024;
+ 
+ /*!
+@@ -47,6 +49,11 @@
+ 	//! adds an pak archive to the filesystem
+ 	virtual bool addPakFileArchive(const c8* filename, bool ignoreCase = true, bool ignorePaths = true);
+ 
++	//Caswal
++	//! adds a SQLite Database to the file system
++	virtual bool addSQLiteDatabase(const c8* filename, bool ignoreCase = true, bool ignorePaths = true, const u32* encryptKey = 0);
++	virtual bool addSQLiteDatabase(const c8* filename, const u32* (*KeyGenFunc)(void), bool ignoreCase = true, bool ignorePaths = true);	
++	
+ 	//! Returns the string of the current working directory
+ 	virtual const c8* getWorkingDirectory();
+ 
+@@ -100,6 +107,8 @@
+ 	core::array<CZipReader*> ZipFileSystems;
+ 	core::array<CPakReader*> PakFileSystems;
+ 	core::array<CUnZipReader*> UnZipFileSystems;
++	//Zeussy -- Array of Databases
++	core::array<CSQLReader*>  SQLFileSystems;	
+ 	c8 WorkingDirectory[FILE_SYSTEM_MAX_PATH];
+ };
+ 

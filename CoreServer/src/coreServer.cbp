@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="CoreServer" />
+		<Option pch_mode="0" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="default">
+				<Option output="CoreServer" prefix_auto="0" extension_auto="0" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Linker>
+					<Add library="Xxf86vm" />
+					<Add library="irrNetLite21" />
+					<Add library="GL" />
+					<Add library="enet" />
+					<Add library="Irrlicht" />
+					<Add directory="../../libs/net/irrNetLite21beta" />
+				</Linker>
+			</Target>
+		</Build>
+		<VirtualTargets>
+			<Add alias="All" targets="default;" />
+		</VirtualTargets>
+		<Compiler>
+			<Add directory="../../../libs/net/irrNetLite21" />
+			<Add directory="/home/Dev/libs/game/Irrlicht-SVN/include" />
+			<Add directory="../../../libs/scripting/squirrel/sqlite/src" />
+			<Add directory="../../../libs/scripting/squirrel/SQUIRREL3/include" />
+		</Compiler>
+		<Linker>
+			<Add library="sqlite3" />
+			<Add library="squirrel" />
+			<Add library="sqstdlib" />
+			<Add directory="../../../libs/scripting/squirrel/sqlite/.libs" />
+			<Add directory="../../../libs/net/irrNetLite21" />
+			<Add directory="../../../libs/scripting/squirrel/SQUIRREL3/lib" />
+			<Add directory="/home/Dev/libs/game/Irrlicht-SVN/lib/Linux" />
+		</Linker>
+		<Unit filename="includes/squirrel.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="sqlCon.cpp" />
+		<Unit filename="sqlCon.h" />
+		<Unit filename="squirrel.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

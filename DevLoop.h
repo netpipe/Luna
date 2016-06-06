@@ -12,7 +12,7 @@ if ( !device->run() ) return 0;
         Python::registerIrrDevice(this,*device,m_cInGameEvents);
         Py_Initialize();            //Initialize Python
         Python::init_irr();         //Initialize our module
-        Python::ExecuteScript("./functions-list.pys"); //Using our handy dandy script execution function
+        Python::ExecuteScript("./functions-list.pys"); // this is for testing
          //Python::PyIrr_LoadVehicle(m_cVehicle);
         //Python::PyIrr_addTerrain("1");
     #endif
@@ -83,12 +83,16 @@ device->getCursorControl()->setVisible(true);
 
         guienv->drawAll();
  //       rt->render();
+#define PYTHON
+    #ifdef PYTHON
         Python::preEnd();
         driver->endScene();
-    //    Python::CheckKeyStates();        //CheckKeyStates(); obsolete python does it above
+    //      Python::CheckKeyStates();
+    //      CheckKeyStates(); //check onEvent for any need to check keys
                     Python::ExecuteScript("./RACING/racer/main.pys");
-//        Python::mainLoop();
-
+    #else
+        driver->endScene();
+#endif
 
         int fps = driver->getFPS();
 		if (lastFPS != fps)
@@ -101,7 +105,7 @@ device->getCursorControl()->setVisible(true);
 			device->setWindowCaption(tmp.c_str());
 			lastFPS = fps;
 		}
-     //  device->sleep(5);
+     //  device->sleep(5); // pythonize this
     }
 
 

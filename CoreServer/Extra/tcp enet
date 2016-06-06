@@ -1,0 +1,6 @@
+<Sudi> enet_socket_create (ENetSocketType, const ENetAddress *);
+
+ENET_SOCKET_TYPE_STREAM
+
+<Sudi> ENET_PACKET_FLAG_RELIABLE  packet must be received by the target peer and resend attempts should be made until the packet is delivered 
+<Sudi> ENET_PACKET_FLAG_UNSEQUENCED  packet will not be sequenced with other packets not supported for reliable packets 
