@@ -34,6 +34,8 @@ using namespace io;
 
 	Py_InitModule("irr",irr_Physics);
     Py_InitModule("irr",irr_Scene);
+        Py_InitModule("irr.test",irr_Network);
+
     Py_InitModule("irr",irr_fun2);
         Py_InitModule("irr",irr_FlagMan);
 };

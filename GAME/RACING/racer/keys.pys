@@ -64,6 +64,6 @@ if irr.getKey('KEY_F1') :
 
 if irr.getKey('KEY_ESCAPE') :
  paused=1
- irr.exit()
+ irr.test.exit()
 
 #irr.checkKeyState(){};

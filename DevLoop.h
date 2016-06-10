@@ -12,6 +12,9 @@ if ( !device->run() ) return 0;
         Python::registerIrrDevice(this,*device,m_cInGameEvents);
         Py_Initialize();            //Initialize Python
         Python::init_irr();         //Initialize our module
+        //Py_SetProgramName(), Py_SetPythonHome(), PyEval_InitThreads(), PyEval_ReleaseLock(), and PyEval_AcquireLock()
+//https://docs.python.org/2/c-api/init.html
+
         Python::ExecuteScript("./functions-list.pys"); // this is for testing
          //Python::PyIrr_LoadVehicle(m_cVehicle);
         //Python::PyIrr_addTerrain("1");
@@ -57,6 +60,8 @@ if ( !device->run() ) return 0;
 //	rt->setShowDebug( true );
 //	rt->setEnabled( true );
 device->getCursorControl()->setVisible(true);
+
+        Py_InitModule("irr.test",irr_Network);
 
     while ( device->run() && !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
     {

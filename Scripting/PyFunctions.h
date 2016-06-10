@@ -36,6 +36,7 @@
     #define HUD
     #define Image2D // Just testing out
     #define CHOPPER
+    #define  OPENSTEER
 
 // Include the headers for post processing
 #include "../Scene/PostProcessing/CRendererPostProc.h"
@@ -129,10 +130,16 @@ RibbonTrailSceneNode* rt;
     static vector<Vehicle*> m_cVehicle;
 
     cSkeleton skeleton;
-        cAudio::IAudioManager* manager;
+        cAudio::IAudioManager* managerID;
         cAudio::IAudioSource* mysound;
 
 #include "PyMAIN.h"
+
+PyMethodDef irr_Network[] =
+{
+
+    	        {"exit",Python::PyIrr_exit,METH_VARARGS,"exit"}
+};
 
 PyMethodDef irr_Scene[] =
 {
@@ -144,10 +151,12 @@ network connect / info / manager interface
 script reload and compile function
 reminder to actually check the names match with unstable ide's and whatnot
 */
-	{"set_texture",Python::PyIrr_SetTexture,METH_VARARGS,"Adds a texture to a scene node"},
+
 	{"draw_text",Python::PyIrr_DrawText,METH_VARARGS,"Renders text to the screen with default font"},
 	{"add_cube",Python::PyIrr_AddCubeSceneNode,METH_VARARGS,"Adds a cube scene node"},
+
 	{"load_texture",Python::PyIrr_LoadTexture,METH_VARARGS,"Loads a texture"},
+	{"set_texture",Python::PyIrr_SetTexture,METH_VARARGS,"Adds a texture to a scene node"},
 
     {"addCamera",Python::PyIrr_addCamera,METH_VARARGS,"sets camera vector"},
 
@@ -161,6 +170,9 @@ reminder to actually check the names match with unstable ide's and whatnot
 	//input
     {"getKey",Python::PyIrr_getKey,METH_VARARGS,"get key state"},
     {"using",Python::PyIrr_using,METH_VARARGS,"for opening scripts within scripts"},
+    {"input.wii",Python::PyIrr_wii,METH_VARARGS,"wiimote access"},
+    {"recast",Python::PyIrr_recast,METH_VARARGS,"recast navigation"},
+    {"addWheel",Python::PyIrr_recast,METH_VARARGS,"recast navigation"},
 
 	//scene
     {"tesselate",Python::PyIrr_tesselateImage,METH_VARARGS,"PyIrr_tesselateImage"},
@@ -175,7 +187,7 @@ reminder to actually check the names match with unstable ide's and whatnot
     {"aBillBoard",Python::PyIrr_aBillBoard,METH_VARARGS,"billboard"},
     //Physics
     {"setVelocity",Python::PyIrr_setVelocity,METH_VARARGS,"setVelocity"},
-        {"VehicleParams",Python::PyIrr_VehicleParams,METH_VARARGS,"VehicleParams"},
+    {"VehicleParams",Python::PyIrr_VehicleParams,METH_VARARGS,"VehicleParams"},
 
     //gui
 
@@ -285,18 +297,28 @@ return Py_BuildValue("");
 
 PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args) //active camera
 {
-    #ifdef DSOUND //broken
-        manager = cAudio::createAudioManager(true);  // broken has to be done from main
-       if( manager)
+    int param,state,sound,ammount;
+    PyArg_ParseTuple(args,"liii",&sound,&param,&ammount,&state);
+
+    #ifdef DSOUND
+    // sound intensity for raycasted sound.  // surfaceRoughnessHardness/propigation factor, distance,handle
+    switch (param){
+    case 0:
+        managerID = cAudio::createAudioManager(true);  // broken has to be done from main
+       if( managerID)
         {
          //   luna->manager->initialize(luna->manager->getAvailableDeviceName(0));
-           mysound = manager->create("bling","./media/bling.ogg",false);
+           mysound = managerID->create("bling","./media/bling.ogg",false);
     //        return Py_BuildValue("l",manager
-       mysound->play2d(true);
+            mysound->play2d(true);
         }
+
+       return Py_BuildValue("l",managerID);
+        //break;
+    case 1:
+        break;
+    }
     #endif
-
-
 return Py_BuildValue("");
 }// make add sound method
 

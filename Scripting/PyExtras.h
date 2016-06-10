@@ -375,7 +375,10 @@ PyObject * Python::PyIrr_lensFlare(PyObject * self,PyObject * args){
 Py_RETURN_NONE;
 }
 
+
+
 PyObject * Python::PyIrr_realCloud(PyObject * self,PyObject * args){
+    // possibly set weather from here
         int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
 	// add 1st cloud layer
@@ -396,6 +399,8 @@ PyObject * Python::PyIrr_realCloud(PyObject * self,PyObject * args){
 	cloudLayer3->setCloudHeight(0.35f, 0.0f, -0.15f);
 	cloudLayer3->setTextureScale(0.4f);
 };
+
+
 
 PyObject * Python::PyIrr_bitCloud(PyObject * self,PyObject * args){
         int param,state,Vehicle,ammount;
@@ -425,6 +430,8 @@ PyObject * Python::PyIrr_bitCloud(PyObject * self,PyObject * args){
            Py_RETURN_NONE;
 };
 
+
+
 PyObject * Python::PyIrr_omareDemo(PyObject * self,PyObject * args){
         int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
@@ -447,6 +454,8 @@ PyObject * Python::PyIrr_omareDemo(PyObject * self,PyObject * args){
                        Py_RETURN_NONE;
 };
 
+
+
 PyObject * Python::PyIrr_beam(PyObject * self,PyObject * args){
         int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
@@ -459,7 +468,8 @@ PyObject * Python::PyIrr_beam(PyObject * self,PyObject * args){
 PyObject * Python::PyIrr_lightning(PyObject * self,PyObject * args){
         int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
-
+switch(param){
+    case 0:
         ISceneNode* sphere = smgr->addSphereSceneNode(10);
         sphere->setPosition(vector3df(50,50,50));
         sphere->setMaterialFlag(EMF_LIGHTING,false);
@@ -468,16 +478,18 @@ PyObject * Python::PyIrr_lightning(PyObject * self,PyObject * args){
         irr::scene::CBoltSceneNode* lightning = new irr::scene::CBoltSceneNode(smgr->getRootSceneNode(), smgr, -1,"./data/textures/sceneNodes/light01_1.bmp");
         lightning->setLine(irr::core::vector3df(50,50,50), irr::core::vector3df(0,0,0), 100, 5,10,3, false,10.0f, irr::video::SColor(255,0,0,255));
         lightning->drop();
-return Py_BuildValue("");
+    }
+//return Py_BuildValue("l",lightning);
 }
+
 
 PyObject * Python::PyIrr_skyDome(PyObject * self,PyObject * args){
         int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
 
         smgr->addSkyDomeSceneNode(driver->getTexture( "data/textures/skydomes/skydome_1_2048x512.jpg" ), 60,60,1,2);
-return Py_BuildValue("");
 
+return Py_BuildValue("");
 }
 
 
@@ -499,6 +511,7 @@ PyObject * Python::PyIrr_Occlusion(PyObject * self,PyObject * args) {//active ca
 #endif
 return Py_BuildValue("");
 }
+
 
 PyObject * Python::PyIrr_Compass(PyObject * self,PyObject * args) {//active camera
         int param,state,Vehicle,ammount;
@@ -549,8 +562,14 @@ PyObject * Python::PyIrr_BlindBoids(PyObject * self,PyObject * args) {//active c
         int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
 #ifdef BOIDS
+switch (param){
+case 0:
 
-    bBlindBoids = true;
+
+ if  (bBlindBoids != true){
+
+ }else {
+         bBlindBoids = true;
         const irr::f32 borders[4] = { 1.0f, 222, 1.0f, 222}; //Xmin, Xmax, Zmin, Zmax
        // Flock* flock;
 
@@ -581,6 +600,14 @@ PyObject * Python::PyIrr_BlindBoids(PyObject * self,PyObject * args) {//active c
         flock->setPaused(false);
         //selector->addTriangleSelector(selecta);
         //	selecta->drop();
+ }
+
+    break;
+case 1:
+    break
+;case 2:
+break;
+}
 #endif
 //Py_RETURN_NONE;
 return Py_BuildValue("");

@@ -1,6 +1,7 @@
 #ifndef PYMAIN_H_INCLUDED
 #define PYMAIN_H_INCLUDED
 
+
 //device->sleep(5,0); python delay for mainloop possibly use timers
 
 
@@ -31,6 +32,7 @@ int Python::VehicleParam(int vehicle,int param,int ammount,int state)   // param
 //steering
 //acceleration
 //etc...
+
 
 int returnvar;
 printf("%i",param);
@@ -163,6 +165,26 @@ PyObject * Python::PyIrr_getKey(PyObject * self,PyObject * args){
 //         keyValue = 0x01;
 //        break;
 //}
+
+// if joystick event may aswell check hat positions aswell
+//const SEvent::SJoystickEvent & joystickData = receiver.GetJoystickState();
+//
+//			moveHorizontal =
+//				(f32)joystickData.Axis[2] / 32767.f; //4 is the z 4 is
+//			if(fabs(moveHorizontal) < DEAD_ZONE)
+//				moveHorizontal = 0.f;
+//
+//			moveVertical =
+//				(f32)joystickData.Axis[3] / 32767.f;
+//			if(fabs(moveVertical) < DEAD_ZONE)
+//				moveVertical = 0.f;
+
+//		if (event.JoystickEvent.IsButtonPressed(0)){
+//                         std::cout << "B0" << std::endl;
+//		}
+
+
+
 
     bool keystate ;
  //   printf ("%s",tempString2);
@@ -739,5 +761,7 @@ if (chopperEnabled){
  //   camera->setPosition(vector3df( ha.X, ha.Y-11, ha.Z));
 device->sleep(5,0);
 }
+
+
 
 #endif // PYMAIN_H_INCLUDED

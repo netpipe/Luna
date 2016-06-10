@@ -144,6 +144,9 @@ namespace Python {
     PyObject * PyIrr_SPARKA(PyObject * self,PyObject * args);
     //input
     PyObject * PyIrr_getKey(PyObject * self,PyObject * args);
+    PyObject *  PyIrr_wii(PyObject * self,PyObject * args);
+       PyObject *  PyIrr_recast(PyObject * self,PyObject * args);
+
 
 	// Model
     PyObject * PyIrr_aBillBoard(PyObject * self,PyObject * args);
@@ -235,6 +238,23 @@ void Python::PreRender(){   // prerender
         #endif
 };
 
+void Python::preEnd(){                                                 //used to be in pyfunct2 for
+    #ifdef FLARE
+    // run occlusion query
+        driver->runAllOcclusionQueries(false);
+        driver->updateAllOcclusionQueries(false);
+        u32 occlusionQueryResult = driver->getOcclusionQueryResult(sunMeshNode);
+        if(occlusionQueryResult!= 0xffffffff)
+            lensFlareNode->setStrength(f32(occlusionQueryResult)/8000.f);
+    #endif
+    #ifdef FLARE2
+       // driver->runAllOcclusionQueries(false);
+      //  driver->updateAllOcclusionQueries(false);
+     //   lensFlareNode->render();
+    #endif
+}
+
+
 void Python::render() //active camera
 {
         deltaTime = device->getTimer()->getRealTime() - timeStamp;
@@ -302,7 +322,7 @@ void Python::render() //active camera
       //    Elevator::Instance()->UpdatePlayerPosition();
 
         #ifdef DSOUND // weird works without this
-            if(manager){
+            if(managerID){
                 if(mysound && !mysound->isPlaying())
                 {
                     mysound->setVolume(0.5);
@@ -361,7 +381,9 @@ void Python::render() //active camera
             }
         #endif
 
-        if (opensteer){ OpenSteer::runGraphics();  }
+        if (opensteer){ //OpenSteer::runGraphics();
+        OpenSteer::OpenSteerDemo::updateSimulationAndRedraw();
+         }
 
         #ifdef HUD
             if (HUDENABLED){
@@ -392,20 +414,6 @@ void Python::render() //active camera
         device->sleep(5);
 }
 
-void Python::preEnd(){                                                 //used to be in pyfunct2 for
-    #ifdef FLARE
-    // run occlusion query
-        driver->runAllOcclusionQueries(false);
-        driver->updateAllOcclusionQueries(false);
-        u32 occlusionQueryResult = driver->getOcclusionQueryResult(sunMeshNode);
-        if(occlusionQueryResult!= 0xffffffff)
-            lensFlareNode->setStrength(f32(occlusionQueryResult)/8000.f);
-    #endif
-    #ifdef FLARE2
-       // driver->runAllOcclusionQueries(false);
-      //  driver->updateAllOcclusionQueries(false);
-     //   lensFlareNode->render();
-    #endif
-}
+
 
 #endif // PYSCENE_H_INCLUDED

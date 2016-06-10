@@ -21,8 +21,16 @@ PyMethodDef irr_Physics[] = {
 
 	int osteerinit =0;
 
+PyObject * Python::PyIrr_recast(PyObject * self,PyObject * args){
 
-PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){ //active camera
+}
+
+PyObject * Python::PyIrr_wii(PyObject * self,PyObject * args){
+    //Python::Wii_init();
+
+}
+
+PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){
 
     opensteer = 1;
     // initialize graphics first !!!
@@ -33,8 +41,8 @@ PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){ //active ca
 
     OpenSteer::OpenSteerDemo::initialize();
     OpenSteer::OpenSteerDemo::selectNextPlugIn();
-    OpenSteer::OpenSteerDemo::selectNextPlugIn();
-    OpenSteer::OpenSteerDemo::selectNextPlugIn();
+   OpenSteer::OpenSteerDemo::selectNextPlugIn();
+       OpenSteer::OpenSteerDemo::selectNextPlugIn();
        }else {// or restart
     OpenSteer::OpenSteerDemo::selectNextPlugIn();
     }
@@ -92,6 +100,7 @@ vector3df loc;
 	//const char* fileName = "./irrkit/cube_tex_204.blend"; //test exported from an old Blender 2.04 version
 	//const char* fileName = "./irrkit/game_250_zipped.blend";
 	//const char* fileName = "./irrkit/1.blend";
+
 
 
      //   const char* fileName = "./game.blend";

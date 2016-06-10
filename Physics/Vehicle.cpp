@@ -440,6 +440,8 @@ else if(driveType==5){ // Bikes
     m_vehicle->addWheel(connectionPointCS0,wheelDirectionCS0,wheelAxleCS,suspensionRestLength,wheelRadius,m_tuning,isFrontWheel);
 }
 
+///pythonize this to add wheels and shocks
+
 /// add shocks
 //connection point from wheelpos and axel
 //use 2 cylenders of opposing bottom with y axis spring and scaling for shock model later
@@ -459,6 +461,8 @@ else if(driveType==5){ // Bikes
         //wheel.m_wheelsRadius
         //wheel.m_wheelsSuspensionForce = -1000;
     }
+
+
 
     printf("Adding wheels.\n");
     IAnimatedMeshSceneNode *tempNode;
