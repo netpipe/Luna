@@ -535,44 +535,6 @@
 		<Unit filename="Events/Events.h" />
 		<Unit filename="Events/InGameEventReceiver.cpp" />
 		<Unit filename="Events/InGameEventReceiver.h" />
-		<Unit filename="FileSystem/Compress/Compress.cpp" />
-		<Unit filename="FileSystem/Compress/Compress.h" />
-		<Unit filename="FileSystem/Model/IrrAssimp/IrrAssimp.cpp" />
-		<Unit filename="FileSystem/Model/IrrAssimp/IrrAssimp.h" />
-		<Unit filename="FileSystem/Model/IrrAssimp/IrrAssimpExport.cpp" />
-		<Unit filename="FileSystem/Model/IrrAssimp/IrrAssimpExport.h" />
-		<Unit filename="FileSystem/Model/IrrAssimp/IrrAssimpImport.cpp" />
-		<Unit filename="FileSystem/Model/IrrAssimp/IrrAssimpImport.h" />
-		<Unit filename="FileSystem/Model/blender/BulletBlendReader.cpp" />
-		<Unit filename="FileSystem/Model/blender/BulletBlendReader.h" />
-		<Unit filename="FileSystem/Model/blender/BulletBlendReaderNew.cpp" />
-		<Unit filename="FileSystem/Model/blender/BulletBlendReaderNew.h" />
-		<Unit filename="FileSystem/Model/blender/BulletIrrlichtUtils.cpp" />
-		<Unit filename="FileSystem/Model/blender/BulletIrrlichtUtils.h" />
-		<Unit filename="FileSystem/Model/blender/IrrBlend.cpp" />
-		<Unit filename="FileSystem/Model/blender/IrrBlend.h" />
-		<Unit filename="FileSystem/Model/blender/IrrBlendNew.cpp" />
-		<Unit filename="FileSystem/Model/blender/IrrBlendNew.h" />
-		<Unit filename="FileSystem/Model/blender/abs-file.h" />
-		<Unit filename="FileSystem/Model/blender/bBlenderFile.cpp" />
-		<Unit filename="FileSystem/Model/blender/bBlenderFile.h" />
-		<Unit filename="FileSystem/Model/blender/bChunk.cpp" />
-		<Unit filename="FileSystem/Model/blender/bChunk.h" />
-		<Unit filename="FileSystem/Model/blender/bCommon.h" />
-		<Unit filename="FileSystem/Model/blender/bDNA.cpp" />
-		<Unit filename="FileSystem/Model/blender/bDNA.h" />
-		<Unit filename="FileSystem/Model/blender/bDefines.h" />
-		<Unit filename="FileSystem/Model/blender/bFile.cpp" />
-		<Unit filename="FileSystem/Model/blender/bFile.h" />
-		<Unit filename="FileSystem/Model/blender/bLog.cpp" />
-		<Unit filename="FileSystem/Model/blender/bLog.h" />
-		<Unit filename="FileSystem/Model/blender/bMain.cpp" />
-		<Unit filename="FileSystem/Model/blender/bMain.h" />
-		<Unit filename="FileSystem/Model/blender/blenderUp.h" />
-		<Unit filename="FileSystem/Model/blender/blendtype.h" />
-		<Unit filename="FileSystem/Model/blender/dna249-64bit.cpp" />
-		<Unit filename="FileSystem/Model/blender/dna249.cpp" />
-		<Unit filename="FileSystem/Model/blender/readblend.h" />
 		<Unit filename="GAME/RACING/racer/keys.pys" />
 		<Unit filename="GAME/RACING/racer/main.pys" />
 		<Unit filename="GAME/functions-list.pys" />
@@ -588,21 +550,87 @@
 		<Unit filename="GUI/cImage2D.h" />
 		<Unit filename="GUI/compass/Compass.cpp" />
 		<Unit filename="GUI/compass/Compass.h" />
-		<Unit filename="Input/P5/p5dump.c">
+		<Unit filename="Input/Compress/Compress.cpp" />
+		<Unit filename="Input/Compress/Compress.h" />
+		<Unit filename="Input/Controllers/P5/p5dump.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Input/P5/p5glove.c">
+		<Unit filename="Input/Controllers/P5/p5glove.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Input/P5/p5glove.h" />
-		<Unit filename="Input/P5/usb_hid.h" />
-		<Unit filename="Input/P5/usb_hid_libusb.c">
+		<Unit filename="Input/Controllers/P5/p5glove.h" />
+		<Unit filename="Input/Controllers/P5/usb_hid.h" />
+		<Unit filename="Input/Controllers/P5/usb_hid_libusb.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Input/P5/usb_hid_win32.c">
+		<Unit filename="Input/Controllers/P5/usb_hid_win32.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Input/StringTools.cpp" />
+		<Unit filename="Input/Controllers/StringTools.cpp" />
+		<Unit filename="Input/Controllers/wii/input.cpp" />
+		<Unit filename="Input/Controllers/wii/libcwiid/bluetooth.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/Controllers/wii/libcwiid/command.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/Controllers/wii/libcwiid/connect.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/Controllers/wii/libcwiid/cwiid.h" />
+		<Unit filename="Input/Controllers/wii/libcwiid/cwiid_internal.h" />
+		<Unit filename="Input/Controllers/wii/libcwiid/interface.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/Controllers/wii/libcwiid/process.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/Controllers/wii/libcwiid/state.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/Controllers/wii/libcwiid/thread.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/Controllers/wii/libcwiid/util.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/Model/IrrAssimp/IrrAssimp.cpp" />
+		<Unit filename="Input/Model/IrrAssimp/IrrAssimp.h" />
+		<Unit filename="Input/Model/IrrAssimp/IrrAssimpExport.cpp" />
+		<Unit filename="Input/Model/IrrAssimp/IrrAssimpExport.h" />
+		<Unit filename="Input/Model/IrrAssimp/IrrAssimpImport.cpp" />
+		<Unit filename="Input/Model/IrrAssimp/IrrAssimpImport.h" />
+		<Unit filename="Input/Model/blender/BulletBlendReader.cpp" />
+		<Unit filename="Input/Model/blender/BulletBlendReader.h" />
+		<Unit filename="Input/Model/blender/BulletBlendReaderNew.cpp" />
+		<Unit filename="Input/Model/blender/BulletBlendReaderNew.h" />
+		<Unit filename="Input/Model/blender/BulletIrrlichtUtils.cpp" />
+		<Unit filename="Input/Model/blender/BulletIrrlichtUtils.h" />
+		<Unit filename="Input/Model/blender/IrrBlend.cpp" />
+		<Unit filename="Input/Model/blender/IrrBlend.h" />
+		<Unit filename="Input/Model/blender/IrrBlendNew.cpp" />
+		<Unit filename="Input/Model/blender/IrrBlendNew.h" />
+		<Unit filename="Input/Model/blender/abs-file.h" />
+		<Unit filename="Input/Model/blender/bBlenderFile.cpp" />
+		<Unit filename="Input/Model/blender/bBlenderFile.h" />
+		<Unit filename="Input/Model/blender/bChunk.cpp" />
+		<Unit filename="Input/Model/blender/bChunk.h" />
+		<Unit filename="Input/Model/blender/bCommon.h" />
+		<Unit filename="Input/Model/blender/bDNA.cpp" />
+		<Unit filename="Input/Model/blender/bDNA.h" />
+		<Unit filename="Input/Model/blender/bDefines.h" />
+		<Unit filename="Input/Model/blender/bFile.cpp" />
+		<Unit filename="Input/Model/blender/bFile.h" />
+		<Unit filename="Input/Model/blender/bLog.cpp" />
+		<Unit filename="Input/Model/blender/bLog.h" />
+		<Unit filename="Input/Model/blender/bMain.cpp" />
+		<Unit filename="Input/Model/blender/bMain.h" />
+		<Unit filename="Input/Model/blender/blenderUp.h" />
+		<Unit filename="Input/Model/blender/blendtype.h" />
+		<Unit filename="Input/Model/blender/dna249-64bit.cpp" />
+		<Unit filename="Input/Model/blender/dna249.cpp" />
+		<Unit filename="Input/Model/blender/irrBlenderReader.depend" />
+		<Unit filename="Input/Model/blender/readblend.h" />
 		<Unit filename="Luna.cpp" />
 		<Unit filename="Luna.h" />
 		<Unit filename="LunaLobby.cpp" />
