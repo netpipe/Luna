@@ -749,6 +749,10 @@
 		<Unit filename="TerrainFactory/WaterNode/CReflectedWater.cpp" />
 		<Unit filename="TerrainFactory/WaterNode/CReflectedWater.h" />
 		<Unit filename="TerrainFactory/WaterNode/CReflectedWater_ShaderCode.h" />
+		<Unit filename="TerrainFactory/open-simplex-noise.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="TerrainFactory/open-simplex-noise.h" />
 		<Unit filename="TerrainFactory/realCloud/CloudSceneNode.cpp" />
 		<Unit filename="TerrainFactory/realCloud/CloudSceneNode.h" />
 		<Unit filename="TerrainFactory/simplexnoise1234.cpp" />
