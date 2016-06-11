@@ -46,7 +46,7 @@ camera = irr.addCamera(2,1,0,1) # 1 regular , 2 FPS , 3 other types, 4 rpg, << t
 #irr.realCloud(1)
 #irr.skydome(1)
 
-irr.loadModel("Media/ninja.b3d","Media/lightmap.png",0,0)
+#irr.loadModel("Media/ninja.b3d","Media/lightmap.png",0,0)
 
 track1 = irr.loadTrack('huge.3ds',0,0,0)  # trackname , timeofday , lighting , track slot/stages
 terrain=irr.addTerrain(4,-3,5,0) # load last to make the physics work FIX  // possibly a load terrain xml function
