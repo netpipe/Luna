@@ -76,6 +76,7 @@ class Terrain
 		void Init();
 		void generateLod(unsigned int x, NODE* pNode, const int TN, const int XT, const int ZT);
 		float getHeight ( float x,float z );
+        float getHeight2 ( float x,float z );
 //		void Sphere ( int dtheta, int dphi );
 //		friend class Azadi;
 		static int setter;
