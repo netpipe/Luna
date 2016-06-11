@@ -96,7 +96,7 @@ RibbonTrailSceneNode* rt;
         using namespace SPK::IRR;
 //      #include "../Scene/RainMan.h"
     #endif
-    #include "../FileSystem/Model/IrrAssimp/IrrAssimp.h"
+    #include "../Input/Model/IrrAssimp/IrrAssimp.h"
 
 
 

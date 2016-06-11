@@ -61,7 +61,6 @@ if ( !device->run() ) return 0;
 //	rt->setEnabled( true );
 device->getCursorControl()->setVisible(true);
 
-        Py_InitModule("irr.test",irr_Network);
 
     while ( device->run() && !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
     {

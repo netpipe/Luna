@@ -21,9 +21,9 @@ using namespace gui;
 #include "GUI/cImage2D.h"
 #include "Scene/XEffects/effectWrapper.h"
 
-#include "./FileSystem/Model/blender/IrrBlend.h"
-#include "./FileSystem/Model/blender/BulletBlendReader.h"
-#include "./FileSystem/Model/blender/blenderUp.h"
+#include "./Input/Model/blender/IrrBlend.h"
+#include "./Input/Model/blender/BulletBlendReader.h"
+#include "./Input/Model/blender/blenderUp.h"
 
 #include "./Equipment/firstPersonWeapon.h"
 #include "./TerrainFactory/CloudSceneNode/CCloudSceneNode.h"

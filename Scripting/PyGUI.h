@@ -4,18 +4,27 @@
 //rename this to PyVIDEO later
 
 PyObject * Python::PyIrr_ChatBox(PyObject * self,PyObject * args){
-    gui::CGUIChatBox* chat = new gui::CGUIChatBox(  guienv, guienv->getRootGUIElement(),
-                                                    230, core::rect<int>(20,40,300,500));
 
-    for (int i=0;i < 100;i++){
-        chat->addItem(L"(john) Kill that thing...");
-        chat->addItem(L"(firestaff) lol", video::SColor(250, 220, 255, 255));
-        chat->addItem(L"(juli) that's too big", video::SColor(0, 220, 0, 255));
-    };
-    //pretty basic needs some work....
+            enum evars{create=0,add};
+            char * tex_name;
+            int action;
+      	PyArg_ParseTuple(args,"s",&tex_name,&action);
 
+    switch(action){
+        case 0:
+      chat = new gui::CGUIChatBox(  guienv, guienv->getRootGUIElement(),
+                                                        230, core::rect<int>(20,40,300,500));
+        break;
 
-    Py_RETURN_NONE;
+        case 1:
+             //   for (int i=0;i < 100;i++){
+                    chat->addItem(L"(john) Kill that thing...");
+                    chat->addItem(L"(firestaff) lol", video::SColor(250, 220, 255, 255));
+                    chat->addItem(L"(juli) that's too big", video::SColor(0, 220, 0, 255));
+             //   };
+        break;
+    }
+	return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_2Dimage(PyObject * self,PyObject * args) {//active camera
@@ -107,11 +116,6 @@ IGUIFont * default_font;
 //	delete [] conv_message;
 
 //	guienv->addStaticText(L"sample text here!",rect<s32>(10,10,260,22), true);
-
-	return Py_BuildValue("");
-
-
-
 //
 //	    CGUITTFont *font2;
 //    CGUITTFace face;
@@ -119,6 +123,8 @@ IGUIFont * default_font;
 //    font2->attach(&face,24); // scale this number with the screen
 //    font2->AntiAlias=1;
 
+
+	return Py_BuildValue("");
 };
 
 

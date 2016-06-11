@@ -46,26 +46,35 @@ return Py_BuildValue("l",tree);
 }
 
 
+
+
 PyObject * Python::PyIrr_loadModel(PyObject * self,PyObject * args) { // if treepointer passed remove it ModelFactory
 
+int action;
+char * type,value1,value2;
 
-int value1,value2;
-char * type,action;
+    PyArg_ParseTuple(args,"sssl",&type,&value1,&value2,&action);
 
-    PyArg_ParseTuple(args,"sll",&type,&value1,&value2,&action);
+  //  Assimp::Importer importer;
+    irr::core::stringc extension;
+   // irr::core::stringc path;
+    irr::core::getFileNameExtension(extension, stringc(value1));
+    //return importer.IsExtensionSupported (extension.c_str());
 
-    enum eaction{loadModel,get,set,animation,};
+//    path = value1;
 
-        switch(action){
+    enum eaction{loadModel,get,set,animation};
+
+switch(action){
     case set:
         break;
+    case eaction(get):     //
+ //               ISceneNode *node = smgr->getSceneNodeFromId(type);
+//                  vector3df position = node->getPosition();
+	return Py_BuildValue("l",node);
+        break;
 
-        case eaction(eget):     //
-                ISceneNode *node = smgr->getSceneNodeFromId(type);
-                vector3df position = node->getPosition();
-            break;
-
-        case loadModel: //load models // textures
+    case loadModel: //load models // textures
 
 
 //OVERLAPPING TEXT MOVEMENT FUNCTION FOR  | |  LISTS
@@ -85,65 +94,66 @@ char * type,action;
 
         //device->setWindowCaption(L"IrrAssimp Demo");
 
-        IVideoDriver* driver = device->getVideoDriver();
-        ISceneManager* smgr = device->getSceneManager();
-        IGUIEnvironment* guienv = device->getGUIEnvironment();
+//        IVideoDriver* driver = device->getVideoDriver();
+//        ISceneManager* smgr = device->getSceneManager();
+//        IGUIEnvironment* guienv = device->getGUIEnvironment();
 
     //tecan make sure that renamed files dont trick the parser into loading them. sec
 
         // The assimp loader is in a separate system and not directly as a meshLoader to give the choice to use Irrlicht or Assimp for mesh loading to the user, in function of the format for example
         IrrAssimp assimp(smgr);
 
+
         //IAnimatedMesh* meshNoAssimp = smgr->getMesh("Media/ninja.b3d");
       //  assimp.exportMesh(mesh, "obj", "Media/export.obj");
 
-        if (!mesh /*|| !meshNoAssimp*/)
-        {
-            device->drop();
-    ///		return 1;
-        return Py_BuildValue("1");
-        }
+//        if (!mesh /*|| !meshNoAssimp*/)
+//        {
+//            device->drop();
+//    ///		return 1;
+//        return Py_BuildValue("1");
+//        }
 
-    if (type =="b3d"){
-            IAnimatedMesh* mesh = assimp.getMesh(value1);
-        IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
-        node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
-        //IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode( meshNoAssimp );
-
-        if (node /*&& nodeNoAssimp*/)
-        {
-            //node->setMaterialFlag(EMF_LIGHTING, false);
-            node->setDebugDataVisible(scene::EDS_SKELETON | scene::EDS_BBOX_ALL);
-            //node->setScale(core::vector3df(100, 100, 100));
-
-            //nodeNoAssimp->setPosition(core::vector3df(100, 0, 0));
-            //nodeNoAssimp->setMaterialFlag(EMF_LIGHTING, false);
-            //node->setMD2Animation(scene::EMAT_STAND);
-            node->setMaterialTexture( 0, driver->getTexture(value2) );
-        }
-    }
-
-
-    if (type =="bvh"){
-           IAnimatedMesh* mesh = assimp.getMesh("Media/B02.bvh");
-        IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
-        node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
-        //IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode( meshNoAssimp );
-
-        if (node /*&& nodeNoAssimp*/)
-        {
-            //node->setMaterialFlag(EMF_LIGHTING, false);
-            node->setDebugDataVisible(scene::EDS_SKELETON | scene::EDS_BBOX_ALL);
-            //node->setScale(core::vector3df(100, 100, 100));
-
-            //nodeNoAssimp->setPosition(core::vector3df(100, 0, 0));
-            //nodeNoAssimp->setMaterialFlag(EMF_LIGHTING, false);
-            //node->setMD2Animation(scene::EMAT_STAND);
-            node->setMaterialTexture( 0, driver->getTexture(value2 ));
-            	return Py_BuildValue("l",node);
-        }
-
-    }
+//    if (extension =="b3d"){
+//            IAnimatedMesh* mesh = assimp.getMesh(path);
+//        IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+//        node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
+//        //IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode( meshNoAssimp );
+//
+//        if (node /*&& nodeNoAssimp*/)
+//        {
+//            //node->setMaterialFlag(EMF_LIGHTING, false);
+//            node->setDebugDataVisible(scene::EDS_SKELETON | scene::EDS_BBOX_ALL);
+//            //node->setScale(core::vector3df(100, 100, 100));
+//
+//            //nodeNoAssimp->setPosition(core::vector3df(100, 0, 0));
+//            //nodeNoAssimp->setMaterialFlag(EMF_LIGHTING, false);
+//            //node->setMD2Animation(scene::EMAT_STAND);
+//            node->setMaterialTexture( 0, driver->getTexture(value2) );
+//        }
+//    }
+//
+//
+//    if (extension =="bvh"){
+//           IAnimatedMesh* mesh = assimp.getMesh(path);//"Media/B02.bvh"
+//        IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+//        node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
+//        //IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode( meshNoAssimp );
+//
+//        if (node /*&& nodeNoAssimp*/)
+//        {
+//            //node->setMaterialFlag(EMF_LIGHTING, false);
+//            node->setDebugDataVisible(scene::EDS_SKELETON | scene::EDS_BBOX_ALL);
+//            //node->setScale(core::vector3df(100, 100, 100));
+//
+//            //nodeNoAssimp->setPosition(core::vector3df(100, 0, 0));
+//            //nodeNoAssimp->setMaterialFlag(EMF_LIGHTING, false);
+//            //node->setMD2Animation(scene::EMAT_STAND);
+//            node->setMaterialTexture( 0, driver->getTexture(value2 ));
+//            	return Py_BuildValue("l",node);
+//        }
+//
+//    }
 
                break;
 

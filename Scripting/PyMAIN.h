@@ -35,8 +35,11 @@ namespace Python {
     bool CheckKeyState(int key);
 
 
+//            IrrAssimp assimp(ISceneManager);
+ // put into a vector or array
     Vehicle   *m_cVehicle;
     btRigidBody *ha;
+            gui::CGUIChatBox* chat;
 
     bool opensteer,chopperEnabled,HUDENABLED=0;
     //Player *m_cPlayer;

@@ -298,6 +298,7 @@
 					<Add library="theora" />
 					<Add library="theoraplayer" />
 					<Add library="assimp" />
+					<Add library="bluetooth" />
 					<Add directory="/home/Dev/libs/scripting/Python-2.6.2/Lib" />
 					<Add directory="../libs/freetype-2.3.9/objs/.libs" />
 					<Add directory="../libs/net/enet-1.2.1" />
