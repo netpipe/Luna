@@ -8,7 +8,6 @@
 using namespace irr;
 using namespace scene;
 using namespace core;
-#include "simplexnoise1234.h"
 #include "open-simplex-noise.h"
 
 #define LEAF_TYPE 0

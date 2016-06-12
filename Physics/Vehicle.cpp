@@ -189,6 +189,7 @@ btVector3 Vehicle::getVehiclePosition(void){
     return m_vehicle->getRigidBody()->getCenterOfMassPosition();
 }
 
+
 void Vehicle::setPosition( core::vector3df vect ){
    // if(!m_vehicle)
    btVector3 pos = btVector3(vect.X,vect.Y,vect.Z);
@@ -198,9 +199,11 @@ void Vehicle::setPosition( core::vector3df vect ){
    // m_vehicle->set;
 }
 
+
 btQuaternion Vehicle::getVehicleOrientation(void){
     return m_vehicle->getRigidBody()->getOrientation();
 }
+
 
 void Vehicle::setState(EVEHICLE_STATE _state)           {    state = _state;}
 
@@ -215,7 +218,9 @@ void Vehicle::registerPhysics(Physics &physics)  {  m_cPhysics = &physics;
     m_overlappingPairCache = new btAxisSweep3(worldMin,worldMax);
 }
 
+
 void Vehicle::registerScene(Scene &scene)    {   m_cScene = &scene;  }
+
 
 void Vehicle::accelerate(f32 speed){
     setState(EVEHICLE_ACCELERATING);
@@ -257,6 +262,7 @@ void Vehicle::accelerate(f32 speed){
     gBreakingForce = 0.f;
 }
 
+
 void Vehicle::reverse(f32 speed){
  setState(EVEHICLE_REVERSING);
  gEngineForce -= speed*SpeedINC;
@@ -271,29 +277,35 @@ void Vehicle::reverse(f32 speed){
     gBreakingForce = 0.f;
 }
 
+
 void Vehicle::steer_right(void){
     if (	(gVehicleSteering+steeringIncrement) < steeringClamp)
     gVehicleSteering += steeringIncrement;
 }
+
 
 void Vehicle::steer_left(void){
     if (	(gVehicleSteering-steeringIncrement) > -steeringClamp)
     gVehicleSteering -= steeringIncrement;
 }
 
+
 void Vehicle::brake(void){
     gBreakingForce = maxBreakingForce;
     gEngineForce = 0.1f;
 }
 
+
 void Vehicle::registerCamera( ICameraSceneNode *camera2){
   camera= camera2;
 }
+
 
 void Vehicle::steer_reset(void){
     gVehicleSteering *= 0.80f;  // auto straighten the wheel out
  //   gVehicleSteering = 0;
 }
+
 
 void Vehicle::resetVehicle(void){
   gVehicleSteering = 0.0f;
@@ -312,6 +324,7 @@ void Vehicle::resetVehicle(void){
 	}
 }
 
+
 Vehicle::~Vehicle(){
   if(!m_vehicle) return;
     for (int j=0;j<m_collisionShapes.size();j++)
@@ -324,6 +337,7 @@ Vehicle::~Vehicle(){
     delete m_vehicleRayCaster;
     delete m_vehicle;
 }
+
 
 void Vehicle::initPhysics(stringc carMesh, stringc texture ) {  tr.setOrigin(m_vehiclePosition);  //pythonize model loading
     IAnimatedMesh *l_node;

@@ -98,6 +98,11 @@ RibbonTrailSceneNode* rt;
     #endif
     #include "../Input/Model/IrrAssimp/IrrAssimp.h"
 
+    #include "../Scene/spriteManager/SpriteManager.h"
+#include "../Scene/spriteManager/BmFont.h"
+#include "../Scene/spriteManager/ParticleSystem.h"
+
+
 
 
     using namespace std;
@@ -132,6 +137,9 @@ RibbonTrailSceneNode* rt;
     cSkeleton skeleton;
         cAudio::IAudioManager* managerID;
         cAudio::IAudioSource* mysound;
+
+            BmFont *fonts = new BmFont;
+
 
 #include "PyMAIN.h"
 

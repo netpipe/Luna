@@ -46,7 +46,15 @@ PyObject * Python::PyIrr_2Dimage(PyObject * self,PyObject * args) {//active came
 //)
 
     #endif
-        Py_RETURN_NONE;
+//        sprites->clear();
+//
+//        // add sprite from tile (0,0) size(8,8)
+//        Sprite *spr = sprites->addSprite(0,0,8,8);
+//        spr->setPosition(20, 20);
+//        spr->setScale(4.0f, 4.0f);
+
+
+	return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_aBillBoard(PyObject * self,PyObject * args) {//active camera
@@ -122,6 +130,19 @@ IGUIFont * default_font;
 //        font2 = new CGUITTFont(gui);
 //    font2->attach(&face,24); // scale this number with the screen
 //    font2->AntiAlias=1;
+
+    SpriteManager *sprites = new SpriteManager;
+    sprites->setup(driver, driver->getTexture("data/texture.png"));
+
+        int w = 400;
+    int h = 400;
+
+        fonts->setFontSource("data/pixel1.fnt", 256, 128);
+        fonts->setup(device, sprites);
+//
+
+        fonts->drawText("the quick brown fox\njumped over\n the lazy dog", 0, 0, w, h, BmFont::ALIGN_CENTER | BmFont::ALIGN_MIDDLE);
+
 
 
 	return Py_BuildValue("");

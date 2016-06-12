@@ -755,8 +755,6 @@
 		<Unit filename="TerrainFactory/open-simplex-noise.h" />
 		<Unit filename="TerrainFactory/realCloud/CloudSceneNode.cpp" />
 		<Unit filename="TerrainFactory/realCloud/CloudSceneNode.h" />
-		<Unit filename="TerrainFactory/simplexnoise1234.cpp" />
-		<Unit filename="TerrainFactory/simplexnoise1234.h" />
 		<Unit filename="TidBits.cpp" />
 		<Unit filename="entities/AI/miNav/main.cpp" />
 		<Unit filename="entities/AI/miNav/miNav.cpp" />
