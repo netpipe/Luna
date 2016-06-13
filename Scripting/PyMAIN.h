@@ -23,15 +23,17 @@ namespace Python {
   //  cAudio::IAudioManager* manager;
   //  cAudio::IAudioSource* mysound;
 
-    ICameraSceneNode* camera;
+    ICameraSceneNode* camera;  //maybe put in vector for a cameraManager or do it in python
 
+
+        int test();
     void preEnd();  //declared in PyFunctions2 for some reason... ?
     void CheckKeyStates();
+    //Player *m_cPlayer;
+    void render();
+
 
     int VehicleParam(int vehicle,int param,int ammount,int state);
-
-    int test();
-
     bool CheckKeyState(int key);
 
 
@@ -42,8 +44,7 @@ namespace Python {
             gui::CGUIChatBox* chat;
 
     bool opensteer,chopperEnabled,HUDENABLED=0;
-    //Player *m_cPlayer;
-    void render();
+
 
     firstPersonWeapon* M4;
 

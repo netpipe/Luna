@@ -40,11 +40,11 @@ PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){
     // initialize OpenSteerDemo application
 
     OpenSteer::OpenSteerDemo::initialize();
-    OpenSteer::OpenSteerDemo::selectNextPlugIn();
-   OpenSteer::OpenSteerDemo::selectNextPlugIn();
+//    OpenSteer::OpenSteerDemo::selectNextPlugIn();
+//   OpenSteer::OpenSteerDemo::selectNextPlugIn();
        OpenSteer::OpenSteerDemo::selectNextPlugIn();
        }else {// or restart
-    OpenSteer::OpenSteerDemo::selectNextPlugIn();
+//    OpenSteer::OpenSteerDemo::selectNextPlugIn();
     }
     // were going to need more to this function maybe some internal calls for things like individual paths
 

@@ -251,7 +251,7 @@ void BmFont::drawText(const core::stringc &text,
     if (!textMetricsOnly) {
         for(int i = 0; i<charIdx; i++) {
             Sprite *s = characters[i];
-            int lineWidth = (int)s->getData(1);
+            int lineWidth = (int)s->getData(1);  //! was the only reson for adding -fpermissive to project
             if (lineWidth) {
                 if (align & ALIGN_RIGHT) {
                     moveX = w - lineWidth;

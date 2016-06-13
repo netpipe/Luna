@@ -254,6 +254,7 @@
 				<Option compiler="gcc" />
 				<Option projectResourceIncludeDirsRelation="1" />
 				<Compiler>
+					<Add option="-fpermissive" />
 					<Add directory="../libs/ffmpeg/libavcodec" />
 					<Add directory="../libs/ffmpeg/libavformat" />
 					<Add directory="../libs/ffmpeg" />
@@ -728,6 +729,18 @@
 		<Unit filename="Scene/occlusion/Renderer.cpp" />
 		<Unit filename="Scene/occlusion/Renderer.h" />
 		<Unit filename="Scene/particles.h" />
+		<Unit filename="Scene/spriteManager/BmFont.cpp" />
+		<Unit filename="Scene/spriteManager/BmFont.h" />
+		<Unit filename="Scene/spriteManager/ParticleSystem.cpp" />
+		<Unit filename="Scene/spriteManager/ParticleSystem.h" />
+		<Unit filename="Scene/spriteManager/PathFinder.cpp" />
+		<Unit filename="Scene/spriteManager/PathFinder.h" />
+		<Unit filename="Scene/spriteManager/Sprite.cpp" />
+		<Unit filename="Scene/spriteManager/Sprite.h" />
+		<Unit filename="Scene/spriteManager/SpriteManager.cpp" />
+		<Unit filename="Scene/spriteManager/SpriteManager.h" />
+		<Unit filename="Scene/spriteManager/Util.h" />
+		<Unit filename="Scene/spriteManager/main.cpp" />
 		<Unit filename="Scene/tesselatedImage/tesselatedImage.cpp" />
 		<Unit filename="Scene/tesselatedImage/tesselatedImage.h" />
 		<Unit filename="Scripting/PY_Physics.h" />

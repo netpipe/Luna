@@ -36,7 +36,7 @@ void Scene::setupLights(void)
     CONST_LIGHT_BACK_POS, // position
     CONST_LIGHT_BACK_COL, // color
     100.0f, // radius
-    -1 // id
+    -1 // ids
     );
 
   m_lightFill = m_irrDevice->getSceneManager()->addLightSceneNode(

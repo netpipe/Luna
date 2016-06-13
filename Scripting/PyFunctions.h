@@ -96,14 +96,15 @@ RibbonTrailSceneNode* rt;
         using namespace SPK::IRR;
 //      #include "../Scene/RainMan.h"
     #endif
-    #include "../Input/Model/IrrAssimp/IrrAssimp.h"
 
-    #include "../Scene/spriteManager/SpriteManager.h"
+#include "../Input/Model/IrrAssimp/IrrAssimp.h"
+
+#include "../Scene/spriteManager/SpriteManager.h"
 #include "../Scene/spriteManager/BmFont.h"
 #include "../Scene/spriteManager/ParticleSystem.h"
 
-
-
+        BmFont *fonts = new BmFont;
+    SpriteManager *sprites = new SpriteManager;
 
     using namespace std;
     using namespace irr;
@@ -138,15 +139,12 @@ RibbonTrailSceneNode* rt;
         cAudio::IAudioManager* managerID;
         cAudio::IAudioSource* mysound;
 
-            BmFont *fonts = new BmFont;
-
 
 #include "PyMAIN.h"
 
 PyMethodDef irr_Network[] =
 {
-
-    	        {"exit",Python::PyIrr_exit,METH_VARARGS,"exit"}
+    {"addSphereNode",Python::PyIrr_addSphereNode,METH_VARARGS,"addSphereNode"}
 };
 
 PyMethodDef irr_Scene[] =
@@ -275,23 +273,30 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
 // make a post draw loop instead of putting things into the checkkey
 
 PyObject * Python::PyIrr_WaterPlane(PyObject * self,PyObject * args){
-#ifdef ReflectiveWater
-    bWater=1;
-    float scaleX,scaleY,scaleZ,locX,locY,locZ;
 
-	water = new CReflectedWater("ReflectedWater", device, smgr, -1, 180, 100,
-	dimension2du(512,512));
+    #ifdef ReflectiveWater
+            char * script;
 
-	ISceneNode *waternode = water->m_waternode;
-	waternode->setPosition(vector3df(0, 50, 100));
-	water->m_WaveDisplacement /= 0.5f;
-	water->m_WaveHeight *= 4.0f;
-	water->m_WaveSpeed *= 1.0f;
-	water->m_RefractionFactor = 0.51f;
-	return Py_BuildValue("l",water);
-#endif
+            float scaleX,scaleY,scaleZ,locX,locY,locZ;
+            int wavespeed,refractionfactor,waveheight,wavedisplacement,
+
+            PyArg_ParseTuple(args,"sllll",&script);
+
+            bWater=1;
+            water = new CReflectedWater("ReflectedWater", device, smgr, -1, 180, 100,
+            dimension2du(512,512));
+
+            ISceneNode *waternode = water->m_waternode;
+            waternode->setPosition(vector3df(0, 50, 100));
+            water->m_WaveDisplacement /= 0.5f;
+            water->m_WaveHeight *= 4.0f;
+            water->m_WaveSpeed *= 1.0f;
+            water->m_RefractionFactor = 0.51f;
+            return Py_BuildValue("l",water);
+    #endif
 return Py_BuildValue("");
 }
+
 
 PyObject * Python::PyIrr_using(PyObject * self,PyObject * args) //active camera
 {
@@ -302,6 +307,7 @@ char * script;
     ExecuteScript(script);
 return Py_BuildValue("");
 }
+
 
 PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args) //active camera
 {
@@ -324,10 +330,13 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args) //active came
        return Py_BuildValue("l",managerID);
         //break;
     case 1:
+            mysound = managerID->create("bling","./media/bling.ogg",false);
+
+       return Py_BuildValue("l",mysound);
         break;
     }
     #endif
-return Py_BuildValue("");
+return Py_BuildValue("l",managerID);
 }// make add sound method
 
 

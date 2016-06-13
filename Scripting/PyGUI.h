@@ -134,7 +134,7 @@ IGUIFont * default_font;
     SpriteManager *sprites = new SpriteManager;
     sprites->setup(driver, driver->getTexture("data/texture.png"));
 
-        int w = 400;
+    int w = 400;
     int h = 400;
 
         fonts->setFontSource("data/pixel1.fnt", 256, 128);

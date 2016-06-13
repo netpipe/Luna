@@ -486,7 +486,7 @@ else if(driveType==5){ // Bikes
 
     for (int i = 0; i < m_vehicle->getNumWheels(); i++)    {
         tempNode = m_irrDevice->getSceneManager()->addAnimatedMeshSceneNode(
-        m_irrDevice->getSceneManager()->getMesh("data/models/vehicles/CarBlends/wheel.x") );
+        m_irrDevice->getSceneManager()->getMesh("data/models/vehicles/wheel.x") );
    //     if (i=0){
         tempNode->setMaterialTexture(0, m_irrDevice->getVideoDriver()->getTexture("data/models/vehicles/TIRE_TEX.TGA"));
     //    };

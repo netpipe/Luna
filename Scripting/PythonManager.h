@@ -31,16 +31,15 @@ using namespace io;
 #endif
 
     Py_InitModule("irr",irr_SPARKA);
-
 	Py_InitModule("irr",irr_Physics);
     Py_InitModule("irr",irr_Scene);
-        Py_InitModule("irr.test",irr_Network);
+    Py_InitModule("irr.test",irr_Network);
 
     Py_InitModule("irr",irr_fun2);
-        Py_InitModule("irr",irr_FlagMan);
+    Py_InitModule("irr",irr_FlagMan);
 };
 
-/// need this for the using or include  keyword for chain linking python scripts
+
 void Python::ExecuteScript(irr::core::string<char> scriptname){
 	/*Using it this way because the methods using the FILE * structure tend to go wonky
 	  due to the fact that the FILE * datatype is not standardized, so you'll get problems
