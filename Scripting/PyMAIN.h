@@ -92,6 +92,9 @@ namespace Python {
     PyObject * PyIrr_addChopper(PyObject * self,PyObject * args);
     PyObject * PyIrr_setPosition(PyObject * self,PyObject * args);
     PyObject * PyIrr_getPosition(PyObject * self,PyObject * args);
+    PyObject * PyIrr_motionTrail(PyObject * self,PyObject * args);
+
+
     //Physics
     PyObject * PyIrr_Bullet(PyObject * self,PyObject * args); // try to seperate
     PyObject * PyIrr_RagMan(PyObject * self,PyObject * args);

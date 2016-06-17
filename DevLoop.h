@@ -5,37 +5,34 @@ if ( !device->run() ) return 0;
     guienv->clear();
     smgr->clear();
 
-
-    #define PYTHON
-    #ifdef PYTHON
+#define PYTHON
+#ifdef PYTHON
     //Python
         Python::registerIrrDevice(this,*device,m_cInGameEvents);
         Py_Initialize();            //Initialize Python
         Python::init_irr();         //Initialize our module
         //Py_SetProgramName(), Py_SetPythonHome(), PyEval_InitThreads(), PyEval_ReleaseLock(), and PyEval_AcquireLock()
-//https://docs.python.org/2/c-api/init.html
-
+        //https://docs.python.org/2/c-api/init.html
+        ///todo check for empty or missing files or impliment the using command
         Python::ExecuteScript("./functions-list.pys"); // this is for testing
          //Python::PyIrr_LoadVehicle(m_cVehicle);
         //Python::PyIrr_addTerrain("1");
-    #endif
+#endif
 
-//camera = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
+    //camera = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
 	//smgr->addCameraSceneNodeFPS();
-    #ifdef PostProcess
+#ifdef PostProcess
      //PostProcessing
         IPostProc* ppRenderer = new CRendererPostProc( smgr, dimension2du( 1024, 512 ),
                                                     true, true, SColor( 255u, 100u, 101u, 140u ) );
         CEffectPostProc* ppBlurDOF   = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), PP_BLURDOF );
         CEffectPostProc* ppBlur          = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), PP_BLUR, 0.00081f );
         ppBlur->setQuality( PPQ_GOOD );
-    #endif
-
+#endif
 
 
     u32 then = device->getTimer()->getTime();
     int lastFPS;
-
 
 
 /**
@@ -44,23 +41,8 @@ if ( !device->run() ) return 0;
 ///////////////////////////////////
 **/
 
-//    //    if (btrailNode){
-//       //     rt->
-//  //  }
-////    btrailNode=1
-//	video::ITexture* tex = driver->getTexture( "media/portal7.bmp" );
-//    rt = new RibbonTrailSceneNode( device, camera, -1 );
-////	rt->setPosition( core::vector3df( 0, -10, 300 ) );
-//    rt->setMaterialTexture( 0, tex );
-//   rt->setPoint1( core::vector3df(  50, 0, 0 ) );
-//    rt->setPoint2( core::vector3df( -50, 0, 0 ) );
-//    rt->setMaxDistance( 10 );
-//	rt->setMaxQuads( 5000 );
-//    rt->setStartingAlpha( 100 );
-//	rt->setShowDebug( true );
-//	rt->setEnabled( true );
-device->getCursorControl()->setVisible(true);
 
+device->getCursorControl()->setVisible(true);
 
     while ( device->run() && !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
     {
@@ -68,13 +50,7 @@ device->getCursorControl()->setVisible(true);
 		frameDeltaTime = (f32)(now - then) / 1000.f; // Time in seconds
 		then = now;
 
-
-
         Python::PreRender();
-        ///todo check for empty or missing files or impliment the using command
-        // loop for key checking and loop for game  only execute script if there was an event
-        // may need to put the loop where the checkkeystates was (after endscene)
-    //            Python::ExecuteScript("./media/Lmain.pys");
 
         driver->beginScene ( true, true, SColor ( 0, 0, 0, 0 ) );
         Python::render();
@@ -93,6 +69,8 @@ device->getCursorControl()->setVisible(true);
         driver->endScene();
     //      Python::CheckKeyStates();
     //      CheckKeyStates(); //check onEvent for any need to check keys
+    // loop for key checking and loop for game  only execute script if there was an event
+
                     Python::ExecuteScript("./RACING/racer/main.pys");
     #else
         driver->endScene();

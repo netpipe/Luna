@@ -45,10 +45,10 @@ struct BlendBlock {
   int type_index;
   /* a block is simply an array of its type as defined by type_index.
      array_entries is an array of pointers to each entry in the block's
-     array.     
+     array.
    */
   btAlignedObjectArray<BlendField*> m_array_entries_;
-  
+
   void* customData; /* for Link blocks, with custom data such as .jpg pictures etc */
   int customDataSize;
 };
@@ -228,7 +228,7 @@ struct	btLogicManager
 
 char* btReadBuffer(FILE* fp, int* fileSize=0);
 
-typedef btHashKey<int> btHashInt;
+//! typedef btHashKey<int> btHashInt;
 
 class	BulletBlendReader
 {
@@ -276,7 +276,7 @@ public:
 	virtual	void	convertLogicBricks() = 0;
 
 	virtual	void	createParentChildHierarchy()=0;
-	
+
 	//after each object is converter, including collision object, create a graphics object (and bind them)
 	virtual void* createGraphicsObject(_bObj* tmpObject, class btCollisionObject* bulletObject)=0;
 

@@ -174,7 +174,6 @@ return Py_BuildValue("0");
 
 
 
-///
 PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
     s32 node_id;
     int x,y,z;
@@ -188,6 +187,7 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
    // printf("%i",node_id);
 return Py_BuildValue("");
 }
+
 
 PyObject * Python::PyIrr_getPosition(PyObject * self,PyObject * args){
     //not teste
@@ -245,7 +245,7 @@ PyObject * Python::PyIrr_addSphereNode(PyObject * self,PyObject * args){
     float radius;
 	PyArg_ParseTuple(args,"sllll",&radius,&x,&y,&z);
     scene::ISceneNode * node_id = smgr->addSphereSceneNode(20); //radius  polycount , parent , id , position,rotation, scale
-//IVideoDriver::createImageFromFile().  //textures and heightmap
+    //IVideoDriver::createImageFromFile().  //textures and heightmap
 
 //return Py_BuildValue("");
 return Py_BuildValue("l",node_id);
@@ -253,8 +253,8 @@ return Py_BuildValue("l",node_id);
 
 
 PyObject * Python::PyIrr_addAnimatedMesh(PyObject * self,PyObject * args){
-IAnimatedMesh *mesh ;
-s32 meshPath;
+    IAnimatedMesh *mesh ;
+    s32 meshPath;
 	PyArg_ParseTuple(args,"s",&meshPath);
     mesh->getMesh(meshPath);
 

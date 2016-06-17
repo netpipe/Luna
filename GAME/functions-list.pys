@@ -4,7 +4,9 @@
 
 # shall start with a mini golf and racing game script possibly flight sim and skidoo racer.
 
-#todo python keyin system
+#todo object builder build / texture - load objects/functions into a manager. watch / tv / common scripted objects / with cull checking  for placement in levels.
+#//! typedef btHashKey<int> btHashInt;  #put here temporarly was from recent bullet upgrade
+
 
 import irr
 camera = irr.addCamera(2,1,0,1) # 1 regular , 2 FPS , 3 other types, 4 rpg, << todo types  / active / vector
@@ -13,7 +15,7 @@ camera = irr.addCamera(2,1,0,1) # 1 regular , 2 FPS , 3 other types, 4 rpg, << t
 # irr.omaredemo(1)               #billboard clouds
 
 
-irr.opensteer(1)
+#irr.opensteer(1)
 #irr.occlusionTest(1)            #broken #impliment nodemanager here for python occlusion someway to turn on and off
 #irr.image2d(1)                   #crashes without player being added first ? goes to background try to bring it as an overlay
 #irr.addHUD(1)

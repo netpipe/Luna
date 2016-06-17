@@ -23,12 +23,47 @@ PyMethodDef irr_Physics[] = {
 
 PyObject * Python::PyIrr_recast(PyObject * self,PyObject * args){
 
+//io::IFileSystem* fs = device->getFileSystem();
+
+	//fs->addFileArchive(IRRLICHT_DIR);
+	//#define IRRLICHT_DIR "media"
+	#define MODEL_FILE "./media/dungeon.obj"
+	node = smgr->addOctreeSceneNode(smgr->getMesh(MODEL_FILE));
+	smgr->getMeshManipulator()->setVertexColorAlpha(smgr->getMesh(MODEL_FILE), 2);
+
+	//node->getMaterial(0).MaterialType = video::EMT_TRANSPARENT_ALPHA_CHANNEL;
+	//node->getMaterial(0).MaterialType = video::EMT_TRANSPARENT_ALPHA_CHANNEL_REF;
+	node->getMaterial(0).MaterialType = video::EMT_TRANSPARENT_ADD_COLOR;
+	node->getMaterial(0).Lighting = false;
+	node->setDebugDataVisible(scene::EDS_BBOX);
+
+	scene::IMeshBuffer* buffer = smgr->getMesh(MODEL_FILE)->getMesh(0)->getMeshBuffer(0);
+	if (buffer)
+	{
+		recast = new RecastUtil();
+		if (recast->handleBuild(buffer))
+		{
+			scene::SMesh* smesh = new scene::SMesh();
+			if (!recast->setupIrrSMeshFromRecastDetailMesh(smesh))
+			{
+				printf("recast->setupIrrSMeshFromRecastDetailMesh(smesh): FAILED!\n");
+			}
+			else
+			{
+				naviNode = smgr->addOctTreeSceneNode(smesh);
+				naviNode->setDebugDataVisible(scene::EDS_FULL);
+			}
+			smesh->drop();
+		}
+	}
 }
+
 
 PyObject * Python::PyIrr_wii(PyObject * self,PyObject * args){
     //Python::Wii_init();
 
 }
+
 
 PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){
 
@@ -42,10 +77,10 @@ PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){
     OpenSteer::OpenSteerDemo::initialize();
 //    OpenSteer::OpenSteerDemo::selectNextPlugIn();
 //   OpenSteer::OpenSteerDemo::selectNextPlugIn();
-       OpenSteer::OpenSteerDemo::selectNextPlugIn();
-       }else {// or restart
+//       OpenSteer::OpenSteerDemo::selectNextPlugIn();
+//       }else {// or restart
 //    OpenSteer::OpenSteerDemo::selectNextPlugIn();
-    }
+//    }
     // were going to need more to this function maybe some internal calls for things like individual paths
 
         Py_RETURN_NONE;
@@ -199,41 +234,6 @@ return Py_BuildValue("0");
 
 
 PyObject * Python::PyIrr_Bullet(PyObject * self,PyObject * args){
-//start physics #used for recast at the moment haha
-
-//io::IFileSystem* fs = device->getFileSystem();
-
-	//fs->addFileArchive(IRRLICHT_DIR);
-	//#define IRRLICHT_DIR "media"
-	#define MODEL_FILE "./media/dungeon.obj"
-	node = smgr->addOctreeSceneNode(smgr->getMesh(MODEL_FILE));
-	smgr->getMeshManipulator()->setVertexColorAlpha(smgr->getMesh(MODEL_FILE), 2);
-
-	//node->getMaterial(0).MaterialType = video::EMT_TRANSPARENT_ALPHA_CHANNEL;
-	//node->getMaterial(0).MaterialType = video::EMT_TRANSPARENT_ALPHA_CHANNEL_REF;
-	node->getMaterial(0).MaterialType = video::EMT_TRANSPARENT_ADD_COLOR;
-	node->getMaterial(0).Lighting = false;
-	node->setDebugDataVisible(scene::EDS_BBOX);
-
-	scene::IMeshBuffer* buffer = smgr->getMesh(MODEL_FILE)->getMesh(0)->getMeshBuffer(0);
-	if (buffer)
-	{
-		recast = new RecastUtil();
-		if (recast->handleBuild(buffer))
-		{
-			scene::SMesh* smesh = new scene::SMesh();
-			if (!recast->setupIrrSMeshFromRecastDetailMesh(smesh))
-			{
-				printf("recast->setupIrrSMeshFromRecastDetailMesh(smesh): FAILED!\n");
-			}
-			else
-			{
-				naviNode = smgr->addOctTreeSceneNode(smesh);
-				naviNode->setDebugDataVisible(scene::EDS_FULL);
-			}
-			smesh->drop();
-		}
-	}
 return Py_BuildValue("");
 }
 

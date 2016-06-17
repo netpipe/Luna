@@ -37,6 +37,7 @@
     #define Image2D // Just testing out
     #define CHOPPER
     #define  OPENSTEER
+    #define VIDEO
 
 // Include the headers for post processing
 #include "../Scene/PostProcessing/CRendererPostProc.h"
@@ -66,7 +67,7 @@
 
 #include "../TerrainFactory/realCloud/CloudSceneNode.h"
 
-            #define VIDEO
+
 #ifdef VIDEO
     #include "../GUI/Video/CVideoMaster.h"
     //#include "GUI/Video/videoPlayer.h"
@@ -194,6 +195,8 @@ reminder to actually check the names match with unstable ide's and whatnot
     //Physics
     {"setVelocity",Python::PyIrr_setVelocity,METH_VARARGS,"setVelocity"},
     {"VehicleParams",Python::PyIrr_VehicleParams,METH_VARARGS,"VehicleParams"},
+    {"motionTrail",Python::PyIrr_motionTrail,METH_VARARGS,"motionTrail"},
+
 
     //gui
 

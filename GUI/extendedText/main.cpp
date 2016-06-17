@@ -13,7 +13,7 @@
 
 using namespace irr;
 
-int main()
+int mainE()
 {
     IrrlichtDevice* device = createDevice( video::EDT_OPENGL , core::dimension2d<s32>(640,480), 32);
 

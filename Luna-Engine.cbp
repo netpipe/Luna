@@ -35,9 +35,6 @@
 					<Add directory="/usr/include/AL" />
 				</Compiler>
 				<Linker>
-					<Add library="GL" />
-					<Add library="cAudio" />
-					<Add library="openal" />
 					<Add library="Xxf86vm" />
 					<Add library="bz2" />
 					<Add library="avutil" />
@@ -103,9 +100,6 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add library="GL" />
-					<Add library="cAudio" />
-					<Add library="openal" />
 					<Add library="avutil" />
 					<Add library="theora" />
 					<Add library="theoraplayer" />
@@ -261,20 +255,18 @@
 					<Add directory="../libs/ffmpeg/libswscale" />
 					<Add directory="../libs/ffmpeg/libavutil" />
 					<Add directory="../libs/ffmpeg/libavdevice" />
-					<Add directory="/home/Dev/libs/game/Irrlicht-SVN/source/Irrlicht" />
-					<Add directory="/home/Dev/libs/game/Irrlicht-SVN/include" />
+					<Add directory="../Irrlicht/source/Irrlicht" />
+					<Add directory="../libs/Irrlicht/include" />
 					<Add directory="../libs/net/irrNetLite21" />
 					<Add directory="../libs/net/enet/include" />
-					<Add directory="/home/Dev/libs/physics/bullet-2.75/src" />
+					<Add directory="../libs/bullet3/src" />
 					<Add directory="../libs/freetype-2.3.9/include" />
 					<Add directory="../libs/net/enet-1.2.1" />
 					<Add directory="FileSystem/readblend" />
-					<Add directory="../libs/cAudio23/cAudio/include" />
 					<Add directory="../libs/libtheora-1.1.1/include/theora" />
-					<Add directory="/home/Dev/libs/Media/libtheoraplayer/include/" />
+					<Add directory="../libs/libtheoraplayer/include" />
 					<Add directory="/usr/include/AL" />
-					<Add directory="/home/Dev/libs/Media/cAudio/cAudio/cAudio/include" />
-					<Add directory="/usr/include/python2.7" />
+					<Add directory="/usr/include/python" />
 					<Add directory="./entities/AI/recast/RecastDemo/Include" />
 					<Add directory="./entities/AI/recast/DebugUtils/Include" />
 					<Add directory="./entities/AI/recast/Recast/Include" />
@@ -282,7 +274,7 @@
 					<Add directory="./entities/AI/recast/DetourCrowd/Include" />
 					<Add directory="./entities/AI/recast/DetourTileCache/Include" />
 					<Add directory="../libs/libIrrOpenSteer_10-02-15/include" />
-					<Add directory="/home/Dev/agnostic-code/Stuff2/Demos/WIPs/Model/assimp-git/include" />
+					<Add directory="../libs/assimp-git/include" />
 				</Compiler>
 				<Linker>
 					<Add library="GL" />
@@ -300,16 +292,15 @@
 					<Add library="theoraplayer" />
 					<Add library="assimp" />
 					<Add library="bluetooth" />
-					<Add directory="/home/Dev/libs/scripting/Python-2.6.2/Lib" />
 					<Add directory="../libs/freetype-2.3.9/objs/.libs" />
 					<Add directory="../libs/net/enet-1.2.1" />
-					<Add directory="/home/Dev/libs/physics/bullet-2.75/src/BulletDynamics" />
-					<Add directory="/home/Dev/libs/physics/bullet-2.75/src/BulletSoftBody" />
-					<Add directory="/home/Dev/libs/physics/bullet-2.75/src/BulletCollision" />
-					<Add directory="/home/Dev/libs/physics/bullet-2.75/src/LinearMath" />
-					<Add directory="/home/Dev/libs/game/Irrlicht-SVN/lib/Linux" />
+					<Add directory="../libs/bullet3/src/BulletDynamics" />
+					<Add directory="../libs/bullet3/src/BulletSoftBody" />
+					<Add directory="../libs/bullet3/src/BulletCollision" />
+					<Add directory="../libs/bullet3/src/LinearMath" />
+					<Add directory="../libs/Irrlicht/lib/Linux" />
 					<Add directory="../libs/Compiled/Linux" />
-					<Add directory="/home/Dev/libs/Media/libtheoraplayer/bin/.libs" />
+					<Add directory="../libs/theoraplayer/bin/Linux" />
 					<Add directory="../libs/net/irrNetLite21" />
 					<Add directory="../libs/RecastNavigation/DebugUtils/" />
 					<Add directory="../libs/RecastNavigation/Recast" />
@@ -318,7 +309,10 @@
 					<Add directory="../libs/RecastNavigation/Detour" />
 					<Add directory="../libs/libIrrOpenSteer_10-02-15/lib" />
 					<Add directory="./entities/AI/recast/DebugUtils/Include/" />
-					<Add directory="/home/Dev/agnostic-code/Stuff2/Demos/WIPs/Model/assimp-git/lib" />
+					<Add directory="../libs/assimp-git/lib" />
+					<Add directory="../libs/zlib-1.2.3" />
+					<Add directory="../libs/cAudio23/bin/gcc" />
+					<Add directory="../libs/libtheoraplayer/src/.libs" />
 				</Linker>
 			</Target>
 			<Target title="mineREL">
@@ -339,7 +333,7 @@
 					<Add directory="../libs/freetype-2.3.9/include" />
 					<Add directory="../libs/net/enet-1.2.1" />
 					<Add directory="FileSystem/readblend" />
-					<Add directory="../libs/cAudio23/include" />
+					<Add directory="../../../../Dev/libs/Media/cAudio/cAudio-SVN/include" />
 					<Add directory="/usr/include/AL" />
 					<Add directory="/usr/include/python2.7" />
 					<Add directory="../libs/RecastNavigation/RecastDemo/Include" />
@@ -373,7 +367,6 @@
 					<Add library="DetourTileCache" />
 					<Add library="IrrOpenSteer" />
 					<Add library="bz2" />
-					<Add directory="/home/Dev/libs/scripting/Python-2.6.2/Lib" />
 					<Add directory="../libs/freetype-2.3.9/objs/.libs" />
 					<Add directory="../libs/net/enet-1.2.1" />
 					<Add directory="/home/Dev/libs/physics/bullet-2.75/src/BulletDynamics" />
@@ -390,6 +383,7 @@
 					<Add directory="../libs/RecastNavigation/DetourTileCache" />
 					<Add directory="../libs/RecastNavigation/Detour" />
 					<Add directory="../libs/libIrrOpenSteer_10-02-15/lib" />
+					<Add directory="../libs/cAudio23/bin/gcc" />
 				</Linker>
 			</Target>
 			<Target title="1.7.3 debug">
@@ -494,10 +488,28 @@
 			<Add directory="../libs/ffmpeg/libswscale" />
 			<Add directory="../libs/ffmpeg/libavutil" />
 			<Add directory="../libs/ffmpeg/libavdevice" />
-			<Add directory="../libs/libtheora-1.1.1/include/theora" />
-			<Add directory="../../libs/Media/libtheoraplayer-svn/include" />
-			<Add directory="../libs/cAudio23/cAudio/include" />
 			<Add directory="../libs/cAudio23/include" />
+			<Add directory="../libs/cAudio23/cAudio/include" />
+			<Add directory="../Irrlicht/source/Irrlicht" />
+			<Add directory="../libs/Irrlicht/include" />
+			<Add directory="../libs/net/irrNetLite21" />
+			<Add directory="../libs/net/enet/include" />
+			<Add directory="../libs/bullet3/src" />
+			<Add directory="../libs/freetype-2.3.9/include" />
+			<Add directory="../libs/net/enet-1.2.1" />
+			<Add directory="FileSystem/readblend" />
+			<Add directory="../libs/libtheora-1.1.1/include/theora" />
+			<Add directory="../libs/libtheoraplayer/include" />
+			<Add directory="/usr/include/AL" />
+			<Add directory="/usr/include/python" />
+			<Add directory="./entities/AI/recast/RecastDemo/Include" />
+			<Add directory="./entities/AI/recast/DebugUtils/Include" />
+			<Add directory="./entities/AI/recast/Recast/Include" />
+			<Add directory="./entities/AI/recast/Detour/Include" />
+			<Add directory="./entities/AI/recast/DetourCrowd/Include" />
+			<Add directory="./entities/AI/recast/DetourTileCache/Include" />
+			<Add directory="../libs/libIrrOpenSteer_10-02-15/include" />
+			<Add directory="../libs/assimp-git/include" />
 		</Compiler>
 		<Linker>
 			<Add library="Irrlicht" />
@@ -518,6 +530,7 @@
 			<Add library="openal" />
 			<Add library="vorbis" />
 			<Add library="vorbisfile" />
+			<Add library="GL" />
 			<Add directory="../libs/angelscript" />
 			<Add directory="../libs/ffmpeg/libavcodec" />
 			<Add directory="../libs/ffmpeg/libavformat" />
@@ -525,8 +538,28 @@
 			<Add directory="../libs/ffmpeg/libavutil" />
 			<Add directory="../libs/ffmpeg/libavdevice" />
 			<Add directory="../libs/libtheora-1.1.1/lib" />
-			<Add directory="../../libs/Media/libtheoraplayer-svn/src/.libs" />
-			<Add directory="../libs/cAudio23/cAudio" />
+			<Add directory="../libs/cAudio23/cAudio/bin/gcc" />
+			<Add directory="../libs/freetype-2.3.9/objs/.libs" />
+			<Add directory="../libs/net/enet-1.2.1" />
+			<Add directory="../libs/bullet3/src/BulletDynamics" />
+			<Add directory="../libs/bullet3/src/BulletSoftBody" />
+			<Add directory="../libs/bullet3/src/BulletCollision" />
+			<Add directory="../libs/bullet3/src/LinearMath" />
+			<Add directory="../libs/Irrlicht/lib/Linux" />
+			<Add directory="../libs/Compiled/Linux" />
+			<Add directory="../libs/theoraplayer/bin/Linux" />
+			<Add directory="../libs/net/irrNetLite21" />
+			<Add directory="../libs/RecastNavigation/DebugUtils/" />
+			<Add directory="../libs/RecastNavigation/Recast" />
+			<Add directory="../libs/RecastNavigation/DetourCrowd" />
+			<Add directory="../libs/RecastNavigation/DetourTileCache" />
+			<Add directory="../libs/RecastNavigation/Detour" />
+			<Add directory="../libs/libIrrOpenSteer_10-02-15/lib" />
+			<Add directory="./entities/AI/recast/DebugUtils/Include/" />
+			<Add directory="../libs/assimp-git/lib" />
+			<Add directory="../libs/zlib-1.2.3" />
+			<Add directory="../libs/cAudio23/bin/gcc" />
+			<Add directory="../libs/libtheoraplayer/src/.libs" />
 		</Linker>
 		<Unit filename="DevLoop.h" />
 		<Unit filename="Equipment/Rifle.cpp" />
