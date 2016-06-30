@@ -1,29 +1,69 @@
 #ifndef PYCAMERA_INCLUDED
 #define PYCAMERA_INCLUDED
+
 #include <irrlicht.h>
-
-
-PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args)
-{
+// possibly rename to cameraManager
+PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 	s32 x,y,z,t;
+//	char * t;
 	PyArg_ParseTuple(args,"llll",&t,&x,&y,&z);
 	    ICameraSceneNode *cam;
 
-    if (t==1){
+
+
+    enum eaction{normal,FPS,bind,setViewPort,CameraManager};
+//std::map<std::string, eaction> nodeMap;
+//nodeMap[t];
+//std::map<std::string, X> xmap = boost::map_list_of("A", A)("B", B)("C",C);
+    switch(t){
+    case 1:
         cam = smgr->addCameraSceneNode();
-    } else if (t==2){
+        break;
+
+    case 2:
         cam = smgr->addCameraSceneNodeFPS();
         //  cam->setPosition(vector3df(50,50,50));
-    }else if (t==3){
-            cam = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
-    }
+        break;
+
+    case 3:
+		cam = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
+		break;
+
+    case CameraManager:
+        //if active camera not = new camera push to camera manager
+    // some kind of vector stack for camera management
+//     ICameraSceneNode *gcamera[3] = {0,0,0};
+        break;
+
+//    case bind:
+//          camera[2]->bindTargetAndRotation(true);
+
+///eaction(setViewPort):
+//    case setViewPort:
+//        driver->setViewPort(rect);
+//        break;
+}
+
+//    if (t==1){
+//        cam = smgr->addCameraSceneNode();
+//    } else if (t==2){
+//        cam = smgr->addCameraSceneNodeFPS();
+//        //  cam->setPosition(vector3df(50,50,50));
+//    }else if (t==3){
+//            cam = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
+//    }else if (t==4){
+//    // some kind of vector stack for camera management
+////     ICameraSceneNode *gcamera[3] = {0,0,0};
+//    }case eaction(t)  {
+////          camera[2]->bindTargetAndRotation(true);
+//    }else if (t==6){
+//        driver->setViewPort(rect);
+//    }
 
  return Py_BuildValue("l",cam);
 }
 
-
-PyObject * Python::PyIrr_SetCamera(PyObject * self,PyObject * args) //active camera // parameters for fov possibly shaders aswell
-{
+PyObject * Python::PyIrr_SetCamera(PyObject * self,PyObject * args){ //active camera // parameters for fov possibly shaders aswell
 	s32 x,y,z,t;
 		    ICameraSceneNode *cam;
 	PyArg_ParseTuple(args,"zllll",&cam,&x,&y,&z);
@@ -33,9 +73,8 @@ PyObject * Python::PyIrr_SetCamera(PyObject * self,PyObject * args) //active cam
 return Py_BuildValue("z",cam);
 }
 
+PyObject * Python::PyIrr_GetCamera(PyObject * self,PyObject * args){
 
-PyObject * Python::PyIrr_GetCamera(PyObject * self,PyObject * args)
-{
 // get  camera coords ;
 	s32 x,y,z,t;
 	vector3df v;

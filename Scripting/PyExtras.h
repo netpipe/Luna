@@ -377,28 +377,29 @@ Py_RETURN_NONE;
 
 
 
-//PyObject * Python::PyIrr_motionTrail(PyObject * self,PyObject * args) {
-//
-//        s32 node_id;
-//    int x,y,z;
-//    PyArg_ParseTuple(args,"llll",&node_id,&x,&y,&z);
-//    //    if (btrailNode){
-//       //     rt->
-//  //  }
-////    btrailNode=1
-//	video::ITexture* tex = driver->getTexture( "media/portal7.bmp" );
-//    rt = new RibbonTrailSceneNode( device, camera, -1 );
-////	rt->setPosition( core::vector3df( 0, -10, 300 ) );
-//    rt->setMaterialTexture( 0, tex );
-//   rt->setPoint1( core::vector3df(  50, 0, 0 ) );
-//    rt->setPoint2( core::vector3df( -50, 0, 0 ) );
-//    rt->setMaxDistance( 10 );
-//	rt->setMaxQuads( 5000 );
-//    rt->setStartingAlpha( 100 );
-//	rt->setShowDebug( true );
-//	rt->setEnabled( true );
-//return Py_BuildValue("0");
-//}
+PyObject * Python::PyIrr_motionTrail(PyObject * self,PyObject * args) {
+
+        s32 node_id;
+    int x,y,z;
+    PyArg_ParseTuple(args,"llll",&node_id,&x,&y,&z);
+    //    if (btrailNode){
+       //     rt->
+  //  }
+//    btrailNode=1
+	video::ITexture* tex = driver->getTexture( "media/portal7.bmp" );
+    rt = new RibbonTrailSceneNode( device, camera, -1 );
+//	rt->setPosition( core::vector3df( 0, -10, 300 ) );
+    rt->setMaterialTexture( 0, tex );
+   rt->setPoint1( core::vector3df(  50, 0, 0 ) );
+    rt->setPoint2( core::vector3df( -50, 0, 0 ) );
+    rt->setMaxDistance( 10 );
+	rt->setMaxQuads( 5000 );
+    rt->setStartingAlpha( 100 );
+	rt->setShowDebug( true );
+	rt->setEnabled( true );
+
+return Py_BuildValue("0");
+}
 
 
 PyObject * Python::PyIrr_realCloud(PyObject * self,PyObject * args){
@@ -508,10 +509,12 @@ switch(param){
 
 
 PyObject * Python::PyIrr_skyDome(PyObject * self,PyObject * args){
-        int param,state,Vehicle,ammount;
-    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+     char path;
+     std::string p;
+    PyArg_ParseTuple(args,"s",&path);
+    p = path;
 
-        smgr->addSkyDomeSceneNode(driver->getTexture( "data/textures/skydomes/skydome_1_2048x512.jpg" ), 60,60,1,2);
+        smgr->addSkyDomeSceneNode(driver->getTexture( p.c_str() ), 60,60,1,2);
 
 return Py_BuildValue("");
 }

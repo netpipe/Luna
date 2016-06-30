@@ -395,6 +395,7 @@
 				<Option use_console_runner="0" />
 				<Option projectResourceIncludeDirsRelation="1" />
 				<Compiler>
+					<Add option="-fpermissive" />
 					<Add option="-Dirrlicht17" />
 					<Add directory="../libs/ffmpeg/libavcodec" />
 					<Add directory="../libs/ffmpeg/libavformat" />
@@ -457,7 +458,6 @@
 					<Add directory="/home/Dev/libs/physics/bullet-2.75/src/BulletSoftBody" />
 					<Add directory="/home/Dev/libs/physics/bullet-2.75/src/BulletCollision" />
 					<Add directory="/home/Dev/libs/physics/bullet-2.75/src/LinearMath" />
-					<Add directory="/home/Dev/libs/game/Irrlicht-SVN/lib/Linux" />
 					<Add directory="../libs/Compiled/Linux" />
 					<Add directory="/home/Dev/libs/Media/libtheoraplayer/bin/" />
 					<Add directory="/home/Dev/libs/Media/cAudio/cAudio/cAudio" />
@@ -491,7 +491,6 @@
 			<Add directory="../libs/cAudio23/include" />
 			<Add directory="../libs/cAudio23/cAudio/include" />
 			<Add directory="../Irrlicht/source/Irrlicht" />
-			<Add directory="../libs/Irrlicht/include" />
 			<Add directory="../libs/net/irrNetLite21" />
 			<Add directory="../libs/net/enet/include" />
 			<Add directory="../libs/bullet3/src" />
@@ -545,7 +544,6 @@
 			<Add directory="../libs/bullet3/src/BulletSoftBody" />
 			<Add directory="../libs/bullet3/src/BulletCollision" />
 			<Add directory="../libs/bullet3/src/LinearMath" />
-			<Add directory="../libs/Irrlicht/lib/Linux" />
 			<Add directory="../libs/Compiled/Linux" />
 			<Add directory="../libs/theoraplayer/bin/Linux" />
 			<Add directory="../libs/net/irrNetLite21" />
@@ -578,6 +576,8 @@
 		<Unit filename="GUI/CodeEditor/CGUIEditBoxIRB.h" />
 		<Unit filename="GUI/Font/CGUITTFont.cpp" />
 		<Unit filename="GUI/Font/CGUITTFont.h" />
+		<Unit filename="GUI/Math/SCalcExpr.cpp" />
+		<Unit filename="GUI/Math/SCalcExpr.h" />
 		<Unit filename="GUI/Video/CAudioInterface_OpenAL.cpp" />
 		<Unit filename="GUI/Video/CAudioInterface_OpenAL.h" />
 		<Unit filename="GUI/Video/CVideoMaster.cpp" />

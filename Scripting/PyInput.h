@@ -1,18 +1,15 @@
 #ifndef PYMAIN_H_INCLUDED
 #define PYMAIN_H_INCLUDED
-
-
 //device->sleep(5,0); python delay for mainloop possibly use timers
 
-
 PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
-    int param,state,Vehicle,ammount;
+    int state,Vehicle,ammount;
+    stringc param;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
     VehicleParam(Vehicle,param,ammount,state);
 
   return Py_BuildValue("");
 }
-
 
 
 bool Python::CheckKeyState(int key){
@@ -27,8 +24,9 @@ return (keystate);
 //return 1;
 }
 
-int Python::VehicleParam(int vehicle,int param,int ammount,int state)   // parameter editor// possibly a define value for get and set
-{
+
+int Python::VehicleParam(int vehicle,stringc param,int ammount,int state){   // parameter editor// possibly a define value for get and set
+
 //steering
 //acceleration
 //etc...
@@ -37,10 +35,21 @@ int Python::VehicleParam(int vehicle,int param,int ammount,int state)   // param
 int returnvar;
 printf("%i",param);
 
+
+
 enum eparam{reset,accelerate,reverse,ebrake,brake,lsteer,rsteer};
 
+//std::map<std::string, eparam> nodeMap;
+//int Iparam = nodeMap[param];
+//nodeMap["Cone"] = NODES::Cone;
+//nodeMap["Cone"] = ;
+
+//prob need one map for state too
+
+int Iparam=0;
+
 if ( state==0 ){  // set var
-       switch (param){
+       switch (Iparam){
 
             case eparam(reset):
                 m_cVehicle->resetVehicle();
@@ -68,13 +77,13 @@ if ( state==0 ){  // set var
             case lsteer:
                 m_cVehicle->steer_left();
                 break;
+
             case rsteer:
          //       printf("steer right");
                 m_cVehicle->steer_right();
                 break;
+			case 7:
 
-
-case 7:
             case 8:
                 break;
             case 9:
@@ -95,22 +104,19 @@ case 7:
 
     } else if (state==1){   //get vars
 
-           switch (param){
-        case 0:
-        returnvar = m_cVehicle->getState();
-        break;
-        //case 1:
-           }
+//	switch (param){
+//        case 0:
+//        returnvar = m_cVehicle->getState();
+//        break;
+//        //case 1:
+//           }
 
-
-    } else if (state == 2){  //testing
-
-           switch (param){
-
-
-
-
-           }
+//
+//    } else if (state == 2){  //testing
+//
+//           switch (param){
+//
+//           }
 
 }
 
@@ -140,6 +146,7 @@ case 7:
 //                    {m_cVehicle->steer_reset(); }
 return returnvar;
 }
+
 
 PyObject * Python::PyIrr_getKey(PyObject * self,PyObject * args){
 //irr::EKEY_CODE StringToEKey_Code( std::string tempString )
@@ -187,10 +194,10 @@ PyObject * Python::PyIrr_getKey(PyObject * self,PyObject * args){
 
 
     bool keystate ;
- //   printf ("%s",tempString2);
-if (tempString2 > ""){   //not sure why but it seemed to speed things up a bit
+	//   printf ("%s",tempString2);
+	if (tempString2 > ""){   //not sure why but it seemed to speed things up a bit
 
-keyValue=-1;
+	keyValue=-1;
     if          ( tempString == "KEY_LBUTTON" )    {  keyValue = 0x01; }
 //    else if( tempString == "KEY_RBUTTON" )    {        keyValue = 0x02;}
 //    else if( tempString == "KEY_CANCEL" )    {        keyValue = 0x03;}

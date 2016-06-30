@@ -432,9 +432,7 @@
             scene::ISceneNode* outNode;
 #endif
             bool ok = cmgr->getCollisionPoint
-            (
-                    ray, selector, intersection, hitTriangle, outNode
-            );
+            (ray, selector, intersection, hitTriangle, outNode);
 
             if (!ok) // nothing was hit
                     return;

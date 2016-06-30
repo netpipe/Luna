@@ -338,18 +338,21 @@ Vehicle::~Vehicle(){
     delete m_vehicle;
 }
 
+//void Vehicle::initPhysics(stringc carMesh, stringc texture ) {
 
-void Vehicle::initPhysics(stringc carMesh, stringc texture ) {  tr.setOrigin(m_vehiclePosition);  //pythonize model loading
+void Vehicle::initPhysics( ) {
+    tr.setOrigin(m_vehiclePosition);  //pythonize model loading
     IAnimatedMesh *l_node;
     IAnimatedMeshSceneNode *l_node_chassi;
  // const stringc carMesh = "data/models/vehicles/CarBlends/DOHcaddy-car.x";
 //    const stringc carMesh = "data/models/vehicles/CarBlends/oldChevy-Truck.x";
-  //  const stringc carMesh = "data/models/vehicles/oldChevy-Truck.3ds";
+    const stringc carMesh = "data/models/vehicles/oldChevy-Truck.3ds";
 
    // const stringc carMesh = "data/models/vehicles/body.irrmesh";
 // //                 carMesh = "data/models/vehicles/C.obj";
 //
-    l_node = m_irrDevice->getSceneManager()->getMesh(carMesh.c_str());
+    const stringw texture = "data/models/vehicles/oldChevy.bmp";
+    l_node = m_irrDevice->getSceneManager()->getMesh(carMesh);
 
 #ifdef upsidedown
 //    l_node->rotation(btQuaternion( btVector3(0,1,0), PI ));
@@ -364,26 +367,24 @@ void Vehicle::initPhysics(stringc carMesh, stringc texture ) {  tr.setOrigin(m_v
     l_node_chassi = m_irrDevice->getSceneManager()->addAnimatedMeshSceneNode(l_node);
 
     //old code for loading car
-  //  IMeshBuffer *meshBuffer = l_node->getMeshBuffer(0);
-  //  btTriangleMesh *collisionMesh = new btTriangleMesh();
-  //  m_cPhysics->convertIrrMeshBufferBtTriangleMesh(meshBuffer, collisionMesh, vector3df(0,0,0));
-  //  btBvhTriangleMeshShape *chassisShape = new btBvhTriangleMeshShape(collisionMesh, true);
+    //  IMeshBuffer *meshBuffer = l_node->getMeshBuffer(0);
+    //  btTriangleMesh *collisionMesh = new btTriangleMesh();
+    //  m_cPhysics->convertIrrMeshBufferBtTriangleMesh(meshBuffer, collisionMesh, vector3df(0,0,0));
+    //  btBvhTriangleMeshShape *chassisShape = new btBvhTriangleMeshShape(collisionMesh, true);
 
     l_node_chassi->setScale(vector3df(btModelscale[0], btModelscale[1], btModelscale[2]));
- //   l_node_chassi->setPosition(vector3df(0,100,0));
-     l_node_chassi->setRotation(vector3df(0,1,0));
+    //   l_node_chassi->setPosition(vector3df(0,100,0));
+    l_node_chassi->setRotation(vector3df(0,1,0));
     l_node_chassi->setMaterialTexture(0,
-    m_irrDevice->getVideoDriver()->getTexture(texture));
+    m_irrDevice->getVideoDriver()->getTexture("data/models/vehicles/oldChevy.bmp"));
     m_cScene->setGenericMaterial(l_node_chassi, 0);
-  //        l_node_chassi->getMaterial(0).ZWriteEnable=1;
+  //    l_node_chassi->getMaterial(0).ZWriteEnable=1;
   //    l_node_chassi->getMaterial(0).BackfaceCulling = true;
 
     if (!l_node_chassi) printf("Chassi node was not created.\n");
 
     l_node_chassi->addShadowVolumeSceneNode(l_node,false, 100.f);
-
     btCollisionShape* chassisShape = new btBoxShape(btCarScale); //! << BULLET BODY SCALE
-
     btCompoundShape* compound = new btCompoundShape();
     //tr.btTransform(localTrans);
     //
@@ -397,7 +398,7 @@ void Vehicle::initPhysics(stringc carMesh, stringc texture ) {  tr.setOrigin(m_v
       //  tr.setOrigin(btVector3(pos[0]+20,pos[1],pos[1]));
 
 
- compound->addChildShape(localTrans,chassisShape);
+    compound->addChildShape(localTrans,chassisShape);
 // localTrans.setOrigin(btVector3(pos.X,pos.Y,pos.Z-100));
     m_carChassis = m_cPhysics->localCreateRigidBody(vehicleWeight,tr,compound, l_node_chassi);//chassisShape);
   // m_carChassis->setCenterOfMassTransform(localTrans);
@@ -475,8 +476,6 @@ else if(driveType==5){ // Bikes
         //wheel.m_wheelsRadius
         //wheel.m_wheelsSuspensionForce = -1000;
     }
-
-
 
     printf("Adding wheels.\n");
     IAnimatedMeshSceneNode *tempNode;

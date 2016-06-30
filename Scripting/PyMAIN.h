@@ -1,8 +1,8 @@
 #ifndef PYSCENE_H_INCLUDED
 #define PYSCENE_H_INCLUDED
 /// we will also want a main loop python event manager that runs every loop something like pyKeyCheck.
-///this file was called from PyFunctions.h
-/// actual function defines list and variables pertaining to main loop
+/// IF getting errors about missing python stuff make sure its in 3 places the function too
+
 namespace Python {
     void ExecuteScript(irr::core::string<char> scriptname);
     IrrlichtDevice * device;
@@ -26,14 +26,14 @@ namespace Python {
     ICameraSceneNode* camera;  //maybe put in vector for a cameraManager or do it in python
 
 
-        int test();
+    int test();
     void preEnd();  //declared in PyFunctions2 for some reason... ?
     void CheckKeyStates();
     //Player *m_cPlayer;
     void render();
 
 
-    int VehicleParam(int vehicle,int param,int ammount,int state);
+    int VehicleParam(int vehicle,stringc param,int ammount,int state);
     bool CheckKeyState(int key);
 
 
@@ -120,12 +120,12 @@ namespace Python {
 
     //Scene
     PyObject * PyIrr_addSphereNode(PyObject * self,PyObject * args);
-        PyObject * PyIrr_loadModel(PyObject * self,PyObject * args);
+    PyObject * PyIrr_loadModel(PyObject * self,PyObject * args);
 
 
     //Extras
     PyObject * PyIrr_realCloud(PyObject * self,PyObject * args);
-   // PyObject * PyIrr_Terrain(PyObject * self,PyObject * args);
+    PyObject * PyIrr_calcMath(PyObject * self,PyObject * args);
     PyObject * PyIrr_bitCloud(PyObject * self,PyObject * args);
     PyObject * PyIrr_WaterPlane(PyObject * self,PyObject * args);
 
@@ -151,8 +151,8 @@ namespace Python {
     PyObject * PyIrr_SPARKA(PyObject * self,PyObject * args);
     //input
     PyObject * PyIrr_getKey(PyObject * self,PyObject * args);
-    PyObject *  PyIrr_wii(PyObject * self,PyObject * args);
-       PyObject *  PyIrr_recast(PyObject * self,PyObject * args);
+    PyObject * PyIrr_wii(PyObject * self,PyObject * args);
+    PyObject * PyIrr_recast(PyObject * self,PyObject * args);
 
 
 	// Model
@@ -161,7 +161,10 @@ namespace Python {
     PyObject * PyIrr_addMesh(PyObject * self,PyObject * args);
     PyObject * PyIrr_pauseGame(PyObject * self,PyObject * args);
     PyObject * PyIrr_exit(PyObject * self,PyObject * args);
-        PyObject * PyIrr_using(PyObject * self,PyObject * args);
+    PyObject * PyIrr_using(PyObject * self,PyObject * args);
+    PyObject * PyIrr_motionTrail(PyObject * self,PyObject * args);
+    PyObject * PyIrr_Delay(PyObject * self,PyObject * args);
+
 
     PyMODINIT_FUNC init_irr(void);
 
@@ -261,9 +264,8 @@ void Python::preEnd(){                                                 //used to
     #endif
 }
 
+void Python::render() {//active camera
 
-void Python::render() //active camera
-{
         deltaTime = device->getTimer()->getRealTime() - timeStamp;
         timeStamp = device->getTimer()->getRealTime();
 

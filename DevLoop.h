@@ -15,14 +15,14 @@ if ( !device->run() ) return 0;
         //https://docs.python.org/2/c-api/init.html
         ///todo check for empty or missing files or impliment the using command
         Python::ExecuteScript("./functions-list.pys"); // this is for testing
-         //Python::PyIrr_LoadVehicle(m_cVehicle);
+		//Python::PyIrr_LoadVehicle(m_cVehicle);
         //Python::PyIrr_addTerrain("1");
 #endif
 
     //camera = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
 	//smgr->addCameraSceneNodeFPS();
 #ifdef PostProcess
-     //PostProcessing
+	//PostProcessing
         IPostProc* ppRenderer = new CRendererPostProc( smgr, dimension2du( 1024, 512 ),
                                                     true, true, SColor( 255u, 100u, 101u, 140u ) );
         CEffectPostProc* ppBlurDOF   = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), PP_BLURDOF );
@@ -133,7 +133,7 @@ device->getCursorControl()->setVisible(true);
 //	#endif
 
 	#ifdef PYTHON
-     Py_Finalize();
+		Py_Finalize();
     #endif
 
     #ifdef DSOUND

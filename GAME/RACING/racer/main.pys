@@ -1,7 +1,12 @@
 import irr
+import physics
+import extras
+import scene
+import input
+#import luna
 
 #irr.checkKeyState(){}; # check event loop to see if any key was pressed
-irr.using ('./RACING/racer/keys.pys');
+scene.using ('./RACING/racer/keys.pys');
 
 #irr.update(); #could set timing here, maybe smgr gui  etc  todo
 

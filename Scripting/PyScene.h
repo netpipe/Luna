@@ -2,10 +2,128 @@
 ///TERRAIN
 
 int btree=0;
+
+
+PyObject * Python::PyIrr_LoadAnimatedMesh(PyObject * self,PyObject * args){
+	 return Py_BuildValue("");  }
+
+
+PyObject * Python::PyIrr_LoadMesh(PyObject * self,PyObject * args){
+	  return Py_BuildValue("");  }
+
+
+PyObject * Python::PyIrr_loadModel(PyObject * self,PyObject * args) { // if treepointer passed remove it ModelFactory
+
+    int action;
+    char * type,value1,value2;
+
+    PyArg_ParseTuple(args,"sssl",&type,&value1,&value2,&action);
+
+  //  Assimp::Importer importer;
+    irr::core::stringc extension;
+   // irr::core::stringc path;
+    irr::core::getFileNameExtension(extension, stringc(value1));
+    //return importer.IsExtensionSupported (extension.c_str());
+ //   path = value1
+
+    io::path path;
+    path.append(value1);
+
+    enum eaction{load=0,get,set,setTexture,animation};
+//    std::map<std::string, eaction> nodeMap;
+//    int Iaction nodeMap[action]
+
+switch(action){
+    case set:
+//                node->setAnimationSpeed(mesh->getAnimationSpeed());
+        break;
+    case setTexture:            // setting texture would be neat too.
+
+        break;
+    case eaction(get):
+ //               ISceneNode *node = smgr->getSceneNodeFromId(type);
+//                  vector3df position = node->getPosition();
+	return Py_BuildValue("l",node);
+        break;
+
+    case load: //load models // textures
+
+
+    //OVERLAPPING TEXT MOVEMENT FUNCTION FOR  | |  LISTS
+    //    3DS//    BLEND (Blender)//    DAE/Collada//    FBX//    IFC-STEP//    ASE//    DXF//    HMP//    MD2//    MD3//    MD5
+    //    MDC//    MDL//    NFF//    PLY//    STL//    X//    OBJ//    OpenGEX//    SMD//    LWO//    LXO//    LWS//    TER//    AC3D
+    //    MS3D//    COB//    Q3BSP//    XGL//    CSM//    BVH//    B3D//    NDO//    Ogre Binary//    Ogre XML//    Q3D//    ASSBIN (Assimp custom format)
+    //    glTF (partial)//    3MF
+    //Additionally, some formats are supported by dependency on non-free code or external SDKs (not built by default):
+    //    C4D (https://github.com/acgessler/assimp-cinema4d)
+    //Exporters:
+    ////    DAE (Collada)//    STL//    OBJ//    PLY//    X//    3DS
+    //    JSON (for WebGl, via https://github.com/acgessler/assimp2json)
+    //    ASSBIN//    STEP//    glTF (partial)
+
+        //tecan make sure that renamed files dont trick the parser into loading them. sec
+        // The assimp loader is in a separate system and not directly as a meshLoader to give the choice to use Irrlicht or Assimp for mesh loading to the user, in function of the format for example
+            IrrAssimp assimp(smgr);
+
+        //IAnimatedMesh* meshNoAssimp = smgr->getMesh("Media/ninja.b3d");
+        //  assimp.exportMesh(mesh, "obj", "Media/export.obj");
+
+        if (extension =="b3d"){
+            IAnimatedMesh* mesh = assimp.getMesh(path);
+            IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
+            //IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode( meshNoAssimp );
+
+            if (node /*&& nodeNoAssimp*/)
+            {
+                //node->setMaterialFlag(EMF_LIGHTING, false);
+                node->setDebugDataVisible(scene::EDS_SKELETON | scene::EDS_BBOX_ALL);
+                //node->setScale(core::vector3df(100, 100, 100));
+
+                //nodeNoAssimp->setPosition(core::vector3df(100, 0, 0));
+                //nodeNoAssimp->setMaterialFlag(EMF_LIGHTING, false);
+                //node->setMD2Animation(scene::EMAT_STAND);
+                node->setMaterialTexture( 0, driver->getTexture(value2) );
+            }
+        }
+
+    //    if (extension =="bvh"){
+    //           IAnimatedMesh* mesh = assimp.getMesh(path);//"Media/B02.bvh"
+    //        IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+    //        node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
+    //        //IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode( meshNoAssimp );
+    //
+    //        if (node /*&& nodeNoAssimp*/)
+    //        {
+    //            //node->setMaterialFlag(EMF_LIGHTING, false);
+    //            node->setDebugDataVisible(scene::EDS_SKELETON | scene::EDS_BBOX_ALL);
+    //            //node->setScale(core::vector3df(100, 100, 100));
+    //
+    //            //nodeNoAssimp->setPosition(core::vector3df(100, 0, 0));
+    //            //nodeNoAssimp->setMaterialFlag(EMF_LIGHTING, false);
+    //            //node->setMD2Animation(scene::EMAT_STAND);
+    //            node->setMaterialTexture( 0, driver->getTexture(value2 ));
+    //            	return Py_BuildValue("l",node);
+    //        }
+    //    }
+
+
+//        if (!mesh /*|| !meshNoAssimp*/)
+//        {
+//            device->drop();
+//        return Py_BuildValue("0");
+//        }
+
+        break;
+    }
+
+	return Py_BuildValue("l",node);
+}
+
+
 PyObject * Python::PyIrr_addTerrain(PyObject * self,PyObject * args) {//active camera
 
 vector3df loc;
-
 int a1f,a2f,a3f;
 //PyArg_ParseTuple(args,"fffi",&loc.X,&loc.Y,&loc.Z,&btree);
 PyArg_ParseTuple(args,"iiii",&a1f,&a2f,&a3f,&btree);
@@ -46,123 +164,6 @@ return Py_BuildValue("l",tree);
 }
 
 
-
-
-PyObject * Python::PyIrr_loadModel(PyObject * self,PyObject * args) { // if treepointer passed remove it ModelFactory
-
-int action;
-char * type,value1,value2;
-
-    PyArg_ParseTuple(args,"sssl",&type,&value1,&value2,&action);
-
-  //  Assimp::Importer importer;
-    irr::core::stringc extension;
-   // irr::core::stringc path;
-    irr::core::getFileNameExtension(extension, stringc(value1));
-    //return importer.IsExtensionSupported (extension.c_str());
-
-//    path = value1;
-
-    enum eaction{loadModel,get,set,animation};
-
-switch(action){
-    case set:
-        break;
-    case eaction(get):     //
- //               ISceneNode *node = smgr->getSceneNodeFromId(type);
-//                  vector3df position = node->getPosition();
-	return Py_BuildValue("l",node);
-        break;
-
-    case loadModel: //load models // textures
-
-
-//OVERLAPPING TEXT MOVEMENT FUNCTION FOR  | |  LISTS
-//    3DS//    BLEND (Blender)//    DAE/Collada//    FBX//    IFC-STEP//    ASE//    DXF//    HMP//    MD2//    MD3//    MD5
-//    MDC//    MDL//    NFF//    PLY//    STL//    X//    OBJ//    OpenGEX//    SMD//    LWO//    LXO//    LWS//    TER//    AC3D
-//    MS3D//    COB//    Q3BSP//    XGL//    CSM//    BVH//    B3D//    NDO//    Ogre Binary//    Ogre XML//    Q3D//    ASSBIN (Assimp custom format)
-//    glTF (partial)//    3MF
-
-//Additionally, some formats are supported by dependency on non-free code or external SDKs (not built by default):
-//
-//    C4D (https://github.com/acgessler/assimp-cinema4d)
-//
-//Exporters:
-////    DAE (Collada)//    STL//    OBJ//    PLY//    X//    3DS
-//    JSON (for WebGl, via https://github.com/acgessler/assimp2json)
-//    ASSBIN//    STEP//    glTF (partial)
-
-        //device->setWindowCaption(L"IrrAssimp Demo");
-
-//        IVideoDriver* driver = device->getVideoDriver();
-//        ISceneManager* smgr = device->getSceneManager();
-//        IGUIEnvironment* guienv = device->getGUIEnvironment();
-
-    //tecan make sure that renamed files dont trick the parser into loading them. sec
-
-        // The assimp loader is in a separate system and not directly as a meshLoader to give the choice to use Irrlicht or Assimp for mesh loading to the user, in function of the format for example
-        IrrAssimp assimp(smgr);
-
-
-        //IAnimatedMesh* meshNoAssimp = smgr->getMesh("Media/ninja.b3d");
-      //  assimp.exportMesh(mesh, "obj", "Media/export.obj");
-
-//        if (!mesh /*|| !meshNoAssimp*/)
-//        {
-//            device->drop();
-//    ///		return 1;
-//        return Py_BuildValue("1");
-//        }
-
-//    if (extension =="b3d"){
-//            IAnimatedMesh* mesh = assimp.getMesh(path);
-//        IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
-//        node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
-//        //IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode( meshNoAssimp );
-//
-//        if (node /*&& nodeNoAssimp*/)
-//        {
-//            //node->setMaterialFlag(EMF_LIGHTING, false);
-//            node->setDebugDataVisible(scene::EDS_SKELETON | scene::EDS_BBOX_ALL);
-//            //node->setScale(core::vector3df(100, 100, 100));
-//
-//            //nodeNoAssimp->setPosition(core::vector3df(100, 0, 0));
-//            //nodeNoAssimp->setMaterialFlag(EMF_LIGHTING, false);
-//            //node->setMD2Animation(scene::EMAT_STAND);
-//            node->setMaterialTexture( 0, driver->getTexture(value2) );
-//        }
-//    }
-//
-//
-//    if (extension =="bvh"){
-//           IAnimatedMesh* mesh = assimp.getMesh(path);//"Media/B02.bvh"
-//        IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
-//        node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
-//        //IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode( meshNoAssimp );
-//
-//        if (node /*&& nodeNoAssimp*/)
-//        {
-//            //node->setMaterialFlag(EMF_LIGHTING, false);
-//            node->setDebugDataVisible(scene::EDS_SKELETON | scene::EDS_BBOX_ALL);
-//            //node->setScale(core::vector3df(100, 100, 100));
-//
-//            //nodeNoAssimp->setPosition(core::vector3df(100, 0, 0));
-//            //nodeNoAssimp->setMaterialFlag(EMF_LIGHTING, false);
-//            //node->setMD2Animation(scene::EMAT_STAND);
-//            node->setMaterialTexture( 0, driver->getTexture(value2 ));
-//            	return Py_BuildValue("l",node);
-//        }
-//
-//    }
-
-               break;
-
-        }
-	return Py_BuildValue("l",node);
-}
-
-
-
 PyObject * Python::PyIrr_Reset(PyObject * self,PyObject * args){
     //would like to have a reset and compile function here maybe dynamically load all the
     //clear all models
@@ -171,7 +172,6 @@ PyObject * Python::PyIrr_Reset(PyObject * self,PyObject * args){
     //shutdown/restart python and load a noscript loaded screen.
 return Py_BuildValue("0");
 }
-
 
 
 PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
@@ -262,12 +262,10 @@ return Py_BuildValue("l",mesh);
 };
 
 
-
-
-
 PyObject * Python::PyIrr_pauseGame(PyObject * self,PyObject * args){
     luna->m_cInGameEvents.Quit=true;
     }
+
 
 PyObject * Python::PyIrr_exit(PyObject * self,PyObject * args){
     luna->m_cInGameEvents.Quit=true;

@@ -1,8 +1,11 @@
 //! stick whatever in here for use later or to clean up luna.cpp
 /*
 Focus List
--need to make ribontrail node spit dirt from the car tires  - / shocks aswell ik constraints if you gotem.
--
+- need to make ribontrail node spit dirt from the car tires  - / shocks aswell ik constraints if you gotem.
+- opensteer
+- codeeditor
+- input/joystick/gamepad manager
+- model loading
 
 
 

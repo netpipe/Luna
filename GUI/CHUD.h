@@ -8,8 +8,8 @@ using namespace video;
 using namespace io;
 using namespace gui;
 
-class CHUD
-{
+class CHUD {
+
 public:
     CHUD();
     ~CHUD();
@@ -35,16 +35,14 @@ public:
     CGUITTFace face;
 };
 
-
 CHUD::CHUD (){};
 
 CHUD::~CHUD (){
 
 };
 
+void CHUD::LoadHUD(char* filename){
 
-void CHUD::LoadHUD(char* filename)
-{
     font = device->getGUIEnvironment()->getBuiltInFont();
 
     face.load("./data/fonts/coolvetica.ttf");
@@ -121,8 +119,8 @@ void CHUD::LoadHUD(char* filename)
   //      driver->draw2DImage(images[i], stuff[i]);
 }
 
-void CHUD::DisplayHUD()
-{
+void CHUD::DisplayHUD(){
+
     for (int i=0;  i < textAttributes ; i++)
     {
         font2->draw(texts[i].c_str(),textRects[i],SColor(255,255,64,64),true);
@@ -135,8 +133,8 @@ void CHUD::DisplayHUD()
 
 }
 
-void CHUD::RegisterDevice(IrrlichtDevice *device1)
-{
+void CHUD::RegisterDevice(IrrlichtDevice *device1){
+
     device = device1;
     driver = device->getVideoDriver();
     FileSystem = device->getFileSystem();

@@ -1,7 +1,6 @@
 #ifndef PYGUI_H_INCLUDED
 #define PYGUI_H_INCLUDED
 
-//rename this to PyVIDEO later
 
 PyObject * Python::PyIrr_ChatBox(PyObject * self,PyObject * args){
 
@@ -18,9 +17,8 @@ PyObject * Python::PyIrr_ChatBox(PyObject * self,PyObject * args){
 
         case 1:
              //   for (int i=0;i < 100;i++){
-                    chat->addItem(L"(john) Kill that thing...");
-                    chat->addItem(L"(firestaff) lol", video::SColor(250, 220, 255, 255));
-                    chat->addItem(L"(juli) that's too big", video::SColor(0, 220, 0, 255));
+ //                   chat->addItem(L"tex_name");
+//                    chat->addItem(tex_name, video::SColor(250, 220, 255, 255));
              //   };
         break;
     }
@@ -57,7 +55,7 @@ PyObject * Python::PyIrr_2Dimage(PyObject * self,PyObject * args) {//active came
 	return Py_BuildValue("");
 }
 
-PyObject * Python::PyIrr_aBillBoard(PyObject * self,PyObject * args) {//active camera
+PyObject * Python::PyIrr_aBillBoard(PyObject * self,PyObject * args) {
 
 	char * tex_name;
 	PyArg_ParseTuple(args,"s",&tex_name);
@@ -105,6 +103,35 @@ PyObject * Python::PyIrr_SetTexture(PyObject * self,PyObject * args){
 	return Py_BuildValue("");
 };
 
+PyObject * Python::PyIrr_calcMath(PyObject * self,PyObject * args){
+
+    s32 tex_id,node_id;
+	PyArg_ParseTuple(args,"II",&node_id,&tex_id);
+    SCalcExpr *calc = new SCalcExpr();
+
+	// try to parse the string
+	if (!calc->readExpr("min(clamp(PI*2.5*round(3.9)/PI,1,2), 3)"))
+	{
+			// readExpr() will show a detailed error message
+			printf("Invalid expression!\n");
+			return(0);
+	}
+
+	f32 f;
+	// Calculate the result
+	if (!calc->calcExpr(NULL, f))
+	{
+			// calcExpr() will show a detailed error message
+			printf("can't calculate expression\n");
+			return(0);
+	}
+
+	delete calc;
+
+	printf("Result = %0.3f\n", f);
+
+	return Py_BuildValue("");
+}
 
 PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args){
 
@@ -148,9 +175,7 @@ IGUIFont * default_font;
 	return Py_BuildValue("");
 };
 
-
-PyObject * Python::PyIrr_addHUD(PyObject * self,PyObject * args) //active camera
-{
+PyObject * Python::PyIrr_addHUD(PyObject * self,PyObject * args){
     #ifdef HUD
     int state, value;
     char * loadFile;
@@ -174,7 +199,6 @@ PyObject * Python::PyIrr_addHUD(PyObject * self,PyObject * args) //active camera
 return Py_BuildValue("");
  }
 
-/// GUI
 PyObject * Python::PyIrr_addVideo(PyObject * self,PyObject * args){
 
 vector3df loc;
@@ -202,11 +226,11 @@ PyArg_ParseTuple(args,"sfff",&videoFile,&loc.X,&loc.Y,&loc.Z);
 return Py_BuildValue("");
 }
 
-
 PyObject * Python::PyIrr_tesselateImage(PyObject * self,PyObject * args){
 // maybe try to stick this into a vector renderstack for main loop to allow more than one instance
-//vector3df loc;
-//PyArg_ParseTuple(args,"fff",&loc.X,&loc.Y,&loc.Z);
+vector3df loc;
+char * path;
+PyArg_ParseTuple(args,"sfff",&loc.X,&loc.Y,&loc.Z);
 #ifdef TESSIMAGE
 btesimage=1;
 tesImage = new TesselatedImage(device, "media/fireball.bmp", vector3df(-600,0,500), vector3df(500, 550, 1000), vector3df(-130,50,100), 45, 1500, 10);
@@ -215,4 +239,10 @@ return Py_BuildValue("l",tesImage);
 #endif
 return Py_BuildValue("");
 }
+
+PyObject * Python::PyIrr_LoadShape(PyObject * self,PyObject * args){
+	return Py_BuildValue("");
+		//possible use would be for rendering onto shaped surfaces or accessing vertex's for placement
+	}
+
 #endif // PYGUI_H_INCLUDED

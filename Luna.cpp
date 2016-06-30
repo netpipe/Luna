@@ -1,4 +1,5 @@
 //! LUNA ENGINE 1.0
+/// aha
 #include "Luna.h"
 
 #include <vector>
@@ -47,8 +48,7 @@ using namespace gui;
 //    scene::CGrassPatchSceneNode *grass[1000];
 //scene::IWindGenerator *wind = createWindGenerator( 30.0f, 3.0f );
 
-class ClientNetCallback : public net::INetCallback
-{
+class ClientNetCallback : public net::INetCallback{
 public:
 	virtual void handlePacket(net::SInPacket& packet)
 	{
@@ -77,7 +77,7 @@ public:
                connected=true;
 //  if (!login){  // if has not logged in yet then send hands
         }else{
-                std::cout << "other " << str.c_str() << "\n" <<std::endl;
+                std::cout << "other " << str.c_str() << "\n" << std::endl;
 	}
         }
 //        resetV=true;
@@ -85,9 +85,8 @@ public:
       //  tmpvect=vector3df(vec);
  //     std::cout << str.c_str();
 };
-        ClientNetCallback* clientCallback;
 
-
+ClientNetCallback* clientCallback;
 int icount=0;
 
 Luna::Luna ( int argc, char** argv ){}

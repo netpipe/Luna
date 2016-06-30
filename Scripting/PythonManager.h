@@ -1,14 +1,11 @@
 #ifdef PYTHON
-///PythonINIT stuff in here.
-#include<irrlicht.h>
-#include<Python.h>
-#include<stdio.h>
-#include<vector>
-#include<string.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <vector>
+#include <string.h>
+#include <stdlib.h>
 
+#include <irrlicht.h>
 using namespace std;
-
 using namespace irr;
 using namespace core;
 using namespace video;
@@ -16,32 +13,32 @@ using namespace gui;
 using namespace scene;
 using namespace io;
 
+#include <Python.h> // fix later -has to be in this order or the formationwrapper complains
 #include "../../Scene/Formation.h"
 #include "./PyFunctions.h"
 #include "../Scene/RainMan.h"
-//#define Py_RETURN_NONE = 'return Py_BuildValue("");'
 
-    PyMODINIT_FUNC Python::init_irr(void){
+
+PyMODINIT_FUNC Python::init_irr(void){
 	/*Note the return type of the function, which is PyMODINIT_FUNC, its
 	actually more of a macro than a datatype(I think). Anyway, its essential to
 	have this as the return type of a function that initializes a python module*/
 
-#ifdef EXTRAS
-    Py_InitModule("irr",irr_Extras);
-#endif
-
-    Py_InitModule("irr",irr_SPARKA);
-	Py_InitModule("irr",irr_Physics);
-    Py_InitModule("irr",irr_Scene);
-    Py_InitModule("irr.test",irr_Network);
-
+///#ifdef EXTRAS
+    Py_InitModule("extras",irr_Extras);
+///#endif
+    Py_InitModule("particles",irr_SPARKA);
+	Py_InitModule("physics",irr_Physics);
+    Py_InitModule("scene",irr_Scene);
+    Py_InitModule("network",irr_Network);
     Py_InitModule("irr",irr_fun2);
     Py_InitModule("irr",irr_FlagMan);
+    Py_InitModule("input",irr_Input);
 };
 
-
 void Python::ExecuteScript(irr::core::string<char> scriptname){
-	/*Using it this way because the methods using the FILE * structure tend to go wonky
+	/*Using it this way
+	because the methods using the FILE * structure tend to go wonky
 	  due to the fact that the FILE * datatype is not standardized, so you'll get problems
 	  if you try to use it with a different version other than the one your Python build was
 	  compiled with. Our solution looks kludgy but it works pretty well.*/
@@ -55,4 +52,5 @@ void Python::ExecuteScript(irr::core::string<char> scriptname){
 	with irr::core::string, but as you can see, I solved that problem by explicitly stating
 	the namespace in which the string class I wanted was to be found*/
 };
+
 #endif

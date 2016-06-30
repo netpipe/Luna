@@ -1,6 +1,7 @@
-// todo make some random trees for terrain
+/// todo make some random trees for terrain
 // patch grid for larger terrain or go procedural
 // impliment planet handler with sphere mapping.
+/// TODO aha
 
 #include "irrlicht.h"
 #include <math.h>
@@ -42,7 +43,8 @@ Terrain::~Terrain(){
     //}
  };
 
- float Terrain::getHeight(float x, float y){
+
+float Terrain::getHeight(float x, float y){
 // 	int x, y;
 	double value;
 	double v0, v1, v2; /* values from different octaves. */
@@ -107,8 +109,9 @@ Terrain::~Terrain(){
 	return value;
  }
 
-float Terrain::getHeight2(float x, float z)
-{
+
+float Terrain::getHeight2(float x, float z){
+
 
 //    int octaves=5;
 //    float persistance =1;
@@ -130,10 +133,8 @@ float Terrain::getHeight2(float x, float z)
 };
 
 
+int Terrain::Render( vector3df terrainPosition,vector3df terrainRotation,vector3df terrainScale,int LOD){
 
-
-int Terrain::Render( vector3df terrainPosition,vector3df terrainRotation,vector3df terrainScale,int LOD)
-{
 
     //INIT VARS
   //  vector3df terrainScale = terrainScale2; // vector3df(.1,.1,.1);
@@ -199,8 +200,8 @@ int Terrain::Render( vector3df terrainPosition,vector3df terrainRotation,vector3
 }
 
 
-void Terrain::CreateNode(unsigned int Bounding[4],unsigned int ParentID,unsigned int NodeID)
-{
+void Terrain::CreateNode(unsigned int Bounding[4],unsigned int ParentID,unsigned int NodeID){
+
 
     static unsigned int TotalTreeID = 0;
     unsigned int uiNodeType;
@@ -260,8 +261,9 @@ void Terrain::CreateNode(unsigned int Bounding[4],unsigned int ParentID,unsigned
     }
 }
 
-void Terrain::generateLod(unsigned int LOD, NODE* pNode, const int TN ,const int XT, const int TZ)
-{
+
+void Terrain::generateLod(unsigned int LOD, NODE* pNode, const int TN ,const int XT, const int TZ){
+
     unsigned int count=1;
     unsigned int element=0;
    // LOD=3;
@@ -534,14 +536,14 @@ void Terrain::generateLod(unsigned int LOD, NODE* pNode, const int TN ,const int
 }
 
 
-void Terrain::GenerateNode ( NODE *pNode, const int &TN,const int &XT,const int &TZ, const unsigned int &LOD )
-{
+void Terrain::GenerateNode ( NODE *pNode, const int &TN,const int &XT,const int &TZ, const unsigned int &LOD ){
+
     generateLod ( 1, pNode, TN, XT, TZ );
 }
 
 
-void Terrain::CreateGrid(unsigned int w,unsigned int h)
-{
+void Terrain::CreateGrid(unsigned int w,unsigned int h){
+
     unsigned int total=0;
 
     unsigned int width = w;
@@ -565,8 +567,8 @@ void Terrain::CreateGrid(unsigned int w,unsigned int h)
 }
 
 
-unsigned int Terrain::CalcNodeNum(unsigned int max,unsigned int min)
-{
+unsigned int Terrain::CalcNodeNum(unsigned int max,unsigned int min){
+
 
     int ctr=0;
     int var = 0;
@@ -585,11 +587,8 @@ unsigned int Terrain::CalcNodeNum(unsigned int max,unsigned int min)
 }
 
 
+btRigidBody*	Terrain::localCreateRigidBody(float mass, const btTransform& startTransform,btCollisionShape* shape, ISceneNode *node){
 
-
-
-btRigidBody*	Terrain::localCreateRigidBody(float mass, const btTransform& startTransform,btCollisionShape* shape, ISceneNode *node)
-{
     bool isDynamic = (mass != 0.f);
 
     btVector3 localInertia(0,0,0);
@@ -615,16 +614,20 @@ btRigidBody*	Terrain::localCreateRigidBody(float mass, const btTransform& startT
 }
 
 
-void Terrain::registerIrrDevice(IrrlichtDevice &device)
-{
+void Terrain::registerIrrDevice(IrrlichtDevice &device){
+
     m_irrDevice = &device;
 }
-void Terrain::registerPhysics(Physics &physics)
-{
+
+
+void Terrain::registerPhysics(Physics &physics){
+
     m_cPhysics = &physics;
 }
-void Terrain::registerScene(Scene &scene)
-{
+
+
+void Terrain::registerScene(Scene &scene){
+
     m_cScene = &scene;
 }
 

@@ -2,24 +2,20 @@
 
 PyMethodDef irr_Physics[] = {
     {"loadTrack",Python::PyIrr_LoadTrack,METH_VARARGS,"Load Track"},
-	{"LoadShape",Python::PyIrr_LoadShape,METH_VARARGS,"Loads a texture"},
+	{"LoadShape",Python::PyIrr_LoadShape,METH_VARARGS,"Loads a texture"}, //notsure what this was
 	{"ragman",Python::PyIrr_RagMan,METH_VARARGS,"PyIrr_RagMan"},
     {"load_vehicle",Python::PyIrr_LoadVehicle,METH_VARARGS,"Loads a vehicle"},
     {"addChopper",Python::PyIrr_addChopper ,METH_VARARGS,"PyIrr_addChopper"},
     {"addCar",Python::PyIrr_addCar ,METH_VARARGS,"PyIrr_addCar"},
     {"bulletBlend",Python::PyIrr_BulletBlend,METH_VARARGS,"PyIrr_BulletBlend"},
     {"addHUD",Python::PyIrr_addHUD,METH_VARARGS,"PyIrr_addHUD"},
-    {"addTerrain",Python::PyIrr_addTerrain,METH_VARARGS,"PyIrr_addTerrain"},
-    {"addTree",Python::PyIrr_addTree,METH_VARARGS,"PyIrr_addTree"},
     {"opensteer",Python::PyIrr_OpenSteer,METH_VARARGS,"PyIrr_OpenSteer"},
     {"fpsweapon",Python::PyIrr_fpsWeapon,METH_VARARGS,"PyIrr_fpsWeapon"},
     {"addPlayer",Python::PyIrr_addPlayer,METH_VARARGS,"PyIrr_addPlayer"},
     {"bullet",Python::PyIrr_Bullet,METH_VARARGS,"PyIrr_Bullet"},
-
+    {"VehicleParams",Python::PyIrr_VehicleParams,METH_VARARGS,"VehicleParams"},
 	{NULL,NULL,0,NULL}
 	};
-
-	int osteerinit =0;
 
 PyObject * Python::PyIrr_recast(PyObject * self,PyObject * args){
 
@@ -27,6 +23,7 @@ PyObject * Python::PyIrr_recast(PyObject * self,PyObject * args){
 
 	//fs->addFileArchive(IRRLICHT_DIR);
 	//#define IRRLICHT_DIR "media"
+
 	#define MODEL_FILE "./media/dungeon.obj"
 	node = smgr->addOctreeSceneNode(smgr->getMesh(MODEL_FILE));
 	smgr->getMeshManipulator()->setVertexColorAlpha(smgr->getMesh(MODEL_FILE), 2);
@@ -58,18 +55,19 @@ PyObject * Python::PyIrr_recast(PyObject * self,PyObject * args){
 	}
 }
 
-
 PyObject * Python::PyIrr_wii(PyObject * self,PyObject * args){
     //Python::Wii_init();
 
 }
 
-
+int osteerinit =0;
 PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){
-
+//vector3df loc;
+//char * path;
+//PyArg_ParseTuple(args,"sfff",&loc.X,&loc.Y,&loc.Z);
     opensteer = 1;
     // initialize graphics first !!!
-         if( osteerinit ) {
+//         if( osteerinit ) {
     OpenSteer::initializeGraphics(device);
 
     // initialize OpenSteerDemo application
@@ -86,11 +84,11 @@ PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){
         Py_RETURN_NONE;
 }
 
-
-
 PyObject * Python::PyIrr_addChopper(PyObject * self,PyObject * args) {
 // return scene node and assign camera vector or parrent camera to scene.
-
+vector3df loc;
+char * path;
+PyArg_ParseTuple(args,"sfff",&loc.X,&loc.Y,&loc.Z);
 //active camera
     #ifdef CHOPPER
     IAnimatedMesh* mesh = smgr->getMesh("data/models/vehicles/chopper/Helicopter 2.obj");
@@ -104,10 +102,7 @@ PyObject * Python::PyIrr_addChopper(PyObject * self,PyObject * args) {
             return Py_BuildValue("l",chopperControl);
 }
 
-
-
-
-PyObject * Python::PyIrr_BulletBlend(PyObject * self,PyObject * args) {//active camera
+PyObject * Python::PyIrr_BulletBlend(PyObject * self,PyObject * args) {
 vector3df loc;
 //place open file dialogue here and get rid of this list to clean up the source
 //PyArg_ParseTuple(args,"fffi",&loc.X,&loc.Y,&loc.Z);
@@ -156,8 +151,7 @@ vector3df loc;
      Py_RETURN_NONE;
 }
 
-
-PyObject * Python::PyIrr_addCar(PyObject * self,PyObject * args){ //active camera
+PyObject * Python::PyIrr_addCar(PyObject * self,PyObject * args){
 vector3df loc; //drop point
 
 float scaleT,scaleE=1;
@@ -171,6 +165,11 @@ suspensionCompression,rollInfluence,wheelFriction,wheelRadius,
 wheelWidth,steeringIncrement, steeringClamp, CUBE_HALF_EXTENTS ,
 wheelSpacingX,wheelScaleFactor;
 
+char * model,texture;
+stringc * model2,texture2;
+
+//model2 = "data/models/vehicles/oldChevy-Truck.3ds";
+//texture2="data/models/vehicles/oldChevy.bmp";
 //float suspensionRestLength2,
 //float wheelSpacingZ2,
 //float wheelSpacingZ22,
@@ -188,6 +187,10 @@ PyArg_ParseTuple(args,"fffffffffffifffifffffffffffff",&scaleT,&scaleE,
 //printf ("car model scale checker %f%f%f \n",btModelscaleX,btModelscaleY,btModelscaleZ);
 //printf ("car model scale checker %f%f%f \n",m_vehiclePositionX,m_vehiclePositionY,m_vehiclePositionZ);
 //printf ("wheelSpacingX %f wheelScaleFactor %f \n",wheelSpacingX,wheelScaleFactor);
+//strcpy(model,model2); // possibly a 20 char limitation
+//strcpy(texture,texture2);
+//model2 = &model;
+//texture2 = &texture;
 
     #ifdef BULLETCAR
     bCar=1;
@@ -200,16 +203,15 @@ PyArg_ParseTuple(args,"fffffffffffifffifffffffffffff",&scaleT,&scaleE,
         m_cVehicle->SetParams(
         scaleT,scaleE,
         btVector3(btCarScale.X,btCarScale.Y,btCarScale.Z),
-         btVector3(btModelscale.X,btModelscale.Y,btModelscale.Z),
-         btVector3(m_vehiclePosition.X,m_vehiclePosition.Y,m_vehiclePosition.Z),
+		btVector3(btModelscale.X,btModelscale.Y,btModelscale.Z),
+		btVector3(m_vehiclePosition.X,m_vehiclePosition.Y,m_vehiclePosition.Z),
         vehicleWeight,maxBreakingForce, maxEngineForce,SpeedINC,
         Ctype, connectionHeight,suspensionStiffness,suspensionDamping,
         suspensionCompression,rollInfluence,
         wheelFriction,wheelRadius,wheelWidth,steeringIncrement, steeringClamp, CUBE_HALF_EXTENTS,
         wheelSpacingX,wheelScaleFactor);
-
-
-       m_cVehicle->initPhysics("data/models/vehicles/oldChevy-Truck.3ds","data/models/vehicles/CarBlends/oldChevy.bmp");
+       m_cVehicle->initPhysics();
+  //     m_cVehicle->initPhysics(model2,texture2);
 
 //         m_cVehicle->setEventRec();
 //     //!testing second vehicle
@@ -232,15 +234,9 @@ return Py_BuildValue("0");
 #endif
 }
 
-
 PyObject * Python::PyIrr_Bullet(PyObject * self,PyObject * args){
 return Py_BuildValue("");
 }
-
-
-
-PyObject * Python::PyIrr_LoadShape(PyObject * self,PyObject * args){return Py_BuildValue("");}  // ??
-
 
 PyObject * Python::PyIrr_RagMan(PyObject * self,PyObject * args){
 // params node id and mesh ?
@@ -250,12 +246,8 @@ PyObject * Python::PyIrr_RagMan(PyObject * self,PyObject * args){
 return Py_BuildValue("");
 }
 
-
-PyObject * Python::PyIrr_LoadAnimatedMesh(PyObject * self,PyObject * args)  {   return Py_BuildValue("");  }
-
-PyObject * Python::PyIrr_LoadMesh(PyObject * self,PyObject * args)  {   return Py_BuildValue("");  }
-
-PyObject * Python::PyIrr_LoadVehicle(PyObject * self,PyObject * args)   {   return Py_BuildValue("");  }
+PyObject * Python::PyIrr_LoadVehicle(PyObject * self,PyObject * args){
+	 return Py_BuildValue("");  }
 
 PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
 tr.setIdentity();
@@ -382,3 +374,4 @@ mesh, 0.004f);
 return Py_BuildValue("");
     #endif
 }
+
