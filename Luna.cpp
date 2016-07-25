@@ -1,5 +1,9 @@
 //! LUNA ENGINE 1.0
 /// aha
+
+//!TODO wondering how to get eeg and ai library into game for pattern recognition
+// speech and directional forces
+
 #include "Luna.h"
 
 #include <vector>

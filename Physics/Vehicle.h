@@ -43,8 +43,7 @@ class Vehicle{
     void renderme();
 
     void updateVehicleMovement(void);
-    void initPhysics();
- //   void initPhysics(stringc,stringc);
+    void initPhysics(stringc,stringc);
     void registerCamera(ICameraSceneNode *camera2);
 
     scene::IMetaTriangleSelector* metaSelector;

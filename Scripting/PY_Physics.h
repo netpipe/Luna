@@ -166,15 +166,16 @@ wheelWidth,steeringIncrement, steeringClamp, CUBE_HALF_EXTENTS ,
 wheelSpacingX,wheelScaleFactor;
 
 char * model,texture;
-stringc * model2,texture2;
+stringc model2,texture2;
+std::string model3,texture3;
 
 //model2 = "data/models/vehicles/oldChevy-Truck.3ds";
-//texture2="data/models/vehicles/oldChevy.bmp";
+//texture2 = "data/models/vehicles/oldChevy.bmp";
 //float suspensionRestLength2,
 //float wheelSpacingZ2,
 //float wheelSpacingZ22,
 
-PyArg_ParseTuple(args,"fffffffffffifffifffffffffffff",&scaleT,&scaleE,
+PyArg_ParseTuple(args,"ssfffffffffffifffifffffffffffff",&model,&texture,&scaleT,&scaleE,
 &btCarScale.X,&btCarScale.Y,&btCarScale.Z,
 &btModelscale.X,&btModelscale.Y,&btModelscale.Z,
 &m_vehiclePosition.X,&m_vehiclePosition.Y,&m_vehiclePosition.Z,
@@ -187,10 +188,28 @@ PyArg_ParseTuple(args,"fffffffffffifffifffffffffffff",&scaleT,&scaleE,
 //printf ("car model scale checker %f%f%f \n",btModelscaleX,btModelscaleY,btModelscaleZ);
 //printf ("car model scale checker %f%f%f \n",m_vehiclePositionX,m_vehiclePositionY,m_vehiclePositionZ);
 //printf ("wheelSpacingX %f wheelScaleFactor %f \n",wheelSpacingX,wheelScaleFactor);
+model3 		 = model;
+texture3	 = texture;
+
+model2		= model3.c_str();
+texture2	= texture3.c_str();
+
 //strcpy(model,model2); // possibly a 20 char limitation
 //strcpy(texture,texture2);
 //model2 = &model;
 //texture2 = &texture;
+
+//model2	 = stringc(model);
+//texture2   = stringc(texture);
+
+
+
+
+//str(model,model2);
+//str(texture,texture2);
+
+
+
 
     #ifdef BULLETCAR
     bCar=1;
@@ -210,8 +229,8 @@ PyArg_ParseTuple(args,"fffffffffffifffifffffffffffff",&scaleT,&scaleE,
         suspensionCompression,rollInfluence,
         wheelFriction,wheelRadius,wheelWidth,steeringIncrement, steeringClamp, CUBE_HALF_EXTENTS,
         wheelSpacingX,wheelScaleFactor);
-       m_cVehicle->initPhysics();
-  //     m_cVehicle->initPhysics(model2,texture2);
+
+       m_cVehicle->initPhysics(stringc(model2),stringc(texture2));
 
 //         m_cVehicle->setEventRec();
 //     //!testing second vehicle
