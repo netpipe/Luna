@@ -20,7 +20,7 @@
 			<Add option="-Os" />
 			<Add option="-O3" />
 			<Add directory="/home/Dev/libs/game/Irrlicht-SVN/include" />
-			<Add directory="./libIrrOpenSteer_10-02-15/include" />
+			<Add directory="/home/clayton/games/Luna/libs/libIrrOpenSteer_10-02-15/include" />
 		</Compiler>
 		<Linker>
 			<Add option="-s" />
@@ -28,8 +28,9 @@
 			<Add library="IrrOpenSteer" />
 			<Add library="GL" />
 			<Add library="X11" />
+			<Add library="Xxf86vm" />
 			<Add directory="/home/Dev/libs/game/Irrlicht-SVN/lib/Linux" />
-			<Add directory="./libIrrOpenSteer_10-02-15/lib" />
+			<Add directory="/home/clayton/games/Luna/libs/libIrrOpenSteer_10-02-15/lib" />
 		</Linker>
 		<Unit filename="cMeshTool.cpp" />
 		<Unit filename="cMeshTool.h" />

@@ -14,6 +14,8 @@ import extras
 import scene
 import input
 
+init = 1;
+
 camera = scene.addCamera(2,1,0,1) # 1 regular , 2 FPS , 3 other types, 4 rpg, << todo types  / active / vector
 #irr.addLight(1,1,50,1,"111111") # type , vector, color
 
@@ -124,9 +126,10 @@ terrain = scene.addTerrain(4,-3,5,0) # load last to make the physics work FIX  /
 #    -0.01, 100.0, 0.8, #rollInfluence, wheelFriction, wheelRadius,
 #	 0.6 ,0.1 ,0.45,	  #wheelWidth, steeringIncrement, steeringClamp /ffffff
 #    2.0, 0.3, 1.0    )  # cube_half_extents,wheelspacingx,wheelscale /fff
-model = "data/models/vehicles/oldChevy-Truck.3ds"
-texture = "data/models/vehicles/oldChevy.bmp"
-car1 = physics.addCar(model,texture, 1.0,1.0, 1.0,1.0,1.0,  1.5,1.5,2.0, 1.3,0.4,2.0,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
+
+#31 variables so far
+#scene.drawtext("cool bean tree",1,1,1,1)
+
 #car1 = physics.addCar(1.0,1.0,1.0,1.0,1.0,  1.5,1.5,2.0, 1.3,0.4,2.0,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
 
 #car2 = irr.addCar( 1.0,1.0, 1.0,1.0,1.0,  1.5,1.5,2.0, 1.3,0.4,2.0,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)

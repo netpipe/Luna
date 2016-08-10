@@ -145,7 +145,8 @@ IGUIFont * default_font;
 //	int len = strlen(message) + 1;
 //	wchar_t * conv_message = new wchar_t[len];
 	///mbstowcs(0,conv_message,len,message,_TRUNCATE);
-
+printf("%s\n", message);
+//wprintf("%s\n", model);
 	//guienv->addStaticText(conv_message,rect<s32>(x,y,x1,y1),SColor(255,255,255,255));
 //
 //	delete [] conv_message;
@@ -179,7 +180,7 @@ PyObject * Python::PyIrr_addHUD(PyObject * self,PyObject * args){
     #ifdef HUD
     int state, value;
     char * loadFile;
-    PyArg_ParseTuple(args,"sf",&state,&value);
+    PyArg_ParseTuple(args,"sff",&loadFile,&state,&value);
     enum states {openFile=0,Position,Rotation,Play,Pause};
   int istate =  states(state);
 
@@ -230,7 +231,7 @@ PyObject * Python::PyIrr_tesselateImage(PyObject * self,PyObject * args){
 // maybe try to stick this into a vector renderstack for main loop to allow more than one instance
 vector3df loc;
 char * path;
-PyArg_ParseTuple(args,"sfff",&loc.X,&loc.Y,&loc.Z);
+PyArg_ParseTuple(args,"sfff",&path,&loc.X,&loc.Y,&loc.Z);
 #ifdef TESSIMAGE
 btesimage=1;
 tesImage = new TesselatedImage(device, "media/fireball.bmp", vector3df(-600,0,500), vector3df(500, 550, 1000), vector3df(-130,50,100), 45, 1500, 10);

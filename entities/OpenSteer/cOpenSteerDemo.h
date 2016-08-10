@@ -129,7 +129,7 @@ class OpenSteerDemo{
 
 // ----------------------------------------------------------------------------
 // run graphics event loop
-void initializeGraphics(irr::IrrlichtDevice* Device);
+void initializeGraphics(IrrlichtDevice *device); //irr::IrrlichtDevice* Device
 void runGraphics();
 // accessors for window dimensions
 float getWindowHeight();

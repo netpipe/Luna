@@ -165,16 +165,18 @@ suspensionCompression,rollInfluence,wheelFriction,wheelRadius,
 wheelWidth,steeringIncrement, steeringClamp, CUBE_HALF_EXTENTS ,
 wheelSpacingX,wheelScaleFactor;
 
-char * model,texture;
+char * model,*texture;
 stringc model2,texture2;
-std::string model3,texture3;
+//std::string model3,texture3;
 
-//model2 = "data/models/vehicles/oldChevy-Truck.3ds";
+//model2 =  stringc("data/models/vehicles/oldChevy-Truck.3ds";
 //texture2 = "data/models/vehicles/oldChevy.bmp";
 //float suspensionRestLength2,
 //float wheelSpacingZ2,
 //float wheelSpacingZ22,
 
+
+// 31 variables
 PyArg_ParseTuple(args,"ssfffffffffffifffifffffffffffff",&model,&texture,&scaleT,&scaleE,
 &btCarScale.X,&btCarScale.Y,&btCarScale.Z,
 &btModelscale.X,&btModelscale.Y,&btModelscale.Z,
@@ -184,32 +186,30 @@ PyArg_ParseTuple(args,"ssfffffffffffifffifffffffffffff",&model,&texture,&scaleT,
 &suspensionCompression,&rollInfluence,&wheelFriction,&wheelRadius,&wheelWidth,&steeringIncrement, &steeringClamp, &CUBE_HALF_EXTENTS,
 &wheelSpacingX,&wheelScaleFactor);
 
+//std::string   model3(model); //new stringc(model);
+//std::string texture3(texture); //new stringc(model);
+
+//printf (model2.c_str());
+//printf (texture2.c_str());
+
+//wprintf (conv_message);
+
+//model2 		= "data/models/vehicles/oldChevy-Truck.3ds";
+//texture2 	= "data/models/vehicles/oldChevy.bmp";
 //printf ("collision scale checker %f%f%f \n",btCarScaleX,btCarScaleY,btCarScaleZ);
 //printf ("car model scale checker %f%f%f \n",btModelscaleX,btModelscaleY,btModelscaleZ);
 //printf ("car model scale checker %f%f%f \n",m_vehiclePositionX,m_vehiclePositionY,m_vehiclePositionZ);
 //printf ("wheelSpacingX %f wheelScaleFactor %f \n",wheelSpacingX,wheelScaleFactor);
-model3 		 = model;
-texture3	 = texture;
+//model3 		 = model;
+//texture3	 = texture;
 
-model2		= model3.c_str();
-texture2	= texture3.c_str();
+//todo figure out stringc copy to string
 
 //strcpy(model,model2); // possibly a 20 char limitation
 //strcpy(texture,texture2);
-//model2 = &model;
-//texture2 = &texture;
-
-//model2	 = stringc(model);
-//texture2   = stringc(texture);
-
-
-
 
 //str(model,model2);
 //str(texture,texture2);
-
-
-
 
     #ifdef BULLETCAR
     bCar=1;
@@ -230,7 +230,7 @@ texture2	= texture3.c_str();
         wheelFriction,wheelRadius,wheelWidth,steeringIncrement, steeringClamp, CUBE_HALF_EXTENTS,
         wheelSpacingX,wheelScaleFactor);
 
-       m_cVehicle->initPhysics(stringc(model2),stringc(texture2));
+       m_cVehicle->initPhysics(stringc(model),stringc(texture));
 
 //         m_cVehicle->setEventRec();
 //     //!testing second vehicle

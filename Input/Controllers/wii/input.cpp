@@ -112,6 +112,10 @@ int Wii_init()
 	return 0;
 }
 
+
+void getVector(){}
+
+
 void set_led_state(cwiid_wiimote_t *wiimote, unsigned char led_state)
 {
 	if (cwiid_set_led(wiimote, led_state)) {

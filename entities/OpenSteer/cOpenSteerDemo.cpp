@@ -162,18 +162,21 @@ void OpenSteer::OpenSteerDemo::initialize(){
 // do all initialization related to graphics
 void OpenSteer::initializeGraphics( IrrlichtDevice *device){
   // Irrlicht settings
-  /*
-  irr::SIrrlichtCreationParameters irrParams;
-  irrParams.DriverType = irr::video::EDT_OPENGL;
-  irrParams.EventReceiver = &UserInput;
-  irrParams.Fullscreen = false;
-  irrParams.Bits = 16;
-  irrParams.Vsync = false;
-  irrParams.WindowSize = irr::core::dimension2du(800,600);
+
+//  irr::SIrrlichtCreationParameters irrParams;
+//  irrParams.DriverType = irr::video::EDT_OPENGL;
+//  irrParams.EventReceiver = &UserInput;
+//  irrParams.Fullscreen = false;
+//  irrParams.Bits = 16;
+//  irrParams.Vsync = false;
+//  irrParams.WindowSize = irr::core::dimension2du(800,600);
   // create Irrlicht
   irrPointers.Driver = 0; irrPointers.SMgr = 0; irrPointers.GUIEnv = 0;
-  */
-  irrPointers.Device = device;//createDeviceEx(irrParams);
+
+  irrPointers.Device = device;
+
+//  createDeviceEx(irrParams);
+
   if(irrPointers.Device){
     irrPointers.Device->getCursorControl()->setVisible(false);
     irrPointers.Driver = irrPointers.Device->getVideoDriver();

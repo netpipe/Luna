@@ -171,7 +171,7 @@ script reload and compile function
 reminder to actually check the names match with unstable ide's and whatnot
 */
 
-	{"draw_text",Python::PyIrr_DrawText,METH_VARARGS,"Renders text to the screen with default font"},
+	{"drawtext",Python::PyIrr_DrawText,METH_VARARGS,"Renders text to the screen with default font"},
 	{"add_cube",Python::PyIrr_AddCubeSceneNode,METH_VARARGS,"Adds a cube scene node"},
 	{"load_texture",Python::PyIrr_LoadTexture,METH_VARARGS,"Loads a texture"},
 	{"set_texture",Python::PyIrr_SetTexture,METH_VARARGS,"Adds a texture to a scene node"},
