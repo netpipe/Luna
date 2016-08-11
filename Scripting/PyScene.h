@@ -15,9 +15,9 @@ PyObject * Python::PyIrr_LoadMesh(PyObject * self,PyObject * args){
 PyObject * Python::PyIrr_loadModel(PyObject * self,PyObject * args) { // if treepointer passed remove it ModelFactory
 
     int action;
-    char * type,value1,value2;
+    char * type,*value1,*value2;
 
-    PyArg_ParseTuple(args,"sssl",&type,&value1,&value2,&action);
+    PyArg_ParseTuple(args,"sssl",&value1,&value2,&type,&action);
 
   //  Assimp::Importer importer;
     irr::core::stringc extension;

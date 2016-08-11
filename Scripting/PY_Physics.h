@@ -23,8 +23,10 @@ PyObject * Python::PyIrr_recast(PyObject * self,PyObject * args){
 
 	//fs->addFileArchive(IRRLICHT_DIR);
 	//#define IRRLICHT_DIR "media"
+char * path;
+PyArg_ParseTuple(args,"s",&path);
 
-	#define MODEL_FILE "./media/dungeon.obj"
+	char * MODEL_FILE = path;//"./media/dungeon.obj"
 	node = smgr->addOctreeSceneNode(smgr->getMesh(MODEL_FILE));
 	smgr->getMeshManipulator()->setVertexColorAlpha(smgr->getMesh(MODEL_FILE), 2);
 

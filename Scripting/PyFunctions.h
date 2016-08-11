@@ -102,7 +102,7 @@ RibbonTrailSceneNode* rt;
 #include "../Scene/spriteManager/SpriteManager.h"
 #include "../Scene/spriteManager/BmFont.h"
 #include "../Scene/spriteManager/ParticleSystem.h"
-#include "../GUI/Math/SCalcExpr.h""
+#include "../GUI/Math/SCalcExpr.h"
 
     BmFont *fonts = new BmFont;
 

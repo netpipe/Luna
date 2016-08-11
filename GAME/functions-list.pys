@@ -59,7 +59,7 @@ extras.skydome("data/textures/skydomes/skydome_1_2048x512.jpg")
 
 #track1 = irr.loadTrack('huge.3ds',0,0,0)  # trackname , timeofday , lighting , track slot/stages
 terrain = scene.addTerrain(4,-3,5,0) # load last to make the physics work FIX  // possibly a load terrain xml function
-#irr.loadModel("media/ShadRoom.b3d")
+irr.loadModel("media/ShadRoom.b3d","texture",0,0)
 #irr.addwater(1)
 #irr.addTree(terrain,5,5,5)
 #irr.ragman(1) # position , size , model, animation
@@ -71,6 +71,8 @@ terrain = scene.addTerrain(4,-3,5,0) # load last to make the physics work FIX  /
 #irr.flag1(1)
 #irr.flag2(1)
 #irr.compass(1)
+
+#scene.recast("./media/dungeon.obj");
 
 #irr.tesselate(1) # deltatime needs work if its the only thing rendering then nothing happens.
 #       put these into the python

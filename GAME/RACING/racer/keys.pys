@@ -67,6 +67,6 @@ if input.getKey('KEY_KEY_E') :
 
 if input.getKey('KEY_ESCAPE') :
  paused=1
- irr.exit()
+ scene.exit()
 
 #irr.checkKeyState(){};
