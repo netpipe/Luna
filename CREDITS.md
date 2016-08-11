@@ -11,8 +11,6 @@ Various Parts and peices from Irrlicht forum will try to mention those involved.
 
 boids  - RandomMesh
 particle- DarkKiluah
-- Deesine
--
 
 huge thanks to Irrlicht crew special mention of hybrid / cute alien / Matthias / Nadro for great forum and repo management.
 also to the irc crew for being there for support.
