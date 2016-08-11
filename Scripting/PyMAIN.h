@@ -89,7 +89,7 @@ namespace Python {
     PyObject * PyIrr_LoadAnimatedMesh(PyObject * self,PyObject * args);
     PyObject * PyIrr_LoadMesh(PyObject * self,PyObject * args);
     PyObject * PyIrr_tesselateImage(PyObject * self,PyObject * args);
-    PyObject * PyIrr_addChopper(PyObject * self,PyObject * args);
+    PyObject * PyIrr_addHelicopter(PyObject * self,PyObject * args);
     PyObject * PyIrr_setPosition(PyObject * self,PyObject * args);
     PyObject * PyIrr_getPosition(PyObject * self,PyObject * args);
     PyObject * PyIrr_motionTrail(PyObject * self,PyObject * args);

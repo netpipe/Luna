@@ -5,7 +5,7 @@ PyMethodDef irr_Physics[] = {
 	{"LoadShape",Python::PyIrr_LoadShape,METH_VARARGS,"Loads a texture"}, //notsure what this was
 	{"ragman",Python::PyIrr_RagMan,METH_VARARGS,"PyIrr_RagMan"},
     {"load_vehicle",Python::PyIrr_LoadVehicle,METH_VARARGS,"Loads a vehicle"},
-    {"addChopper",Python::PyIrr_addChopper ,METH_VARARGS,"PyIrr_addChopper"},
+    {"addHelicopter",Python::PyIrr_addHelicopter ,METH_VARARGS,"PyIrr_addHelicopter"},
     {"addCar",Python::PyIrr_addCar ,METH_VARARGS,"PyIrr_addCar"},
     {"bulletBlend",Python::PyIrr_BulletBlend,METH_VARARGS,"PyIrr_BulletBlend"},
     {"addHUD",Python::PyIrr_addHUD,METH_VARARGS,"PyIrr_addHUD"},
@@ -86,14 +86,14 @@ PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){
         Py_RETURN_NONE;
 }
 
-PyObject * Python::PyIrr_addChopper(PyObject * self,PyObject * args) {
+PyObject * Python::PyIrr_addHelicopter(PyObject * self,PyObject * args) {
 // return scene node and assign camera vector or parrent camera to scene.
 vector3df loc;
 char * path;
-PyArg_ParseTuple(args,"sfff",&loc.X,&loc.Y,&loc.Z);
+PyArg_ParseTuple(args,"sfff",&path,&loc.X,&loc.Y,&loc.Z);
 //active camera
     #ifdef CHOPPER
-    IAnimatedMesh* mesh = smgr->getMesh("data/models/vehicles/chopper/Helicopter 2.obj");
+    IAnimatedMesh* mesh = smgr->getMesh(path);
     IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
     chopperControl = new ChopperControl(device, node);
     chopperControl->setEventRec( &mEvent );

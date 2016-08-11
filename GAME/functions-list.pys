@@ -88,7 +88,7 @@ irr.loadModel("media/ShadRoom.b3d","texture",0,0)
 #        @param gap       - The gap between parts.
 #    */
 
-#irr.addChopper(1) # type, physical properties - speed , weight etc..
+scene.addHelicopter("data/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
 
 #need a way to assign camera target in py
 
