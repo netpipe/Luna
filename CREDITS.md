@@ -46,19 +46,22 @@ also to the irc crew for being there for support.
 |miNav |  Grady O'Neill , aussiedude|
 |TTF manager | Akabane87|
 |PolyVox - Virror|
-
 |IrrNet / shaders / Xeffects | Blindside|
 
 
 Shaders and things
-
+===================
 textures
+========
 
-sounds
+
+Sounds
+======
 http://soundimage.org
 
-blends
-blendswap.com
+Blends / Models
+================
+|blendswap.com|
 
 
 3rd Party Apps/Libs
