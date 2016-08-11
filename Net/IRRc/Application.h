@@ -4,8 +4,12 @@
 #include <vector>
 #include <irrlicht.h>
 #include "gui/Gui.h"
-#include "Socket.h"
+//#include "Socket.h"
+#include <string.h>
+#include <strings.h>
+#include <iostream>
 
+using namespace std;
 class Application : public irr::IEventReceiver
 {
 
@@ -71,9 +75,8 @@ private:
 	///Find topic by question
 	Topic* const findTopicInList(const std::string& question) const;
 
-
-
-	TCPSocket* socket;
+	void ServerLoop();
+	//TCPSocket* socket;
 
 	bool running;
 

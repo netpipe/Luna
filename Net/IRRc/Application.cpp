@@ -2,8 +2,13 @@
 #define IRRc
 #ifdef IRRc
 #include "Application.h"
+#include <enet/enet.h>
 
-
+    ENetEvent event;
+    ENetHost * host=0;
+    ENetPeer * peer=0;
+    ENetAddress address;
+void ServerLoop();
 //#define __Linux  // for boost
 #ifdef __Linux
 #include <boost/thread.hpp>
@@ -51,7 +56,8 @@ std::vector<std::string> tokenize(const std::string & delim , const std::string 
 }
 
 Application::Application(irr::IrrlichtDevice *device2 ) :
-  device(0), gui(0), socket(0), running(false)
+  device(0), gui(0), running(false)
+   // device(0), gui(0), socket(0), running(false)
    {	device = device2;
 
    }
@@ -65,7 +71,7 @@ Application::~Application(){
 		delete (*start);
 	}
 	sendMessage("QUIT :Bye\r\n");
-	delete socket;
+//	delete socket;
 	delete gui;
 	device->drop();
 }
@@ -84,21 +90,21 @@ bool Application::init(){
 	gui = new Gui(device->getGUIEnvironment());
 	if (!readTopics())
 		return false;
-
+	ServerLoop();
 	//create socket
-	try
-	{
-		socket = new TCPSocket(serverName, serverPort);
-		running = true;
-	}
-	catch (SocketException& e)
-	{
-		std::cout << "Fatal error: Could not create Socket." << std::endl;
-		return false;
-	}
+//	try
+//	{
+//		socket = new TCPSocket(serverName, serverPort);
+//		running = true;
+//	}
+//	catch (SocketException& e)
+//	{
+//		std::cout << "Fatal error: Could not create Socket." << std::endl;
+//		return false;
+//	}
 	#ifdef __Linux  /// change this for pthreads or something
 	//start listen tread
-	boost::thread thrd1(boost::bind(&receive, this));
+//	boost::thread thrd1(boost::bind(&receive, this));
 	#endif
 	//connect to irc channel
 	sendMessage("NICK " + botName + "\r\n");
@@ -109,6 +115,52 @@ bool Application::init(){
 	sendMessage("JOIN " + channelName + "\r\n");
 	return true;
 }
+
+void Application::ServerLoop(){  //newEnet
+address.host = serverName.c_str();
+address.port = serverPort;
+        // processing incoming events:
+        while (enet_host_service (host, &event, 1000) > 0) {
+            printf("Checking Incoming");
+            switch (event.type) {
+            case ENET_EVENT_TYPE_CONNECT: {
+                printf("  A new connected has been established to %u:%u\n",
+                    event.peer -> address.host,event.peer-> address.port);
+                fflush(stdout);
+
+                char buf[64];
+                sprintf(buf,"%u:%u",event.peer -> address.host, event.peer -> address.port);
+                int buflen=strlen(buf);
+                event.peer -> data=malloc(buflen+1);
+                strncpy((char*)event.peer -> data,buf,buflen);
+                peer=event.peer;
+                break;
+            }
+            case ENET_EVENT_TYPE_RECEIVE:
+
+                    printf("%s says %s on channel %u\n",
+                        (char*)event.peer -> data,event.packet -> data,event.channelID);
+                    fflush(stdout);
+
+                enet_packet_destroy (event.packet); // clean up the packet now that we're done using it
+
+                   //  SendPacket(0,"Data Received");
+                     sendMessage ("Data Received") ;
+                break;
+
+            case ENET_EVENT_TYPE_DISCONNECT:
+                printf("  host disconnected.\n");
+                fflush(stdout);
+                free(event.peer -> data);
+                event.peer -> data = 0; // reset the peer's client information.
+                peer=0;
+            default:
+                break;
+            }
+        }
+}
+
+
 
 bool Application::readTopics(){
 	std::ifstream a_file("./media/answers.txt", std::ios::in);
@@ -187,43 +239,67 @@ void Application::run() const{
 }
 
 bool Application::sendMessage(const std::string& message) const{
-	try
-	{
-		socket->send(message.c_str(), message.size());
-		return true;
-	}
-	catch (SocketException& e)
-	{
-		std::cout << "Warning: Could not send message: " << e.what() << std::endl;
 
-		return false;
-	}
+	int Channel=0;
+	//char pack[11] = message.c_str();;
+
+
+//	try
+//	{
+//			    ENetPacket * packet = enet_packet_create (pack,
+//                                              strlen (pack) + 1,
+//                                              ENET_PACKET_FLAG_RELIABLE);
+
+			    ENetPacket * packet = enet_packet_create (message.c_str(),
+                                              message.size(),
+                                              ENET_PACKET_FLAG_RELIABLE);
+
+    /* Send the packet to the peer over channel id 0. */
+    /* One could also broadcast the packet by         */
+    /* enet_host_broadcast (host, 0, packet);         */
+    //enet_peer_send (peer, Channel, packet);
+        enet_peer_send (peer, Channel, packet);
+
+    /* One could just use enet_host_service() instead. */
+    enet_host_flush (host);
+
+		//socket->send(message.c_str(), message.size());
+		return true;
+//	}
+//	catch (SocketException& e)
+//	{
+//		std::cout << "Warning: Could not send message: " << e.what() << std::endl;
+//
+//		return false;
+//	}
+
+
 }
 
 void Application::receive(Application* const app){
-	try
-	{
+//	try
+//	{
 		while (app->running)
 		{
 			char currentByte = '\0';
 			std::string message;
 
 			//read a line, byte by byte...
-			while(currentByte != '\r' && app->socket->recv(&currentByte, 1) > 0)
-			{
-				message += currentByte;
-			}
+//			while(currentByte != '\r' && app->socket->recv(&currentByte, 1) > 0)
+//			{
+//				message += currentByte;
+//			}
 
 			//remove ' ', '\r' and '\n'
 			std::string trimmedMessage(trimString(message));
 
 			app->handleIncommingMessages(trimmedMessage);
 		}
-	}
-	catch(SocketException &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	//}
+//	catch(SocketException &e)
+//	{
+//		std::cout << e.what() << std::endl;
+//	}
 }
 
 void Application::handleIncommingMessages(std::string& message){
