@@ -16,7 +16,7 @@ also to the irc crew for being there for support.
 
 
 
-|Various Parts and peices from Irrlicht forum will try to mention those involved.||
+|Various Parts and peices from Irrlicht forum will try to mention those involved.|   |
 
 |boids  | RandomMesh|
 |particlefx| DarkKiluah|
