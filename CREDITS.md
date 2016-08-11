@@ -4,6 +4,8 @@ CREDITS WIP
 
 huge thanks to Irrlicht crew special mention of hybrid / cute alien / Matthias / Nadro / Bitplane for great forum and repo management.
 
+thanks to god/gods for presenting the oppertunitys and providing the ability to achieve these things.
+
 also to the irc crew for being there for support.
 
 | Role               |     Name                                 |
