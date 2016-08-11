@@ -7,7 +7,7 @@ also to the irc crew for being there for support.
 ==========
 |Various Parts and peices from Irrlicht forum will try to mention those involved.|   |
 
-| Name               | Role                                     |
+| Role               |     Name                                 |
 |--------------------|------------------------------------------|
 |various preplanning and networking wrapper| SupraDigital|
 |Aren|
@@ -61,16 +61,19 @@ blends
 blendswap.com
 
 
-
-|zlib | Jean-loup Gailly , Mark Adler |
-LMMS|
-Audacity|
-GIMP|
-Blender|
-codeblocks|
+3rd Party Apps/Libs
+====================
+| Name               | 
+|--------------------|
+|zlib - Jean-loup Gailly , Mark Adler |
+|LMMS|
+|Audacity|
+|GIMP|
+|Blender|
+|codeblocks|
 |linux|
-FSF
-Xiph.Org
-mozilla foundation
-gnome DE / mate  - 
+|FSF|
+|Xiph.Org|
+|mozilla foundation|
+|gnome DE / mate  - |
 
