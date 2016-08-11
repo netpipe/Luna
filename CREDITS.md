@@ -2,7 +2,7 @@ CREDITS WIP
 ===========
 
 
-huge thanks to Irrlicht crew special mention of hybrid / cute alien / Matthias / Nadro for great forum and repo management.
+huge thanks to Irrlicht crew special mention of hybrid / cute alien / Matthias / Nadro / Bitplane for great forum and repo management.
 also to the irc crew for being there for support.
 ==========
 |Various Parts and peices from Irrlicht forum will try to mention those involved.|   |
@@ -13,7 +13,9 @@ also to the irc crew for being there for support.
 |Aren|
 |Tecan/ Clay| project organiser |
 |particle editor / FKEditor / various game mechanics | Deesine|
+| Clouds | G Davidson / Bitplane , tbw|
 |boids  | RandomMesh|
+|Water | DeusXL , sio2 | 
 |particlefx| DarkKiluah|
 |continued development of third party libs,project advice | bkeys|
 |FPS weapon / 2d graph | kat104|
@@ -23,7 +25,7 @@ also to the irc crew for being there for support.
 |RibbonTrail | Terrain mods - Paulo|
 |tesselated image | Adam Kazimierczak|
 |flags | Patrick Engel and Philipp Crocoll / FMX|
-|bullet API and Blender Loader |Erwin|
+|bulletAPI and Blender Loader |Erwin Coumans|
 |bullet ragdoll | Marten Svanfeldt|
 |missile / softbody / bvh - sssiii.seesaa.net|
 |code editor | Christian Clavet, Andres Jesse Porfirio & Lonesome Ducky|
@@ -45,23 +47,28 @@ also to the irc crew for being there for support.
 |recast | Mikko Mononen , thanhle|
 |miNav |  Grady O'Neill , aussiedude|
 |TTF manager | Akabane87|
-|PolyVox - Virror|
+|PolyVox | Virror|
 |IrrNet / shaders / Xeffects | Blindside|
-
+|quadtree |  Raphael Finkel and J.L. Bentley,  Jonathan Ferraris|
 
 Shaders and things
 ===================
-textures
-========
+
+Documentation
+=============
+|------------|
+| gamedev.net|
 
 
 Sounds
 ======
-http://soundimage.org
+|http://soundimage.org|
 
-Blends / Models
+Blends / Models /Artwork
 ================
+|---------------------------|
 |blendswap.com|
+|http://www.michalkotek.com/|
 
 
 3rd Party Apps/Libs
