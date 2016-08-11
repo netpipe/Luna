@@ -53,22 +53,26 @@ also to the irc crew for being there for support.
 |quadtree |  Raphael Finkel and J.L. Bentley,  Jonathan Ferraris|
 
 Shaders and things
+=================
 | Name	     |
 |------------|
 |   |
 
 Documentation
+=============
 | Name	     |
 |------------|
 | gamedev.net|
 
 
 Sounds
+======
 | Name	              |
 |---------------------|
 |http://soundimage.org|
 
 Blends / Models / Artwork
+==========================
 | Name	                    |
 |---------------------------|
 |blendswap.com|
