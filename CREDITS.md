@@ -5,7 +5,7 @@ CREDITS WIP
 huge thanks to Irrlicht crew special mention of hybrid / cute alien / Matthias / Nadro for great forum and repo management.
 also to the irc crew for being there for support.
 ==========
-
+|Various Parts and peices from Irrlicht forum will try to mention those involved.|   |
 
 | Name               | Role                                     |
 |--------------------|------------------------------------------|
@@ -13,21 +13,13 @@ also to the irc crew for being there for support.
 |Aren|
 |Tecan/ Clay| project organiser |
 |particle editor / FKEditor / various game mechanics | Deesine|
-
-
-
-|Various Parts and peices from Irrlicht forum will try to mention those involved.|   |
-
 |boids  | RandomMesh|
 |particlefx| DarkKiluah|
-
 |continued development of third party libs,project advice | bkeys|
 |FPS weapon / 2d graph | kat104|
 |frontalwarrior / shaders / physics - Eigen|
-
 |Grass | DevSH|
 |decal manager | kinkreet and -------- <<|
-
 |RibbonTrail | Terrain mods - Paulo|
 |tesselated image | Adam Kazimierczak|
 |flags | Patrick Engel and Philipp Crocoll / FMX|
@@ -42,11 +34,6 @@ also to the irc crew for being there for support.
 |continious LOD | mesh simplifier| 
 |Realistic Water ||
 |sprite manager||
-
-
-
-
-
 |openSimplex | Ken Perlin / Kurt Spencer's / smcameron|
 |environment manager - Jonas Abramavicius aka Pazystamo|
 |simpleClouds / flight controls - OmareMad|
