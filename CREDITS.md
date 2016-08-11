@@ -6,6 +6,7 @@ Tecan - Clay
 Deesine
 
 
+
 Various Parts and peices from Irrlicht forum will try to mention those involved.
 
 - RandomMesh
@@ -42,4 +43,15 @@ TTF manager
 Voxel thingi
 
 IrrNet / Boids - Blindside
+
+LMMS
+Audacity
+GIMP
+Blender
+codeblocks
+linux
+FSF
+Xiph.Org
+mozilla foundation
+gnome DE / mate  - 
 
