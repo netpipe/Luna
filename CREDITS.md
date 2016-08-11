@@ -1,49 +1,79 @@
 CREDITS WIP
 
-SupraTeam / pre engine planning and learning.
+various preplanning and networking wrapper- SupraDigital
 Aren
 Tecan - Clay
-Deesine
+particle editor / FKEditor / various game mechanics - Deesine
 
 
 
 Various Parts and peices from Irrlicht forum will try to mention those involved.
 
-- RandomMesh
-- DarkKiluah
+boids  - RandomMesh
+particle- DarkKiluah
 - Deesine
 -
 
-huge thanks to Irrlicht crew special mention of hybrid / cute alien / Matthias for great forum and repo management.
+huge thanks to Irrlicht crew special mention of hybrid / cute alien / Matthias / Nadro for great forum and repo management.
 also to the irc crew for being there for support.
 
-continued development of third party libs and project advice - bkeys
-kat104
+
+continued development of third party libs,project advice - bkeys
+FPS weapon / 2d graph - kat104
+frontalwarrior / shaders / physics - Eigen
 
 
 Grass - DevSH
-decal manager
+decal manager - kinkreet and -------- <<
+
 RibbonTrail / Terrain mods - Paulo
-tesselater - 
-flags
+tesselated image - Adam Kazimierczak
+flags - Patrick Engel and Philipp Crocoll / FMX
 bullet API and Blender Loader -Erwin
-ragdoll / rocket /
+bullet ragdoll - Marten Svanfeldt
+missile / softbody / bvh - sssiii.seesaa.net
 code editor - Christian Clavet, Andres Jesse Porfirio & Lonesome Ducky
-assimp - 
-Spark	
+assimp - JLouisB / Alexander Gessler/ Thomas Schulze /Kim Kulling/David Nadlinger
+Spark  - Juff
+lenseflare - Serg Nechaeff
+occlusion
+continious LOD / mesh simplifier - 
+Realistic Water 
+sprite manager
 
-Python Wrapper
-Helicopter	
+
+
+
+
+openSimplex - Ken Perlin / Kurt Spencer's / smcameron
+environment manager - Jonas Abramavicius aka Pazystamo
+simpleClouds / flight controls - OmareMad
+Python Wrapper - Gavin Robinson
+Helicopter	- smso
 OpenSteer - Abusoft
-caudio
-cwiid
-recast
-miNav
-TTF manager
-Voxel thingi
+irrBullet / cAudio - wildrj / wildcv
+cwiid - abstrakraft 
+recast - Mikko Mononen , thanhle
+miNav -  Grady O'Neill , aussiedude
+TTF manager - Akabane87
+PolyVox - Virror
 
-IrrNet / Boids - Blindside
+IrrNet / shaders / Xeffects - Blindside
 
+
+Shaders and things
+
+textures
+
+sounds
+http://soundimage.org
+
+blends
+blendswap.com
+
+
+
+zlib - Jean-loup Gailly , Mark Adler 
 LMMS
 Audacity
 GIMP
