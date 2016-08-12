@@ -15,14 +15,21 @@ import irr
 
 #pyVehicle params &Vehicle,&param,&state,&ammount
 #car1 = 1
+driving = 0
 
 #
 if input.getKey('KEY_SPACE') :
  physics.VehicleParams(car1,5,0,0)
  print "setting cube position"
 
-if input.getKey('KEY_KEY_W') :
- physics.VehicleParams(car1,1,0,0) #acceleration
+if (driving and input.getKey('KEY_KEY_W') ):
+ print "neat"
+# physics.VehicleParams(car1,1,0,0) #acceleration
+elif(driving != 1 and input.getKey('KEY_KEY_W')):
+# scene.setCamera(camera,100,100,100)
+ scene.setCamera(camera,100,-100,-100)
+
+
 # physics.VehicleParams(car2,2,0,0) #acceleration
 if input.getKey('KEY_KEY_A') :
  physics.VehicleParams(car1,5,0,0)

@@ -2,7 +2,7 @@
 #define PYCAMERA_INCLUDED
 
 #include <irrlicht.h>
-// possibly rename to cameraManager
+// possibly rename to camera
 PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 	s32 x,y,z,t;
 //	char * t;
@@ -64,10 +64,13 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 }
 
 PyObject * Python::PyIrr_SetCamera(PyObject * self,PyObject * args){ //active camera // parameters for fov possibly shaders aswell
-	s32 x,y,z,t;
-		    ICameraSceneNode *cam;
-	PyArg_ParseTuple(args,"zllll",&cam,&x,&y,&z);
+	//s32
+	int x,y,z,cam2;
+	//int
+
+	PyArg_ParseTuple(args,"llll",&cam2,&x,&y,&z);
  //cam->setActiveCamera(cam);
+ ICameraSceneNode *cam = cam2;
     cam->setPosition(vector3df(x,y,z));
 
 return Py_BuildValue("z",cam);

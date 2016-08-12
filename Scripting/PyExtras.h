@@ -509,12 +509,12 @@ switch(param){
 
 
 PyObject * Python::PyIrr_skyDome(PyObject * self,PyObject * args){
-     char path;
-     std::string p;
+     char * path;
+   //  std::string p;
     PyArg_ParseTuple(args,"s",&path);
-    p = path;
+   // p = path;
 
-        smgr->addSkyDomeSceneNode(driver->getTexture( p.c_str() ), 60,60,1,2);
+        smgr->addSkyDomeSceneNode(driver->getTexture( path ), 60,60,1,2);
 
 return Py_BuildValue("");
 }

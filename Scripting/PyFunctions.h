@@ -176,8 +176,8 @@ reminder to actually check the names match with unstable ide's and whatnot
 	{"load_texture",Python::PyIrr_LoadTexture,METH_VARARGS,"Loads a texture"},
 	{"set_texture",Python::PyIrr_SetTexture,METH_VARARGS,"Adds a texture to a scene node"},
     {"addCamera",Python::PyIrr_addCamera,METH_VARARGS,"sets camera vector"},
-    {"setCam",Python::PyIrr_SetCamera,METH_VARARGS,"sets camera vector"},
-	{"getCam",Python::PyIrr_GetCamera,METH_VARARGS,"getcamera vector"},
+    {"setCamera",Python::PyIrr_SetCamera,METH_VARARGS,"sets camera vector"},
+	{"getCamera",Python::PyIrr_GetCamera,METH_VARARGS,"getcamera vector"},
 	{"Reset",Python::PyIrr_Reset,METH_VARARGS,"Reset various parts of scripting system"},
 	{"addAMesh",Python::PyIrr_LoadAnimatedMesh,METH_VARARGS,"PyIrr_addAnimatedMesh"},
 	{"addMesh",Python::PyIrr_LoadMesh,METH_VARARGS,"PyIrr_addMesh"},
@@ -451,7 +451,7 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
 return Py_BuildValue("0");
 }
 
-#include "../Scene/Flag/FlagManager.h"
+#include "../Scripting/Environmental.h"
 #include "../Scripting/PyExtras.h"
 #include "../Scripting/PY_Physics.h"
 #include "PyCamera.h"

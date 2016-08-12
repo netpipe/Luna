@@ -105,8 +105,12 @@ using namespace gui;
 	IImage* vertweightmap = driver->createImageFromFile("media/Flags/weightmap.tga");
 
 // create a couple of perlin generators
-	Perlin1D* pgen1 = new Perlin1D(128,5,0.05f,2.0f,rand());
-	Perlin1D* pgen2 = new Perlin1D(128,6,0.04f,2.0f,rand());
+	//Perlin1D* pgen1 = new Perlin1D(128,5,0.05f,2.0f,rand());
+	//Perlin1D* pgen2 = new Perlin1D(128,6,0.04f,2.0f,rand());
+		struct osn_context *pgen1;
+		struct osn_context *pgen2;
+	open_simplex_noise(rand(), &pgen1);
+	open_simplex_noise(rand(), &pgen2);
 
 // create a wind generator, there maybe issues/bugs with the direction handling
 	CWindGen* wind = new CWindGen(vector3df(0.0f,0.0f,1.0f),30.0,pgen1,0.5f,1.5f,pgen2);
@@ -133,3 +137,5 @@ using namespace gui;
 #endif
      Py_RETURN_NONE;
 };
+
+

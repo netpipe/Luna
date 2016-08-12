@@ -17,6 +17,7 @@ import input
 init = 1;
 
 camera = scene.addCamera(2,1,0,1) # 1 regular , 2 FPS , 3 other types, 4 rpg, << todo types  / active / vector
+
 #irr.addLight(1,1,50,1,"111111") # type , vector, color
 
 # irr.formationdemo(1)
@@ -59,7 +60,7 @@ extras.skydome("data/textures/skydomes/skydome_1_2048x512.jpg")
 
 #track1 = irr.loadTrack('huge.3ds',0,0,0)  # trackname , timeofday , lighting , track slot/stages
 terrain = scene.addTerrain(4,-3,5,0) # load last to make the physics work FIX  // possibly a load terrain xml function
-irr.loadModel("media/ShadRoom.b3d","texture",0,0)
+#irr.loadModel("media/ShadRoom.b3d","texture",0,0)
 #irr.addwater(1)
 #irr.addTree(terrain,5,5,5)
 #irr.ragman(1) # position , size , model, animation
@@ -88,7 +89,7 @@ irr.loadModel("media/ShadRoom.b3d","texture",0,0)
 #        @param gap       - The gap between parts.
 #    */
 
-scene.addHelicopter("data/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
+#scene.addHelicopter("data/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
 
 #need a way to assign camera target in py
 
