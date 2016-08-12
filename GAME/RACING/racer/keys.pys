@@ -31,8 +31,7 @@ if input.getKey('KEY_KEY_D') :
  physics.VehicleParams(car1,6,0,0)
 
 # ////    else if (!mEvent.getKeyState(  KEY_DOWN) && (m_cVehicle->getState() != EVEHICLE_ACCELERATING))
-if input.getKey(
-'KEY_KEY_S') or  input.getKey('KEY_DOWN') :
+if input.getKey('KEY_KEY_S') or  input.getKey('KEY_DOWN') :
  physics.VehicleParams(car1,2,0,0)
 #elif
 #
