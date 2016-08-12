@@ -4,6 +4,8 @@
 #include "Application.h"
 #include <enet/enet.h>
 
+//!TODO started porting process to enet, need to setup receive still possibly try threading aswell.
+
     ENetEvent event;
     ENetHost * host=0;
     ENetPeer * peer=0;

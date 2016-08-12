@@ -42,7 +42,7 @@ also to the irc crew for being there for support.
 |simpleClouds / flight controls - OmareMad|
 |Python Wrapper | Gavin Robinson|
 |Helicopter	| smso|
-|OpenSteer | Abusoft|
+|OpenSteer | http://opensteer.sourceforge.net/contact.html , A.Buschhüter|
 |irrBullet / cAudio | wildrj / wildcv|
 |cwiid | abstrakraft |
 |recast | Mikko Mononen , thanhle|
@@ -51,6 +51,7 @@ also to the irc crew for being there for support.
 |PolyVox | Virror|
 |IrrNet / shaders / Xeffects | Blindside|
 |quadtree |  Raphael Finkel and J.L. Bentley,  Jonathan Ferraris|
+|box2d 	/ irrBullet	| cobra171 ,http://box2d.org/contributors/|
 
 Shaders and things
 =================
