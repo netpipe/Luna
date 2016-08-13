@@ -27,7 +27,7 @@ camera = scene.addCamera(2,1,0,1) # 1 regular , 2 FPS , 3 other types, 4 rpg, <<
 #irr.opensteer(1)
 #irr.occlusionTest(1)            #broken #impliment nodemanager here for python occlusion someway to turn on and off
 #irr.image2d(1)                   #crashes without player being added first ? goes to background try to bring it as an overlay
-#irr.addHUD(1)
+#irr.addHUD("data/HUD.xml")
 
 #irr.bullet(1)                      #its actually a recast test at the moment
 
@@ -56,7 +56,9 @@ camera = scene.addCamera(2,1,0,1) # 1 regular , 2 FPS , 3 other types, 4 rpg, <<
 extras.skydome("data/textures/skydomes/skydome_1_2048x512.jpg")
 #scene.addMesh("./media/dwarf.x")
 print "load model"
-scene.addModel("Media/ninja.b3d","Media/lightmap.png","b3d",0)
+scene.addModel("media/dwarf.x","media/dwarf.jpg","b3d",0)
+
+scene.addModel("media/ninja.b3d","media/nskinbl.jpg","b3d",0)
 #irr.loadModel("media/ShadRoom.b3d","texture",0,0)
 #track1 = irr.loadTrack('huge.3ds',0,0,0)  # trackname , timeofday , lighting , track slot/stages
 terrain = scene.addTerrain(4,-3,5,0) # load last to make the physics work FIX  // possibly a load terrain xml function

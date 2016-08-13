@@ -188,7 +188,7 @@ PyObject * Python::PyIrr_addHUD(PyObject * self,PyObject * args){
         case openFile:
                 HUDENABLED=true;
                 CHUD2->RegisterDevice(device);
-                CHUD2->LoadHUD("data/HUD.xml");
+                CHUD2->LoadHUD(loadFile);
             return Py_BuildValue("l",CHUD2);
         break;
         case 1:

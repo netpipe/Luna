@@ -36,7 +36,7 @@ namespace Python {
     int VehicleParam(int vehicle,int param,int ammount,int state);
     bool CheckKeyState(int key);
 
-//IrrAssimp assimp(smgr);
+//IrrAssimp assimp(ISceneManager* );
 //            IrrAssimp assimp(ISceneManager);
  // put into a vector or array
     Vehicle   *m_cVehicle;

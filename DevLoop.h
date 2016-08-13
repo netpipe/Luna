@@ -44,6 +44,19 @@ if ( !device->run() ) return 0;
 
 device->getCursorControl()->setVisible(true);
 
+//    	IrrAssimp assimp(smgr);
+//    IAnimatedMesh* mesh = assimp.getMesh("media/dwarf.x");
+////	if (!mesh /*|| !meshNoAssimp*/)
+////	{
+////		device->drop();
+////		return 1;
+////	}
+//
+//	IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+//	node->setAnimationSpeed(mesh->getAnimationSpeed());
+//
+
+
     while ( device->run() && !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
     {
         const u32 now = device->getTimer()->getTime();

@@ -191,6 +191,7 @@ int Luna::init(){
 //Physics init
     m_cPhysics = new Physics();
     m_cPhysics->registerIrrDevice(device);
+
 //networking
     #ifdef NDEBUG
         ClientNetCallback* clientCallback = new ClientNetCallback();

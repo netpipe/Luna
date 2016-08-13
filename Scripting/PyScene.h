@@ -12,11 +12,12 @@ PyObject * Python::PyIrr_LoadMesh(PyObject * self,PyObject * args){
 	  return Py_BuildValue("");  }
 
 
+
 PyObject * Python::PyIrr_loadModel(PyObject * self,PyObject * args) { // if treepointer passed remove it ModelFactory
 
     int action;
     char * type,*value1,*value2;
-
+//IrrAssimp assimp(smgr);
     PyArg_ParseTuple(args,"sssl",&value1,&value2,&type,&action);
   //  PyArg_ParseTuple(args,"sss",&value1,&value2,&type);
 
@@ -28,18 +29,19 @@ PyObject * Python::PyIrr_loadModel(PyObject * self,PyObject * args) { // if tree
 //       io::path path;
 //    path.append(value1);
 
-  //  irr::core::getFileNameExtension(extension, value1);
+   irr::core::getFileNameExtension(extension, value1);
+   printf ("extenstion is %s", extension.c_str());
 //    bool extsupport= importer.IsExtensionSupported (extension.c_str());
  //   path = value1
 
-         IrrAssimp assimp(smgr);
-
-                printf ("loading b3d");
-            IAnimatedMesh* mesh = assimp.getMesh(stringc(value1));
-            IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
-            //node->setAnimationSpeed(mesh->getAnimationSpeed());
 
 
+//                printf ("loading b3d");
+//            IAnimatedMesh* mesh = assimp.getMesh(value1);
+//            IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+//            //node->setAnimationSpeed(mesh->getAnimationSpeed());
+//                node->setDebugDataVisible(scene::EDS_SKELETON | scene::EDS_BBOX_ALL);
+//                node->setMaterialTexture( 0, driver->getTexture(value2) );
 
     enum eaction{load=0,get,set,setTexture,animation};
 //    std::map<std::string, eaction> nodeMap;
@@ -79,10 +81,37 @@ switch(action){
 
         //IAnimatedMesh* meshNoAssimp = smgr->getMesh("Media/ninja.b3d");
         //  assimp.exportMesh(mesh, "obj", "Media/export.obj");
+        if ( extension == ".x" ){ //extension == "b3d"){
+                printf ("loading x");
+                         IrrAssimp assimp(smgr);
+            IAnimatedMesh* mesh = assimp.getMesh(value1);
+            IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
+            //IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode( meshNoAssimp );
 
-   //     if ( type == "sb3d" ){ //extension == "b3d"){
-        if ( extension == "b3d" ){ //){
+
+//            	if (!mesh /*|| !meshNoAssimp*/)
+//                {
+//                    device->drop();
+//                    return 1;
+//                }
+
+            if (node /*&& nodeNoAssimp*/)
+            {
+                //node->setMaterialFlag(EMF_LIGHTING, false);
+                node->setDebugDataVisible(scene::EDS_SKELETON | scene::EDS_BBOX_ALL);
+                //node->setScale(core::vector3df(100, 100, 100));
+
+                //nodeNoAssimp->setPosition(core::vector3df(100, 0, 0));
+                //nodeNoAssimp->setMaterialFlag(EMF_LIGHTING, false);
+                //node->setMD2Animation(scene::EMAT_STAND);
+                node->setMaterialTexture( 0, driver->getTexture(value2) );
+            }
+        }
+
+        if ( extension == ".b3d" ){ //extension == "b3d"){
                 printf ("loading b3d");
+                         IrrAssimp assimp(smgr);
             IAnimatedMesh* mesh = assimp.getMesh(value1);
             IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097

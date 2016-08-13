@@ -26,6 +26,7 @@
 #include <irrNet.h>
 
 //#include "TerrainFactory/GrassSceneNode/CGrassPatchSceneNode.h"
+//#include "Input/Model/IrrAssimp/IrrAssimp.h"
 
 class Luna
 {
