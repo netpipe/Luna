@@ -133,10 +133,10 @@ RibbonTrailSceneNode* rt;
     scene::LensFlareSceneNode* lensFlareNode;
     scene::IMeshSceneNode* sunMeshNode;
 
-//    Vehicle *m_cVehicle;
-//    Vehicle *m_cVehicle2;
+    Vehicle *m_cVehicle;
+    Vehicle *m_cVehicle2;
 
-    static vector<Vehicle*> m_cVehicle;
+ //   static vector<Vehicle*> m_cVehicle;
 
     cSkeleton skeleton;
         cAudio::IAudioManager* managerID;

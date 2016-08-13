@@ -33,7 +33,7 @@ namespace Python {
     void render();
 
 
-    int VehicleParam(int vehicle,stringc param,int ammount,int state);
+    int VehicleParam(int vehicle,int param,int ammount,int state);
     bool CheckKeyState(int key);
 
 
@@ -290,7 +290,7 @@ void Python::render() {//active camera
 
             ///  btVector3 pos = m_cVehicle->getVehiclePosition();
             // m_cVehicle2->renderme(); // no need to update unless running 2 players from same computer
-            m_cVehicle->renderme();
+    //m_cVehicle->renderme();
 //            #ifdef CAR2
 //                m_cVehicle2->renderme();
 //            #endif

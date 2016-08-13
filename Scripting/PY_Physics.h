@@ -154,6 +154,7 @@ vector3df loc;
 }
 
 PyObject * Python::PyIrr_addCar(PyObject * self,PyObject * args){
+	//vehicle manager
 vector3df loc; //drop point
 
 float scaleT,scaleE=1;
@@ -232,23 +233,27 @@ PyArg_ParseTuple(args,"ssfffffffffffifffifffffffffffff",&model,&texture,&scaleT,
         wheelFriction,wheelRadius,wheelWidth,steeringIncrement, steeringClamp, CUBE_HALF_EXTENTS,
         wheelSpacingX,wheelScaleFactor);
 
-       m_cVehicle->initPhysics(stringc(model),stringc(texture));
+        m_cVehicle->initPhysics(stringc(model),stringc(texture));
 
 //         m_cVehicle->setEventRec();
 //     //!testing second vehicle
+ //if second car
+
 //      m_cVehicle2 = new Vehicle;
-//       m_cVehicle2->registerIrrDevice(*device); m_cVehicle2->registerPhysics(*luna->m_cPhysics);
-//       m_cVehicle2->registerScene(*m_cScene); m_cVehicle2->reverse(1223);
-//       m_cVehicle2->initPhysics();
-   //    #define CAR2
-     //  m_cVehicle2->setVehiclePosition(vector3df(10,0,10));
-     //  ISceneNode* nodee = smgr->addCubeSceneNode(1);
-     //  btVector3 btCarScale = m_cVehicle2->btCarScale;
-     //   node->setScale(vector3df(btCarScale[0],btCarScale[1],btCarScale[2]));
-     //   node->setMaterialFlag(video::EMF_LIGHTING, false);
+//       m_cVehicle2->registerIrrDevice(*device);
+//        m_cVehicle2->registerPhysics(*luna->m_cPhysics);
+//       m_cVehicle2->registerScene(*m_cScene);
+//		m_cVehicle2->reverse(1223);
+//       m_cVehicle2->initPhysics(stringc(model),stringc(texture));
+//       #define CAR2
+//       m_cVehicle2->setVehiclePosition(vector3df(10,0,10));
+//       ISceneNode* nodee = smgr->addCubeSceneNode(1);
+//       btVector3 btCarScale = m_cVehicle2->btCarScale;
+//        node->setScale(vector3df(btCarScale[0],btCarScale[1],btCarScale[2]));
+//        node->setMaterialFlag(video::EMF_LIGHTING, false);
 
 
-//     Vehicle->push_back(m_cVehicle);
+  //   Vehicles->push_back(m_cVehicle);
 return Py_BuildValue("l",m_cVehicle);
 #else
 return Py_BuildValue("0");

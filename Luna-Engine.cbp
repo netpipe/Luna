@@ -258,10 +258,9 @@
 					<Add directory="../Irrlicht/source/Irrlicht" />
 					<Add directory="../libs/Irrlicht/include" />
 					<Add directory="../libs/net/irrNetLite21" />
-					<Add directory="../libs/net/enet/include" />
 					<Add directory="../libs/bullet3/src" />
 					<Add directory="../libs/freetype-2.3.9/include" />
-					<Add directory="../libs/net/enet-1.2.1" />
+					<Add directory="../libs/net/enet-1.2.1/include" />
 					<Add directory="FileSystem/readblend" />
 					<Add directory="../libs/libtheora-1.1.1/include/theora" />
 					<Add directory="../libs/libtheoraplayer/include" />
@@ -774,6 +773,7 @@
 		<Unit filename="Scene/spriteManager/main.cpp" />
 		<Unit filename="Scene/tesselatedImage/tesselatedImage.cpp" />
 		<Unit filename="Scene/tesselatedImage/tesselatedImage.h" />
+		<Unit filename="Scripting/Environmental.h" />
 		<Unit filename="Scripting/PY_Physics.h" />
 		<Unit filename="Scripting/PyCamera.h" />
 		<Unit filename="Scripting/PyExtras.h" />

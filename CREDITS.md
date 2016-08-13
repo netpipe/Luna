@@ -16,6 +16,7 @@ also to the irc crew for being there for support.
 |particle editor / FKEditor / various game mechanics | Deesine|
 | Clouds | G Davidson / Bitplane , tbw|
 |boids  | RandomMesh|
+|procedural trees| Asger Feldthaus|
 |Water | DeusXL , sio2 | 
 |particlefx| DarkKiluah|
 |continued development of third party libs,project advice | bkeys|
@@ -33,13 +34,13 @@ also to the irc crew for being there for support.
 |assimp | JLouisB / Alexander Gessler/ Thomas Schulze /Kim Kulling/David Nadlinger|
 |Spark  | Juff|
 |lenseflare | Serg Nechaeff|
-|occlusion||
+|occlusion| Bertrand M. |
 |continious LOD | mesh simplifier| 
-|Realistic Water ||
-|sprite manager||
+|Realistic Water | sio2 |
+|sprite manager| Armen138 |
 |openSimplex | Ken Perlin / Kurt Spencer's / smcameron|
-|environment manager - Jonas Abramavicius aka Pazystamo|
-|simpleClouds / flight controls - OmareMad|
+|environment manager | Jonas Abramavicius aka Pazystamo|
+|simpleClouds / flight controls | OmareMad|
 |Python Wrapper | Gavin Robinson|
 |Helicopter	| smso|
 |OpenSteer | http://opensteer.sourceforge.net/contact.html , A.Buschhüter|
@@ -51,6 +52,7 @@ also to the irc crew for being there for support.
 |PolyVox | Virror|
 |IrrNet / shaders / Xeffects | Blindside|
 |quadtree |  Raphael Finkel and J.L. Bentley,  Jonathan Ferraris|
+|open simplex | ken perlin , Kurt Spencer ,smcameron|
 |box2d 	/ irrBullet	| cobra171 ,http://box2d.org/contributors/|
 
 Shaders and things

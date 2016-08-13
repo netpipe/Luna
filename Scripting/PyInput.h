@@ -3,9 +3,9 @@
 //device->sleep(5,0); python delay for mainloop possibly use timers
 
 PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
-    int state,Vehicle,ammount;
-    stringc param;
-    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+    int state,Vehicle,ammount,param;
+   // char * param;
+    PyArg_ParseTuple(args,"llll",&Vehicle,&param,&ammount,&state);
     VehicleParam(Vehicle,param,ammount,state);
 
   return Py_BuildValue("");
@@ -25,19 +25,22 @@ return (keystate);
 }
 
 
-int Python::VehicleParam(int vehicle,stringc param,int ammount,int state){   // parameter editor// possibly a define value for get and set
+int Python::VehicleParam(int  vehicle,int  param,int ammount,int state){   // parameter editor// possibly a define value for get and set
 
 //steering
 //acceleration
 //etc...
 
 
-int returnvar;
-printf("%i",param);
+int returnvar=0;
+//printf("%s",param);
 
 
 
 enum eparam{reset,accelerate,reverse,ebrake,brake,lsteer,rsteer};
+
+//if param = "accelerate"
+//	action = 1
 
 //std::map<std::string, eparam> nodeMap;
 //int Iparam = nodeMap[param];
@@ -46,9 +49,9 @@ enum eparam{reset,accelerate,reverse,ebrake,brake,lsteer,rsteer};
 
 //prob need one map for state too
 
-int Iparam=0;
+int Iparam=param;
 
-if ( state==0 ){  // set var
+if ( state==0 ){  // use state for get and set var
        switch (Iparam){
 
             case eparam(reset):
@@ -85,6 +88,7 @@ if ( state==0 ){  // set var
 			case 7:
 
             case 8:
+            	m_cVehicle->renderme();
                 break;
             case 9:
                 m_cVehicle->steer_reset();
