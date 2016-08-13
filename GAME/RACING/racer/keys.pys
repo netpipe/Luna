@@ -40,8 +40,7 @@ if input.getKey('KEY_KEY_D') :
 if input.getKey('KEY_KEY_S') :#or  input.getKey('KEY_DOWN') :
  physics.VehicleParams(car1,2,0,0)
 
-physics.VehicleParams(car1,8,0,0)
-physics.VehicleParams(car2,8,0,0)
+
 #elif
 #
 #

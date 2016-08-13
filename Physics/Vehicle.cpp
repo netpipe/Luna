@@ -100,7 +100,7 @@ void Vehicle::renderme(){  //deltatime ?
         wheelNode[i]->setPosition(vector3df(    (f32)wheelPosition[0] ,
                                                 (f32)wheelPosition[1] ,
                                                 (f32)wheelPosition[2]));
-        m_vehicle->wheelNode[i]->setRotation(vector3df(    (f32)wheelRotationEuler[0],
+        wheelNode[i]->setRotation(vector3df(    (f32)wheelRotationEuler[0],
                                                 (f32)wheelRotationEuler[1],
                                                 (f32)wheelRotationEuler[2]));
                                                         // Synchronize the wheels with the (interpolated) chassis worldtransform

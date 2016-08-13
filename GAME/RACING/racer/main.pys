@@ -12,9 +12,10 @@ if (init) :
  texture = "data/models/vehicles/oldChevy.bmp"
  car1 = physics.addCar(model,texture, 1.0,1.0, 1.0,1.0,1.0,  1.5,1.5,2.0, 1.3,0.4,2.0,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
  init =0
- car2 = physics.addCar(model,texture, 1.0,1.0, 1.0,1.0,1.0,  1.5,1.5,2.0, 1.3,0.4,2.0,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
+# car2 = physics.addCar(model,texture, 1.0,1.0, 1.0,1.0,1.0,  1.5,1.5,2.0, 1.3,0.4,2.0,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
 
-
+physics.VehicleParams(car1,8,0,0)
+#physics.VehicleParams(car2,8,0,0)
  #timer
 scene.using ('./RACING/racer/keys.pys');
 

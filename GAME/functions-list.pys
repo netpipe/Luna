@@ -32,12 +32,11 @@ camera = scene.addCamera(2,1,0,1) # 1 regular , 2 FPS , 3 other types, 4 rpg, <<
 #irr.bullet(1)                      #its actually a recast test at the moment
 
 
-#irr.addMesh("./media/dwarf.x")
 #irr.soundman(1)                # has to be loaded last or makes black screen
 #anim = irr.addAdnimator(1,"aha.b3d") #type line,circle attach to mesh
 
-#player = irr.addPlayer(1)
-#timer1 = irr.Timers()
+#player = scene.addPlayer(1)
+#timer1 = scene.Timers()
 #print timer1.secondsLeft();
 #print timer1.get.seconds();
 #print timer1.day.seconds();
@@ -53,14 +52,15 @@ camera = scene.addCamera(2,1,0,1) # 1 regular , 2 FPS , 3 other types, 4 rpg, <<
                             #needs to pass the sounds to the main loop or blackscreen... odd
 #irr.atmosphere(1)              # set time of day / moonphase (i broke it)
 #irr.bitcloud(1)
-#irr.realCloud(1)
+#scene.realCloud(1)
 extras.skydome("data/textures/skydomes/skydome_1_2048x512.jpg")
-
-#irr.loadModel("Media/ninja.b3d","Media/lightmap.png",0,0)
-
+#scene.addMesh("./media/dwarf.x")
+print "load model"
+scene.addModel("Media/ninja.b3d","Media/lightmap.png","b3d",0)
+#irr.loadModel("media/ShadRoom.b3d","texture",0,0)
 #track1 = irr.loadTrack('huge.3ds',0,0,0)  # trackname , timeofday , lighting , track slot/stages
 terrain = scene.addTerrain(4,-3,5,0) # load last to make the physics work FIX  // possibly a load terrain xml function
-#irr.loadModel("media/ShadRoom.b3d","texture",0,0)
+
 #irr.addwater(1)
 #irr.addTree(terrain,5,5,5)
 #irr.ragman(1) # position , size , model, animation
@@ -69,7 +69,7 @@ terrain = scene.addTerrain(4,-3,5,0) # load last to make the physics work FIX  /
 
 #irr.lightning(1)  #try and get this mounted to a vehicle or shoot it from camera.
 #irr.beam(1)
-irr.flag1(1)
+#irr.flag1(1)
 #irr.flag2(1)
 #irr.compass(1)
 

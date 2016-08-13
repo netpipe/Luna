@@ -18,16 +18,28 @@ PyObject * Python::PyIrr_loadModel(PyObject * self,PyObject * args) { // if tree
     char * type,*value1,*value2;
 
     PyArg_ParseTuple(args,"sssl",&value1,&value2,&type,&action);
+  //  PyArg_ParseTuple(args,"sss",&value1,&value2,&type);
 
+    action=0;
   //  Assimp::Importer importer;
     irr::core::stringc extension;
    // irr::core::stringc path;
-    irr::core::getFileNameExtension(extension, stringc(value1));
-    //return importer.IsExtensionSupported (extension.c_str());
+ //  printf ("model loading %s",value1);
+//       io::path path;
+//    path.append(value1);
+
+  //  irr::core::getFileNameExtension(extension, value1);
+//    bool extsupport= importer.IsExtensionSupported (extension.c_str());
  //   path = value1
 
-    io::path path;
-    path.append(value1);
+         IrrAssimp assimp(smgr);
+
+                printf ("loading b3d");
+            IAnimatedMesh* mesh = assimp.getMesh(stringc(value1));
+            IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+            //node->setAnimationSpeed(mesh->getAnimationSpeed());
+
+
 
     enum eaction{load=0,get,set,setTexture,animation};
 //    std::map<std::string, eaction> nodeMap;
@@ -47,7 +59,7 @@ switch(action){
         break;
 
     case load: //load models // textures
-
+//if (extsupport
 
     //OVERLAPPING TEXT MOVEMENT FUNCTION FOR  | |  LISTS
     //    3DS//    BLEND (Blender)//    DAE/Collada//    FBX//    IFC-STEP//    ASE//    DXF//    HMP//    MD2//    MD3//    MD5
@@ -63,16 +75,25 @@ switch(action){
 
         //tecan make sure that renamed files dont trick the parser into loading them. sec
         // The assimp loader is in a separate system and not directly as a meshLoader to give the choice to use Irrlicht or Assimp for mesh loading to the user, in function of the format for example
-            IrrAssimp assimp(smgr);
+       //     IrrAssimp assimp(smgr);
 
         //IAnimatedMesh* meshNoAssimp = smgr->getMesh("Media/ninja.b3d");
         //  assimp.exportMesh(mesh, "obj", "Media/export.obj");
 
-        if (extension =="b3d"){
-            IAnimatedMesh* mesh = assimp.getMesh(path);
+   //     if ( type == "sb3d" ){ //extension == "b3d"){
+        if ( extension == "b3d" ){ //){
+                printf ("loading b3d");
+            IAnimatedMesh* mesh = assimp.getMesh(value1);
             IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
             //IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode( meshNoAssimp );
+
+
+//            	if (!mesh /*|| !meshNoAssimp*/)
+//                {
+//                    device->drop();
+//                    return 1;
+//                }
 
             if (node /*&& nodeNoAssimp*/)
             {
@@ -152,10 +173,11 @@ PyObject * Python::PyIrr_addTree(PyObject * self,PyObject * args) { // if treepo
     // call add tree one by one push to treemanager.
     // render tree shadow bake to terrain
       Terrain *terr;
+      int x,y,z;
 
     // open terrain tree layout could probably even load grass sametime.
-    PyArg_ParseTuple(args,"i",&terr);
-    vector3df aha = vector3df(3,3,3);
+    PyArg_ParseTuple(args,"illl",&terr,&x,&y,&z);
+    vector3df aha = vector3df(x,y,z);
           int tree =  terr->MakeTrees(aha , 1);
       //  if(btree == 1){
 

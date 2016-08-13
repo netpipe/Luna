@@ -586,20 +586,6 @@
 		<Unit filename="GUI/compass/Compass.h" />
 		<Unit filename="Input/Compress/Compress.cpp" />
 		<Unit filename="Input/Compress/Compress.h" />
-		<Unit filename="Input/Controllers/P5/p5dump.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="Input/Controllers/P5/p5glove.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="Input/Controllers/P5/p5glove.h" />
-		<Unit filename="Input/Controllers/P5/usb_hid.h" />
-		<Unit filename="Input/Controllers/P5/usb_hid_libusb.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="Input/Controllers/P5/usb_hid_win32.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="Input/Controllers/StringTools.cpp" />
 		<Unit filename="Input/Controllers/wii/input.cpp" />
 		<Unit filename="Input/Controllers/wii/libcwiid/bluetooth.c">
@@ -674,8 +660,6 @@
 		<Unit filename="Net/CGUIChatBox.h" />
 		<Unit filename="Net/IRRc/Application.cpp" />
 		<Unit filename="Net/IRRc/Application.h" />
-		<Unit filename="Net/IRRc/Socket.cpp" />
-		<Unit filename="Net/IRRc/Socket.h" />
 		<Unit filename="Net/IRRc/botFuncts.h" />
 		<Unit filename="Net/IRRc/gui/Gui.h" />
 		<Unit filename="Net/irrNetClient.cpp" />
