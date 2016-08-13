@@ -10,18 +10,18 @@ also to the irc crew for being there for support.
 
 | Role               |     Name                                 |
 |--------------------|------------------------------------------|
-|various preplanning and networking wrapper| SupraDigital|
-|Aren|
-|Tecan/ Clay| project organiser |
-|particle editor / FKEditor / various game mechanics | Deesine|
+| various preplanning and networking wrapper| SupraDigital|
+| Game/Engine-Designer , Artist, Musician | Aren|
+| project organiser , Artist | Tecan/ Clay|  |
+| particle editor / FKEditor / various game mechanics,Artist | Deesine |
 | Clouds | G Davidson / Bitplane , tbw|
-|boids  | RandomMesh|
-|procedural trees| Asger Feldthaus|
-|Water | DeusXL , sio2 | 
+| boids  | RandomMesh|
+| procedural trees| Asger Feldthaus|
+| Water | DeusXL , sio2 | 
 |particlefx| DarkKiluah|
 |continued development of third party libs,project advice | bkeys|
 |FPS weapon / 2d graph | kat104|
-|frontalwarrior / shaders / physics - Eigen|
+|frontalwarrior / shaders / physics | Eigen|
 |Grass | DevSH|
 |decal manager | kinkreet and -------- <<|
 |RibbonTrail | Terrain mods - Paulo|
@@ -29,7 +29,7 @@ also to the irc crew for being there for support.
 |flags | Patrick Engel and Philipp Crocoll / FMX|
 |bulletAPI and Blender Loader |Erwin Coumans|
 |bullet ragdoll | Marten Svanfeldt|
-|missile / softbody / bvh - sssiii.seesaa.net|
+|missile / softbody / bvh | sssiii.seesaa.net|
 |code editor | Christian Clavet, Andres Jesse Porfirio & Lonesome Ducky|
 |assimp | JLouisB / Alexander Gessler/ Thomas Schulze /Kim Kulling/David Nadlinger|
 |Spark  | Juff|
