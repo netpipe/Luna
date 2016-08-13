@@ -14,28 +14,36 @@ also to the irc crew for being there for support.
 | Game/Engine-Designer , Artist, Musician | Aren|
 | project organiser , Artist | Tecan/ Clay|  |
 | particle editor / FKEditor / various game mechanics,Artist | Deesine |
-| Clouds | G Davidson / Bitplane , tbw|
-| boids  | RandomMesh|
+| FKEditor | Christian Clavet| 
+|Code Editor | Christian Clavet, Andres Jesse Porfirio & Lonesome Ducky|
+| Clouds / imposterNodes| G Davidson / Bitplane , tbw|
+| boids / game mechanics | RandomMesh|
 | procedural trees| Asger Feldthaus|
-| Water | DeusXL , sio2 | 
+| Water | DeusXL , sio2 , elvman| 
 |particlefx| DarkKiluah|
 |continued development of third party libs,project advice | bkeys|
+|extended text ||
+| beam scene node | Foaly |
+| cVideoMaster  | Bate |
+| compass |Vitek , drac_gd  |
 |FPS weapon / 2d graph | kat104|
 |frontalwarrior / shaders / physics | Eigen|
 |Grass | DevSH|
 |decal manager | kinkreet and -------- <<|
-|RibbonTrail | Terrain mods - Paulo|
+| RibbonTrail  / Terrain/Nodes/mods | Paulo|
 |tesselated image | Adam Kazimierczak|
 |flags | Patrick Engel and Philipp Crocoll / FMX|
 |bulletAPI and Blender Loader |Erwin Coumans|
 |bullet ragdoll | Marten Svanfeldt|
 |missile / softbody / bvh | sssiii.seesaa.net|
-|code editor | Christian Clavet, Andres Jesse Porfirio & Lonesome Ducky|
 |assimp | JLouisB / Alexander Gessler/ Thomas Schulze /Kim Kulling/David Nadlinger|
 |Spark  | Juff|
 |lenseflare | Serg Nechaeff|
 |occlusion| Bertrand M. |
-|continious LOD | mesh simplifier| 
+|continious LOD | |
+| whirl / teleport | http://lesson.ifdef.jp/009.html |
+| mesh simplifier| |
+|postprocessing | DavidJE13 |
 |Realistic Water | sio2 |
 |sprite manager| Armen138 |
 |openSimplex | Ken Perlin / Kurt Spencer's / smcameron|
@@ -97,6 +105,8 @@ Blends / Models / Artwork
 |Xiph.Org|
 |mozilla foundation|
 |gnome DE / mate  - |
+| sql |
+| squirrel |
 
 a special thanks to those not mentioned, send email if I missed ya.
 
