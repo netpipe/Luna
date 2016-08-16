@@ -301,15 +301,16 @@ tr.setIdentity();
 
         IAnimatedMesh *mesh = device->getSceneManager()->getMesh(path);
   //  IAnimatedMesh *mesh = device->getSceneManager()->getMesh(path2.c_str());
+
     device->getSceneManager()->getMeshManipulator()->scaleMesh(mesh,trackScale);
     IAnimatedMeshSceneNode *node = device->getSceneManager()->addAnimatedMeshSceneNode(mesh);
 
 smgr->getMeshManipulator()->makePlanarTextureMapping(
 mesh, 0.004f);
 
-//    if(!mesh || !node) return;
+   // if(!mesh || !node) return;
     node->setAutomaticCulling(EAC_OFF);
-    // node->setMaterialFlag(EMF_LIGHTING, true);
+     node->setMaterialFlag(EMF_LIGHTING, true);
     // node->setScale(trackScale);
     // node->setRotation(vector3df(45,90.f,110));
     node->setPosition(trackPosition);

@@ -5,16 +5,6 @@ Focus List
 - opensteer
 - codeeditor
 - input/joystick/gamepad manager
-- model loading
-
-
-
-#scripting expansion list
--
--
--
--
-
 
 
 TODO LIST - seems like good spot as any to putit

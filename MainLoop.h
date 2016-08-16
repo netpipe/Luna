@@ -116,6 +116,15 @@ Python::PreRender();
         Python::preEnd();
         driver->endScene();
         Python::CheckKeyStates();
+
+                if ((f32)(now - then)>100)
+        {
+            driver->runAllOcclusionQueries(false);
+            driver->updateAllOcclusionQueries();
+            nodeVisible=driver->getOcclusionQueryResult(node)>0;
+            now=device->getTimer()->getTime();
+        }
+
         //CheckKeyStates(); obsolete python does it above
         int fps = driver->getFPS();
 		if (lastFPS != fps)

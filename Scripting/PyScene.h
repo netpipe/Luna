@@ -17,7 +17,7 @@ PyObject * Python::PyIrr_loadModel(PyObject * self,PyObject * args) { // if tree
 
     int action;
     char * type,*value1,*value2;
-//IrrAssimp assimp(smgr);
+IrrAssimp assimp(smgr);
     PyArg_ParseTuple(args,"sssl",&value1,&value2,&type,&action);
   //  PyArg_ParseTuple(args,"sss",&value1,&value2,&type);
 
@@ -31,9 +31,10 @@ PyObject * Python::PyIrr_loadModel(PyObject * self,PyObject * args) { // if tree
 
    irr::core::getFileNameExtension(extension, value1);
    printf ("extenstion is %s", extension.c_str());
-//    bool extsupport= importer.IsExtensionSupported (extension.c_str());
+ //   bool extsupport= importer.IsExtensionSupported (extension.c_str());
+ //   printf ("%b",extsupport);
  //   path = value1
-
+IAnimatedMeshSceneNode* node;
 
 
 //                printf ("loading b3d");
@@ -61,7 +62,7 @@ switch(action){
         break;
 
     case load: //load models // textures
-//if (extsupport
+//if (extsupport){
 
     //OVERLAPPING TEXT MOVEMENT FUNCTION FOR  | |  LISTS
     //    3DS//    BLEND (Blender)//    DAE/Collada//    FBX//    IFC-STEP//    ASE//    DXF//    HMP//    MD2//    MD3//    MD5
@@ -83,9 +84,10 @@ switch(action){
         //  assimp.exportMesh(mesh, "obj", "Media/export.obj");
         if ( extension == ".x" ){ //extension == "b3d"){
                 printf ("loading x");
-                         IrrAssimp assimp(smgr);
+                      //   IrrAssimp assimp(smgr);
             IAnimatedMesh* mesh = assimp.getMesh(value1);
-            IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+        //    IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
             //IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode( meshNoAssimp );
 
@@ -107,13 +109,15 @@ switch(action){
                 //node->setMD2Animation(scene::EMAT_STAND);
                 node->setMaterialTexture( 0, driver->getTexture(value2) );
             }
+       //     node->setPosition(vector3df(300,300,300));
         }
 
         if ( extension == ".b3d" ){ //extension == "b3d"){
                 printf ("loading b3d");
-                         IrrAssimp assimp(smgr);
+                     //    IrrAssimp assimp(smgr);
             IAnimatedMesh* mesh = assimp.getMesh(value1);
-            IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+       //     IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
             //IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode( meshNoAssimp );
 
@@ -137,25 +141,25 @@ switch(action){
             }
         }
 
-    //    if (extension =="bvh"){
-    //           IAnimatedMesh* mesh = assimp.getMesh(path);//"Media/B02.bvh"
-    //        IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
-    //        node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
-    //        //IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode( meshNoAssimp );
-    //
-    //        if (node /*&& nodeNoAssimp*/)
-    //        {
-    //            //node->setMaterialFlag(EMF_LIGHTING, false);
-    //            node->setDebugDataVisible(scene::EDS_SKELETON | scene::EDS_BBOX_ALL);
-    //            //node->setScale(core::vector3df(100, 100, 100));
-    //
-    //            //nodeNoAssimp->setPosition(core::vector3df(100, 0, 0));
-    //            //nodeNoAssimp->setMaterialFlag(EMF_LIGHTING, false);
-    //            //node->setMD2Animation(scene::EMAT_STAND);
-    //            node->setMaterialTexture( 0, driver->getTexture(value2 ));
-    //            	return Py_BuildValue("l",node);
-    //        }
-    //    }
+//        if (extension ==".bvh"){
+//               IAnimatedMesh* mesh = assimp.getMesh(path);//"Media/B02.bvh"
+//            IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+//            node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
+//            //IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode( meshNoAssimp );
+//
+//            if (node /*&& nodeNoAssimp*/)
+//            {
+//                //node->setMaterialFlag(EMF_LIGHTING, false);
+//                node->setDebugDataVisible(scene::EDS_SKELETON | scene::EDS_BBOX_ALL);
+//                //node->setScale(core::vector3df(100, 100, 100));
+//
+//                //nodeNoAssimp->setPosition(core::vector3df(100, 0, 0));
+//                //nodeNoAssimp->setMaterialFlag(EMF_LIGHTING, false);
+//                //node->setMD2Animation(scene::EMAT_STAND);
+//                node->setMaterialTexture( 0, driver->getTexture(value2 ));
+//                	return Py_BuildValue("l",node);
+//            }
+//        }
 
 
 //        if (!mesh /*|| !meshNoAssimp*/)
@@ -168,6 +172,8 @@ switch(action){
     }
 
 	return Py_BuildValue("l",node);
+//	        }
+//	        	return Py_BuildValue("");
 }
 
 
@@ -184,9 +190,9 @@ PyArg_ParseTuple(args,"iiii",&a1f,&a2f,&a3f,&btree);
         terr->Init();
 
         // position, rotation, scale, LOD
-        terr->Render( vector3df( a1f,a2f,a3f), vector3df(0,0.0f,0),   vector3df(1,0.20f,1),3);
+       int ret = terr->Render( vector3df( a1f,a2f,a3f), vector3df(0,0.0f,0),   vector3df(1,0.20f,1),3);
 
-    return Py_BuildValue("l",terr); // not sure if you can do this ?
+    return Py_BuildValue("l",ret); // not sure if you can do this ?
 #endif
 return Py_BuildValue("0");
 }
@@ -205,7 +211,8 @@ PyObject * Python::PyIrr_addTree(PyObject * self,PyObject * args) { // if treepo
       int x,y,z;
 
     // open terrain tree layout could probably even load grass sametime.
-    PyArg_ParseTuple(args,"illl",&terr,&x,&y,&z);
+    PyArg_ParseTuple(args,"llll",&terr,&x,&y,&z);
+
     vector3df aha = vector3df(x,y,z);
           int tree =  terr->MakeTrees(aha , 1);
       //  if(btree == 1){
@@ -235,7 +242,7 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
     node->setPosition(vector3df(x,y,z));
 	}
 
-   // printf("%i",node_id);
+    printf("%i",node_id);
 return Py_BuildValue("");
 }
 

@@ -182,6 +182,8 @@ reminder to actually check the names match with unstable ide's and whatnot
 	{"addAMesh",Python::PyIrr_LoadAnimatedMesh,METH_VARARGS,"PyIrr_addAnimatedMesh"},
 	{"addMesh",Python::PyIrr_LoadMesh,METH_VARARGS,"PyIrr_addMesh"},
     {"addModel",Python::PyIrr_loadModel,METH_VARARGS,"load model"},
+    {"loadTrack",Python::PyIrr_LoadTrack,METH_VARARGS,"load model"},
+    {"Light",Python::PyIrr_Light,METH_VARARGS,"load model"},
 
 	//input
     {"using",Python::PyIrr_using,METH_VARARGS,"for opening scripts within scripts"},

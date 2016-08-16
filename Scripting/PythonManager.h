@@ -32,7 +32,7 @@ PyMODINIT_FUNC Python::init_irr(void){
     Py_InitModule("scene",irr_Scene);
     Py_InitModule("network",irr_Network);
     Py_InitModule("irr",irr_fun2);
-    Py_InitModule("irr",irr_FlagMan);
+    Py_InitModule("scene",irr_FlagMan);
     Py_InitModule("input",irr_Input);
 };
 

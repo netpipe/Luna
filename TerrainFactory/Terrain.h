@@ -16,6 +16,12 @@ using namespace gui;
 #include "../Physics/Physics.h"
 #include "../Scene/Scene.h"
 
+#include "ProceduralTrees/CTreeGenerator.h"
+#include "ProceduralTrees/CBillboardGroupSceneNode.h"
+#include "ProceduralTrees/CTreeSceneNode.h"
+#include <vector>
+using namespace std;
+
 class NODE
 {
 	public:
@@ -99,7 +105,7 @@ class Terrain
 //		GLuint *vertElements;
 //		GLfloat *vertexData;
 
-
+  //  vector <CTreeSceneNode*> tree2;
 		unsigned int sizeVerts;
 		unsigned int sizeElements;
 

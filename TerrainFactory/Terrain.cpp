@@ -16,10 +16,7 @@ using namespace core;
 #define TILETHRESHOLD 10.0f
 #include "Terrain.h"
 
-#include "ProceduralTrees/CTreeGenerator.h"
-#include "ProceduralTrees/CBillboardGroupSceneNode.h"
-#include "ProceduralTrees/CTreeSceneNode.h"
-#include <vector>
+
 using namespace std;
 
    SMeshBuffer* pNode1 = new SMeshBuffer();
@@ -196,7 +193,7 @@ int Terrain::Render( vector3df terrainPosition,vector3df terrainRotation,vector3
 
     localCreateRigidBody(0, tr, trackShape, cubeSceneNode);
 
-    return 0;
+    return cubeSceneNode;
 }
 
 
@@ -715,7 +712,7 @@ int Terrain::MakeTrees(vector3df aha,int treetype){
     //make the treestack more global ?
 
 CTreeGenerator* generator = 0;
-    vector <CTreeSceneNode*> tree2;
+vector <CTreeSceneNode*> tree2;
 
     video::ITexture* billTexture = 0;
     video::ITexture* leafTexture = 0;
@@ -771,7 +768,7 @@ s32 seed = 0;
         "shaders/trees/leaves.frag",
         "main", EPST_PS_2_0 , 0 , EMT_TRANSPARENT_ALPHA_CHANNEL_REF , 0 );
 
-        int treeType = 1;
+        int treeType = treetype;
     for(int i=0; i < 12; i++){
         tree2.push_back(new CTreeSceneNode( smgr->getRootSceneNode(), smgr ));
         seed = rand()%4;
@@ -786,7 +783,7 @@ bool lightsEnabled = 1;
         tree2[i]->getLeafNode()->setMaterialType( leafMaterialType );
         tree2[i]->setMaterialFlag( video::EMF_LIGHTING, 0 );
         tree2[i]->setScale(core::vector3df(0.5f,0.5f,0.5f));
-        tree2[i]->setPosition(core::vector3df(0,9,210*i));
+        tree2[i]->setPosition(core::vector3df(aha.X,aha.Y,aha.Z*i));
         tree2[i]->setMaterialType(video::EMT_NORMAL_MAP_SOLID);
         tree2[i]->drop(); //this was disabled not sure why
     }

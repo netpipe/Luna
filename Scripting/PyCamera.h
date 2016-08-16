@@ -59,7 +59,8 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 //    }else if (t==6){
 //        driver->setViewPort(rect);
 //    }
-
+//cam->setNearValue(0.1f);
+//cam->setFarValue(42000.0f);
  return Py_BuildValue("l",cam);
 }
 
@@ -87,6 +88,22 @@ v = vector3df(x,y,z);
 //vector3df v = t->getPosition();
 //cam = smgr->getActiveCamera();
 return Py_BuildValue("lll",v.X,v.Y,v.Z);
+}
+
+
+PyObject * Python::PyIrr_Light(PyObject * self,PyObject * args){ //active camera // parameters for fov possibly shaders aswell
+	//s32
+	int x,y,z,t;
+	char * s;
+	scene::ISceneNode* node = 0;
+//		Material.Lighting = false;
+	PyArg_ParseTuple(args,"lllls",&t,&x,&y,&z,&s);
+ //cam->setActiveCamera(cam);
+  //  node->setAutomaticCulling(EAC_FRUSTUM_BOX);
+node = smgr->addLightSceneNode(0, core::vector3df(0,0,0),
+		video::SColorf(1.0f, 0.6f, 0.7f, 1.0f), 800.0f);
+
+return Py_BuildValue("z",node);
 }
 
 //PyObject * Python::PyIrr_Camera(PyObject * self,PyObject * args)
