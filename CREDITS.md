@@ -18,7 +18,7 @@ also to the irc crew for being there for support.
 |Code Editor | Christian Clavet, Andres Jesse Porfirio & Lonesome Ducky|
 | Clouds / imposterNodes| G Davidson / Bitplane , tbw|
 | boids / game mechanics | RandomMesh|
-| procedural trees| Asger Feldthaus|
+| procedural trees, kornJungle| Asger Feldthaus , Kornelius Heru Cakra Murti| 
 | Water | DeusXL , sio2 , elvman| 
 |particlefx| DarkKiluah|
 |continued development of third party libs,project advice | bkeys|

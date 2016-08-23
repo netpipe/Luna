@@ -2,14 +2,14 @@
 /*
 Focus List
 - need to make ribontrail node spit dirt from the car tires  - / shocks aswell ik constraints if you gotem.
-- opensteer
 - codeeditor
 - input/joystick/gamepad manager
+- networking
+-waypoints / recast integration
 
 
 TODO LIST - seems like good spot as any to putit
     - OpenSteer dependancy has glut and GLU linker dependancy's remove those
-    - Scripting system needs to slowly take over all the defined parts in the compiler
     - dirt on tires with particles and a ribbon node for the dirt with life
 
 

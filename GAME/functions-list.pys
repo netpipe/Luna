@@ -27,7 +27,7 @@ Light1 = scene.Light(10,10,50,1,"111111") # type , vector, color
 # irr.omaredemo(1)               #billboard clouds
 
 
-#irr.opensteer(1)
+physics.opensteer(1)
 #irr.occlusionTest(1)            #broken #impliment nodemanager here for python occlusion someway to turn on and off
 #irr.image2d(1)                   #crashes without player being added first ? goes to background try to bring it as an overlay
 #irr.addHUD("data/HUD.xml")
@@ -64,9 +64,9 @@ ninja = scene.addModel("media/ninja.b3d","media/nskinbl.jpg","b3d",0)
 
 #print dwarf
 #print ninja
-#scene.setPosition(dwarf , 100,100,1200)
-#scene.setPosition(ninja , 100,100,1200)
-#irr.loadModel("media/ShadRoom.b3d","texture",0,0)
+scene.setPosition(dwarf , 100,100,1200)
+scene.setPosition(ninja , 100,100,1200)
+#scene.loadModel("media/ShadRoom.b3d","texture",0,0)
 terrain = scene.addTerrain(4,-3,5,0) # load last to make the physics work FIX  // possibly a load terrain xml function
 track1 = scene.loadTrack('huge.3ds',0,0,0)  # trackname , timeofday , lighting , track slot/stages
 
@@ -83,7 +83,7 @@ track1 = scene.loadTrack('huge.3ds',0,0,0)  # trackname , timeofday , lighting ,
 #scene.flag2(1)
 #scene.compass(1)
 
-#scene.recast("./media/dungeon.obj");
+scene.recast("./media/dungeon.obj");
 
 #irr.tesselate(1) # deltatime needs work if its the only thing rendering then nothing happens.
 #       put these into the python
