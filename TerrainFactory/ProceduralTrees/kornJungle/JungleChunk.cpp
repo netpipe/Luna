@@ -1,7 +1,8 @@
 #include "JungleChunk.h"
 #include "TreeSeed.h"
 #include "Jungle.h"
-
+//Copyright (c) 2016 Kornelius Heru Cakra Murti
+//MIT licence inside -> TerrainFactory/ProceduralTrees/kornJungle
 namespace irr
 {
     namespace scene
