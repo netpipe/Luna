@@ -629,7 +629,7 @@ void Terrain::registerScene(Scene &scene){
 }
 
 
-/*
+/* for continious terrain
 void Terrain::tick(const float &CamX, const float &CamY, const float &CamZ)
 {
     SceneGraphNodes::BaseNode *activeNode = Azadi::getInstance()->getActiveNode();

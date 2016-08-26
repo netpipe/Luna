@@ -398,87 +398,8 @@ PyObject * Python::PyIrr_motionTrail(PyObject * self,PyObject * args) {
 	rt->setShowDebug( true );
 	rt->setEnabled( true );
 
-return Py_BuildValue("0");
+return Py_BuildValue("l",rt);
 }
-
-
-PyObject * Python::PyIrr_realCloud(PyObject * self,PyObject * args){
-    // possibly set weather from here
-        int param,state,Vehicle,ammount;
-    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
-	// add 1st cloud layer
-	cloudLayer1 = new scene::CloudSceneNode(smgr->getRootSceneNode(), smgr);
-	cloudLayer1->setTranslation(core::vector2d<f32>(0.008f, 0.0f));
-	cloudLayer1->getMaterial(0).setTexture(0, driver->getTexture("data/clouds/cloud01.png"));
-	cloudLayer1->setCloudHeight(0.5f, 0.1f, -0.05f);
-	// add 2nd cloud layer
-	cloudLayer2 = new scene::CloudSceneNode(smgr->getRootSceneNode(), smgr);
-	cloudLayer2->setTranslation(core::vector2d<f32>(0.006f, 0.003f));
-	cloudLayer2->getMaterial(0).setTexture(0, driver->getTexture("data/clouds/cloud02.png"));
-	cloudLayer2->setCloudHeight(0.4f, 0.05f, -0.1f);
-	cloudLayer2->setTextureScale(0.5f);
-	// add 3rd cloud layer
-	cloudLayer3 = new scene::CloudSceneNode(smgr->getRootSceneNode(), smgr);
-	cloudLayer3->setTranslation(core::vector2d<f32>(0.006f, 0.003f));
-	cloudLayer3->getMaterial(0).setTexture(0, driver->getTexture("data/clouds/cloud03.png"));
-	cloudLayer3->setCloudHeight(0.35f, 0.0f, -0.15f);
-	cloudLayer3->setTextureScale(0.4f);
-};
-
-
-
-PyObject * Python::PyIrr_bitCloud(PyObject * self,PyObject * args){
-        int param,state,Vehicle,ammount;
-    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
-#ifndef Bitcloud
-        clouds = new scene::CCloudSceneNode(
-                smgr->getRootSceneNode(), smgr,
-                    device->getTimer(), 666, core::vector3df(0,0,0), core::vector3df(0,0,0), core::vector3df(1,1,1));
-
-        video::ITexture * txture = driver->getTexture("./media/cloudgen/cloud.tga");
-        srand(time(NULL));
-        clouds->setLOD(1);
-        clouds->setMaxDepth(1);
-            clouds->setMaterialFlag(video::EMF_LIGHTING, false);
-        clouds->setMaterialFlag(video::EMF_FOG_ENABLE, true);
-    //    clouds->setMaterialType(video::EMT_TRANSPARENT_ALPHA_CHANNEL);
-        srand(rand());
-        clouds->makeRandomCloud(22); //cloudseed
-        clouds->setMaterialTexture( 0, txture );
-        clouds->setPosition(core::vector3df(0,1000,0));
-        camera->setFarValue (20000.0f);
-        scene::ISceneNodeAnimator* cloudsCycle = smgr->createFlyCircleAnimator(core::vector3df(100.0f,0.0f,100.0f), 15000.0f, 0.000006f, core::vector3df(0.f, 1.f, 1.f), 0.4f);
-            clouds->addAnimator(cloudsCycle);
-            cloudsCycle->drop();
-        return Py_BuildValue("l",clouds);
-#endif
-           Py_RETURN_NONE;
-};
-
-
-
-PyObject * Python::PyIrr_omareDemo(PyObject * self,PyObject * args){
-        int param,state,Vehicle,ammount;
-    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
-        //Omare's CloudGen
-        int nClouds =0;
-        int max =10;
-        while (nClouds<max)
-            {
-                int	cloud_x=rand()%2000;
-                int cloud_y=rand()%2000;
-                int cloud_z=rand()%2000;
-                IBillboardSceneNode* cloudgen = smgr->addBillboardSceneNode(0,core::dimension2d<f32>(200, 100));
-                cloudgen->setPosition(core::vector3df(cloud_x,cloud_y,cloud_z));
-                cloudgen->setMaterialFlag(video::EMF_LIGHTING, false);
-                cloudgen->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
-                 cloudgen->setMaterialTexture(0,	driver->getTexture("./media/cloudgen/cloud.jpg"));
-                 printf("cloud generated");
-                nClouds=nClouds+1;
-            };
-                       Py_RETURN_NONE;
-};
-
 
 
 PyObject * Python::PyIrr_beam(PyObject * self,PyObject * args){
@@ -489,36 +410,6 @@ PyObject * Python::PyIrr_beam(PyObject * self,PyObject * args){
 	beam->drop();
     return Py_BuildValue("l",beam);
 }
-
-PyObject * Python::PyIrr_lightning(PyObject * self,PyObject * args){
-        int param,state,Vehicle,ammount;
-    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
-switch(param){
-    case 0:
-        ISceneNode* sphere = smgr->addSphereSceneNode(10);
-        sphere->setPosition(vector3df(50,50,50));
-        sphere->setMaterialFlag(EMF_LIGHTING,false);
-        sphere->setMaterialTexture(0,driver->getTexture("./data/textures/sceneNodes/water006.jpg"));
-
-        irr::scene::CBoltSceneNode* lightning = new irr::scene::CBoltSceneNode(smgr->getRootSceneNode(), smgr, -1,"./data/textures/sceneNodes/light01_1.bmp");
-        lightning->setLine(irr::core::vector3df(50,50,50), irr::core::vector3df(0,0,0), 100, 5,10,3, false,10.0f, irr::video::SColor(255,0,0,255));
-        lightning->drop();
-    }
-//return Py_BuildValue("l",lightning);
-}
-
-
-PyObject * Python::PyIrr_skyDome(PyObject * self,PyObject * args){
-     char * path;
-   //  std::string p;
-    PyArg_ParseTuple(args,"s",&path);
-   // p = path;
-
-        smgr->addSkyDomeSceneNode(driver->getTexture( path ), 60,60,1,2);
-
-return Py_BuildValue("");
-}
-
 
 
 PyObject * Python::PyIrr_Occlusion(PyObject * self,PyObject * args) {//active camera
@@ -564,7 +455,6 @@ return Py_BuildValue("");
   }
 
 
-
 PyObject * Python::PyIrr_RelayChat(PyObject * self,PyObject * args) {//active camera
     int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
@@ -579,10 +469,6 @@ PyObject * Python::PyIrr_RelayChat(PyObject * self,PyObject * args) {//active ca
     #endif
 return Py_BuildValue("");
 }
-
-
-
-
 
 
 PyObject * Python::PyIrr_BlindBoids(PyObject * self,PyObject * args) {//active camera

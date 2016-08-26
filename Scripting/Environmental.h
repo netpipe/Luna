@@ -138,4 +138,585 @@ using namespace gui;
      Py_RETURN_NONE;
 };
 
+PyObject * Python::PyIrr_skyDome(PyObject * self,PyObject * args){
+     char * path;
+   //  std::string p;
+    PyArg_ParseTuple(args,"s",&path);
+   // p = path;
+
+        smgr->addSkyDomeSceneNode(driver->getTexture( path ), 60,60,1,2);
+
+return Py_BuildValue("");
+}
+
+PyObject * Python::PyIrr_lightning(PyObject * self,PyObject * args){
+        int param,state,Vehicle,ammount;
+    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+switch(param){
+    case 0:
+        ISceneNode* sphere = smgr->addSphereSceneNode(10);
+        sphere->setPosition(vector3df(50,50,50));
+        sphere->setMaterialFlag(EMF_LIGHTING,false);
+        sphere->setMaterialTexture(0,driver->getTexture("./data/textures/sceneNodes/water006.jpg"));
+
+        irr::scene::CBoltSceneNode* lightning = new irr::scene::CBoltSceneNode(smgr->getRootSceneNode(), smgr, -1,"./data/textures/sceneNodes/light01_1.bmp");
+        lightning->setLine(irr::core::vector3df(50,50,50), irr::core::vector3df(0,0,0), 100, 5,10,3, false,10.0f, irr::video::SColor(255,0,0,255));
+        lightning->drop();
+    }
+//return Py_BuildValue("l",lightning);
+}
+
+PyObject * Python::PyIrr_omareDemo(PyObject * self,PyObject * args){
+        int param,state,Vehicle,ammount;
+    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+        //Omare's CloudGen
+        int nClouds =0;
+        int max =10;
+        while (nClouds<max)
+            {
+                int	cloud_x=rand()%2000;
+                int cloud_y=rand()%2000;
+                int cloud_z=rand()%2000;
+                IBillboardSceneNode* cloudgen = smgr->addBillboardSceneNode(0,core::dimension2d<f32>(200, 100));
+                cloudgen->setPosition(core::vector3df(cloud_x,cloud_y,cloud_z));
+                cloudgen->setMaterialFlag(video::EMF_LIGHTING, false);
+                cloudgen->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
+                 cloudgen->setMaterialTexture(0,	driver->getTexture("./media/cloudgen/cloud.jpg"));
+                 printf("cloud generated");
+                nClouds=nClouds+1;
+            };
+                       Py_RETURN_NONE;
+};
+
+PyObject * Python::PyIrr_bitCloud(PyObject * self,PyObject * args){
+        int param,state,Vehicle,ammount;
+    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+#ifndef Bitcloud
+        clouds = new scene::CCloudSceneNode(
+                smgr->getRootSceneNode(), smgr,
+                    device->getTimer(), 666, core::vector3df(0,0,0), core::vector3df(0,0,0), core::vector3df(1,1,1));
+
+        video::ITexture * txture = driver->getTexture("./media/cloudgen/cloud.tga");
+        srand(time(NULL));
+        clouds->setLOD(1);
+        clouds->setMaxDepth(1);
+            clouds->setMaterialFlag(video::EMF_LIGHTING, false);
+        clouds->setMaterialFlag(video::EMF_FOG_ENABLE, true);
+    //    clouds->setMaterialType(video::EMT_TRANSPARENT_ALPHA_CHANNEL);
+        srand(rand());
+        clouds->makeRandomCloud(22); //cloudseed
+        clouds->setMaterialTexture( 0, txture );
+        clouds->setPosition(core::vector3df(0,1000,0));
+        camera->setFarValue (20000.0f);
+        scene::ISceneNodeAnimator* cloudsCycle = smgr->createFlyCircleAnimator(core::vector3df(100.0f,0.0f,100.0f), 15000.0f, 0.000006f, core::vector3df(0.f, 1.f, 1.f), 0.4f);
+            clouds->addAnimator(cloudsCycle);
+            cloudsCycle->drop();
+        return Py_BuildValue("l",clouds);
+#endif
+           Py_RETURN_NONE;
+};
+
+PyObject * Python::PyIrr_realCloud(PyObject * self,PyObject * args){
+    // possibly set weather from here
+        int param,state,Vehicle,ammount;
+    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+	// add 1st cloud layer
+	cloudLayer1 = new scene::CloudSceneNode(smgr->getRootSceneNode(), smgr);
+	cloudLayer1->setTranslation(core::vector2d<f32>(0.008f, 0.0f));
+	cloudLayer1->getMaterial(0).setTexture(0, driver->getTexture("data/clouds/cloud01.png"));
+	cloudLayer1->setCloudHeight(0.5f, 0.1f, -0.05f);
+	// add 2nd cloud layer
+	cloudLayer2 = new scene::CloudSceneNode(smgr->getRootSceneNode(), smgr);
+	cloudLayer2->setTranslation(core::vector2d<f32>(0.006f, 0.003f));
+	cloudLayer2->getMaterial(0).setTexture(0, driver->getTexture("data/clouds/cloud02.png"));
+	cloudLayer2->setCloudHeight(0.4f, 0.05f, -0.1f);
+	cloudLayer2->setTextureScale(0.5f);
+	// add 3rd cloud layer
+	cloudLayer3 = new scene::CloudSceneNode(smgr->getRootSceneNode(), smgr);
+	cloudLayer3->setTranslation(core::vector2d<f32>(0.006f, 0.003f));
+	cloudLayer3->getMaterial(0).setTexture(0, driver->getTexture("data/clouds/cloud03.png"));
+	cloudLayer3->setCloudHeight(0.35f, 0.0f, -0.15f);
+	cloudLayer3->setTextureScale(0.4f);
+};
+
+
+
+PyObject * Python::PyIrr_addTree(PyObject * self,PyObject * args) { // if treepointer passed remove it
+
+}
+
+PyObject * Python::PyIrr_addTerrain(PyObject * self,PyObject * args) {//active camera
+
+vector3df loc;
+int a1f,a2f,a3f;
+//PyArg_ParseTuple(args,"fffi",&loc.X,&loc.Y,&loc.Z,&btree);
+PyArg_ParseTuple(args,"iiii",&a1f,&a2f,&a3f,&btree);
+#ifdef TERRAIN
+     terr = new Terrain;
+        terr->registerIrrDevice(*device);
+        terr->registerPhysics(*luna->m_cPhysics);
+        terr->Init();
+
+        // position, rotation, scale, LOD
+       int ret = terr->Render( vector3df( a1f,a2f,a3f), vector3df(0,0.0f,0),   vector3df(1,0.20f,1),3);
+
+    return Py_BuildValue("l",ret); // not sure if you can do this ?
+#endif
+return Py_BuildValue("0");
+}
+
+
+PyObject * Python::PyIrr_atmosphere(PyObject * self,PyObject * args){
+  //check if enabled already otherwise return true for main loop
+    #ifdef ATMOSPHERE
+    bAtmosphere =1;
+   // ATMOsphere *atmo;
+    atmo=new ATMOsphere;
+    atmo->start(device,driver,smgr->getRootSceneNode(),smgr,624);
+    atmo->setDaysPerDay(1000);
+    return Py_BuildValue("l",atmo);
+    #endif
+return Py_BuildValue("0");
+}
+
+
+PyObject * Python::PyIrr_WaterPlane(PyObject * self,PyObject * args){
+
+    #ifdef ReflectiveWater
+            char * script;
+
+            float scaleX,scaleY,scaleZ,locX,locY,locZ;
+            int wavespeed,refractionfactor,waveheight,wavedisplacement,
+
+            PyArg_ParseTuple(args,"sllll",&script);
+
+            bWater=1;
+            water = new CReflectedWater("ReflectedWater", device, smgr, -1, 180, 100,
+            dimension2du(512,512));
+
+            ISceneNode *waternode = water->m_waternode;
+            waternode->setPosition(vector3df(0, 50, 100));
+            water->m_WaveDisplacement /= 0.5f;
+            water->m_WaveHeight *= 4.0f;
+            water->m_WaveSpeed *= 1.0f;
+            water->m_RefractionFactor = 0.51f;
+            return Py_BuildValue("l",water);
+    #endif
+return Py_BuildValue("");
+}
+
+
+PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic with shader
+{
+
+	 // ITerrainSceneNode* terrain;
+	Terrain *terr;
+	char * action;
+	char * bush;
+	int x,y,z;
+	//PyArg_ParseTuple(args,"fffi",&loc.X,&loc.Y,&loc.Z,&btree);
+	PyArg_ParseTuple(args,"silll",&action,&terrain,&x,&y,&z);
+    // open terrain tree layout could probably even load grass sametime.
+	if (action = "addTree")
+{
+	    // change addTree to Trees so you can put more functionality into it
+    // should be able to cull these aswell as remove them
+    // vector stack of loaded tree's
+    // refer to tidbits for just one tree's worth of code
+
+    // create a vector stack store the tree pointers in it
+    // call add tree one by one push to treemanager.
+    // render tree shadow bake to terrain
+
+
+    vector3df aha = vector3df(x,y,z);
+          int tree =  terr->MakeTrees(aha , 1);
+      //  if(btree == 1){
+
+    //    }
+return Py_BuildValue("l",tree);
+}
+if (action = "jungle"){
+	    jungleScene::Jungle *jungle =
+        new jungleScene::Jungle(
+                10240, // world size
+                8,// chunk size. "chunk size" * "chunk size" = "tree count per chunk"
+                16,// max tree dimension diameter
+                4,// tree circular detail
+                terrain,
+                smgr,
+                -1);
+
+    smgr->getRootSceneNode()->addChild(jungle);
+    jungle->getMaterial(0).setTexture(0, driver->getTexture("./media/bark.png"));
+    jungle->getMaterial(0).setTexture(1, driver->getTexture("./media/bark_normal.png"));
+    jungle->getMaterial(0).MaterialType = EMT_NORMAL_MAP_SOLID;
+    jungle->getMaterial(0).Shininess = 0.0f;
+
+    jungle->getMaterial(1).setFlag(EMF_BACK_FACE_CULLING, false);
+    jungle->getMaterial(1).setTexture(0,driver->getTexture("./media/leaf.png"));
+    jungle->getMaterial(1).MaterialType = EMT_TRANSPARENT_ALPHA_CHANNEL_REF;
+    // start growing trees
+
+    for(u32 i = 0 ; i < 1000 ; i++)
+    {
+        f32 cx = 100.0f + rand()%10040;
+        f32 cy = 100.0f + rand()%10040;
+        int type = rand()%8+1;
+        int seed = rand();
+        //trees
+        switch(type)
+        {
+            case(1):
+            {
+                jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
+                    16,// segment
+                    5,// min rot
+                    30,// max rot
+                    800.0f, // length
+                    8, // branching count
+                    7.5f, // max radius;
+                    3, // ground root
+                    200.0f, // leaf_width
+                    200.0f, // leaf height
+                    2, // leaf segments
+                    1.0, // leaf stiffness
+                    0, //leaf type
+                    0, // bark type
+                    seed, // seed
+                    true
+                    );
+                break;
+            }
+            case(2):
+            {
+                jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
+                    25,// segment
+                    0,// min rot
+                    15,// max rot
+                    800.0f, // length
+                    4, // branching count
+                    25.0f, // max radius;
+                    4, // ground root
+                    400.0f, // leaf_width
+                    400.0f, // leaf height
+                    2, // leaf segments
+                    1.0, // leaf stiffness
+                    1, //leaf type
+                    1, // bark type
+                    seed, // seed
+                    true
+                    );
+                break;
+            }
+            case(3):
+            {
+                jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
+                    32,// segment
+                    0,// min rot
+                    15,// max rot
+                    400.0f, // length
+                    4, // branching count
+                    5.0f, // max radius;
+                    3, // ground root
+                    100.0f, // leaf_width
+                    100.0f, // leaf height
+                    2, // leaf segments
+                    1.0, // leaf stiffness
+                    2, //leaf type
+                    2, // bark type
+                    seed, // seed
+                    true
+                    );
+                break;
+            }
+            case(4):
+            {
+                jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
+                    32,// segment
+                    5,// min rot
+                    20,// max rot
+                    400.0f, // length
+                    4, // branching count
+                    20.0f, // max radius;
+                    4, // ground root
+                    100.0f, // leaf_width
+                    100.0f, // leaf height
+                    2, // leaf segments
+                    1.0, // leaf stiffness
+                    3, //leaf type
+                    3, // bark type
+                    seed, // seed
+                    true
+                    );
+                break;
+            }
+            case(5):
+            {
+                jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
+                    12,// segment
+                    10,// min rot
+                    20,// max rot
+                    400.0f, // length
+                    4, // branching count
+                    7.5f, // max radius;
+                    3, // ground root
+                    100.0f, // leaf_width
+                    100.0f, // leaf height
+                    2, // leaf segments
+                    1.0, // leaf stiffness
+                    4, //leaf type
+                    4, // bark type
+                    seed, // seed
+                    true
+                    );
+                break;
+            }
+            case(6):
+            {
+                jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
+                    12,// segment
+                    15,// min rot
+                    20,// max rot
+                    400.0f, // length
+                    4, // branching count
+                    5.0f, // max radius;
+                    3, // ground root
+                    100.0f, // leaf_width
+                    100.0f, // leaf height
+                    2, // leaf segments
+                    1.0, // leaf stiffness
+                    5, //leaf type
+                    5, // bark type
+                    seed, // seed
+                    true
+                   );
+                break;
+            }
+            case(7):
+            {
+                jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
+                    14,// segment
+                    4,// min rot
+                    20,// max rot
+                    400.0f, // length
+                    4, // branching count
+                    10.0f, // max radius;
+                    3, // ground root
+                    100.0f, // leaf_width
+                    100.0f, // leaf height
+                    2, // leaf segments
+                    1.0, // leaf stiffness
+                    6, //leaf type
+                    6, // bark type
+                    seed, // seed
+                    true
+                   );
+                break;
+            }
+            case(8):
+            {
+                jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
+                   20,// segment
+                   0,// min rot
+                   30,// max rot
+                   400.0f, // length
+                   6, // branching count
+                   10.0f, // max radius;
+                   3, // ground root
+                   200.0f, // leaf_width
+                   200.0f, // leaf height
+                   2, // leaf segments
+                   1.0, // leaf stiffness
+                   7, //leaf type
+                   7, // bark type
+                   seed, // seed
+                    true
+                   );
+                    break;
+            }
+        }
+    }
+    return Py_BuildValue("l",jungle);
+	}
+
+	if (action = addTree2){
+		switch(type){
+				case(1):
+				{
+					jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
+						16,// segment
+						5,// min rot
+						30,// max rot
+						800.0f, // length
+						8, // branching count
+						7.5f, // max radius;
+						3, // ground root
+						200.0f, // leaf_width
+						200.0f, // leaf height
+						2, // leaf segments
+						1.0, // leaf stiffness
+						0, //leaf type
+						0, // bark type
+						seed, // seed
+						true
+						);
+					break;
+				}
+				case(2):
+				{
+					jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
+						25,// segment
+						0,// min rot
+						15,// max rot
+						800.0f, // length
+						4, // branching count
+						25.0f, // max radius;
+						4, // ground root
+						400.0f, // leaf_width
+						400.0f, // leaf height
+						2, // leaf segments
+						1.0, // leaf stiffness
+						1, //leaf type
+						1, // bark type
+						seed, // seed
+						true
+						);
+					break;
+				}
+				case(3):
+				{
+					jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
+						32,// segment
+						0,// min rot
+						15,// max rot
+						400.0f, // length
+						4, // branching count
+						5.0f, // max radius;
+						3, // ground root
+						100.0f, // leaf_width
+						100.0f, // leaf height
+						2, // leaf segments
+						1.0, // leaf stiffness
+						2, //leaf type
+						2, // bark type
+						seed, // seed
+						true
+						);
+					break;
+				}
+				case(4):
+				{
+					jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
+						32,// segment
+						5,// min rot
+						20,// max rot
+						400.0f, // length
+						4, // branching count
+						20.0f, // max radius;
+						4, // ground root
+						100.0f, // leaf_width
+						100.0f, // leaf height
+						2, // leaf segments
+						1.0, // leaf stiffness
+						3, //leaf type
+						3, // bark type
+						seed, // seed
+						true
+						);
+					break;
+				}
+				case(5):
+				{
+					jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
+						12,// segment
+						10,// min rot
+						20,// max rot
+						400.0f, // length
+						4, // branching count
+						7.5f, // max radius;
+						3, // ground root
+						100.0f, // leaf_width
+						100.0f, // leaf height
+						2, // leaf segments
+						1.0, // leaf stiffness
+						4, //leaf type
+						4, // bark type
+						seed, // seed
+						true
+						);
+					break;
+				}
+				case(6):
+				{
+					jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
+						12,// segment
+						15,// min rot
+						20,// max rot
+						400.0f, // length
+						4, // branching count
+						5.0f, // max radius;
+						3, // ground root
+						100.0f, // leaf_width
+						100.0f, // leaf height
+						2, // leaf segments
+						1.0, // leaf stiffness
+						5, //leaf type
+						5, // bark type
+						seed, // seed
+						true
+					   );
+					break;
+				}
+				case(7):
+				{
+					jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
+						14,// segment
+						4,// min rot
+						20,// max rot
+						400.0f, // length
+						4, // branching count
+						10.0f, // max radius;
+						3, // ground root
+						100.0f, // leaf_width
+						100.0f, // leaf height
+						2, // leaf segments
+						1.0, // leaf stiffness
+						6, //leaf type
+						6, // bark type
+						seed, // seed
+						true
+					   );
+					break;
+				}
+				case(8):
+				{
+					jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
+					   20,// segment
+					   0,// min rot
+					   30,// max rot
+					   400.0f, // length
+					   6, // branching count
+					   10.0f, // max radius;
+					   3, // ground root
+					   200.0f, // leaf_width
+					   200.0f, // leaf height
+					   2, // leaf segments
+					   1.0, // leaf stiffness
+					   7, //leaf type
+					   7, // bark type
+					   seed, // seed
+						true
+					   );
+						break;
+				}
+			}
+		}
+
+
+
+
+
+};
+
 

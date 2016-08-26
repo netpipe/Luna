@@ -104,6 +104,9 @@ RibbonTrailSceneNode* rt;
 #include "../Scene/spriteManager/ParticleSystem.h"
 #include "../GUI/Math/SCalcExpr.h"
 
+#include "../TerrainFactory/kornJungle/Jungle.h"
+
+
     BmFont *fonts = new BmFont;
 
     SpriteManager *sprites = new SpriteManager;
@@ -293,31 +296,6 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
 #include "PyScene.h"
 // make a post draw loop instead of putting things into the checkkey
 
-PyObject * Python::PyIrr_WaterPlane(PyObject * self,PyObject * args){
-
-    #ifdef ReflectiveWater
-            char * script;
-
-            float scaleX,scaleY,scaleZ,locX,locY,locZ;
-            int wavespeed,refractionfactor,waveheight,wavedisplacement,
-
-            PyArg_ParseTuple(args,"sllll",&script);
-
-            bWater=1;
-            water = new CReflectedWater("ReflectedWater", device, smgr, -1, 180, 100,
-            dimension2du(512,512));
-
-            ISceneNode *waternode = water->m_waternode;
-            waternode->setPosition(vector3df(0, 50, 100));
-            water->m_WaveDisplacement /= 0.5f;
-            water->m_WaveHeight *= 4.0f;
-            water->m_WaveSpeed *= 1.0f;
-            water->m_RefractionFactor = 0.51f;
-            return Py_BuildValue("l",water);
-    #endif
-return Py_BuildValue("");
-}
-
 PyObject * Python::PyIrr_using(PyObject * self,PyObject * args){ //active camera
 //ExecuteScript(irr::core::string<char> scriptname){
 char * script;
@@ -393,19 +371,6 @@ PyObject * Python::PyIrr_fpsWeapon(PyObject * self,PyObject * args){
         //  apply_light2node(M4->getNode());
         device->setEventReceiver(M4);
         return Py_BuildValue("l",agun);
-    #endif
-return Py_BuildValue("0");
-}
-
-PyObject * Python::PyIrr_atmosphere(PyObject * self,PyObject * args){
-  //check if enabled already otherwise return true for main loop
-    #ifdef ATMOSPHERE
-    bAtmosphere =1;
-   // ATMOsphere *atmo;
-    atmo=new ATMOsphere;
-    atmo->start(device,driver,smgr->getRootSceneNode(),smgr,624);
-    atmo->setDaysPerDay(1000);
-    return Py_BuildValue("l",atmo);
     #endif
 return Py_BuildValue("0");
 }

@@ -3,16 +3,25 @@
 
 int btree=0;
 
-
+//
 PyObject * Python::PyIrr_LoadAnimatedMesh(PyObject * self,PyObject * args){
 	 return Py_BuildValue("");  }
 
-
+//
 PyObject * Python::PyIrr_LoadMesh(PyObject * self,PyObject * args){
 	  return Py_BuildValue("");  }
 
+//
+PyObject * Python::PyIrr_addAnimatedMesh(PyObject * self,PyObject * args){
+    IAnimatedMesh *mesh ;
+    s32 meshPath;
+	PyArg_ParseTuple(args,"s",&meshPath);
+    mesh->getMesh(meshPath);
 
+return Py_BuildValue("l",mesh);
+};
 
+// assimp mesh importer model loader
 PyObject * Python::PyIrr_loadModel(PyObject * self,PyObject * args) { // if treepointer passed remove it ModelFactory
 
     int action;
@@ -176,52 +185,7 @@ switch(action){
 //	        	return Py_BuildValue("");
 }
 
-
-PyObject * Python::PyIrr_addTerrain(PyObject * self,PyObject * args) {//active camera
-
-vector3df loc;
-int a1f,a2f,a3f;
-//PyArg_ParseTuple(args,"fffi",&loc.X,&loc.Y,&loc.Z,&btree);
-PyArg_ParseTuple(args,"iiii",&a1f,&a2f,&a3f,&btree);
-#ifdef TERRAIN
-     terr = new Terrain;
-        terr->registerIrrDevice(*device);
-        terr->registerPhysics(*luna->m_cPhysics);
-        terr->Init();
-
-        // position, rotation, scale, LOD
-       int ret = terr->Render( vector3df( a1f,a2f,a3f), vector3df(0,0.0f,0),   vector3df(1,0.20f,1),3);
-
-    return Py_BuildValue("l",ret); // not sure if you can do this ?
-#endif
-return Py_BuildValue("0");
-}
-
-
-PyObject * Python::PyIrr_addTree(PyObject * self,PyObject * args) { // if treepointer passed remove it
-    // change addTree to Trees so you can put more functionality into it
-    // should be able to cull these aswell as remove them
-    // vector stack of loaded tree's
-    // refer to tidbits for just one tree's worth of code
-
-    // create a vector stack store the tree pointers in it
-    // call add tree one by one push to treemanager.
-    // render tree shadow bake to terrain
-      Terrain *terr;
-      int x,y,z;
-
-    // open terrain tree layout could probably even load grass sametime.
-    PyArg_ParseTuple(args,"llll",&terr,&x,&y,&z);
-
-    vector3df aha = vector3df(x,y,z);
-          int tree =  terr->MakeTrees(aha , 1);
-      //  if(btree == 1){
-
-    //    }
-return Py_BuildValue("l",tree);
-}
-
-
+//
 PyObject * Python::PyIrr_Reset(PyObject * self,PyObject * args){
     //would like to have a reset and compile function here maybe dynamically load all the
     //clear all models
@@ -307,16 +271,6 @@ PyObject * Python::PyIrr_addSphereNode(PyObject * self,PyObject * args){
 
 //return Py_BuildValue("");
 return Py_BuildValue("l",node_id);
-};
-
-
-PyObject * Python::PyIrr_addAnimatedMesh(PyObject * self,PyObject * args){
-    IAnimatedMesh *mesh ;
-    s32 meshPath;
-	PyArg_ParseTuple(args,"s",&meshPath);
-    mesh->getMesh(meshPath);
-
-return Py_BuildValue("l",mesh);
 };
 
 

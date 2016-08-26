@@ -14,6 +14,19 @@ if (init) :
  init =0
 # car2 = physics.addCar(model,texture, 1.0,1.0, 1.0,1.0,1.0,  1.5,1.5,2.0, 1.3,0.4,2.0,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
 
+#should be able to add trees without terrain/orientation
+scene.trees(terr,bush)
+scene.addTree2(bush)
+  for(u32 i = 0 ; i < 1000 ; i++)
+    {
+        f32 cx = 100.0f + rand()%10040;
+        f32 cy = 100.0f + rand()%10040;
+        int type = rand()%8+1;
+        int seed = rand();
+
+
+
+
 physics.VehicleParams(car1,8,0,0)
 #physics.VehicleParams(car2,8,0,0)
  #timer
