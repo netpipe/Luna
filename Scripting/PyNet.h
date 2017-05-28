@@ -16,7 +16,7 @@ PyObject * Python::PyIrr_Ping(PyObject * self,PyObject * args){
 	return Py_BuildValue("");
 }
 
-PyObject * Python::PyIrr_SendFile(PyObject * self,PyObject * args){
+PyObject * Python::PyIrr_sendFile(PyObject * self,PyObject * args){
 
 	return Py_BuildValue("");
 }

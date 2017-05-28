@@ -35,6 +35,15 @@ namespace SPK
 		return *instance;
 	}
 
+	void SPKFactory::destroyInstance()
+	{
+		if (instance != NULL)
+		{
+			delete instance;
+			instance = NULL;
+		}
+	}
+
 	SPK_ID SPKFactory::create(const Registerable& base)
 	{
 		// Clears the adresses set
@@ -98,7 +107,7 @@ namespace SPK
 		if (object == NULL)
 			return false;
 
-		return destroy(object->getID(),checkNbReferences);
+		return destroy(object->getSPKID(),checkNbReferences);
 	}
 
 	void SPKFactory::destroyAll()
@@ -128,7 +137,7 @@ namespace SPK
 
 	void SPKFactory::trace(const Registerable* registerable)
 	{
-		trace(registerable->getID());
+		trace(registerable->getSPKID());
 	}
 
 	void SPKFactory::traceAll()

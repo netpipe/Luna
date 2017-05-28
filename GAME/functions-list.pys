@@ -118,7 +118,7 @@ scene.media("add","media/quatrix.pk3")
 
 #irr.fpsweapon(1) #FPS
 #irr.lensFlare(1) # might not see without atmosphere enabled check pymain
-#scene.SPARK(1) #issues with latest SVN irrlicht
+scene.SPARK(1) #issues with latest SVN irrlicht
 
 
 #video1=irr.addvideo("./media/bunny.ogg",10.0,10.0,10.0)	# has to be loaded after soundman or crash

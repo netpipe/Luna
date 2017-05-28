@@ -25,8 +25,6 @@
 
 namespace SPK
 {
-	Model defaultModel;
-
 	const float Model::DEFAULT_VALUES[NB_PARAMS] =
 	{
 		1.0f,	// RED
@@ -170,6 +168,7 @@ namespace SPK
 		enableFlag(model.enableFlag),
 		mutableFlag(model.mutableFlag),
 		randomFlag(model.randomFlag),
+		interpolatedFlag(model.interpolatedFlag),
 		params(NULL),
 		enableParams(NULL),
 		mutableParams(NULL),
@@ -272,7 +271,7 @@ namespace SPK
 	{
 		unsigned int nbValues = getNbValues(type);
 
-		if ((nbValues - 1 > index)&&(nbValues != 0))
+		if (index < nbValues)
 			return params[indices[type] + index];
 
 		return DEFAULT_VALUES[type];

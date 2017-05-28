@@ -22,10 +22,10 @@
 
 #include "Core/SPK_Transformable.h"
 #include "Core/SPK_Zone.h"
-#include <memory.h>
+
 namespace SPK
 {
-	const float Transformable::IDENTITY[] =
+	const float Transformable::IDENTITY[] = 
 	{
 		1.0f,	0.0f,	0.0f,	0.0f,
 		0.0f,	1.0f,	0.0f,	0.0f,
@@ -40,15 +40,26 @@ namespace SPK
 		parent(NULL),
 		localIdentity(true)
 	{
-		memcpy(local,IDENTITY,sizeof(float) * TRANSFORM_LENGTH);
-		memcpy(world,IDENTITY,sizeof(float) * TRANSFORM_LENGTH);
+		std::memcpy(local,IDENTITY,sizeof(float) * TRANSFORM_LENGTH);
+		std::memcpy(world,IDENTITY,sizeof(float) * TRANSFORM_LENGTH);
+	}
+
+	Transformable::Transformable(const Transformable& transformable) :
+		currentUpdate(0),
+		lastUpdate(0),
+		lastParentUpdate(0),
+		parent(NULL),
+		localIdentity(transformable.localIdentity)
+	{
+		std::memcpy(local,transformable.local,sizeof(float) * TRANSFORM_LENGTH);
+		std::memcpy(world,transformable.world,sizeof(float) * TRANSFORM_LENGTH);
 	}
 
 	void Transformable::setTransformNC(const float* transform)
 	{
 		for (size_t i = 0; i < TRANSFORM_LENGTH; ++i)
 			local[i] = transform[(i >> 2) + ((i & 3) << 2)];	// conversion
-
+		
 		localIdentity = false;
 		notifyForUpdate();
 	}
@@ -71,6 +82,8 @@ namespace SPK
 		Vector3D side = crossProduct(look,up);
 		side.normalize();
 
+		up = crossProduct(side,look);
+
 		local[0] = side.x;
 		local[1] = side.y;
 		local[2] = side.z;
@@ -88,10 +101,11 @@ namespace SPK
 	void Transformable::setTransformOrientationLH(Vector3D look,Vector3D up)
 	{
 		look.normalize();
-		up.normalize();
 
 		Vector3D side = crossProduct(look,up);
 		side.normalize();
+
+		up = crossProduct(side,look);
 
 		local[0] = side.x;
 		local[1] = side.y;
@@ -111,7 +125,7 @@ namespace SPK
 	{
 		axis.normalize();
 		float c = std::cos(angle);
-		float s = std::cos(angle);
+		float s = std::sin(angle);
 		float a = 1 - c;
 		Vector3D axis2(axis.x * axis.x,axis.y * axis.y,axis.z * axis.z);
 
@@ -132,7 +146,7 @@ namespace SPK
 	void Transformable::setTransformOrientationX(float angle)
 	{
 		float cosA = std::cos(angle);
-		float sinA = std::cos(angle);
+		float sinA = std::sin(angle);
 
 		local[0] = 1.0f;
 		local[1] = 0.0f;
@@ -151,7 +165,7 @@ namespace SPK
 	void Transformable::setTransformOrientationY(float angle)
 	{
 		float cosA = std::cos(angle);
-		float sinA = std::cos(angle);
+		float sinA = std::sin(angle);
 
 		local[0] = cosA;
 		local[1] = 0.0f;
@@ -170,7 +184,7 @@ namespace SPK
 	void Transformable::setTransformOrientationZ(float angle)
 	{
 		float cosA = std::cos(angle);
-		float sinA = std::cos(angle);
+		float sinA = std::sin(angle);
 
 		local[0] = cosA;
 		local[1] = sinA;
@@ -193,10 +207,10 @@ namespace SPK
 			(parent != NULL && lastParentUpdate != parent->currentUpdate))	// the parent transform has been modified
 		{
 			if (parent == NULL)
-				memcpy(world,local,sizeof(float) * TRANSFORM_LENGTH);
+				std::memcpy(world,local,sizeof(float) * TRANSFORM_LENGTH);
 			else if (isLocalIdentity())
 			{
-				memcpy(world,parent->world,sizeof(float) * TRANSFORM_LENGTH);
+				std::memcpy(world,parent->world,sizeof(float) * TRANSFORM_LENGTH);
 				lastParentUpdate = parent->lastUpdate;
 			}
 			else

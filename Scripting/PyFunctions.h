@@ -148,18 +148,19 @@ RibbonTrailSceneNode* rt;
 
 
 #include "PyMAIN.h"
-
+#include "PyNet.h"
 PyMethodDef irr_Network[] =
 {
-    {"connect",Python::PyIrr_Connect,METH_VARARGS,"connect"}
-    {"disconnect",Python::PyIrr_Disconnect,METH_VARARGS,"disconnect"}
-    {"ping",Python::PyIrr_Ping,METH_VARARGS,"ping"}
-    {"sendFile",Python::PyIrr_sendFile,METH_VARARGS,"sendFile"}
-    {"encrypt",Python::PyIrr_Encrypt,METH_VARARGS,"encrypt"}
-    {"decrypt",Python::PyIrr_Decrypt,METH_VARARGS,"addSphereNode"}
-    {"startServer",Python::PyIrr_startServer,METH_VARARGS,"startServer"}
-    {"restartServer",Python::PyIrr_restartServer,METH_VARARGS,"restartServer"}
+    {"connect",Python::PyIrr_Connect,METH_VARARGS,"connect"},
+    {"disconnect",Python::PyIrr_Disconnect,METH_VARARGS,"disconnect"},
+    {"ping",Python::PyIrr_Ping,METH_VARARGS,"ping"},
+    {"sendFile",Python::PyIrr_sendFile,METH_VARARGS,"sendFile"},
+    {"encrypt",Python::PyIrr_Encrypt,METH_VARARGS,"encrypt"},
+    {"decrypt",Python::PyIrr_Decrypt,METH_VARARGS,"addSphereNode"},
+    {"startServer",Python::PyIrr_Server,METH_VARARGS,"startServer"},
+    {"restartServer",Python::PyIrr_restartServer,METH_VARARGS,"restartServer"},
 
+	{NULL,NULL,0,NULL}
 };
 
 PyMethodDef irr_Scene[] =

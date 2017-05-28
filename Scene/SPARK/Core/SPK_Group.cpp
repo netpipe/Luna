@@ -32,10 +32,10 @@ namespace SPK
 {
 	bool Group::bufferManagement = true;
 
-	Group::Group(Model* model,size_t capacity) :
+	Group::Group(Model* m,size_t capacity) :
 		Registerable(),
 		Transformable(),
-		model(model != NULL ? model : &defaultModel),
+		model(m != NULL ? m : &getDefaultModel()),
 		renderer(NULL),
 		friction(0.0f),
 		gravity(Vector3D()),
@@ -77,16 +77,16 @@ namespace SPK
 		emitters(group.emitters),
 		modifiers(group.modifiers),
 		activeModifiers(group.activeModifiers.capacity()),
-		additionalBuffers(group.additionalBuffers),
+		additionalBuffers(),
 		swappableBuffers()
 	{
 		particleData = new Particle::ParticleData[pool.getNbReserved()];
 		particleCurrentParams = new float[pool.getNbReserved() * model->getSizeOfParticleCurrentArray()];
 		particleExtendedParams = new float[pool.getNbReserved() * model->getSizeOfParticleExtendedArray()];
-		
-		memcpy(particleData,group.particleData,pool.getNbTotal() * sizeof(Particle::ParticleData));
-		memcpy(particleCurrentParams,group.particleCurrentParams,pool.getNbTotal() * sizeof(float) * model->getSizeOfParticleCurrentArray());
-		memcpy(particleExtendedParams,group.particleExtendedParams,pool.getNbTotal() * sizeof(float) * model->getSizeOfParticleExtendedArray());
+
+		std::memcpy(particleData,group.particleData,pool.getNbTotal() * sizeof(Particle::ParticleData));
+		std::memcpy(particleCurrentParams,group.particleCurrentParams,pool.getNbTotal() * sizeof(float) * model->getSizeOfParticleCurrentArray());
+		std::memcpy(particleExtendedParams,group.particleExtendedParams,pool.getNbTotal() * sizeof(float) * model->getSizeOfParticleExtendedArray());
 
 		for (Pool<Particle>::iterator it = pool.begin(); it != pool.endInactive(); ++it)
 		{
@@ -94,16 +94,6 @@ namespace SPK
 			it->data = particleData + it->index;
 			it->currentParams = particleCurrentParams + it->index * model->getSizeOfParticleCurrentArray();
 			it->extendedParams = particleExtendedParams + it->index * model->getSizeOfParticleExtendedArray();
-		}
-
-		// copy additional buffers
-		for (std::map<std::string,Buffer*>::iterator it = additionalBuffers.begin(); it != additionalBuffers.end(); ++it)
-		{
-			Buffer* buffer = it->second;
-			it->second = buffer->clone();
-
-			if (it->second->isSwapEnabled())
-				swappableBuffers.insert(it->second);
 		}
 	}
 
@@ -120,18 +110,19 @@ namespace SPK
 	void Group::registerChildren(bool registerAll)
 	{
 		Registerable::registerChildren(registerAll);
-		
+
 		registerChild(model,registerAll);
 		registerChild(renderer,registerAll);
-		
+
 		for (std::vector<Emitter*>::const_iterator it = emitters.begin(); it != emitters.end(); ++it)
 			registerChild(*it,registerAll);
 		for (std::vector<Modifier*>::const_iterator it = modifiers.begin(); it != modifiers.end(); ++it)
 			registerChild(*it,registerAll);
 	}
 
-	void Group::copyChildren(const Group& group,bool createBase)
+	void Group::copyChildren(const Registerable& object,bool createBase)
 	{
+		const Group& group = dynamic_cast<const Group&>(object);
 		Registerable::copyChildren(group,createBase);
 
 		model = dynamic_cast<Model*>(copyChild(group.model,createBase));
@@ -192,6 +183,33 @@ namespace SPK
 		}
 
 		return NULL;
+	}
+
+	void Group::setModel(Model* newmodel)
+	{
+		if(!newmodel) newmodel = &getDefaultModel();
+		if(model == newmodel) return;
+
+		// empty and change model
+		empty();
+
+		decrementChildReference(model);
+		incrementChildReference(newmodel);
+		model = newmodel;
+
+		// recreate data
+		delete[] particleData;
+		delete[] particleCurrentParams;
+		delete[] particleExtendedParams;
+
+		particleData = new Particle::ParticleData[pool.getNbReserved()];
+		particleCurrentParams = new float[pool.getNbReserved() * model->getSizeOfParticleCurrentArray()];
+		particleExtendedParams = new float[pool.getNbReserved() * model->getSizeOfParticleExtendedArray()];
+
+		pool.clear();
+
+		// Destroys all the buffers
+		destroyAllBuffers();
 	}
 
 	void Group::setRenderer(Renderer* renderer)
@@ -264,7 +282,7 @@ namespace SPK
 		unsigned int nbManualBorn = nbBufferedParticles;
 		unsigned int nbAutoBorn = 0;
 
-		bool hasActiveEmitters = false;	
+		bool hasActiveEmitters = false;
 
 		// Updates emitters
 		activeEmitters.clear();
@@ -406,7 +424,7 @@ namespace SPK
 		// Resets old position (fix 1.04.00)
 		p.oldPosition() = p.position();
 
-		// first parameter interpolation 
+		// first parameter interpolation
 		// must be here so that the velocity has already been initialized
 		p.interpolateParameters();
 
@@ -560,9 +578,9 @@ namespace SPK
 			float* newCurrentParams = new float[pool.getNbReserved() * model->getSizeOfParticleCurrentArray()];
 			float* newExtendedParams = new float[pool.getNbReserved() * model->getSizeOfParticleExtendedArray()];
 
-			memcpy(newData,particleData,pool.getNbTotal() * sizeof(Particle::ParticleData));
-			memcpy(newCurrentParams,particleCurrentParams,pool.getNbTotal() * sizeof(float) * model->getSizeOfParticleCurrentArray());
-			memcpy(newExtendedParams,particleExtendedParams,pool.getNbTotal() * sizeof(float) * model->getSizeOfParticleExtendedArray());
+			std::memcpy(newData,particleData,pool.getNbTotal() * sizeof(Particle::ParticleData));
+			std::memcpy(newCurrentParams,particleCurrentParams,pool.getNbTotal() * sizeof(float) * model->getSizeOfParticleCurrentArray());
+			std::memcpy(newExtendedParams,particleExtendedParams,pool.getNbTotal() * sizeof(float) * model->getSizeOfParticleExtendedArray());
 
 			delete[] particleData;
 			delete[] particleCurrentParams;
@@ -571,6 +589,14 @@ namespace SPK
 			particleData = newData;
 			particleCurrentParams = newCurrentParams;
 			particleExtendedParams = newExtendedParams;
+
+			for (Pool<Particle>::iterator it = pool.begin(); it != pool.endInactive(); ++it)
+			{
+				it->group = this;
+				it->data = particleData + it->index;
+				it->currentParams = particleCurrentParams + it->index * model->getSizeOfParticleCurrentArray();
+				it->extendedParams = particleExtendedParams + it->index * model->getSizeOfParticleExtendedArray();
+			}
 
 			// Destroys all the buffers
 			destroyAllBuffers();
@@ -692,7 +718,7 @@ namespace SPK
 			{
 				do ++i;
 				while (particleData[i].sqrDist > pivot);
-				do --j;	
+				do --j;
 				while (particleData[j].sqrDist < pivot);
 				if (i < j)
 					swapParticles(pool[i],pool[j]);
@@ -711,5 +737,11 @@ namespace SPK
 		for (std::vector<Modifier*>::const_iterator modifierIt = modifiers.begin(); modifierIt != modifiers.end(); ++modifierIt)
 			if ((*modifierIt)->isLocalToSystem())
 				(*modifierIt)->updateTransform(this);
+	}
+
+	Model& Group::getDefaultModel()
+	{
+		static Model defaultModel;
+		return defaultModel;
 	}
 }

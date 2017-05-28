@@ -1,0 +1,81 @@
+import irr
+#maybe a for loop here that runs pre post keychecking network updating loops for rendering
+#count = 0
+#while (running & !paused):
+#   print 'The count is:', count
+#   count = count + 1
+
+
+#irr.using ('games/racing/game.py')
+#irr.using ('IDE')
+
+#keystate = input.getKey('KEY_KEY_E')
+# print keystate
+
+
+#pyVehicle params &Vehicle,&param,&state,&ammount
+#car1 = 1
+driving = 1
+
+#
+if input.getKey('KEY_SPACE') :
+ physics.VehicleParams(car1,5,0,0)
+ print "setting cube position"
+
+if (driving and input.getKey('KEY_KEY_W') ):
+ physics.VehicleParams(car1,1,0,0) #acceleration
+elif(driving != 1 and input.getKey('KEY_KEY_W')):
+# scene.setCamera(camera,100,100,100)
+ scene.setCamera(camera,100,-100,-100)
+
+
+# physics.VehicleParams(car2,2,0,0) #acceleration
+if input.getKey('KEY_KEY_A') :
+ physics.VehicleParams(car1,5,0,0)
+
+if input.getKey('KEY_KEY_D') :
+ physics.VehicleParams(car1,6,0,0)
+
+# ////    else if (!mEvent.getKeyState(  KEY_DOWN) && (m_cVehicle->getState() != EVEHICLE_ACCELERATING))
+if input.getKey('KEY_KEY_S') :#or  input.getKey('KEY_DOWN') :
+ physics.VehicleParams(car1,2,0,0)
+
+
+#elif
+#
+#
+#elif input.getKey('KEY_KEY_S')==0:
+#  physics.VehicleParams(car1,9,0,0)
+
+
+if input.getKey('KEY_KEY_R') :
+# print "setting cube position"
+ physics.VehicleParams(car1,0,0,0)
+ scene.setPosition(cube_id,50,355,350)
+
+if input.getKey('KEY_KEY_E') :
+ physics.VehicleParams(car1,9,0,0) #acceleration
+
+#if input.getKey('KEY_UP') :
+# physics.VehicleParams(car1,1,0,0)
+# print "UP-ARROW"
+# irr.setPosition(cube_id,50,55,50)
+
+
+#if input.getKey('KEY_F1') :
+# gui.codeeditor();
+if input.getKey('KEY_KEY_F2') :
+ golfball = scene.addSphereNode(20,5,5,5) #size,pos,texture
+
+# irr.addTerrain(4,-3,5,0)
+#irr.flag1(1)
+ #irr.flag2(1)
+
+
+#irr.update(); #could set timing here, maybe smgr gui  etc  todo
+
+if input.getKey('KEY_ESCAPE') :
+ paused=1
+ scene.exit()
+
+#irr.checkKeyState(){};

@@ -29,7 +29,7 @@ namespace SPK
 	Emitter::Emitter() :
 		Registerable(),
 		Transformable(),
-		zone(&defaultZone),
+		zone(&getDefaultZone()),
 		full(true),
 		tank(-1),
 		flow(0.0f),
@@ -45,8 +45,9 @@ namespace SPK
 		registerChild(zone,registerAll);
 	}
 
-	void Emitter::copyChildren(const Emitter& emitter,bool createBase)
+	void Emitter::copyChildren(const Registerable& object,bool createBase)
 	{
+		const Emitter& emitter = dynamic_cast<const Emitter&>(object);
 		Registerable::copyChildren(emitter,createBase);
 		zone = dynamic_cast<Zone*>(copyChild(emitter.zone,createBase));	
 	}
@@ -92,10 +93,16 @@ namespace SPK
 		incrementChildReference(zone);
 
 		if (zone == NULL)
-			zone = &defaultZone;
+			zone = &getDefaultZone();
 
 		this->zone = zone;
 		this->full = full;
+	}
+
+	Zone& Emitter::getDefaultZone()
+	{
+		static Point defaultZone;
+		return defaultZone;
 	}
 
 	unsigned int Emitter::updateNumber(float deltaTime)
@@ -106,7 +113,7 @@ namespace SPK
 			nbBorn = std::max(0,tank);
 			tank = 0;
 		}
-		else
+		else if (tank != 0)
 		{
 			fraction += flow * deltaTime;
 			nbBorn = static_cast<int>(fraction);
@@ -117,6 +124,9 @@ namespace SPK
 			}
 			fraction -= nbBorn;
 		}
+		else
+			nbBorn = 0;
+
 		return static_cast<unsigned int>(nbBorn);
 	}
 }
