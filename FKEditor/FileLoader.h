@@ -120,7 +120,8 @@ public:
         addFileType(L"    Pulsar LM Tools (*.lmts)",".lmts","./media/filetypes/b3dtype.png");
         addFileType(L"    Quake II (*.md2)",".md2","./media/filetypes/md2type.png");
         addFileType(L"    Quake III (*.md3)",".md3","./media/filetypes/md3type.png");
-                addFileType(L"    IRRMESH (*.irrmesh)",".irrmesh","./media/filetypes/md3type.png");
+        addFileType(L"    Quake bsp (*.bsp)",".bsp","./media/filetypes/md3type.png");
+        addFileType(L"    IRRMESH (*.irrmesh)",".irrmesh","./media/filetypes/md3type.png");
     }
 ////////////////////////////////////////////////////////////////////////////////
 // Create the filelist using the defined filestypes

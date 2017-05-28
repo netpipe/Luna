@@ -6,9 +6,9 @@
 #include <stdlib.h>
 
 #include <cwiid.h>
+//#include "libcwiid/cwiid.h"
 
 
-cwiid_mesg_callback_t cwiid_callback;
 
 #define toggle_bit(bf,b)	\
 	(bf) = ((bf) & b)		\
@@ -16,18 +16,20 @@ cwiid_mesg_callback_t cwiid_callback;
 	       : ((bf) | (b))
 
 
+//wiiMote2 wiiMote;
+
 void set_led_state(cwiid_wiimote_t *wiimote, unsigned char led_state);
-void set_rpt_mode(cwiid_wiimote_t *wiimote, unsigned char rpt_mode);
+//void wiiMote::set_rpt_mode(cwiid_wiimote_t *wiimote, unsigned char rpt_mode);
 void print_state(struct cwiid_state *state);
 
-cwiid_err_t err;
-void err(cwiid_wiimote_t *wiimote, const char *s, va_list ap)
-{
-	if (wiimote) printf("%d:", cwiid_get_id(wiimote));
-	else printf("-1:");
-	vprintf(s, ap);
-	printf("\n");
-}
+//cwiid_err_t err;
+//void err(cwiid_wiimote_t *wiimote, const char *s, va_list ap)
+//{
+//	if (wiimote) printf("%d:", cwiid_get_id(wiimote));
+//	else printf("-1:");
+//	vprintf(s, ap);
+//	printf("\n");
+//}
 
 int Wii_init()
 {
@@ -40,14 +42,14 @@ int Wii_init()
 	unsigned char rumble = 0;
 	int exit = 0;
 
-	cwiid_set_err(err);
+//	cwiid_set_err(err);
 
 //	/* Connect to address given on command-line, if present */
 //	if (argc > 1) {
 //		str2ba(argv[1], &bdaddr);
 //	}
 //	else {
-//		bdaddr = *BDADDR_ANY;
+		bdaddr = *BDADDR_ANY;
 //	}
 
 	/* Connect to the wiimote */
@@ -56,9 +58,9 @@ int Wii_init()
 		fprintf(stderr, "Unable to connect to wiimote\n");
 		return -1;
 	}
-	if (cwiid_set_mesg_callback(wiimote, cwiid_callback)) {
-		fprintf(stderr, "Unable to set message callback\n");
-	}
+//	if (cwiid_set_mesg_callback(wiimote, cwiid_callback)) {
+//		fprintf(stderr, "Unable to set message callback\n");
+//	}
 
 
 
@@ -74,11 +76,11 @@ int Wii_init()
 
 		//case 'a':  "a: toggle accelerometer reporting\n"
 			toggle_bit(rpt_mode, CWIID_RPT_ACC);
-			set_rpt_mode(wiimote, rpt_mode);
+	//		set_rpt_mode(wiimote, rpt_mode);
 
 		//case 'b': //"b: toggle button reporting\n"
 			toggle_bit(rpt_mode, CWIID_RPT_BTN);
-			set_rpt_mode(wiimote, rpt_mode);
+//			set_rpt_mode(wiimote, rpt_mode);
 
 		//	toggle_bit(rumble, 1); //"5: toggle rumble\n"
 		//	if (cwiid_set_rumble(wiimote, rumble)) {
@@ -109,7 +111,7 @@ int Wii_init()
 	}
 
 
-	return 0;
+	return wiimote;
 }
 
 
@@ -123,12 +125,12 @@ void set_led_state(cwiid_wiimote_t *wiimote, unsigned char led_state)
 	}
 }
 
-void set_rpt_mode(cwiid_wiimote_t *wiimote, unsigned char rpt_mode)
-{
-	if (cwiid_set_rpt_mode(wiimote, rpt_mode)) {
-		fprintf(stderr, "Error setting report mode\n");
-	}
-}
+//void wiiMote::set_rpt_mode(cwiid_wiimote_t *wiimote, unsigned char rpt_mode)
+//{
+//	if (cwiid_set_rpt_mode(wiimote, rpt_mode)) {
+//		fprintf(stderr, "Error setting report mode\n");
+//	}
+//}
 
 
 

@@ -1,6 +1,8 @@
 #include <irrlicht.h>
 #include "Font/CGUITTFont.h"
 
+//TODO: buttons and progress bars
+
 using namespace irr;
 using namespace core;
 using namespace scene;

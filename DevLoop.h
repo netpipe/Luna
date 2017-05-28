@@ -56,6 +56,18 @@ device->getCursorControl()->setVisible(true);
 //	node->setAnimationSpeed(mesh->getAnimationSpeed());
 //
 
+//irr::core::string dir = "RACING/racer";
+	//irr::core::::string dir2 = "./" + dir2.c_str() + "/main.pys";
+//	printf("%s",dir2.c_str());
+//	char* convert = strdup(dir2.c_str());
+	//char* convert = const_cast<char*>(dir2.c_str());
+//			char * dir2 = "/RACING/racer/";
+//			char *dir ;
+//				strcat (dir, ".");
+//				strcat(dir, dir2);
+//				strcat(dir, "main.pys");
+//				puts (dir);
+  char * loader = "./RACING/racer/main.pys";
 
     while ( device->run() && !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
     {
@@ -83,8 +95,9 @@ device->getCursorControl()->setVisible(true);
     //      Python::CheckKeyStates();
     //      CheckKeyStates(); //check onEvent for any need to check keys
     // loop for key checking and loop for game  only execute script if there was an event
-
-                    Python::ExecuteScript("./RACING/racer/main.pys");
+// pick a game directory and look for main.pys
+			Python::ExecuteScript(irr::core::stringc(loader));
+			//Python::ExecuteScript("./RACING/racer/main.pys");
     #else
         driver->endScene();
 #endif

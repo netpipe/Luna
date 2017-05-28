@@ -13,7 +13,7 @@ struct WrapperClass
     vector3df DesiredPosition;
     ISceneNode * Visual;
     f32 Speed;
-    array<Unit *> Units;
+    irr::core::array<Unit *> Units;
     u32 MaxFiles; // Add files to each rank until full
     f32 FileWidth;
     f32 RankDepth;

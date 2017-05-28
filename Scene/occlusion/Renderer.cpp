@@ -126,7 +126,7 @@ void Renderer22::addMy3DScene(char* scene, f32 X, f32 Y, f32 Z)
    scene::IAnimatedMesh* mesh;
    mesh = smgr->getMesh(scene);
 
-   scene::ISceneNode* my3d = smgr->addOctTreeSceneNode(mesh->getMesh(0));
+   scene::ISceneNode* my3d = smgr->addOctreeSceneNode(mesh->getMesh(0));
    //my3d->setPosition(irr::core::vector3df(X,terrain->getHeight(X,Z)+Y,Z));
    my3d->setPosition(irr::core::vector3df(X,Y,Z));
    //my3d->setScale(irr::core::vector3df(2,2,2));

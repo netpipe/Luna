@@ -1,4 +1,4 @@
-/* Copyright (C) 2007 L. Donnie Smith <cwiid@abstrakraft.org>
+/* Copyright (C) 2007 L. Donnie Smith <donnie.smith@gatech.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -14,32 +14,6 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- *  ChangeLog:
- *  2007-05-16 L. Donnie Smith <cwiid@abstrakraft.org>
- *  * remove error_pipe
- *  * add struct mesg_array to process_error
- *
- *  2007-05-14 L. Donnie Smith <cwiid@abstrakraft.org>
- *  * added timestamp to mesg_array
- *
- *  2007-04-24 L. Donnie Smith <cwiid@abstrakraft.org>
- *  * rewrite for API overhaul
- *
- *  2007-04-09 L. Donnie Smith <cwiid@abstrakraft.org>
- *  * renamed wiimote to libcwiid, renamed structures accordingly
- *
- *  2007-04-04 L. Donnie Smith <cwiid@abstrakraft.org>
- *  * moved RW error state to separate member
- *
- *  2007-04-01 L. Donnie Smith <cwiid@abstrakraft.org>
- *  * removed CWIID_CMP_LEN macro and cwiid_findfirst prototype
- *
- *  2007-03-05 L. Donnie Smith <cwiid@abstrakraft.org>
- *  * added wiimote parameter to cwiid_err prototype
- *
- *  2007-03-01 L. Donnie Smith <cwiid@abstrakraft.org>
- *  * Initial ChangeLog
- *  * type audit (stdint, const, char booleans)
  */
 
 #ifndef CWIID_INTERNAL_H
@@ -49,6 +23,8 @@
 #include <pthread.h>
 #include <sys/types.h>	/* ssize_t */
 #include "cwiid.h"
+
+#define DEFAULT_TIMEOUT	5
 
 /* Bluetooth magic numbers */
 #define BT_TRANS_MASK		0xF0
@@ -114,18 +90,30 @@
 #define NUNCHUK_BTN_MASK	0x03
 
 /* Extension Values */
-#define EXT_NONE		0x2E
-#define EXT_PARTIAL		0xFF
-#define EXT_NUNCHUK		0x00
-#define EXT_CLASSIC		0x01
-#define EXT_BALANCE		0x2A
-#define EXT_MOTIONPLUS	0x04
+#define EXT_NONE		0x2E2E
+#define EXT_PARTIAL		0xFFFF
+#define EXT_NUNCHUK		0x0000
+#define EXT_CLASSIC		0x0101
+#define EXT_BALANCE		0x0402
+#define EXT_MOTIONPLUS	0x0405
 
 /* IR Enable blocks */
-#define MARCAN_IR_BLOCK_1	"\x00\x00\x00\x00\x00\x00\x90\x00\xC0"
-#define MARCAN_IR_BLOCK_2	"\x40\x00"
-#define CLIFF_IR_BLOCK_1	"\x02\x00\x00\x71\x01\x00\xAA\x00\x64"
-#define CLIFF_IR_BLOCK_2	"\x63\x03"
+#define MARCAN_IR_BLOCK_1			"\x00\x00\x00\x00\x00\x00\x90\x00\xC0"
+#define MARCAN_IR_BLOCK_2			"\x40\x00"
+#define CLIFF_IR_BLOCK_1			"\x02\x00\x00\x71\x01\x00\xAA\x00\x64"
+#define CLIFF_IR_BLOCK_2			"\x63\x03"
+#define MAX_SENSITIVITY_IR_BLOCK_1	"\x00\x00\x00\x00\x00\x00\x90\x00\x41"
+#define MAX_SENSITIVITY_IR_BLOCK_2	"\x40\x00"
+#define WII_L1_IR_BLOCK_1			"\x02\x00\x00\x71\x01\x00\x64\x00\xFE"
+#define WII_L1_IR_BLOCK_2			"\xFD\x05"
+#define WII_L2_IR_BLOCK_1			"\x02\x00\x00\x71\x01\x00\x96\x00\xB4"
+#define WII_L2_IR_BLOCK_2			"\xB3\x04"
+#define WII_L3_IR_BLOCK_1			"\x02\x00\x00\x71\x01\x00\xAA\x00\x64"
+#define WII_L3_IR_BLOCK_2			"\x63\x03"
+#define WII_L4_IR_BLOCK_1			"\x02\x00\x00\x71\x01\x00\xC8\x00\x36"
+#define WII_L4_IR_BLOCK_2			"\x35\x03"
+#define WII_L5_IR_BLOCK_1			"\x02\x00\x00\x71\x01\x00\x72\x00\x20"
+#define WII_L5_IR_BLOCK_2			"\x1F\x03"
 
 /* Write Sequences */
 enum write_seq_type {
@@ -188,6 +176,8 @@ struct wiimote {
 };
 
 /* prototypes */
+cwiid_wiimote_t *cwiid_new(int ctl_socket, int int_socket, int flags);
+
 /* thread.c */
 void *router_thread(struct wiimote *wiimote);
 void *status_thread(struct wiimote *wiimote);

@@ -2,11 +2,11 @@
 miNav - Mindinsomnia AI Pathfinding Navigation
 (C) Grady O'Neill 2007
 
-STATUS OF FUNCTION - Code words used during the development process to keep 
-track of what needs doing: 
+STATUS OF FUNCTION - Code words used during the development process to keep
+track of what needs doing:
 GREEN - Function is finished, debugged and tested. Working.
 YELLOW - Function is finished and debugged. May or may not be working.
-RED - Function is finished but hasn't been even run through the compiler to 
+RED - Function is finished but hasn't been even run through the compiler to
       check for errors yet. Most likely doesn't work.
 BLACK - Not even finished. Possibly near being finished or not even started.
 */
@@ -24,17 +24,17 @@ namespace miNav
         headConnection = NULL;
         set = false;
         unset = false;
-        previous = false;
+        previous = NULL;
         distance = 0;
     }
-    
+
     // GREEN
     Node::~Node()
     {
-        // Deleted created Solutions. Use function already created 
+        // Deleted created Solutions. Use function already created
         // for this exact task
         this->deleteAllSolutions();
-        
+
         // Go through linked list deleting all Connections
         Conn * qt = this->headConnection;
         Conn * pt = NULL;
@@ -45,7 +45,7 @@ namespace miNav
             qt = pt;
         }
     }
-    
+
     // GREEN
     void Node::deleteAllSolutions()
     {
@@ -60,7 +60,7 @@ namespace miNav
         }
         this->headSolution = NULL;
     }
-    
+
     // GREEN
     void Node::addSolution(Node* Destination, Node* Solution)
     {
@@ -87,7 +87,7 @@ namespace miNav
             this->headSolution = tmp;
         }
     }
-    
+
     // GREEN
     float Map::distance(Node * N1, Node * N2)
     {
@@ -102,14 +102,14 @@ namespace miNav
         distance = sqrt(pow((nX2-nX1),2)+pow((nY2-nY1),2)+pow((nZ2-nZ1),2));
         return distance;
     }
-    
+
     // GREEN
     Map::Map()
     {
         head = NULL;
         next = NULL;
     }
-    
+
     // GREEN
     Map::~Map()
     {
@@ -122,7 +122,7 @@ namespace miNav
             q = p;
         }
     }
-    
+
     // GREEN
     Node * Map::addNode(float X, float Y, float Z)
     {
@@ -145,7 +145,7 @@ namespace miNav
         }
         return temp;
     }
-    
+
     // GREEN
     Node * Map::getSolution(Node * position, Node * target)
     {
@@ -170,7 +170,7 @@ namespace miNav
             return NULL;
         }
     }
-    
+
     // GREEN
     void Map::connect(Node * N1, Node * N2)
     {
@@ -208,7 +208,7 @@ namespace miNav
             }
         }
     }
-    
+
     // GREEN
     void Map::connect2way(Node * N1, Node * N2)
     {
@@ -216,7 +216,7 @@ namespace miNav
         this->connect(N1,N2);
         this->connect(N2,N1);
     }
-    
+
     // YELLOW
     void Map::disconnect(Node * N1, Node * N2)
     {
@@ -240,7 +240,7 @@ namespace miNav
             }
         }
     }
-    
+
     // YELLOW
     void Map::deleteNode(Node * target)
     {
@@ -251,8 +251,8 @@ namespace miNav
         {
             this->disconnect(pt,target);
             pt = pt->next;
-        }        
-        
+        }
+
         // Find the Node and remove it from the linked list and delete it.
         if(target==head)
         {
@@ -273,28 +273,28 @@ namespace miNav
             }
         }
     }
-    
- 
+
+
     // GREEN
     void Map::solve()
     {
-        // Generate all solutions for all Nodes from every Node to every 
+        // Generate all solutions for all Nodes from every Node to every
         // other Node
         Node * q = this->head;
         while(q!=NULL)
         {
             // Clear q for new solutions linked list
             q->deleteAllSolutions();
-            
+
             // Do calculations for this Node
             calculateShortestPaths(q);
-            
+
             // Generate New Linked List of Solutions
             Node * pt = this->head;
             Node * current;
             while(pt!=NULL)
             {
-                // Look for the first step required to reach pt from q. 
+                // Look for the first step required to reach pt from q.
                 // Once founded addSolution() to q.
                 current = pt;
                 if(current!=q)
@@ -309,7 +309,7 @@ namespace miNav
                 {
                     q->addSolution(pt,current);
                 }
-                
+
                 // Go to next Node;
                 pt = pt->next;
             }
@@ -317,7 +317,7 @@ namespace miNav
             q = q->next;
         }
     }
-    
+
     // GREEN
     void Map::calculateShortestPaths(Node* s)
     {
@@ -330,11 +330,11 @@ namespace miNav
             q->set = q->unset = false;
             q = q->next;
         }
-    
+
         // Start pathfinding by set 's' (start) Node to unset
         s->unset = true;
         s->distance = 0;
-        
+
         // Continue pathfinding until all Nodes set
         Node* u;
         while(allSet()!=true)
@@ -344,7 +344,7 @@ namespace miNav
             relaxNeighbours(u);
         }
     }
-    
+
     // GREEN
     Node* Map::extractMinimum()
     {
@@ -367,11 +367,11 @@ namespace miNav
         selected->unset=false;
         return selected;
     }
-    
+
     // GREEN
     void Map::relaxNeighbours(Node* u)
     {
-        // Relax Neighbours 
+        // Relax Neighbours
         Node::Conn* Neigh = u->headConnection;
         while(Neigh!=NULL)
         {
@@ -384,7 +384,7 @@ namespace miNav
             Neigh = Neigh->next;
         }
     }
-    
+
     // GREEN
     bool Map::allSet()
     {
@@ -407,8 +407,8 @@ namespace miNav
         {
             return true;
         }
-    }        
-    
+    }
+
     // GREEN
     Map * miNavDevice::addMap()
     {
@@ -432,7 +432,7 @@ namespace miNav
         Maps++;
         return temp;
     }
-    
+
     // GREEN
     miNavDevice::miNavDevice()
     {
@@ -440,7 +440,7 @@ namespace miNav
         head = NULL;
         Maps = 0;
     }
-    
+
     // GREEN
     miNavDevice::~miNavDevice()
     {
@@ -454,7 +454,7 @@ namespace miNav
             q = p;
         }
     }
-    
+
     // YELLOW
     void miNavDevice::deleteMap(Map * target)
     {

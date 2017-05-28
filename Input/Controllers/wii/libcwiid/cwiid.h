@@ -1,4 +1,4 @@
-/* Copyright (C) 2007 L. Donnie Smith <cwiid@abstrakraft.org>
+/* Copyright (C) 2007 L. Donnie Smith <donnie.smith@gatech.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -14,44 +14,6 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- *  ChangeLog:
- *  2007-08-14 L. Donnie Smith <cwiid@abstrakraft.org>
- *  * make cwiid_err_default public
- *
- *  2007-05-16 L. Donnie Smith <cwiid@abstrakraft.org>
- *  * changed cwiid_connect, cwiid_disconnect to cwiid_open, cwiid_close
- *  * added cwiid_request_status, cwiid_set_let, cwiid_set_rumble,
- *    cwiid_set_rpt_mode
- *
- *  2007-05-14 L. Donnie Smith <cwiid@abstrakraft.org>
- *  * added timestamp to message functions
- *  * added cwiid_get_acc_cal
- *
- *  2007-04-24 L. Donnie Smith <cwiid@abstrakraft.org>
- *  * rewrite for API overhaul
- *
- *  2007-04-09 L. Donnie Smith <cwiid@abstrakraft.org>
- *  * renamed wiimote to libcwiid, renamed structures accordingly
- *
- *  2007-04-07 L. Donnie Smith <cwiid@abstrakraft.org>
- *  * changed cwiid_info.class to btclass
- *
- *  2007-04-04 L. Donnie Smith <cwiid@abstrakraft.org>
- *  * added cwiid_mesg_error message type
- *
- *  2007-04-01 L. Donnie Smith <cwiid@abstrakraft.org>
- *  * cwiid_connect now takes a pointer to bdaddr_t
- *  * added cwiid_info definition and macros
- *  * added cwiid_get_info_array prototype
- *  * changed cwiid_findfirst to cwiid_find_wiimote
- *
- *  2007-03-05 L. Donnie Smith <cwiid@abstrakraft.org>
- *  * added cwiid_err_t definition
- *  * added cwiid_set_err prototype
- *
- *  2007-03-01 L. Donnie Smith <cwiid@abstrakraft.org>
- *  * Initial ChangeLog
- *  * type audit (stdint, const, char booleans)
  */
 
 #ifndef CWIID_H
@@ -263,6 +225,7 @@ struct cwiid_balance_mesg {
 struct cwiid_motionplus_mesg {
 	enum cwiid_mesg_type type;
 	uint16_t angle_rate[3];
+	uint8_t low_speed[3];
 };
 
 struct cwiid_error_mesg {
@@ -307,6 +270,7 @@ struct balance_state {
 
 struct motionplus_state {
 	uint16_t angle_rate[3];
+	uint8_t low_speed[3];
 };
 
 union ext_state {
@@ -359,6 +323,7 @@ void cwiid_err_default(struct wiimote *wiimote, const char *str, va_list ap);
 #define cwiid_disconnect cwiid_close
 cwiid_wiimote_t *cwiid_open(bdaddr_t *bdaddr, int flags);
 cwiid_wiimote_t *cwiid_open_timeout(bdaddr_t *bdaddr, int flags, int timeout);
+cwiid_wiimote_t *cwiid_listen(int flags);
 int cwiid_close(cwiid_wiimote_t *wiimote);
 
 int cwiid_get_id(cwiid_wiimote_t *wiimote);

@@ -4,8 +4,8 @@
 int btree=0;
 
 //
-PyObject * Python::PyIrr_LoadAnimatedMesh(PyObject * self,PyObject * args){
-	 return Py_BuildValue("");  }
+//PyObject * Python::PyIrr_LoadAnimatedMesh(PyObject * self,PyObject * args){
+//	 return Py_BuildValue("");  }
 
 //
 PyObject * Python::PyIrr_LoadMesh(PyObject * self,PyObject * args){
@@ -13,13 +13,40 @@ PyObject * Python::PyIrr_LoadMesh(PyObject * self,PyObject * args){
 
 //
 PyObject * Python::PyIrr_addAnimatedMesh(PyObject * self,PyObject * args){
-    IAnimatedMesh *mesh ;
-    s32 meshPath;
+   // printf("loading animated mesh\n");
+
+    char *meshPath;
 	PyArg_ParseTuple(args,"s",&meshPath);
-    mesh->getMesh(meshPath);
+       IAnimatedMesh *mesh = smgr->getMesh( meshPath );
+//        irr::core::stringc extension;
+    //   irr::core::getFileNameExtension(extension, value1);
+
+    	scene::ISceneNode* node = 0;
+    printf("loading animated mesh\n");
+
+	if (mesh)
+		node = smgr->addOctreeSceneNode(mesh->getMesh(0), 0, -1, 1024);
+	//	node = smgr->addMeshSceneNode(mesh->getMesh(0));
+    //    node = smgr->addAnimatedMeshSceneNode( mesh );
+
+    // possibly need a delete through scripting side
 
 return Py_BuildValue("l",mesh);
 };
+
+// for loading/creating archives paths and other stuff, should include xml loader
+PyObject * Python::PyIrr_media(PyObject * self,PyObject * args){
+
+    char *value1,*value2;
+    PyArg_ParseTuple(args,"ss",&value1,&value2);
+
+    if (value1 = "add"){
+    device->getFileSystem()->addZipFileArchive(value2);
+    printf("adding zip archive to paths\n");
+    }
+    return Py_BuildValue("");
+
+}
 
 // assimp mesh importer model loader
 PyObject * Python::PyIrr_loadModel(PyObject * self,PyObject * args) { // if treepointer passed remove it ModelFactory
@@ -118,15 +145,45 @@ switch(action){
                 //node->setMD2Animation(scene::EMAT_STAND);
                 node->setMaterialTexture( 0, driver->getTexture(value2) );
             }
-       //     node->setPosition(vector3df(300,300,300));
+            //     node->setPosition(vector3df(300,300,300));
         }
+
+            if ( extension == ".bsp" ){
+                printf ("loading bsp");
+                //    IrrAssimp assimp(smgr);
+            IAnimatedMesh* mesh = assimp.getMesh(value1);
+        //  IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
+            //IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode( meshNoAssimp );
+
+//            	if (!mesh /*|| !meshNoAssimp*/)
+//                {
+//                    device->drop();
+//                    return 1;
+//                }
+
+            if (node /*&& nodeNoAssimp*/)
+            {
+                //node->setMaterialFlag(EMF_LIGHTING, false);
+               // node->setDebugDataVisible(scene::EDS_SKELETON | scene::EDS_BBOX_ALL);
+                //node->setScale(core::vector3df(100, 100, 100));
+
+                //nodeNoAssimp->setPosition(core::vector3df(100, 0, 0));
+                //nodeNoAssimp->setMaterialFlag(EMF_LIGHTING, false);
+                //node->setMD2Animation(scene::EMAT_STAND);
+                node->setMaterialTexture( 0, driver->getTexture(value2) );
+            }
+        }
+
+
 
         if ( extension == ".b3d" ){ //extension == "b3d"){
                 printf ("loading b3d");
-                     //    IrrAssimp assimp(smgr);
+            // IrrAssimp assimp(smgr);
             IAnimatedMesh* mesh = assimp.getMesh(value1);
        //     IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
-             node = smgr->addAnimatedMeshSceneNode( mesh );
+            node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
             //IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode( meshNoAssimp );
 
@@ -203,10 +260,14 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
     ISceneNode * node = smgr->getSceneNodeFromId(node_id);
     	if(node != NULL)
 	{
-    node->setPosition(vector3df(x,y,z));
+        node->setPosition(vector3df(x,y,z));
+        printf("%i",node_id);
 	}
+    else{
+    printf ("nodeID not valid");
+    }
 
-    printf("%i",node_id);
+
 return Py_BuildValue("");
 }
 
@@ -241,6 +302,11 @@ PyObject * Python::PyIrr_AddCubeSceneNode(PyObject * self,PyObject * args){
 	//Damn...thats a lot of parameters :)
 	PyArg_ParseTuple(args,"lffffffffff",&node_id,&size,&px,&py,&pz,&rx,&ry,&rz,&sx,&sy,&sz);
 	ISceneNode * node = smgr->getSceneNodeFromId(node_id);
+        //with physics
+//        vector3df pos = camera->getPosition();
+//        vector3df scl = vector3df(1,1,1);
+//        luna->m_cPhysics->createBox( btVector3(pos.X, pos.Y, pos.Z), btVector3(scl.X, scl.Y, scl.Z), 10); //weight
+
 	if(node == NULL)
 	{
 		node = smgr->addCubeSceneNode(size,NULL,node_id,
@@ -251,11 +317,14 @@ PyObject * Python::PyIrr_AddCubeSceneNode(PyObject * self,PyObject * args){
 		node->setMaterialFlag(EMF_LIGHTING,false);
 
 		//node->setPosition(vector3df(50,50,50));
+
 	}
 	else
 	{
 		return Py_BuildValue("");
 	};
+
+
 return Py_BuildValue("l",node_id);
 };
 
@@ -266,11 +335,22 @@ PyObject * Python::PyIrr_addSphereNode(PyObject * self,PyObject * args){
    // u8 texture;
     float radius;
 	PyArg_ParseTuple(args,"sllll",&radius,&x,&y,&z);
-    scene::ISceneNode * node_id = smgr->addSphereSceneNode(20); //radius  polycount , parent , id , position,rotation, scale
+  //  scene::ISceneNode * node_id = smgr->addSphereSceneNode(20); //radius  polycount , parent , id , position,rotation, scale
     //IVideoDriver::createImageFromFile().  //textures and heightmap
-
-//return Py_BuildValue("");
-return Py_BuildValue("l",node_id);
+       //if ( icount > 15){ //sphere limiter
+            vector3df pos = camera->getPosition();
+            vector3df rot = camera->getRotation();
+            bingo=1;
+            if (bingo) { // suposed to only create 1 sphere then transport you to it if its made already
+                luna->m_cPhysics->createSphere( btVector3(pos.X, pos.Y, pos.Z),2,5);
+                //ha2->setAngularVelocity(btVector3(400,400,400));
+                bingo= false;
+            } else {
+               // btVector3 pos2 = ha2->getCenterOfMassPosition();
+               // camera->setPosition(vector3df(pos2[0],pos2[1],pos2[2]));
+            }
+return Py_BuildValue("");
+//return Py_BuildValue("l",node_id);
 };
 
 

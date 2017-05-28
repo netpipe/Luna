@@ -67,14 +67,16 @@ if ( state==0 ){  // use state for get and set var
                 break;
             case ebrake: //wind resistance
                 m_cVehicle->reverse(ammount);
+                printf("ebrake");
             break;
 
             case brake:
+            	//printf('braking');
                                 m_cVehicle->brake();
 //                   if (mEvent.getKeyState(    irr::EKEY_CODE( 0x26 ) ))//KEY_UP)  ) ///| getkey.keyUP
 //                            {m_cVehicle->accelerate(1);}// need gears or something haha
 //                    else if (!mEvent.getKeyState(  KEY_UP) && (m_cVehicle->getState() != EVEHICLE_REVERSING))
-//                            {m_cVehicle->accelerate(-1);}   //wind resistance
+                        //    m_cVehicle->accelerate(-1);   //wind resistance
                 break;
 
             case lsteer:
@@ -405,6 +407,54 @@ PyObject * Python::PyIrr_getKey(PyObject * self,PyObject * args){
  //  if (keystate == true ){printf("the key was pressed");}
   return Py_BuildValue("b",keystate);
 }
+
+
+PyObject * Python::PyIrr_wii(PyObject * self,PyObject * args){
+// wii device accessor keystate return
+	char * btaddr;
+	char * type;
+	//	EKEY_CODE ekey;
+	PyArg_ParseTuple(args,"ss",&type,&btaddr);
+
+
+	if (type = "wii"){
+		Wii_init();
+//	cwiid_wiimote_t *wiimote;	/* wiimote handle */
+//	struct cwiid_state state;	/* wiimote state */
+//	bdaddr_t bdaddr;	/* bluetooth device address */
+//	unsigned char mesg = 0;
+//	unsigned char led_state = 0;
+//	unsigned char rpt_mode = 0;
+//	unsigned char rumble = 0;
+//	int exit = 0;
+//
+//	cwiid_set_err(err);
+
+
+	}
+	if (type = "wii-led1"){
+//		();
+	}
+
+
+
+	return Py_BuildValue("");
+}
+
+PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
+
+	s32 key;
+	int udev;
+	char * type;
+	//	EKEY_CODE ekey;
+	PyArg_ParseTuple(args,"ss",&type,&udev);
+
+
+
+	return Py_BuildValue("");
+}
+
+
 
 
 void Python::CheckKeyStates(){

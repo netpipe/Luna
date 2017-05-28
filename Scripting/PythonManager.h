@@ -27,7 +27,7 @@ PyMODINIT_FUNC Python::init_irr(void){
 ///#ifdef EXTRAS
     Py_InitModule("extras",irr_Extras);
 ///#endif
-    Py_InitModule("particles",irr_SPARKA);
+ //   Py_InitModule("particles",irr_SPARKA);
 	Py_InitModule("physics",irr_Physics);
     Py_InitModule("scene",irr_Scene);
     Py_InitModule("network",irr_Network);

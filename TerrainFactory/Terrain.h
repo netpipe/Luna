@@ -88,7 +88,7 @@ class Terrain
 		static int setter;
 
     int Render(vector3df terrainPosition,vector3df terrainRotation,vector3df terrainScale,int LOD);
-    int MakeTrees(vector3df aha,int treetype);
+    int MakeTrees(vector3df aha,int treetype,char *);
 
 
 

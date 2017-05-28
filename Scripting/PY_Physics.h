@@ -49,7 +49,7 @@ PyArg_ParseTuple(args,"s",&path);
 			}
 			else
 			{
-				naviNode = smgr->addOctTreeSceneNode(smesh);
+				naviNode = smgr->addOctreeSceneNode(smesh);
 				naviNode->setDebugDataVisible(scene::EDS_FULL);
 			}
 			smesh->drop();
@@ -57,10 +57,6 @@ PyArg_ParseTuple(args,"s",&path);
 	}
 }
 
-PyObject * Python::PyIrr_wii(PyObject * self,PyObject * args){
-    //Python::Wii_init();
-
-}
 
 int osteerinit =0;
 PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){
@@ -106,8 +102,9 @@ PyArg_ParseTuple(args,"sfff",&path,&loc.X,&loc.Y,&loc.Z);
 
 PyObject * Python::PyIrr_BulletBlend(PyObject * self,PyObject * args) {
 vector3df loc;
+int thing;
 //place open file dialogue here and get rid of this list to clean up the source
-//PyArg_ParseTuple(args,"fffi",&loc.X,&loc.Y,&loc.Z);
+PyArg_ParseTuple(args,"fffi",&loc.X,&loc.Y,&loc.Z,thing);
     #ifdef BULLETBLEND
     	int verboseDumpAllTypes = 0;
         int verboseDumpAllBlocks = 0;
@@ -288,6 +285,9 @@ tr.setIdentity();
        // stringc track = path.c_str(); //"huge.3ds";
      //   stringc track =  "huge.3ds";
 
+     //TODO load irr scene or a 3ds scene check extension on end of path.
+     // for security specify the data/levels folder.
+
         device->getFileSystem()->changeWorkingDirectoryTo("data/Stage3/");
         device->getSceneManager()->loadScene("Stage3.irr");  // LOADSCENE not LOADTRACK
 
@@ -402,3 +402,4 @@ return Py_BuildValue("");
     #endif
 }
 
+//material system for friction / lusture / magnetic / density

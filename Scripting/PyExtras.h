@@ -474,14 +474,12 @@ return Py_BuildValue("");
 PyObject * Python::PyIrr_BlindBoids(PyObject * self,PyObject * args) {//active camera
         int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+//        const u32 now = device->getTimer()->getTime();
+//        const f32 frameDeltaTime = (f32)(now - then) / 1000.0f; // Time in seconds
+//        then = now;
 #ifdef BOIDS
 switch (param){
-case 0:
-
-
- if  (bBlindBoids != true){
-
- }else {
+ if  (bBlindBoids = true){
          bBlindBoids = true;
         const irr::f32 borders[4] = { 1.0f, 222, 1.0f, 222}; //Xmin, Xmax, Zmin, Zmax
        // Flock* flock;
@@ -513,8 +511,14 @@ case 0:
         flock->setPaused(false);
         //selector->addTriangleSelector(selecta);
         //	selecta->drop();
- }
+ } else
+{
+    	//void update(irr::scene::ITriangleSelector* const
+            //        selector, const irr::f32 deltaTime,
+            //        const bool scatterFlock) const;
 
+    flock->update(selecta,1,0);
+}
     break;
 case 1:
     break

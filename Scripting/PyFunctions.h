@@ -104,8 +104,9 @@ RibbonTrailSceneNode* rt;
 #include "../Scene/spriteManager/ParticleSystem.h"
 #include "../GUI/Math/SCalcExpr.h"
 
-#include "../TerrainFactory/kornJungle/Jungle.h"
-
+#include "../TerrainFactory/ProceduralTrees/kornJungle/Jungle.h"
+//#include <cwiid.h>
+#include "../Input/Controllers/wii/wii.h"
 
     BmFont *fonts = new BmFont;
 
@@ -150,17 +151,15 @@ RibbonTrailSceneNode* rt;
 
 PyMethodDef irr_Network[] =
 {
-//    {"connect",Python::PyIrr_connect,METH_VARARGS,"connect"}
-//    {"disconnect",Python::PyIrr_disconnect,METH_VARARGS,"disconnect"}
-//    {"ping",Python::PyIrr_ping,METH_VARARGS,"ping"}
-//    {"sendFile",Python::PyIrr_sendFile,METH_VARARGS,"sendFile"}
-//    {"encrypt",Python::PyIrr_encrypt,METH_VARARGS,"encrypt"}
-//    {"decrypt",Python::PyIrr_decrypt,METH_VARARGS,"addSphereNode"}
-//    {"startServer",Python::PyIrr_startServer,METH_VARARGS,"startServer"}
-//    {"restartServer",Python::PyIrr_restartServer,METH_VARARGS,"restartServer"}
+    {"connect",Python::PyIrr_Connect,METH_VARARGS,"connect"}
+    {"disconnect",Python::PyIrr_Disconnect,METH_VARARGS,"disconnect"}
+    {"ping",Python::PyIrr_Ping,METH_VARARGS,"ping"}
+    {"sendFile",Python::PyIrr_sendFile,METH_VARARGS,"sendFile"}
+    {"encrypt",Python::PyIrr_Encrypt,METH_VARARGS,"encrypt"}
+    {"decrypt",Python::PyIrr_Decrypt,METH_VARARGS,"addSphereNode"}
+    {"startServer",Python::PyIrr_startServer,METH_VARARGS,"startServer"}
+    {"restartServer",Python::PyIrr_restartServer,METH_VARARGS,"restartServer"}
 
-
-    {"addSphereNode",Python::PyIrr_addSphereNode,METH_VARARGS,"addSphereNode"}
 };
 
 PyMethodDef irr_Scene[] =
@@ -182,16 +181,17 @@ reminder to actually check the names match with unstable ide's and whatnot
     {"setCamera",Python::PyIrr_SetCamera,METH_VARARGS,"sets camera vector"},
 	{"getCamera",Python::PyIrr_GetCamera,METH_VARARGS,"getcamera vector"},
 	{"Reset",Python::PyIrr_Reset,METH_VARARGS,"Reset various parts of scripting system"},
-	{"addAMesh",Python::PyIrr_LoadAnimatedMesh,METH_VARARGS,"PyIrr_addAnimatedMesh"},
+	{"addAMesh",Python::PyIrr_addAnimatedMesh,METH_VARARGS,"PyIrr_addAnimatedMesh"},
 	{"addMesh",Python::PyIrr_LoadMesh,METH_VARARGS,"PyIrr_addMesh"},
     {"addModel",Python::PyIrr_loadModel,METH_VARARGS,"load model"},
     {"loadTrack",Python::PyIrr_LoadTrack,METH_VARARGS,"load model"},
     {"Light",Python::PyIrr_Light,METH_VARARGS,"load model"},
-
 	//input
     {"using",Python::PyIrr_using,METH_VARARGS,"for opening scripts within scripts"},
     {"recast",Python::PyIrr_recast,METH_VARARGS,"recast navigation"},
     {"addWheel",Python::PyIrr_recast,METH_VARARGS,"recast navigation"},
+    {"media",Python::PyIrr_media,METH_VARARGS,"media"},
+
 
 	//scene
     {"tesselate",Python::PyIrr_tesselateImage,METH_VARARGS,"PyIrr_tesselateImage"},
@@ -205,14 +205,15 @@ reminder to actually check the names match with unstable ide's and whatnot
     {"addSphereNode",Python::PyIrr_addSphereNode,METH_VARARGS,"addSphereNode"},
     {"aBillBoard",Python::PyIrr_aBillBoard,METH_VARARGS,"billboard"},
     {"addTerrain",Python::PyIrr_addTerrain,METH_VARARGS,"PyIrr_addTerrain"},
-    {"addTree",Python::PyIrr_addTree,METH_VARARGS,"PyIrr_addTree"},
+    {"addTree",Python::PyIrr_Trees,METH_VARARGS,"PyIrr_addTree"},
+	{"addHUD",Python::PyIrr_addHUD,METH_VARARGS,"PyIrr_addHUD"},
 
     //Physics
     {"setVelocity",Python::PyIrr_setVelocity,METH_VARARGS,"setVelocity"},
     {"motionTrail",Python::PyIrr_motionTrail,METH_VARARGS,"motionTrail"},
     {"calculate",Python::PyIrr_calcMath,METH_VARARGS,"calculate"},
     {"delay",Python::PyIrr_Delay,METH_VARARGS,"delay"},
-
+    {"sleep",Python::PyIrr_Sleep,METH_VARARGS,"delay"},
     //gui
 
     {"chatbox",Python::PyIrr_ChatBox,METH_VARARGS,"chatbox for chatting in/with/alone"},
@@ -220,7 +221,7 @@ reminder to actually check the names match with unstable ide's and whatnot
 //  {"chatbox",Python::PyIrr_Terrain,METH_VARARGS,"pyterrain"},
     {"pauseGame",Python::PyIrr_pauseGame,METH_VARARGS,"pauseGame"},
     {"exit",Python::PyIrr_exit,METH_VARARGS,"exit"},
-
+    {"SPARK",Python::PyIrr_SPARKA,METH_VARARGS,"SPARK MANAGER"},
 
 	{NULL,NULL,0,NULL}
 };
@@ -238,6 +239,7 @@ PyMethodDef irr_Input[] =
 {
     {"getKey",Python::PyIrr_getKey,METH_VARARGS,"get key state"},
     {"wii",Python::PyIrr_wii,METH_VARARGS,"wiimote access"},
+    {"gamepad",Python::PyIrr_gamePad,METH_VARARGS,"gamepad"},
 };
 
 void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventReceiver event){
@@ -299,16 +301,26 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
 PyObject * Python::PyIrr_using(PyObject * self,PyObject * args){ //active camera
 //ExecuteScript(irr::core::string<char> scriptname){
 char * script;
-    PyArg_ParseTuple(args,"s",&script);
+char * arg;
+    PyArg_ParseTuple(args,"ss",&script,&arg);
 
     ExecuteScript(script);
 return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_Delay(PyObject * self,PyObject * args){ //active camera
+    //repurpose this for a path move delay
+    //PyArg_ParseTuple(args,"ss",&script,&arg);
     char * delay;
     PyArg_ParseTuple(args,"l",&delay);
-    device->sleep(delay);
+//    device->sleep(delay);
+return Py_BuildValue("");
+}
+
+PyObject * Python::PyIrr_Sleep(PyObject * self,PyObject * args){ //active camera
+    int *ammount;
+    PyArg_ParseTuple(args,"l",&ammount);
+    device->sleep(ammount);
 return Py_BuildValue("");
 }
 

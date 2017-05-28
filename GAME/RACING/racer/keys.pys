@@ -16,14 +16,19 @@ import irr
 #pyVehicle params &Vehicle,&param,&state,&ammount
 #car1 = 1
 driving = 1
+accelerating = 0
+#if vehicle moving
 
 #
 if input.getKey('KEY_SPACE') :
- physics.VehicleParams(car1,5,0,0)
- print "setting cube position"
+ physics.VehicleParams(car1,3,10,0)
 
 if (driving and input.getKey('KEY_KEY_W') ):
  physics.VehicleParams(car1,1,0,0) #acceleration
+ accelerating=1
+if (driving and input.getKey('KEY_KEY_W')==0 ):
+ accelerating=0
+
 elif(driving != 1 and input.getKey('KEY_KEY_W')):
 # scene.setCamera(camera,100,100,100)
  scene.setCamera(camera,100,-100,-100)
@@ -39,19 +44,14 @@ if input.getKey('KEY_KEY_D') :
 # ////    else if (!mEvent.getKeyState(  KEY_DOWN) && (m_cVehicle->getState() != EVEHICLE_ACCELERATING))
 if input.getKey('KEY_KEY_S') :#or  input.getKey('KEY_DOWN') :
  physics.VehicleParams(car1,2,0,0)
-
-
 #elif
-#
-#
-#elif input.getKey('KEY_KEY_S')==0:
-#  physics.VehicleParams(car1,9,0,0)
-
+#wind resistance
+elif accelerating==0 and input.getKey('KEY_KEY_S')==0:
+ #print "wind resistance"
+ physics.VehicleParams(car1,4,0,0)
 
 if input.getKey('KEY_KEY_R') :
- print "setting cube position"
  physics.VehicleParams(car1,0,0,0)
-
 if input.getKey('KEY_KEY_E') :
  physics.VehicleParams(car1,9,0,0) #acceleration
 
@@ -63,8 +63,11 @@ if input.getKey('KEY_KEY_E') :
 
 #if input.getKey('KEY_F1') :
 # gui.codeeditor();
-#if input.getKey('KEY_KEY_F2') :
-
+if input.getKey('KEY_F2') : #could have a release action
+ print "setting cube position"
+ #scene.setPosition(cube_id,1,1,1)
+ #golfball =
+ scene.addSphereNode(20,5,5,5)
 # irr.addTerrain(4,-3,5,0)
 #irr.flag1(1)
  #irr.flag2(1)

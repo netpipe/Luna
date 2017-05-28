@@ -26,8 +26,8 @@ class SimpleFlagNode : public scene::ISceneNode
 	core::aabbox3d<f32> Box;
 	video::SMaterial Material;
 
-	array<u16>			Indices;
-	array<S3DVertex>	Verts;
+	irr::core::array<u16>			Indices;
+	irr::core::array<S3DVertex>	Verts;
 
 	u32					Polys;
 
@@ -48,11 +48,11 @@ class SimpleFlagNode : public scene::ISceneNode
 	};
 	u32					NumSprings;
 
-	array<CC_Spring> 	SPRING; 			// storage for all the SPRINGS
+	irr::core::array<CC_Spring> 	SPRING; 			// storage for all the SPRINGS
 
-	array<bool>			VertIsPinned;
-	array<vector3df>	VertInitialPos;
-	array<vector3df>	VertPosOld;
+	irr::core::array<bool>			VertIsPinned;
+	irr::core::array<vector3df>	VertInitialPos;
+	irr::core::array<vector3df>	VertPosOld;
 
 public:
 //	f32		WindWave ;

@@ -14,7 +14,7 @@ class Obstacle
 {
 	private:
 		bool obstacleExists;
-		array<ISceneNode*> obstacleNode;
+		irr::core::array<ISceneNode*> obstacleNode;
 
 	public:
 		static Obstacle *Instance();

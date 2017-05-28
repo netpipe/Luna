@@ -200,7 +200,7 @@ ISceneManager *smgr = device->getSceneManager();
 
     // 地面の作成（Irrlicht用）
     IAnimatedMesh *planemesh = smgr->addHillPlaneMesh("myHill", dimension2d<f32>(24, 24), dimension2d<u32>(100, 100));
-    ISceneNode *q3sn = smgr->addOctTreeSceneNode(planemesh);
+    ISceneNode *q3sn = smgr->addOctreeSceneNode(planemesh);
 //    q3sn->setMaterialFlag(video::EMF_LIGHTING, false);
     q3sn->setMaterialTexture(0, driver->getTexture("../media/wall.jpg"));
 

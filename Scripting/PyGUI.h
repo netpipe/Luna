@@ -177,12 +177,12 @@ printf("%s\n", message);
 };
 
 PyObject * Python::PyIrr_addHUD(PyObject * self,PyObject * args){
-    #ifdef HUD
+ //   #ifdef HUD
     int state, value;
     char * loadFile;
     PyArg_ParseTuple(args,"sff",&loadFile,&state,&value);
     enum states {openFile=0,Position,Rotation,Play,Pause};
-  int istate =  states(state);
+	int istate =  states(state);
 
     switch (istate){
         case openFile:
@@ -193,9 +193,11 @@ PyObject * Python::PyIrr_addHUD(PyObject * self,PyObject * args){
         break;
         case 1:
                     break;
+
+	//hud visible layer attach nodes to it
 //        case 2:
 }
-    #endif
+ //   #endif
 
 return Py_BuildValue("");
  }

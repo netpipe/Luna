@@ -1,8 +1,8 @@
 // add to terrainFactory in an environment manager of somesort
-PyMethodDef irr_SPARKA[] = {
-    {"SPARK",Python::PyIrr_SPARKA,METH_VARARGS,"SPARK MANAGER"},
-	{NULL,NULL,0,NULL}
-};
+//PyMethodDef irr_SPARKA[] = {
+//    {"SPARK",Python::PyIrr_SPARKA,METH_VARARGS,"SPARK MANAGER"},
+//	{NULL,NULL,0,NULL}
+//};
 
 //#define SPARKA //<< has to be defined here to make the code look good fix later
 PyObject * Python::PyIrr_SPARKA(PyObject * self,PyObject * args) //active camera

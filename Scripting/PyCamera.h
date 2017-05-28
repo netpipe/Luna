@@ -74,6 +74,17 @@ PyObject * Python::PyIrr_SetCamera(PyObject * self,PyObject * args){ //active ca
  ICameraSceneNode *cam = cam2;
     cam->setPosition(vector3df(x,y,z));
 
+
+//        if (bCarFollow) {
+//    // this is for putting the camera above the car
+//        btVector3 point = m_cVehicle->getVehiclePosition();
+//        camera->setPosition(vector3df(
+//          (f32)point[0],
+//          (f32)point[1]+10,
+//          (f32)point[2]-50));
+//    }
+
+
 return Py_BuildValue("z",cam);
 }
 

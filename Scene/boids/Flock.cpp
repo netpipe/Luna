@@ -3,7 +3,7 @@
 //#include "Configuration.h"
 //#include "Demo.h"
 #include "BoidSceneNode.h"
-
+	u32 then;
 
 Flock::Flock( const irr::core::vector3df& target, const irr::f32 borders[4])// :
 //	paused(false), target(target),
@@ -17,6 +17,7 @@ Flock::Flock( const irr::core::vector3df& target, const irr::f32 borders[4])// :
 	mimimumAboveGround(demo->getConfiguration()->getMimimumAboveGround()),
 	speedLimit(demo->getConfiguration()->getSpeedLimit())
 */
+
 {
 	memcpy(this->borders, borders, sizeof(irr::f32)*4);
 
@@ -28,6 +29,7 @@ Flock::Flock( const irr::core::vector3df& target, const irr::f32 borders[4])// :
 	tendencyAvoidPlace=(15.0f);
 	mimimumAboveGround=(200.0f);
 	speedLimit=(10.0f);
+
 }
 
 Flock::~Flock()
@@ -41,6 +43,10 @@ Flock::~Flock()
 
 void Flock::update(irr::scene::ITriangleSelector* const selector, const irr::f32 deltaTime, const bool scatterFlock) const
 {
+		const u32 now = device->getTimer()->getTime();
+        const f32 frameDeltaTime = (f32)(now - then) / 1000.0f; // Time in seconds
+        then = now;
+
 	if (this->paused)
 		return;
 
@@ -76,7 +82,7 @@ void Flock::update(irr::scene::ITriangleSelector* const selector, const irr::f32
 			scatterFlock, this->scatterFlockModifier,
 
 			//timing
-			deltaTime, this->speedLimit
+			frameDeltaTime, this->speedLimit
 #ifdef _SOUND
 			, soundEngine, soundEnabled
 #endif

@@ -83,10 +83,10 @@ namespace Python {
     PyObject * PyIrr_GetCamera(PyObject * self,PyObject * args);
     PyObject * PyIrr_Reset(PyObject * self,PyObject * args);
 
-    PyObject *PyIrr_fpsWeapon(PyObject * self,PyObject * args);
-    PyObject *PyIrr_atmosphere(PyObject * self,PyObject * args);
+    PyObject * PyIrr_fpsWeapon(PyObject * self,PyObject * args);
+    PyObject * PyIrr_atmosphere(PyObject * self,PyObject * args);
     PyObject * PyIrr_LoadShape(PyObject * self,PyObject * args);
-    PyObject * PyIrr_LoadAnimatedMesh(PyObject * self,PyObject * args);
+    PyObject * PyIrr_addAnimatedMesh(PyObject * self,PyObject * args);
     PyObject * PyIrr_LoadMesh(PyObject * self,PyObject * args);
     PyObject * PyIrr_tesselateImage(PyObject * self,PyObject * args);
     PyObject * PyIrr_addHelicopter(PyObject * self,PyObject * args);
@@ -94,6 +94,7 @@ namespace Python {
     PyObject * PyIrr_getPosition(PyObject * self,PyObject * args);
     PyObject * PyIrr_motionTrail(PyObject * self,PyObject * args);
 
+    PyObject * PyIrr_gamePad(PyObject * self,PyObject * args);
 
     //Physics
     PyObject * PyIrr_Bullet(PyObject * self,PyObject * args); // try to seperate
@@ -115,7 +116,7 @@ namespace Python {
     PyObject * PyIrr_addVideo(PyObject * self,PyObject * args);
 
     //Terrain
-    PyObject * PyIrr_addTree(PyObject * self,PyObject * args);
+    PyObject * PyIrr_Trees(PyObject * self,PyObject * args);
     PyObject * PyIrr_addTerrain(PyObject * self,PyObject * args);
 
     //Scene
@@ -155,6 +156,7 @@ namespace Python {
     PyObject * PyIrr_getKey(PyObject * self,PyObject * args);
     PyObject * PyIrr_wii(PyObject * self,PyObject * args);
     PyObject * PyIrr_recast(PyObject * self,PyObject * args);
+    PyObject * PyIrr_media(PyObject * self,PyObject * args);
 
 
 	// Model
@@ -166,7 +168,7 @@ namespace Python {
     PyObject * PyIrr_using(PyObject * self,PyObject * args);
     PyObject * PyIrr_motionTrail(PyObject * self,PyObject * args);
     PyObject * PyIrr_Delay(PyObject * self,PyObject * args);
-
+    PyObject * PyIrr_Sleep(PyObject * self,PyObject * args);
 
     PyMODINIT_FUNC init_irr(void);
 
@@ -343,42 +345,6 @@ void Python::render() {//active camera
             }
         #endif
 
-        #ifdef FPSWEAPON
-            if (M4){
-                M4->update(device->getTimer()->getTime());
-                //if (M4->isKeyDown(KEY_ESCAPE)) break;
-            }
-        #endif
-
-        #ifdef FORMATIONDEMO
-        if(formationDemo)
-        {
-             vector3df pos2 = camera->getPosition();
-             SpeedMultiplier=.001f;
-             formation->DesiredPosition = pos2; // desiredPosition;
-             formation->process(deltaTime);
-        }
-        #endif
-
-        #ifdef BOIDS
-            if(bBlindBoids){
-                flock->update(selecta,deltaTime*0.0001f,0);
-            }
-        #endif
-
-        #ifdef COMPASS
-            if (bCompass){
-                Compass1->draw();
-            }
-        #endif
-
-        #ifdef ATMOSPHERE
-            if (bAtmosphere){
-                atmo->update(driver);//update all sky/sun
-                if(blensFlare)
-                    sunMeshNode->setPosition(atmo->getsunpos()*10);
-            }
-        #endif
 
         #ifdef occlusion
             if (bOcclusion){

@@ -1,3 +1,20 @@
+/* Copyright (C) 2007 L. Donnie Smith <donnie.smith@gatech.edu>
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ */
 
 #include <string.h>
 #include <pthread.h>
@@ -65,6 +82,9 @@ int update_state(struct wiimote *wiimote, struct mesg_array *ma)
 			memcpy(wiimote->state.ext.motionplus.angle_rate,
 			       mesg->motionplus_mesg.angle_rate,
 			       sizeof wiimote->state.ext.motionplus.angle_rate);
+			memcpy(wiimote->state.ext.motionplus.low_speed,
+			       mesg->motionplus_mesg.low_speed,
+			       sizeof wiimote->state.ext.motionplus.low_speed);
 			break;
 		case CWIID_MESG_ERROR:
 			wiimote->state.error = mesg->error_mesg.error;
@@ -85,8 +105,8 @@ int update_state(struct wiimote *wiimote, struct mesg_array *ma)
 }
 
 /* IR Sensitivity Block */
-unsigned char ir_block1[] = CLIFF_IR_BLOCK_1;
-unsigned char ir_block2[] = CLIFF_IR_BLOCK_2;
+unsigned char ir_block1[] = MAX_SENSITIVITY_IR_BLOCK_1;
+unsigned char ir_block2[] = MAX_SENSITIVITY_IR_BLOCK_2;
 
 struct write_seq ir_enable10_seq[] = {
 	{WRITE_SEQ_RPT, RPT_IR_ENABLE1, (const void *)"\x04", 1, 0},
@@ -156,7 +176,7 @@ int update_rpt_mode(struct wiimote *wiimote, int8_t rpt_mode)
 		}
 		else {
 			rpt_type = RPT_EXT21;
-		}
+		}	
 	}
 	else if ((rpt_mode & CWIID_RPT_EXT) &&
 	  wiimote->state.ext_type == CWIID_EXT_BALANCE) {

@@ -1,3 +1,20 @@
+/* Copyright (C) 2007 L. Donnie Smith <donnie.smith@gatech.edu>
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ */
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -144,13 +161,13 @@ void *status_thread(struct wiimote *wiimote)
 
 		if (status_mesg->ext_type == CWIID_EXT_UNKNOWN) {
 			/* Read extension ID */
-			if (cwiid_read(wiimote, CWIID_RW_REG, 0xA400FE, 1, &buf[0])) {
+			if (cwiid_read(wiimote, CWIID_RW_REG, 0xA400FE, 2, &buf)) {
 				cwiid_err(wiimote, "Read error (extension error)");
 				status_mesg->ext_type = CWIID_EXT_UNKNOWN;
 			}
 			/* If the extension didn't change, or if the extension is a
 			 * MotionPlus, no init necessary */
-			switch (buf[0]) {
+			switch ((buf[0] << 8) | buf[1]) {
 			case EXT_NONE:
 				status_mesg->ext_type = CWIID_EXT_NONE;
 				break;
@@ -164,8 +181,7 @@ void *status_thread(struct wiimote *wiimote)
 				status_mesg->ext_type = CWIID_EXT_BALANCE;
 				break;
 			case EXT_MOTIONPLUS:
-                status_mesg->ext_type = CWIID_EXT_BALANCE;
-				//status_mesg->ext_type = CWIID_EXT_MOTIONPLUS;
+				status_mesg->ext_type = CWIID_EXT_MOTIONPLUS;
 				break;
 			case EXT_PARTIAL:
 				/* Everything (but MotionPlus) shows up as partial until initialized */
@@ -181,12 +197,12 @@ void *status_thread(struct wiimote *wiimote)
 						status_mesg->ext_type = CWIID_EXT_UNKNOWN;
 				}
 				/* Read extension ID */
-				else if (cwiid_read(wiimote, CWIID_RW_REG, 0xA400FE, 1, &buf[0])) {
+				else if (cwiid_read(wiimote, CWIID_RW_REG, 0xA400FE, 2, &buf)) {
 					cwiid_err(wiimote, "Read error (extension error)");
 					status_mesg->ext_type = CWIID_EXT_UNKNOWN;
 				}
 				else {
-					switch (buf[0]) {
+					switch ((buf[0] << 8) | buf[1]) {
 					case EXT_NONE:
 					case EXT_PARTIAL:
 						status_mesg->ext_type = CWIID_EXT_NONE;

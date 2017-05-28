@@ -255,7 +255,7 @@
 					<Add directory="../libs/ffmpeg/libswscale" />
 					<Add directory="../libs/ffmpeg/libavutil" />
 					<Add directory="../libs/ffmpeg/libavdevice" />
-					<Add directory="../Irrlicht/source/Irrlicht" />
+					<Add directory="../libs/Irrlicht/source/Irrlicht" />
 					<Add directory="../libs/Irrlicht/include" />
 					<Add directory="../libs/net/irrNetLite21" />
 					<Add directory="../libs/bullet3/src" />
@@ -489,7 +489,6 @@
 			<Add directory="../libs/ffmpeg/libavdevice" />
 			<Add directory="../libs/cAudio23/include" />
 			<Add directory="../libs/cAudio23/cAudio/include" />
-			<Add directory="../Irrlicht/source/Irrlicht" />
 			<Add directory="../libs/net/irrNetLite21" />
 			<Add directory="../libs/net/enet/include" />
 			<Add directory="../libs/bullet3/src" />
@@ -569,6 +568,8 @@
 		<Unit filename="Events/InGameEventReceiver.h" />
 		<Unit filename="GAME/RACING/racer/keys.pys" />
 		<Unit filename="GAME/RACING/racer/main.pys" />
+		<Unit filename="GAME/RPG-SIM/minigolf/keys.pys" />
+		<Unit filename="GAME/RPG-SIM/minigolf/main.pys" />
 		<Unit filename="GAME/functions-list.pys" />
 		<Unit filename="GUI/CHUD.h" />
 		<Unit filename="GUI/CodeEditor/CGUIEditBoxIRB.cpp" />
@@ -587,7 +588,6 @@
 		<Unit filename="Input/Compress/Compress.cpp" />
 		<Unit filename="Input/Compress/Compress.h" />
 		<Unit filename="Input/Controllers/StringTools.cpp" />
-		<Unit filename="Input/Controllers/wii/input.cpp" />
 		<Unit filename="Input/Controllers/wii/libcwiid/bluetooth.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -765,6 +765,7 @@
 		<Unit filename="Scripting/PyGUI.h" />
 		<Unit filename="Scripting/PyInput.h" />
 		<Unit filename="Scripting/PyMAIN.h" />
+		<Unit filename="Scripting/PyNet.h" />
 		<Unit filename="Scripting/PyScene.h" />
 		<Unit filename="Scripting/PythonManager.h" />
 		<Unit filename="TerrainFactory/CloudSceneNode/CCloudSceneNode.cpp" />
