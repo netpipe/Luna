@@ -256,12 +256,12 @@ return Py_BuildValue("0");
 PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
     s32 node_id;
     int x,y,z;
-    PyArg_ParseTuple(args,"llll",&node_id,&x,&y,&z);
+    PyArg_ParseTuple(args,"liii",&node_id,&x,&y,&z);
     ISceneNode * node = smgr->getSceneNodeFromId(node_id);
     	if(node != NULL)
 	{
         node->setPosition(vector3df(x,y,z));
-        printf("%i",node_id);
+        printf("%i %i %i",x,y,z);
 	}
     else{
     printf ("nodeID not valid");

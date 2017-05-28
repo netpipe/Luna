@@ -11,7 +11,7 @@ import input
 
 
 if (init) :
- camera = scene.addCamera(1,1,0,1) # 1 regular , 2 FPS , 3 other types, 4 rpg, << todo types  / active / vector
+ camera = scene.addCamera(2,1,0,1) # 1 regular , 2 FPS , 3 other types, 4 rpg, << todo types  / active / vector
  Light1 = scene.Light(10,100,150,1,"111111") # type , vector, color
  model = "data/models/vehicles/oldChevy-Truck.3ds"
  texture = "data/models/vehicles/oldChevy.bmp"
