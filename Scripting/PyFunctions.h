@@ -155,6 +155,8 @@ PyMethodDef irr_Network[] =
     {"disconnect",Python::PyIrr_Disconnect,METH_VARARGS,"disconnect"},
     {"ping",Python::PyIrr_Ping,METH_VARARGS,"ping"},
     {"sendFile",Python::PyIrr_sendFile,METH_VARARGS,"sendFile"},
+    {"Send",Python::PyIrr_Send,METH_VARARGS,"sendFile"},
+
     {"encrypt",Python::PyIrr_Encrypt,METH_VARARGS,"encrypt"},
     {"decrypt",Python::PyIrr_Decrypt,METH_VARARGS,"addSphereNode"},
     {"startServer",Python::PyIrr_Server,METH_VARARGS,"startServer"},
