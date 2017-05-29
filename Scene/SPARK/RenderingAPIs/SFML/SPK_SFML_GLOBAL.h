@@ -115,7 +115,7 @@ namespace SFML
 	/**
 	* @brief Sets the camera position for a use in the SFML 2D engine
 	*
-	* This is an helper function to set up the camera position
+	* This is an helper function to set up the camera position 
 	* for either particle sorting or particle distance computation.<br>
 	* <br>
 	* The user has to define where to place the camera with the anchor.

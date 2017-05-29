@@ -48,36 +48,42 @@ namespace DX9
 
 		DX9LineTrailRenderer();
 
-		static inline DX9LineTrailRenderer* create();
+		virtual ~DX9LineTrailRenderer();
+
+		static DX9LineTrailRenderer* create();
 
 
-		inline void setNbSamples(size_t nbSamples);
+		void setNbSamples(size_t nbSamples);
 
-		inline void setWidth(float width);
+		void setWidth(float width);
 
-		inline void setDuration(float duration);
+		void setDuration(float duration);
 
 		void setDegeneratedLines(float r,float g,float b,float a);
 
-		virtual inline void enableBlending(bool blendingEnabled);
+		virtual void enableBlending(bool blendingEnabled);
 
-		inline size_t getNbSamples() const;
+		size_t getNbSamples() const;
 
-		inline float getWidth() const;
+		float getWidth() const;
 
-		inline float getDuration() const;
+		float getDuration() const;
 
 		virtual void createBuffers(const Group& group);
 		virtual void destroyBuffers(const Group& group);
 
-		void init(const Group& group);
-		virtual void render(const Group& group);
+		virtual bool DX9CreateBuffers(const Group& group);
+		virtual bool DX9DestroyBuffers(const Group& group);
 
-		//virtual HRESULT OnD3D9CreateDevice();
+		void init(const Group& group);
+
+		virtual void render(const Group& group);
 
 	protected :
 
 		virtual bool checkBuffers(const Group& group);
+
+		virtual bool DX9CheckBuffers(const Group& group);
 
 	private :
 
@@ -92,12 +98,15 @@ namespace DX9
 		float degeneratedA;
 
 		// vertex buffers and iterators
-		static LPDIRECT3DVERTEXBUFFER9 vertexBuffer;
+		static D3DXVECTOR3* vertexBuffer;
 		static D3DXVECTOR3* vertexIterator;
-		static LPDIRECT3DVERTEXBUFFER9 colorBuffer;
+		static D3DCOLOR* colorBuffer;
 		static D3DCOLOR* colorIterator;
 		static float* valueBuffer;
 		static float* valueIterator;
+
+		static LPDIRECT3DVERTEXBUFFER9 DX9VertexBuffer;
+		static LPDIRECT3DVERTEXBUFFER9 DX9ColorBuffer;
 
 		// buffers names
 		static const std::string VERTEX_BUFFER_NAME;
@@ -107,7 +116,7 @@ namespace DX9
 		// vertex declaration
 		static LPDIRECT3DVERTEXDECLARATION9 pVertexDecl;
 
-		inline void init(const Particle& particle,float age) const;
+		void init(const Particle& particle,float age) const;
 	};
 
 
@@ -115,6 +124,7 @@ namespace DX9
 	{
 		DX9LineTrailRenderer* obj = new DX9LineTrailRenderer;
 		registerObject(obj);
+		DX9Info::DX9RegisterRenderer(obj);
 		return obj;
 	}
 	

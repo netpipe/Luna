@@ -21,17 +21,21 @@
 
 
 #include "RenderingAPIs/DX9/SPK_DX9Info.h"
+#include "RenderingAPIs/DX9/SPK_DX9Renderer.h"
 
 namespace SPK
 {
 namespace DX9
 {
 	LPDIRECT3DDEVICE9 DX9Info::device = NULL;
-	D3DPOOL DX9Info::pool = (D3DPOOL)-1;
 
-	bool DX9Info::lost = false;
-	bool DX9Info::destroyed = false;
+	std::vector<DX9Renderer *> DX9Info::renderers = std::vector<DX9Renderer *>();
 
-	std::vector<Group *> DX9Info::groups = std::vector<Group *>();
-	std::vector<IUnknown **> DX9Info::resources = std::vector<IUnknown **>();
+	void DX9Info::DX9DestroyAllBuffers()
+	{
+		for(size_t i = 0; i < renderers.size(); i++)
+		{
+			DX9Info::renderers[i]->DX9DestroyAllBuffers();
+		}
+	}
 }}

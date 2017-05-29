@@ -54,7 +54,7 @@ namespace GL
 	* <br>
 	* The opengl extensions implemented are :<ul>
 	* <li>point sprites : used in SPARK to attach images on points and therfore gain performance</li>
-	* <li>point parameters : used in SPARK both to allow to have points size function of the distance and
+	* <li>point parameters : used in SPARK both to allow to have points size function of the distance and 
 	* to overtake the basic point size limitation (usually 64 pix).</li>
 	* <li>texture 3D : used in SPARK to animate texture</li>
 	* </ul>
@@ -129,7 +129,7 @@ namespace GL
 
 		/**
 		* @brief Specifies a three-dimensional texture image
-		*
+		* 
 		* This method is exactly like calling the glTexImage3D method of OpenGL
 		* excepts it is already defined.<br>
 		* If the OpenGL texture 3D extension is not supported, this method does nothing.<br>
@@ -196,8 +196,8 @@ namespace GL
 		* @param name : the name of the OpenGL function
 		* @return a pointer to the OpenGL function, or NULL if the function is not found
 		*/
-		static inline void* glGetProcAddress(const char* name);
-
+		static void* glGetProcAddress(const char* name);
+		
 		///////////////////
 		// Point Sprites //
 		///////////////////
@@ -208,19 +208,19 @@ namespace GL
 		*/
 		static GLExtension getPointSpriteGLExt();
 
-		/**
-		* @brief Enables the use of point sprites
+		/** 
+		* @brief Enables the use of point sprites 
 		*
 		* Note that before calling this method, the user must ensure that the point sprite extension is loaded.
 		*/
-		inline static void enablePointSpriteGLExt();
+		static void enablePointSpriteGLExt();
 
-		/**
-		* @brief Disables the use of point sprites
+		/** 
+		* @brief Disables the use of point sprites 
 		*
 		* Note that before calling this method, the user must ensure that the point sprite extension is loaded.
 		*/
-		inline static void disablePointSpriteGLExt();
+		static void disablePointSpriteGLExt();
 
 		//////////////////////
 		// Point Parameters //
@@ -249,8 +249,8 @@ namespace GL
 		*/
 		static void enablePointParameterGLExt(float size,bool distance);
 
-		/**
-		* @brief Disables the use of point parameters
+		/** 
+		* @brief Disables the use of point parameters 
 		*
 		* Note that before calling this method, the user must ensure that the point parameters extension is loaded.
 		*/
@@ -356,11 +356,11 @@ namespace GL
 	inline void* GLExtHandler::glGetProcAddress(const char* name)
 	{
 #if defined(WIN32) || defined(_WIN32)
-		return (void*)wglGetProcAddress(name);			// Windows
+		return (void*)wglGetProcAddress(name);										// Windows
 #elif defined(__APPLE__) || defined(macintosh)
-		return (void*)SPK_NSGLGetProcAddress(name);		// MAC
+		return (void*)SPK_NSGLGetProcAddress(name);									// MAC
 #elif defined(linux) || defined(__linux)
-		return (void*)glXGetProcAddressARB((GLubyte*)name);		// Linux
+		return (void*)glXGetProcAddressARB(reinterpret_cast<const GLubyte*>(name));	// Linux
 #else
 		return (void*)NULL;
 #endif

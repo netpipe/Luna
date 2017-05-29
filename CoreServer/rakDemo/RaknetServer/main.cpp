@@ -30,8 +30,8 @@ int main(void)
     RakNet::IncrementalReadInterface incrementalReadInterface;
     std::cout<<"Insert path of file to transfer\n";
     char str[256];
-    gets(str);
-	if (str[0]==0)
+ //   gets(str);
+//	if (str[0]==0)
 		strcpy(str, "./test1.mp3");
 
     file=str;

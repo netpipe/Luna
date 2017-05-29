@@ -31,6 +31,8 @@
 
 namespace SPK
 {
+	class Group;
+
 	/**
 	* @class Particle
 	* @brief A single particle (a point in space with a velocity and different parameters)
@@ -44,7 +46,7 @@ namespace SPK
 	*/
 	class SPK_PREFIX Particle
 	{
-	friend inline bool isFurtherToCamera(const Particle&,const Particle&);
+	friend bool isFurtherToCamera(const Particle&,const Particle&);
 	friend void swapParticles(Particle& a,Particle& b);
 	friend class Group;
 	friend class Pool<Particle>;
@@ -110,7 +112,7 @@ namespace SPK
 		*
 		* @param life : the amount of life left of the Particle
 		*/
-		inline void setLifeLeft(float life);
+		void setLifeLeft(float life);
 
 
 		/////////////
@@ -122,21 +124,21 @@ namespace SPK
 		* @return the position of this Particle
 		* @since 1.02.00
 		*/
-		inline Vector3D& position();
+		Vector3D& position();
 
 		/**
 		* @brief Gets the velocity of the Particle
 		* @return the velocity of this Particle
 		* @since 1.02.00
 		*/
-		inline Vector3D& velocity();
+		Vector3D& velocity();
 
 		/**
 		* @brief Gets the old position of the Particle
 		* @return the old position of this Particle
 		* @since 1.02.00
 		*/
-		inline Vector3D& oldPosition();
+		Vector3D& oldPosition();
 
 		/**
 		* @brief Gets the position of the Particle
@@ -146,7 +148,7 @@ namespace SPK
 		* @return the position of this Particle
 		* @since 1.02.00
 		*/
-		inline const Vector3D& position() const;
+		const Vector3D& position() const;
 
 		/**
 		* @brief Gets the velocity of the Particle
@@ -156,7 +158,7 @@ namespace SPK
 		* @return the velocity of this Particle
 		* @since 1.02.00
 		*/
-		inline const Vector3D& velocity() const;
+		const Vector3D& velocity() const;
 
 		/**
 		* @brief Gets the old position of the Particle
@@ -166,7 +168,7 @@ namespace SPK
 		* @return the old position of this Particle
 		* @since 1.02.00
 		*/
-		inline const Vector3D& oldPosition() const;
+		const Vector3D& oldPosition() const;
 
 		/**
 		* @brief Gets the current value for the given parameter
@@ -200,14 +202,14 @@ namespace SPK
 		* @return A pointer on the Group of this Particle
 		* @since 1.02.00
 		*/
-		inline class Group* getGroup() const;
+		Group* getGroup() const;
 
 		/**
 		* @brief Gets the index of this Particle in its Group
 		* @return the index of thi Particle in its Group
 		* @since 1.03.00
 		*/
-		inline size_t getIndex() const;
+		size_t getIndex() const;
 
 		/**
 		* @brief Gets the amount of life left of the Particle
@@ -217,7 +219,7 @@ namespace SPK
 		*
 		* @return the amount of life left
 		*/
-		inline float getLifeLeft() const;
+		float getLifeLeft() const;
 
 		/**
 		* @brief Gets the age of the Particle
@@ -228,7 +230,7 @@ namespace SPK
 		* @return the age of the particle
 		* @since 1.03.00
 		*/
-		inline float getAge() const;
+		float getAge() const;
 
 		/**
 		* @brief Gets the distance of this Particle from the camera.
@@ -238,7 +240,7 @@ namespace SPK
 		* @return the distance of this Particle from the camera
 		* @since 1.01.00
 		*/
-		inline float getDistanceFromCamera() const;
+		float getDistanceFromCamera() const;
 
 		/**
 		* @brief Gets the square distance of this Particle from the camera.
@@ -249,7 +251,7 @@ namespace SPK
 		* @return the square distance of this Particle from the camera
 		* @since 1.01.00
 		*/
-		inline float getSqrDistanceFromCamera() const;
+		float getSqrDistanceFromCamera() const;
 
 		/**
 		* @brief Tells whether this Particle was initialized at its latest update or not
@@ -259,7 +261,7 @@ namespace SPK
 		* @return true if this Particle was initialized at its latest update, false if not
 		* @since 1.03.00
 		*/
-		inline bool isNewBorn() const;
+		bool isNewBorn() const;
 
 		/**
 		* @brief Tells whether this Particle is alive or not
@@ -269,7 +271,7 @@ namespace SPK
 		* @return true if this Particle is alive, false if it is dead
 		* @since 1.04.00
 		*/
-		inline bool isAlive() const;
+		bool isAlive() const;
 
 		///////////////
 		// Interface //
@@ -289,12 +291,12 @@ namespace SPK
 		*
 		* @since 1.01.00
 		*/
-		inline void kill();
+		void kill();
 
 		// As we know the color component are always enabled, we optimizes it a bit for access
-		inline float getR() const { return currentParams[PARAM_RED]; }
-		inline float getG() const { return currentParams[PARAM_GREEN]; }
-		inline float getB() const { return currentParams[PARAM_BLUE]; }
+		float getR() const { return currentParams[PARAM_RED]; }
+		float getG() const { return currentParams[PARAM_GREEN]; }
+		float getB() const { return currentParams[PARAM_BLUE]; }
 
 	private :
 

@@ -49,6 +49,8 @@ namespace IRR
 	*/
     class SPK_IRR_PREFIX IRRSystem : public System, public irr::scene::ISceneNode
     {
+		SPK_IMPLEMENT_REGISTERABLE(IRRSystem)
+
 	public:
 
 		//////////////////
@@ -64,6 +66,8 @@ namespace IRR
 		*/
         IRRSystem(irr::scene::ISceneNode* parent,irr::scene::ISceneManager* mgr,bool worldTransformed = true,irr::s32 id=-1);
 
+		IRRSystem(const IRRSystem& system);
+
 		/**
 		* @brief Creates and registers a new IRRSystem
 		* @param parent : the parent node of the particle system
@@ -72,7 +76,7 @@ namespace IRR
 		* @param id : the ID of the node
 		* @return A new registered IRRSystem
 		*/
-		static inline IRRSystem* create(irr::scene::ISceneNode* parent,irr::scene::ISceneManager* mgr,bool worldTransformed = true,irr::s32 id=-1);
+		static IRRSystem* create(irr::scene::ISceneNode* parent,irr::scene::ISceneManager* mgr,bool worldTransformed = true,irr::s32 id=-1);
 
 		/////////////
 		// Setters //
@@ -83,7 +87,7 @@ namespace IRR
 		* @param enableState : True to enable auto-update, false to disable it
         * @param onlyWhenVisible : True to perform auto-update only if node is visible. This parameter is ignored if auto-update is set to false.
 		*/
-        inline void setAutoUpdateEnabled(bool enableState, bool onlyWhenVisible);
+        void setAutoUpdateEnabled(bool enableState, bool onlyWhenVisible);
 
 		/////////////
 		// Getters //
@@ -96,13 +100,13 @@ namespace IRR
 		*
 		* @return true if auto-update is enabled, false if disabled
 		*/
-        inline bool isAutoUpdateEnabled() const;
+        bool isAutoUpdateEnabled() const;
 
 		/**
 		* @brief Returns true if auto-update is performed only when visible
 		* @return True if particles are updated only if the scene node is visible (use setVisible() to change visibility).
 		*/
-        inline bool isUpdateOnlyWhenVisible() const;
+        bool isUpdateOnlyWhenVisible() const;
 
 		/**
 		* @brief Tells whether this system is world transformed or not
@@ -114,7 +118,7 @@ namespace IRR
 		*
 		* @return true if this system is world transformed, false if not
 		*/
-		inline bool isWorldTransformed() const;
+		bool isWorldTransformed() const;
 
 		/** 
 		* @brief Gets the bounding box
@@ -138,20 +142,20 @@ namespace IRR
 		*
 		* @return true if the system has finished, false otherwise
 		*/
-		inline bool hasFinished() const;
+		bool hasFinished() const;
 
 		///////////////
 		// Interface //
 		///////////////
 
-		virtual inline bool update(float deltaTime);
+		virtual bool update(float deltaTime);
 
 		/** 
 		* @brief Renders the particles in the system 
 		* 
 		* (Reimplementation of the irr::scene::SceneNode render method.)
 		*/
-		virtual inline void render();
+		virtual void render();
 
         /** 
 		* @brief Renders the particles in the system 
@@ -185,9 +189,10 @@ namespace IRR
 		bool finished;
 
         mutable irr::core::aabbox3d<irr::f32> BBox;
+		mutable irr::u32 lastUpdatedTime;
 
-		virtual inline void onRegister();
-		virtual inline void onUnregister();
+		virtual void onRegister();
+		virtual void onUnregister();
 
 		// This sets the right camera position if distance computation is enabled for a group of the system
 		void updateCameraPosition() const;

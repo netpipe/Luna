@@ -25,9 +25,6 @@
 #include "Core/SPK_Particle.h"
 #include "Core/SPK_Group.h"
 
-#include "RenderingAPIs/DX9/SPK_DX9IndexBuffer.h"
-#include "RenderingAPIs/DX9/SPK_DX9VertexBuffer.h"
-
 namespace SPK
 {
 namespace DX9
@@ -37,16 +34,21 @@ namespace DX9
 	const std::string DX9QuadRenderer::TEXTURE_BUFFER_NAME("SPK_DX9QuadRenderer_Texture");
 	const std::string DX9QuadRenderer::INDEX_BUFFER_NAME("SPK_DX9QuadRenderer_Index");
 
-	LPDIRECT3DVERTEXBUFFER9 DX9QuadRenderer::vertexBuffer = NULL;
+	D3DXVECTOR3* DX9QuadRenderer::vertexBuffer = NULL;
 	D3DXVECTOR3* DX9QuadRenderer::vertexIterator = NULL;
-	LPDIRECT3DVERTEXBUFFER9 DX9QuadRenderer::colorBuffer = NULL;
+	DWORD* DX9QuadRenderer::colorBuffer = NULL;
 	DWORD* DX9QuadRenderer::colorIterator = NULL;
-	LPDIRECT3DVERTEXBUFFER9 DX9QuadRenderer::textureBuffer = NULL;
+	float* DX9QuadRenderer::textureBuffer = NULL;
 	float* DX9QuadRenderer::textureIterator = NULL;
-	LPDIRECT3DINDEXBUFFER9 DX9QuadRenderer::indexBuffer = NULL;
+	short* DX9QuadRenderer::indexBuffer = NULL;
 	short* DX9QuadRenderer::indexIterator = NULL;
 
-	int DX9QuadRenderer::offsetIndex = 0;
+	LPDIRECT3DVERTEXBUFFER9 DX9QuadRenderer::DX9VertexBuffer = NULL;
+	LPDIRECT3DVERTEXBUFFER9 DX9QuadRenderer::DX9ColorBuffer = NULL;
+	LPDIRECT3DVERTEXBUFFER9 DX9QuadRenderer::DX9TextureBuffer = NULL;
+	LPDIRECT3DINDEXBUFFER9 DX9QuadRenderer::DX9IndexBuffer = NULL;
+
+	short DX9QuadRenderer::offsetIndex = 0;
 
 	LPDIRECT3DVERTEXDECLARATION9 DX9QuadRenderer::pVertexDecl = NULL;
 	LPDIRECT3DVERTEXDECLARATION9 DX9QuadRenderer::pVertexDecl2D = NULL;
@@ -70,97 +72,62 @@ namespace DX9
 
 	bool DX9QuadRenderer::checkBuffers(const Group& group)
 	{
-		// if device reseted or destroyed, send message to recreate buffers
-		if( reinit == true )
-		{
-			reinit = false;
+		ArrayBuffer<D3DXVECTOR3>* pvbBuffer = NULL;
+		ArrayBuffer<DWORD>* dwColorBuffer = NULL;
+		ArrayBuffer<short>* sIndexBuffer = NULL;
+
+		if ((pvbBuffer = dynamic_cast<ArrayBuffer<D3DXVECTOR3>*>(group.getBuffer(VERTEX_BUFFER_NAME))) == NULL)
 			return false;
+
+		if ((dwColorBuffer = dynamic_cast<ArrayBuffer<DWORD>*>(group.getBuffer(COLOR_BUFFER_NAME))) == NULL)
+			return false;
+
+		if ((sIndexBuffer = dynamic_cast<ArrayBuffer<short>*>(group.getBuffer(INDEX_BUFFER_NAME))) == NULL)
+			return false;
+
+		if( texturingMode != TEXTURE_NONE )
+		{
+			FloatBuffer* fTextureBuffer;
+
+			if ((fTextureBuffer = dynamic_cast<FloatBuffer*>(group.getBuffer(TEXTURE_BUFFER_NAME,texturingMode))) == NULL)
+				textureBuffer = createTextureBuffer(group);
+
+			textureIterator = textureBuffer = fTextureBuffer->getData();
 		}
 
-		DX9VertexBuffer<D3DXVECTOR3>* pvbBuffer = NULL;
-		DX9VertexBuffer<DWORD>* dwColorBuffer = NULL;
-		DX9IndexBuffer<short>* sIndexBuffer = NULL;
-
-		if ((pvbBuffer = dynamic_cast<DX9VertexBuffer<D3DXVECTOR3>*>(group.getBuffer(VERTEX_BUFFER_NAME))) == NULL)
-			return false;
-
-		if ((dwColorBuffer = dynamic_cast<DX9VertexBuffer<DWORD>*>(group.getBuffer(COLOR_BUFFER_NAME))) == NULL)
-			return false;
-
-		if ((sIndexBuffer = dynamic_cast<DX9IndexBuffer<short>*>(group.getBuffer(INDEX_BUFFER_NAME))) == NULL)
-			return false;
-
-		switch( texturingMode )
-		{
-			case TEXTURE_2D:
-				{
-					DX9VertexBuffer<D3DXVECTOR2>* fTextureBuffer = NULL;
-					if ((fTextureBuffer = dynamic_cast<DX9VertexBuffer<D3DXVECTOR2>*>(group.getBuffer(TEXTURE_BUFFER_NAME,texturingMode))) == NULL)
-					{
-						group.destroyBuffer(TEXTURE_BUFFER_NAME);
-						textureBuffer = createTextureBuffer(group);
-					}
-					textureBuffer = (fTextureBuffer == NULL) ? (NULL) : (fTextureBuffer->getData());
-
-				}
-				break;
-
-			case TEXTURE_3D:
-				{
-					DX9VertexBuffer<D3DXVECTOR3>* fTextureBuffer = NULL;
-					if ((fTextureBuffer = dynamic_cast<DX9VertexBuffer<D3DXVECTOR3>*>(group.getBuffer(TEXTURE_BUFFER_NAME,texturingMode))) == NULL)
-					{
-						group.destroyBuffer(TEXTURE_BUFFER_NAME);
-						textureBuffer = createTextureBuffer(group);
-					}
-					textureBuffer = (fTextureBuffer == NULL) ? (NULL) : (fTextureBuffer->getData());
-				}
-				break;
-		}
-
-		vertexBuffer = pvbBuffer->getData();
-		colorBuffer = dwColorBuffer->getData();
-		indexBuffer = sIndexBuffer->getData();
+		vertexIterator = vertexBuffer = pvbBuffer->getData();
+		colorIterator = colorBuffer = dwColorBuffer->getData();
+		indexIterator = indexBuffer = sIndexBuffer->getData();
 
 		return true;
 	}
 
 	void DX9QuadRenderer::createBuffers(const Group& group)
 	{
-		DX9VertexBuffer<D3DXVECTOR3>* vbVertexBuffer = dynamic_cast<DX9VertexBuffer<D3DXVECTOR3>*>(group.createBuffer(VERTEX_BUFFER_NAME, DX9VertexBufferCreator<D3DXVECTOR3>(D3DFVF_XYZ, 4),0,false));
-		DX9VertexBuffer<DWORD>* vbColorBuffer = dynamic_cast<DX9VertexBuffer<DWORD>*>(group.createBuffer(COLOR_BUFFER_NAME, DX9VertexBufferCreator<DWORD>(D3DFVF_DIFFUSE, 4),0,false));
-		DX9IndexBuffer<short>* ibIndexBuffer  = dynamic_cast<DX9IndexBuffer<short>*>(group.createBuffer(INDEX_BUFFER_NAME, DX9IndexBufferCreator<short>(D3DFMT_INDEX16, 6),0,false));
-		vertexBuffer = vbVertexBuffer->getData();
-		colorBuffer = vbColorBuffer->getData();
-		indexBuffer = ibIndexBuffer->getData();
-		textureBuffer = createTextureBuffer(group);
+		ArrayBuffer<D3DXVECTOR3>* vbVertexBuffer = dynamic_cast<ArrayBuffer<D3DXVECTOR3>*>(group.createBuffer(VERTEX_BUFFER_NAME, ArrayBufferCreator<D3DXVECTOR3>(4),0,false));
+		ArrayBuffer<DWORD>* vbColorBuffer = dynamic_cast<ArrayBuffer<DWORD>*>(group.createBuffer(COLOR_BUFFER_NAME, ArrayBufferCreator<DWORD>(4),0,false));
+		ArrayBuffer<short>* ibIndexBuffer  = dynamic_cast<ArrayBuffer<short>*>(group.createBuffer(INDEX_BUFFER_NAME, ArrayBufferCreator<short>(6),0,false));
+		vertexIterator = vertexBuffer = vbVertexBuffer->getData();
+		colorIterator = colorBuffer = vbColorBuffer->getData();
+		indexIterator = indexBuffer = ibIndexBuffer->getData();
+
+		if( texturingMode != TEXTURE_NONE )
+			textureIterator = textureBuffer = createTextureBuffer(group);
 
 		offsetIndex = 0;
 
 		// initialisation de l'index buffer
-		indexBuffer->Lock(0, group.getParticles().getNbReserved()*6*sizeof(short), (void**)&indexIterator, 0);
-
 		for(size_t i = 0; i < group.getParticles().getNbReserved(); i++)
 		{
-//#define _DX9QUADRENDERER_CLOCKWISE_
-#ifdef _DX9QUADRENDERER_CLOCKWISE_
 			*(indexIterator++) = 0 + offsetIndex;
 			*(indexIterator++) = 1 + offsetIndex;
 			*(indexIterator++) = 2 + offsetIndex;
 			*(indexIterator++) = 0 + offsetIndex;
 			*(indexIterator++) = 2 + offsetIndex;
 			*(indexIterator++) = 3 + offsetIndex;
-#else
-			*(indexIterator++) = 0 + offsetIndex;
-			*(indexIterator++) = 2 + offsetIndex;
-			*(indexIterator++) = 1 + offsetIndex;
-			*(indexIterator++) = 0 + offsetIndex;
-			*(indexIterator++) = 3 + offsetIndex;
-			*(indexIterator++) = 2 + offsetIndex;
-#endif
+
 			offsetIndex += 4;
 		}
-		indexBuffer->Unlock();
 		offsetIndex = 0;
 	}
 
@@ -173,48 +140,31 @@ namespace DX9
 		offsetIndex = 0;
 	}
 
-	LPDIRECT3DVERTEXBUFFER9 DX9QuadRenderer::createTextureBuffer(const Group& group) const
+	float* DX9QuadRenderer::createTextureBuffer(const Group& group) const
 	{
-		LPDIRECT3DVERTEXBUFFER9 texBuffer = NULL;
-		void *ptr = NULL;
+		FloatBuffer* fbuffer = NULL;
 
 		switch(texturingMode)
 		{
 			case TEXTURE_2D :
+				fbuffer = dynamic_cast<FloatBuffer*>(group.createBuffer(TEXTURE_BUFFER_NAME,FloatBufferCreator(8),TEXTURE_2D,false));
+				if (!group.getModel()->isEnabled(PARAM_TEXTURE_INDEX))
 				{
-					DX9VertexBuffer<D3DXVECTOR2>* vbTextureBuffer = dynamic_cast<DX9VertexBuffer<D3DXVECTOR2>*>(group.createBuffer(TEXTURE_BUFFER_NAME, DX9VertexBufferCreator<D3DXVECTOR2>(D3DFVF_TEX1, 4),TEXTURE_2D,false));
-					if ((!group.getModel()->isEnabled(PARAM_ANGLE))&&(!group.getModel()->isEnabled(PARAM_TEXTURE_INDEX)))
-					{
-						float t[8] = {1.0f,0.0f,0.0f,0.0f,0.0f,1.0f,1.0f,1.0f};
-						texBuffer = vbTextureBuffer->getData();
-						texBuffer->Lock(0, group.getParticles().getNbReserved()*4*sizeof(D3DXVECTOR2), &ptr, 0);
-						for (size_t i = 0; i < group.getParticles().getNbReserved() * 8; ++i)
-							((float*)ptr)[i] = t[i & 7];
-						texBuffer->Unlock();
-					}
+					float t[8] = {0.0f,0.0f,1.0f,0.0f,1.0f,1.0f,0.0f,1.0f};
+					for (size_t i = 0; i < group.getParticles().getNbReserved() << 3; ++i)
+						fbuffer->getData()[i] = t[i & 7];
 				}
 				break;
 
 			case TEXTURE_3D :
-				{
-					DX9VertexBuffer<D3DXVECTOR3>* vbTextureBuffer = dynamic_cast<DX9VertexBuffer<D3DXVECTOR3>*>(group.createBuffer(TEXTURE_BUFFER_NAME, DX9VertexBufferCreator<D3DXVECTOR3>((D3DFVF_TEX1|D3DFVF_TEXCOORDSIZE1(3)), 4),TEXTURE_3D,false));
-					if (!group.getModel()->isEnabled(PARAM_ANGLE))
-					{
-						float t[12] =  {1.0f,0.0f,0.0f,0.0f,0.0f,0.0f,0.0f,1.0f,0.0f,1.0f,1.0f,0.0f};
-						texBuffer = vbTextureBuffer->getData();
-						texBuffer->Lock(0, group.getParticles().getNbReserved()*4*sizeof(D3DXVECTOR3), &ptr, 0);
-						for (size_t i = 0; i < group.getParticles().getNbReserved() * 12; ++i)
-							((float*)ptr)[i] = t[i % 12];
-						texBuffer->Unlock();
-					}
-				}
+				fbuffer = dynamic_cast<FloatBuffer*>(group.createBuffer(TEXTURE_BUFFER_NAME,FloatBufferCreator(12),TEXTURE_3D,false));
+				float t[12] =  {0.0f,0.0f,0.0f,1.0f,0.0f,0.0f,1.0f,1.0f,0.0f,0.0f,1.0f,0.0f};
+				for (size_t i = 0; i < group.getParticles().getNbReserved() * 12; ++i)
+					fbuffer->getData()[i] = t[i % 12];
 				break;
-
-			default:
-				return NULL;
 		}
 
-		return texBuffer;
+		return fbuffer->getData();
 	}
 
 	bool DX9QuadRenderer::setTexturingMode(TexturingMode mode)
@@ -231,19 +181,19 @@ namespace DX9
 		if (!DX9PrepareBuffers(group))
 			return;
 
-		D3DXMATRIX view;
+		if( !prepareBuffers(group) )
+			return;
+
+		D3DXMATRIX view,world,modelView;
 		DX9Info::getDevice()->GetTransform(D3DTS_VIEW, &view);
-		D3DXMatrixInverse((D3DXMATRIX*)&invModelView, NULL, &view);
+		DX9Info::getDevice()->GetTransform(D3DTS_WORLD, &world);
+		modelView = world * view;
+		D3DXMatrixInverse((D3DXMATRIX*)&invModelView, NULL, &modelView);
 
 		initBlending();
 
 		DX9Info::getDevice()->SetRenderState(D3DRS_SHADEMODE, D3DSHADE_FLAT);
-
-#ifdef _DX9QUADRENDERER_CLOCKWISE_
-		DX9Info::getDevice()->SetRenderState(D3DRS_CULLMODE, D3DCULL_CW);
-#else
-		DX9Info::getDevice()->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
-#endif
+		DX9Info::getDevice()->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 
 		switch(texturingMode)
 		{
@@ -300,26 +250,10 @@ namespace DX9
 
 		bool globalOrientation = precomputeOrientation3D(
 			group,
-			Vector3D(-invModelView[8],-invModelView[9],-invModelView[10]),
+			Vector3D(invModelView[8],invModelView[9],invModelView[10]),
 			Vector3D(invModelView[4],invModelView[5],invModelView[6]),
-			Vector3D(invModelView[12],invModelView[13],invModelView[14]));
-
-
-		// pose des verrous sur les buffers pour la mise à jour de ceux-ci
-		hr = vertexBuffer->Lock(0, group.getNbParticles()*4*sizeof(D3DXVECTOR3), (void**)&vertexIterator, 0);
-		hr = colorBuffer->Lock(0, group.getNbParticles()*4*sizeof(DWORD), (void**)&colorIterator, 0);
-		//hr = indexBuffer->Lock(0, group.getNbParticles()*6*sizeof(short), (void**)&indexIterator, 0);
-
-		switch( texturingMode )
-		{
-			case TEXTURE_2D:
-				hr = textureBuffer->Lock(0, group.getNbParticles()*4*sizeof(D3DXVECTOR2), (void**)&textureIterator, 0);
-				break;
-			case TEXTURE_3D:
-				hr = textureBuffer->Lock(0, group.getNbParticles()*4*sizeof(D3DXVECTOR3), (void**)&textureIterator, 0);
-				break;
-		}
-		//---------------------------------------------------------------------
+			Vector3D(invModelView[12],invModelView[13],invModelView[14])
+		);
 
 		if (globalOrientation)
 		{
@@ -337,48 +271,61 @@ namespace DX9
 				(this->*renderParticle)(particle);
 			}
 		}
-
-		// enlève les verrous des buffers
-		vertexBuffer->Unlock();
-		colorBuffer->Unlock();
-		//indexBuffer->Unlock();
-		if( texturingMode != TEXTURE_NONE )
-			textureBuffer->Unlock();
-		//---------------------------------------------------------------------------
 		
 		
 		// bind buffers and draw
 		{
+			LPDIRECT3DDEVICE9 device = DX9Info::getDevice();
+			void *ptr;
+
 			switch( texturingMode )
 			{
 				case TEXTURE_2D:
 					{
-						DX9Info::getDevice()->SetStreamSource(2, textureBuffer, 0, sizeof(D3DXVECTOR2));
-						DX9Info::getDevice()->SetVertexDeclaration(pVertexDecl2D);
+						DX9TextureBuffer->Lock(0, 0, &ptr, 0);
+						std::memcpy(ptr, textureBuffer, 4 * group.getNbParticles() * sizeof(D3DXVECTOR2));
+						DX9TextureBuffer->Unlock();
+
+						device->SetStreamSource(2, DX9TextureBuffer, 0, sizeof(D3DXVECTOR2));
+						device->SetVertexDeclaration(pVertexDecl2D);
 					}
 					break;
 
 				case TEXTURE_3D:
 					{
-						DX9Info::getDevice()->SetStreamSource(2, textureBuffer, 0, sizeof(D3DXVECTOR3));
-						DX9Info::getDevice()->SetVertexDeclaration(pVertexDecl3D);
+						DX9TextureBuffer->Lock(0, 0, &ptr, 0);
+						std::memcpy(ptr, textureBuffer, 4 * group.getNbParticles() * sizeof(D3DXVECTOR3));
+						DX9TextureBuffer->Unlock();
+
+						device->SetStreamSource(2, DX9TextureBuffer, 0, sizeof(D3DXVECTOR3));
+						device->SetVertexDeclaration(pVertexDecl3D);
 					}
 					break;
 
 				case TEXTURE_NONE:
 					{
-						DX9Info::getDevice()->SetVertexDeclaration(pVertexDecl);
+						device->SetVertexDeclaration(pVertexDecl);
 					}
 					break;
 			}
 
-			DX9Info::getDevice()->SetStreamSource(0, vertexBuffer, 0, sizeof(D3DXVECTOR3));
+			DX9VertexBuffer->Lock(0, 0, &ptr, 0);
+			std::memcpy(ptr, vertexBuffer, 4 * group.getNbParticles() * sizeof(D3DXVECTOR3));
+			DX9VertexBuffer->Unlock();
+			device->SetStreamSource(0, DX9VertexBuffer, 0, sizeof(D3DXVECTOR3));
 
-			DX9Info::getDevice()->SetStreamSource(1, colorBuffer, 0, sizeof(DWORD));
+			DX9ColorBuffer->Lock(0, 0, &ptr, 0);
+			std::memcpy(ptr, colorBuffer, 4 * group.getNbParticles() * sizeof(DWORD));
+			DX9ColorBuffer->Unlock();
+			device->SetStreamSource(1, DX9ColorBuffer, 0, sizeof(DWORD));
 
-			DX9Info::getDevice()->SetIndices(indexBuffer);
+			DX9IndexBuffer->Lock(0, 0, &ptr, 0);
+			std::memcpy(ptr, indexBuffer, 6 * group.getNbParticles() * sizeof(short));
+			DX9IndexBuffer->Unlock();
+			device->SetIndices(DX9IndexBuffer);
+
 			this->offsetIndex = 0;
-			DX9Info::getDevice()->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, nb_part<<2, 0, nb_part<<1);
+			device->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, nb_part<<2, 0, nb_part<<1);
 		}
 		//---------------------------------------------------------------------------
 	}
@@ -423,12 +370,110 @@ namespace DX9
 		DX9CallTexture2DAtlas(particle);
 	}
 
-	HRESULT DX9QuadRenderer::OnD3D9CreateDevice()
+	bool DX9QuadRenderer::DX9CheckBuffers(const Group& group)
 	{
-		DX9Info::getDevice()->CreateVertexDeclaration(QuadVertexDecl, &pVertexDecl);
-		DX9Info::getDevice()->CreateVertexDeclaration(QuadVertexDecl2D, &pVertexDecl2D);
-		DX9Info::getDevice()->CreateVertexDeclaration(QuadVertexDecl3D, &pVertexDecl3D);
+		if( !DX9Bind(group, DX9_VERTEX_BUFFER_KEY, (void**)&DX9VertexBuffer) )
+		{
+			DX9VertexBuffer = DX9ColorBuffer = DX9TextureBuffer = NULL;
+			DX9IndexBuffer = NULL;
+			return false;
+		}
+		if( !DX9Bind(group, DX9_COLOR_BUFFER_KEY, (void**)&DX9ColorBuffer) )
+		{
+			DX9VertexBuffer = DX9ColorBuffer = DX9TextureBuffer = NULL;
+			DX9IndexBuffer = NULL;
+			return false;
+		}
+		if( !DX9Bind(group, DX9_INDEX_BUFFER_KEY, (void**)&DX9IndexBuffer) )
+		{
+			DX9VertexBuffer = DX9ColorBuffer = DX9TextureBuffer = NULL;
+			DX9IndexBuffer = NULL;
+			return false;
+		}
+		if( texturingMode != TEXTURE_NONE )
+		{
+			if( !DX9Bind(group, DX9_TEXTURE_BUFFER_KEY, (void**)&DX9TextureBuffer) )
+			{
+				DX9VertexBuffer = DX9ColorBuffer = DX9TextureBuffer = NULL;
+				DX9IndexBuffer = NULL;
+				return false;
+			}
+		}
 
-		return S_OK;
+		return true;
+	}
+
+	bool DX9QuadRenderer::DX9CreateBuffers(const Group& group)
+	{
+		std::cout << "DX9QuadRenderer::DX9CreateBuffers" << std::endl;
+
+		if( DX9Info::getDevice() == NULL ) return false;
+
+		if( DX9Buffers.size() == 0 )
+		{
+			SAFE_RELEASE( pVertexDecl );
+			SAFE_RELEASE( pVertexDecl2D );
+			SAFE_RELEASE( pVertexDecl3D );
+			DX9Info::getDevice()->CreateVertexDeclaration(QuadVertexDecl, &pVertexDecl);
+			DX9Info::getDevice()->CreateVertexDeclaration(QuadVertexDecl2D, &pVertexDecl2D);
+			DX9Info::getDevice()->CreateVertexDeclaration(QuadVertexDecl3D, &pVertexDecl3D);
+		}
+
+		LPDIRECT3DVERTEXBUFFER9 vb;
+
+		// vertex buffer
+		if( DX9Info::getDevice()->CreateVertexBuffer(group.getParticles().getNbReserved() * 4 * sizeof(D3DXVECTOR3), 0, D3DFVF_XYZ, D3DPOOL_DEFAULT, &vb, NULL) != S_OK ) return false;
+		std::pair<const Group *, int> key(&group, DX9_VERTEX_BUFFER_KEY);
+		DX9Buffers[key] = vb;
+		DX9VertexBuffer = vb;
+		//-----------------------------------------------------------------------------------------------
+
+		// color buffer
+		if( DX9Info::getDevice()->CreateVertexBuffer(group.getParticles().getNbReserved() * 4 * sizeof(D3DCOLOR), 0, D3DFVF_DIFFUSE, D3DPOOL_DEFAULT, &vb, NULL) != S_OK ) return false;
+		key = std::pair<const Group *, int>(&group, DX9_COLOR_BUFFER_KEY);
+		DX9Buffers[key] = vb;
+		DX9ColorBuffer = vb;
+		//-----------------------------------------------------------------------------------------------
+
+		// index buffer
+		LPDIRECT3DINDEXBUFFER9 ib;
+
+		if( DX9Info::getDevice()->CreateIndexBuffer(group.getParticles().getNbReserved() * 6 * sizeof(short), 0, D3DFMT_INDEX16, D3DPOOL_DEFAULT, &ib, NULL) != S_OK ) return false;
+		key = std::pair<const Group *, int>(&group, DX9_INDEX_BUFFER_KEY);
+		DX9Buffers[key] = ib;
+		DX9IndexBuffer = ib;
+		//-----------------------------------------------------------------------------------------------
+
+		// texture buffer
+		switch(texturingMode)
+		{
+		case TEXTURE_2D :
+			if( DX9Info::getDevice()->CreateVertexBuffer(group.getParticles().getNbReserved() * 8 * sizeof(float), 0, D3DFVF_TEX1, D3DPOOL_DEFAULT, &vb, NULL) != S_OK ) return false;
+			key = std::pair<const Group *, int>(&group, DX9_TEXTURE_BUFFER_KEY);
+			DX9Buffers[key] = vb;
+			DX9TextureBuffer = vb;
+			break;
+		case TEXTURE_3D :
+			if( DX9Info::getDevice()->CreateVertexBuffer(group.getParticles().getNbReserved() * 12 * sizeof(float), 0, D3DFVF_TEX1|D3DFVF_TEXCOORDSIZE1(3), D3DPOOL_DEFAULT, &vb, NULL) != S_OK ) return false;
+			key = std::pair<const Group *, int>(&group, DX9_TEXTURE_BUFFER_KEY);
+			DX9Buffers[key] = vb;
+			DX9TextureBuffer = vb;
+			break;
+		}
+		//-----------------------------------------------------------------------------------------------
+		return true;
+	}
+
+	bool DX9QuadRenderer::DX9DestroyBuffers(const Group& group)
+	{
+		DX9Release(group, DX9_VERTEX_BUFFER_KEY);
+		DX9Release(group, DX9_COLOR_BUFFER_KEY);
+		DX9Release(group, DX9_INDEX_BUFFER_KEY);
+		DX9Release(group, DX9_TEXTURE_BUFFER_KEY);
+
+		DX9VertexBuffer = DX9ColorBuffer = DX9TextureBuffer = NULL;
+		DX9IndexBuffer = NULL;
+
+		return true;
 	}
 }}

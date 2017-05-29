@@ -26,6 +26,7 @@
 
 #include "RenderingAPIs/Irrlicht/SPK_IRR_DEF.h"
 #include "RenderingAPIs/Irrlicht/SPK_IRRBuffer.h"
+#include "RenderingAPIs/Irrlicht/SPK_IRRMaterialProxy.h"
 #include "Core/SPK_Renderer.h"
 #include "Core/SPK_Group.h"
 
@@ -36,7 +37,7 @@ namespace IRR
 {
 	/**
 	* @brief The base renderer for all Irrlicht renderers
-	*
+	* 
 	* This class presents a convenient interface to set some parameters common to all Irrlicht renderers (blending mode...).<br>
 	* <br>
 	* Note that rendering hints work with Irrlicht renderers except the SPK::ALPHA_TEST
@@ -63,7 +64,7 @@ namespace IRR
 		////////////////
 
 		/** @brief Destructor of IRRRenderer */
-		inline virtual ~IRRRenderer(){};
+		virtual ~IRRRenderer(){};
 
 		/////////////
 		// Setters //
@@ -84,7 +85,7 @@ namespace IRR
 		virtual void setBlending(BlendingMode blendMode);
 
 		virtual void enableRenderingHint(RenderingHint renderingHint,bool enable);
-		virtual inline void setAlphaTestThreshold(float alphaThreshold);
+		virtual void setAlphaTestThreshold(float alphaThreshold);
 
 		/////////////
 		// Getters //
@@ -94,34 +95,44 @@ namespace IRR
 		* @brief Gets the Irrlicht device of this renderer
 		* @return the device of this renderer
 		*/
-        inline irr::IrrlichtDevice* getDevice() const;
+        irr::IrrlichtDevice* getDevice() const;
 
 		/**
 		* @brief Gets the source blending funtion of this renderer
 		* @return the source blending funtion of this renderer
 		*/
-		inline irr::video::E_BLEND_FACTOR getBlendSrcFunc() const;
+		irr::video::E_BLEND_FACTOR getBlendSrcFunc() const;
 
 		/**
 		* @brief Gets the destination blending funtion of this renderer
 		* @return the destination blending funtion of this renderer
 		*/
-		inline irr::video::E_BLEND_FACTOR getBlendDestFunc() const;
+		irr::video::E_BLEND_FACTOR getBlendDestFunc() const;
 
 		/**
 		* @brief Gets the alpha source of this renderer
 		* @return the alpha source of this renderer
 		*/
-		inline unsigned int getAlphaSource() const;
+		unsigned int getAlphaSource() const;
 
 		/**
 		* @brief Gets the material of this renderer
 		*
-		* Note that the renderer is constant and therefore cannot be modified directly
+		* Note that the material is constant and therefore cannot be modified directly
 		*
 		* @return the material of this renderer
 		*/
-		inline const irr::video::SMaterial& getMaterial() const;
+		const irr::video::SMaterial& getMaterial() const;
+
+		/**
+		* @brief Gets a proxy for the material of this renderer
+		*
+		* The material proxy allows to modify some parameters of the underlying Irrlicht material
+		*
+		* @return a material proxy
+		* @since 1.5.6
+		*/
+		IRRMaterialProxy getMaterialProxy() { return IRRMaterialProxy(material); }
 
 		virtual bool isRenderingHintEnabled(RenderingHint renderingHint) const;
 
@@ -129,7 +140,7 @@ namespace IRR
 		// Interface //
 		///////////////
 
-		virtual inline void destroyBuffers(const Group& group);
+		virtual void destroyBuffers(const Group& group);
 
 	protected :
 
@@ -138,7 +149,8 @@ namespace IRR
 
 		mutable IRRBuffer* currentBuffer;
 
-		virtual inline bool checkBuffers(const Group& group);
+		virtual bool checkBuffers(const Group& group);
+		static unsigned int getVBOFlag();
 
 	private :
 
@@ -155,15 +167,15 @@ namespace IRR
 		*/
 		virtual const std::string& getBufferName() const = 0;
 
-		inline void updateMaterialBlendingMode();
+		void updateMaterialBlendingMode();
 	};
 
-
+	
 	inline void IRRRenderer::setAlphaTestThreshold(float alphaThreshold)
 	{
 		Renderer::setAlphaTestThreshold(0.0f); // the alpha threshold of the irrlicht material is always 0
 	}
-
+	
 	inline irr::IrrlichtDevice* IRRRenderer::getDevice() const
 	{
 		return device;
@@ -196,17 +208,18 @@ namespace IRR
 
 	inline bool IRRRenderer::checkBuffers(const Group& group)
 	{
-		currentBuffer = dynamic_cast<IRRBuffer*>(group.getBuffer(getBufferName()));
+		currentBuffer = dynamic_cast<IRRBuffer*>(group.getBuffer(getBufferName(),getVBOFlag()));
 		return currentBuffer != NULL;
+	}
+
+	inline unsigned int IRRRenderer::getVBOFlag()
+	{
+		return IRRBuffer::isVBOHintActivated() ? 1 : 0;	
 	}
 
 	inline void IRRRenderer::updateMaterialBlendingMode()
 	{
-#ifdef irrlicht17
-		material.MaterialTypeParam = irr::video::pack_texureBlendFunc(
-		#else
-        material.MaterialTypeParam = irr::video::pack_textureBlendFunc(
-		#endif
+		material.MaterialTypeParam = irr::video::pack_textureBlendFunc(
 			blendSrcFunc,
 			blendDestFunc,
 			irr::video::EMFN_MODULATE_1X,

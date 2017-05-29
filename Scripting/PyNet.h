@@ -23,6 +23,9 @@ PyObject * Python::PyIrr_sendFile(PyObject * self,PyObject * args){
 
 PyObject * Python::PyIrr_Send(PyObject * self,PyObject * args){
 
+	//PyArg_ParseTuple(args,"ll",&t,&x,&y,&z);
+	//	clientid
+//	netManager->sendOutPacket(powerPacket);
 	return Py_BuildValue("");
 }
 

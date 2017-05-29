@@ -29,14 +29,14 @@ namespace DX9
 	bool DX9Renderer::statesSaved = false;
 
 	DX9Renderer::DX9Renderer() :
-		reinit(false),
+		Renderer(),
 		blendingEnabled(false),
 		srcBlending(D3DBLEND_SRCALPHA),
 		destBlending(D3DBLEND_INVSRCALPHA),
 		textureBlending(D3DTOP_MODULATE)
 	{}
 
-	DX9Renderer::~DX9Renderer() {}
+	DX9Renderer::~DX9Renderer() {DX9Info::DX9ReleaseRenderer(this);}
 
 	void DX9Renderer::setBlending(BlendingMode blendMode)
 	{
@@ -60,20 +60,5 @@ namespace DX9
 			blendingEnabled = true;
 			break;
 		}
-	}
-
-	bool DX9Renderer::DX9PrepareBuffers(const Group& group)
-	{
-		if (!checkBuffers(group))
-		{
-			if (isBuffersCreationEnabled())
-			{
-				destroyBuffers(group);
-				createBuffers(group);
-				return true;
-			}
-			return false;
-		}
-		return true;
 	}
 }}

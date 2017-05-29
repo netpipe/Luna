@@ -1,6 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 // SPARK particle engine														//
 // Copyright (C) 2008-2009 - Julien Fryer - julienfryer@gmail.com				//
+//                           foulon matthieu - stardeath@wanadoo.fr				//
 //																				//
 // This software is provided 'as-is', without any express or implied			//
 // warranty.  In no event will the authors be held liable for any damages		//
@@ -20,50 +21,60 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-#ifndef H_SPK_STATICEMITTER
-#define H_SPK_STATICEMITTER
+#ifndef H_SPK_DX9BUFFERHANDLER
+#define H_SPK_DX9BUFFERHANDLER
 
-#include "Core/SPK_Emitter.h"
+#include "RenderingAPIs/DX9/SPK_DX9_DEF.h"
+#include "RenderingAPIs/DX9/SPK_DX9Info.h"
 
 
 namespace SPK
 {
-	/**
-	* @class StaticEmitter
-	* @brief An Emitter that emits particles with no initial velocity
-	* @since 1.05.00
-	*/
-	class StaticEmitter : public Emitter
-	{
-		SPK_IMPLEMENT_REGISTERABLE(StaticEmitter)
-
-	public :
-
-		/**
-		* @brief Creates and registers a new StaticEmitter
-		* @return A new registered StaticEmitter
-		*/
-		static StaticEmitter* create();
-
-	private :
-
-		virtual void generateVelocity(Particle& particle,float speed) const;
+namespace DX9
+{
+	enum {
+		DX9_NONE = 0, // invalid
+		DX9_VERTEX_BUFFER_KEY = 1 << 0,
+		DX9_COLOR_BUFFER_KEY = 1 << 1,
+		DX9_INDEX_BUFFER_KEY = 1 << 2,
+		DX9_TEXTURE_BUFFER_KEY = 1 << 3
 	};
 
-
-	inline StaticEmitter* StaticEmitter::create()
+	class SPK_DX9_PREFIX DX9BufferHandler
 	{
-		StaticEmitter* obj = new StaticEmitter;
-		registerObject(obj);
-		return obj;
-	}
+	public :
 
-	inline void StaticEmitter::generateVelocity(Particle& particle,float speed) const
+		virtual ~DX9BufferHandler() {}
+
+		virtual bool DX9CreateBuffers(const Group& group) {return true;};
+
+		virtual bool DX9DestroyBuffers(const Group& group) {return true;};
+
+	protected :
+
+		// The constructor is private so that the class is not instanciable
+		DX9BufferHandler() {}
+
+		bool DX9PrepareBuffers(const Group& group);
+
+		bool DX9Bind(const Group& group, int key, void** to);
+
+		bool DX9Release(const Group& group, int key);
+
+		bool DX9Create();
+
+		virtual bool DX9CheckBuffers(const Group& group);
+
+		std::map<std::pair<const Group *, int>, IDirect3DResource9 *> DX9Buffers;
+		std::map<std::pair<const Group *, int>, IDirect3DResource9 *>::iterator DX9BuffersIt;
+		std::pair<const Group *, int> DX9BuffersKey;
+
+	};
+
+	inline bool DX9BufferHandler::DX9CheckBuffers(const Group& group)
 	{
-		particle.velocity().set(0.0f,0.0f,0.0f); // no initial velocity
+		return true;
 	}
-}
+}}
 
 #endif
-
-

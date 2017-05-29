@@ -35,6 +35,7 @@
 #include <map>
 #include <set>
 #include <string>
+#include <cstring>
 
 // 1.02.02 Compatibility with older versions
 #ifdef SPK_DLL
@@ -97,7 +98,7 @@
 */
 namespace SPK
 {
-	/** @brief the random seed for the pseudo random numbers generation */
+	/** @brief the random seed for the pseudo random numbers generation (1 by default) */
 	extern SPK_PREFIX unsigned int randomSeed;
 
 	/**

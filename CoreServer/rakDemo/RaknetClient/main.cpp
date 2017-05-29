@@ -19,10 +19,10 @@ int main(void)
     FileTransferControl ftc;
 	peer->Startup(1,&RakNet::SocketDescriptor(), 1);
     printf("Enter server IP or hit enter for 127.0.0.1\n");
-	gets(str);
-	if (str[0]==0){
+//	gets(str);
+//	if (str[0]==0){
 		strcpy(str, "127.0.0.1");
-	}
+//	}
 
     peer->Connect(str, SERVER_PORT, 0,0);
 	peer->AttachPlugin(&flt1);

@@ -35,9 +35,11 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add directory="/home/Dev/libs/net/RakNet-git/Source" />
 		</Compiler>
 		<Linker>
-			<Add library="Raknet" />
+			<Add library="RakNetLibStatic" />
+			<Add directory="/home/Dev/libs/net/RakNet-git/Lib/LibStatic" />
 		</Linker>
 		<Unit filename="FileTransferProgress.h" />
 		<Unit filename="main.cpp" />

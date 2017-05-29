@@ -57,13 +57,13 @@ namespace SPK
 		* @brief Gets the current flag of this buffer
 		* @return the current flag of this buffer
 		*/
-		inline unsigned int getFlag() const;
+		unsigned int getFlag() const;
 
 		/**
 		* @brief Tells whether data is swapped as particles in the group are swapped
 		* @return true if data must be swapped with particles, false if not
 		*/
-		inline bool isSwapEnabled() const;
+		bool isSwapEnabled() const;
 
 	protected :
 
@@ -74,15 +74,6 @@ namespace SPK
 
 		unsigned int flag;
 		bool swapEnabled;
-
-		/**
-		* @brief Clones the buffer
-		*
-		* This is a pure virtual method that must be implemented by inherited classes of buffer.
-		*
-		* @return a copy of this buffer
-		*/
-		virtual Buffer* clone() const = 0;
 
 		/**
 		* @brief Swaps 2 particles data in this buffer
@@ -106,6 +97,12 @@ namespace SPK
 	class BufferCreator
 	{
 	friend class Group;
+
+	protected : 
+
+		virtual ~BufferCreator() {}
+
+	private :
 
 		/**
 		* @brief Creates a new buffer

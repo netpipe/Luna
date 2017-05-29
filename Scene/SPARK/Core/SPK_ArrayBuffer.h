@@ -27,6 +27,7 @@
 
 namespace SPK
 {
+	class Group;
 	template<class T> class ArrayBufferCreator;
 
 	/**
@@ -44,20 +45,20 @@ namespace SPK
 		* @brief Gets the starting address of the inner array
 		* @return the starting address of the first element of the inner array
 		*/
-		inline T* getData() const;
+		T* getData() const;
 
 		/**
 		* @brief Gets the number of elements for a single particle
 		* @return the number of elements for a single particle
 		*/
-		inline const size_t getParticleSize() const;
+		const size_t getParticleSize() const;
 
 		/**
 		* @brief Gets the total number of T in the inner array
 		* The value is equal to <i>particleSize * nbParticles</i>.
 		* @return the total number of T in the inner array
 		*/
-		inline size_t getDataSize() const;
+		size_t getDataSize() const;
 
 	private :
 
@@ -70,7 +71,6 @@ namespace SPK
 		ArrayBuffer<T>(const ArrayBuffer<T>& buffer);
 		virtual ~ArrayBuffer<T>();
 
-		virtual ArrayBuffer<T>* clone() const;
 		virtual void swap(size_t index0,size_t index1);
 	};
 
@@ -119,7 +119,7 @@ namespace SPK
 		particleSize(buffer.particleSize)
 	{
 		data = new T[dataSize];
-		memcpy(data,buffer.data,dataSize * sizeof(T));
+		std::memcpy(data,buffer.data,dataSize * sizeof(T));
 	}
 
 	template<class T>
@@ -144,12 +144,6 @@ namespace SPK
 	inline size_t ArrayBuffer<T>::getDataSize() const
 	{
 		return dataSize;
-	}
-
-	template<class T>
-	ArrayBuffer<T>* ArrayBuffer<T>::clone() const
-	{
-		return new ArrayBuffer<T>(*this);
 	}
 
 	template<class T>

@@ -27,12 +27,13 @@
 #include "RenderingAPIs/DX9/SPK_DX9_DEF.h"
 #include "RenderingAPIs/DX9/SPK_DX9Info.h"
 #include "Core/SPK_Renderer.h"
+#include "RenderingAPIs/DX9/SPK_DX9BufferHandler.h"
 
 namespace SPK
 {
 namespace DX9
 {
-	class SPK_DX9_PREFIX DX9Renderer : public Renderer
+	class SPK_DX9_PREFIX DX9Renderer : public Renderer, public DX9BufferHandler
 	{
 	public :
 
@@ -58,7 +59,7 @@ namespace DX9
 		* @brief Enables or disables the blending of this DX9Renderer
 		* @param blendingEnabled true to enable the blending, false to disable it
 		*/
-		virtual inline void enableBlending(bool blendingEnabled);
+		virtual void enableBlending(bool blendingEnabled);
 
 		/**
 		* @brief Sets the blending functions of this DX9Renderer
@@ -68,7 +69,7 @@ namespace DX9
 		* @param src : the source blending function of this DX9Renderer
 		* @param dest : the destination blending function of this DX9Renderer
 		*/
-		inline void setBlendingFunctions(int src,int dest);
+		void setBlendingFunctions(int src,int dest);
 		virtual void setBlending(BlendingMode blendMode);
 
 		/**
@@ -78,7 +79,7 @@ namespace DX9
 		*
 		* @param textureBlending : the texture blending function of this DX9Renderer
 		*/
-		inline void setTextureBlending(int textureBlending);
+		void setTextureBlending(int textureBlending);
 
 		/////////////
 		// Getters //
@@ -88,75 +89,37 @@ namespace DX9
 		* @brief Tells whether blending is enabled for this DX9Renderer
 		* @return true if blending is enabled, false if it is disabled
 		*/
-		inline bool isBlendingEnabled() const;
+		bool isBlendingEnabled() const;
 
 		/**
 		* @brief Gets the source blending function of this DX9Renderer
 		* @return the source blending function of this DX9Renderer
 		*/
-		inline int getSrcBlendingFunction() const;
+		int getSrcBlendingFunction() const;
 
 		/**
 		* @brief Gets the destination blending function of this DX9Renderer
 		* @return the source destination function of this DX9Renderer
 		*/
-		inline int getDestBlendingFunction() const;
+		int getDestBlendingFunction() const;
 
 		/**
 		* @brief Gets the texture blending function of this DX9Renderer
 		* @return the texture blending function of this DX9Renderer
 		*/
-		inline int getTextureBlending() const;
+		int getTextureBlending() const;
 
-		/*
-		//--------------------------------------------------------------------------------------
-		// Create any D3D9 resources that will live through a device reset (D3DPOOL_MANAGED)
-		// and aren't tied to the back buffer size
-		//--------------------------------------------------------------------------------------
-		virtual HRESULT OnD3D9CreateDevice() = 0;
 
-		/*
-		//--------------------------------------------------------------------------------------
-		// Create any D3D9 resources that won't live through a device reset (D3DPOOL_DEFAULT) 
-		// or that are tied to the back buffer size 
-		//--------------------------------------------------------------------------------------
-		virtual HRESULT OnD3D9ResetDevice( IDirect3DDevice9* pd3dDevice ) = 0;
-		*/
-
-		//--------------------------------------------------------------------------------------
-		// Release D3D9 resources created in the OnD3D9ResetDevice callback 
-		//--------------------------------------------------------------------------------------
-		HRESULT OnD3D9LostDevice()
-		{
-			if( DX9Info::getPool() != D3DPOOL_DEFAULT )
-				return S_OK;
-
-			reinit = true;
-			return S_OK;
-		}
-
-		//--------------------------------------------------------------------------------------
-		// Release D3D9 resources created in the OnD3D9CreateDevice callback 
-		//--------------------------------------------------------------------------------------
-		HRESULT OnD3D9DestroyDevice()
-		{
-			if( DX9Info::getPool() != D3DPOOL_MANAGED )
-				return S_OK;
-
-			reinit = true;
-			return S_OK;
-		}
-
-		bool DX9PrepareBuffers(const Group& group);
+		/*virtual */bool DX9DestroyAllBuffers();
 
 	protected :
 
 		/** @brief Inits the blending of this DX9Renderer */
-		inline void initBlending() const;
+		void initBlending() const;
 
-		inline void initRenderingHints() const;
+		void initRenderingHints() const;
 
-		bool reinit;
+		//std::map<std::pair<const Group *, int>, IDirect3DResource9 *> DX9Buffers;
 
 	private :
 
@@ -222,10 +185,7 @@ namespace DX9
 	{
 		// alpha test
 		if (isRenderingHintEnabled(ALPHA_TEST))
-		{
-			//glAlphaFunc(GL_GEQUAL,getAlphaTestThreshold());
 			DX9Info::getDevice()->SetRenderState(D3DRS_ALPHATESTENABLE, true);
-		}
 		else
 			DX9Info::getDevice()->SetRenderState(D3DRS_ALPHATESTENABLE, false);
 
@@ -237,6 +197,18 @@ namespace DX9
 
 		// depth write
 		DX9Info::getDevice()->SetRenderState(D3DRS_ZWRITEENABLE, isRenderingHintEnabled(DEPTH_WRITE));
+	}
+
+	inline bool DX9Renderer::DX9DestroyAllBuffers()
+	{
+		std::map<std::pair<const Group *, int>, IDirect3DResource9 *>::iterator it = DX9Buffers.begin();
+		while( it != DX9Buffers.end() )
+		{
+			SAFE_RELEASE( it->second );
+			it++;
+		}
+		DX9Buffers.clear();
+		return true;
 	}
 }}
 

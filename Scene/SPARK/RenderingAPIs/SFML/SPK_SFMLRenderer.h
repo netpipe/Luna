@@ -56,7 +56,7 @@ namespace SFML
 	* <br>
 	* Moreover, particles with a negative Z are not rendered as they are considered to be under the other 2D elements.
 	* <br>
-	* In the SFML library, a RenderTarget must be used for rendering. This RenderTarget can be set with a call to
+	* In the SFML library, a RenderTarget must be used for rendering. This RenderTarget can be set with a call to 
 	* bindRenderTarget(const sf::RenderTarget&) and released with a call to releaseRenderTarget().<br>
 	* A call to render(const Group&) of a SFMLRenderer will not render anything if a RenderTarget is not set.<br>
 	* However using SFMLSystem to render particles with SFML will bind the target internally, freeing the user from
@@ -65,7 +65,7 @@ namespace SFML
 	* @since 1.01.00
 	*/
 	class SPK_SFML_PREFIX SFMLRenderer : public Renderer
-	{
+	{	
 	public :
 
 		/////////////////
@@ -90,7 +90,7 @@ namespace SFML
 		* @brief Sets the blend mode of this SFMLRenderer
 		* @param mode : the blend mode of this SFMLRenderer in SFML style
 		*/
-		inline void setBlendMode(sf::Blend::Mode mode);
+		void setBlendMode(sf::Blend::Mode mode);
 		virtual void setBlending(BlendingMode blendMode);
 
 		/**
@@ -102,7 +102,7 @@ namespace SFML
 		* @param cull : true to enable the ground culling, false to disable it
 		* @since 1.03.00
 		*/
-		inline void setGroundCulling(bool cull);
+		void setGroundCulling(bool cull);
 
 		/////////////
 		// Getters //
@@ -112,7 +112,7 @@ namespace SFML
 		* @brief Gets the blend mode of this SFMLRenderer
 		* @return the blend mode of this SFMLRenderer in SFML style
 		*/
-		inline sf::Blend::Mode getBlendMode() const;
+		sf::Blend::Mode getBlendMode() const;
 
 		/**
 		* @brief Tells whether the ground culling is enabled or not
@@ -122,7 +122,7 @@ namespace SFML
 		* @return true if the ground culling is enabled, false if it is disabled
 		* @since 1.03.00
 		*/
-		inline bool hasGroundCulling() const;
+		bool hasGroundCulling() const;
 
 		///////////////
 		// Interface //
@@ -136,7 +136,7 @@ namespace SFML
 
 		/**
 		* @brief Sets the Z factor
-		*
+		* 
 		* The Z factor is the constant that will multiply the Z coordinate of a Particle position
 		* before being subtracted to the Y coordinate.
 		* <br>
@@ -179,8 +179,9 @@ namespace SFML
 		*
 		* @param system : The SFMLSystem that is currently being rendered
 		* @since 1.03.01
+		* @deprecated 1.5.5 Does nothing
 		*/
-		static void bindCurrentSystem(const SFMLSystem& system);
+		static void bindCurrentSystem(const SFMLSystem& system) {}
 
 		/**
 		* @brief Releases the current SFMLSystem
@@ -188,8 +189,9 @@ namespace SFML
 		* This method sets internally the SFMLSystem being rendered to NULL
 		*
 		* @since 1.03.01
+		* @deprecated 1.5.5 Does nothing
 		*/
-		static void releaseCurrentSystem();
+		static void releaseCurrentSystem() {}
 
 	protected :
 
@@ -205,21 +207,18 @@ namespace SFML
 		*/
 		static float getViewZoom(ResizeMode mode);
 
-
+	
 	private :
 
 		static float zFactor;
 
 		static sf::RenderTarget* currentTarget;
-		static const SFMLSystem* currentSystem;
-
+		
 		sf::Blend::Mode blendMode;
 
 		bool groundCulling;
 
-		inline void initBlending() const;
-		inline void initTransformation() const;
-		inline void finishTransformation() const;
+		void initBlending() const;
 
 		/**
 		* @brief Calls the rendering of a child of SFMLRenderer
@@ -267,27 +266,15 @@ namespace SFML
 				glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 				break;
 
-			case sf::Blend::Add :
-				glBlendFunc(GL_SRC_ALPHA,GL_ONE);
+			case sf::Blend::Add :      
+				glBlendFunc(GL_SRC_ALPHA,GL_ONE);                 
 				break;
-
-			case sf::Blend::Multiply :
-				glBlendFunc(GL_DST_COLOR,GL_ZERO);
+           
+			case sf::Blend::Multiply : 
+				glBlendFunc(GL_DST_COLOR,GL_ZERO);                
 				break;
 			}
 		}
-	}
-
-	inline void SFMLRenderer::initTransformation() const
-	{
-		if ((currentSystem != NULL)&&(currentSystem->isWorldTransformed()))
-			glPopMatrix();
-	}
-
-	inline void SFMLRenderer::finishTransformation() const
-	{
-		if ((currentSystem != NULL)&&(currentSystem->isWorldTransformed()))
-			glPushMatrix();
 	}
 }}
 
