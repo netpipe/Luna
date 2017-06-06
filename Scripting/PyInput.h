@@ -5,7 +5,7 @@
 PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
     int state,Vehicle,ammount,param;
    // char * param;
-    PyArg_ParseTuple(args,"llll",&Vehicle,&param,&ammount,&state);
+    PyArg_ParseTuple(args,"iiii",&Vehicle,&param,&ammount,&state);
     VehicleParam(Vehicle,param,ammount,state);
 
   return Py_BuildValue("");
@@ -417,8 +417,8 @@ PyObject * Python::PyIrr_wii(PyObject * self,PyObject * args){
 	PyArg_ParseTuple(args,"ss",&type,&btaddr);
 
 
-	if (type = "wii"){
-		Wii_init();
+//	if (type = "wii"){
+//		Wii_init();
 //	cwiid_wiimote_t *wiimote;	/* wiimote handle */
 //	struct cwiid_state state;	/* wiimote state */
 //	bdaddr_t bdaddr;	/* bluetooth device address */
@@ -431,10 +431,10 @@ PyObject * Python::PyIrr_wii(PyObject * self,PyObject * args){
 //	cwiid_set_err(err);
 
 
-	}
-	if (type = "wii-led1"){
-//		();
-	}
+//	}
+//	if (type = "wii-led1"){
+////		();
+//	}
 
 
 

@@ -106,7 +106,7 @@ RibbonTrailSceneNode* rt;
 
 #include "../TerrainFactory/ProceduralTrees/kornJungle/Jungle.h"
 //#include <cwiid.h>
-#include "../Input/Controllers/wii/wii.h"
+//#include "../Input/Controllers/wii/wii.h"
 
     BmFont *fonts = new BmFont;
 
@@ -156,6 +156,7 @@ PyMethodDef irr_Network[] =
     {"ping",Python::PyIrr_Ping,METH_VARARGS,"ping"},
     {"sendFile",Python::PyIrr_sendFile,METH_VARARGS,"sendFile"},
     {"Send",Python::PyIrr_Send,METH_VARARGS,"sendFile"},
+    {"update",Python::PyIrr_Update,METH_VARARGS,"sendFile"},
 
     {"encrypt",Python::PyIrr_Encrypt,METH_VARARGS,"encrypt"},
     {"decrypt",Python::PyIrr_Decrypt,METH_VARARGS,"addSphereNode"},

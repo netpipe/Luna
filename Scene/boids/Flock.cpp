@@ -3,7 +3,7 @@
 //#include "Configuration.h"
 //#include "Demo.h"
 #include "BoidSceneNode.h"
-	u32 then;
+	u32 then2;
 
 Flock::Flock( const irr::core::vector3df& target, const irr::f32 borders[4])// :
 //	paused(false), target(target),
@@ -43,9 +43,9 @@ Flock::~Flock()
 
 void Flock::update(irr::scene::ITriangleSelector* const selector, const irr::f32 deltaTime, const bool scatterFlock) const
 {
-		const u32 now = device->getTimer()->getTime();
-        const f32 frameDeltaTime = (f32)(now - then) / 1000.0f; // Time in seconds
-        then = now;
+		const u32 now2 = device->getTimer()->getTime();
+        const f32 frameDeltaTime2 = (f32)(now2 - then2) / 1000.0f; // Time in seconds
+        then2 = now2;
 
 	if (this->paused)
 		return;
@@ -82,7 +82,7 @@ void Flock::update(irr::scene::ITriangleSelector* const selector, const irr::f32
 			scatterFlock, this->scatterFlockModifier,
 
 			//timing
-			frameDeltaTime, this->speedLimit
+			frameDeltaTime2, this->speedLimit
 #ifdef _SOUND
 			, soundEngine, soundEnabled
 #endif

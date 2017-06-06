@@ -14,7 +14,7 @@
 
 #include <cAudio.h>
 
-#include "Net/irrNetClient.h"
+
 #include "entities/player.h"
 //#include "Encryption/Blowfish.h"
 #include "Physics/Physics.h"
@@ -23,6 +23,7 @@
 #include <irrNet.h>
 #include "./Scene/decals/decalscenenode.h"
 #include "TerrainFactory/Terrain.h"
+//#include "Net/irrNetClient.h"
 #include <irrNet.h>
 
 //#include "TerrainFactory/GrassSceneNode/CGrassPatchSceneNode.h"

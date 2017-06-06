@@ -36,14 +36,54 @@ using namespace gui;
 
 //#include <boost/python.hpp>   #not used just for ideas maybe
 
+//#include <irrNet.h>
+
+//    net::SOutPacket rotationPacket;
+    net::INetManager* netManager;
+   // bool connected,doit,login=0;
+   // vector3df tmpvect;
+        #include "Net/irrNetClient.h"
+//class ClientNetCallback : public net::INetCallback
+//{
+//public:
+//	// Our handlePacket function.
+//	virtual void handlePacket(net::SInPacket& packet)
+//	{
+//		// Just like the server, we obtain the packet id and print
+//		// the information based on the packet we received. I hope the
+//		// rest of this function is self-explanatory.
+//		c8 packetid;
+//		packet >> packetid;
+//
+//		switch((E_PACKET_TYPE)packetid)
+//		{
+//		case EPT_ROTATION:
+//			f32 cannonAngle;
+//			packet >> cannonAngle;
+//			std::cout << "Server says that the cannon angle is now " << cannonAngle << std::endl;
+//			break;
+//		case EPT_POWER:
+//			f32 cannonPower;
+//			packet >> cannonPower;
+//			std::cout << "Server says that the cannon power is now " << cannonPower << std::endl;
+//			break;
+//		default:
+//			// We don't care about any other types, so we catch them here and break.
+//			break;
+//		}
+//	}
+//};
+
+
+
+
+
 #define DPHYSICS
 #define PYTHON
 #include "Scripting/PythonManager.h"
-#include <irrNet.h>
-  //  net::SOutPacket rotationPacket;
-    net::INetManager* netManager;
-    bool connected,doit,login=0;
-    vector3df tmpvect;
+
+
+
 
 //#include "./Scene/RibbonTrailSceneNode/RibbonTrailSceneNode.h"
 //       RibbonTrailSceneNode* rt;
@@ -52,45 +92,45 @@ using namespace gui;
 //    scene::CGrassPatchSceneNode *grass[1000];
 //scene::IWindGenerator *wind = createWindGenerator( 30.0f, 3.0f );
 
-class ClientNetCallback : public net::INetCallback{
-public:
-	virtual void handlePacket(net::SInPacket& packet)
-	{
-	 //	u16 playerId = packet.getPlayerId();
-	//	packet.decryptPacket("hushthisissecret");
-	//	packet.deCompressPacket();
-        printf("handleing the Packet\n");
-			core::stringc str;
-		packet >> str;
+//class ClientNetCallback : public net::INetCallback{
+//public:
+//	virtual void handlePacket(net::SInPacket& packet)
+//	{
+//	 //	u16 playerId = packet.getPlayerId();
+//	//	packet.decryptPacket("hushthisissecret");
+//	//	packet.deCompressPacket();
+//        printf("handleing the Packet\n");
+//			core::stringc str;
+//		packet >> str;
+//
+//        if ( str == "first" ){  //great were connected
+//                std::cout << "we got handshake2" << str.c_str() << "\n"<< std::endl;
+//                connected=true;
+//                	//		    	packet2 << "actPack2";
+//
+//        }
+//        if ( str == "second" ){  // this would be the login data
+//                std::cout << "hit second connected! \n" << str.c_str() << "\n"<< std::endl;
+//           //     connected=true;
+//                doit=true;
+//                	//		    	packet2 << "actPack2";
+//        }
+//        if ( str == "actPack2"){
+//               std::cout << "AUTHORIZED!!" << str.c_str() << "\n" << std::endl;
+//               login=true;
+//               connected=true;
+////  if (!login){  // if has not logged in yet then send hands
+//        }else{
+//                std::cout << "other " << str.c_str() << "\n" << std::endl;
+//	}
+//        }
+////        resetV=true;
+//        // m_cVehicle2->resetVehicle();//( core::vector3df(vec[0],vec[1],vec[2]));
+//      //  tmpvect=vector3df(vec);
+// //     std::cout << str.c_str();
+//};
 
-        if ( str == "first" ){  //great were connected
-                std::cout << "we got handshake2" << str.c_str() << "\n"<< std::endl;
-                connected=true;
-                	//		    	packet2 << "actPack2";
-
-        }
-        if ( str == "second" ){  // this would be the login data
-                std::cout << "hit second connected! \n" << str.c_str() << "\n"<< std::endl;
-           //     connected=true;
-                doit=true;
-                	//		    	packet2 << "actPack2";
-        }
-        if ( str == "actPack2"){
-               std::cout << "AUTHORIZED!!" << str.c_str() << "\n" << std::endl;
-               login=true;
-               connected=true;
-//  if (!login){  // if has not logged in yet then send hands
-        }else{
-                std::cout << "other " << str.c_str() << "\n" << std::endl;
-	}
-        }
-//        resetV=true;
-        // m_cVehicle2->resetVehicle();//( core::vector3df(vec[0],vec[1],vec[2]));
-      //  tmpvect=vector3df(vec);
- //     std::cout << str.c_str();
-};
-
-ClientNetCallback* clientCallback;
+//ClientNetCallback* clientCallback;
 int icount=0;
 
 Luna::Luna ( int argc, char** argv ){}
@@ -104,6 +144,10 @@ int Luna::devloop(){
 }
 
 int Luna::mainloop(){
+//        ClientNetCallback* clientCallback = new ClientNetCallback();
+//    net::INetManager* netManager =
+//    net::createIrrNetClient(clientCallback, "127.0.0.1");
+//
     #include "./MainLoop.h" //! MainLoop Entry
 //    system("PAUSE");
     return 0;
@@ -155,7 +199,7 @@ return 0;
 
 int Luna::shutdown(){
     delete netManager;
-  //  delete ClientNetCallback;
+//    delete ClientNetCallback;
     delete m_cPhysics;
 //    delete m_cScene;
  //   delete m_cVehicle;

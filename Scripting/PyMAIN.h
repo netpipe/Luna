@@ -172,17 +172,17 @@ namespace Python {
 
     //network
 
-PyObject * PyIrr_Connect(PyObject * self,PyObject * args);
-PyObject * PyIrr_Disconnect(PyObject * self,PyObject * args);
-PyObject * PyIrr_Ping(PyObject * self,PyObject * args);
-PyObject * PyIrr_sendFile(PyObject * self,PyObject * args);
-PyObject * PyIrr_Send(PyObject * self,PyObject * args);
-PyObject * PyIrr_Receive(PyObject * self,PyObject * args);
-PyObject * PyIrr_Encrypt(PyObject * self,PyObject * args);
-PyObject * PyIrr_Decrypt(PyObject * self,PyObject * args);
-PyObject * PyIrr_Server(PyObject * self,PyObject * args);
-PyObject * PyIrr_restartServer(PyObject * self,PyObject * args);
-
+    PyObject * PyIrr_Connect(PyObject * self,PyObject * args);
+    PyObject * PyIrr_Disconnect(PyObject * self,PyObject * args);
+    PyObject * PyIrr_Ping(PyObject * self,PyObject * args);
+    PyObject * PyIrr_sendFile(PyObject * self,PyObject * args);
+    PyObject * PyIrr_Send(PyObject * self,PyObject * args);
+    PyObject * PyIrr_Receive(PyObject * self,PyObject * args);
+    PyObject * PyIrr_Encrypt(PyObject * self,PyObject * args);
+    PyObject * PyIrr_Decrypt(PyObject * self,PyObject * args);
+    PyObject * PyIrr_Server(PyObject * self,PyObject * args);
+    PyObject * PyIrr_restartServer(PyObject * self,PyObject * args);
+    PyObject * PyIrr_Update(PyObject * self,PyObject * args);
 
 
     PyMODINIT_FUNC init_irr(void);

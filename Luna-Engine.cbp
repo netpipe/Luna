@@ -257,7 +257,7 @@
 					<Add directory="../libs/ffmpeg/libavdevice" />
 					<Add directory="../libs/Irrlicht/source/Irrlicht" />
 					<Add directory="../libs/Irrlicht/include" />
-					<Add directory="../libs/net/irrNetLite21" />
+					<Add directory="../libs/net/irrNetLite22" />
 					<Add directory="../libs/bullet3/src" />
 					<Add directory="../libs/freetype-2.3.9/include" />
 					<Add directory="../libs/net/enet-1.2.1/include" />
@@ -273,7 +273,7 @@
 					<Add directory="./entities/AI/recast/DetourCrowd/Include" />
 					<Add directory="./entities/AI/recast/DetourTileCache/Include" />
 					<Add directory="../libs/libIrrOpenSteer_10-02-15/include" />
-					<Add directory="../libs/assimp-git/include" />
+					<Add directory="../libs/assimp-3.3.1/include" />
 				</Compiler>
 				<Linker>
 					<Add library="GL" />
@@ -282,7 +282,7 @@
 					<Add library="Xcursor" />
 					<Add library="X11" />
 					<Add library="dl" />
-					<Add library="irrnet" />
+					<Add library="irrNetLite22" />
 					<Add library="enet" />
 					<Add library="python2.7" />
 					<Add library="IrrOpenSteer" />
@@ -290,7 +290,6 @@
 					<Add library="theora" />
 					<Add library="theoraplayer" />
 					<Add library="assimp" />
-					<Add library="bluetooth" />
 					<Add directory="../libs/freetype-2.3.9/objs/.libs" />
 					<Add directory="../libs/net/enet-1.2.1" />
 					<Add directory="../libs/bullet3/src/BulletDynamics" />
@@ -300,7 +299,7 @@
 					<Add directory="../libs/Irrlicht/lib/Linux" />
 					<Add directory="../libs/Compiled/Linux" />
 					<Add directory="../libs/theoraplayer/bin/Linux" />
-					<Add directory="../libs/net/irrNetLite21" />
+					<Add directory="../libs/net/irrNetLite22" />
 					<Add directory="../libs/RecastNavigation/DebugUtils/" />
 					<Add directory="../libs/RecastNavigation/Recast" />
 					<Add directory="../libs/RecastNavigation/DetourCrowd" />
@@ -308,7 +307,7 @@
 					<Add directory="../libs/RecastNavigation/Detour" />
 					<Add directory="../libs/libIrrOpenSteer_10-02-15/lib" />
 					<Add directory="./entities/AI/recast/DebugUtils/Include/" />
-					<Add directory="../libs/assimp-git/lib" />
+					<Add directory="../libs/assimp-3.3.1/lib" />
 					<Add directory="../libs/zlib-1.2.3" />
 					<Add directory="../libs/cAudio23/bin/gcc" />
 					<Add directory="../libs/libtheoraplayer/src/.libs" />
@@ -481,13 +480,7 @@
 			<Add directory="../libs/angelscript/include" />
 			<Add directory="../libs/angelscript/" />
 			<Add directory="./entities/AI/recast/DebugUtils/Include/" />
-			<Add directory="../libs/ffmpeg/libavcodec" />
-			<Add directory="../libs/ffmpeg/libavformat" />
-			<Add directory="../libs/ffmpeg" />
-			<Add directory="../libs/ffmpeg/libswscale" />
-			<Add directory="../libs/ffmpeg/libavutil" />
-			<Add directory="../libs/ffmpeg/libavdevice" />
-			<Add directory="../libs/cAudio23/include" />
+			<Add directory="../libs/cAudio23" />
 			<Add directory="../libs/cAudio23/cAudio/include" />
 			<Add directory="../libs/net/irrNetLite21" />
 			<Add directory="../libs/net/enet/include" />
@@ -519,7 +512,6 @@
 			<Add library="zlib" />
 			<Add library="usb" />
 			<Add library="boost_thread" />
-			<Add library="avutil" />
 			<Add library="ogg" />
 			<Add library="cAudio" />
 			<Add library="theora" />
@@ -528,12 +520,6 @@
 			<Add library="vorbis" />
 			<Add library="vorbisfile" />
 			<Add library="GL" />
-			<Add directory="../libs/angelscript" />
-			<Add directory="../libs/ffmpeg/libavcodec" />
-			<Add directory="../libs/ffmpeg/libavformat" />
-			<Add directory="../libs/ffmpeg/libswscale" />
-			<Add directory="../libs/ffmpeg/libavutil" />
-			<Add directory="../libs/ffmpeg/libavdevice" />
 			<Add directory="../libs/libtheora-1.1.1/lib" />
 			<Add directory="../libs/cAudio23/cAudio/bin/gcc" />
 			<Add directory="../libs/freetype-2.3.9/objs/.libs" />
@@ -542,9 +528,7 @@
 			<Add directory="../libs/bullet3/src/BulletSoftBody" />
 			<Add directory="../libs/bullet3/src/BulletCollision" />
 			<Add directory="../libs/bullet3/src/LinearMath" />
-			<Add directory="../libs/Compiled/Linux" />
 			<Add directory="../libs/theoraplayer/bin/Linux" />
-			<Add directory="../libs/net/irrNetLite21" />
 			<Add directory="../libs/RecastNavigation/DebugUtils/" />
 			<Add directory="../libs/RecastNavigation/Recast" />
 			<Add directory="../libs/RecastNavigation/DetourCrowd" />
@@ -588,32 +572,6 @@
 		<Unit filename="Input/Compress/Compress.cpp" />
 		<Unit filename="Input/Compress/Compress.h" />
 		<Unit filename="Input/Controllers/StringTools.cpp" />
-		<Unit filename="Input/Controllers/wii/libcwiid/bluetooth.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="Input/Controllers/wii/libcwiid/command.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="Input/Controllers/wii/libcwiid/connect.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="Input/Controllers/wii/libcwiid/cwiid.h" />
-		<Unit filename="Input/Controllers/wii/libcwiid/cwiid_internal.h" />
-		<Unit filename="Input/Controllers/wii/libcwiid/interface.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="Input/Controllers/wii/libcwiid/process.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="Input/Controllers/wii/libcwiid/state.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="Input/Controllers/wii/libcwiid/thread.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="Input/Controllers/wii/libcwiid/util.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimp.cpp" />
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimp.h" />
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimpExport.cpp" />

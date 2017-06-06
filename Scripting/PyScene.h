@@ -338,17 +338,17 @@ PyObject * Python::PyIrr_addSphereNode(PyObject * self,PyObject * args){
   //  scene::ISceneNode * node_id = smgr->addSphereSceneNode(20); //radius  polycount , parent , id , position,rotation, scale
     //IVideoDriver::createImageFromFile().  //textures and heightmap
        //if ( icount > 15){ //sphere limiter
-            vector3df pos = camera->getPosition();
-            vector3df rot = camera->getRotation();
-            bingo=1;
-            if (bingo) { // suposed to only create 1 sphere then transport you to it if its made already
-                luna->m_cPhysics->createSphere( btVector3(pos.X, pos.Y, pos.Z),2,5);
-                //ha2->setAngularVelocity(btVector3(400,400,400));
-                bingo= false;
-            } else {
-               // btVector3 pos2 = ha2->getCenterOfMassPosition();
-               // camera->setPosition(vector3df(pos2[0],pos2[1],pos2[2]));
-            }
+//            vector3df pos = camera->getPosition();
+//            vector3df rot = camera->getRotation();
+//            bingo=1;
+//            if (bingo) { // suposed to only create 1 sphere then transport you to it if its made already
+//                luna->m_cPhysics->createSphere( btVector3(pos.X, pos.Y, pos.Z),2,5);
+//                //ha2->setAngularVelocity(btVector3(400,400,400));
+//                bingo= false;
+//            } else {
+//               // btVector3 pos2 = ha2->getCenterOfMassPosition();
+//               // camera->setPosition(vector3df(pos2[0],pos2[1],pos2[2]));
+//            }
 return Py_BuildValue("");
 //return Py_BuildValue("l",node_id);
 };
