@@ -437,6 +437,7 @@ return Py_BuildValue("0");
 #include "../Scripting/Environmental.h"
 #include "../Scripting/PyExtras.h"
 #include "../Scripting/PY_Physics.h"
+#include "../Scripting/PyImage.h"
 #include "PyCamera.h"
 #include "PyInput.h"
 #include "PyGUI.h"

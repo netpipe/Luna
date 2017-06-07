@@ -25,7 +25,7 @@ return (keystate);
 }
 
 
-int Python::VehicleParam(int  vehicle,int  param,int ammount,int state){   // parameter editor// possibly a define value for get and set
+int Python::VehicleParam(int vehicle,int  param,int ammount,int state){   // parameter editor// possibly a define value for get and set
 
 //steering
 //acceleration
@@ -55,7 +55,8 @@ if ( state==0 ){  // use state for get and set var
        switch (Iparam){
 
             case eparam(reset):
-                m_cVehicle->resetVehicle();
+             //   m_cVehicle->resetVehicle();
+				m_cVehicle->resetVehicle();
                 break;
 
             case accelerate:

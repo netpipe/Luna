@@ -184,6 +184,12 @@ namespace Python {
     PyObject * PyIrr_restartServer(PyObject * self,PyObject * args);
     PyObject * PyIrr_Update(PyObject * self,PyObject * args);
 
+    //Image
+    PyObject * PyIrr_iRotate(PyObject * self,PyObject * args);
+    PyObject * PyIrr_iScale(PyObject * self,PyObject * args);
+    PyObject * PyIrr_iPosition(PyObject * self,PyObject * args);
+    PyObject * PyIrr_iAdd(PyObject * self,PyObject * args);
+
 
     PyMODINIT_FUNC init_irr(void);
 

@@ -34,6 +34,7 @@ PyMODINIT_FUNC Python::init_irr(void){
     Py_InitModule("irr",irr_fun2);
     Py_InitModule("scene",irr_FlagMan);
     Py_InitModule("input",irr_Input);
+	Py_InitModule("image",irr_Image);
 };
 
 void Python::ExecuteScript(irr::core::string<char> scriptname){
