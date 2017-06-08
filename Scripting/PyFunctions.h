@@ -322,7 +322,7 @@ return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_Sleep(PyObject * self,PyObject * args){ //active camera
-    int *ammount;
+    int ammount;
     PyArg_ParseTuple(args,"l",&ammount);
     device->sleep(ammount);
 return Py_BuildValue("");
