@@ -272,6 +272,8 @@
 					<Add library="theora" />
 					<Add library="theoraplayer" />
 					<Add library="assimp" />
+					<Add library="usb" />
+					<Add library="boost_thread" />
 					<Add directory="../LunaLibs/freetype-2.3.9/objs/.libs" />
 					<Add directory="../LunaLibs/net/enet-1.2.1" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Linux" />
@@ -473,8 +475,6 @@
 			<Add library="freetype" />
 			<Add library="enet" />
 			<Add library="zlib" />
-			<Add library="usb" />
-			<Add library="boost_thread" />
 			<Add library="ogg" />
 			<Add library="cAudio" />
 			<Add library="theora" />
