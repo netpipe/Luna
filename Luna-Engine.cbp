@@ -73,6 +73,7 @@
 				<Option projectResourceIncludeDirsRelation="0" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-fpermissive" />
 					<Add option="-DNDEBUG" />
 					<Add directory="../LunaLibs/Irrlicht/source/Irrlicht" />
 					<Add directory="../LunaLibs/Irrlicht/include" />
@@ -294,6 +295,7 @@
 				<Option use_console_runner="0" />
 				<Option projectResourceIncludeDirsRelation="1" />
 				<Compiler>
+					<Add option="-fpermissive" />
 					<Add option="-DNDEBUG" />
 					<Add directory="/home/Dev/libs/game/Irrlicht-SVN/source/Irrlicht" />
 					<Add directory="/home/Dev/libs/game/Irrlicht-SVN/include" />
