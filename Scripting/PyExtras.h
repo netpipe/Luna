@@ -459,14 +459,14 @@ PyObject * Python::PyIrr_RelayChat(PyObject * self,PyObject * args) {//active ca
     int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
 
-    #ifdef IRRc
-   //  device->getCursorControl()->setVisible(true);
-    #endif
-    #ifdef IRRc
-        app = new Application(device);
-        app->registerIrrDevice(device);
-        app->init();
-    #endif
+//    #ifdef IRRc
+//   //  device->getCursorControl()->setVisible(true);
+//    #endif
+//    #ifdef IRRc
+//        app = new Application(device);
+//        app->registerIrrDevice(device);
+//        app->init();
+//    #endif
 return Py_BuildValue("");
 }
 
