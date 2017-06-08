@@ -465,6 +465,7 @@
 			<Add directory="../LunaLibs/zlib-1.2.3" />
 			<Add directory="/usr/include/python2.7" />
 			<Add directory="../LunaLibs/libogg-1.1.4/include" />
+			<Add directory="../LunaLibs/libvorbis-1.2.3/include" />
 		</Compiler>
 		<Linker>
 			<Add library="Irrlicht" />
@@ -498,6 +499,8 @@
 			<Add directory="../LunaLibs/cAudio23/bin/gcc" />
 			<Add directory="../LunaLibs/libtheoraplayer/src/.libs" />
 			<Add directory="../LunaLibs/libogg-1.1.4/" />
+			<Add directory="../LunaLibs/libvorbis-1.2.3" />
+			<Add directory="../LunaLibs/freetype-2.3.9/" />
 		</Linker>
 		<Unit filename="DevLoop.h" />
 		<Unit filename="Equipment/Rifle.cpp" />
