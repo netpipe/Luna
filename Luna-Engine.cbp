@@ -498,6 +498,7 @@
 			<Add directory="../LunaLibs/libogg-1.1.4/" />
 			<Add directory="../LunaLibs/libvorbis-1.2.3" />
 			<Add directory="../LunaLibs/freetype-2.3.9/" />
+			<Add directory="../LunaLibs/libtheora-1.1.1" />
 		</Linker>
 		<Unit filename="DevLoop.h" />
 		<Unit filename="Equipment/Rifle.cpp" />
