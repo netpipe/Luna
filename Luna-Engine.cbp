@@ -445,7 +445,6 @@
 			<Add directory="../LunaLibs/net/irrNetLite22" />
 			<Add directory="../LunaLibs/net/enet/include" />
 			<Add directory="../LunaLibs/bullet3-2.86.1/src" />
-			<Add directory="../LunaLibs/freetype-2.3.9/include" />
 			<Add directory="../LunaLibs/net/enet-1.2.1" />
 			<Add directory="FileSystem/readblend" />
 			<Add directory="../LunaLibs/libtheora-1.1.1/include/theora" />
@@ -497,7 +496,6 @@
 			<Add directory="../LunaLibs/libtheoraplayer/" />
 			<Add directory="../LunaLibs/libogg-1.1.4/" />
 			<Add directory="../LunaLibs/libvorbis-1.2.3" />
-			<Add directory="../LunaLibs/freetype-2.3.9/" />
 			<Add directory="../LunaLibs/libtheora-1.1.1" />
 		</Linker>
 		<Unit filename="DevLoop.h" />
