@@ -461,6 +461,7 @@
 			<Add directory="./entities/AI/recast/DetourTileCache/Include" />
 			<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/include" />
 			<Add directory="../LunaLibs/zlib-1.2.3" />
+			<Add directory="/usr/include/python2.7" />
 		</Compiler>
 		<Linker>
 			<Add library="Irrlicht" />
