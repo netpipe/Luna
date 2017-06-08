@@ -494,7 +494,7 @@
 			<Add directory="./entities/AI/recast/DebugUtils/Include/" />
 			<Add directory="../LunaLibs/zlib-1.2.3" />
 			<Add directory="../LunaLibs/cAudio23/bin/gcc" />
-			<Add directory="../LunaLibs/libtheoraplayer/src/.libs" />
+			<Add directory="../LunaLibs/libtheoraplayer/" />
 			<Add directory="../LunaLibs/libogg-1.1.4/" />
 			<Add directory="../LunaLibs/libvorbis-1.2.3" />
 			<Add directory="../LunaLibs/freetype-2.3.9/" />
