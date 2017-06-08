@@ -275,14 +275,14 @@
 					<Add directory="../LunaLibs/net/enet-1.2.1" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Linux" />
 					<Add directory="../LunaLibs/Compiled/Linux" />
-					<Add directory="../LunaLibs/theoraplayer/bin/Linux" />
+					<Add directory="../LunaLibs/libtheoraplayer/bin/Linux" />
 					<Add directory="../LunaLibs/net/irrNetLite22" />
 					<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/lib" />
 					<Add directory="./entities/AI/recast/DebugUtils/Include/" />
 					<Add directory="../LunaLibs/assimp-3.3.1/lib" />
 					<Add directory="../LunaLibs/zlib-1.2.3" />
 					<Add directory="../LunaLibs/cAudio23/bin/gcc" />
-					<Add directory="../LunaLibs/libtheoraplayer/src/.libs" />
+					<Add directory="../LunaLibs/libtheoraplayer/" />
 				</Linker>
 			</Target>
 			<Target title="mineREL">
@@ -489,7 +489,7 @@
 			<Add directory="../LunaLibs/bullet3-2.86.1/src/BulletSoftBody" />
 			<Add directory="../LunaLibs/bullet3-2.86.1/src/BulletCollision" />
 			<Add directory="../LunaLibs/bullet3-2.86.1/src/LinearMath" />
-			<Add directory="../LunaLibs/theoraplayer/bin/Linux" />
+			<Add directory="../LunaLibs/libtheoraplayer/bin/Linux" />
 			<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/lib" />
 			<Add directory="./entities/AI/recast/DebugUtils/Include/" />
 			<Add directory="../LunaLibs/zlib-1.2.3" />
