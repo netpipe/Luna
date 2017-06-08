@@ -40,7 +40,6 @@
 					<Add library="GL" />
 					<Add library="openal" />
 					<Add library="Xxf86vm" />
-					<Add library="Xcursor" />
 					<Add library="X11" />
 					<Add library="dl" />
 					<Add library="irrNetLite22" />
@@ -100,7 +99,6 @@
 					<Add library="GL" />
 					<Add library="openal" />
 					<Add library="Xxf86vm" />
-					<Add library="Xcursor" />
 					<Add library="X11" />
 					<Add library="dl" />
 					<Add library="irrNetLite22" />
@@ -261,7 +259,6 @@
 					<Add library="GL" />
 					<Add library="openal" />
 					<Add library="Xxf86vm" />
-					<Add library="Xcursor" />
 					<Add library="X11" />
 					<Add library="dl" />
 					<Add library="irrNetLite22" />
