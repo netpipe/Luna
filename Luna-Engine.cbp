@@ -574,10 +574,6 @@
 		<Unit filename="MainLoop.h" />
 		<Unit filename="Net/CGUIChatBox.cpp" />
 		<Unit filename="Net/CGUIChatBox.h" />
-		<Unit filename="Net/IRRc/Application.cpp" />
-		<Unit filename="Net/IRRc/Application.h" />
-		<Unit filename="Net/IRRc/botFuncts.h" />
-		<Unit filename="Net/IRRc/gui/Gui.h" />
 		<Unit filename="Net/irrNetClient.cpp" />
 		<Unit filename="Net/irrNetClient.h" />
 		<Unit filename="Net/irrNetServer.cpp" />
