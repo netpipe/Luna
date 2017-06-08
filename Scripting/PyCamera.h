@@ -71,8 +71,8 @@ PyObject * Python::PyIrr_SetCamera(PyObject * self,PyObject * args){ //active ca
 
 	PyArg_ParseTuple(args,"llll",&cam2,&x,&y,&z);
  //cam->setActiveCamera(cam);
- ICameraSceneNode *cam = cam2;
-    cam->setPosition(vector3df(x,y,z));
+//	ICameraSceneNode *cam = cam2;
+//    cam->setPosition(vector3df(x,y,z));
 
 
 //        if (bCarFollow) {
@@ -85,7 +85,7 @@ PyObject * Python::PyIrr_SetCamera(PyObject * self,PyObject * args){ //active ca
 //    }
 
 
-return Py_BuildValue("z",cam);
+//return Py_BuildValue("z",cam);
 }
 
 PyObject * Python::PyIrr_GetCamera(PyObject * self,PyObject * args){

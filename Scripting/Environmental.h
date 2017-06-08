@@ -281,9 +281,9 @@ PyObject * Python::PyIrr_WaterPlane(PyObject * self,PyObject * args){
             char * script;
 
             float scaleX,scaleY,scaleZ,locX,locY,locZ;
-            int wavespeed,refractionfactor,waveheight,wavedisplacement,
+            int wavespeed,refractionfactor,waveheight,wavedisplacement;
 
-            PyArg_ParseTuple(args,"sllll",&script);
+            PyArg_ParseTuple(args,"sllll",&script,&wavespeed,&refractionfactor,&waveheight,&wavedisplacement);
 
             bWater=1;
             water = new CReflectedWater("ReflectedWater", device, smgr, -1, 180, 100,

@@ -125,7 +125,7 @@ struct WrapperClass
     ISceneNode * Visual;
     position2di RankAndFile;
     f32 Speed;
-    static const f32 SpeedMultiplier=1.1;
+    f32 SpeedMultiplier=1.1;
 
     Unit(Formation * formation, const position2di & rankAndFile, ISceneManager * smgr)
     {
