@@ -462,6 +462,7 @@
 			<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/include" />
 			<Add directory="../LunaLibs/zlib-1.2.3" />
 			<Add directory="/usr/include/python2.7" />
+			<Add directory="../LunaLibs/libogg-1.1.4/include" />
 		</Compiler>
 		<Linker>
 			<Add library="Irrlicht" />
@@ -496,6 +497,7 @@
 			<Add directory="../LunaLibs/zlib-1.2.3" />
 			<Add directory="../LunaLibs/cAudio23/bin/gcc" />
 			<Add directory="../LunaLibs/libtheoraplayer/src/.libs" />
+			<Add directory="../LunaLibs/libogg-1.1.4/" />
 		</Linker>
 		<Unit filename="DevLoop.h" />
 		<Unit filename="Equipment/Rifle.cpp" />
