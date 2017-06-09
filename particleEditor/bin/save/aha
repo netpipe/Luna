@@ -1,0 +1,24 @@
+//! ---------------------------------------------------------------------------------
+//! Particle system ID: 0
+//! Particle system name: Emitter 0
+
+	scene::IParticleSystemSceneNode* p = scenemgr->addParticleSystemSceneNode();
+
+	p->setParticleSize(core::dimension2d<f32>(3.0f, 3.0f));
+
+	scene::IParticleEmitter* em = p->createBoxEmitter(
+	        core::aabbox3d<f32>(-1,-1,-1,1,1,1),
+	        core::vector3df(0.000f,0.000f,0.010f),
+	        250,400, video::SColor(0, 0, 0, 0),video::SColor(0, 41, 74, 90), 1500, 3500);
+        
+	p->setEmitter(em); 
+	em->drop();
+
+	scene::IParticleAffector* paf = p->createFadeOutParticleAffector();
+	p->addAffector(paf);
+	paf->drop();
+
+	ps->setMaterialFlag(video::EMF_LIGHTING, false);
+	ps->setMaterialTexture(0, driver->getTexture("/home/Dev/Agnostic-SF/PowerCell/particleEditor/bin/textures/particles/dee_misc4.tga"));
+	ps->setMaterialType(video::TRANSPARENT_VERTEX_ALPHA);
+
