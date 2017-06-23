@@ -5,7 +5,7 @@
 PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
     int state,Vehicle,ammount,param;
    // char * param;
-    PyArg_ParseTuple(args,"iiii",&Vehicle,&param,&ammount,&state);
+    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
     VehicleParam(Vehicle,param,ammount,state);
 
   return Py_BuildValue("");

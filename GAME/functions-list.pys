@@ -128,7 +128,7 @@ tex_id = scene.load_texture("media/crate.png")
 #print tex_id #print cube_id #texture cube with video todo
 scene.set_texture(cube_id,tex_id)
 #scene.setPosition(cube_id,50,355,350)
-scene.setPosition(cube_id,11,110,22)
+#scene.setPosition(cube_id,11,110,22)
 #irr.set_texture( irr.add_cube(1,12.0,0.0,0.0,25.0,0.0,    0.0,0.0,1.0,1.0,1.0),irr.load_texture("media/crate.png"))
 
 

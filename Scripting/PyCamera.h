@@ -6,7 +6,7 @@
 PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 	s32 x,y,z,t;
 //	char * t;
-	PyArg_ParseTuple(args,"llll",&t,&x,&y,&z);
+	PyArg_ParseTuple(args,"ifff",&t,&x,&y,&z);
 	    ICameraSceneNode *cam;
 
 
@@ -18,15 +18,18 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
     switch(t){
     case 1:
         cam = smgr->addCameraSceneNode();
+        cam->setFarValue(10000.0f);
         break;
 
     case 2:
         cam = smgr->addCameraSceneNodeFPS();
+        cam->setFarValue(10000.0f);
         //  cam->setPosition(vector3df(50,50,50));
         break;
 
     case 3:
 		cam = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
+		cam->setFarValue(10000.0f);
 		break;
 
     case CameraManager:
@@ -43,6 +46,8 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 //        driver->setViewPort(rect);
 //        break;
 }
+
+
 
 //    if (t==1){
 //        cam = smgr->addCameraSceneNode();
@@ -69,7 +74,7 @@ PyObject * Python::PyIrr_SetCamera(PyObject * self,PyObject * args){ //active ca
 	int x,y,z,cam2;
 	//int
 
-	PyArg_ParseTuple(args,"llll",&cam2,&x,&y,&z);
+	PyArg_ParseTuple(args,"lfff",&cam2,&x,&y,&z);
  //cam->setActiveCamera(cam);
 //	ICameraSceneNode *cam = cam2;
 //    cam->setPosition(vector3df(x,y,z));
@@ -94,11 +99,11 @@ PyObject * Python::PyIrr_GetCamera(PyObject * self,PyObject * args){
 	s32 x,y,z,t;
 	vector3df v;
 			    ICameraSceneNode *cam;
-	PyArg_ParseTuple(args,"sllll",cam,&x,&y,&z);
+	PyArg_ParseTuple(args,"lfff",cam,&x,&y,&z);
 v = vector3df(x,y,z);
 //vector3df v = t->getPosition();
 //cam = smgr->getActiveCamera();
-return Py_BuildValue("lll",v.X,v.Y,v.Z);
+return Py_BuildValue("fff",v.X,v.Y,v.Z);
 }
 
 
@@ -108,10 +113,10 @@ PyObject * Python::PyIrr_Light(PyObject * self,PyObject * args){ //active camera
 	char * s;
 	scene::ISceneNode* node = 0;
 //		Material.Lighting = false;
-	PyArg_ParseTuple(args,"lllls",&t,&x,&y,&z,&s);
+	PyArg_ParseTuple(args,"lfffs",&t,&x,&y,&z,&s);
  //cam->setActiveCamera(cam);
   //  node->setAutomaticCulling(EAC_FRUSTUM_BOX);
-node = smgr->addLightSceneNode(0, core::vector3df(0,0,0),
+node = smgr->addLightSceneNode(0, core::vector3df(x,y,z),
 		video::SColorf(1.0f, 0.6f, 0.7f, 1.0f), 800.0f);
 
 return Py_BuildValue("z",node);
