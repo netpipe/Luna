@@ -167,8 +167,11 @@ namespace Python {
     PyObject * PyIrr_exit(PyObject * self,PyObject * args);
     PyObject * PyIrr_using(PyObject * self,PyObject * args);
     PyObject * PyIrr_motionTrail(PyObject * self,PyObject * args);
+    //Timers
     PyObject * PyIrr_Delay(PyObject * self,PyObject * args);
     PyObject * PyIrr_Sleep(PyObject * self,PyObject * args);
+    PyObject * PyIrr_setTime(PyObject * self,PyObject * args);
+    PyObject * PyIrr_getTime(PyObject * self,PyObject * args);
 
     //network
 

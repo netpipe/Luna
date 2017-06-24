@@ -216,8 +216,11 @@ reminder to actually check the names match with unstable ide's and whatnot
     {"setVelocity",Python::PyIrr_setVelocity,METH_VARARGS,"setVelocity"},
     {"motionTrail",Python::PyIrr_motionTrail,METH_VARARGS,"motionTrail"},
     {"calculate",Python::PyIrr_calcMath,METH_VARARGS,"calculate"},
+    //Timers
     {"delay",Python::PyIrr_Delay,METH_VARARGS,"delay"},
-    {"sleep",Python::PyIrr_Sleep,METH_VARARGS,"delay"},
+    {"sleep",Python::PyIrr_Sleep,METH_VARARGS,"sleep"},
+    {"setTime",Python::PyIrr_setTime,METH_VARARGS,"setTime"},
+    {"getTime",Python::PyIrr_getTime,METH_VARARGS,"getTime"},
     //gui
 
     {"chatbox",Python::PyIrr_ChatBox,METH_VARARGS,"chatbox for chatting in/with/alone"},
@@ -325,6 +328,24 @@ PyObject * Python::PyIrr_Sleep(PyObject * self,PyObject * args){ //active camera
     int ammount;
     PyArg_ParseTuple(args,"l",&ammount);
     device->sleep(ammount);
+return Py_BuildValue("");
+}
+
+PyObject * Python::PyIrr_setTime(PyObject * self,PyObject * args){ //active camera
+    int ammount;
+    PyArg_ParseTuple(args,"f",&ammount);
+
+    //
+    //device->sleep(ammount);
+return Py_BuildValue("");
+}
+
+PyObject * Python::PyIrr_getTime(PyObject * self,PyObject * args){ //active camera
+    int ammount;
+    PyArg_ParseTuple(args,"f",&ammount);
+
+    //
+    //device->sleep(ammount);
 return Py_BuildValue("");
 }
 
