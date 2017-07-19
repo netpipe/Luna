@@ -313,12 +313,12 @@ PyObject * Python::PyIrr_AddCubeSceneNode(PyObject * self,PyObject * args){
 	float size;
 	float px,py,pz,rx,ry,rz,sx,sy,sz;
 	//Damn...thats a lot of parameters :)
-	//PyArg_ParseTuple(args,"lffffffffff",&node_id,&size,&px,&py,&pz,&rx,&ry,&rz,&sx,&sy,&sz);
+	PyArg_ParseTuple(args,"lffffffffff",&node_id,&size,&px,&py,&pz,&rx,&ry,&rz,&sx,&sy,&sz);
 	ISceneNode * node = smgr->getSceneNodeFromId(node_id);
 
         //with physics
-      //  vector3df pos = camera->getPosition();
-      //  vector3df scl = vector3df(1,1,1);
+       // vector3df pos = camera->getPosition();
+       // vector3df scl = vector3df(1,1,1);
       //  luna->m_cPhysics->createBox( btVector3(pos.X, pos.Y, pos.Z), btVector3(scl.X, scl.Y, scl.Z), 10); //weight
 
 	if(node == NULL)
