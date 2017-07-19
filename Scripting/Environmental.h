@@ -253,11 +253,12 @@ PyArg_ParseTuple(args,"iiii",&a1f,&a2f,&a3f,&btree);
         terr->Init();
 
         // position, rotation, scale, LOD
-       int ret = terr->Render( vector3df( a1f,a2f,a3f), vector3df(0,0.0f,0),   vector3df(1,0.20f,1),3);
+       long ret = terr->Render( vector3df( a1f,a2f,a3f), vector3df(0,0.0f,0),   vector3df(1,0.20f,1),3);
 
     return Py_BuildValue("l",ret); // not sure if you can do this ?
-#endif
+#else
 return Py_BuildValue("0");
+#endif
 }
 
 

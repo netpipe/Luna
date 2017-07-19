@@ -56,12 +56,12 @@ init = 1  #start as true so that this loop is only ran once
 #extras.skydome("data/textures/skydomes/skydome_1_2048x512.jpg")
 #scene.addMesh("./media/dwarf.x")
 
-#dwarf = scene.addModel("media/dwarf.x","media/dwarf.jpg","b3d",0)
-#ninja = scene.addModel("media/ninja.b3d","media/nskinbl.jpg","b3d",0)
+#dwarf = scene.addModel("media/dwarf.x","media/dwarf.jpg",0)
+ninja = scene.addModel("media/ninja.b3d","media/nskinbl.jpg",0)
 #print dwarf
 #print ninja
 #scene.setPosition(dwarf , 100,100,1200)
-#scene.setPosition(ninja , 100,100,1200)
+scene.setPosition(ninja , 10,10,10)
 #scene.loadModel("media/ShadRoom.b3d","texture",0,0)
 #terrain = scene.addTerrain(4,-3,5,0) # load last to make the physics work FIX  // possibly a load terrain xml function
 #track1 = scene.loadTrack('huge.3ds',0,0,0)  # trackname , timeofday , lighting , track slot/stages
@@ -75,8 +75,12 @@ init = 1  #start as true so that this loop is only ran once
 
 #scene.media("add","media/quatrix.pk3")
 #track1 = scene.loadTrack('maps/quatrix.bsp',0,0,0)  # trackname , timeofday , lighting , track slot/stages
-#scene.addAMesh("media/maps/quatrix.bsp")
-#scene.loadModel("maps/quatrix.bsp")
+#scene.addAMesh("media/maps/quatrix.bsp")  #works needs collision and physics still
+
+#these bsp loading attempts dont work yet
+#scene.loadModel("maps/quatrix.bsp") //obsolete
+#scene.addAMesh("data/ge_archives.bsp")
+#scene.addModel("media/maps/quatrix.bsp","media/dwarf.jpg",0)
 
 #dwarf = scene.addModel("maps/quatrix.bsp","media/dwarf.jpg","b3d",0)
 
@@ -116,17 +120,17 @@ init = 1  #start as true so that this loop is only ran once
 #extras.blindboids(1,0,1,1)
 #irr.decals(1)
 
-#irr.fpsweapon(1) #FPS
+#physics.fpsweapon(1) #FPS
 #irr.lensFlare(1) # might not see without atmosphere enabled check pymain
 #scene.SPARK(1) #issues with latest SVN irrlicht
 
 
 #video1=irr.addvideo("./media/bunny.ogg",10.0,10.0,10.0)	# has to be loaded after soundman or crash
 #irr.draw_text("Gavin Robinson",20,40,150,70)   #known to cause crashing
-cube_id = scene.add_cube(0,12.0,0.0,0.0,25.0,0.0,    0.0,0.0,1.0,1.0,1.0)
-tex_id = scene.load_texture("media/crate.png")
+#cube_id = scene.add_cube(0,12.0,0.0,0.0,25.0,0.0,    0.0,0.0,1.0,1.0,1.0)
+#tex_id = scene.load_texture("media/crate.png")
 #print tex_id #print cube_id #texture cube with video todo
-scene.set_texture(cube_id,tex_id)
+#scene.set_texture(cube_id,tex_id)
 #scene.setPosition(cube_id,50,355,350)
 #scene.setPosition(cube_id,11,110,22)
 #irr.set_texture( irr.add_cube(1,12.0,0.0,0.0,25.0,0.0,    0.0,0.0,1.0,1.0,1.0),irr.load_texture("media/crate.png"))

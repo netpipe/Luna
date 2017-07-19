@@ -18,16 +18,17 @@
 			<Add alias="All" targets="default;" />
 		</VirtualTargets>
 		<Compiler>
-			<Add option="-dindependent" />
 			<Add option="-Dindependent" />
-			<Add directory="../../../../libs/irrlicht-1.6/include" />
+			<Add directory="../../../LunaLibs/Irrlicht/include" />
 		</Compiler>
 		<Linker>
 			<Add library="Irrlicht" />
 			<Add library="GL" />
 			<Add library="Xxf86vm" />
 			<Add library="boost_thread" />
-			<Add directory="../../../../libs/irrlicht-1.6/source/Irrlicht" />
+			<Add library="X11" />
+			<Add library="enet" />
+			<Add directory="../../../LunaLibs/Irrlicht/lib/Linux" />
 		</Linker>
 		<Unit filename="Application.cpp" />
 		<Unit filename="Application.h" />

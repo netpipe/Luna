@@ -54,7 +54,7 @@ PyObject * Python::PyIrr_loadModel(PyObject * self,PyObject * args) { // if tree
     int action;
     char * type,*value1,*value2;
 IrrAssimp assimp(smgr);
-    PyArg_ParseTuple(args,"sssl",&value1,&value2,&type,&action);
+    PyArg_ParseTuple(args,"ssi",&value1,&value2,&action);
   //  PyArg_ParseTuple(args,"sss",&value1,&value2,&type);
 
     action=0;
@@ -154,7 +154,20 @@ switch(action){
             IAnimatedMesh* mesh = assimp.getMesh(value1);
         //  IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
+
+//    int tscale=20 ;
+//    vector3df trackScale = vector3df(tscale,tscale,tscale); //50
+//    vector3df trackPosition = vector3df(0,0.0f,0);
+//
+//        IAnimatedMesh *mesh = device->getSceneManager()->getMesh(path);
+//  //  IAnimatedMesh *mesh = device->getSceneManager()->getMesh(path2.c_str());
+//
+//    device->getSceneManager()->getMeshManipulator()->scaleMesh(mesh,trackScale);
+//    IAnimatedMeshSceneNode *node = device->getSceneManager()->addAnimatedMeshSceneNode(mesh);
+
+
+            //node = smgr->addOctreeSceneNode(mesh->getMesh(0), 0, -1, 1024);
+           // node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
             //IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode( meshNoAssimp );
 
 //            	if (!mesh /*|| !meshNoAssimp*/)
@@ -172,7 +185,7 @@ switch(action){
                 //nodeNoAssimp->setPosition(core::vector3df(100, 0, 0));
                 //nodeNoAssimp->setMaterialFlag(EMF_LIGHTING, false);
                 //node->setMD2Animation(scene::EMAT_STAND);
-                node->setMaterialTexture( 0, driver->getTexture(value2) );
+            //    node->setMaterialTexture( 0, driver->getTexture(value2) );
             }
         }
 
@@ -254,10 +267,10 @@ return Py_BuildValue("0");
 
 
 PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
-    s32 node_id;
+    long node_id;
     int x,y,z;
     PyArg_ParseTuple(args,"liii",&node_id,&x,&y,&z);
-    ISceneNode * node = smgr->getSceneNodeFromId(node_id);
+    ISceneNode * node = node_id;// could also get from name smgr->getSceneNodeFromId(node_id);
     	if(node != NULL)
 	{
         node->setPosition(vector3df(x,y,z));
@@ -300,12 +313,13 @@ PyObject * Python::PyIrr_AddCubeSceneNode(PyObject * self,PyObject * args){
 	float size;
 	float px,py,pz,rx,ry,rz,sx,sy,sz;
 	//Damn...thats a lot of parameters :)
-	PyArg_ParseTuple(args,"lffffffffff",&node_id,&size,&px,&py,&pz,&rx,&ry,&rz,&sx,&sy,&sz);
+	//PyArg_ParseTuple(args,"lffffffffff",&node_id,&size,&px,&py,&pz,&rx,&ry,&rz,&sx,&sy,&sz);
 	ISceneNode * node = smgr->getSceneNodeFromId(node_id);
+
         //with physics
-//        vector3df pos = camera->getPosition();
-//        vector3df scl = vector3df(1,1,1);
-//        luna->m_cPhysics->createBox( btVector3(pos.X, pos.Y, pos.Z), btVector3(scl.X, scl.Y, scl.Z), 10); //weight
+      //  vector3df pos = camera->getPosition();
+      //  vector3df scl = vector3df(1,1,1);
+      //  luna->m_cPhysics->createBox( btVector3(pos.X, pos.Y, pos.Z), btVector3(scl.X, scl.Y, scl.Z), 10); //weight
 
 	if(node == NULL)
 	{
@@ -321,11 +335,11 @@ PyObject * Python::PyIrr_AddCubeSceneNode(PyObject * self,PyObject * args){
 	}
 	else
 	{
-		return Py_BuildValue("");
+		return Py_BuildValue("0");
 	};
 
 
-return Py_BuildValue("l",node_id);
+return Py_BuildValue("l",node);//node_id);
 };
 
 

@@ -4,7 +4,8 @@
 #include <irrlicht.h>
 // possibly rename to camera
 PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
-	s32 x,y,z,t;
+	float x,y,z;
+	int t;
 //	char * t;
 	PyArg_ParseTuple(args,"ifff",&t,&x,&y,&z);
 	    ICameraSceneNode *cam;
@@ -18,18 +19,23 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
     switch(t){
     case 1:
         cam = smgr->addCameraSceneNode();
-        cam->setFarValue(10000.0f);
         break;
 
     case 2:
         cam = smgr->addCameraSceneNodeFPS();
-        cam->setFarValue(10000.0f);
-        //  cam->setPosition(vector3df(50,50,50));
         break;
 
     case 3:
+		keyMap[0].Action = EKA_MOVE_FORWARD;    keyMap[0].KeyCode = KEY_KEY_W;
+		keyMap[1].Action = EKA_MOVE_FORWARD;    keyMap[1].KeyCode = KEY_KEY_W;
+		keyMap[2].Action = EKA_MOVE_BACKWARD;   keyMap[2].KeyCode = KEY_KEY_S;
+		keyMap[3].Action = EKA_MOVE_BACKWARD;   keyMap[3].KeyCode = KEY_KEY_S;
+		keyMap[4].Action = EKA_STRAFE_LEFT;     keyMap[4].KeyCode = KEY_KEY_A;
+		keyMap[5].Action = EKA_STRAFE_LEFT;     keyMap[5].KeyCode = KEY_KEY_A;
+		keyMap[6].Action = EKA_STRAFE_RIGHT;    keyMap[6].KeyCode = KEY_KEY_D;
+		keyMap[7].Action = EKA_STRAFE_RIGHT;    keyMap[7].KeyCode = KEY_KEY_D;
+
 		cam = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
-		cam->setFarValue(10000.0f);
 		break;
 
     case CameraManager:
@@ -47,6 +53,10 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 //        break;
 }
 
+	device->getCursorControl()->setVisible(false);
+	cam->setFarValue(10000.0f);
+	cam->setPosition(vector3df(x,y,z));
+	//cam->setNearValue(0.1f);
 
 
 //    if (t==1){
@@ -64,8 +74,8 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 //    }else if (t==6){
 //        driver->setViewPort(rect);
 //    }
-//cam->setNearValue(0.1f);
-//cam->setFarValue(42000.0f);
+
+
  return Py_BuildValue("l",cam);
 }
 
@@ -109,11 +119,12 @@ return Py_BuildValue("fff",v.X,v.Y,v.Z);
 
 PyObject * Python::PyIrr_Light(PyObject * self,PyObject * args){ //active camera // parameters for fov possibly shaders aswell
 	//s32
-	int x,y,z,t;
+	float x,y,z;
+	int t;
 	char * s;
 	scene::ISceneNode* node = 0;
 //		Material.Lighting = false;
-	PyArg_ParseTuple(args,"lfffs",&t,&x,&y,&z,&s);
+	PyArg_ParseTuple(args,"ifffs",&t,&x,&y,&z,&s);
  //cam->setActiveCamera(cam);
   //  node->setAutomaticCulling(EAC_FRUSTUM_BOX);
 node = smgr->addLightSceneNode(0, core::vector3df(x,y,z),

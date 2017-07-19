@@ -229,6 +229,7 @@ reminder to actually check the names match with unstable ide's and whatnot
     {"pauseGame",Python::PyIrr_pauseGame,METH_VARARGS,"pauseGame"},
     {"exit",Python::PyIrr_exit,METH_VARARGS,"exit"},
     {"SPARK",Python::PyIrr_SPARKA,METH_VARARGS,"SPARK MANAGER"},
+    {"delete",Python::PyIrr_Delete,METH_VARARGS,"delete"},
 
 	{NULL,NULL,0,NULL}
 };
@@ -317,10 +318,9 @@ return Py_BuildValue("");
 
 PyObject * Python::PyIrr_Delay(PyObject * self,PyObject * args){ //active camera
     //repurpose this for a path move delay
-    //PyArg_ParseTuple(args,"ss",&script,&arg);
-    char * delay;
-    PyArg_ParseTuple(args,"l",&delay);
-//    device->sleep(delay);
+    float * delay;
+    PyArg_ParseTuple(args,"f",&delay);
+    device->sleep(delay);
 return Py_BuildValue("");
 }
 
@@ -335,18 +335,21 @@ PyObject * Python::PyIrr_setTime(PyObject * self,PyObject * args){ //active came
     int ammount;
     PyArg_ParseTuple(args,"f",&ammount);
 
-    //
+    //convert time here maybe provide a clock gui to use
+
+    u32 timer=ammount;
     //device->sleep(ammount);
-return Py_BuildValue("");
+return Py_BuildValue("i",timer);
 }
 
 PyObject * Python::PyIrr_getTime(PyObject * self,PyObject * args){ //active camera
-    int ammount;
-    PyArg_ParseTuple(args,"f",&ammount);
+    int type;
+    PyArg_ParseTuple(args,"i",&type);
 
-    //
+
+     u32 tm = device->getTimer()->getRealTime();
     //device->sleep(ammount);
-return Py_BuildValue("");
+return Py_BuildValue("i",tm);
 }
 
 PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active camera
@@ -407,7 +410,7 @@ PyObject * Python::PyIrr_fpsWeapon(PyObject * self,PyObject * args){
         M4 = new firstPersonWeapon(device, camera);
         //  apply_light2node(M4->getNode());
         device->setEventReceiver(M4);
-        return Py_BuildValue("l",agun);
+      //  return Py_BuildValue("l",agun);
     #endif
 return Py_BuildValue("0");
 }
@@ -455,6 +458,13 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
 return Py_BuildValue("0");
 }
 
+PyObject * Python::PyIrr_Delete(PyObject * self,PyObject * args){ //active camera
+
+	long * node;
+	PyArg_ParseTuple(args,"l",&node);
+	delete node;
+
+}
 #include "../Scripting/Environmental.h"
 #include "../Scripting/PyExtras.h"
 #include "../Scripting/PY_Physics.h"

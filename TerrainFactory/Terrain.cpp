@@ -195,7 +195,7 @@ int Terrain::Render( vector3df terrainPosition,vector3df terrainRotation,vector3
 
     localCreateRigidBody(0, tr, trackShape, cubeSceneNode);
 
-    return 1;//cubeSceneNode;
+    return cubeSceneNode;
 }
 
 

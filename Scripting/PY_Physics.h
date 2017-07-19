@@ -88,14 +88,14 @@ vector3df loc;
 char * path;
 PyArg_ParseTuple(args,"sfff",&path,&loc.X,&loc.Y,&loc.Z);
 //active camera
-    #ifdef CHOPPER
+  //  #ifdef CHOPPER
     IAnimatedMesh* mesh = smgr->getMesh(path);
     IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
     chopperControl = new ChopperControl(device, node);
     chopperControl->setEventRec( &mEvent );
     chopperEnabled = true;
  //   camera->bindTargetAndRotation(node);
-    #endif
+ //   #endif
      //device->getSceneManager()->isCulled(node);
             return Py_BuildValue("l",chopperControl);
 }
@@ -287,6 +287,8 @@ tr.setIdentity();
 
      //TODO load irr scene or a 3ds scene check extension on end of path.
      // for security specify the data/levels folder.
+
+     // if irr then load the folder path else load the track
 
         device->getFileSystem()->changeWorkingDirectoryTo("data/Stage3/");
         device->getSceneManager()->loadScene("Stage3.irr");  // LOADSCENE not LOADTRACK

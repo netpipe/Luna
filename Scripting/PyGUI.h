@@ -86,14 +86,15 @@ PyObject * Python::PyIrr_LoadTexture(PyObject * self,PyObject * args){
 };
 
 PyObject * Python::PyIrr_SetTexture(PyObject * self,PyObject * args){
-	s32 tex_id,node_id;
-	PyArg_ParseTuple(args,"II",&node_id,&tex_id); //This is your new best friend, seriously
+	s32 tex_id;
+	long node_id;
+	PyArg_ParseTuple(args,"lI",&node_id,&tex_id); //This is your new best friend, seriously
 	/*Quite similar to the scanf family of functions, don't you think? It take a format
 	string and some input data, and analyzes the input data and gives you the result
 	in a manner specified by the format string*/
-	ISceneNode * node = smgr->getSceneNodeFromId(node_id);
-	printf("%i",node_id);
-	printf("%i",tex_id);
+	ISceneNode * node = node_id;//smgr->getSceneNodeFromId(node_id);
+	//printf("%i",node_id);
+	//printf("%i",tex_id);
 	if(node != NULL)
 	{
 		node->setMaterialTexture(0,texture_array[tex_id]);

@@ -76,9 +76,10 @@ if input.getKey('KEY_KEY_E') :
 # gui.codeeditor();
 if input.getKey('KEY_F2') : #could have a release action
  print "setting cube position"
+ scene.add_cube()
  #scene.setPosition(cube_id,1,1,1)
  #golfball =
- scene.addSphereNode(20,5,5,5)
+ #scene.addSphereNode(20,5,5,5)
 # irr.addTerrain(4,-3,5,0)
 #irr.flag1(1)
  #irr.flag2(1)
