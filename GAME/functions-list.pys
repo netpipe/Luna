@@ -87,7 +87,7 @@ scene.setPosition(ninja , 10,10,10)
 
 #irr.addwater(1)
 #irr.addTree(terrain,5,5,5)
-#irr.ragman(1) # position , size , model, animation
+physics.ragman(1) # position , size , model, animation
 #irr.codeeditor(1)     #get script loading working and see about getting
                             #reset working to reloadscripts ingame.
 
@@ -120,7 +120,7 @@ scene.setPosition(ninja , 10,10,10)
 #extras.blindboids(1,0,1,1)
 #irr.decals(1)
 
-#physics.fpsweapon(1) #FPS
+#physics.fpsweapon(1) #FPS not working yet
 #irr.lensFlare(1) # might not see without atmosphere enabled check pymain
 #scene.SPARK(1) #issues with latest SVN irrlicht
 
