@@ -58,7 +58,7 @@ if ( state==0 ){  // use state for get and set var
 
             case eparam(reset):
              //   m_cVehicle->resetVehicle();
-				m_cVehicle->resetVehicle();
+				vehicle->resetVehicle();
                 break;
 
             case accelerate:
@@ -75,7 +75,7 @@ if ( state==0 ){  // use state for get and set var
 
             case brake:
             	//printf('braking');
-                                m_cVehicle->brake();
+                                vehicle->brake();
 //                   if (mEvent.getKeyState(    irr::EKEY_CODE( 0x26 ) ))//KEY_UP)  ) ///| getkey.keyUP
 //                            {m_cVehicle->accelerate(1);}// need gears or something haha
 //                    else if (!mEvent.getKeyState(  KEY_UP) && (m_cVehicle->getState() != EVEHICLE_REVERSING))
@@ -83,12 +83,12 @@ if ( state==0 ){  // use state for get and set var
                 break;
 
             case lsteer:
-                m_cVehicle->steer_left();
+                vehicle->steer_left();
                 break;
 
             case rsteer:
          //       printf("steer right");
-                m_cVehicle->steer_right();
+                vehicle->steer_right();
                 break;
 			case 7:
 
@@ -96,7 +96,7 @@ if ( state==0 ){  // use state for get and set var
             	vehicle->renderme();
                 break;
             case 9:
-                m_cVehicle->steer_reset();
+                vehicle->steer_reset();
                 break;
             case 10:
                 printf ("case 10");
