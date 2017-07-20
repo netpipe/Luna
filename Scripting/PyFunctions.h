@@ -138,7 +138,7 @@ RibbonTrailSceneNode* rt;
     scene::IMeshSceneNode* sunMeshNode;
 
     Vehicle *m_cVehicle;
-    Vehicle *m_cVehicle2;
+  //  Vehicle *m_cVehicle2;
 
  //   static vector<Vehicle*> m_cVehicle;
 
