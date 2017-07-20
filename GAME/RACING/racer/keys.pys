@@ -21,10 +21,10 @@ accelerating = 0
 
 #
 if input.getKey('KEY_SPACE') :
- physics.VehicleParams(car1,3,10,0)
+ physics.VehicleParams(car1,3,10,0,0,0)
 
 if (driving and input.getKey('KEY_KEY_W') ):
- physics.VehicleParams(car1,1,0,0) #acceleration
+ physics.VehicleParams(car1,1,0,0,0,0) #acceleration
  accelerating=1
 if (driving and input.getKey('KEY_KEY_W')==0 ):
  accelerating=0
@@ -36,35 +36,35 @@ elif(driving != 1 and input.getKey('KEY_KEY_W')):
 
 # physics.VehicleParams(car2,2,0,0) #acceleration
 if input.getKey('KEY_KEY_A') :
- physics.VehicleParams(car1,5,0,0)
+ physics.VehicleParams(car1,5,0,0,0,0)
  rsteer=1
 
 if input.getKey('KEY_KEY_D') :
- physics.VehicleParams(car1,6,0,0)
+ physics.VehicleParams(car1,6,0,0,0,0)
  rsteer=1
 
 
 
 #Reset Steering
 if not input.getKey('KEY_KEY_A') and not input.getKey('KEY_KEY_D') :
- physics.VehicleParams(car1,9,0,0)
+ physics.VehicleParams(car1,9,0,0,0,0)
 
 lsteer=0
 rsteer=0
 
 # ////    else if (!mEvent.getKeyState(  KEY_DOWN) && (m_cVehicle->getState() != EVEHICLE_ACCELERATING))
 if input.getKey('KEY_KEY_S') :#or  input.getKey('KEY_DOWN') :
- physics.VehicleParams(car1,2,0,0)
+ physics.VehicleParams(car1,2,0,0,0,0)
 #elif
 #wind resistance
 elif accelerating==0 and input.getKey('KEY_KEY_S')==0:
  #print "wind resistance"
- physics.VehicleParams(car1,4,0,0)
+ physics.VehicleParams(car1,4,0,0,0,0)
 
 if input.getKey('KEY_KEY_R') :
- physics.VehicleParams(car1,0,0,0)
+ physics.VehicleParams(car1,0,0,0,0,0)
 if input.getKey('KEY_KEY_E') :
- physics.VehicleParams(car1,9,0,0) #acceleration
+ physics.VehicleParams(car1,9,0,0,0,0) #acceleration
 
 #if input.getKey('KEY_UP') :
 # physics.VehicleParams(car1,1,0,0)
@@ -76,10 +76,10 @@ if input.getKey('KEY_KEY_E') :
 # gui.codeeditor();
 if input.getKey('KEY_F2') : #could have a release action
  print "setting cube position"
- scene.add_cube()
+# scene.add_cube()
  #scene.setPosition(cube_id,1,1,1)
  #golfball =
- #scene.addSphereNode(20,5,5,5)
+ scene.addSphereNode(20,5,5,5)
 # irr.addTerrain(4,-3,5,0)
 #irr.flag1(1)
  #irr.flag2(1)

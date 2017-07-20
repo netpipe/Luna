@@ -3,11 +3,12 @@
 //device->sleep(5,0); python delay for mainloop possibly use timers
 
 PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
-    int state,ammount,param;
+    float state,ammount,y,z;
+    int param;
     long mVehicle;
    // char * param;
-    PyArg_ParseTuple(args,"liii",&mVehicle,&param,&ammount,&state);
-    VehicleParam(mVehicle,param,ammount,state);
+    PyArg_ParseTuple(args,"liffff",&mVehicle,&param,&state,&ammount,&y,&z);
+    VehicleParam(mVehicle,param,state,ammount,y,z);
 
   return Py_BuildValue("");
 }
@@ -26,7 +27,7 @@ return (keystate);
 }
 
 
-int Python::VehicleParam(Vehicle *vehicle,int  param,int ammount,int state){   // parameter editor// possibly a define value for get and set
+int Python::VehicleParam(Vehicle *vehicle,int  param,float state,float ammount,float y,float z){   // parameter editor// possibly a define value for get and set
 
 //steering
 //acceleration
@@ -62,14 +63,14 @@ if ( state==0 ){  // use state for get and set var
                 break;
 
             case accelerate:
-                m_cVehicle->accelerate(1);
+                vehicle->accelerate(1);
             break;
 
             case reverse:
-                m_cVehicle->reverse(1);
+                vehicle->reverse(1);
                 break;
             case ebrake: //wind resistance
-                m_cVehicle->reverse(ammount);
+                vehicle->reverse(ammount);
                 printf("ebrake");
             break;
 
@@ -106,6 +107,8 @@ if ( state==0 ){  // use state for get and set var
                            //     luna->m_cPhysics->createBox( btVector3(pos.X, pos.Y, pos.Z), btVector3(scl.X, scl.Y, scl.Z), 10); //weight
             break;
             case 11:
+                   vehicle->setPosition(vector3df(ammount,y,z));
+
             break;
             case 12:
                 break;

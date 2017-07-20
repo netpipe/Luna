@@ -33,7 +33,7 @@ namespace Python {
     void render();
 
 
-    int VehicleParam(Vehicle *vehicle,int param,int ammount,int state);
+    int VehicleParam(Vehicle *vehicle,int param,float state,float ammount,float y,float z);
     bool CheckKeyState(int key);
 
 //IrrAssimp assimp(ISceneManager* );
