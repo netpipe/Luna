@@ -494,10 +494,11 @@ else if(driveType==5){ // Bikes
         m_cScene->setGenericMaterial(tempNode, 0);
        // tempNode->getMaterial(0).Shininess = 100.0f;
         wheelNode.push_back(tempNode);
-        //tempNode->addShadowVolumeSceneNode(l_nodessss,true, 100.f);
+      //  tempNode->addShadowVolumeSceneNode(l_nodessss,true, 100.f);
+      //  tempNode->addShadowVolumeSceneNode(tempNode,true, 100.f);
         //tempNode->getMaterial(0).Lighting=false;
-        tempNode->addShadowVolumeSceneNode();
-        tempNode->getMaterial(0).ZWriteEnable=1;
+      //  tempNode->addShadowVolumeSceneNode();
+      //  tempNode->getMaterial(0).ZWriteEnable=1;
         //tempNode->getMaterial(0).ZWriteEnable=0;
         tempNode->getMaterial(0).BackfaceCulling = false;
     }

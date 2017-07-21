@@ -480,21 +480,21 @@ if (chopperEnabled){
         chopperControl->update();
         chopperControl->updateAbsolutePosition();
 
-       vector3df ha = chopperControl->RootEmpty->getPosition();
-        camera->bindTargetAndRotation(1);
-        camera->setParent(chopperControl->RootEmpty);
+//       vector3df ha = chopperControl->RootEmpty->getPosition();
+//        camera->bindTargetAndRotation(1);
+//        camera->setParent(chopperControl->RootEmpty);
 
-
-        irr::core::matrix4 m;
-        m.setRotationDegrees(chopperControl->RootEmpty->getRotation());
-   //     irr::core::vector3df upv = irr::core::vector3df (0.0f, 1.0f, 0.0f);    m.transformVect(upv);
-        irr::core::vector3df frv = irr::core::vector3df (0.0f, 0.0f, 10.0f);    m.transformVect(frv);
-
-        camera->setTarget( ha+frv);
-        //camera->setPosition(ha);
-//        camera->setUpVector(upv); //set up vector of camera.
-        camera->setRotation(chopperControl->YawEmpty->getRotation());
-        camera->updateAbsolutePosition();
+//
+//        irr::core::matrix4 m;
+//        m.setRotationDegrees(chopperControl->RootEmpty->getRotation());
+//   //     irr::core::vector3df upv = irr::core::vector3df (0.0f, 1.0f, 0.0f);    m.transformVect(upv);
+//        irr::core::vector3df frv = irr::core::vector3df (0.0f, 0.0f, 10.0f);    m.transformVect(frv);
+//
+//        camera->setTarget( ha+frv);
+//        //camera->setPosition(ha);
+////        camera->setUpVector(upv); //set up vector of camera.
+//        camera->setRotation(chopperControl->YawEmpty->getRotation());
+//        camera->updateAbsolutePosition();
     }
 #endif
 
@@ -504,41 +504,41 @@ if (chopperEnabled){
                 }
             #endif
 
-    if (mEvent.getKeyState(    KEY_ESCAPE))
-                    {mEvent.Quit = true;}
+//    if (mEvent.getKeyState(    KEY_ESCAPE))
+//                    {mEvent.Quit = true;}
 
 
-    if (mEvent.getKeyState(    KEY_SPACE))    //SPACEBAR
-    {    //  m_cPlayer->jump();
-            vector3df ha = camera->getAbsolutePosition();
-      //  printf("Jump position: %f %f %f \n", pos[0], pos[1], pos[2]);
-        camera->setPosition(vector3df( ha.X, ha.Y+40, ha.Z));
-     //   camera->setTarget(vector3df(1000,1000,1000));
-    }
+//    if (mEvent.getKeyState(    KEY_SPACE))    //SPACEBAR
+//    {    //  m_cPlayer->jump();
+//            vector3df ha = camera->getAbsolutePosition();
+//      //  printf("Jump position: %f %f %f \n", pos[0], pos[1], pos[2]);
+//        camera->setPosition(vector3df( ha.X, ha.Y+40, ha.Z));
+//     //   camera->setTarget(vector3df(1000,1000,1000));
+//    }
 
-#define BULLETCAR  // needtofix global defines should not be here
-    #ifdef BULLETCAR // send print to console saying engine not compiled with bullet support
-    if (bCar){
-    if (mEvent.getKeyState(    irr::EKEY_CODE(KEY_KEY_P)))
-    {
-        btVector3 pos = m_cVehicle->getVehiclePosition();
-        vector3df ha = vector3df(pos[0], pos[1]+10, pos[2]);
-        printf("Vehicle position: %f %f %f \n", pos[0], pos[1], pos[2]);
-        camera->setPosition(vector3df( ha.X, ha.Y, ha.Z));
-    }
-
-    if (mEvent.getKeyState(    KEY_KEY_8))
-    {
-        vector3df ha = camera->getPosition();
-        m_cVehicle->setPosition(vector3df( ha.X, ha.Y, ha.Z));
-    }
-
-    if (mEvent.getKeyState(    KEY_KEY_1))
-    {
-        vector3df pos = camera->getPosition();
-        vector3df scl = vector3df(1,1,1);
-        luna->m_cPhysics->createBox( btVector3(pos.X, pos.Y, pos.Z), btVector3(scl.X, scl.Y, scl.Z), 10); //weight
-    }
+//#define BULLETCAR  // needtofix global defines should not be here
+//    #ifdef BULLETCAR // send print to console saying engine not compiled with bullet support
+//    if (bCar){
+//    if (mEvent.getKeyState(    irr::EKEY_CODE(KEY_KEY_P)))
+//    {
+//        btVector3 pos = m_cVehicle->getVehiclePosition();
+//        vector3df ha = vector3df(pos[0], pos[1]+10, pos[2]);
+//        printf("Vehicle position: %f %f %f \n", pos[0], pos[1], pos[2]);
+//        camera->setPosition(vector3df( ha.X, ha.Y, ha.Z));
+//    }
+//
+//    if (mEvent.getKeyState(    KEY_KEY_8))
+//    {
+//        vector3df ha = camera->getPosition();
+//        m_cVehicle->setPosition(vector3df( ha.X, ha.Y, ha.Z));
+//    }
+//
+//    if (mEvent.getKeyState(    KEY_KEY_1))
+//    {
+//        vector3df pos = camera->getPosition();
+//        vector3df scl = vector3df(1,1,1);
+//        luna->m_cPhysics->createBox( btVector3(pos.X, pos.Y, pos.Z), btVector3(scl.X, scl.Y, scl.Z), 10); //weight
+//    }
 
 
 
@@ -558,7 +558,7 @@ if (chopperEnabled){
         printf("ray position position: %f %f %f \n", rayHit[0], rayHit[1], rayHit[2]);
         printf("hit normal vector: %f %f %f \n", Normal[0], Normal[1], Normal[2]);
 
-#ifdef DECALS2
+#ifdef DECALS2s
 
 ///just testing
 //        if (yesim)
@@ -591,7 +591,7 @@ if (chopperEnabled){
 #endif
 
 //!Decal Manager
-#ifdef DECALS
+#ifdef DECALSs
                  // Create a decal
         irr::core::vector3df position = irr::core::vector3df(80, 80, 80);
         irr::core::vector3df dimension = irr::core::vector3df(10, 10, 10);
@@ -639,7 +639,7 @@ if (chopperEnabled){
                 decalManager->addDecal("./data/textures/bullet.png", collisionPoint, dimension, normal, textureRotation, sphere, lifeTime, distance);
       #endif
   }
-}
+//}
 //device->sleep(5,0);
 
 
@@ -678,40 +678,40 @@ if (chopperEnabled){
 //         icount++;
     }
 
-    if (bCar) {
-    if (mEvent.getKeyState(    KEY_KEY_R))
-                    {m_cVehicle->resetVehicle();
+//    if (bCar) {
+//    if (mEvent.getKeyState(    KEY_KEY_R))
+//                    {m_cVehicle->resetVehicle();
                             // Park camera where the vehicle is.
 
 
        //   m_cVehicle->setPosition(camera->getPosition());
-           }
-    if (bCarFollow) {
-    // this is for putting the camera above the car
-        btVector3 point = m_cVehicle->getVehiclePosition();
-        camera->setPosition(vector3df(
-          (f32)point[0],
-          (f32)point[1]+10,
-          (f32)point[2]-50));
-    }
-    if (mEvent.getKeyState(    irr::EKEY_CODE( 0x26 ) ))//KEY_UP)  ) ///| getkey.keyUP
-                    {m_cVehicle->accelerate(1);}// need gears or something haha
-  //  else if (!mEvent.getKeyState(  KEY_UP) && (m_cVehicle->getState() != EVEHICLE_REVERSING))
-      //              {m_cVehicle->accelerate(-1);}   //wind resistance
-// not working just keeps accelerating moved to speed incs
-
-    if (mEvent.getKeyState(    KEY_DOWN))
-                    {m_cVehicle->reverse(1);    }
-//    else if (!mEvent.getKeyState(  KEY_DOWN) && (m_cVehicle->getState() != EVEHICLE_ACCELERATING))
-//                    {m_cVehicle->reverse(0.3);}      // wind resistance
-    if (mEvent.getKeyState(    KEY_LEFT))
-                    {m_cVehicle->steer_left(); }
-    if (mEvent.getKeyState(    KEY_RIGHT))
-                    {m_cVehicle->steer_right(); }
-    if (!mEvent.getKeyState(   KEY_LEFT) && !mEvent.getKeyState(KEY_RIGHT))
-                    {m_cVehicle->steer_reset(); }
-    }
-#endif
+//           }
+//    if (bCarFollow) {
+//    // this is for putting the camera above the car
+//        btVector3 point = m_cVehicle->getVehiclePosition();
+//        camera->setPosition(vector3df(
+//          (f32)point[0],
+//          (f32)point[1]+10,
+//          (f32)point[2]-50));
+//    }
+//    if (mEvent.getKeyState(    irr::EKEY_CODE( 0x26 ) ))//KEY_UP)  ) ///| getkey.keyUP
+//                    {m_cVehicle->accelerate(1);}// need gears or something haha
+//  //  else if (!mEvent.getKeyState(  KEY_UP) && (m_cVehicle->getState() != EVEHICLE_REVERSING))
+//      //              {m_cVehicle->accelerate(-1);}   //wind resistance
+//// not working just keeps accelerating moved to speed incs
+//
+//    if (mEvent.getKeyState(    KEY_DOWN))
+//                    {m_cVehicle->reverse(1);    }
+////    else if (!mEvent.getKeyState(  KEY_DOWN) && (m_cVehicle->getState() != EVEHICLE_ACCELERATING))
+////                    {m_cVehicle->reverse(0.3);}      // wind resistance
+//    if (mEvent.getKeyState(    KEY_LEFT))
+//                    {m_cVehicle->steer_left(); }
+//    if (mEvent.getKeyState(    KEY_RIGHT))
+//                    {m_cVehicle->steer_right(); }
+//    if (!mEvent.getKeyState(   KEY_LEFT) && !mEvent.getKeyState(KEY_RIGHT))
+//                    {m_cVehicle->steer_reset(); }
+//    }
+//#endif
 
 //#define bskeleton
 #ifdef bskeleton
@@ -817,16 +817,16 @@ if (chopperEnabled){
 
 
 
-        if (mEvent.getKeyState(KEY_ESCAPE )) {
-		luna->m_cInGameEvents.Quit=true;
-		return;
-		}
+//        if (mEvent.getKeyState(KEY_ESCAPE )) {
+//		luna->m_cInGameEvents.Quit=true;
+//		return;
+//		}
 
 
 
 //vector3df ha = camera->getAbsolutePosition();
  //   camera->setPosition(vector3df( ha.X, ha.Y-11, ha.Z));
-device->sleep(5,0);
+//device->sleep(5,0);
 }
 
 

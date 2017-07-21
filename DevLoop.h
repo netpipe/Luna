@@ -92,7 +92,7 @@ device->getCursorControl()->setVisible(true);
     #ifdef PYTHON
         Python::preEnd();
         driver->endScene();
-    //      Python::CheckKeyStates();
+          Python::CheckKeyStates();
     //      CheckKeyStates(); //check onEvent for any need to check keys
     // loop for key checking and loop for game  only execute script if there was an event
 // pick a game directory and look for main.pys

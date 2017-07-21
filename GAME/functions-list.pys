@@ -85,7 +85,7 @@ scene.setPosition(ninja , 10,10,10)
 #dwarf = scene.addModel("maps/quatrix.bsp","media/dwarf.jpg","b3d",0)
 
 
-#irr.addwater(1)
+#scene.addwater(1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
 #irr.addTree(terrain,5,5,5)
 physics.ragman(1) # position , size , model, animation
 #irr.codeeditor(1)     #get script loading working and see about getting
@@ -113,7 +113,7 @@ physics.ragman(1) # position , size , model, animation
 #        @param gap       - The gap between parts.
 #    */
 
-#scene.addHelicopter("data/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
+#physics.addHelicopter("data/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
 
 #need a way to assign camera target in py
 
@@ -122,10 +122,12 @@ physics.ragman(1) # position , size , model, animation
 
 #physics.fpsweapon(1) #FPS not working yet
 #irr.lensFlare(1) # might not see without atmosphere enabled check pymain
-#scene.SPARK(1) #issues with latest SVN irrlicht
+scene.SPARK(1)
 
 
-#video1=irr.addvideo("./media/bunny.ogg",10.0,10.0,10.0)	# has to be loaded after soundman or crash
+video1=scene.addvideo("./media/bunny.ogg",10.0,10.0,10.0)	# has to be loaded after soundman or crash
+scene.setPosition(video1,11,100,22)
+
 #irr.draw_text("Gavin Robinson",20,40,150,70)   #known to cause crashing
 cube_id = scene.add_cube(0,12.0,0.0,0.0,25.0,0.0,    0.0,0.0,1.0,1.0,1.0)
 tex_id = scene.load_texture("media/crate.png")

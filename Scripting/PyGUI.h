@@ -218,7 +218,7 @@ PyArg_ParseTuple(args,"sfff",&videoFile,&loc.X,&loc.Y,&loc.Z);
         TV->setMaterialTexture(0, cubeDiffuse);
         TV->setMaterialFlag(EMF_LIGHTING, false);
         //vidmaster->addVideoClip("./media/YUVTest.ogg", "YUV", dimension2du(128,128), true);
-        return Py_BuildValue("l",vidmaster);
+        return Py_BuildValue("l",TV);
         #endif
 
     //OLD VideoPlayer based on theora or maybe this is the mplayer one
