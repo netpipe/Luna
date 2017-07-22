@@ -11,6 +11,7 @@ int btree=0;
 PyObject * Python::PyIrr_LoadMesh(PyObject * self,PyObject * args){
 	  return Py_BuildValue("");  }
 
+
 //
 PyObject * Python::PyIrr_addAnimatedMesh(PyObject * self,PyObject * args){
    // printf("loading animated mesh\n");
@@ -28,6 +29,11 @@ PyObject * Python::PyIrr_addAnimatedMesh(PyObject * self,PyObject * args){
 		node = smgr->addOctreeSceneNode(mesh->getMesh(0), 0, -1, 1024);
 	//	node = smgr->addMeshSceneNode(mesh->getMesh(0));
     //    node = smgr->addAnimatedMeshSceneNode( mesh );
+
+        node->setAutomaticCulling(EAC_OFF);
+     node->setMaterialFlag(EMF_LIGHTING, true);
+   //     node->getMaterial(0).ZWriteEnable=1;
+   //     node->getMaterial(0).BackfaceCulling = true;
 
     // possibly need a delete through scripting side
 
@@ -345,24 +351,30 @@ return Py_BuildValue("l",node);//node_id);
 
 PyObject * Python::PyIrr_addSphereNode(PyObject * self,PyObject * args){
 
-    int x,y,z;
+    float x,y,z;
    // u8 texture;
-    float radius;
-	PyArg_ParseTuple(args,"ifff",&radius,&x,&y,&z);
+    float radius, mass;
+	PyArg_ParseTuple(args,"fffff",&x,&y,&z,&radius,&mass);
   //  scene::ISceneNode * node_id = smgr->addSphereSceneNode(20); //radius  polycount , parent , id , position,rotation, scale
     //IVideoDriver::createImageFromFile().  //textures and heightmap
        //if ( icount > 15){ //sphere limiter
-            vector3df pos = camera->getPosition();
-            vector3df rot = camera->getRotation();
+//            vector3df pos = camera->getPosition(); //causes crash currently
+//            vector3df rot = camera->getRotation();
+
+    //    vector3df scl = vector3df(1,1,1);
+    //    luna->m_cPhysics->createBox( btVector3(x, y, z), btVector3(scl.X, scl.Y, scl.Z), 10); //weight
+
           //  bingo=1;
-            if (bingo) { // suposed to only create 1 sphere then transport you to it if its made already
-                luna->m_cPhysics->createSphere( btVector3(pos.X, pos.Y, pos.Z),2,5);
+        //    if (bingo) { // suposed to only create 1 sphere then transport you to it if its made already
+             //   luna->m_cPhysics->createSphere( btVector3(pos.X, pos.Y, pos.Z),2,5);
+            luna->m_cPhysics->createSphere( btVector3(x, y, z),radius,mass);
+
 //                //ha2->setAngularVelocity(btVector3(400,400,400));
-                bingo= false;
-            } else {
+        //        bingo= false;
+       //     } else {
                // btVector3 pos2 = ha2->getCenterOfMassPosition();
                // camera->setPosition(vector3df(pos2[0],pos2[1],pos2[2]));
-            }
+        //    }
 return Py_BuildValue("");
 //return Py_BuildValue("l",node_id);
 };
@@ -377,7 +389,88 @@ PyObject * Python::PyIrr_exit(PyObject * self,PyObject * args){
     luna->m_cInGameEvents.Quit=true;
 }
 
+PyObject * Python::PyIrr_LoadLevel(PyObject * self,PyObject * args){
+tr.setIdentity();
+    int param,state,ammount;
+    char * path;
+    std::string path2;
+    PyArg_ParseTuple(args,"siii",&path,&param,&ammount,&state);
+    path2 = path;
 
+     //   device->getFileSystem()->changeWorkingDirectoryTo("../../");
+     //   device->getFileSystem()->changeWorkingDirectoryTo("extra/");
+
+//         if(!m_irrDevice) return;
+    int tscale=20 ;
+    vector3df trackScale = vector3df(tscale,tscale,tscale); //50
+    vector3df trackPosition = vector3df(0,0.0f,0);
+
+        IAnimatedMesh *mesh = device->getSceneManager()->getMesh(path);
+  //  IAnimatedMesh *mesh = device->getSceneManager()->getMesh(path2.c_str());
+
+    device->getSceneManager()->getMeshManipulator()->scaleMesh(mesh,trackScale);
+    IAnimatedMeshSceneNode *node = device->getSceneManager()->addAnimatedMeshSceneNode(mesh);
+
+smgr->getMeshManipulator()->makePlanarTextureMapping(
+mesh, 0.004f);
+
+   // if(!mesh || !node) return;
+    node->setAutomaticCulling(EAC_OFF);
+     node->setMaterialFlag(EMF_LIGHTING, true);
+    // node->setScale(trackScale);
+    // node->setRotation(vector3df(45,90.f,110));
+    node->setPosition(trackPosition);
+
+
+     //   m_cVehicle->loadLevel(track.c_str());
+     //   device->getFileSystem()->changeWorkingDirectoryTo("../");
+
+#ifdef IRRCDs
+    metaSelector = device->getSceneManager()->createMetaTriangleSelector();
+    selector = device->getSceneManager()->createOctTreeTriangleSelector(mesh,node,128);
+    node->setTriangleSelector(selector);
+    metaSelector->addTriangleSelector(selector);
+    selector->drop();
+
+    //meshbuffer converter to IMesh
+    // scene::SMesh* mesh2 = new SMesh; // dont really need this
+    // mesh2->addMeshBuffer (meshBuffer2);
+    // mesh2->drop();
+
+    scene::ISceneNodeAnimator* anim;
+	anim = device->getSceneManager()->createCollisionResponseAnimator(
+		metaSelector, camera, core::vector3df(30,60,30),
+		core::vector3df(0,0,0),   /// MAIN irrGRAVITY
+		core::vector3df(0,10,0));
+    camera->addAnimator(anim);
+   // m_cInGameEvents.chopperControl->onCollision(anim);
+    anim->drop();
+	metaSelector->drop();
+#endif
+
+#ifdef DPHYSICS
+    tr.setOrigin(btVector3(trackPosition.X, trackPosition.Y, trackPosition.Z));
+    btTriangleMesh *collisionMesh = new btTriangleMesh();
+
+  //  m_cScene->setGenericMaterial(node, 0);
+
+    int meshCount = mesh->getMeshBufferCount();
+        printf("MESHBUFFER COUNT %d /n",meshCount);
+
+        for (int i=0; i < meshCount ; i++)//!load all meshes for CD
+        {
+            //  meshBuffer2->append( mesh->getMeshBuffer(i) );
+          //  m_cScene->setGenericMaterial(node, i); //outdoor sun lumenation
+            luna->m_cPhysics->convertIrrMeshBufferBtTriangleMesh(mesh->getMeshBuffer(i), collisionMesh, vector3df(1,1,1));
+            //decalManager->addMesh(mesh->getMeshBuffer(i));
+        }
+
+    btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
+    luna->m_cPhysics->localCreateRigidBody(0, tr, trackShape, node);
+#endif
+
+return Py_BuildValue("");
+}
 
 /*
 int setvideo (){// graphics combo

@@ -342,6 +342,7 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
 //    {"SPARK",Python::PyIrr_SPARKA,METH_VARARGS,"SPARK MANAGER"},
 //	{NULL,NULL,0,NULL}
 //};
+
 PyObject * Python::PyIrr_SPARKA(PyObject * self,PyObject * args) //active camera
 {
 

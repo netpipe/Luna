@@ -19,15 +19,16 @@ if (init) :
  car2 = physics.addCar(model,texture, 1.0,1.0, 1.0,1.0,1.0,  1.5,1.5,2.0, 1.3,0.4,2.0,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
  physics.VehicleParams(car2,11,0,20,100,20)
  #physics.VehicleParams(car1,8,0,0,0,0)
- physics.addHelicopter("data/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
+# physics.addHelicopter("data/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
 
  init = 0
 
  terrain = scene.addTerrain(4,-3,5,0) # load last to make the physics work FIX  // possibly a load terrain xml function
  track1 = scene.loadTrack('huge.3ds',0,0,0)  # trackname , timeofday , lighting , track slot/stages
+ #track1 = scene.loadLevel('extra/maps/urban.bsp',0,0,0)  # trackname , timeofday , lighting , track slot/stages
 #scene.setPosition(terrain , 10,10,10) # crashes with terrain
 
-
+ scene.addSphereNode(0,10,0, 5,5)
 
 #should be able to add trees without terrain/orientation
 #scene.trees(terr,bush)
