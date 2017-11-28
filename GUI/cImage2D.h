@@ -20,7 +20,7 @@ public:
                 Texture = texture;
                 Material.Wireframe = false;
                 Material.Lighting = false;
-                Material.ZBuffer = 0;
+                Material.ZBuffer = irr::video::ECFN_NEVER;//irr::video::ECFN_NEVER
                 Material.TextureLayer[0].Texture = Texture;
                 ImageRect = nsize;
                 OrigImageRect = ImageRect;

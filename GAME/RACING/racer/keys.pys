@@ -79,7 +79,7 @@ if input.getKey('KEY_F2') : #could have a release action
 # scene.add_cube()
  #scene.setPosition(cube_id,1,1,1)
  #golfball =
- scene.addSphereNode(0,20,5,5,500) #xyz radius mass
+ scene.addSphereNode("data/textures/material/marble1_256.png",0,20,5,5,500) #xyz radius mass
 # irr.addTerrain(4,-3,5,0)
 #irr.flag1(1)
  #irr.flag2(1)

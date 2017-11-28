@@ -140,18 +140,18 @@ CAudioInterfaceFactory_OpenAL::CAudioInterfaceFactory_OpenAL() : gDevice(0), gCo
 {
   gDevice = alcOpenDevice("");
 
-  if (alcGetError(gDevice) != ALC_NO_ERROR) goto Fail;
-  gContext = alcCreateContext(gDevice, NULL);
-  if (alcGetError(gDevice) != ALC_NO_ERROR) goto Fail;
-  alcMakeContextCurrent(gContext);
-  if (alcGetError(gDevice) != ALC_NO_ERROR) goto Fail;
+//  if (alcGetError(gDevice) != ALC_NO_ERROR) goto Fail;
+//  gContext = alcCreateContext(gDevice, NULL);
+//  if (alcGetError(gDevice) != ALC_NO_ERROR) goto Fail;
+//  alcMakeContextCurrent(gContext);
+//  if (alcGetError(gDevice) != ALC_NO_ERROR) goto Fail;
 
-  return;
-
-  Fail :
-
-    gDevice  = NULL;
-    gContext = NULL;
+//  return;
+//
+//  Fail :
+//
+//    gDevice  = NULL;
+//    gContext = NULL;
 }
 
 CAudioInterfaceFactory_OpenAL::~CAudioInterfaceFactory_OpenAL()

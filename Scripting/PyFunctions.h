@@ -38,6 +38,7 @@
     #define CHOPPER
     #define  OPENSTEER
     #define VIDEO
+    #define DSOUND
 
 // Include the headers for post processing
 #include "../Scene/PostProcessing/CRendererPostProc.h"
@@ -99,6 +100,7 @@ RibbonTrailSceneNode* rt;
 
 #include "../Input/Model/IrrAssimp/IrrAssimp.h"
 
+#include "../GUI/cImage2D.h"
 #include "../Scene/spriteManager/SpriteManager.h"
 #include "../Scene/spriteManager/BmFont.h"
 #include "../Scene/spriteManager/ParticleSystem.h"
@@ -143,8 +145,8 @@ RibbonTrailSceneNode* rt;
  //   static vector<Vehicle*> m_cVehicle;
 
     cSkeleton skeleton;
-        cAudio::IAudioManager* managerID;
-        cAudio::IAudioSource* mysound;
+//        cAudio::IAudioManager* managerID;
+//        cAudio::IAudioSource* mysound;
 
 
 #include "PyMAIN.h"
@@ -212,6 +214,9 @@ reminder to actually check the names match with unstable ide's and whatnot
     {"addTerrain",Python::PyIrr_addTerrain,METH_VARARGS,"PyIrr_addTerrain"},
     {"addTree",Python::PyIrr_Trees,METH_VARARGS,"PyIrr_addTree"},
 	{"addHUD",Python::PyIrr_addHUD,METH_VARARGS,"PyIrr_addHUD"},
+    {"exportScene",Python::PyIrr_ExportScene,METH_VARARGS,"PyIrr_ExportScene"},
+
+
 
     //Physics
     {"setVelocity",Python::PyIrr_setVelocity,METH_VARARGS,"setVelocity"},
@@ -362,7 +367,7 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
     // sound intensity for raycasted sound.  // surfaceRoughnessHardness/propigation factor, distance,handle
     switch (param){
     case 0:
-        managerID = cAudio::createAudioManager(true);  // broken has to be done from main
+//        managerID = cAudio::createAudioManager(true);  // broken has to be done from main
        if( managerID)
         {
          //   luna->manager->initialize(luna->manager->getAvailableDeviceName(0));

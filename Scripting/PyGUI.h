@@ -249,4 +249,49 @@ PyObject * Python::PyIrr_LoadShape(PyObject * self,PyObject * args){
 		//possible use would be for rendering onto shaped surfaces or accessing vertex's for placement
 	}
 
+//PyObject * Python::PyIrr_TextureAnimator(PyObject * self,PyObject * args){
+//    oldNow = device->getTimer()->getRealTime();
+//    time = 0;
+//	    int i = 1;
+//    ITexture* img[i];
+//
+//    img[1] = driver->getTexture("beast1.jpg");
+//    img[2] = driver->getTexture("beast2.jpg");
+//    img[3] = driver->getTexture("beast3.jpg");
+//    img[4] = driver->getTexture("beast4.jpg");
+//    img[5] = driver->getTexture("beast5.jpg");
+//
+//	        now = device->getTimer()->getRealTime();
+//        elapsed = now - oldNow;
+//        oldNow = now;
+//        time += elapsed;
+//
+//        if (time<1000)
+//        {
+//            i = 1;
+//        }
+//        if (time>1000)
+//        {
+//            i = 2;
+//        }
+//        if (time>2000)
+//        {
+//            i = 3;
+//        }
+//        if (time>3000)
+//        {
+//            i = 4;
+//        }
+//        if (time>4000)
+//        {
+//            i = 5;
+//        }
+//        if (time>5000)
+//        {
+//            time = 0;
+//        }
+//
+//        node->setMaterialTexture( 0,img[i]);
+//	}
+
 #endif // PYGUI_H_INCLUDED

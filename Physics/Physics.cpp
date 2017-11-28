@@ -267,12 +267,12 @@ btRigidBody *Physics::createBox(const btVector3 &pos, const btVector3 &scale, bt
 	push_back(body);
 }
 
- btRigidBody *Physics::createSphere(const btVector3 &pos, btScalar radius, btScalar mass) {
+ btRigidBody *Physics::createSphere(char *texture ,const btVector3 &pos, btScalar radius, btScalar mass) {
 	ISceneNode *node = m_irrDevice->getSceneManager()->addSphereSceneNode(radius, 32);
 
 	node->setMaterialFlag(EMF_LIGHTING, false);
 	node->setMaterialFlag(EMF_NORMALIZE_NORMALS, true);
-	node->setMaterialTexture(0, m_irrDevice->getVideoDriver()->getTexture("data/textures/material/marble1_256.png"));
+	node->setMaterialTexture(0, m_irrDevice->getVideoDriver()->getTexture(texture));
 
 	btTransform transform;
 	transform.setIdentity();

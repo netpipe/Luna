@@ -274,8 +274,12 @@ return Py_BuildValue("0");
 
 PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
     long node_id;
-    int x,y,z;
-    PyArg_ParseTuple(args,"liii",&node_id,&x,&y,&z);
+    int x,y,z,bullet;
+    PyArg_ParseTuple(args,"liiii",&node_id,&bullet,&x,&y,&z);
+    if (bullet){
+            btRigidBody *test = node_id;
+            test->translate(btVector3 (x,y,z));
+    }else{
     ISceneNode * node = node_id;// could also get from name smgr->getSceneNodeFromId(node_id);
     	if(node != NULL)
 	{
@@ -285,6 +289,8 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
     else{
     printf ("nodeID not valid");
     }
+    }
+
 
 
 return Py_BuildValue("");
@@ -305,12 +311,15 @@ return Py_BuildValue("l",position);
 PyObject * Python::PyIrr_setVelocity(PyObject * self,PyObject * args){
 
 //    ISceneNode *node;
-//    int x,y,z;
-//	PyArg_ParseTuple(args,"slll",&node,&x,&y,&z);
+    long node;
+    float x,y,z;
+	PyArg_ParseTuple(args,"lfff",&node,&x,&y,&z);
+	btRigidBody * test = node;
 // if bullet or irrlicht scene node handle methods differently
 // inirtia calculation
 //	node->setPosition(vector3df(x,y,z));
-return Py_BuildValue("0");
+    test->setAngularVelocity(btVector3(x,y,z));
+    return Py_BuildValue("");
 }
 
 
@@ -318,7 +327,7 @@ PyObject * Python::PyIrr_AddCubeSceneNode(PyObject * self,PyObject * args){
 	s32 node_id;
 	float size;
 	float px,py,pz,rx,ry,rz,sx,sy,sz;
-	//Damn...thats a lot of parameters :)
+
 	PyArg_ParseTuple(args,"lffffffffff",&node_id,&size,&px,&py,&pz,&rx,&ry,&rz,&sx,&sy,&sz);
 	ISceneNode * node = smgr->getSceneNodeFromId(node_id);
 
@@ -354,7 +363,10 @@ PyObject * Python::PyIrr_addSphereNode(PyObject * self,PyObject * args){
     float x,y,z;
    // u8 texture;
     float radius, mass;
-	PyArg_ParseTuple(args,"fffff",&x,&y,&z,&radius,&mass);
+    char * texture;
+	PyArg_ParseTuple(args,"sfffff",&texture,&x,&y,&z,&radius,&mass);
+	btRigidBody *test;
+
   //  scene::ISceneNode * node_id = smgr->addSphereSceneNode(20); //radius  polycount , parent , id , position,rotation, scale
     //IVideoDriver::createImageFromFile().  //textures and heightmap
        //if ( icount > 15){ //sphere limiter
@@ -367,7 +379,7 @@ PyObject * Python::PyIrr_addSphereNode(PyObject * self,PyObject * args){
           //  bingo=1;
         //    if (bingo) { // suposed to only create 1 sphere then transport you to it if its made already
              //   luna->m_cPhysics->createSphere( btVector3(pos.X, pos.Y, pos.Z),2,5);
-            luna->m_cPhysics->createSphere( btVector3(x, y, z),radius,mass);
+            test = luna->m_cPhysics->createSphere( texture, btVector3(x, y, z),radius,mass);
 
 //                //ha2->setAngularVelocity(btVector3(400,400,400));
         //        bingo= false;
@@ -375,8 +387,8 @@ PyObject * Python::PyIrr_addSphereNode(PyObject * self,PyObject * args){
                // btVector3 pos2 = ha2->getCenterOfMassPosition();
                // camera->setPosition(vector3df(pos2[0],pos2[1],pos2[2]));
         //    }
-return Py_BuildValue("");
-//return Py_BuildValue("l",node_id);
+//return Py_BuildValue("");
+return Py_BuildValue("l",test);
 };
 
 
@@ -387,6 +399,14 @@ PyObject * Python::PyIrr_pauseGame(PyObject * self,PyObject * args){
 
 PyObject * Python::PyIrr_exit(PyObject * self,PyObject * args){
     luna->m_cInGameEvents.Quit=true;
+}
+
+PyObject * Python::PyIrr_ExportScene(PyObject * self,PyObject * args){
+    char * path;
+    PyArg_ParseTuple(args,"s",&path);
+
+        device->getSceneManager()->saveScene(path);
+  return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_LoadLevel(PyObject * self,PyObject * args){

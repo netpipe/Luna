@@ -14,6 +14,7 @@ PyMethodDef irr_Physics[] = {
     {"addPlayer",Python::PyIrr_addPlayer,METH_VARARGS,"PyIrr_addPlayer"},
     {"bullet",Python::PyIrr_Bullet,METH_VARARGS,"PyIrr_Bullet"},
     {"VehicleParams",Python::PyIrr_VehicleParams,METH_VARARGS,"VehicleParams"},
+
 	{NULL,NULL,0,NULL}
 	};
 
@@ -276,32 +277,43 @@ PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
 tr.setIdentity();
     int param,state,ammount;
     char * path;
+    //char * file;
     std::string path2;
     PyArg_ParseTuple(args,"siii",&path,&param,&ammount,&state);
     path2 = path;
 
     #ifdef LOADLEVELS
-        //stringc track = "aa.irrmesh";
-       // stringc track = path.c_str(); //"huge.3ds";
-     //   stringc track =  "huge.3ds";
+        stringc rootdir = "./";
 
-     //TODO load irr scene or a 3ds scene check extension on end of path.
+//path* rootdir = device->getFileSystem()->getAbsolutePath(path)
+stringc filedir = device->getFileSystem()->getFileDir (path);
+stringc file = device->getFileSystem()->getFileBasename (path);
+//rootdir = device->getFileSystem()->getWorkingDirectory();
+rootdir = device->getFileSystem()->getAbsolutePath(rootdir);
+stringc absFile = device->getFileSystem()->getAbsolutePath(path);
      // for security specify the data/levels folder.
+     // make the levels in pathname dynamic.
 
-     // if irr then load the folder path else load the track
+         irr::core::stringc extension;
 
-        device->getFileSystem()->changeWorkingDirectoryTo("data/Stage3/");
-        device->getSceneManager()->loadScene("Stage3.irr");  // LOADSCENE not LOADTRACK
+		irr::core::getFileNameExtension(extension, path);
+		printf ("extenstion is %s", extension.c_str());
 
-        device->getFileSystem()->changeWorkingDirectoryTo("../../");
-        device->getFileSystem()->changeWorkingDirectoryTo("data/3/");
+	if ( extension == ".irr"){
+	   device->getFileSystem()->changeWorkingDirectoryTo(filedir.c_str());
+		device->getSceneManager()->loadScene("Stage3.irr");  // LOADSCENE not LOADTRACK
+	}else{
 
+     //   device->getFileSystem()->changeWorkingDirectoryTo("../../");
+        device->getFileSystem()->changeWorkingDirectoryTo(filedir.c_str());
+
+	}
 //         if(!m_irrDevice) return;
-    int tscale=20 ;
+    int tscale=param ;
     vector3df trackScale = vector3df(tscale,tscale,tscale); //50
     vector3df trackPosition = vector3df(0,0.0f,0);
 
-        IAnimatedMesh *mesh = device->getSceneManager()->getMesh(path);
+        IAnimatedMesh *mesh = device->getSceneManager()->getMesh(absFile); //.c_str()+file.c_str()
   //  IAnimatedMesh *mesh = device->getSceneManager()->getMesh(path2.c_str());
 
     device->getSceneManager()->getMeshManipulator()->scaleMesh(mesh,trackScale);
@@ -319,7 +331,7 @@ mesh, 0.004f);
 
 
      //   m_cVehicle->loadLevel(track.c_str());
-        device->getFileSystem()->changeWorkingDirectoryTo("../../");
+        device->getFileSystem()->changeWorkingDirectoryTo(rootdir.c_str());
 
 #ifdef IRRCD
     metaSelector = device->getSceneManager()->createMetaTriangleSelector();
@@ -362,7 +374,7 @@ mesh, 0.004f);
         }
 
     btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
-    luna->m_cPhysics->localCreateRigidBody(0, tr, trackShape, node);
+    btRigidBody *test = luna->m_cPhysics->localCreateRigidBody(0, tr, trackShape, node);
 #endif
 //        // Create a meta triangle selector to hold several triangle selectors.
 //        scene::IMetaTriangleSelector * metaSelector = smgr->createMetaTriangleSelector();
@@ -400,7 +412,7 @@ mesh, 0.004f);
 //             }
 //         }
 //         }
-return Py_BuildValue("");
+return Py_BuildValue("l",test);
     #endif
 }
 

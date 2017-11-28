@@ -475,13 +475,13 @@
 			<Add library="enet" />
 			<Add library="zlib" />
 			<Add library="ogg" />
-			<Add library="cAudio" />
 			<Add library="theora" />
 			<Add library="theoraplayer" />
 			<Add library="openal" />
 			<Add library="vorbis" />
 			<Add library="vorbisfile" />
 			<Add library="GL" />
+			<Add library="cAudio" />
 			<Add directory="../LunaLibs/libtheora-1.1.1/lib" />
 			<Add directory="../LunaLibs/cAudio23/cAudio/bin/gcc" />
 			<Add directory="../LunaLibs/freetype-2.3.9/objs/.libs" />

@@ -19,10 +19,12 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
     switch(t){
     case 1:
         cam = smgr->addCameraSceneNode();
+       // cam->setTarget(vector3df(0,0,0));
         break;
 
     case 2:
         cam = smgr->addCameraSceneNodeFPS();
+       // cam->setTarget(vector3df(0,0,0));
         break;
 
     case 3:
@@ -37,8 +39,12 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 
 		cam = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
 		break;
+	case 4:
+			cam = smgr->addCameraSceneNodeMaya();
+		//	cam->setPosition(vector3df(150,0,0));
+			cam->setTarget(vector3df(0,0,0));
 
-    case CameraManager:
+   // case CameraManager:
         //if active camera not = new camera push to camera manager
     // some kind of vector stack for camera management
 //     ICameraSceneNode *gcamera[3] = {0,0,0};

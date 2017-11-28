@@ -34,6 +34,15 @@ void loadModel(const c8* fn)
             extension == ".pbm" ||
             extension == ".psd" ||
             extension == ".tga" ||
+            extension == ".JPG" ||
+            extension == ".PCX" ||
+            extension == ".PNG" ||
+            extension == ".PPM" ||
+            extension == ".PGM" ||
+            extension == ".PBM" ||
+            extension == ".PSD" ||
+            extension == ".TGA" ||
+            extension == ".BMP" ||
             extension == ".bmp"
        )
     {

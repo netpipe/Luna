@@ -655,28 +655,28 @@ if (chopperEnabled){
     if (mEvent.getKeyState(    KEY_SPACE))    //SPACEBAR
                     {m_cVehicle->brake();   }
 
-    if (mEvent.getKeyState(    KEY_KEY_2))
-    {
-        //if ( icount > 15){ //sphere limiter
-            vector3df pos = camera->getPosition();
-            vector3df rot = camera->getRotation();
-            bingo=1;
-            if (bingo) { // suposed to only create 1 sphere then transport you to it if its made already
-                ha2 = luna->m_cPhysics->createSphere( btVector3(pos.X, pos.Y, pos.Z),2,5);
-                //ha2->setAngularVelocity(btVector3(400,400,400));
-                bingo= false;
-            } else {
-                btVector3 pos2 = ha2->getCenterOfMassPosition();
-                camera->setPosition(vector3df(pos2[0],pos2[1],pos2[2]));
-            }
-        //  ha2->clearForces();
-        // ha2->applyDamping(100);
-        // ha2->applyForce(btVector3(50,8000,50),btVector3(110,111,110));
-        // icount=0;
-        //m_cPhysics->clearBodies(); crashes
-    // }
-//         icount++;
-    }
+//    if (mEvent.getKeyState(    KEY_KEY_2))
+//    {
+//        //if ( icount > 15){ //sphere limiter
+//            vector3df pos = camera->getPosition();
+//            vector3df rot = camera->getRotation();
+//            bingo=1;
+//            if (bingo) { // suposed to only create 1 sphere then transport you to it if its made already
+//                ha2 = luna->m_cPhysics->createSphere( btVector3(pos.X, pos.Y, pos.Z),2,5);
+//                //ha2->setAngularVelocity(btVector3(400,400,400));
+//                bingo= false;
+//            } else {
+//                btVector3 pos2 = ha2->getCenterOfMassPosition();
+//                camera->setPosition(vector3df(pos2[0],pos2[1],pos2[2]));
+//            }
+//        //  ha2->clearForces();
+//        // ha2->applyDamping(100);
+//        // ha2->applyForce(btVector3(50,8000,50),btVector3(110,111,110));
+//        // icount=0;
+//        //m_cPhysics->clearBodies(); crashes
+//    // }
+////         icount++;
+//    }
 
 //    if (bCar) {
 //    if (mEvent.getKeyState(    KEY_KEY_R))

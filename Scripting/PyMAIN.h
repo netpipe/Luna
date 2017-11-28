@@ -23,6 +23,10 @@ namespace Python {
   //  cAudio::IAudioManager* manager;
   //  cAudio::IAudioSource* mysound;
 
+         cAudio::IAudioManager* managerID = cAudio::createAudioManager(true);  // broken has to be done from main
+        cAudio::IAudioSource* mysound;
+
+
     ICameraSceneNode* camera;  //maybe put in vector for a cameraManager or do it in python
 
 
@@ -125,6 +129,7 @@ namespace Python {
     PyObject * PyIrr_LoadTrack(PyObject * self,PyObject * args);
     PyObject * PyIrr_LoadLevel(PyObject * self,PyObject * args);
     PyObject * PyIrr_Light(PyObject * self,PyObject * args);
+    PyObject * PyIrr_ExportScene(PyObject * self,PyObject * args);
 
 
     //Extras
@@ -194,7 +199,7 @@ namespace Python {
     PyObject * PyIrr_iScale(PyObject * self,PyObject * args);
     PyObject * PyIrr_iPosition(PyObject * self,PyObject * args);
     PyObject * PyIrr_iAdd(PyObject * self,PyObject * args);
-
+    PyObject * PyIrr_iDraw(PyObject * self,PyObject * args);
 
     PyMODINIT_FUNC init_irr(void);
 
@@ -361,14 +366,14 @@ void Python::render() {//active camera
       //    Elevator::Instance()->UpdatePlayerPosition();
 
         #ifdef DSOUND // weird works without this
-            if(managerID){
-                if(mysound && !mysound->isPlaying())
-                {
-                    mysound->setVolume(0.5);
-                    //Set the IAudio Sound to play2d and loop
-                    mysound->play2d(true);
-                }
-            }
+//            if(managerID){
+//                if(mysound && !mysound->isPlaying())
+//                {
+//                    mysound->setVolume(0.5);
+//                    //Set the IAudio Sound to play2d and loop
+//                    mysound->play2d(true);
+//                }
+//            }
         #endif
 
 

@@ -23,7 +23,7 @@ using namespace gui;
 #include "Scene/boids/Flock.h"
 #include "Net/IRRc/Application.h"
 
-#include "GUI/cImage2D.h"
+//#include "GUI/cImage2D.h"
 #include "Scene/XEffects/effectWrapper.h"
 
 #include "./Input/Model/blender/IrrBlend.h"

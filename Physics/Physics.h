@@ -56,7 +56,7 @@ class Physics
     btRigidBody*	localCreateRigidBody(float mass, const btTransform& startTransform,btCollisionShape* shape, ISceneNode *node);
 
 		btRigidBody *createBox ( const btVector3 &pos, const btVector3 &scale, btScalar mass );
-		 btRigidBody *createSphere ( const btVector3 &pos, btScalar radius, btScalar mass );
+		 btRigidBody *createSphere (char *texture, const btVector3 &pos, btScalar radius, btScalar mass );
 
 		void quaternionToEuler ( const btQuaternion &quat, btVector3 &euler );
 

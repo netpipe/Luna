@@ -13,6 +13,7 @@ import physics
 import extras
 import scene
 import input
+import image
 
 init = 1  #start as true so that this loop is only ran once
 
@@ -28,11 +29,12 @@ init = 1  #start as true so that this loop is only ran once
 #irr.occlusionTest(1)            #broken #impliment nodemanager here for python occlusion someway to turn on and off
 #irr.image2d(1)                   #crashes without player being added first ? goes to background try to bring it as an overlay
 #irr.addHUD("data/HUD.xml")
+iaxe = image.iadd()
 
 #irr.bullet(1)                      #its actually a recast test at the moment
 
 
-#irr.soundman(1)                # has to be loaded last or makes black screen
+scene.soundman(1,0,1,1)                # has to be loaded last or makes black screen
 #anim = irr.addAdnimator(1,"aha.b3d") #type line,circle attach to mesh
 
 #player = scene.addPlayer(1)
@@ -43,7 +45,7 @@ init = 1  #start as true so that this loop is only ran once
 
 #trigger list for object placements
 #golf holes and score manager loop
-#golfball = scene.addSphereNode(20,5,5,5) #size,pos,texture
+#golfball = scene.addSphereNode("data/textures/material/marble1_256.png",0,20,5,5,5) #size,pos,texture
 #irr.setPosition(golfball,5,5,5)
 
 #irr.chatbox(1)                 # not really sure how to impliment fully yet needs some sort of server
@@ -131,7 +133,7 @@ scene.SPARK(1)
 
 
 video1=scene.addvideo("./media/bunny.ogg",10.0,10.0,10.0)	# has to be loaded after soundman or crash
-scene.setPosition(video1,11,100,22)
+scene.setPosition(video1,0,11,100,22)
 
 #irr.draw_text("Gavin Robinson",20,40,150,70)   #known to cause crashing
 cube_id = scene.add_cube(0,12.0,0.0,0.0,25.0,0.0,    0.0,0.0,1.0,1.0,1.0)
@@ -139,7 +141,7 @@ tex_id = scene.load_texture("media/crate.png")
 #print tex_id #print cube_id #texture cube with video todo
 scene.set_texture(cube_id,tex_id)
 #scene.setPosition(cube_id,50,355,350)
-scene.setPosition(cube_id,11,10,22)
+scene.setPosition(cube_id,0,101,10,22)
 #irr.set_texture( irr.add_cube(1,12.0,0.0,0.0,25.0,0.0,    0.0,0.0,1.0,1.0,1.0),irr.load_texture("media/crate.png"))
 
 
@@ -168,7 +170,6 @@ model = "data/models/vehicles/oldChevy-Truck.3ds"
 texture = "data/models/vehicles/oldChevy.bmp"
 
 #car1 = physics.addCar(model,texture,1.0,1.0,1.0,1.0,1.0,  1.5,1.5,2.0, 1.3,0.4,2.0,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
-
 #car2 = irr.addCar( 1.0,1.0, 1.0,1.0,1.0,  1.5,1.5,2.0, 1.3,0.4,2.0,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
 #ideally would be nice to be able to set car texture / model on the fly
 #setTexture(car1, "texture")
