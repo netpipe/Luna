@@ -131,8 +131,75 @@ float Terrain::getHeight2(float x, float z){
 //    return (total);
 };
 
+ITerrainSceneNode* Terrain::Terrain2(vector3df t_position,vector3df t_scale,char *hmap,char *tex,char* dmap){
 
-btRigidBody* Terrain::Render( char *tex,vector3df terrainPosition,vector3df terrainRotation,vector3df terrainScale,int LOD){
+    vector3df t_rotation = vector3df(0,0,0);
+		//scene::ITerrainSceneNode* terrain = smgr->addTerrainSceneNode(
+
+		terrain = smgr->addTerrainSceneNode(
+		hmap,
+		0,					// parent node
+		-1,					// node id
+		t_position,		// position
+		t_rotation,		// rotation
+		t_scale,	// scale
+		video::SColor ( 255, 255, 255, 255 ),	// vertexColor
+		4,					// maxLOD
+		scene::ETPS_17,				// patchSize
+		4					// smoothFactor
+		);
+
+	terrain->setMaterialFlag(video::EMF_LIGHTING, false);
+
+	terrain->setMaterialTexture(0,
+			driver->getTexture(tex));
+	terrain->setMaterialTexture(1,
+			driver->getTexture(dmap));
+
+	terrain->setMaterialType(video::EMT_DETAIL_MAP);
+
+	scene::CDynamicMeshBuffer* mesh = new scene::CDynamicMeshBuffer(video::EVT_2TCOORDS, video::EIT_16BIT);
+
+	 terrain->getMeshBufferForLOD (*mesh ,2);
+
+
+   btVector3 vertices[3];
+   s32 j,k;
+   btTriangleMesh *  mTriMesh = new btTriangleMesh();
+
+   const irr::u32 vertexCount = mesh->getVertexCount();
+   const irr::u32 indexCount = mesh->getIndexCount();
+
+            irr::video::S3DVertex2TCoords* mb_vertices = (irr::video::S3DVertex2TCoords*)mesh->getVertexBuffer().getData();
+
+   u16* mb_indices = mesh->getIndices();
+
+   for(j=0;j<indexCount;j+=3)
+   {
+      for (k=0;k<3;k++)
+      {
+         s32 index = mb_indices[j+k];
+         vertices[k] = btVector3(
+            mb_vertices[index].Pos.X*terrain->getScale().X,
+            mb_vertices[index].Pos.Y*terrain->getScale().Y,
+            mb_vertices[index].Pos.Z*terrain->getScale().Z);
+      }
+      mTriMesh->addTriangle(vertices[0], vertices[1], vertices[2]);
+   }
+	mesh->drop();
+
+   btCollisionShape* mShape = new btBvhTriangleMeshShape(mTriMesh, true);
+
+   btDefaultMotionState* state =   new btDefaultMotionState(btTransform(btQuaternion(0,0,0,1),
+      btVector3(terrain->getPosition().X,terrain->getPosition().Y,terrain->getPosition().Z)));
+
+   mRigidBody = new btRigidBody(0, state, mShape, btVector3(0, 0, 0));
+   mRigidBody->setCollisionFlags(mRigidBody->getCollisionFlags() | btCollisionObject::CF_STATIC_OBJECT);
+   m_cPhysics->getDynamicsWorld()->addRigidBody(mRigidBody);
+return terrain;
+}
+
+void Terrain::Render( char *tex,vector3df terrainPosition,vector3df terrainRotation,vector3df terrainScale,int LOD){
 
 
     //INIT VARS
@@ -193,10 +260,10 @@ btRigidBody* Terrain::Render( char *tex,vector3df terrainPosition,vector3df terr
     m_cPhysics->convertIrrMeshBufferBtTriangleMesh(meshBuffer, collisionMesh, terrainScale);
     btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
 
-    btRigidBody * terrain = localCreateRigidBody(0, tr, trackShape, cubeSceneNode);
+    mRigidBody = localCreateRigidBody(0, tr, trackShape, cubeSceneNode);
 
     //return cubeSceneNode;
-    return terrain;
+   // return cubeSceneNode;
 }
 
 

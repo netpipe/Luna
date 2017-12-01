@@ -277,16 +277,40 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
     float x,y,z;
     int bullet;
     PyArg_ParseTuple(args,"lifff",&node_id,&bullet,&x,&y,&z);
-    if (bullet){
+    if (bullet == 1){
             btRigidBody *test = node_id;
             test->translate(btVector3 (x,y,z));
-    }else{
+    }else if (bullet == 3){
+            Terrain* mnode =node_id;
+            vector3df newpos;
+            //ITerrainSceneNode* node=mnode->terrain;
+            newpos = vector3df(x,y,z)-mnode->terrain->getPosition();
+
+            mnode->terrain->setPosition(vector3df(x,y,z));
+            mnode->mRigidBody->translate(btVector3 (newpos.X,newpos.Y,newpos.Z));
+
+         //   btRigidBody *test = mnode->mRigidBody;
+
+
+    }else if (bullet == 4){
+            printf ("nodeID not valid");
+            Terrain* mnode =node_id;
+            vector3df newpos;
+            //ITerrainSceneNode* node=mnode->terrain;
+            newpos = vector3df(x,y,z)-mnode->cubeSceneNode->getPosition();
+
+            mnode->cubeSceneNode->setPosition(vector3df(x,y,z));
+            mnode->mRigidBody->translate(btVector3 (newpos.X,newpos.Y,newpos.Z));
+
+         //   btRigidBody *test = mnode->mRigidBody;
+
+}else if (bullet == 0){
     ISceneNode * node = node_id;// could also get from name smgr->getSceneNodeFromId(node_id);
     	if(node != NULL)
-	{
-        node->setPosition(vector3df(x,y,z));
-        printf("%i %i %i",x,y,z);
-	}
+        {
+            node->setPosition(vector3df(x,y,z));
+            printf("%i %i %i",x,y,z);
+        }
     else{
     printf ("nodeID not valid");
     }

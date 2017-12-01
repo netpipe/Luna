@@ -86,8 +86,11 @@ class Terrain
 //		void Sphere ( int dtheta, int dphi );
 //		friend class Azadi;
 		static int setter;
+		ITerrainSceneNode* Terrain2(vector3df ,vector3df ,char *hmap,char *tex,char* dmap);
+		btRigidBody* mRigidBody;
+		ITerrainSceneNode* terrain;
 
-    btRigidBody* Render(char*,vector3df terrainPosition,vector3df terrainRotation,vector3df terrainScale,int LOD);
+    void Render(char*,vector3df terrainPosition,vector3df terrainRotation,vector3df terrainScale,int LOD);
     CTreeSceneNode* MakeTrees(vector3df aha,int treetype,char *);
 
 

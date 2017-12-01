@@ -252,83 +252,90 @@ PyArg_ParseTuple(args,"iffffffsss",&type,&cx,&cy,&cz,&sx,&sy,&sz,&hmap,&tex,&dma
     vector3df t_rotation = vector3df(0,0,0);
     vector3df t_scale = vector3df(sx,sy,sz);
 
-if ( type == 1 ){
-	#ifdef TERRAIN
-		 terr = new Terrain;
+    		 terr = new Terrain;
 			terr->registerIrrDevice(*device);
 			terr->registerPhysics(*luna->m_cPhysics);
 			terr->Init();
 
+if ( type == 1 ){
+	//#ifdef TERRAIN
+//		 terr = new Terrain;
+//			terr->registerIrrDevice(*device);
+//			terr->registerPhysics(*luna->m_cPhysics);
+
+
 			// position, rotation, scale, LOD
-		   btRigidBody* body = terr->Render( tex,vector3df( cx,cy,cz), vector3df(0,0.0f,0),   vector3df(1,0.20f,1),3);
+		   //ISceneNode* body =
+		    terr->Render( tex,vector3df( cx,cy,cz), vector3df(0,0.0f,0),   vector3df(1,0.20f,1),3);
 
 		return Py_BuildValue("l",terr); // not sure if you can do this ?
-	#else
-	return Py_BuildValue("0");
-	#endif
-}else{
-		scene::ITerrainSceneNode* terrain = smgr->addTerrainSceneNode(
-		hmap,
-		0,					// parent node
-		-1,					// node id
-		t_position,		// position
-		t_rotation,		// rotation
-		t_scale,	// scale
-		video::SColor ( 255, 255, 255, 255 ),	// vertexColor
-		4,					// maxLOD
-		scene::ETPS_17,				// patchSize
-		4					// smoothFactor
-		);
+	//#else
+	//return Py_BuildValue("0");
+	//#endif
+}else if ( type == 2 ) {
+		terr->Terrain2(t_position,t_scale,hmap,tex,dmap);
+//		scene::ITerrainSceneNode* terrain = smgr->addTerrainSceneNode(
+//		hmap,
+//		0,					// parent node
+//		-1,					// node id
+//		t_position,		// position
+//		t_rotation,		// rotation
+//		t_scale,	// scale
+//		video::SColor ( 255, 255, 255, 255 ),	// vertexColor
+//		4,					// maxLOD
+//		scene::ETPS_17,				// patchSize
+//		4					// smoothFactor
+//		);
+//
+//	terrain->setMaterialFlag(video::EMF_LIGHTING, false);
+//
+//	terrain->setMaterialTexture(0,
+//			driver->getTexture(tex));
+//	terrain->setMaterialTexture(1,
+//			driver->getTexture(dmap));
+//
+//	terrain->setMaterialType(video::EMT_DETAIL_MAP);
+//
+//	scene::CDynamicMeshBuffer* mesh = new scene::CDynamicMeshBuffer(video::EVT_2TCOORDS, video::EIT_16BIT);
+//
+//	 terrain->getMeshBufferForLOD (*mesh ,2);
+//
+//
+//   btVector3 vertices[3];
+//   s32 j,k;
+//   btTriangleMesh *  mTriMesh = new btTriangleMesh();
+//
+//   const irr::u32 vertexCount = mesh->getVertexCount();
+//   const irr::u32 indexCount = mesh->getIndexCount();
+//
+//            irr::video::S3DVertex2TCoords* mb_vertices = (irr::video::S3DVertex2TCoords*)mesh->getVertexBuffer().getData();
+//
+//   u16* mb_indices = mesh->getIndices();
+//
+//   for(j=0;j<indexCount;j+=3)
+//   {
+//      for (k=0;k<3;k++)
+//      {
+//         s32 index = mb_indices[j+k];
+//         vertices[k] = btVector3(
+//            mb_vertices[index].Pos.X*terrain->getScale().X,
+//            mb_vertices[index].Pos.Y*terrain->getScale().Y,
+//            mb_vertices[index].Pos.Z*terrain->getScale().Z);
+//      }
+//      mTriMesh->addTriangle(vertices[0], vertices[1], vertices[2]);
+//   }
+//	mesh->drop();
+//
+//   btCollisionShape* mShape = new btBvhTriangleMeshShape(mTriMesh, true);
+//
+//   btDefaultMotionState* state =   new btDefaultMotionState(btTransform(btQuaternion(0,0,0,1),
+//      btVector3(terrain->getPosition().X,terrain->getPosition().Y,terrain->getPosition().Z)));
+//
+//   btRigidBody* mRigidBody = new btRigidBody(0, state, mShape, btVector3(0, 0, 0));
+//   mRigidBody->setCollisionFlags(mRigidBody->getCollisionFlags() | btCollisionObject::CF_STATIC_OBJECT);
+//   luna->m_cPhysics->getDynamicsWorld()->addRigidBody(mRigidBody);
 
-	terrain->setMaterialFlag(video::EMF_LIGHTING, false);
-
-	terrain->setMaterialTexture(0,
-			driver->getTexture(tex));
-	terrain->setMaterialTexture(1,
-			driver->getTexture(dmap));
-
-	terrain->setMaterialType(video::EMT_DETAIL_MAP);
-
-	scene::CDynamicMeshBuffer* mesh = new scene::CDynamicMeshBuffer(video::EVT_2TCOORDS, video::EIT_16BIT);
-
-	 terrain->getMeshBufferForLOD (*mesh ,2);
-
-
-   btVector3 vertices[3];
-   s32 j,k;
-   btTriangleMesh *  mTriMesh = new btTriangleMesh();
-
-   const irr::u32 vertexCount = mesh->getVertexCount();
-   const irr::u32 indexCount = mesh->getIndexCount();
-
-            irr::video::S3DVertex2TCoords* mb_vertices = (irr::video::S3DVertex2TCoords*)mesh->getVertexBuffer().getData();
-
-   u16* mb_indices = mesh->getIndices();
-
-   for(j=0;j<indexCount;j+=3)
-   {
-      for (k=0;k<3;k++)
-      {
-         s32 index = mb_indices[j+k];
-         vertices[k] = btVector3(
-            mb_vertices[index].Pos.X*terrain->getScale().X,
-            mb_vertices[index].Pos.Y*terrain->getScale().Y,
-            mb_vertices[index].Pos.Z*terrain->getScale().Z);
-      }
-      mTriMesh->addTriangle(vertices[0], vertices[1], vertices[2]);
-   }
-	mesh->drop();
-
-   btCollisionShape* mShape = new btBvhTriangleMeshShape(mTriMesh, true);
-
-   btDefaultMotionState* state =   new btDefaultMotionState(btTransform(btQuaternion(0,0,0,1),
-      btVector3(terrain->getPosition().X,terrain->getPosition().Y,terrain->getPosition().Z)));
-
-   btRigidBody* mRigidBody = new btRigidBody(0, state, mShape, btVector3(0, 0, 0));
-   mRigidBody->setCollisionFlags(mRigidBody->getCollisionFlags() | btCollisionObject::CF_STATIC_OBJECT);
-   luna->m_cPhysics->getDynamicsWorld()->addRigidBody(mRigidBody);
-
-return Py_BuildValue("l",terrain);
+return Py_BuildValue("l",terr);
 }
 
 }

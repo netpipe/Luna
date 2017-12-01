@@ -63,7 +63,7 @@ ninja = scene.addModel("media/ninja.b3d","media/nskinbl.jpg",0)
 #print dwarf
 #print ninja
 #scene.setPosition(dwarf , 100,100,1200)
-scene.setPosition(ninja , 10,10,10)
+scene.setPosition(ninja ,0, 10,10,10)
 #scene.loadModel("media/ShadRoom.b3d","texture",0,0)
 #terrain = scene.addTerrain(4,-3,5,0) # load last to make the physics work FIX  // possibly a load terrain xml function
 #track1 = scene.loadTrack('huge.3ds',0,0,0)  # trackname , timeofday , lighting , track slot/stages
