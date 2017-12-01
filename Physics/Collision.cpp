@@ -44,7 +44,7 @@ vector3df Collision::getEllipsoidRadius(void)
   return ellipsoidRadius;
 }
 
-
+//  spawn this to fill the level Collision::Instance()->createRootCollision();
 
 void Collision::recursiveFillMetaSelector(ISceneNode* node, IMetaTriangleSelector* meta )
 {

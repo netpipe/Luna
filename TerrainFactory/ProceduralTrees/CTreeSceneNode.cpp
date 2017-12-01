@@ -268,5 +268,9 @@ void CTreeSceneNode::updateBillboard()
 }
 
 
+//SMeshBuffer CTreeSceneNode::midmesh(){
+//
+//return (*MidLODMeshBuffer);
+//}
 } // namespace scene
 } // namespace irr

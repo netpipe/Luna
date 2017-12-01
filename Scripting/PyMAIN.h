@@ -35,6 +35,7 @@ namespace Python {
     void CheckKeyStates();
     //Player *m_cPlayer;
     void render();
+    void rfm(irr::scene::ISceneNode*);
 
 
     int VehicleParam(Vehicle *vehicle,int param,float state,float ammount,float y,float z);

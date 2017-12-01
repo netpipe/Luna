@@ -274,8 +274,9 @@ return Py_BuildValue("0");
 
 PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
     long node_id;
-    int x,y,z,bullet;
-    PyArg_ParseTuple(args,"liiii",&node_id,&bullet,&x,&y,&z);
+    float x,y,z;
+    int bullet;
+    PyArg_ParseTuple(args,"lifff",&node_id,&bullet,&x,&y,&z);
     if (bullet){
             btRigidBody *test = node_id;
             test->translate(btVector3 (x,y,z));

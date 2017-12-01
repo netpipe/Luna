@@ -299,35 +299,46 @@ stringc absFile = device->getFileSystem()->getAbsolutePath(path);
 		irr::core::getFileNameExtension(extension, path);
 		printf ("extenstion is %s", extension.c_str());
 
+	int tscale=param ;
+    vector3df trackScale = vector3df(tscale,tscale,tscale); //50
+    vector3df trackPosition = vector3df(0,0.0f,0);
+IAnimatedMeshSceneNode *node;
+IAnimatedMesh *mesh;
 	if ( extension == ".irr"){
+
 	   device->getFileSystem()->changeWorkingDirectoryTo(filedir.c_str());
-		device->getSceneManager()->loadScene("Stage3.irr");  // LOADSCENE not LOADTRACK
+		device->getSceneManager()->loadScene(absFile);  // LOADSCENE not LOADTRACK
+		rfm(smgr->getRootSceneNode());
+
+    device->getFileSystem()->changeWorkingDirectoryTo(rootdir.c_str());
+return Py_BuildValue("");
+
 	}else{
 
      //   device->getFileSystem()->changeWorkingDirectoryTo("../../");
         device->getFileSystem()->changeWorkingDirectoryTo(filedir.c_str());
 
-	}
-//         if(!m_irrDevice) return;
-    int tscale=param ;
-    vector3df trackScale = vector3df(tscale,tscale,tscale); //50
-    vector3df trackPosition = vector3df(0,0.0f,0);
 
-        IAnimatedMesh *mesh = device->getSceneManager()->getMesh(absFile); //.c_str()+file.c_str()
+        mesh = device->getSceneManager()->getMesh(absFile); //.c_str()+file.c_str()
   //  IAnimatedMesh *mesh = device->getSceneManager()->getMesh(path2.c_str());
 
-    device->getSceneManager()->getMeshManipulator()->scaleMesh(mesh,trackScale);
-    IAnimatedMeshSceneNode *node = device->getSceneManager()->addAnimatedMeshSceneNode(mesh);
 
+
+
+    device->getSceneManager()->getMeshManipulator()->scaleMesh(mesh,trackScale);
+    node = device->getSceneManager()->addAnimatedMeshSceneNode(mesh);
+//         if(!m_irrDevice) return;
 smgr->getMeshManipulator()->makePlanarTextureMapping(
 mesh, 0.004f);
-
    // if(!mesh || !node) return;
     node->setAutomaticCulling(EAC_OFF);
      node->setMaterialFlag(EMF_LIGHTING, true);
     // node->setScale(trackScale);
     // node->setRotation(vector3df(45,90.f,110));
     node->setPosition(trackPosition);
+
+
+
 
 
      //   m_cVehicle->loadLevel(track.c_str());
@@ -413,7 +424,191 @@ mesh, 0.004f);
 //         }
 //         }
 return Py_BuildValue("l",test);
+	}
+
     #endif
 }
+
+void Python::rfm(ISceneNode* node )
+{
+  //
+  // the following if is basically the same as ISceneNode_assignTriangleSelector
+  //
+//  Output::Instance()->w("Node name is: %s \n",node->getName());
+ // Output::Instance()->w("Node id is: %d \n",node->getID());
+ // Output::Instance()->w("Node type: ");
+
+  if(strcmp(node->getName(), "elevator") == 0)
+  {
+  	node->setMaterialType(EMT_LIGHTMAP_M4);
+  	node->setMaterialFlag(EMF_LIGHTING, false);
+  //  Elevator::Instance()->Add(node);
+  //  Elevator::Instance()->elevatorStart = node->getAbsolutePosition();
+  }
+
+//   if(strcmp(node->getName(), "wheel") == 0)
+//  {
+//		 vector3df wheels node->getAbsolutePosition();
+//		node->setPosition(wheels);
+//  }
+
+  if(strcmp(node->getName(), "obstacle") == 0)
+  {
+	//	Obstacle::Instance()->Add(node);
+  }
+  if(strcmp(node->getName(), "level") == 0)
+  {
+    //! Enable fog for all materials on the level node.
+    /*
+    u32 materialCount = node->getMaterialCount();
+    for(s32 i = 0; i < materialCount; i++)
+    {
+      node->getMaterial(i).FogEnable = false;
+    }
+    */
+//    node->setMaterialFlag(EMF_FOG_ENABLE, true);
+//    node->setMaterialType(EMT_LIGHTMAP_M4);
+//    node->setMaterialFlag(EMF_LIGHTING, false);
+  }
+  if(strcmp(node->getName(), "glass") == 0)
+  {
+//    node->setMaterialTexture(1,	irrDevice->getVideoDriver()->getTexture("StageData/glass.tga"));
+//    node->setMaterialFlag(EMF_LIGHTING, false);
+//    node->setMaterialFlag(EMF_FOG_ENABLE, false);
+//    node->setMaterialType(EMT_TRANSPARENT_REFLECTION_2_LAYER);
+//
+//    SColor col = SColor(255,37,207,243);
+//    for(s32 i = 0; i < node->getMaterialCount(); i++)
+//    {
+//			node->getMaterial(i).Shininess = 0.0f;
+//			node->getMaterial(i).DiffuseColor = col;
+//			node->getMaterial(i).EmissiveColor = col;
+//			node->getMaterial(i).AmbientColor = col;
+//			node->getMaterial(i).SpecularColor = col;
+//			node->getMaterial(i).MaterialTypeParam = 0.01;
+//    }
+  }
+
+  if (node->getType() ==   ESNT_UNKNOWN)
+  {
+  }
+  if (node->getType() ==   ESNT_MESH)
+  {
+      io::IAttributes* attribs = device->getFileSystem()->createEmptyAttributes();
+      if (attribs)
+        {// get the mesh name out
+         node->serializeAttributes(attribs);
+         core::stringc name = attribs->getAttributeAsString("Mesh");
+         attribs->drop();
+         // get the animated mesh for the object
+         scene::IAnimatedMesh* mesh = device->getSceneManager()->getMesh(name.c_str());
+         if (mesh)
+         {
+//            Output::Instance()->w("\tAdding triangle selector for mesh\n");
+           // scene::ITriangleSelector* selector =
+           // device->getSceneManager()->createTriangleSelector(mesh->getMesh(0), node);
+           // node->setTriangleSelector(selector);
+           // metaSelector->addTriangleSelector(selector);
+           // selector->drop();
+
+            node->setMaterialFlag(video::EMF_LIGHTING, true);
+            node->getMaterial(0).Shininess = 100.0f;
+            node->getMaterial(0).DiffuseColor = SColor(255,255,255,255);
+            node->getMaterial(0).EmissiveColor = SColor(255,255,255,255);
+            node->getMaterial(0).AmbientColor = SColor(255,255,255,255);
+            node->getMaterial(0).SpecularColor = SColor(255,255,255,255);
+            node->getMaterial(0).MaterialTypeParam = 0.01;
+
+            //node->getMaterial(0).MaterialType = EMT_ONETEXTURE_BLEND;
+            //node->setFlag(EMF_TRILINEAR_FILTER, true);
+		tr.setOrigin(btVector3(0,0,0));
+         btTriangleMesh *collisionMesh = new btTriangleMesh();
+
+  //  m_cScene->setGenericMaterial(node, 0);
+
+    int meshCount = mesh->getMeshBufferCount();
+        printf("MESHBUFFER COUNT %d /n",meshCount);
+
+        for (int i=0; i < meshCount ; i++)//!load all meshes for CD
+        {
+            //  meshBuffer2->append( mesh->getMeshBuffer(i) );
+          //  m_cScene->setGenericMaterial(node, i); //outdoor sun lumenation
+            luna->m_cPhysics->convertIrrMeshBufferBtTriangleMesh(mesh->getMeshBuffer(i), collisionMesh, vector3df(1,1,1));
+            //decalManager->addMesh(mesh->getMeshBuffer(i));
+        }
+
+    btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
+    btRigidBody *test = luna->m_cPhysics->localCreateRigidBody(0, tr, trackShape, node);
+
+         }
+	}
+  }
+  if (node->getType() ==   ESNT_ANIMATED_MESH)
+//    Output::Instance()->w("Animated Mesh! \n\n");
+  if (node->getType() ==   ESNT_SKY_BOX)
+//    Output::Instance()->w("SkyBox! \n\n");
+  if (node->getType() ==   ESNT_CAMERA_FPS)
+//    Output::Instance()->w("Fps Camera! \n\n");
+  if (node->getType() ==   ESNT_CAMERA_MAYA )
+//    Output::Instance()->w("Maya Camera! \n\n");
+  if (node->getType() ==   ESNT_CAMERA )
+//    Output::Instance()->w("STD Camera! \n");
+  if (node->getType() ==   ESNT_PARTICLE_SYSTEM )
+//    Output::Instance()->w("Particles! \n\n");
+  if (node->getType() ==   ESNT_LIGHT  )
+  {
+//    Output::Instance()->w("Light! \n\n");
+  }
+  if (node->getType() ==   ESNT_OCTREE)
+  {
+      // Occ Trees are for land
+//      Output::Instance()->w("Occtree! \n");
+      io::IAttributes* attribs = device->getFileSystem()->createEmptyAttributes();
+      if (attribs)
+        {// get the mesh name out
+         node->serializeAttributes(attribs);
+         core::stringc name = attribs->getAttributeAsString("Mesh");
+         attribs->drop();
+         // get the animated mesh for the object
+         scene::IAnimatedMesh* mesh = device->getSceneManager()->getMesh(name.c_str());
+         if (mesh)
+         {
+           // scene::ITriangleSelector* selector =
+           // device->getSceneManager()->createOctTreeTriangleSelector(mesh->getMesh(0), node, 128);
+           // node->setTriangleSelector(selector);
+          //  metaSelector->addTriangleSelector(selector);
+           // selector->drop();
+                //tr.setOrigin(btVector3(trackPosition.X, trackPosition.Y, trackPosition.Z));
+//         btTriangleMesh *collisionMesh = new btTriangleMesh();
+//
+//  //  m_cScene->setGenericMaterial(node, 0);
+//
+//    int meshCount = mesh->getMeshBufferCount();
+//        printf("MESHBUFFER COUNT %d /n",meshCount);
+//
+//        for (int i=0; i < meshCount ; i++)//!load all meshes for CD
+//        {
+//            //  meshBuffer2->append( mesh->getMeshBuffer(i) );
+//          //  m_cScene->setGenericMaterial(node, i); //outdoor sun lumenation
+//            luna->m_cPhysics->convertIrrMeshBufferBtTriangleMesh(mesh->getMeshBuffer(i), collisionMesh, vector3df(1,1,1));
+//            //decalManager->addMesh(mesh->getMeshBuffer(i));
+//        }
+//
+//    btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
+//    btRigidBody *test = luna->m_cPhysics->localCreateRigidBody(0, tr, trackShape, node);
+         }
+
+     }
+
+  }
+  // now recurse on children...
+  core::list<scene::ISceneNode*>::ConstIterator begin = node->getChildren().begin();
+  core::list<scene::ISceneNode*>::ConstIterator end   = node->getChildren().end();
+
+  for (; begin != end; ++begin)
+    rfm(*begin);
+}
+
+//Collision::Instance()->createRootCollision();
 
 //material system for friction / lusture / magnetic / density

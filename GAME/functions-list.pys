@@ -34,7 +34,7 @@ iaxe = image.iadd()
 #irr.bullet(1)                      #its actually a recast test at the moment
 
 
-scene.soundman(1,0,1,1)                # has to be loaded last or makes black screen
+#scene.soundman(1,0,1,1)                # has to be loaded last or makes black screen
 #anim = irr.addAdnimator(1,"aha.b3d") #type line,circle attach to mesh
 
 #player = scene.addPlayer(1)
@@ -129,7 +129,7 @@ physics.ragman(1) # position , size , model, animation
 
 #physics.fpsweapon(1) #FPS not working yet
 #irr.lensFlare(1) # might not see without atmosphere enabled check pymain
-scene.SPARK(1)
+#scene.SPARK(1)
 
 
 video1=scene.addvideo("./media/bunny.ogg",10.0,10.0,10.0)	# has to be loaded after soundman or crash

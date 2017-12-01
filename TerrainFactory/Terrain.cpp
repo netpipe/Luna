@@ -132,7 +132,7 @@ float Terrain::getHeight2(float x, float z){
 };
 
 
-int Terrain::Render( vector3df terrainPosition,vector3df terrainRotation,vector3df terrainScale,int LOD){
+btRigidBody* Terrain::Render( char *tex,vector3df terrainPosition,vector3df terrainRotation,vector3df terrainScale,int LOD){
 
 
     //INIT VARS
@@ -172,7 +172,7 @@ int Terrain::Render( vector3df terrainPosition,vector3df terrainRotation,vector3
     cubeMesh->addMeshBuffer(glvertex);
     cubeMesh->recalculateBoundingBox();
     cubeSceneNode = smgr->addMeshSceneNode(cubeMesh);
-    cubeSceneNode->setMaterialTexture(0, driver->getTexture("data/textures/detailmaps/rock.png"));
+    cubeSceneNode->setMaterialTexture(0, driver->getTexture(tex));
 
   //  free(uiList);  // causes crashing
 
@@ -193,9 +193,10 @@ int Terrain::Render( vector3df terrainPosition,vector3df terrainRotation,vector3
     m_cPhysics->convertIrrMeshBufferBtTriangleMesh(meshBuffer, collisionMesh, terrainScale);
     btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
 
-    localCreateRigidBody(0, tr, trackShape, cubeSceneNode);
+    btRigidBody * terrain = localCreateRigidBody(0, tr, trackShape, cubeSceneNode);
 
-    return cubeSceneNode;
+    //return cubeSceneNode;
+    return terrain;
 }
 
 
@@ -709,15 +710,16 @@ void Terrain::tick(const float &CamX, const float &CamY, const float &CamZ)
 */
 
 
-int Terrain::MakeTrees(vector3df aha,int treetype,char * action){
+CTreeSceneNode* Terrain::MakeTrees(vector3df aha,int treetype,char * action){
     // type of tree
     //make the treestack more global ?
 
 
-
-if (action = "Tree"){
+if (treetype == 1 ){
+//if (action == "Tree"){
 CTreeGenerator* generator = 0;
-vector <CTreeSceneNode*> tree2;
+//vector <CTreeSceneNode*> tree2;
+CTreeSceneNode* tree2;
 
     video::ITexture* billTexture = 0;
     video::ITexture* leafTexture = 0;
@@ -750,7 +752,7 @@ const STreeDesignFiles treeDesignFiles[NUM_TREE_DESIGNS] = {
 
 STreeDesign treeDesigns [NUM_TREE_DESIGNS];
 s32 currentTreeDesign = 0;
-core::vector3df lightDir=vector3df(100.0f,110.0f,0.0f);
+core::vector3df lightDir=vector3df(-100.0f,-10.0f,-100.0f);
 s32 seed = 0;
 
 
@@ -773,28 +775,30 @@ s32 seed = 0;
         "shaders/trees/leaves.frag",
         "main", EPST_PS_2_0 , 0 , EMT_TRANSPARENT_ALPHA_CHANNEL_REF , 0 );
 
-        int treeType = treetype;
-    for(int i=0; i < 12; i++){
-        tree2.push_back(new CTreeSceneNode( smgr->getRootSceneNode(), smgr ));
-        seed = rand()%4;
-        tree2[i]->setup( treeDesigns[seed].Generator, seed, treeDesigns[seed].BillTexture );
-        tree2[i]->getLeafNode()->setMaterialTexture( 0, treeDesigns[seed].LeafTexture );
-        tree2[i]->setMaterialTexture( 0, treeDesigns[seed].TreeTexture );
+        //int treeType = treetype;
+   // for(int i=0; i < 12; i++){
+        tree2 = new CTreeSceneNode( smgr->getRootSceneNode(), smgr );
+        seed = treetype; //rand()%4;
+        tree2->setup( treeDesigns[seed].Generator, seed, treeDesigns[seed].BillTexture );
+        tree2->getLeafNode()->setMaterialTexture( 0, treeDesigns[seed].LeafTexture );
+        tree2->setMaterialTexture( 0, treeDesigns[seed].TreeTexture );
 
-bool lightsEnabled = 1;
+        bool lightsEnabled = 1;
         if ( lightsEnabled )
-        tree2[i]->getLeafNode()->applyVertexShadows( lightDir, 1.0f, 0.25f );
+        tree2->getLeafNode()->applyVertexShadows( lightDir, 1.0f, 0.25f );
 
-        tree2[i]->getLeafNode()->setMaterialType( leafMaterialType );
-        tree2[i]->setMaterialFlag( video::EMF_LIGHTING, 0 );
-        tree2[i]->setScale(core::vector3df(0.5f,0.5f,0.5f));
-        tree2[i]->setPosition(core::vector3df(aha.X,aha.Y,aha.Z*i));
-        tree2[i]->setMaterialType(video::EMT_NORMAL_MAP_SOLID);
-        tree2[i]->drop(); //this was disabled not sure why
-    }
+        tree2->getLeafNode()->setMaterialType( leafMaterialType );
+        tree2->setMaterialFlag( video::EMF_LIGHTING, 0 );
+        tree2->setScale(core::vector3df(0.5f,0.5f,0.5f));
+        tree2->setPosition(core::vector3df(aha.X,aha.Y,aha.Z));
+        tree2->setMaterialType(video::EMT_NORMAL_MAP_SOLID);
+        tree2->drop(); //this was disabled not sure why
+    //}
     //return pointer to treenode
-//    return (tree2)
+    return (tree2);
 }
+
+
 
 
 //if (action = "jungle"){

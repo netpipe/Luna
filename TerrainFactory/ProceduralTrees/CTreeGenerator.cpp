@@ -1,6 +1,6 @@
-/*  
+/*
     Written by Asger Feldthaus
-    
+
     February 2007
 */
 
@@ -17,86 +17,86 @@ namespace irr
 namespace scene
 {
 
-void BuildCylinder(   
+void BuildCylinder(
         core::array<video::S3DVertex>& vertexArray,
         core::array<u16>& indexArray,
         core::aabbox3d<f32>& boundingBox,
-        
+
         f32 height,
         f32 startRadius,
         f32 endRadius,
         s32 radialSegments,
-        
+
         const core::matrix4& transform,
-        
+
         f32 startTCoordY = 0.0f,
         f32 endTCoordY = 1.0f,
         video::SColor startColor = video::SColor(255,255,255,255),
         video::SColor endColor = video::SColor(255,255,255,255) )
 {
     u16 vertexIndex = vertexArray.size();
-    
+
     s32 radialVertices = radialSegments + 1; // We want one additional vertex to make the texture wraps correctly
-    
+
     // Place bottom cap
     for ( s32 i=0; i<radialVertices; i++ )
     {
         f32 angle = 2.0f * core::PI * i / (f32)( radialSegments );
-        
+
         core::vector3df dir;
         dir.X = cos(angle);
         dir.Z = sin(angle);
-        
+
         core::vector3df pos;
         core::vector3df normal = dir;
 
         pos = dir * startRadius;
-        
+
         // Place bottom vertex
         transform.transformVect( pos );
         transform.rotateVect( normal );
-        
+
         core::vector2df tcoord;
         tcoord.X = (f32)( i ) / (f32)( radialSegments );
         tcoord.Y = startTCoordY;
-        
+
         vertexArray.push_back( video::S3DVertex(
             pos,
             normal,
             startColor,
             tcoord  ) );
-        
+
         boundingBox.addInternalPoint( pos );
     }
-    
+
     // Place top cap and indices
     for ( s32 i=0; i<radialVertices; i++ )
     {
         f32 angle = 2.0f * core::PI * i / (f32)( radialSegments );
-        
+
         core::vector3df dir;
         dir.X = cos(angle);
         dir.Z = sin(angle);
-        
+
         core::vector3df normal = dir;
         core::vector3df pos = dir * endRadius;
         pos.Y = height;
-        
-        transform.transformVect( pos ); 
+
+        transform.transformVect( pos );
         transform.rotateVect( normal );
-        
+
         core::vector2df tcoord;
         tcoord.X = (f32)( i ) / (f32)( radialSegments );
         tcoord.Y = endTCoordY;
-        
+
         vertexArray.push_back( video::S3DVertex(
             pos,
             normal,
             endColor,
             tcoord  ) );
-        
+
         boundingBox.addInternalPoint(pos);
-        
+
         // Add indices
         if ( i != radialVertices-1 )
         {
@@ -105,7 +105,7 @@ void BuildCylinder(
             indexArray.push_back ( vertexIndex + i );
             indexArray.push_back ( vertexIndex + radialVertices + i );
             indexArray.push_back ( vertexIndex + i2 );
-            
+
             indexArray.push_back ( vertexIndex + radialVertices + i );
             indexArray.push_back ( vertexIndex + radialVertices + i2 );
             indexArray.push_back ( vertexIndex + i2 );
@@ -150,11 +150,11 @@ inline CTreeGenerator::SValueRange<f32> getValueRangeFloatFromXML( io::IXMLReade
         range.Value = xml->getAttributeValueAsFloat( L"value" );
         return range;
     }
-    
+
     range.IsValue = false;
     range.Min = xml->getAttributeValueAsFloat( L"min" );
     range.Max = xml->getAttributeValueAsFloat( L"max" );
-    
+
     return range;
 }
 
@@ -167,11 +167,11 @@ inline CTreeGenerator::SValueRange<s32> getValueRangeIntFromXML( io::IXMLReader*
         range.Value = xml->getAttributeValueAsInt( L"value" );
         return range;
     }
-    
+
     range.IsValue = false;
     range.Min = xml->getAttributeValueAsInt( L"min" );
     range.Max = xml->getAttributeValueAsInt( L"max" );
-    
+
     return range;
 }
 
@@ -179,14 +179,14 @@ inline f32 parseFloat( const wchar_t* &c )
 {
     while ( *c == L',' || *c == L';' || *c == L' ' || *c == L'\t' )
         c++;
-    
+
     core::stringw tmp = L"";
     while ( *c != 0 && *c != L',' && *c != L';' && *c != L' ' && *c != L'\t' )
     {
         tmp += *c;
         c++;
     }
-    
+
     f32 f = 0.0f;
     swscanf( tmp.c_str(), L"%f", &f );
     return f;
@@ -213,31 +213,31 @@ void CTreeGenerator::loadFromXML( io::IXMLReader* xml )
 {
     if ( xml == 0 )
         return;
-    
+
     RootIdRef = -1;
-    
+
     SBranch* currentBranch = 0;
-    
+
     SBranchChild* currentChild = 0;
-    
+
     SLeaf* currentLeaf = 0;
-    
+
     while ( xml->read() )
     {
         io::EXML_NODE type = xml->getNodeType();
-        
+
         core::stringw nodeName = L"";
-        
+
         switch( type )
         {
             case io::EXN_ELEMENT:
-                
+
                 nodeName = xml->getNodeName();
-                
+
                 if ( nodeName == L"branch" && currentBranch == 0 && currentLeaf == 0 )
                 {
                     currentBranch = new SBranch();
-                    
+
                     if ( xml->getAttributeValue( L"id" ) != 0 )
                         currentBranch->Id = xml->getAttributeValueAsInt( L"id" );
                 }
@@ -245,10 +245,10 @@ void CTreeGenerator::loadFromXML( io::IXMLReader* xml )
                 if ( nodeName == L"child" && currentBranch != 0 && currentChild == 0 && currentLeaf == 0 )
                 {
                     currentChild = new SBranchChild();
-                    
+
                     if ( xml->getAttributeValue( L"ref" ) != 0 )
                         currentChild->IdRef = xml->getAttributeValueAsInt( L"ref" );
-                    
+
                     if ( xml->getAttributeValue( L"level" ) != 0 )
                     {
                         currentChild->RelativeLevel.IsValue = true;
@@ -259,7 +259,7 @@ void CTreeGenerator::loadFromXML( io::IXMLReader* xml )
                 if ( nodeName == L"leaf" && currentBranch != 0 && currentChild == 0 && currentLeaf == 0 )
                 {
                     currentLeaf = new SLeaf();
-                    
+
                     if ( xml->getAttributeValue( L"level" ) != 0 )
                     {
                         currentLeaf->LevelRange.IsValue = true;
@@ -330,7 +330,7 @@ void CTreeGenerator::loadFromXML( io::IXMLReader* xml )
                 if ( nodeName == L"root" && currentBranch == 0 && currentChild == 0 && currentLeaf == 0 )
                 {
                     RootIdRef = xml->getAttributeValueAsInt( L"ref" );
-                    
+
                     if ( xml->getAttributeValue( L"levels" ) != 0 )
                     {
                         Levels = xml->getAttributeValueAsInt( L"levels" );
@@ -403,13 +403,13 @@ void CTreeGenerator::loadFromXML( io::IXMLReader* xml )
                 {
                     currentLeaf->Alpha = getValueRangeIntFromXML( xml );
                 }
-                
+
                 break;
-            
+
             case io::EXN_ELEMENT_END:
-                
+
                 nodeName = xml->getNodeName();
-                
+
                 if ( nodeName == L"branch" && currentBranch != 0 )
                 {
                     Branches.push_back( currentBranch );
@@ -429,17 +429,17 @@ void CTreeGenerator::loadFromXML( io::IXMLReader* xml )
                     delete currentLeaf;
                     currentLeaf = 0;
                 }
-                
+
                 break;
         }
     }
-    
+
     if ( currentLeaf != 0 )
         delete currentLeaf;
-    
+
     if ( currentChild != 0 )
         delete currentChild;
-    
+
     if ( currentBranch != 0 )
         delete currentBranch;
 }
@@ -447,26 +447,27 @@ void CTreeGenerator::loadFromXML( io::IXMLReader* xml )
 STreeMesh* CTreeGenerator::generateTree( s32 radialSegments, s32 seed, bool addLeaves, s32 cutoffLevel )
 {
     STreeMesh* treeMesh = new STreeMesh();
-    
+
     Seed = seed;
     LeafSeed = seed;
     RadialSegments = radialSegments;
     CutoffLevel = cutoffLevel;
     AddLeaves = addLeaves;
-    
+
     SMeshBuffer* buffer = new SMeshBuffer();
-    
+
     treeMesh->setMeshBuffer( buffer );
-    
+
     SBranch* root = getBranchWithId( RootIdRef );
-    
+
     if ( root != 0 )
     {
         appendBranch( core::matrix4(), root, 1.0f, 1.0f, Levels, buffer, treeMesh->Leaves );
     }
-    
+
+
     buffer->drop();
-    
+
     return treeMesh;
 }
 
@@ -501,7 +502,7 @@ inline bool isValueInRange( T value, const CTreeGenerator::SValueRange<T>& range
 {
     if ( range.IsValue )
         return ( value == range.Value );
-    
+
     return ( value >= range.Min && value <= range.Max );
 }
 
@@ -509,7 +510,7 @@ inline f32 getFloatFromValueRange( const CTreeGenerator::SValueRange<f32>& range
 {
     if ( range.IsValue )
         return range.Value;
-    
+
     return getRandomFloat( seed, range.Min, range.Max );
 }
 
@@ -517,7 +518,7 @@ inline s32 getIntFromValueRange( const CTreeGenerator::SValueRange<s32>& range, 
 {
     if ( range.IsValue )
         return range.Value;
-    
+
     return getRandomInt( seed, range.Min, range.Max );
 }
 
@@ -532,38 +533,38 @@ void CTreeGenerator::appendBranch( const core::matrix4& transform, SBranch* bran
 {
     if ( level <= 0 )
         return; // Do nothing, this branch is invisible.
-    
+
     // Add this branch
     f32 length = lengthScale * getFloatFromValueRange( branch->Length, Seed++ );
-    
+
     f32 radius = getFloatFromValueRange( branch->Radius, Seed++ );
-    
+
     f32 radiusEndScale = radiusScale * getFloatFromValueRange( branch->RadiusEnd, Seed++ );
-    
+
     f32 radiusEnd = radius * radiusEndScale;
-    
+
     radius = radiusScale * radius;
-    
+
     if ( level == 1 )
         radiusEnd = 0;
-    
+
     s32 radialSegments = (level*(RadialSegments-3))/Levels + 3;
-    
+
     if ( level > CutoffLevel )
     {
         BuildCylinder(
             buffer->Vertices,
             buffer->Indices,
             buffer->BoundingBox,
-            
+
             length,
             radius,
             radiusEnd,
             radialSegments,
-            
+
             transform );
     }
-    
+
     // Add children
     if ( level > 1 )
     {
@@ -571,78 +572,78 @@ void CTreeGenerator::appendBranch( const core::matrix4& transform, SBranch* bran
         while ( it != branch->Children.end() )
         {
             SBranchChild* child = &(*it);
-            
+
             it++;
-            
+
             SBranch* childBranch = getBranchWithId( child->IdRef );
-            
+
             if ( childBranch == 0 )
                 continue;
-            
+
             if ( !isValueInRange( level, child->LevelRange ) )
                 continue;
-            
+
             s32 childLevel = level + getIntFromValueRange( child->RelativeLevel, Seed++ ); // RelativeLevel is usually negative, -1 in particular.
-            
+
             s32 numChildren = getIntFromValueRange( child->Count, Seed++ );
-            
+
             f32 positionRange = child->Position.Max - child->Position.Min;
-            
+
             positionRange /= (f32)numChildren;
-            
+
             f32 orientation = getRandomFloat( Seed++, 0, 360.0f );
-            
+
             for ( s32 i=0; i<numChildren; i++ )
             {
                 f32 childLengthScale = lengthScale * getFloatFromValueRange( child->LengthScale, Seed++ );
-                
+
                 orientation += getFloatFromValueRange( child->Orientation, Seed++ );
-                
+
                 // Clamp value between 0 and 360. This is needed for gravity to work properly
                 if ( orientation < 0.0f )
                     orientation += 360.0f;
                 else
                 if ( orientation > 360.0f )
                     orientation -= 360.0f;
-                
+
                 f32 childOrientation = orientation;
-                
+
                 f32 gravity = getFloatFromValueRange( child->GravityInfluence, Seed++ );
-                
+
                 f32 childPitch = getFloatFromValueRange( child->Pitch, Seed++ );
-                
+
                 f32 childPosition = getFloatFromValueRange( child->Position, Seed++ );
-                
+
                 f32 position;
-                
+
                 if ( child->Position.IsValue )
                     position = child->Position.Value;
                 else
                     position = (child->Position.Min + positionRange * i + positionRange * getRandomFloat( Seed++, 0, 1 ));
-                
+
                 f32 childRadiusScale = (radiusScale*(1.0f-position) + radiusEndScale*position) * getFloatFromValueRange( child->RadiusScale, Seed++ );
-                
+
                 // Build transformation matrix
                 core::matrix4 mat;
-                
+
                 mat.setRotationDegrees( core::vector3df(childPitch, childOrientation, 0.0f) );
-                
+
                 mat[13] = length * position;
-                
+
                 mat = transform * mat;
-                
-                
+
+
                 if ( gravity != 0.0f )
                 {
                     // Do some extra work
-                    
+
                     core::vector3df vDown = core::vector3df( 0, -1, 0 );
-                    
+
                     core::vector3df vBranch = core::vector3df( 0, 1, 0 );
                     mat.rotateVect(vBranch);
-                    
+
                     core::vector3df vSide;
-                    
+
                     if ( fabs( vBranch.Y ) >= 0.9f )
                     {
                         vSide = core::vector3df( 1, 0, 0 );
@@ -653,34 +654,34 @@ void CTreeGenerator::appendBranch( const core::matrix4& transform, SBranch* bran
                         vSide = vBranch.crossProduct(vDown);
                         vSide.normalize();
                     }
-                    
+
                     vDown = vSide.crossProduct(vBranch);
                     vDown.normalize();
-                    
+
                     setMatrixVec( mat, 0, vSide );
                     setMatrixVec( mat, 2, vDown );
-                    
+
                     f32 dot = -vBranch.Y;
-                    
+
                     if ( gravity < 0.0f )
                         dot = -dot;
-                    
+
                     f32 angle = acos( dot );
-                    
+
                     angle *= gravity;
-                    
+
                     core::matrix4 mat2;
                     mat2.setRotationRadians( core::vector3df( angle,0,0 ) );
-                    
+
                     mat = mat * mat2;
                 }
-                
+
                 // Add the branch
                 appendBranch( mat, childBranch, childLengthScale, childRadiusScale, childLevel, buffer, leaves );
             }
         }
     }
-    
+
     // Add leaves
     if ( AddLeaves )
     {
@@ -689,40 +690,40 @@ void CTreeGenerator::appendBranch( const core::matrix4& transform, SBranch* bran
         {
             SLeaf* leaf = &(*lit);
             lit++;
-            
+
             if ( !isValueInRange( level, leaf->LevelRange ) )
                 continue;
-            
+
             s32 count = getIntFromValueRange( leaf->Count, LeafSeed++ );
-            
+
             for ( s32 i=0; i<count; i++ )
             {
-            
+
                 f32 width = getFloatFromValueRange( leaf->Width, LeafSeed++ );
                 f32 height = getFloatFromValueRange( leaf->Height, LeafSeed++ );
                 f32 scale = getFloatFromValueRange( leaf->Scale, LeafSeed++ );
                 f32 position = getFloatFromValueRange( leaf->Position, LeafSeed++ );
                 f32 roll = getFloatFromValueRange( leaf->Roll, LeafSeed++ );
                 f32 anchor = getFloatFromValueRange( leaf->Anchor, LeafSeed++ );
-                
+
                 core::matrix4 mat;
-                
+
                 mat[13] = length * position;
-                
+
                 mat = transform * mat;
-                
+
                 STreeLeaf treeLeaf;
-                
+
                 treeLeaf.Position = mat.getTranslation();
-                
+
                 treeLeaf.Color.setRed( getIntFromValueRange( leaf->Red, LeafSeed++ ) );
                 treeLeaf.Color.setGreen( getIntFromValueRange( leaf->Green, LeafSeed++ ) );
                 treeLeaf.Color.setBlue( getIntFromValueRange( leaf->Blue, LeafSeed++ ) );
                 treeLeaf.Color.setAlpha( getIntFromValueRange( leaf->Alpha, LeafSeed++ ) );
-                
+
                 treeLeaf.Size = core::dimension2df(scale*width, scale*height);
                 treeLeaf.Roll = roll;
-                
+
                 if ( leaf->HasAxis )
                 {
                     treeLeaf.HasAxis = true;
@@ -733,10 +734,10 @@ void CTreeGenerator::appendBranch( const core::matrix4& transform, SBranch* bran
                 {
                     treeLeaf.HasAxis = false;
                 }
-                
+
                 leaves.push_back( treeLeaf );
             }
-            
+
         }
     }
 }
