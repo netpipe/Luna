@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007, elvman
+ * Copyright (c) 2013, elvman
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -13,7 +13,7 @@
  * THIS SOFTWARE IS PROVIDED BY elvman ``AS IS'' AND ANY
  * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL <copyright holder> BE LIABLE FOR ANY
+ * DISCLAIMED. IN NO EVENT SHALL elvman BE LIABLE FOR ANY
  * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
  * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
@@ -21,49 +21,76 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+ 
+const float LOG2 = 1.442695;
 
-uniform vec3		CameraPosition;  // Camera position
+uniform vec3		CameraPosition;  // Position of main position
 uniform float		WaveHeight;
 
-vec4				WaterColor;
+uniform vec4		WaterColor;
 uniform float		ColorBlendFactor;
 
 uniform sampler2D	WaterBump; //coverage
-uniform sampler2D	RefractionMap; //lightmap
-uniform sampler2D	ReflectionMap;
+uniform sampler2D	RefractionMap; //coverage
+uniform sampler2D	ReflectionMap; //coverage
 
-void main( void ) 
-{	
+uniform bool		FogEnabled;
+uniform int			FogMode;
+
+varying vec2 bumpMapTexCoord;
+varying vec3 refractionMapTexCoord;
+varying vec3 reflectionMapTexCoord;
+varying vec3 position3D;
+	
+void main()
+{
 	//bump color
-	vec4 bumpColor = texture2D(WaterBump, vec2(gl_TexCoord[0]));
-	vec2 perturbation = WaveHeight*(bumpColor.rg - 0.5f);
+	vec4 bumpColor = texture2D(WaterBump, bumpMapTexCoord);
+	vec2 perturbation = WaveHeight * (bumpColor.rg - 0.5);
 	
 	//refraction
-	vec2 ProjectedRefractionTexCoords;
-	ProjectedRefractionTexCoords.x = gl_TexCoord[1].x/gl_TexCoord[1].w/2.0f + 0.5f;
-	ProjectedRefractionTexCoords.y = -gl_TexCoord[1].y/gl_TexCoord[1].w/2.0f + 0.5f;
-	
-	vec4 refractiveColor = texture2D(RefractionMap, ProjectedRefractionTexCoords + perturbation );
+	vec2 ProjectedRefractionTexCoords = clamp(refractionMapTexCoord.xy / refractionMapTexCoord.z + perturbation, 0.0, 1.0);
+	//calculate final refraction color
+	vec4 refractiveColor = texture2D(RefractionMap, ProjectedRefractionTexCoords );
 	
 	//reflection
-	vec2 ProjectedReflectionTexCoords;
-    ProjectedReflectionTexCoords.x = gl_TexCoord[2].x/gl_TexCoord[2].w/2.0f + 0.5f;
-    ProjectedReflectionTexCoords.y = -gl_TexCoord[2].y/gl_TexCoord[2].w/2.0f + 0.5f;
-	
-	vec4 reflectiveColor = texture2D(ReflectionMap, ProjectedReflectionTexCoords + perturbation );
+	vec2 ProjectedReflectionTexCoords = clamp(reflectionMapTexCoord.xy / reflectionMapTexCoord.z + perturbation, 0.0, 1.0);
+	//calculate final reflection color
+	vec4 reflectiveColor = texture2D(ReflectionMap, ProjectedReflectionTexCoords );
 
 	//fresnel
-	vec3 eyeVector = normalize(CameraPosition - vec3(gl_TexCoord[3]));
-	vec3 normalVector = vec3(0,1,0);
+	vec3 eyeVector = normalize(CameraPosition - position3D);
+	vec3 upVector = vec3(0.0, 1.0, 0.0);
 	
-	float fresnelTerm = max( dot(eyeVector, normalVector), 0.0f );
+	//fresnel can not be lower than 0
+	float fresnelTerm = max( dot(eyeVector, upVector), 0.0 );
 	
-	// Original code
-	// vec4 combinedColor = refractiveColor*fresnelTerm + reflectiveColor*(1-fresnelTerm);
+	float fogFactor = 1.0;
+	
+	if (FogEnabled)
+	{
+		float z = gl_FragCoord.z / gl_FragCoord.w;
 
-        // Modified so that We still see the refraction... 
-        vec4 combinedColor = refractiveColor*fresnelTerm + reflectiveColor*(1-fresnelTerm);
+		if (FogMode == 1) //exp
+		{
+			float fogFactor = exp2(-gl_Fog.density * z * LOG2);
+			fogFactor = clamp(fogFactor, 0.0, 1.0);
+		}
+		else if (FogMode == 0) //linear
+		{
+			fogFactor = (gl_Fog.end - z) / (gl_Fog.end - gl_Fog.start);
+		}
+		else if (FogMode == 2) //exp2
+		{
+			float fogFactor = exp2(-gl_Fog.density * gl_Fog.density * z * z * LOG2);
+			fogFactor = clamp(fogFactor, 0.0, 1.0);
+		}
+	}
 	
-	gl_FragColor= = ColorBlendFactor*WaterColor + (1-ColorBlendFactor)*combinedColor;
+	vec4 combinedColor = refractiveColor * fresnelTerm + reflectiveColor * (1.0 - fresnelTerm);
+	
+	vec4 finalColor = ColorBlendFactor * WaterColor + (1.0 - ColorBlendFactor) * combinedColor;
+	
+	gl_FragColor = mix(gl_Fog.color, finalColor, fogFactor );
 }
 

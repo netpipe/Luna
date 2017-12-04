@@ -139,6 +139,10 @@ node = smgr->addLightSceneNode(0, core::vector3df(x,y,z),
 return Py_BuildValue("z",node);
 }
 
+//PyObject * Python::PyIrr_setEvent(PyObject * self,PyObject * args){
+//}
+
+
 //PyObject * Python::PyIrr_Camera(PyObject * self,PyObject * args)
 //{
 //

@@ -620,8 +620,6 @@
 		<Unit filename="Scene/PostProcessing/main.cpp" />
 		<Unit filename="Scene/PostProcessing/shaders.h" />
 		<Unit filename="Scene/RainMan.h" />
-		<Unit filename="Scene/RealisticWater.cpp" />
-		<Unit filename="Scene/RealisticWater.h" />
 		<Unit filename="Scene/RibbonTrailSceneNode/RibbonTrailSceneNode.cpp" />
 		<Unit filename="Scene/RibbonTrailSceneNode/RibbonTrailSceneNode.h" />
 		<Unit filename="Scene/SPARK/SPK.h" />
@@ -708,6 +706,8 @@
 		<Unit filename="TerrainFactory/open-simplex-noise.h" />
 		<Unit filename="TerrainFactory/realCloud/CloudSceneNode.cpp" />
 		<Unit filename="TerrainFactory/realCloud/CloudSceneNode.h" />
+		<Unit filename="TerrainFactory/water/RealisticWater.cpp" />
+		<Unit filename="TerrainFactory/water/RealisticWater.h" />
 		<Unit filename="TidBits.cpp" />
 		<Unit filename="entities/AI/miNav/main.cpp" />
 		<Unit filename="entities/AI/miNav/miNav.cpp" />

@@ -62,6 +62,7 @@ return Py_BuildValue("");
 PyObject * Python::PyIrr_iAdd(PyObject * self,PyObject * args){
    //	s32 node_id;
 //	float size;
+//bImage2d =1;
    	float px,py,pz,rx,ry,rz,sx,sy,sz;
 	//Damn...thats a lot of parameters :)
 	//PyArg_ParseTuple(args,"lffffffffff",&node_id,&size,&px,&py,&pz,&rx,&ry,&rz,&sx,&sy,&sz);

@@ -73,6 +73,8 @@ ISceneManager* smgr;
   bool shoot();
   void reload();
   void holster();
+  void render();
+  void OnRegisterSceneNode();
 
   u8 getAmmo();
   IAnimatedMeshSceneNode* getNode(){return node;}

@@ -61,6 +61,7 @@
 #include "../Scene/tesselatedImage/tesselatedImage.h""
 #include "../entities/chopper_control.h"
 #include "../TerrainFactory/WaterNode/CReflectedWater.h"
+#include "../TerrainFactory/water/RealisticWater.h"
 //#include "../entities/player.h"
 #include "../entities/OpenSteer/cOpenSteerDemo.h"
 #undef useIrrExtensions13
@@ -375,15 +376,19 @@ return Py_BuildValue("l",managerID);
 
 PyObject * Python::PyIrr_fpsWeapon(PyObject * self,PyObject * args){
 // need to attach to bones and/or nodes here
-    device->getGUIEnvironment()->addImage( driver->getTexture("./data/textures/crosshairs/crosshair1.png"),
+bFPS = 1;
+    long pcam;
+    PyArg_ParseTuple(args,"l",&pcam);
+    ICameraSceneNode* camera = pcam;
+    device->getGUIEnvironment()->addImage( driver->getTexture("data/textures/crosshairs/crosshair1.png"),
                                             core::position2d<s32>((luna->resolution[0]/2)-64,(luna->resolution[1]/2)-64));
     #ifdef FPSWEAPON
-          IAnimatedMesh*   gunmesh = smgr->getMesh("./data/models/weapons/M4/3d_person/M4A1d.3ds");
+          IAnimatedMesh*   gunmesh = smgr->getMesh("data/models/weapons/M4/3d_person/M4A1d.3ds");
           scene::IAnimatedMeshSceneNode* agun;
           agun = smgr->addAnimatedMeshSceneNode(gunmesh);
           if (agun)
           {
-            agun->setMaterialTexture(0, driver->getTexture("./data/models/weapons/M4/1st_person/M4A1.jpg"));
+            agun->setMaterialTexture(0, driver->getTexture("data/models/weapons/M4/1st_person/M4A1.jpg"));
             agun->setScale(core::vector3df(1.2f, 1.2f, 1.2f));
             agun->setPosition(core::vector3df(180.f,1.5f,0.f));
             agun->setRotation(core::vector3df(0.f,0.f,90.f));
@@ -403,7 +408,7 @@ PyObject * Python::PyIrr_fpsWeapon(PyObject * self,PyObject * args){
         device->setEventReceiver(M4);
       //  return Py_BuildValue("l",agun);
     #endif
-return Py_BuildValue("0");
+return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_addPlayer(PyObject * self,PyObject * args) {//active camera

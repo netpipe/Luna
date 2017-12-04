@@ -171,6 +171,8 @@ device->getCursorControl()->setVisible(true);
 clearBodies();
 #endif
 
+
+
 #ifdef SPARKA
 	cout << "\nSPARK FACTORY BEFORE DESTRUCTION :" << endl;
 	SPKFactory::getInstance().traceAll();

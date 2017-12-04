@@ -74,13 +74,23 @@ bool firstPersonWeapon::OnEvent(const SEvent& event)
   return false;
 }
 
-
 bool firstPersonWeapon::isKeyDown(EKEY_CODE keyCode) const
 {
   return KeyDown[keyCode];
 }
 
-
+//void firstPersonWeapon::OnRegisterSceneNode()
+//    {
+////        if (IsVisible)
+//            smgr->registerNodeForRendering(this,ESRP_DEFAULT);
+//
+//        ISceneNode::OnRegisterSceneNode();
+//}
+//
+//void firstPersonWeapon::render()
+//{
+//  update(device2->getTimer()->getTime());
+//}
 ///==============================================================================
 ///EVENT LOOP
 ///==============================================================================

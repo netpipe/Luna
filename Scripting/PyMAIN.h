@@ -52,6 +52,7 @@ namespace Python {
 
 
     firstPersonWeapon* M4;
+    bool bFPS;
 
 //    	enum E_PACKET_TYPE
 //{
@@ -379,6 +380,8 @@ void Python::render() {//active camera
             for (std::vector<RagDoll*>::iterator it = v_RagDolls.begin(); it != v_RagDolls.end(); ++it)
             (*it)->Update();
         #endif
+
+        if (bFPS){    M4->update(device->getTimer()->getTime());}
 
         //      }
         #endif
