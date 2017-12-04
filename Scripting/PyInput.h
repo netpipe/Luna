@@ -93,7 +93,7 @@ if ( state==0 ){  // use state for get and set var
 			return Py_BuildValue("i",returnvar);
 			break;
 			case 11:
-				vector3df position = vehicle->getPosition(vector3df(ammount,y,z));
+				vector3df position = vehicle->getPosition();
 				return Py_BuildValue("l",position);
 		}
     }
@@ -112,133 +112,6 @@ bool keystate = mEvent.getKeyState( irr::EKEY_CODE(key) );
 return (keystate);
 //return 1;
 }
-
-
-int Python::VehicleParam(Vehicle *vehicle,int  param,float state,float ammount,float y,float z){   // parameter editor// possibly a define value for get and set
-
-//steering
-//acceleration
-//etc...
-
-
-int returnvar=0;
-//printf("%s",param);
-
-
-
-enum eparam{reset,accelerate,reverse,ebrake,brake,lsteer,rsteer};
-
-
-//if param = "accelerate"
-//	action = 1
-
-//std::map<std::string, eparam> nodeMap;
-//int Iparam = nodeMap[param];
-//nodeMap["Cone"] = NODES::Cone;
-//nodeMap["Cone"] = ;
-
-//prob need one map for state too
-
-int Iparam=param;
-
-if ( state==0 ){  // use state for get and set var
-       switch (Iparam){
-
-            case eparam(reset):
-             //   m_cVehicle->resetVehicle();
-				vehicle->resetVehicle();
-                break;
-
-            case accelerate:
-                vehicle->accelerate(1);
-            break;
-
-            case reverse:
-                vehicle->reverse(1);
-                break;
-            case ebrake: //wind resistance
-                vehicle->reverse(ammount);
-                printf("ebrake");
-            break;
-
-            case brake:
-            	//printf('braking');
-                                vehicle->brake();
-//                   if (mEvent.getKeyState(    irr::EKEY_CODE( 0x26 ) ))//KEY_UP)  ) ///| getkey.keyUP
-//                            {m_cVehicle->accelerate(1);}// need gears or something haha
-//                    else if (!mEvent.getKeyState(  KEY_UP) && (m_cVehicle->getState() != EVEHICLE_REVERSING))
-                        //    m_cVehicle->accelerate(-1);   //wind resistance
-                break;
-
-            case lsteer:
-                vehicle->steer_left();
-                break;
-
-            case rsteer:
-         //       printf("steer right");
-                vehicle->steer_right();
-                break;
-			case 7:
-
-            case 8:
-            	vehicle->renderme();
-                break;
-            case 9:
-                vehicle->steer_reset();
-                break;
-            case 10:
-                printf ("case 10");
-//                            vector3df ha = camera->getAbsolutePosition();
-//      //  printf("Jump position: %f %f %f \n", pos[0], pos[1], pos[2]);
-//        camera->setPosition(vector3df( ha.X, ha.Y+40, ha.Z));
-                           //     luna->m_cPhysics->createBox( btVector3(pos.X, pos.Y, pos.Z), btVector3(scl.X, scl.Y, scl.Z), 10); //weight
-            break;
-            case 11:
-                   vehicle->setPosition(vector3df(ammount,y,z));
-
-            break;
-            case 12:
-                break;
-       }
-
-    } else if (state==1){   //get vars
-
-	switch (param){
-        case 0:
-        returnvar = m_cVehicle->getState();
-        break;
-        case 11:
-        	vehicle->setPosition(vector3df(ammount,y,z));
-           }
-
-
-
-//        vector3df pos = camera->getPosition();
-//        vector3df scl = vector3df(1,1,1);
-//        luna->m_cPhysics->createBox( btVector3(pos.X, pos.Y, pos.Z), btVector3(scl.X, scl.Y, scl.Z), 10); //weight
-//    if (bCarFollow) {
-//    // this is for putting the camera above the car
-//        btVector3 point = m_cVehicle->getVehiclePosition();
-//        camera->setPosition(vector3df(
-//          (f32)point[0],
-//          (f32)point[1]+10,
-//          (f32)point[2]-50));
-//    }
-
-//  //  else if (!mEvent.getKeyState(  KEY_UP) && (m_cVehicle->getState() != EVEHICLE_REVERSING))
-//      //              {m_cVehicle->accelerate(-1);}   //wind resistance
-//// not working just keeps accelerating moved to speed incs
-//
-//    if (mEvent.getKeyState(    KEY_DOWN))
-//                    {m_cVehicle->reverse(1);    }
-////    else if (!mEvent.getKeyState(  KEY_DOWN) && (m_cVehicle->getState() != EVEHICLE_ACCELERATING))
-////                    {m_cVehicle->reverse(0.3);}      // wind resistance
-
-//    if (!mEvent.getKeyState(   KEY_LEFT) && !mEvent.getKeyState(KEY_RIGHT))
-//                    {m_cVehicle->steer_reset(); }
-return returnvar;
-}
-
 
 PyObject * Python::PyIrr_getKey(PyObject * self,PyObject * args){
 //irr::EKEY_CODE StringToEKey_Code( std::string tempString )

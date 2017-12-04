@@ -184,10 +184,13 @@ void Vehicle::renderme(){  //deltatime ?
 
 
 vector3df Vehicle::getPosition(void){
-  if(!m_vehicle)
-    return m_vehiclePosition;
-  else
-    return m_vehicle->getRigidBody()->getCenterOfMassPosition();
+  if(!m_vehicle){
+    return vector3df(m_vehiclePosition[0],m_vehiclePosition[1],m_vehiclePosition[2]);
+
+ } else{
+    btVector3 getpos = m_vehicle->getRigidBody()->getCenterOfMassPosition();
+    return vector3df(getpos[0],getpos[1],getpos[2]);
+    }
 }
 
 

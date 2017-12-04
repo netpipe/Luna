@@ -81,7 +81,7 @@ class Vehicle{
     void registerPhysics(Physics &physics);
     void registerScene(Scene &scene);
 
-    btVector3 getVehiclePosition(void);
+    vector3df getPosition(void);
 
     btQuaternion getVehicleOrientation(void);
 
