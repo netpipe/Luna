@@ -5,14 +5,14 @@
 //	//vector3df tmpvect;
 //    bool connected,doit,login=0;
 //
-enum E_PACKET_TYPE
-{
-	EPT_ROTATION = 1,
-	EPT_POWER = 2,
-	EPT_MESSAGE = 3
-};
-
-
+//enum E_PACKET_TYPE
+//{
+//	EPT_ROTATION = 1,
+//	EPT_POWER = 2,
+//	EPT_MESSAGE = 3
+//};
+//
+//
 //class ClientNetCallback : public net::INetCallback
 //{
 //public:

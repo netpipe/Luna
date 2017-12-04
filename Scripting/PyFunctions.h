@@ -139,7 +139,7 @@ RibbonTrailSceneNode* rt;
     scene::LensFlareSceneNode* lensFlareNode;
     scene::IMeshSceneNode* sunMeshNode;
 
-    Vehicle *m_cVehicle;
+  //  Vehicle *m_cVehicle;
   //  Vehicle *m_cVehicle2;
 
  //   static vector<Vehicle*> m_cVehicle;
@@ -151,22 +151,7 @@ RibbonTrailSceneNode* rt;
 
 #include "PyMAIN.h"
 #include "PyNet.h"
-PyMethodDef irr_Network[] =
-{
-    {"connect",Python::PyIrr_Connect,METH_VARARGS,"connect"},
-    {"disconnect",Python::PyIrr_Disconnect,METH_VARARGS,"disconnect"},
-    {"ping",Python::PyIrr_Ping,METH_VARARGS,"ping"},
-    {"sendFile",Python::PyIrr_sendFile,METH_VARARGS,"sendFile"},
-    {"Send",Python::PyIrr_Send,METH_VARARGS,"sendFile"},
-    {"update",Python::PyIrr_Update,METH_VARARGS,"sendFile"},
 
-    {"encrypt",Python::PyIrr_Encrypt,METH_VARARGS,"encrypt"},
-    {"decrypt",Python::PyIrr_Decrypt,METH_VARARGS,"addSphereNode"},
-    {"startServer",Python::PyIrr_Server,METH_VARARGS,"startServer"},
-    {"restartServer",Python::PyIrr_restartServer,METH_VARARGS,"restartServer"},
-
-	{NULL,NULL,0,NULL}
-};
 
 PyMethodDef irr_Scene[] =
 {
@@ -332,7 +317,7 @@ return Py_BuildValue("");
 
 PyObject * Python::PyIrr_Sleep(PyObject * self,PyObject * args){ //active camera
     int ammount;
-    PyArg_ParseTuple(args,"l",&ammount);
+    PyArg_ParseTuple(args,"i",&ammount);
     device->sleep(ammount);
 return Py_BuildValue("");
 }

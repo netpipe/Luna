@@ -30,7 +30,7 @@ PyMODINIT_FUNC Python::init_irr(void){
  //   Py_InitModule("particles",irr_SPARKA);
 	Py_InitModule("physics",irr_Physics);
     Py_InitModule("scene",irr_Scene);
-    Py_InitModule("network",irr_Network);
+    Py_InitModule("net",irr_Network);
     Py_InitModule("irr",irr_fun2);
     Py_InitModule("scene",irr_FlagMan);
     Py_InitModule("input",irr_Input);

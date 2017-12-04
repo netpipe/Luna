@@ -13,8 +13,8 @@ using namespace gui;
 // sets defaults on init
 Vehicle::Vehicle()  :    m_carChassis(0),m_cameraHeight(4.f),m_minCameraDistance(3.f),
         m_maxCameraDistance(10.f),m_indexVertexArrays(0),m_vertices(0){
-    int scaleT  = 1; // minimum 2 Vehicle Size test scale
-    int scaleE  = 1;// engine/weight scale for friction
+    float scaleT  = 1; // minimum 2 Vehicle Size test scale
+    float scaleE  = 1;// engine/weight scale for friction
     printf("Vehicle constructor.\n");
     rightIndex          = 0;
     upIndex             = 1;
@@ -22,7 +22,7 @@ Vehicle::Vehicle()  :    m_carChassis(0),m_cameraHeight(4.f),m_minCameraDistance
     wheelDirectionCS0   = btVector3(0,-1,0);    // seems to change the length of shocks too
     wheelAxleCS         = btVector3(-1,0,0);       //sey y for dancing effect // makes the car go forward vector
     btCarScale          = btVector3( 1.3f*scaleT, .4f*scaleT, 2*scaleT );//COMeffected -  Collision Box   default 1,2,2
-    btModelscale        = btVector3( 1.5f*scaleT, 1.5f*scaleT, 2.f*scaleT );// sides,y,FB     Model Specific
+    btModelscale        = btVector3( 1.4f*scaleT, 1.4f*scaleT, 1.4f*scaleT );// sides,y,FB     Model Specific
     m_vehiclePosition   = btVector3(0,0,0);         // sets the position initially
 
     vehicleWeight       = 600         *scaleE*scaleT;      //weight of a typical vehicle 1 vehicle weight
@@ -183,7 +183,7 @@ void Vehicle::renderme(){  //deltatime ?
 }
 
 
-btVector3 Vehicle::getVehiclePosition(void){
+vector3df Vehicle::getPosition(void){
   if(!m_vehicle)
     return m_vehiclePosition;
   else
@@ -341,8 +341,8 @@ Vehicle::~Vehicle(){
 
 void Vehicle::initPhysics(stringc carMesh, stringc texture ) {
     tr.setOrigin(m_vehiclePosition);  //pythonize model loading
-    IAnimatedMesh *l_node;
-    IAnimatedMeshSceneNode *l_node_chassi;
+    //IAnimatedMesh* l_node;
+   // IAnimatedMeshSceneNode* l_node_chassi;
  // const stringc carMesh = "data/models/vehicles/CarBlends/DOHcaddy-car.x";
 //    const stringc carMesh = "data/models/vehicles/CarBlends/oldChevy-Truck.x";
    // const stringc carMesh = "data/models/vehicles/oldChevy-Truck.3ds";
@@ -351,29 +351,35 @@ void Vehicle::initPhysics(stringc carMesh, stringc texture ) {
 // //                 carMesh = "data/models/vehicles/C.obj";
 //
  //   const stringw texture = "data/models/vehicles/oldChevy.bmp";
-    l_node = m_irrDevice->getSceneManager()->getMesh(carMesh);
-
+    IAnimatedMesh* l_node = m_irrDevice->getSceneManager()->getMesh(carMesh);
+//#define upsidedown
 #ifdef upsidedown
 //    l_node->rotation(btQuaternion( btVector3(0,1,0), PI ));
+    //localTrans.setRotation(btQuaternion( btVector3(0,1,0), PI ));
     irr::core::quaternion *carModelRotation;
-    carModelRotation->set(0.0f,-1.f,0.f, 0.0f) ;  //
+    carModelRotation->set(0.0f,-1.0f,0.f, 0.0f) ;  //
 
         m_irrDevice->getSceneManager()->getMeshManipulator()->
                         transform(l_node, carModelRotation->getMatrix());
+
             //getMeshManipulator createMeshWithTangents    createMeshCopy
+    m_irrDevice->getSceneManager()->getMeshManipulator()->scaleMesh(l_node, vector3df(btModelscale[0], btModelscale[1], btModelscale[2]));
 #endif
     if(!l_node) return;
-    l_node_chassi = m_irrDevice->getSceneManager()->addAnimatedMeshSceneNode(l_node);
+        m_irrDevice->getSceneManager()->getMeshManipulator()->scaleMesh(l_node, vector3df(btModelscale[0], btModelscale[1], btModelscale[2]));
+       // m_irrDevice->getSceneManager()->getMeshManipulator()->scaleMesh(l_node,vector3df( 1.4, 1.4, 1.5 ));
+
+    IAnimatedMeshSceneNode* l_node_chassi = m_irrDevice->getSceneManager()->addAnimatedMeshSceneNode(l_node);
 
     //old code for loading car
-    //  IMeshBuffer *meshBuffer = l_node->getMeshBuffer(0);
-    //  btTriangleMesh *collisionMesh = new btTriangleMesh();
-    //  m_cPhysics->convertIrrMeshBufferBtTriangleMesh(meshBuffer, collisionMesh, vector3df(0,0,0));
-    //  btBvhTriangleMeshShape *chassisShape = new btBvhTriangleMeshShape(collisionMesh, true);
+      IMeshBuffer *meshBuffer = l_node->getMeshBuffer(0);
+      btTriangleMesh *collisionMesh = new btTriangleMesh();
+      m_cPhysics->convertIrrMeshBufferBtTriangleMesh(meshBuffer, collisionMesh, vector3df(0,0,0));
+      btBvhTriangleMeshShape *chassisShape2 = new btBvhTriangleMeshShape(collisionMesh, true);
 
-    l_node_chassi->setScale(vector3df(btModelscale[0], btModelscale[1], btModelscale[2]));
+   // l_node_chassi->setScale(vector3df(btModelscale[0], btModelscale[1], btModelscale[2]));
     //   l_node_chassi->setPosition(vector3df(0,100,0));
-    l_node_chassi->setRotation(vector3df(0,1,0));
+   // l_node_chassi->setRotation(vector3df(0,1,0));
     l_node_chassi->setMaterialTexture(0,
     m_irrDevice->getVideoDriver()->getTexture(texture));
     m_cScene->setGenericMaterial(l_node_chassi, 0);
@@ -383,21 +389,22 @@ void Vehicle::initPhysics(stringc carMesh, stringc texture ) {
     if (!l_node_chassi) printf("Chassi node was not created.\n");
 
     l_node_chassi->addShadowVolumeSceneNode(l_node,false, 100.f);
-    btCollisionShape* chassisShape = new btBoxShape(btCarScale); //! << BULLET BODY SCALE
+    btCollisionShape* chassisShape = new btBoxShape(btVector3(btCarScale[0], btCarScale[1], btCarScale[2]*2)*1.25); //! << BULLET BODY SCALE
     btCompoundShape* compound = new btCompoundShape();
     //tr.btTransform(localTrans);
     //
     ////   btModelrotation =  vector3df(0,0,0);
     btTransform localTrans;
     localTrans.setIdentity();
-   // localTrans.setRotation(btQuaternion( btVector3(0,1,0), PI ));
-    localTrans.setOrigin(btVector3(0,0,0)); // moves chassi around and center of mass
-      //  tr.setIdentity();
-      // tr.setRotation(btQuaternion( btVector3(0,1,0), 2*PI )); // moves the buggy
-      //  tr.setOrigin(btVector3(pos[0]+20,pos[1],pos[1]));
+    //localTrans.setRotation(btQuaternion( btVector3(0,1,0), PI ));
+    //localTrans.setOrigin(btVector3(0,0,0)); // moves chassi around and center of mass
+        tr.setIdentity();
+     //  tr.setRotation(btQuaternion( btVector3(0,1,0), PI )); // moves the buggy
+      //  tr.setOrigin(btVector3(0,0,0));
 
 
     compound->addChildShape(localTrans,chassisShape);
+    compound->addChildShape(localTrans,chassisShape2);
 // localTrans.setOrigin(btVector3(pos.X,pos.Y,pos.Z-100));
     m_carChassis = m_cPhysics->localCreateRigidBody(vehicleWeight,tr,compound, l_node_chassi);//chassisShape);
   // m_carChassis->setCenterOfMassTransform(localTrans);
@@ -711,33 +718,33 @@ void Vehicle::SetParams(
         //float wheelSpacingZ22,
         float wheelScaleFactor2)
 {
-    int scaleT  = 1; // minimum 2 Vehicle Size test scale
-    int scaleE  = 1;// engine/weight scale for friction
-scaleT = scaleT2;
-scaleE = scaleE2;
- btCarScale = btCarScale2*scaleT;
- btModelscale = btModelscale2*scaleT;
- m_vehiclePosition =m_vehiclePosition2*scaleT;
+    float scaleTa  = 1; // minimum 2 Vehicle Size test scale
+    float scaleEa  = 1;// engine/weight scale for friction
+scaleTa = scaleT2;
+scaleEa = scaleE2;
+ btCarScale = btCarScale2 * (scaleTa*0.6);
+ btModelscale = btModelscale2 *(scaleTa*0.65);
+ m_vehiclePosition =m_vehiclePosition2;
  vehicleWeight = vehicleWeight2;
  maxBreakingForce =maxBreakingForce2;
  maxEngineForce =maxEngineForce2;
  SpeedINC = SpeedINC2;
  driveType = driveType2;
- connectionHeight =connectionHeight2;
+ connectionHeight =scaleTa*connectionHeight2;
  suspensionStiffness =suspensionStiffness2;
  suspensionDamping = suspensionDamping2;
  suspensionCompression = suspensionCompression2;
 // suspensionRestLength = suspensionRestLength2;
  rollInfluence = rollInfluence2;
  wheelFriction = wheelFriction2;
- wheelRadius =wheelRadius2;
- wheelWidth = wheelWidth2;
+ wheelRadius = scaleTa*wheelRadius2;
+ wheelWidth = scaleTa*wheelWidth2;
  steeringIncrement = steeringIncrement2;
  steeringClamp =steeringClamp2;
- CUBE_HALF_EXTENTS = CUBE_HALF_EXTENTS2;
+ CUBE_HALF_EXTENTS = scaleTa*CUBE_HALF_EXTENTS2;
  wheelSpacingX = wheelSpacingX2;
 // wheelSpacingZ =wheelSpacingZ2;
- wheelScaleFactor =wheelScaleFactor2;
+ wheelScaleFactor = wheelScaleFactor2;
 }
 
 

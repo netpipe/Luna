@@ -155,7 +155,7 @@ PyObject * Python::PyIrr_addCar(PyObject * self,PyObject * args){
 	//vehicle manager
 vector3df loc; //drop point
 
-float scaleT,scaleE=1;
+float scaleT,scaleE;
 vector3df btCarScale, btModelscale,m_vehiclePosition;
 
 int vehicleWeight;
@@ -214,7 +214,7 @@ PyArg_ParseTuple(args,"ssfffffffffffifffifffffffffffff",&model,&texture,&scaleT,
 
     #ifdef BULLETCAR
     bCar=1;
-         m_cVehicle = new Vehicle;
+         Vehicle* m_cVehicle = new Vehicle;
          m_cVehicle->registerIrrDevice(*device);
          m_cVehicle->registerPhysics(*luna->m_cPhysics);
          m_cVehicle->registerScene(*m_cScene);

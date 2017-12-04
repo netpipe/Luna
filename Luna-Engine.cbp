@@ -685,8 +685,11 @@
 		<Unit filename="TerrainFactory/CloudSceneNode/CCloudSceneNode.cpp" />
 		<Unit filename="TerrainFactory/CloudSceneNode/CCloudSceneNode.h" />
 		<Unit filename="TerrainFactory/ProceduralTrees/CBillboardGroupSceneNode.cpp" />
+		<Unit filename="TerrainFactory/ProceduralTrees/CBillboardGroupSceneNode.h" />
 		<Unit filename="TerrainFactory/ProceduralTrees/CTreeGenerator.cpp" />
+		<Unit filename="TerrainFactory/ProceduralTrees/CTreeGenerator.h" />
 		<Unit filename="TerrainFactory/ProceduralTrees/CTreeSceneNode.cpp" />
+		<Unit filename="TerrainFactory/ProceduralTrees/CTreeSceneNode.h" />
 		<Unit filename="TerrainFactory/ProceduralTrees/kornJungle/Jungle.cpp" />
 		<Unit filename="TerrainFactory/ProceduralTrees/kornJungle/Jungle.h" />
 		<Unit filename="TerrainFactory/ProceduralTrees/kornJungle/JungleChunk.cpp" />

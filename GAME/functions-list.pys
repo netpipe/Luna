@@ -132,8 +132,8 @@ physics.ragman(1) # position , size , model, animation
 #scene.SPARK(1)
 
 
-video1=scene.addvideo("./media/bunny.ogg",10.0,10.0,10.0)	# has to be loaded after soundman or crash
-scene.setPosition(video1,0,11,100,22)
+#video1=scene.addvideo("./media/bunny.ogg",10.0,10.0,10.0)	# has to be loaded after soundman or crash
+#scene.setPosition(video1,0,11,100,22)
 
 #irr.draw_text("Gavin Robinson",20,40,150,70)   #known to cause crashing
 cube_id = scene.add_cube(0,12.0,0.0,0.0,25.0,0.0,    0.0,0.0,1.0,1.0,1.0)

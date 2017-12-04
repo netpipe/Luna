@@ -293,7 +293,6 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
 
 
     }else if (bullet == 4){
-            printf ("nodeID not valid");
             Terrain* mnode =node_id;
             vector3df newpos;
             //ITerrainSceneNode* node=mnode->terrain;
