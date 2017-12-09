@@ -39,6 +39,7 @@
     #define  OPENSTEER
     #define VIDEO
     #define DSOUND
+    #define PostProcess
 
 // Include the headers for post processing
 #include "../Scene/PostProcessing/CRendererPostProc.h"
@@ -114,6 +115,10 @@ using namespace GrassGenerator;
 #include "../TerrainFactory/ProceduralTrees/kornJungle/Jungle.h"
 //#include <cwiid.h>
 //#include "../Input/Controllers/wii/wii.h"
+
+        CEffectPostProc* ppBlurDOF ;
+         CEffectPostProc* ppBlur ;
+         CEffectPostProc* ppMine;
 
     BmFont *fonts = new BmFont;
 
@@ -207,6 +212,8 @@ reminder to actually check the names match with unstable ide's and whatnot
     {"exportScene",Python::PyIrr_ExportScene,METH_VARARGS,"PyIrr_ExportScene"},
     {"SPARK",Python::PyIrr_SPARKA,METH_VARARGS,"SPARK MANAGER"},
     {"grass",Python::PyIrr_FWGrass,METH_VARARGS,"grass"},
+    {"postprocess",Python::PyIrr_PostProcess,METH_VARARGS,"postProcess"},
+
 
 
 

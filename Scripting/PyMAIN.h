@@ -48,7 +48,7 @@ namespace Python {
     btRigidBody *ha;
             gui::CGUIChatBox* chat;
 
-    bool opensteer,chopperEnabled,HUDENABLED=0;
+    bool bPProcess,opensteer,chopperEnabled,HUDENABLED=0;
 
 
     firstPersonWeapon* M4;
@@ -143,7 +143,7 @@ namespace Python {
     PyObject * PyIrr_Light(PyObject * self,PyObject * args);
     PyObject * PyIrr_ExportScene(PyObject * self,PyObject * args);
     PyObject * PyIrr_FWGrass(PyObject * self,PyObject * args);
-
+    PyObject * PyIrr_PostProcess(PyObject * self,PyObject * args);
     //Extras
     PyObject * PyIrr_realCloud(PyObject * self,PyObject * args);
     PyObject * PyIrr_calcMath(PyObject * self,PyObject * args);
@@ -309,17 +309,21 @@ void Python::preEnd(){                                                 //used to
       //  driver->updateAllOcclusionQueries(false);
      //   lensFlareNode->render();
     #endif
+
+        #ifdef PostProcess
+        if ( bPProcess ){
+        ppBlurDOF->render( NULL );
+        ppBlur->render( NULL );
+        ppMine->render( NULL );
+        }
+        #endif
+
 }
 
 void Python::render() {//active camera
 
         deltaTime = device->getTimer()->getRealTime() - timeStamp;
         timeStamp = device->getTimer()->getRealTime();
-
-        #ifdef PostProcess
-        f32 p = sinf( device->getTimer( )->getTime( ) * 0.0005f ) * 0.5f - 0.2f;
-        ppBlurDOF->setParameters( p * 100.0f + 80.0f, p * 100.0f + 110.0f, p * 100.0f + 160.0f, p * 100.0f + 240.0f, 0.01f );
-        #endif
 
         #ifdef TESSIMAGE
             if (btesimage){ tesImage->render(deltaTime); }
@@ -432,6 +436,17 @@ void Python::render() {//active camera
             // silly way to do rotation, depends on speed
             clouds->setRotation(vector3df(0,rot,0));
         #endif
+
+        #ifdef PostProcess
+        if ( bPProcess ){
+        ppMine->setParameters( min_( 1.0f, device->getTimer( )->getTime( ) * 0.0002f ) );
+
+        f32 p = sinf( device->getTimer( )->getTime( ) * 0.0005f ) * 0.5f - 0.2f;
+        ppBlurDOF->setParameters( p * 100.0f + 80.0f, p * 100.0f + 110.0f, p * 100.0f + 160.0f, p * 100.0f + 240.0f, 0.01f );
+
+        }
+        #endif
+
         // rt->render(); //ribbon trail scenenode
         device->sleep(5);
 }

@@ -1,5 +1,5 @@
 #ifndef NDEBUG // if debug build then do this one
-#define PostProcesss
+#define PostProcess
 
 
 
@@ -201,14 +201,7 @@ if ( !device->run() ) return 0;
 
     //camera = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
 	//smgr->addCameraSceneNodeFPS();
-#ifdef PostProcess
-	//PostProcessing
-        IPostProc* ppRenderer = new CRendererPostProc( smgr, dimension2du( 1024, 512 ),
-                                                    true, true, SColor( 255u, 100u, 101u, 140u ) );
-        CEffectPostProc* ppBlurDOF   = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), PP_BLURDOF );
-        CEffectPostProc* ppBlur          = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), PP_BLUR, 0.00081f );
-        ppBlur->setQuality( PPQ_GOOD );
-#endif
+
 
 
     u32 then = device->getTimer()->getTime();
@@ -360,21 +353,25 @@ device->getCursorControl()->setVisible(true);
 		frameDeltaTime = (f32)(now - then) / 1000.f; // Time in seconds
 		then = now;
 
+		#ifdef PYTHON
         Python::PreRender();
-
         driver->beginScene ( true, true, SColor ( 0, 0, 0, 0 ) );
         Python::render();
+		#else
+		driver->beginScene ( true, true, SColor ( 0, 0, 0, 0 ) );
+		#endif
 
         smgr->drawAll();
 
 
 
-        #ifdef PostProcess
-            ppBlur->render( NULL );
-            ppBlurDOF->render( NULL );
-        #endif
+//        #ifdef PostProcess
+//			ppBlurDOF->render( NULL );
+//            ppBlur->render( NULL );
+//
+//        #endif
 
-           guienv->drawAll();
+
  //       rt->render();
 
 		if (Python::bCodeEditor==1	){
@@ -393,9 +390,9 @@ device->getCursorControl()->setVisible(true);
 			menu->setEnabled(false);
 			windows->setVisible(false);
 		}
-#define PYTHON
-    #ifdef PYTHON
+		#ifdef PYTHON
         Python::preEnd();
+		guienv->drawAll();
         driver->endScene();
           Python::CheckKeyStates();
     //      CheckKeyStates(); //check onEvent for any need to check keys
@@ -403,9 +400,10 @@ device->getCursorControl()->setVisible(true);
 // pick a game directory and look for main.pys
 			Python::ExecuteScript(irr::core::stringc(loader));
 			//Python::ExecuteScript("./RACING/racer/main.pys");
-    #else
+		#else
+		guienv->drawAll();
         driver->endScene();
-#endif
+		#endif
 
         int fps = driver->getFPS();
 		if (lastFPS != fps)
@@ -473,19 +471,19 @@ device->getCursorControl()->setVisible(true);
         cAudio::destroyAudioManager(manager);
     #endif
     #ifdef PHYSICS
-clearBodies();
-#endif
+	clearBodies();
+	#endif
 
 
 
-#ifdef SPARKA
+	#ifdef SPARKA
 	cout << "\nSPARK FACTORY BEFORE DESTRUCTION :" << endl;
 	SPKFactory::getInstance().traceAll();
 	SPKFactory::getInstance().destroyAll();
 	cout << "\nSPARK FACTORY AFTER DESTRUCTION :" << endl;
 	SPKFactory::getInstance().traceAll();
 	device->drop();
-#endif
+	#endif
 
 //	delete videoPlayer;
 #endif
