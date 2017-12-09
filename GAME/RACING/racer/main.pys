@@ -32,14 +32,15 @@ if (init) :
  #gui.codeeditor(1) #shader editor #cpu limiter incase of bad code
  window = gui.window("Test Winda",100 , 100 , 500 , 500 )
  gui.editbox(window,80,80,250,235)
+# scene.grass("./data/vegData/output.grs")
 
  if (0) : # can only be client or server
   if (1) :
-  netman = net.connect()
-  net.update(netman)
-  net.send(netman,"shit yeah")
-  net.update(netman)
-  else
+   netman = net.connect()
+   net.update(netman)
+   net.send(netman,"shit yeah")
+   net.update(netman)
+ # else
   #netserver = net.server()
   #net.update(netserver)
   #scene.sleep(1000)

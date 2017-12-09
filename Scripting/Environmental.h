@@ -384,16 +384,39 @@ int waterType=2;
     #endif
 }else{
     const f32 width = 512.0f;
-const f32 height = 512.0f;
-stringc resourcePath="./";
+	const f32 height = 512.0f;
+	stringc resourcePath="./";
 
-
-RealisticWaterSceneNode* water = new RealisticWaterSceneNode(smgr, width, height, resourcePath);
-smgr->getRootSceneNode()->addChild(water);
-}
+	RealisticWaterSceneNode* water = new RealisticWaterSceneNode(smgr, width, height, resourcePath);
+	smgr->getRootSceneNode()->addChild(water);
+	}
 return Py_BuildValue("");
 }
 
+PyObject * Python::PyIrr_FWGrass(PyObject * self,PyObject * args){
+	char * dmap;
+	float sx,sy,sz,cx,cy,cz;
+	int type;
+	PyArg_ParseTuple(args,"s",&dmap);
+
+    GrassGenerator::CGrassGenerator* grassGenInstance = new CGrassGenerator(device);
+
+	grassGenInstance->load("./data/vegData/input.xml");
+    grassGenInstance->process();
+    std::cout << "PROCESSED" << std::endl;
+
+    grassGenInstance->writeOut("./data/vegData/output.grs");
+    std::cout << "DONE" << std::endl;
+    delete grassGenInstance;
+
+
+
+	device->getFileSystem()->addFolderFileArchive("./data/vegData/");
+	GrassLoader::loadGrass(dmap,smgr,
+							16.f,8.f,36.f,
+							40.f,43.f,46.f);
+return Py_BuildValue("");
+}
 
 PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic with shader
 {

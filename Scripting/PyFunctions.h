@@ -108,6 +108,9 @@ RibbonTrailSceneNode* rt;
 #include "../Scene/spriteManager/ParticleSystem.h"
 #include "../GUI/Math/SCalcExpr.h"
 
+#include "../TerrainFactory/FWGrass/GrassLoader.h"
+#include "../TerrainFactory/FWGrass/gen/CGrassGenerator.h"
+using namespace GrassGenerator;
 #include "../TerrainFactory/ProceduralTrees/kornJungle/Jungle.h"
 //#include <cwiid.h>
 //#include "../Input/Controllers/wii/wii.h"
@@ -203,6 +206,8 @@ reminder to actually check the names match with unstable ide's and whatnot
 	{"addHUD",Python::PyIrr_addHUD,METH_VARARGS,"PyIrr_addHUD"},
     {"exportScene",Python::PyIrr_ExportScene,METH_VARARGS,"PyIrr_ExportScene"},
     {"SPARK",Python::PyIrr_SPARKA,METH_VARARGS,"SPARK MANAGER"},
+    {"grass",Python::PyIrr_FWGrass,METH_VARARGS,"grass"},
+
 
 
     //Physics

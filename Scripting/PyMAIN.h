@@ -142,7 +142,7 @@ namespace Python {
     PyObject * PyIrr_LoadLevel(PyObject * self,PyObject * args);
     PyObject * PyIrr_Light(PyObject * self,PyObject * args);
     PyObject * PyIrr_ExportScene(PyObject * self,PyObject * args);
-
+    PyObject * PyIrr_FWGrass(PyObject * self,PyObject * args);
 
     //Extras
     PyObject * PyIrr_realCloud(PyObject * self,PyObject * args);
