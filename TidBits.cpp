@@ -1,5 +1,6 @@
 //! stick whatever in here for use later or to clean up luna.cpp
 /*
+
 Focus List
 - need to make ribontrail node spit dirt from the car tires  - / shocks aswell ik constraints if you gotem.
 - codeeditor
@@ -24,6 +25,7 @@ TODO LIST - seems like good spot as any to putit
         -self updater for specific files / maybe git ?
 
 
+Read /proc/cpuinfo to find the number of CPU/cores available to the systems. Call the getloadavg() (or alternatively read the /proc/loadavg), take the first value, multiply it by 100 (to convert to percents), divide by number of CPU/cores. If the value is greater than 100, truncate it to 100. Done.
 
 
 

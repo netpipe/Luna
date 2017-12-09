@@ -14,6 +14,8 @@ import extras
 import scene
 import input
 import image
+import net
+import gui
 
 init = 1  #start as true so that this loop is only ran once
 
@@ -29,8 +31,8 @@ init = 1  #start as true so that this loop is only ran once
 #irr.occlusionTest(1)            #broken #impliment nodemanager here for python occlusion someway to turn on and off
 #irr.image2d(1)                   #crashes without player being added first ? goes to background try to bring it as an overlay
 #irr.addHUD("data/HUD.xml")
-iaxe = image.iadd()
-
+#iaxe = image.iadd()
+#image.idraw(iaxe)
 #irr.bullet(1)                      #its actually a recast test at the moment
 
 
@@ -48,22 +50,22 @@ iaxe = image.iadd()
 #golfball = scene.addSphereNode("data/textures/material/marble1_256.png",0,20,5,5,5) #size,pos,texture
 #irr.setPosition(golfball,5,5,5)
 
-#irr.chatbox(1)                 # not really sure how to impliment fully yet needs some sort of server
-#irr.irc(1)
+gui.chatbox(1)                 # not really sure how to impliment fully yet needs some sort of server
+#scene.irc(1)
 #physics.bulletBlend(1)    #has to be loaded before the car if you want it...  fixed
                             #needs to pass the sounds to the main loop or blackscreen... odd
 #scene.atmosphere(1)              # set time of day / moonphase (i broke it)
-#irr.bitcloud(1)
+#scene.bitcloud(1)
 #scene.realCloud(1)
 #extras.skydome("data/textures/skydomes/skydome_1_2048x512.jpg")
 #scene.addMesh("./media/dwarf.x")
 
 #dwarf = scene.addModel("media/dwarf.x","media/dwarf.jpg",0)
-ninja = scene.addModel("media/ninja.b3d","media/nskinbl.jpg",0)
+#ninja = scene.addModel("media/ninja.b3d","media/nskinbl.jpg",0)
 #print dwarf
 #print ninja
 #scene.setPosition(dwarf , 100,100,1200)
-scene.setPosition(ninja ,0, 10,10,10)
+#scene.setPosition(ninja ,0, 10,10,10)
 #scene.loadModel("media/ShadRoom.b3d","texture",0,0)
 #terrain = scene.addTerrain(4,-3,5,0) # load last to make the physics work FIX  // possibly a load terrain xml function
 #track1 = scene.loadTrack('huge.3ds',0,0,0)  # trackname , timeofday , lighting , track slot/stages
@@ -94,8 +96,8 @@ scene.setPosition(ninja ,0, 10,10,10)
 
 #scene.addwater(1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
 #irr.addTree(terrain,5,5,5)
-physics.ragman(1) # position , size , model, animation
-#irr.codeeditor(1)     #get script loading working and see about getting
+#physics.ragman(1) # position , size , model, animation
+#extras.codeeditor()     #get script loading working and see about getting
                             #reset working to reloadscripts ingame.
 
 #scene.lightning(1)  #try and get this mounted to a vehicle or shoot it from camera.
@@ -179,7 +181,7 @@ texture = "data/models/vehicles/oldChevy.bmp"
 #maybe try and define server =  3 for more human readable py code
 #net.NetConnect(3,192.168.1.1);
 #irr.StartServer() #
-#chatbox = irr.addChatBox()
+#chatbox = gui.chatbox()
 #irr.addChatText(chatbox)
 #net.update()
 #net.Send(1,5)

@@ -209,6 +209,8 @@ namespace irr
 				GUI_COUNT,
 			};
 
+
+			core::rect<s32> CurrentTextRect, FrameRect; // temporary values
 		protected:
 			//! Breaks the single text line.
 			void breakText();
@@ -286,7 +288,7 @@ namespace irr
 			core::array< core::stringw > BrokenText;
 			core::array< s32 > BrokenTextPositions;
 
-			core::rect<s32> CurrentTextRect, FrameRect; // temporary values
+
 
 			irr::core::recti myRect(int x, int y, int w, int h);
 

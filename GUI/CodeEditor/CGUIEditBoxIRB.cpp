@@ -111,7 +111,9 @@ CGUIEditBoxIRB::CGUIEditBoxIRB(const wchar_t* text, bool border, bool lines,
 	}
 //irr::core::rect<s32> myRect(s32 x, s32 y, s32 w, s32 h);
 
-	SelectionTextColor=skin->getColor(EGDC_HIGH_LIGHT_TEXT);
+	if (skin)
+		SelectionTextColor=skin->getColor(EGDC_HIGH_LIGHT_TEXT);
+	
 	ScrollbarH = Environment->addScrollBar(true,this->myRect(2,FrameRect.getHeight()-20,FrameRect.getWidth()-18,20),this,-1);
 	Scrollbar = Environment->addScrollBar(false,this->myRect(FrameRect.getWidth()-15,2,20,FrameRect.getHeight()-22),this,-1);
 	LineToggle = Environment->addButton(this->myRect(FrameRect.getWidth()-15,FrameRect.getHeight()-20,20,20),this,-1,L"#",menustring[BT_LINECOUNT].c_str());
@@ -239,7 +241,6 @@ void CGUIEditBoxIRB::updateAbsolutePosition()
 //! Checks if word wrap is enabled
 bool CGUIEditBoxIRB::isWordWrapEnabled() const
 {
-//	_IRR_IMPLEMENT_MANAGED_MARSHALLING_BUGFIX;
 	return WordWrap;
 }
 
@@ -258,7 +259,7 @@ void CGUIEditBoxIRB::setMultiLine(bool enable)
 //! Checks if multi line editing is enabled
 bool CGUIEditBoxIRB::isMultiLineEnabled() const
 {
-//	_IRR_IMPLEMENT_MANAGED_MARSHALLING_BUGFIX;
+
 	return MultiLine;
 }
 
@@ -278,7 +279,6 @@ void CGUIEditBoxIRB::setPasswordBox(bool passwordBox, wchar_t passwordChar)
 
 bool CGUIEditBoxIRB::isPasswordBox() const
 {
-//	_IRR_IMPLEMENT_MANAGED_MARSHALLING_BUGFIX;
 	return PasswordBox;
 }
 
@@ -333,7 +333,7 @@ bool CGUIEditBoxIRB::isLineCountDisplayed()
 }
 void CGUIEditBoxIRB::setElementText(u32 index, core::stringw text)
 {
-	if (index<GUI_COUNT+1)
+	if (index<GUI_COUNT+1 && index>0)
 		menustring[index]=text.c_str();
 
 	// If the Element is the tooltip of the toggle of linecount, set it at the same time.
@@ -1038,12 +1038,12 @@ void CGUIEditBoxIRB::draw()
 				for (int chart=0; chart < (int)txt_main.size(); chart++)
 				{
 					if (txt_main[chart] == static_cast<char>( 9 ))
-					{
+					{	
 						core::stringw temp1=txt_main.subString(0,chart-1);
 						core::stringw temp2=txt_main.subString(chart+1,txt_main.size());
 						temp=temp1.append(" ");
 						temp.append(temp2);
-					}
+					} 
 				}
 				if (temp.size()>0)
 					txtLine = &temp;
@@ -1483,7 +1483,6 @@ void CGUIEditBoxIRB::setAutoScroll(bool enable)
 //! \return true if automatic scrolling is enabled, false if not
 bool CGUIEditBoxIRB::isAutoScrollEnabled() const
 {
-//	_IRR_IMPLEMENT_MANAGED_MARSHALLING_BUGFIX;
 	return AutoScroll;
 }
 

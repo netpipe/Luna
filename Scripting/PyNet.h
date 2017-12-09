@@ -18,6 +18,8 @@ PyMethodDef irr_Network[] =
 
 
 PyObject * Python::PyIrr_Connect(PyObject * self,PyObject * args){
+
+
 class ClientNetCallback : public net::INetCallback
 {
 public:
@@ -94,6 +96,7 @@ public:
 
 		net::INetManager* netManager = net::createIrrNetClient(0, "127.0.0.1");
 		netManager->setVerbose(true); // debug messages
+
 	return Py_BuildValue("l",netManager);
 }
 
@@ -142,11 +145,99 @@ PyObject * Python::PyIrr_Send(PyObject * self,PyObject * args){
 			// A simple call to "sendOutPacket" will send the packet to the server.
 			netManager->sendOutPacket(packet);
 
+//	todo You should open the file as binary on a Microsoft platform. DOS/Unix '\n' difference is an old problem.
+//http://www.cplusplus.com/forum/general/27659/
+//		while(1){
+//		char filename[1024];
+//		recv(Socket, filename, sizeof(filename), 0);
+//		if(filename[0] == '.'){
+//			break;
+//		}
+//		FILE* fp = fopen(filename, "r");
+//		fseek(fp, 0, SEEK_END);
+//		long FileSize = ftell(fp);
+//		char GotFileSize[1024];
+//		_itoa_s(FileSize, GotFileSize, 10);
+//		send(Socket, GotFileSize, 1024, 0);
+//		rewind(fp);
+//		long SizeCheck = 0;
+//		char* mfcc;
+//		mfcc = (char*)malloc(FileSize + 1);
+//		while(SizeCheck < FileSize){
+//			int Received = recv(mySocket, mfcc, FileSize, 0);
+//			int Written = fwrite(mfcc, sizeof(char), Received, fp);
+//			SizeCheck += Written;
+//			for(int i = 0; i < Written; i++){
+//				if(mfcc[i] == '\n'){
+//					SizeCheck += 1;
+//				}
+//			}
+//		}
+//		fclose(fp);
+//		free(mfcc);
+//	}
+
 
 	return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_Receive(PyObject * self,PyObject * args){
+	long netMan;
+	char *message2;
+	PyArg_ParseTuple(args,"ls",&netMan,&message2);
+	net::INetManager* netManager=netMan;
+
+//		while(1){ // receive whole file before continuing
+//		printf("Input local filename: ");
+//		char localfile[1024];
+//		gets_s(localfile, 1024);
+//		if(localfile[0] == '.'){
+//			send(Socket, localfile, sizeof(localfile), 0);
+//			break;
+//		}
+//		printf("Input remote filename: ");
+//		char filename[1024];
+//		gets_s(filename, 1024);
+//		if(filename[0] == '.'){
+//			send(Socket, filename, sizeof(filename), 0);
+//			break;
+//		}
+//		send(Socket, filename, sizeof(filename), 0);
+//		char GotFileSize[1024];
+//		recv(Socket, GotFileSize, 1024, 0);
+
+//
+//		long FileSize = atoi(GotFileSize);
+//		long SizeCheck = 0;
+//		FILE *fp = fopen(localfile, "w");
+//		char* mfcc;
+//		if(FileSize > 1499){
+//			mfcc = (char*)malloc(1500);
+//			while(SizeCheck < FileSize){
+//				int Received = recv(Socket, mfcc, 1500, 0);
+//				SizeCheck += Received;
+//				fwrite(mfcc, 1, Received, fp);
+//				fflush(fp);
+//				printf("Filesize: %d\nSizecheck: %d\nReceived: %d\n\n", FileSize, SizeCheck, Received);
+//			}
+//		}
+//		else{
+//			mfcc = (char*)malloc(FileSize + 1);
+//			int Received = recv(Socket, mfcc, FileSize, 0);
+//			fwrite(mfcc, 1, Received, fp);
+//			fflush(fp);
+//		}
+//		fclose(fp);
+//		Sleep(500);
+//		free(mfcc);
+//
+//	   if (netManager->getConnectionStatus() != net::EICS_FAILED)
+//		{
+//			// Here we update.
+//			netManager->update(0);
+//		}
+//
+//	}
 
 	return Py_BuildValue("");
 }

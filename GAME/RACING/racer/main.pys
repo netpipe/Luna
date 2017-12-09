@@ -5,6 +5,7 @@ import scene
 import input
 #import luna
 import net
+import gui
 
 #should rename to game.pys
 #checkkeys has been moved to keys.pys
@@ -25,9 +26,10 @@ if (init) :
  physics.VehicleParams(car2,11,0,20,100,20) #position
  #physics.VehicleParams(car1,8,0,0,0,0)
 # physics.addHelicopter("data/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
- image.idraw(iaxe)
+ #image.idraw(iaxe)
  init = 0
- scene.addwater("none",1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
+ #scene.addwater("none",1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
+ #gui.codeeditor() #shader editor #cpu limiter incase of bad code
 
  if (0) :
   #netserver = net.server()
@@ -42,18 +44,18 @@ if (init) :
 
  #jungle = scene.addJungle()
  #scene.addTree("jungle",1,terrain,1,1,1)
- track1 = scene.loadTrack('./data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
+# track1 = scene.loadTrack('./data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
  #track1 = scene.loadLevel('extra/maps/urban.bsp',0,0,0)  # trackname , timeofday , lighting , track slot/stages
- scene.setPosition(terrain ,4, -100,-10,-100)
+# scene.setPosition(terrain ,4, -100,-10,-100)
  #scene.exportScene("/home/clay/test/scene.irr")
  #stage = scene.loadTrack('./data/Stage3/Stage3.irr',20,0,0)
  #stage = scene.loadTrack('./StageData/irrb2/Hospital.irr',20,0,0)
 #table = scene.loadTrack('./FOOSEBALL/table_football.x',20,0,0)
  #scene.setPosition(table ,1, 10,-30,10)
 
- sphere1 = scene.addSphereNode("data/textures/material/marble1_256.png",0,-1000,0, 5,5)
- scene.setVelocity(sphere1,10,10,10)
- scene.setPosition(sphere1 ,1, 10,100,10)
+ #sphere1 = scene.addSphereNode("data/textures/material/marble1_256.png",0,-1000,0, 5,5)
+ #scene.setVelocity(sphere1,10,10,10)
+ #scene.setPosition(sphere1 ,1, 10,100,10)
 #should be able to add trees without terrain/orientation
 #scene.trees(terr,bush)
 #scene.addTree2(bush)

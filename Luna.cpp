@@ -34,6 +34,9 @@ using namespace gui;
 #include "./TerrainFactory/CloudSceneNode/CCloudSceneNode.h"
 #include "./Scene/decalManager/DecalManager.h"
 
+
+#include "GUI/CodeEditor/CGUIEditBoxIRB.h"
+
 //#include <boost/python.hpp>   #not used just for ideas maybe
 
 //#include <irrNet.h>

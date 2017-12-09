@@ -53,43 +53,7 @@ namespace Python {
 
     firstPersonWeapon* M4;
     bool bFPS;
-
-//    	enum E_PACKET_TYPE
-//{
-//	EPT_ROTATION = 1,
-//	EPT_POWER = 2,
-//	EPT_MESSAGE = 3
-//};
-//class ClientNetCallback : public net::INetCallback
-//{
-//public:
-//	// Our handlePacket function.
-//	virtual void handlePacket(net::SInPacket& packet)
-//	{
-//		// Just like the server, we obtain the packet id and print
-//		// the information based on the packet we received. I hope the
-//		// rest of this function is self-explanatory.
-//		c8 packetid;
-//		packet >> packetid;
-//
-//		switch((E_PACKET_TYPE)packetid)
-//		{
-//		case EPT_ROTATION:
-//			f32 cannonAngle;
-//			packet >> cannonAngle;
-//			std::cout << "Server says that the cannon angle is now " << cannonAngle << std::endl;
-//			break;
-//		case EPT_POWER:
-//			f32 cannonPower;
-//			packet >> cannonPower;
-//			std::cout << "Server says that the cannon power is now " << cannonPower << std::endl;
-//			break;
-//		default:
-//			// We don't care about any other types, so we catch them here and break.
-//			break;
-//		}
-//	}
-//};
+    int bCodeEditor;
 
 
     #ifdef FLAG
@@ -159,6 +123,12 @@ namespace Python {
     PyObject * PyIrr_addHUD(PyObject * self,PyObject * args);
     PyObject * PyIrr_addVideo(PyObject * self,PyObject * args);
 
+    PyObject * PyIrr_GUIWindow(PyObject * self,PyObject * args);
+    PyObject * PyIrr_GUIPanel(PyObject * self,PyObject * args);
+    PyObject * PyIrr_GUITabs(PyObject * self,PyObject * args);
+    PyObject * PyIrr_GUIButton(PyObject * self,PyObject * args);
+    PyObject * PyIrr_GUIText(PyObject * self,PyObject * args);
+    PyObject * PyIrr_GUITree(PyObject * self,PyObject * args);
     //Terrain
     PyObject * PyIrr_Trees(PyObject * self,PyObject * args);
     PyObject * PyIrr_addTerrain(PyObject * self,PyObject * args);
@@ -273,7 +243,7 @@ Application *app;
     bool bOcclusion,bCar,bCarFollow,bSPARK,bDecals;
 
     WrapperClass::Formation * formation;
-    CGUIEditBoxIRB* codeEditor;
+//    CGUIEditBoxIRB* codeEditor;
     f32 SpeedMultiplier;// = 1.1f;
 
     #ifdef COMPASS

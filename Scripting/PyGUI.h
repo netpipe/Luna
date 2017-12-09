@@ -1,6 +1,32 @@
 #ifndef PYGUI_H_INCLUDED
 #define PYGUI_H_INCLUDED
 
+PyMethodDef irr_gui[] =
+{
+	    //gui
+
+    {"chatbox",Python::PyIrr_ChatBox,METH_VARARGS,"chatbox for chatting in/with/alone"},
+//  {"render",Python::PyIrr_Render,METH_VARARGS,"PyIrr_Render"}
+//  {"chatbox",Python::PyIrr_Terrain,METH_VARARGS,"pyterrain"},
+	{"codeeditor",Python::PyIrr_CodeEditor,METH_VARARGS,"PyIrr_CodeEditor"}, //gui
+
+    {"window",Python::PyIrr_GUIWindow,METH_VARARGS,"window"},
+    {"panel",Python::PyIrr_GUIPanel,METH_VARARGS,"panel"},
+    {"tabs",Python::PyIrr_GUITabs,METH_VARARGS,"tabs"},
+    {"button",Python::PyIrr_GUIButton,METH_VARARGS,"button"},
+    {"text",Python::PyIrr_GUIText,METH_VARARGS,"text"},
+    {"tree",Python::PyIrr_GUITree,METH_VARARGS,"tree"},
+	{NULL,NULL,0,NULL}
+
+};
+
+PyObject * Python::PyIrr_CodeEditor(PyObject * self,PyObject * args) {//active camera
+
+bCodeEditor=1;
+device->getCursorControl()->setVisible(true);
+
+return Py_BuildValue("");
+}
 
 PyObject * Python::PyIrr_ChatBox(PyObject * self,PyObject * args){
 
@@ -244,6 +270,60 @@ return Py_BuildValue("l",tesImage);
 return Py_BuildValue("");
 }
 
+
+PyObject * Python::PyIrr_GUITabs(PyObject * self,PyObject * args){
+
+	rect<s32>				tabctrlrect(4, 24, 40 - 4, 40 - 4);
+	IGUITabControl* tabs	= guienv->addTabControl(tabctrlrect, 5115);
+	IGUITab* tab1			= tabs->addTab(L"general");
+	IGUITab* tab2			= tabs->addTab(L"navi");
+	IGUITab* tab3			= tabs->addTab(L"settings");
+
+	//Tab 1
+//	environment->addButton(buttonrect + position2d<s32>(0, 0), tab1, 10101, L"Load GUI");
+	return Py_BuildValue("");
+}
+
+PyObject * Python::PyIrr_GUIPanel(PyObject * self,PyObject * args){
+
+//	CGUIPanel* panel = new CGUIPanel(guienv, tab3, -1, tab3rect);
+
+//	environment->addStaticText(L"ID", textrect + position2d<s32>(0, 0), false, true, panel);
+//	environment->addEditBox(L"", textrect + position2d<s32>(0, 30), true, panel, 10301);
+//
+
+	return Py_BuildValue("");
+
+}
+
+PyObject * Python::PyIrr_GUIWindow(PyObject * self,PyObject * args){
+
+	IGUIWindow* window = guienv->addWindow(
+		rect<s32>(100 , 100 , 300 , 200 ),
+		false, // modal?
+		L"Test window");
+
+	guienv->addStaticText(L"Please close me",
+		rect<s32>(35,35,140,50),
+		true, // border?
+		false, // wordwrap?
+		window);
+
+	return Py_BuildValue("l",window);
+}
+
+PyObject * Python::PyIrr_GUIButton(PyObject * self,PyObject * args){
+		return Py_BuildValue("");
+}
+
+
+PyObject * Python::PyIrr_GUITree(PyObject * self,PyObject * args){
+		return Py_BuildValue("");
+}
+
+PyObject * Python::PyIrr_GUIText(PyObject * self,PyObject * args){
+		return Py_BuildValue("");
+}
 PyObject * Python::PyIrr_LoadShape(PyObject * self,PyObject * args){
 	return Py_BuildValue("");
 		//possible use would be for rendering onto shaped surfaces or accessing vertex's for placement

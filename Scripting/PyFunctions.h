@@ -57,7 +57,8 @@
 #include "../Scene/Elevator.hpp"
 #include "../Physics/Collision.hpp"
 #include "../GUI/CHUD.h"
-#include "../GUI/CodeEditor/CGUIEditBoxIRB.h"
+//#include "../GUI/CodeEditor/CGUIEditBoxIRB.h"
+//CGUIEditBoxIRB * codeEditor;
 #include "../Scene/tesselatedImage/tesselatedImage.h""
 #include "../entities/chopper_control.h"
 #include "../TerrainFactory/WaterNode/CReflectedWater.h"
@@ -201,7 +202,7 @@ reminder to actually check the names match with unstable ide's and whatnot
     {"addTree",Python::PyIrr_Trees,METH_VARARGS,"PyIrr_addTree"},
 	{"addHUD",Python::PyIrr_addHUD,METH_VARARGS,"PyIrr_addHUD"},
     {"exportScene",Python::PyIrr_ExportScene,METH_VARARGS,"PyIrr_ExportScene"},
-
+    {"SPARK",Python::PyIrr_SPARKA,METH_VARARGS,"SPARK MANAGER"},
 
 
     //Physics
@@ -213,15 +214,10 @@ reminder to actually check the names match with unstable ide's and whatnot
     {"sleep",Python::PyIrr_Sleep,METH_VARARGS,"sleep"},
     {"setTime",Python::PyIrr_setTime,METH_VARARGS,"setTime"},
     {"getTime",Python::PyIrr_getTime,METH_VARARGS,"getTime"},
-    //gui
 
-    {"chatbox",Python::PyIrr_ChatBox,METH_VARARGS,"chatbox for chatting in/with/alone"},
-//  {"render",Python::PyIrr_Render,METH_VARARGS,"PyIrr_Render"}
-//  {"chatbox",Python::PyIrr_Terrain,METH_VARARGS,"pyterrain"},
+    {"delete",Python::PyIrr_Delete,METH_VARARGS,"delete"},
     {"pauseGame",Python::PyIrr_pauseGame,METH_VARARGS,"pauseGame"},
     {"exit",Python::PyIrr_exit,METH_VARARGS,"exit"},
-    {"SPARK",Python::PyIrr_SPARKA,METH_VARARGS,"SPARK MANAGER"},
-    {"delete",Python::PyIrr_Delete,METH_VARARGS,"delete"},
 
 	{NULL,NULL,0,NULL}
 };
@@ -240,6 +236,7 @@ PyMethodDef irr_Input[] =
     {"getKey",Python::PyIrr_getKey,METH_VARARGS,"get key state"},
     {"wii",Python::PyIrr_wii,METH_VARARGS,"wiimote access"},
     {"gamepad",Python::PyIrr_gamePad,METH_VARARGS,"gamepad"},
+    {NULL,NULL,0,NULL}
 };
 
 void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventReceiver event){
@@ -258,7 +255,7 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
  //   camera->setFarValue(10000);
     //camera = smgr->addCameraSceneNodeFPS();
     //  camera->setFOV(PI/2);
-    device->setEventReceiver ( &mEvent);
+   // device->setEventReceiver ( &mEvent);
     m_cScene = new Scene();
     m_cScene->registerIrrDevice(*device);
     m_cScene->setupLights();//Scene, setup for lights.
