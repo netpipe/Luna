@@ -11,7 +11,7 @@ import gui
 #checkkeys has been moved to keys.pys
 #irr.checkKeyState(); # check event loop to see if any key was pressed
 
-
+#INITIALIZE
 if (init) :
 
  camera = scene.addCamera(2,0,20,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
@@ -29,17 +29,23 @@ if (init) :
  #image.idraw(iaxe)
  init = 0
  #scene.addwater("none",1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
- #gui.codeeditor() #shader editor #cpu limiter incase of bad code
+ #gui.codeeditor(1) #shader editor #cpu limiter incase of bad code
+ window = gui.window("Test Winda",100 , 100 , 500 , 500 )
+ gui.editbox(window,80,80,250,235)
 
- if (0) :
+ if (0) : # can only be client or server
+  if (1) :
+  netman = net.connect()
+  net.update(netman)
+  net.send(netman,"shit yeah")
+  net.update(netman)
+  else
   #netserver = net.server()
   #net.update(netserver)
   #scene.sleep(1000)
-  netman = net.connect()
-  net.update(netman)
+
   # net.send(netman,"shit yeah")
-  net.send(netman,"shit yeah")
-  net.update(netman)
+
   #net.update(netserver)
 
  #jungle = scene.addJungle()
@@ -67,6 +73,8 @@ if (init) :
  # int type = rand()%8+1;
 #  int seed = rand();
 
+
+#MAIN LOOP
 
 #extras.blindboids(1,0,1,1)
 physics.VehicleParams(car1,8,0,0,0,0)

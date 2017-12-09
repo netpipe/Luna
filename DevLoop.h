@@ -54,7 +54,8 @@ public:
 					switch (item)
 					{
 						case MENU_QUIT:
-							Context.device->closeDevice();
+							//Context.device->closeDevice();
+							Python::bCodeEditor=3;
 							break;
 						case MENU_UNDO:
 							Context.codeEditor->undo();
@@ -219,6 +220,13 @@ if ( !device->run() ) return 0;
 //      DEVLOOP  //////////////////
 ///////////////////////////////////
 **/
+
+	IGUIWindow* windows = guienv->addWindow(
+		rect<s32>(100 , 100 , 800 , 800 ),
+		false, // modal?
+		L"Test window");
+
+
 	guienv->createSkin(EGST_WINDOWS_METALLIC);
 	IGUISkin*  skin = guienv->getSkin();
 	skin->setColor(EGDC_HIGH_LIGHT ,video::SColor(192,222,237,243));
@@ -275,7 +283,7 @@ if ( !device->run() ) return 0;
 
 
 //	CGUIEditBoxIRB * codeEditor = new CGUIEditBoxIRB(exampletext.c_str(),true,true,guienv,guienv->getRootGUIElement(),-1,rect<s32>(20,60,600,400),device);
-	CGUIEditBoxIRB * codeEditor = new CGUIEditBoxIRB(exampletext.c_str(),true,true,guienv,guienv->getRootGUIElement(),-1,rect<s32>(10,40,driver->getScreenSize().Width-20,driver->getScreenSize().Height-20),device);
+	CGUIEditBoxIRB * codeEditor = new CGUIEditBoxIRB(exampletext.c_str(),true,true,guienv,windows,-1,rect<s32>(10,40,driver->getScreenSize().Width-20,driver->getScreenSize().Height-20),device);
 ////CGUIEditBoxIRB* codeEditor = new CGUIEditBoxIRB(exampletext.c_str(),
 ////                       true,
 ////					   true,
@@ -318,6 +326,7 @@ if ( !device->run() ) return 0;
 	codeEditor->setEnabled(0);
 	codeEditor->setVisible(false);
 	menu->setVisible(false);
+	windows->setVisible(false);
 
 device->getCursorControl()->setVisible(true);
 //    	IrrAssimp assimp(smgr);
@@ -368,12 +377,13 @@ device->getCursorControl()->setVisible(true);
            guienv->drawAll();
  //       rt->render();
 
-		if (Python::bCodeEditor	){
+		if (Python::bCodeEditor==1	){
 			Python::bCodeEditor=0;
 			codeEditor->setEnabled(true);
 			codeEditor->setVisible(true);
 			menu->setVisible(true);
 			menu->setEnabled(true);
+			windows->setVisible(true);
 			//store eventrec0-
 		}else if (Python::bCodeEditor == 3	){
 
@@ -381,6 +391,7 @@ device->getCursorControl()->setVisible(true);
 			codeEditor->setVisible(false);
 			menu->setVisible(false);
 			menu->setEnabled(false);
+			windows->setVisible(false);
 		}
 #define PYTHON
     #ifdef PYTHON

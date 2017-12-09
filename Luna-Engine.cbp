@@ -515,6 +515,8 @@
 		<Unit filename="GAME/RPG-SIM/minigolf/main.pys" />
 		<Unit filename="GAME/functions-list.pys" />
 		<Unit filename="GUI/CHUD.h" />
+		<Unit filename="GUI/ChatBox/CGUIChatBox.cpp" />
+		<Unit filename="GUI/ChatBox/CGUIChatBox.h" />
 		<Unit filename="GUI/CodeEditor/CGUIEditBoxIRB.cpp" />
 		<Unit filename="GUI/CodeEditor/CGUIEditBoxIRB.h" />
 		<Unit filename="GUI/Font/CGUITTFont.cpp" />
@@ -573,8 +575,6 @@
 		<Unit filename="LunaLobby.cpp" />
 		<Unit filename="Main.cpp" />
 		<Unit filename="MainLoop.h" />
-		<Unit filename="Net/CGUIChatBox.cpp" />
-		<Unit filename="Net/CGUIChatBox.h" />
 		<Unit filename="Net/irrNetClient.cpp" />
 		<Unit filename="Net/irrNetClient.h" />
 		<Unit filename="Net/irrNetServer.cpp" />

@@ -51,7 +51,7 @@
 #include "../Scene/CBeamSceneNode.h"
 #include "../Scene/BoltSceneNode.h"
 #include "../Physics/Ragdoll.h"
-#include "../Net/CGUIChatBox.h"
+#include "../GUI/ChatBox/CGUIChatBox.h"
 
 #include "../Scene/Obstacle.hpp"
 #include "../Scene/Elevator.hpp"

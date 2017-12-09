@@ -16,6 +16,9 @@ PyMethodDef irr_gui[] =
     {"button",Python::PyIrr_GUIButton,METH_VARARGS,"button"},
     {"text",Python::PyIrr_GUIText,METH_VARARGS,"text"},
     {"tree",Python::PyIrr_GUITree,METH_VARARGS,"tree"},
+	{"editbox",Python::PyIrr_GUIEditBox,METH_VARARGS,"editbox"},
+
+
 	{NULL,NULL,0,NULL}
 
 };
@@ -297,11 +300,18 @@ PyObject * Python::PyIrr_GUIPanel(PyObject * self,PyObject * args){
 }
 
 PyObject * Python::PyIrr_GUIWindow(PyObject * self,PyObject * args){
+float x1,y1,x2,y2;
+long guienv2;
+char * stra;
+
+PyArg_ParseTuple(args,"sffff",&stra,&x1,&y1,&x2,&y2);
+
+stringw ha=stra;
 
 	IGUIWindow* window = guienv->addWindow(
-		rect<s32>(100 , 100 , 300 , 200 ),
+		rect<s32>(x1 , y1 ,x2 , y2 ),
 		false, // modal?
-		L"Test window");
+		ha.c_str());
 
 	guienv->addStaticText(L"Please close me",
 		rect<s32>(35,35,140,50),
@@ -324,6 +334,22 @@ PyObject * Python::PyIrr_GUITree(PyObject * self,PyObject * args){
 PyObject * Python::PyIrr_GUIText(PyObject * self,PyObject * args){
 		return Py_BuildValue("");
 }
+
+PyObject * Python::PyIrr_GUIEditBox(PyObject * self,PyObject * args){
+//vector3df loc;
+float x1,y1,x2,y2;
+long pwindow;
+PyArg_ParseTuple(args,"lffff",&pwindow,&x1,&y1,&x2,&y2);
+IGUIWindow* window = pwindow;
+
+   IGUIEditBox *textData = guienv->addEditBox(L"",rect<s32>(x1,y1,x2,y2),true,window,803);
+   textData->setMax(5000);
+   textData->setAutoScroll(true);
+   textData->setMultiLine(true);
+   textData->setWordWrap(true);
+   		return Py_BuildValue("l",textData);
+}
+
 PyObject * Python::PyIrr_LoadShape(PyObject * self,PyObject * args){
 	return Py_BuildValue("");
 		//possible use would be for rendering onto shaped surfaces or accessing vertex's for placement

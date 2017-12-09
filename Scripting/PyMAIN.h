@@ -110,25 +110,27 @@ namespace Python {
     PyObject * PyIrr_LoadTrack(PyObject * self,PyObject * args);
     PyObject * PyIrr_BulletBlend(PyObject * self,PyObject * args);
     PyObject * PyIrr_LoadVehicle(PyObject * self,PyObject * args);
-
     PyObject * PyIrr_setVelocity(PyObject * self,PyObject * args);
     PyObject * PyIrr_DecalManager(PyObject * self,PyObject * args);
     PyObject * PyIrr_SoundMan(PyObject * self,PyObject * args);
     PyObject * PyIrr_addPlayer(PyObject * self,PyObject * args);
     PyObject * PyIrr_OpenSteer(PyObject * self,PyObject * args);
     PyObject * PyIrr_VehicleParams(PyObject * self,PyObject * args);
+    PyObject * PyIrr_addCar(PyObject * self,PyObject * args);
+
 
     //GUI
-    PyObject * PyIrr_addCar(PyObject * self,PyObject * args);
     PyObject * PyIrr_addHUD(PyObject * self,PyObject * args);
     PyObject * PyIrr_addVideo(PyObject * self,PyObject * args);
-
     PyObject * PyIrr_GUIWindow(PyObject * self,PyObject * args);
     PyObject * PyIrr_GUIPanel(PyObject * self,PyObject * args);
     PyObject * PyIrr_GUITabs(PyObject * self,PyObject * args);
     PyObject * PyIrr_GUIButton(PyObject * self,PyObject * args);
     PyObject * PyIrr_GUIText(PyObject * self,PyObject * args);
     PyObject * PyIrr_GUITree(PyObject * self,PyObject * args);
+    PyObject * PyIrr_GUIEditBox(PyObject * self,PyObject * args);
+
+
     //Terrain
     PyObject * PyIrr_Trees(PyObject * self,PyObject * args);
     PyObject * PyIrr_addTerrain(PyObject * self,PyObject * args);
@@ -184,6 +186,7 @@ namespace Python {
     PyObject * PyIrr_using(PyObject * self,PyObject * args);
     PyObject * PyIrr_motionTrail(PyObject * self,PyObject * args);
     PyObject * PyIrr_Delete(PyObject * self,PyObject * args);
+
     //Timers
     PyObject * PyIrr_Delay(PyObject * self,PyObject * args);
     PyObject * PyIrr_Sleep(PyObject * self,PyObject * args);
@@ -191,7 +194,6 @@ namespace Python {
     PyObject * PyIrr_getTime(PyObject * self,PyObject * args);
 
     //network
-
     PyObject * PyIrr_Connect(PyObject * self,PyObject * args);
     PyObject * PyIrr_Disconnect(PyObject * self,PyObject * args);
     PyObject * PyIrr_Ping(PyObject * self,PyObject * args);
