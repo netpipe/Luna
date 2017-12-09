@@ -390,7 +390,7 @@ device->getCursorControl()->setVisible(true);
 			menu->setEnabled(false);
 			windows->setVisible(false);
 		}
-		#ifdef PYTHON
+		#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
         Python::preEnd();
 		guienv->drawAll();
         driver->endScene();

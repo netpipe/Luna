@@ -6,11 +6,7 @@
 
 //!TODO started porting process to enet, need to setup receive still possibly try threading aswell.
 
-    ENetEvent event;
-    ENetHost * host=0;
-    ENetPeer * peer=0;
-    ENetAddress address;
-void ServerLoop();
+
 //#define __Linux  // for boost
 #ifdef __Linux
 #include <boost/thread.hpp>
@@ -35,6 +31,12 @@ void ServerLoop();
 	int aha = rand();
 	const std::string botName("aevBot");
 #endif
+
+    ENetEvent event;
+    ENetHost * host=0;
+    ENetPeer * peer=0;
+    ENetAddress address;
+void ServerLoop();
 
 std::vector<std::string> tokens2;
 
@@ -84,8 +86,8 @@ bool Application::init(){
     #endif
 	if (!this->device)
 		return false;
-//	this->device->setEventReceiver(this);
-//	this->device->setWindowCaption(L"Irrlicht Help Bot");
+	this->device->setEventReceiver(this);
+	this->device->setWindowCaption(L"Irrlicht Help Bot");
 
 	//todo: read configuration
 
@@ -94,6 +96,7 @@ bool Application::init(){
 		return false;
 	ServerLoop();
 	//create socket
+
 //	try
 //	{
 //		socket = new TCPSocket(serverName, serverPort);
@@ -104,9 +107,34 @@ bool Application::init(){
 //		std::cout << "Fatal error: Could not create Socket." << std::endl;
 //		return false;
 //	}
+
+address.port = 6667;
+
+        printf("I am client...\n");
+        fflush(stdout);
+
+        host = enet_host_create (0, // create a client host
+                1, // allow only 1 outgoing connection
+                0, // use 57600 / 8 for 56K modem with 56 Kbps downstream bandwidth
+                0);// use 14400 / 8 for 56K modem with 14 Kbps upstream bandwidth
+
+        if (!host) {
+            fprintf(stderr,"An error occurred while trying to create an ENet client host.\n");
+            exit (EXIT_FAILURE);
+        }
+
+        // connect to server:
+        enet_address_set_host (&address, "irc.starchat.net");
+        peer = enet_host_connect (host, &address, 2);
+        peer->data=0; // use this as mark that connection is not yet acknowledged
+        if (!peer) {
+           fprintf(stderr,"No available peers for initiating an ENet connection.\n");
+           exit (EXIT_FAILURE);
+        }
+
 	#ifdef __Linux  /// change this for pthreads or something
 	//start listen tread
-//	boost::thread thrd1(boost::bind(&receive, this));
+	//boost::thread thrd1(boost::bind(&receive, this));
 	#endif
 	//connect to irc channel
 	sendMessage("NICK " + botName + "\r\n");
@@ -222,13 +250,15 @@ void Application::registerIrrDevice(irr::IrrlichtDevice *device2){
 }
 
 void Application::run() const{
-#ifdef independent
+#ifdef independents
 	   irr::gui::IGUIEnvironment* guienv = device->getGUIEnvironment();
  irr::video::IVideoDriver* driver = device->getVideoDriver();
 
 
 	while (device->run())
 	{
+	//	ServerLoop();
+		receive();
 	//	if (device->isWindowActive())
 	//	{
 			driver->beginScene(true, false, irr::video::SColor());
@@ -238,6 +268,9 @@ void Application::run() const{
 //		device->sleep(2,0);
 	}
 #endif
+
+receive();
+
 }
 
 bool Application::sendMessage(const std::string& message) const{
@@ -278,11 +311,8 @@ bool Application::sendMessage(const std::string& message) const{
 
 }
 
-void Application::receive(Application* const app){
-//	try
-//	{
-		while (app->running)
-		{
+void Application::receive(){
+
 			char currentByte = '\0';
 			std::string message;
 
@@ -295,13 +325,9 @@ void Application::receive(Application* const app){
 			//remove ' ', '\r' and '\n'
 			std::string trimmedMessage(trimString(message));
 
-			app->handleIncommingMessages(trimmedMessage);
-		}
-	//}
-//	catch(SocketException &e)
-//	{
-//		std::cout << e.what() << std::endl;
-//	}
+//			handleIncommingMessages(trimmedMessage);
+
+
 }
 
 void Application::handleIncommingMessages(std::string& message){

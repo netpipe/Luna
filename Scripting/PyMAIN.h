@@ -205,6 +205,9 @@ namespace Python {
     PyObject * PyIrr_Server(PyObject * self,PyObject * args);
     PyObject * PyIrr_restartServer(PyObject * self,PyObject * args);
     PyObject * PyIrr_Update(PyObject * self,PyObject * args);
+    PyObject * PyIrr_irc(PyObject * self,PyObject * args);
+
+
 
     //Image
     PyObject * PyIrr_iRotate(PyObject * self,PyObject * args);

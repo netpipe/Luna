@@ -9,7 +9,7 @@ irr::gui::IGUIListBox* list;
 
 	Gui(irr::gui::IGUIEnvironment* const guienv)
 	{
-		irr::gui::IGUIFont* const font = guienv->getFont("../../media/fontlucida.png");
+		irr::gui::IGUIFont* const font = guienv->getFont("./media/fontlucida.png");
 		if (font)
 			guienv->getSkin()->setFont(font);
 

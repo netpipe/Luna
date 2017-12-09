@@ -30,9 +30,9 @@ if (init) :
  init = 0
  #scene.addwater("none",1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
  #gui.codeeditor(1) #shader editor #cpu limiter incase of bad code
- window = gui.window("Test Winda",100 , 100 , 500 , 500 )
- gui.editbox(window,80,80,250,235)
- scene.postprocess()
+# window = gui.window("Test Winda",100 , 100 , 500 , 500 )
+# gui.editbox(window,80,80,250,235)
+ #scene.postprocess()
 # scene.grass("./data/vegData/output.grs")
 
  if (0) : # can only be client or server

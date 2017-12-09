@@ -82,7 +82,7 @@ private:
 
 	bool sendMessage(const std::string& message) const;
 
-	static void receive(Application* const app);
+	static void receive();
 
 	void handleIncommingMessages(std::string& message);
 

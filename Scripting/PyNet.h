@@ -7,7 +7,7 @@ PyMethodDef irr_Network[] =
     {"sendFile",Python::PyIrr_sendFile,METH_VARARGS,"sendFile"},
     {"send",Python::PyIrr_Send,METH_VARARGS,"sendFile"},
     {"update",Python::PyIrr_Update,METH_VARARGS,"sendFile"},
-
+    {"irc",Python::PyIrr_irc,METH_VARARGS,"irc"},
     {"encrypt",Python::PyIrr_Encrypt,METH_VARARGS,"encrypt"},
     {"decrypt",Python::PyIrr_Decrypt,METH_VARARGS,"addSphereNode"},
     {"server",Python::PyIrr_Server,METH_VARARGS,"startServer"},
@@ -318,3 +318,10 @@ PyObject * Python::PyIrr_Update(PyObject * self,PyObject * args){
 	return Py_BuildValue("");
 }
 
+
+PyObject * Python::PyIrr_irc(PyObject * self,PyObject * args){
+//	Application app(device);
+//app.registerIrrDevice(device);
+	//app.init();
+	return Py_BuildValue("");
+}
