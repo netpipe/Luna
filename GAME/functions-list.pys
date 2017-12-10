@@ -196,10 +196,11 @@ texture = "data/models/vehicles/oldChevy.bmp"
 #netserver = net.server()
 #net.update(netserver)
 #scene.sleep(1000)
-
-#                      NotWorking
 #scene.flare(1)
+#                      NotWorking
 
+# healthbar=gui.bar(0,0,20,40,200,60)#create
+#gui.bar(healthbar,1,20,40,200,60) #render does not draw onanimate it
 
 #todo
 #irr.setEventRec()

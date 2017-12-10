@@ -38,6 +38,7 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 		keyMap[7].Action = EKA_STRAFE_RIGHT;    keyMap[7].KeyCode = KEY_KEY_D;
 
 		cam = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
+		device->setEventReceiver ( &mEvent);
 		break;
 	case 4:
 			cam = smgr->addCameraSceneNodeMaya();

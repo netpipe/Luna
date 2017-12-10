@@ -17,6 +17,8 @@ PyMethodDef irr_gui[] =
     {"text",Python::PyIrr_GUIText,METH_VARARGS,"text"},
     {"tree",Python::PyIrr_GUITree,METH_VARARGS,"tree"},
 	{"editbox",Python::PyIrr_GUIEditBox,METH_VARARGS,"editbox"},
+	{"bar",Python::PyIrr_GUIBar,METH_VARARGS,"bar"},
+	{"sgraph",Python::PyIrr_sineGraph2d,METH_VARARGS,"sgraph"},
 
 
 	{NULL,NULL,0,NULL}
@@ -326,6 +328,67 @@ PyObject * Python::PyIrr_GUIButton(PyObject * self,PyObject * args){
 		return Py_BuildValue("");
 }
 
+PyObject * Python::PyIrr_GUIBar(PyObject * self,PyObject * args){
+float x1,y1,x2,y2;
+long pwindow;
+int param;
+PyArg_ParseTuple(args,"liffff",&pwindow,&param,&x1,&y1,&x2,&y2);
+//todo put guienv here so it can be placed in windows
+//  CGUIBar* healthBar[4];
+CGUIBar* healthBar;
+switch (param){
+	case 0:
+//	CGUIBar* healthBar;
+  // the 1st bar will go from 0 to 255
+		u8 a=20;
+		healthBar = new CGUIBar(20,40, 200,60, a, driver);
+		return Py_BuildValue("l",healthBar);
+	break;
+	case 1:
+		healthBar=pwindow;
+		healthBar->draw();
+		return Py_BuildValue("");
+	break;
+}
+		return Py_BuildValue("");
+}
+
+PyObject * Python::PyIrr_sineGraph2d(PyObject * self,PyObject * args){
+
+
+SGraph2D* graph = new SGraph2D(
+guienv, // GUI environment
+guienv->getRootGUIElement(), // parent
+0, // id
+irr::core::recti(0,0,600,400), // GUI element boundaries
+irr::core::rectf( -10.0f, -10.0f, 20.0f, 10.0f ), // graph window
+true, // use marks or lines?
+true // use tick marks?
+);
+
+
+graph->setBackgroundColor( video::SColor(255,150,150,150) );
+
+
+Inc<f32> dis;
+core::vector2df pt;
+
+//dis.copy( win->getIterableXRange() );
+dis.setStep( 1.0f/1000.0f );
+
+do {
+pt.X = dis.Val();
+pt.Y = 10 * sin( dis.Val() );
+
+graph->drawOnGraph( pt, video::SColor(255,255,0,0) );
+} while ( !++dis );
+//plotsine( graph );
+
+
+graph->drop();
+graph = 0;
+		return Py_BuildValue("l",graph);
+}
 
 PyObject * Python::PyIrr_GUITree(PyObject * self,PyObject * args){
 		return Py_BuildValue("");

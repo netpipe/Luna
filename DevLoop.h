@@ -392,14 +392,14 @@ device->getCursorControl()->setVisible(true);
 		}
 		#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
         Python::preEnd();
-		guienv->drawAll();
-        driver->endScene();
           Python::CheckKeyStates();
     //      CheckKeyStates(); //check onEvent for any need to check keys
     // loop for key checking and loop for game  only execute script if there was an event
 // pick a game directory and look for main.pys
 			Python::ExecuteScript(irr::core::stringc(loader));
 			//Python::ExecuteScript("./RACING/racer/main.pys");
+		guienv->drawAll();
+        driver->endScene();
 		#else
 		guienv->drawAll();
         driver->endScene();

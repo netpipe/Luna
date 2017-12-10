@@ -130,6 +130,9 @@ namespace Python {
     PyObject * PyIrr_GUIText(PyObject * self,PyObject * args);
     PyObject * PyIrr_GUITree(PyObject * self,PyObject * args);
     PyObject * PyIrr_GUIEditBox(PyObject * self,PyObject * args);
+    PyObject * PyIrr_GUIBar(PyObject * self,PyObject * args);
+    PyObject * PyIrr_sineGraph2d(PyObject * self,PyObject * args);
+
 
 
     //Terrain
