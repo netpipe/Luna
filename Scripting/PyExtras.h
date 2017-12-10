@@ -63,7 +63,7 @@ PyMethodDef irr_Extras[] =
         {"compass",Python::PyIrr_Compass,METH_VARARGS,"PyIrr_Compas"},
         {"realCloud",Python::PyIrr_realCloud,METH_VARARGS,"PyIrr_realCloud"},
 
-        {"irc",Python::PyIrr_RelayChat,METH_VARARGS,"relaychat"},
+
         {NULL,NULL,0,NULL}
 };
 
@@ -176,7 +176,7 @@ return Py_BuildValue("");
 }
 
 
-PyObject * Python::PyIrr_Compass(PyObject * self,PyObject * args) {//active camera
+PyObject * Python::PyIrr_Compass(PyObject * self,PyObject * args) {
         int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
     #ifdef COMPASS
@@ -200,31 +200,16 @@ return Py_BuildValue("");
   }
 
 
-PyObject * Python::PyIrr_RelayChat(PyObject * self,PyObject * args) {//active camera
-    int param,state,Vehicle,ammount;
-    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
-
-//    #ifdef IRRc
-//   //  device->getCursorControl()->setVisible(true);
-//    #endif
-//    #ifdef IRRc
-//        app = new Application(device);
-//        app->registerIrrDevice(device);
-//        app->init();
-//    #endif
-return Py_BuildValue("");
-}
-
-
 PyObject * Python::PyIrr_BlindBoids(PyObject * self,PyObject * args) {//active camera
         int param,state,Vehicle,ammount;
-    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+    PyArg_ParseTuple(args,"iiii",&Vehicle,&param,&ammount,&state);
 //        const u32 now = device->getTimer()->getTime();
 //        const f32 frameDeltaTime = (f32)(now - then) / 1000.0f; // Time in seconds
 //        then = now;
 #ifdef BOIDS
 switch (param){
- if  (bBlindBoids = true){
+// if  (bBlindBoids = true){
+case 0:
          bBlindBoids = true;
         const irr::f32 borders[4] = { 1.0f, 222, 1.0f, 222}; //Xmin, Xmax, Zmin, Zmax
        // Flock* flock;
@@ -235,7 +220,7 @@ switch (param){
 //        	flock->boidSelector = smgr->createMetaTriangleSelector();
         irr::scene::IMesh* meshy = smgr->getMesh("./media/dwarf.x");
         //add boids to flock
-        for (irr::u32 i = 0; i < 30; ++i)
+        for (irr::u32 i = 0; i < 10; ++i)
 		flock->addBoid(meshy);
 
         irr::video::SMaterial mat;
@@ -254,20 +239,20 @@ switch (param){
 
         flock->setTarget(irr::core::vector3df(0.0f, 0.0f, 0.0f));
         flock->setPaused(false);
-        //selector->addTriangleSelector(selecta);
-        //	selecta->drop();
- } else
-{
-    	//void update(irr::scene::ITriangleSelector* const
-            //        selector, const irr::f32 deltaTime,
-            //        const bool scatterFlock) const;
-
-    flock->update(selecta,1,0);
-}
+//        selector->addTriangleSelector(selecta);
+//        	selecta->drop();
+// } else
+//{
+//    	//void update(irr::scene::ITriangleSelector* const
+//            //        selector, const irr::f32 deltaTime,
+//            //        const bool scatterFlock) const;
+//
+//    flock->update(selecta,1,0);
+//}
     break;
 case 1:
-    break
-;case 2:
+    break;
+case 2:
 break;
 }
 #endif

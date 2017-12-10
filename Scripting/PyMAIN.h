@@ -328,6 +328,8 @@ void Python::render() {//active camera
         deltaTime = device->getTimer()->getRealTime() - timeStamp;
         timeStamp = device->getTimer()->getRealTime();
 
+         if (bBlindBoids){flock->update(selecta,deltaTime,0);};
+
         #ifdef TESSIMAGE
             if (btesimage){ tesImage->render(deltaTime); }
         #endif

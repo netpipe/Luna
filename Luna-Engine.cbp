@@ -272,6 +272,7 @@
 					<Add library="assimp" />
 					<Add library="usb" />
 					<Add library="boost_thread" />
+					<Add library="boost_system" />
 					<Add directory="../LunaLibs/freetype-2.3.9/objs/.libs" />
 					<Add directory="../LunaLibs/net/enet-1.2.1" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Linux" />
@@ -575,6 +576,10 @@
 		<Unit filename="LunaLobby.cpp" />
 		<Unit filename="Main.cpp" />
 		<Unit filename="MainLoop.h" />
+		<Unit filename="Net/IRRc/Application.cpp" />
+		<Unit filename="Net/IRRc/Application.h" />
+		<Unit filename="Net/IRRc/botFuncts.h" />
+		<Unit filename="Net/IRRc/gui/Gui.h" />
 		<Unit filename="Net/irrNetClient.cpp" />
 		<Unit filename="Net/irrNetClient.h" />
 		<Unit filename="Net/irrNetServer.cpp" />
@@ -682,6 +687,10 @@
 		<Unit filename="Scripting/PythonManager.h" />
 		<Unit filename="TerrainFactory/CloudSceneNode/CCloudSceneNode.cpp" />
 		<Unit filename="TerrainFactory/CloudSceneNode/CCloudSceneNode.h" />
+		<Unit filename="TerrainFactory/FWGrass/GrassLoader.cpp" />
+		<Unit filename="TerrainFactory/FWGrass/GrassLoader.h" />
+		<Unit filename="TerrainFactory/FWGrass/gen/CGrassGenerator.cpp" />
+		<Unit filename="TerrainFactory/FWGrass/gen/CGrassGenerator.h" />
 		<Unit filename="TerrainFactory/ProceduralTrees/CBillboardGroupSceneNode.cpp" />
 		<Unit filename="TerrainFactory/ProceduralTrees/CBillboardGroupSceneNode.h" />
 		<Unit filename="TerrainFactory/ProceduralTrees/CTreeGenerator.cpp" />

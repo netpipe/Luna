@@ -67,8 +67,8 @@ PyObject * Python::PyIrr_iAdd(PyObject * self,PyObject * args){
 	//Damn...thats a lot of parameters :)
 	//PyArg_ParseTuple(args,"lffffffffff",&node_id,&size,&px,&py,&pz,&rx,&ry,&rz,&sx,&sy,&sz);
 
-core::recti nsize(50,500,50,100);
-core::recti textpos(50,500,50,100);
+core::recti nsize(50,50,500,100);
+core::recti textpos(50,50,500,100);
 
 video::ITexture* images = driver->getTexture("./media/axe.jpg");
 	//driver->makeColorKeyTexture(images, core::position2d<s32>(0,0));

@@ -8,6 +8,7 @@ PyMethodDef irr_Network[] =
     {"send",Python::PyIrr_Send,METH_VARARGS,"sendFile"},
     {"update",Python::PyIrr_Update,METH_VARARGS,"sendFile"},
     {"irc",Python::PyIrr_irc,METH_VARARGS,"irc"},
+	{"irc2",Python::PyIrr_RelayChat,METH_VARARGS,"relaychat"},
     {"encrypt",Python::PyIrr_Encrypt,METH_VARARGS,"encrypt"},
     {"decrypt",Python::PyIrr_Decrypt,METH_VARARGS,"addSphereNode"},
     {"server",Python::PyIrr_Server,METH_VARARGS,"startServer"},
@@ -324,4 +325,19 @@ PyObject * Python::PyIrr_irc(PyObject * self,PyObject * args){
 //app.registerIrrDevice(device);
 	//app.init();
 	return Py_BuildValue("");
+}
+
+PyObject * Python::PyIrr_RelayChat(PyObject * self,PyObject * args) {
+    int param,state,Vehicle,ammount;
+    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+
+//    #ifdef IRRc
+//   //  device->getCursorControl()->setVisible(true);
+//    #endif
+//    #ifdef IRRc
+//        app = new Application(device);
+//        app->registerIrrDevice(device);
+//        app->init();
+//    #endif
+return Py_BuildValue("");
 }

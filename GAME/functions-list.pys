@@ -31,7 +31,7 @@ init = 1  #start as true so that this loop is only ran once
 #irr.occlusionTest(1)            #broken #impliment nodemanager here for python occlusion someway to turn on and off
 #irr.image2d(1)                   #crashes without player being added first ? goes to background try to bring it as an overlay
 #irr.addHUD("data/HUD.xml")
-#iaxe = image.iadd()
+iaxe = image.iadd()
 #image.idraw(iaxe)
 #irr.bullet(1)                      #its actually a recast test at the moment
 
@@ -50,7 +50,7 @@ init = 1  #start as true so that this loop is only ran once
 #golfball = scene.addSphereNode("data/textures/material/marble1_256.png",0,20,5,5,5) #size,pos,texture
 #irr.setPosition(golfball,5,5,5)
 
-gui.chatbox(1)                 # not really sure how to impliment fully yet needs some sort of server
+#gui.chatbox(1)                 # not really sure how to impliment fully yet needs some sort of server
 #scene.irc(1)
 #physics.bulletBlend(1)    #has to be loaded before the car if you want it...  fixed
                             #needs to pass the sounds to the main loop or blackscreen... odd
