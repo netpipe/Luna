@@ -10,12 +10,15 @@ PyMethodDef irr_Image[] =
 
 
 PyObject * Python::PyIrr_iRotate(PyObject * self,PyObject * args){
-   	s32 node_id;
-//	float size;
-//   	float px,py,pz,rx,ry,rz,sx,sy,sz;
+   	long node_id;
+//draw all in vector image stack
+float rot;
 	//Damn...thats a lot of parameters :)
-//	PyArg_ParseTuple(args,"lffffffffff",&node_id,&size,&px,&py,&pz,&rx,&ry,&rz,&sx,&sy,&sz);
+	PyArg_ParseTuple(args,"lf",&node_id,&rot);
+	cImage* node = node_id;
 
+	node->SetRotation(rot);
+     //   irr::f32 GetRotation() { return Rotation; };
 return Py_BuildValue("l",node_id);
 
 }
@@ -44,10 +47,7 @@ return Py_BuildValue("l",node_id);
 
 PyObject * Python::PyIrr_iDraw(PyObject * self,PyObject * args){
    	long node_id;
-   	s32 scene;
-	float size;
-
-
+//draw all in vector image stack
 
 	//Damn...thats a lot of parameters :)
 	PyArg_ParseTuple(args,"l",&node_id);
@@ -63,14 +63,15 @@ PyObject * Python::PyIrr_iAdd(PyObject * self,PyObject * args){
    //	s32 node_id;
 //	float size;
 //bImage2d =1;
-   	float px,py,pz,rx,ry,rz,sx,sy,sz;
+	char * texture;
+   	float x1,y1,x2,y2,xx1,yy1,xx2,yy2;
 	//Damn...thats a lot of parameters :)
-	//PyArg_ParseTuple(args,"lffffffffff",&node_id,&size,&px,&py,&pz,&rx,&ry,&rz,&sx,&sy,&sz);
+	PyArg_ParseTuple(args,"sffffffff",&texture,&x1,&y1,&x2,&y2,&xx1,&yy1,&xx2,&yy2);
 
-core::recti nsize(50,50,500,100);
-core::recti textpos(50,50,500,100);
+core::recti nsize(x1,y1,x2,y2);
+core::recti textpos(xx1,yy1,xx2,yy2);
 
-video::ITexture* images = driver->getTexture("./media/axe.jpg");
+video::ITexture* images = driver->getTexture(texture);
 	//driver->makeColorKeyTexture(images, core::position2d<s32>(0,0));
 
 
