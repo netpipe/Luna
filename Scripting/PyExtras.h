@@ -57,7 +57,7 @@ PyMethodDef irr_Extras[] =
         {"lightning",Python::PyIrr_lightning,METH_VARARGS,"lightning scene node pretty neat takes 2 points"},
         {"beam",Python::PyIrr_beam,METH_VARARGS,"its a fricken laser beam"},
         {"skydome",Python::PyIrr_skyDome,METH_VARARGS,"skydome"},
-        {"lensFlare",Python::PyIrr_lensFlare,METH_VARARGS,"lensFlare"},
+        {"lensflare",Python::PyIrr_lensFlare,METH_VARARGS,"lensFlare"},
         {"blindboids",Python::PyIrr_BlindBoids,METH_VARARGS,"blindside boids demo"},
         {"occlusionTest",Python::PyIrr_Occlusion,METH_VARARGS,"occlusion"},
         {"compass",Python::PyIrr_Compass,METH_VARARGS,"PyIrr_Compas"},
@@ -86,27 +86,37 @@ Py_RETURN_NONE;
 
 
 PyObject * Python::PyIrr_lensFlare(PyObject * self,PyObject * args){
-        int param,state,Vehicle,ammount;
-    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+        int param;
+        float x,y,z;
+    PyArg_ParseTuple(args,"ifff",&param,&x,&y,&z);
    //     scene::IMeshSceneNode* sunMeshNode;
     sunMeshNode = smgr->addSphereSceneNode(1, 1, smgr->getRootSceneNode());
     sunMeshNode->setMaterialTexture(0, driver->getTexture("media/mesh.png"));
     sunMeshNode->setMaterialType(video::EMT_TRANSPARENT_ALPHA_CHANNEL);
     sunMeshNode->setMaterialFlag(video::EMF_LIGHTING, false);
     sunMeshNode->setScale(core::vector3d<f32>(600, 600, 600));
+    sunMeshNode->setPosition(vector3df (x,y,z));
 	//scene::CSceneNodeAnimatorFollowCamera* sunAnim = new scene::CSceneNodeAnimatorFollowCamera(core::vector3df(-8000, 4000, 750));
 	//sunMeshNode->addAnimator(sunAnim);
 	//sunAnim->drop();
+    if (param){
     #ifdef FLARE
     lensFlareNode = new LensFlareSceneNode(sunMeshNode, smgr,1);
     lensFlareNode->setMaterialTexture(0, driver->getTexture("media/flare.png"));
         driver->addOcclusionQuery(sunMeshNode, sunMeshNode->getMesh());
+          //  blensFlare=1;
+            bFlare2=1;
     #endif
+    }else{
     #ifdef FLARE2
-    //lensFlareNode->setMaterialTexture(0, driver->getTexture("media/flare.png"));
-    //lensFlareNode2 = new CLensFlareSceneNode(sunMeshNode, smgr,123,core::vector3d<f32>(0,0,0));
+    lensFlareNode2 = new CLensFlareSceneNode(sunMeshNode, smgr,123,core::vector3d<f32>(x,y,z));
+        lensFlareNode2->getMaterial(0).setTexture(0, driver->getTexture("media/flares.jpg"));
+         blensFlare=1;
     #endif
-    blensFlare=1;
+
+    }
+
+
 Py_RETURN_NONE;
 }
 

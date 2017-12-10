@@ -46,7 +46,8 @@ namespace Python {
  // put into a vector or array
     Vehicle   *m_cVehicle;
     btRigidBody *ha;
-            gui::CGUIChatBox* chat;
+
+    gui::CGUIChatBox* chat;
 
     bool bPProcess,opensteer,chopperEnabled,HUDENABLED=0;
 
@@ -57,7 +58,7 @@ namespace Python {
 
 
     #ifdef FLAG
-    	SimpleFlagNode	*irrFlagNode;
+    //	SimpleFlagNode	*irrFlagNode;
     #endif
     #ifdef HUD
         CHUD* CHUD2 = new CHUD();
@@ -228,11 +229,6 @@ namespace Python {
     #ifdef Image2D
         cImage* image;
     #endif
-    #ifdef FLARE
-    #endif
-  //  scene::IMeshSceneNode* sunMeshNode;
-    CLensFlareSceneNode *lensFlareNode2;
-//    scene::LensFlareSceneNode* lensFlareNode;
 
 
     void PreRender();
@@ -248,7 +244,6 @@ Application *app;
     bool bOcclusion,bCar,bCarFollow,bSPARK,bDecals;
 
     WrapperClass::Formation * formation;
-//    CGUIEditBoxIRB* codeEditor;
     f32 SpeedMultiplier;// = 1.1f;
 
     #ifdef COMPASS
@@ -300,24 +295,29 @@ void Python::PreRender(){   // prerender
 
 void Python::preEnd(){                                                 //used to be in pyfunct2 for
     #ifdef FLARE
-    // run occlusion query
+        if (bFlare2){
+        // run occlusion query
         driver->runAllOcclusionQueries(false);
         driver->updateAllOcclusionQueries(false);
         u32 occlusionQueryResult = driver->getOcclusionQueryResult(sunMeshNode);
-        if(occlusionQueryResult!= 0xffffffff)
-            lensFlareNode->setStrength(f32(occlusionQueryResult)/8000.f);
+            if(occlusionQueryResult!= 0xffffffff)
+                lensFlareNode->setStrength(f32(occlusionQueryResult)/8000.f);
+        }
     #endif
     #ifdef FLARE2
-       // driver->runAllOcclusionQueries(false);
-      //  driver->updateAllOcclusionQueries(false);
-     //   lensFlareNode->render();
+        if (blensFlare){
+            driver->runAllOcclusionQueries(false);
+            driver->updateAllOcclusionQueries(false);
+            lensFlareNode2->render();
+            //lensFlareNode2->setPosition(flare->getStartPosition() + camera->getPosition());
+        }
     #endif
 
         #ifdef PostProcess
         if ( bPProcess ){
-        ppBlurDOF->render( NULL );
-        ppBlur->render( NULL );
-        ppMine->render( NULL );
+            ppBlurDOF->render( NULL );
+            ppBlur->render( NULL );
+            ppMine->render( NULL );
         }
         #endif
 

@@ -130,7 +130,7 @@ gui.chatbox(1)                 # not really sure how to impliment fully yet need
 #irr.decals(1)
 
 #physics.fpsweapon(1) #FPS not working yet
-#irr.lensFlare(1) # might not see without atmosphere enabled check pymain
+#extras.lensFlare(1) # might not see without atmosphere enabled check pymain
 #scene.SPARK(1)
 
 
@@ -178,17 +178,27 @@ texture = "data/models/vehicles/oldChevy.bmp"
 #irr.exit()
 
 
-#maybe try and define server =  3 for more human readable py code
-#net.NetConnect(3,192.168.1.1);
-#irr.StartServer() #
-#chatbox = gui.chatbox()
-#irr.addChatText(chatbox)
-#net.update()
-#net.Send(1,5)
-#net.update()
+#scene.addwater("none",1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
+#gui.codeeditor(1) #shader editor #cpu limiter incase of bad code
+#window = gui.window("Test Winda",100 , 100 , 500 , 500 )
+#gui.editbox(window,80,80,250,235)
+#scene.postprocess()
+#net.irc()#notworking yet
+#scene.grass("./data/vegData/output.grs")
+
+#if (0) : # can only be client or server
+# if (1) :
+#  netman = net.connect()
+#  net.update(netman)
+#  net.send(netman,"shit yeah")
+#   net.update(netman)
+# else
+#netserver = net.server()
+#net.update(netserver)
+#scene.sleep(1000)
 
 #                      NotWorking
-#irr.flare(1)
+#scene.flare(1)
 
 
 #todo

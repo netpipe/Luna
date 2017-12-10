@@ -14,6 +14,9 @@ PyMethodDef irr_FlagMan[] =
 
 PyObject * Python::PyIrr_Flag1(PyObject * self,PyObject * args) //flag one better for speed less realistic
 {
+		float x,y,z;
+		char * texture;
+    PyArg_ParseTuple(args,"sfff",&texture,&x,&y,&z);
 #ifdef FLAG
 flag1 = true;
 // flag scene node
@@ -30,7 +33,7 @@ SMaterial Mat;
 		Mat.BackfaceCulling = false;
 
 	// Create the Flag Scene Node (dont forget to drop() it afterwards)
-		irrFlagNode = new SimpleFlagNode
+		SimpleFlagNode	*irrFlagNode = new SimpleFlagNode
 		(
 			10, 20,		// flag dimensions (change to whatever size required, or scale the node later)
 			10, 20,		// flag tesselation (good default value)
@@ -47,18 +50,23 @@ SMaterial Mat;
 		if( !irrFlagNode ) return 0; // unknown error
 
 	// assign a texture and enable alpha transparency (id is always 0)
-		irrFlagNode->getMaterial(0).setTexture( 0, driver->getTexture( "media/Flags/agnostechdemo1200912132.png" ) );
+		irrFlagNode->getMaterial(0).setTexture( 0, driver->getTexture(texture ) );
 		irrFlagNode->getMaterial(0).MaterialType = EMT_TRANSPARENT_ALPHA_CHANNEL;
 
 
 	// node can be manipulated like any other irrlicht node
 		irrFlagNode->setScale( vector3df(10) );
+		irrFlagNode->setPosition (vector3df (x,y,z));
 #endif
-     Py_RETURN_NONE;
+     return Py_BuildValue("l",irrFlagNode);;
 };
 
 PyObject * Python::PyIrr_Flag2(PyObject * self,PyObject * args) //more realistic with shader
 {
+	float x,y,z;
+		char * texture;
+    PyArg_ParseTuple(args,"sfff",&texture,&x,&y,&z);
+
 #ifdef FLAG2
 flag2 = true;
 
@@ -118,9 +126,9 @@ using namespace gui;
 // create the flag
 	CFlagSceneNode* flag = new CFlagSceneNode(smgr->getRootSceneNode(),smgr,345,wind,20.0f,16,12,20.0f,0.994f,
 						0.05f,vector3df(0.0f,-0.08f,0.0f),vertweightmap);
-	flag->getMaterial(0).setTexture(0, driver->getTexture("media/Flags/agnostechdemo1200912132.png"));
+	flag->getMaterial(0).setTexture(0, driver->getTexture(texture));
 	flag->getMaterial(0).MaterialType = (E_MATERIAL_TYPE)materialType;
-	flag->setPosition(vector3df(0.0f,0.0f,0.0f));
+	flag->setPosition(vector3df(x,y,z));
 
 // drop the weight map
 

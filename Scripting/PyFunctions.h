@@ -148,6 +148,15 @@ using namespace GrassGenerator;
 #include "../Scene/flares/SceneNodeAnimatorFollowCamera.h"
     scene::LensFlareSceneNode* lensFlareNode;
     scene::IMeshSceneNode* sunMeshNode;
+    int bFlare2;
+    #ifdef FLARE
+    #endif
+  //  scene::IMeshSceneNode* sunMeshNode;
+    CLensFlareSceneNode *lensFlareNode2;
+//    scene::LensFlareSceneNode* lensFlareNode;
+
+
+
 
   //  Vehicle *m_cVehicle;
   //  Vehicle *m_cVehicle2;
@@ -440,6 +449,11 @@ return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active camera
+    long * node;
+    int type;
+	PyArg_ParseTuple(args,"i",&type);
+
+	if (type){
     bDecals=1; // should fix this to be inside the defines
     #ifdef DECALS
         //! Create decal manager
@@ -447,8 +461,9 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
         //device->getSceneManager()->createMetaTriangleSelector();
     return Py_BuildValue("l",decalManager);
     #endif
-
+	}else{
     #ifdef DECALS2
+    bDecals=2;
         video::ITexture* image = driver->getTexture("./data/textures/bullet.png");
         for(int i=0; i<MAX_DECALS; i++){
             decals[i] = new ArmDecalSceneNode(smgr->getRootSceneNode(), smgr, image, 15.2f);
@@ -460,6 +475,7 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
         int nextDecal=0;
     return Py_BuildValue("1");
     #endif
+	}
 return Py_BuildValue("0");
 }
 
