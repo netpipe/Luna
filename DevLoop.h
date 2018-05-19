@@ -3,6 +3,7 @@
 
 
 
+
     enum GUI_ELEMENTS
 {
 	MENU_QUIT = 200,

@@ -179,6 +179,8 @@ namespace Python {
     PyObject * PyIrr_wii(PyObject * self,PyObject * args);
     PyObject * PyIrr_recast(PyObject * self,PyObject * args);
     PyObject * PyIrr_media(PyObject * self,PyObject * args);
+    //media
+    PyObject *PyIrr_FluidSynth(PyObject * self,PyObject * args);
 
 
 	// Model

@@ -377,7 +377,7 @@ core::vector2df pt;
 dis.setStep( 1.0f/1000.0f );
 
 do {
-pt.X = dis.Val();
+pt.X = dis.Val()*10;
 pt.Y = 10 * sin( dis.Val() );
 
 graph->drawOnGraph( pt, video::SColor(255,255,0,0) );

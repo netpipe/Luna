@@ -51,11 +51,31 @@ PyArg_ParseTuple(args,"s",&path);
 			else
 			{
 				naviNode = smgr->addOctreeSceneNode(smesh);
-				naviNode->setDebugDataVisible(scene::EDS_FULL);
+				//naviNode->setDebugDataVisible(scene::EDS_FULL);
+				naviNode->setDebugDataVisible(scene::EDS_MESH_WIRE_OVERLAY);
 			}
 			smesh->drop();
 		}
 	}
+
+	//vector<irr::core::vector3df> lstPoints = recast->returnPath(vector3df_Start, vector3df_End);
+//void RecastUtilM::resetCommonSettings()
+//{
+//m_cellSize = 4.0f; // 0.3f;
+//m_cellHeight = 0.2f;
+//m_agentHeight = 2.0f;
+//m_agentRadius = 0.6f;
+//m_agentMaxClimb = 0.9f;
+//m_agentMaxSlope = 45.0f;
+//m_regionMinSize = 8;
+//m_regionMergeSize = 20;
+//m_monotonePartitioning = false;
+//m_edgeMaxLen = 12.0f;
+//m_edgeMaxError = 1.3f;
+//m_vertsPerPoly = 6.0f;
+//m_detailSampleDist = 6.0f;
+//m_detailSampleMaxError = 1.0f;
+//}
 }
 
 

@@ -255,6 +255,8 @@
 					<Add directory="./entities/AI/recast/DetourTileCache/Include" />
 					<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/include" />
 					<Add directory="../LunaLibs/assimp-3.3.1/include" />
+					<Add directory="../LunaLibs/fluidsynth/include" />
+					<Add directory="../LunaLibs/fluidsynth/" />
 				</Compiler>
 				<Linker>
 					<Add library="GL" />
@@ -273,6 +275,11 @@
 					<Add library="usb" />
 					<Add library="boost_thread" />
 					<Add library="boost_system" />
+					<Add library="fluidsynth" />
+					<Add library="readline" />
+					<Add library="sndfile" />
+					<Add library="pulse" />
+					<Add library="pulse-simple" />
 					<Add directory="../LunaLibs/freetype-2.3.9/objs/.libs" />
 					<Add directory="../LunaLibs/net/enet-1.2.1" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Linux" />
@@ -285,6 +292,7 @@
 					<Add directory="../LunaLibs/zlib-1.2.3" />
 					<Add directory="../LunaLibs/cAudio23/bin/gcc" />
 					<Add directory="../LunaLibs/libtheoraplayer/" />
+					<Add directory="../LunaLibs/fluidsynth" />
 				</Linker>
 			</Target>
 			<Target title="mineREL">
@@ -510,6 +518,9 @@
 		<Unit filename="Events/Events.h" />
 		<Unit filename="Events/InGameEventReceiver.cpp" />
 		<Unit filename="Events/InGameEventReceiver.h" />
+		<Unit filename="GAME/APP/cowsynth/keys.pys" />
+		<Unit filename="GAME/APP/cowsynth/main.pys" />
+		<Unit filename="GAME/APP/cowsynth/net.pys" />
 		<Unit filename="GAME/RACING/racer/keys.pys" />
 		<Unit filename="GAME/RACING/racer/main.pys" />
 		<Unit filename="GAME/RPG-SIM/minigolf/keys.pys" />
@@ -531,6 +542,13 @@
 		<Unit filename="GUI/cImage2D.h" />
 		<Unit filename="GUI/compass/Compass.cpp" />
 		<Unit filename="GUI/compass/Compass.h" />
+		<Unit filename="GUI/sineGraph2d/IGraph2D.h" />
+		<Unit filename="GUI/sineGraph2d/IncrementorT.h" />
+		<Unit filename="GUI/sineGraph2d/Range.h" />
+		<Unit filename="GUI/sineGraph2d/SGraph2D.cpp" />
+		<Unit filename="GUI/sineGraph2d/SGraph2D.h" />
+		<Unit filename="GUI/widgets/CGUIBar.cpp" />
+		<Unit filename="GUI/widgets/CGUIBar.h" />
 		<Unit filename="Input/Compress/Compress.cpp" />
 		<Unit filename="Input/Compress/Compress.h" />
 		<Unit filename="Input/Controllers/StringTools.cpp" />
