@@ -215,114 +215,116 @@ if ( !device->run() ) return 0;
 ///////////////////////////////////
 **/
 
-	IGUIWindow* windows = guienv->addWindow(
-		rect<s32>(100 , 100 , 800 , 800 ),
-		false, // modal?
-		L"Test window");
+////	IGUIWindow* windows = guienv->addWindow(
+////		rect<s32>(100 , 100 , 800 , 800 ),
+////		false, // modal?
+////		L"Test window");
+////
+////
+////	guienv->createSkin(EGST_WINDOWS_METALLIC);
+////	IGUISkin*  skin = guienv->getSkin();
+////	skin->setColor(EGDC_HIGH_LIGHT ,video::SColor(192,222,237,243));
+////	skin->setColor(EGDC_BUTTON_TEXT  ,video::SColor(255,30,30,30));
+////	skin->setColor(EGDC_HIGH_LIGHT_TEXT ,video::SColor(255,30,30,30));
+////	skin->setColor(EGDC_3D_DARK_SHADOW  ,video::SColor(255,56,56,56));
+////	skin->setColor(EGDC_3D_SHADOW  ,video::SColor(255,85,85,85));
+////	skin->setColor(EGDC_3D_FACE  ,video::SColor(255,170,170,170));
+////	IGUIFont*  font = guienv->getFont("media/editor/fonts/arial10.xml");
+////	if (font)
+////      skin->setFont(font);
+////
+////	device->setWindowCaption(L"Code editor example, using IRRlicht 1.7.2");
+////
+////	// Create the menus for the example with it default language (English)
+////	IGUIContextMenu * menu = guienv->addMenu(0,-1);
+////	menu->addItem(L"File",0,true,true);
+////	menu->addItem(L"Edit",1,true,true);
+////	menu->addItem(L"Display",2,true,true);
+////
+////	IGUIContextMenu * file_submenu;
+////    file_submenu = menu->getSubMenu(0);
+////	file_submenu->addItem(L"Quit",MENU_QUIT);
+////
+////	IGUIContextMenu * edit_submenu;
+////    edit_submenu = menu->getSubMenu(1);
+////	edit_submenu->addItem(L"Cut",MENU_CUT);
+////	edit_submenu->addItem(L"Copy",MENU_COPY);
+////	edit_submenu->addItem(L"Paste",MENU_PASTE);
+////	edit_submenu->addItem(L"Delete",MENU_PASTE);
+////	edit_submenu->addSeparator();
+////	edit_submenu->addItem(L"Undo",MENU_UNDO);
+////	edit_submenu->addItem(L"Redo",MENU_REDO);
+////
+////	IGUIContextMenu * display_submenu;
+////    display_submenu = menu->getSubMenu(2);
+////	display_submenu->addItem(L"Toggle linecount display",MENU_LINECOUNT,true,false,false,false);
+////	display_submenu->addItem(L"English",MENU_ENGLISH,true,false,true,false);
+//////	display_submenu->addItem(L"Français",MENU_FRENCH,true,false,false,false);
+////
+////	// Define the example text of the Code editor box
+////	stringw exampletext = L"// Welcome to the code editor example\n//This example use the c++ style of code to highlight\n\nStrings:\"Here is some text\"\n";
+////	exampletext += L"C++ Keywords: this, if, else, break, switch, case, while\n\n";
+////	exampletext += L"custom keywords highlight: Hybrid, CuteAlien, Bitplane\n";
+////	exampletext += L"custom group highlight 1: (Text is colored between the parenthesis)\n";
+////	exampletext += L"custom group highlight 2: Feature(This is a demo of a feature and should work on multiple lines of text.)\n";
+////	exampletext += L"custom group highlight 2: Feature(Single line text)\n";
+////	exampletext += L"custom line highlight: remark: This line will be highlighted.";
+////
+////
+////
+//////	guienv->addImage(driver->getTexture( "media/irrlichtlogo.jpg"),
+//////			position2d<int>(10,10));
+////
+////
+//////	CGUIEditBoxIRB * codeEditor = new CGUIEditBoxIRB(exampletext.c_str(),true,true,guienv,guienv->getRootGUIElement(),-1,rect<s32>(20,60,600,400),device);
+////	CGUIEditBoxIRB * codeEditor = new CGUIEditBoxIRB(exampletext.c_str(),true,true,guienv,windows,-1,rect<s32>(10,40,driver->getScreenSize().Width-20,driver->getScreenSize().Height-20),device);
+////////CGUIEditBoxIRB* codeEditor = new CGUIEditBoxIRB(exampletext.c_str(),
+////////                       true,
+////////					   true,
+////////                       guienv,
+////////                       -1,
+////////                       25,
+////////                       //myRect(10,40,driver->getScreenSize().Width-220,driver->getScreenSize().Height-260),
+////////					   rect<s32>(20,60,600,400),
+////////					   device);
+//////
+//////
+////
+//////codeEditor->FrameRect=rect<s32>(200,60,600,400);
+////	// Recolor the background with pure white
+////	codeEditor->setBackgroundColor(SColor(255,240,240,240));
+////	// Recolor the linecount GUI element
+////	codeEditor->setLineCountColors(SColor(255,32,32,32),SColor(200,64,120,180),SColor(255,200,200,224));
+////	// Recolor the selection colors
+////	codeEditor->setSelectionColors(SColor(180,0,96,64),SColor(255,255,255,255),SColor(180,0,128,96));
+////
+////	// Allow the code editor to use syntax highlighting based on C++ keywords
+////	codeEditor->addCppKeywords();
+////
+////	// Allow the code editor to use syntax highlighting based on LUA keywords
+////	//codeEditor->addLUAKeywords();
+////
+////
+////	// Set the pointers so the event manager can manipulate their objects
+////	SAppContext context;
+////	context.device = device;
+////	context.codeEditor = codeEditor;
+////	context.menu = menu;
+////
+////	// Then create the event receiver, giving it that context structure.
+////	MyEventReceiver receiver(context);
+////
+////	// And tell the device to use our custom event receiver.
+////	device->setEventReceiver(&receiver);
+////
+////	codeEditor->setEnabled(0);
+////	codeEditor->setVisible(false);
+////	menu->setVisible(false);
+////	windows->setVisible(false);
+////
+////device->getCursorControl()->setVisible(true);
 
 
-	guienv->createSkin(EGST_WINDOWS_METALLIC);
-	IGUISkin*  skin = guienv->getSkin();
-	skin->setColor(EGDC_HIGH_LIGHT ,video::SColor(192,222,237,243));
-	skin->setColor(EGDC_BUTTON_TEXT  ,video::SColor(255,30,30,30));
-	skin->setColor(EGDC_HIGH_LIGHT_TEXT ,video::SColor(255,30,30,30));
-	skin->setColor(EGDC_3D_DARK_SHADOW  ,video::SColor(255,56,56,56));
-	skin->setColor(EGDC_3D_SHADOW  ,video::SColor(255,85,85,85));
-	skin->setColor(EGDC_3D_FACE  ,video::SColor(255,170,170,170));
-	IGUIFont*  font = guienv->getFont("media/editor/fonts/arial10.xml");
-	if (font)
-      skin->setFont(font);
-
-	device->setWindowCaption(L"Code editor example, using IRRlicht 1.7.2");
-
-	// Create the menus for the example with it default language (English)
-	IGUIContextMenu * menu = guienv->addMenu(0,-1);
-	menu->addItem(L"File",0,true,true);
-	menu->addItem(L"Edit",1,true,true);
-	menu->addItem(L"Display",2,true,true);
-
-	IGUIContextMenu * file_submenu;
-    file_submenu = menu->getSubMenu(0);
-	file_submenu->addItem(L"Quit",MENU_QUIT);
-
-	IGUIContextMenu * edit_submenu;
-    edit_submenu = menu->getSubMenu(1);
-	edit_submenu->addItem(L"Cut",MENU_CUT);
-	edit_submenu->addItem(L"Copy",MENU_COPY);
-	edit_submenu->addItem(L"Paste",MENU_PASTE);
-	edit_submenu->addItem(L"Delete",MENU_PASTE);
-	edit_submenu->addSeparator();
-	edit_submenu->addItem(L"Undo",MENU_UNDO);
-	edit_submenu->addItem(L"Redo",MENU_REDO);
-
-	IGUIContextMenu * display_submenu;
-    display_submenu = menu->getSubMenu(2);
-	display_submenu->addItem(L"Toggle linecount display",MENU_LINECOUNT,true,false,false,false);
-	display_submenu->addItem(L"English",MENU_ENGLISH,true,false,true,false);
-//	display_submenu->addItem(L"Français",MENU_FRENCH,true,false,false,false);
-
-	// Define the example text of the Code editor box
-	stringw exampletext = L"// Welcome to the code editor example\n//This example use the c++ style of code to highlight\n\nStrings:\"Here is some text\"\n";
-	exampletext += L"C++ Keywords: this, if, else, break, switch, case, while\n\n";
-	exampletext += L"custom keywords highlight: Hybrid, CuteAlien, Bitplane\n";
-	exampletext += L"custom group highlight 1: (Text is colored between the parenthesis)\n";
-	exampletext += L"custom group highlight 2: Feature(This is a demo of a feature and should work on multiple lines of text.)\n";
-	exampletext += L"custom group highlight 2: Feature(Single line text)\n";
-	exampletext += L"custom line highlight: remark: This line will be highlighted.";
-
-
-
-//	guienv->addImage(driver->getTexture( "media/irrlichtlogo.jpg"),
-//			position2d<int>(10,10));
-
-
-//	CGUIEditBoxIRB * codeEditor = new CGUIEditBoxIRB(exampletext.c_str(),true,true,guienv,guienv->getRootGUIElement(),-1,rect<s32>(20,60,600,400),device);
-	CGUIEditBoxIRB * codeEditor = new CGUIEditBoxIRB(exampletext.c_str(),true,true,guienv,windows,-1,rect<s32>(10,40,driver->getScreenSize().Width-20,driver->getScreenSize().Height-20),device);
-////CGUIEditBoxIRB* codeEditor = new CGUIEditBoxIRB(exampletext.c_str(),
-////                       true,
-////					   true,
-////                       guienv,
-////                       -1,
-////                       25,
-////                       //myRect(10,40,driver->getScreenSize().Width-220,driver->getScreenSize().Height-260),
-////					   rect<s32>(20,60,600,400),
-////					   device);
-//
-//
-
-//codeEditor->FrameRect=rect<s32>(200,60,600,400);
-	// Recolor the background with pure white
-	codeEditor->setBackgroundColor(SColor(255,240,240,240));
-	// Recolor the linecount GUI element
-	codeEditor->setLineCountColors(SColor(255,32,32,32),SColor(200,64,120,180),SColor(255,200,200,224));
-	// Recolor the selection colors
-	codeEditor->setSelectionColors(SColor(180,0,96,64),SColor(255,255,255,255),SColor(180,0,128,96));
-
-	// Allow the code editor to use syntax highlighting based on C++ keywords
-	codeEditor->addCppKeywords();
-
-	// Allow the code editor to use syntax highlighting based on LUA keywords
-	//codeEditor->addLUAKeywords();
-
-
-	// Set the pointers so the event manager can manipulate their objects
-	SAppContext context;
-	context.device = device;
-	context.codeEditor = codeEditor;
-	context.menu = menu;
-
-	// Then create the event receiver, giving it that context structure.
-	MyEventReceiver receiver(context);
-
-	// And tell the device to use our custom event receiver.
-	device->setEventReceiver(&receiver);
-
-	codeEditor->setEnabled(0);
-	codeEditor->setVisible(false);
-	menu->setVisible(false);
-	windows->setVisible(false);
-
-device->getCursorControl()->setVisible(true);
 //    	IrrAssimp assimp(smgr);
 //    IAnimatedMesh* mesh = assimp.getMesh("media/dwarf.x");
 ////	if (!mesh /*|| !meshNoAssimp*/)
@@ -375,22 +377,22 @@ device->getCursorControl()->setVisible(true);
 
  //       rt->render();
 
-		if (Python::bCodeEditor==1	){
-			Python::bCodeEditor=0;
-			codeEditor->setEnabled(true);
-			codeEditor->setVisible(true);
-			menu->setVisible(true);
-			menu->setEnabled(true);
-			windows->setVisible(true);
-			//store eventrec0-
-		}else if (Python::bCodeEditor == 3	){
-
-			codeEditor->setEnabled(0);
-			codeEditor->setVisible(false);
-			menu->setVisible(false);
-			menu->setEnabled(false);
-			windows->setVisible(false);
-		}
+////		if (Python::bCodeEditor==1	){
+////			Python::bCodeEditor=0;
+////			codeEditor->setEnabled(true);
+////			codeEditor->setVisible(true);
+////			menu->setVisible(true);
+////			menu->setEnabled(true);
+////			windows->setVisible(true);
+////			//store eventrec0-
+////		}else if (Python::bCodeEditor == 3	){
+////
+////			codeEditor->setEnabled(0);
+////			codeEditor->setVisible(false);
+////			menu->setVisible(false);
+////			menu->setEnabled(false);
+////			windows->setVisible(false);
+////		}
 		#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
         Python::preEnd();
           Python::CheckKeyStates();

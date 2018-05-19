@@ -102,8 +102,8 @@ init = 1  #start as true so that this loop is only ran once
 
 #scene.lightning(1)  #try and get this mounted to a vehicle or shoot it from camera.
 #scene.beam(1)
-#scene.flag1(1)
-#scene.flag2(1)
+#scene.flag1("media/Flags/agnostechdemo1200912132.png",10,100,10)
+#scene.flag2("media/Flags/agnostechdemo1200912132.png",10,100,10)
 #scene.compass(1)
 
 #scene.recast("./media/dungeon.obj");

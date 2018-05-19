@@ -304,7 +304,7 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
  //   camera->setFarValue(10000);
     //camera = smgr->addCameraSceneNodeFPS();
     //  camera->setFOV(PI/2);
-    device->setEventReceiver ( &mEvent);
+   // device->setEventReceiver ( &mEvent);
     m_cScene = new Scene();
     m_cScene->registerIrrDevice(*device);
     m_cScene->setupLights();//Scene, setup for lights.

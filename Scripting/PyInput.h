@@ -596,17 +596,17 @@ if (chopperEnabled){
 //device->sleep(5,0);
 
 
-    if (mEvent.getKeyState(    KEY_KEY_4))    //SPACEBAR
-    {
-        vector3df pos = camera->getPosition();
-        vector3df scl = vector3df(1,1,1);
-        btRigidBody *had = luna->m_cPhysics->createBox( btVector3(pos.X, pos.Y, pos.Z),
-                                                                btVector3(scl.X, scl.Y, scl.Z), 10); //weight
-                                                                had->setLinearVelocity(btVector3(8000,0,1));
-    }
+//    if (mEvent.getKeyState(    KEY_KEY_4))    //SPACEBAR
+//    {
+//        vector3df pos = camera->getPosition();
+//        vector3df scl = vector3df(1,1,1);
+//        btRigidBody *had = luna->m_cPhysics->createBox( btVector3(pos.X, pos.Y, pos.Z),
+//                                                                btVector3(scl.X, scl.Y, scl.Z), 10); //weight
+//                                                                had->setLinearVelocity(btVector3(8000,0,1));
+//    }
 
-    if (mEvent.getKeyState(    KEY_SPACE))    //SPACEBAR
-                    {m_cVehicle->brake();   }
+//    if (mEvent.getKeyState(    KEY_SPACE))    //SPACEBAR
+//                    {m_cVehicle->brake();   }
 
 //    if (mEvent.getKeyState(    KEY_KEY_2))
 //    {
