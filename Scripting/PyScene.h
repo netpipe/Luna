@@ -15,22 +15,21 @@ reminder to actually check the names match with unstable ide's and whatnot
 
 	{"drawtext",Python::PyIrr_DrawText,METH_VARARGS,"Renders text to the screen with default font"},
 	{"add_cube",Python::PyIrr_AddCubeSceneNode,METH_VARARGS,"Adds a cube scene node"},
-    {"addCamera",Python::PyIrr_addCamera,METH_VARARGS,"sets camera vector"},
-    {"setCamera",Python::PyIrr_SetCamera,METH_VARARGS,"sets camera vector"},
-	{"getCamera",Python::PyIrr_GetCamera,METH_VARARGS,"getcamera vector"},
+
 	{"Reset",Python::PyIrr_Reset,METH_VARARGS,"Reset various parts of scripting system"},
 	{"addAMesh",Python::PyIrr_addAnimatedMesh,METH_VARARGS,"PyIrr_addAnimatedMesh"},
 	{"addMesh",Python::PyIrr_LoadMesh,METH_VARARGS,"PyIrr_addMesh"},
     {"addModel",Python::PyIrr_loadModel,METH_VARARGS,"load model"},
-    {"loadTrack",Python::PyIrr_LoadTrack,METH_VARARGS,"load model"},
-    {"loadLevel",Python::PyIrr_LoadLevel,METH_VARARGS,"load model"},
-    {"Light",Python::PyIrr_Light,METH_VARARGS,"load model"},
+    {"loadTrack",Python::PyIrr_LoadTrack,METH_VARARGS,"loadTrack"},
+    {"loadLevel",Python::PyIrr_LoadLevel,METH_VARARGS,"loadLevel"},
+	{"Light",Python::PyIrr_Light,METH_VARARGS,"Light"},
 	//input
     {"using",Python::PyIrr_using,METH_VARARGS,"for opening scripts within scripts"},
     {"recast",Python::PyIrr_recast,METH_VARARGS,"recast navigation"},
     {"addWheel",Python::PyIrr_recast,METH_VARARGS,"recast navigation"},
     {"media",Python::PyIrr_media,METH_VARARGS,"media"},
-        {"rotation",Python::PyIrr_setRotation,METH_VARARGS,"media"},
+    {"rotation",Python::PyIrr_setRotation,METH_VARARGS,"rotation"},
+
 
 
 	//scene
@@ -53,23 +52,15 @@ reminder to actually check the names match with unstable ide's and whatnot
     {"postprocess",Python::PyIrr_PostProcess,METH_VARARGS,"postProcess"},
 
 
-
-
-
-
     //Physics
     {"setVelocity",Python::PyIrr_setVelocity,METH_VARARGS,"setVelocity"},
     {"motionTrail",Python::PyIrr_motionTrail,METH_VARARGS,"motionTrail"},
 
     //Timers
-    {"delay",Python::PyIrr_Delay,METH_VARARGS,"delay"},
-    {"sleep",Python::PyIrr_Sleep,METH_VARARGS,"sleep"},
-    {"setTime",Python::PyIrr_setTime,METH_VARARGS,"setTime"},
-    {"getTime",Python::PyIrr_getTime,METH_VARARGS,"getTime"},
+
 
     {"delete",Python::PyIrr_Delete,METH_VARARGS,"delete"},
-    {"pauseGame",Python::PyIrr_pauseGame,METH_VARARGS,"pauseGame"},
-    {"exit",Python::PyIrr_exit,METH_VARARGS,"exit"},
+
 
 	{NULL,NULL,0,NULL}
 };
@@ -532,16 +523,7 @@ return Py_BuildValue("l",test);
 };
 
 
-PyObject * Python::PyIrr_pauseGame(PyObject * self,PyObject * args){
-    luna->m_cInGameEvents.Quit=true;
-return Py_BuildValue("");
-}
 
-
-PyObject * Python::PyIrr_exit(PyObject * self,PyObject * args){
-    luna->m_cInGameEvents.Quit=true;
-    return Py_BuildValue("");
-}
 
 PyObject * Python::PyIrr_PostProcess(PyObject * self,PyObject * args){
 #ifdef PostProcess
@@ -664,6 +646,31 @@ mesh, 0.004f);
 #endif
 
 return Py_BuildValue("");
+}
+PyObject * Python::PyIrr_Light(PyObject * self,PyObject * args){ //active camera // parameters for fov possibly shaders aswell
+	//s32
+	float x,y,z;
+	int t;
+	char * s;
+	scene::ISceneNode* node = 0;
+//		Material.Lighting = false;
+	PyArg_ParseTuple(args,"ifffs",&t,&x,&y,&z,&s);
+ //cam->setActiveCamera(cam);
+  //  node->setAutomaticCulling(EAC_FRUSTUM_BOX);
+node = smgr->addLightSceneNode(0, core::vector3df(x,y,z),
+		video::SColorf(1.0f, 0.6f, 0.7f, 1.0f), 800.0f);
+
+//	video::SLight l;
+//			scene::ILightSceneNode *light = smgr->addLightSceneNode(0,core::vector3df(50,100,50),video::SColorf(1,1,1,1.f),100);
+//	l = light->getLightData();
+//	l.Type = video::ELT_POINT;
+//	l.AmbientColor = video::SColorf(.35,.35,.35);
+//	l.SpecularColor = video::SColorf(.7,.7,.5);
+//	l.DiffuseColor = video::SColorf(1,1,1);
+//	l.CastShadows = true;
+//	light->setLightData( l );
+
+return Py_BuildValue("l",node);
 }
 
 /*

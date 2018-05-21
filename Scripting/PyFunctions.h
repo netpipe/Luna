@@ -198,13 +198,17 @@ fluid_cmd_handler_t* cmd_handler = NULL;
   fluid_synth_t* synth = NULL;
 
 
-
-
-PyMethodDef irr_fun2[] =
+PyMethodDef irr_function[] =
 {
-//        {"flare2",Python::PyIrr_Flare2,METH_VARARGS,"Loads Flare2"},
-        {"formationdemo",Python::PyIrr_FormationDemo,METH_VARARGS,"Loads FormationDemo"},
+    {"delay",Python::PyIrr_Delay,METH_VARARGS,"delay"},
+    {"sleep",Python::PyIrr_Sleep,METH_VARARGS,"sleep"},
+    {"setTime",Python::PyIrr_setTime,METH_VARARGS,"setTime"},
+    {"getTime",Python::PyIrr_getTime,METH_VARARGS,"getTime"},
 
+//        {"flare2",Python::PyIrr_Flare2,METH_VARARGS,"Loads Flare2"},
+    {"formationdemo",Python::PyIrr_FormationDemo,METH_VARARGS,"Loads FormationDemo"},
+    {"pauseGame",Python::PyIrr_pauseGame,METH_VARARGS,"pauseGame"},
+    {"exit",Python::PyIrr_exit,METH_VARARGS,"exit"},
         {NULL,NULL,0,NULL}
 };
 
@@ -298,8 +302,20 @@ PyObject * Python::PyIrr_getTime(PyObject * self,PyObject * args){ //active came
 return Py_BuildValue("i",tm);
 }
 
+PyObject * Python::PyIrr_getScreen(PyObject * self,PyObject * args) {
+    int type;
+    PyArg_ParseTuple(args,"i",&type);
+    if (type == 0){
+        return Py_BuildValue("i",driver->getViewPort().getWidth());
+    }
+    else if (type == 1){
 
+        return Py_BuildValue("i",driver->getViewPort().getHeight());
+    }
+//const irr::core::dimension2du& screenSize = driver->getScreenSize();
+//irr::core::vector2df screenSize(driver.getViewPort().getWidth(), driver.getViewPort().getHeight());
 
+}
 PyObject * Python::PyIrr_fpsWeapon(PyObject * self,PyObject * args){
 // need to attach to bones and/or nodes here
 bFPS = 1;
@@ -394,6 +410,18 @@ PyObject * Python::PyIrr_Delete(PyObject * self,PyObject * args){ //active camer
 	delete node;
 
 }
+
+PyObject * Python::PyIrr_pauseGame(PyObject * self,PyObject * args){
+    luna->m_cInGameEvents.Quit=true;
+return Py_BuildValue("");
+}
+
+
+PyObject * Python::PyIrr_exit(PyObject * self,PyObject * args){
+    luna->m_cInGameEvents.Quit=true;
+    return Py_BuildValue("");
+}
+
 #include "../Scripting/Environmental.h"
 #include "../Scripting/PyExtras.h"
 #include "../Scripting/PY_Physics.h"

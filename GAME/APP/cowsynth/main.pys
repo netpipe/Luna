@@ -15,20 +15,20 @@ import sound
 #INITIALIZE
 if (init) :
 
- camera = scene.addCamera(1,0,20,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
+ camera = scene.addCamera(3,0,20,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
  #physics.fpsweapon(camera) #pick 2 FPS for camera
 # Light1 = scene.Light(10,100,150,1,"111111") # type , vector, color
 # model = "data/models/vehicles/oldChevy-Truck.3ds"
 # texture = "data/models/vehicles/oldChevy.bmp"
 # terrain = scene.addTerrain(1,-100,-103,-100,5,1,5,"media/terrain-heightmap.bmp","media/terrain.jpg","media/detailmap.jpg") # load last to make the physics work FIX  // possibly a load terrain xml function
 #resolution[0],resolution[1]
- iaxe = image.iadd("./APP/cowsynth/logo.png",0,0,1024,768,0,0,960,540)
+ iaxe = image.iadd("./APP/cowsynth/logo.png",0,0,scene.screen(0),scene.screen(1),0,0,960,540)
  #image.idraw(iaxe)
  image.iscale(iaxe,0.5,0.5)
 # image.iposition(iaxe,0,0)
  image.itexture(iaxe,"./APP/cowsynth/logo2.png",0)
  tex_id = image.load_texture("media/crate.png")
- gui.codeeditor();
+# gui.codeeditor();
 
  i=0
  init = 0
@@ -62,6 +62,10 @@ if (init) :
  #jungle = scene.addJungle()
  #scene.addTree("jungle",1,terrain,1,1,1)
  track1 = scene.loadTrack('./APP/cowsynth/CUCurve.002.irrmesh',20,0,0)
+# mesh.add
+# mesh.setRotation
+ scene.rotation (track1,40,19,40)
+# scene.scale(track1,50)
 # scene.loadModel('./APP/cowsynth/CUCurve.002.irrmesh',"tex_id",0,0)
  #scene.addModel('./APP/cowsynth/c.irrmesh',"media/dwarf.jpg","irrmesh",4)
 # track1 = scene.loadTrack('./data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
@@ -105,7 +109,7 @@ image.irotate(iaxe,i)
 #image.iscale(iaxe,2,2)
 i+=1
 image.idraw(iaxe) #midpoint
-
+irr.sleep(10)
 
 
 

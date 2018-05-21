@@ -150,6 +150,8 @@ namespace Python {
     PyObject * PyIrr_ExportScene(PyObject * self,PyObject * args);
     PyObject * PyIrr_FWGrass(PyObject * self,PyObject * args);
     PyObject * PyIrr_PostProcess(PyObject * self,PyObject * args);
+    PyObject * PyIrr_getScreen(PyObject * self,PyObject * args);
+
     //Extras
     PyObject * PyIrr_realCloud(PyObject * self,PyObject * args);
     PyObject * PyIrr_calcMath(PyObject * self,PyObject * args);

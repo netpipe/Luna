@@ -2,6 +2,14 @@
 #define PYCAMERA_INCLUDED
 
 #include <irrlicht.h>
+PyMethodDef irr_Camera[] = {
+    {"addCamera",Python::PyIrr_addCamera,METH_VARARGS,"sets camera vector"},
+    {"setCamera",Python::PyIrr_SetCamera,METH_VARARGS,"sets camera vector"},
+	{"getCamera",Python::PyIrr_GetCamera,METH_VARARGS,"getcamera vector"},
+{"screen",Python::PyIrr_getScreen,METH_VARARGS,"screenwidth"},
+	{NULL,NULL,0,NULL}
+};
+
 // possibly rename to camera
 PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 	float x,y,z;
@@ -124,31 +132,6 @@ return Py_BuildValue("fff",v.X,v.Y,v.Z);
 }
 
 
-PyObject * Python::PyIrr_Light(PyObject * self,PyObject * args){ //active camera // parameters for fov possibly shaders aswell
-	//s32
-	float x,y,z;
-	int t;
-	char * s;
-	scene::ISceneNode* node = 0;
-//		Material.Lighting = false;
-	PyArg_ParseTuple(args,"ifffs",&t,&x,&y,&z,&s);
- //cam->setActiveCamera(cam);
-  //  node->setAutomaticCulling(EAC_FRUSTUM_BOX);
-node = smgr->addLightSceneNode(0, core::vector3df(x,y,z),
-		video::SColorf(1.0f, 0.6f, 0.7f, 1.0f), 800.0f);
-
-//	video::SLight l;
-//			scene::ILightSceneNode *light = smgr->addLightSceneNode(0,core::vector3df(50,100,50),video::SColorf(1,1,1,1.f),100);
-//	l = light->getLightData();
-//	l.Type = video::ELT_POINT;
-//	l.AmbientColor = video::SColorf(.35,.35,.35);
-//	l.SpecularColor = video::SColorf(.7,.7,.5);
-//	l.DiffuseColor = video::SColorf(1,1,1);
-//	l.CastShadows = true;
-//	light->setLightData( l );
-
-return Py_BuildValue("l",node);
-}
 
 //PyObject * Python::PyIrr_setEvent(PyObject * self,PyObject * args){
 //}

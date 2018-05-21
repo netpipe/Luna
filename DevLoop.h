@@ -385,6 +385,7 @@ device->getCursorControl()->setVisible(true);
 			windows->setVisible(true);
 			device->setEventReceiver(&receiver);
 			device->getCursorControl()->setVisible(true);
+			    device->setResizable(true);
 		}else if (Python::bCodeEditor == 3	){
 
 			codeEditor->setEnabled(0);

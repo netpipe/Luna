@@ -1,4 +1,4 @@
-import irr
+#import irr
 
 
 #keystate = input.getKey('KEY_KEY_E')
@@ -9,8 +9,8 @@ import irr
 #if input.getKey('KEY_SPACE') :
 # physics.VehicleParams(car1,3,10,0,0,0)
 #
-if (input.getKey('KEY_KEY_W') ):
- gui.codeeditor();
+#if (input.getKey('KEY_KEY_W') ):
+# gui.codeeditor();
 # physics.VehicleParams(car1,1,0,0,0,0) #acceleration
 # accelerating=1
 #if (driving and input.getKey('KEY_KEY_W')==0 ):
@@ -76,5 +76,5 @@ if (input.getKey('KEY_KEY_W') ):
 
 if input.getKey('KEY_ESCAPE') :
  paused=1
- scene.exit()
+ irr.exit()
 
