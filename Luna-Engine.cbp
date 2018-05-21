@@ -700,8 +700,10 @@
 		<Unit filename="Scripting/PyImage.h" />
 		<Unit filename="Scripting/PyInput.h" />
 		<Unit filename="Scripting/PyMAIN.h" />
+		<Unit filename="Scripting/PyMath.h" />
 		<Unit filename="Scripting/PyNet.h" />
 		<Unit filename="Scripting/PyScene.h" />
+		<Unit filename="Scripting/PySound.h" />
 		<Unit filename="Scripting/PythonManager.h" />
 		<Unit filename="TerrainFactory/CloudSceneNode/CCloudSceneNode.cpp" />
 		<Unit filename="TerrainFactory/CloudSceneNode/CCloudSceneNode.h" />
