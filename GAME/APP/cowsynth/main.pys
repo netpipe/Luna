@@ -6,10 +6,11 @@ import input
 #import luna
 import net
 import gui
+import math
+import sound
 
-#should rename to game.pys
-#checkkeys has been moved to keys.pys
-#irr.checkKeyState(); # check event loop to see if any key was pressed
+#Project Description: CowSynth - (Cooperative work Synthesizer) multiuser networked midi synth/player client/server with alsa or midiwin ports.
+
 
 #INITIALIZE
 if (init) :
@@ -26,6 +27,8 @@ if (init) :
  image.iscale(iaxe,0.5,0.5)
 # image.iposition(iaxe,0,0)
  image.itexture(iaxe,"./APP/cowsynth/logo2.png",0)
+ tex_id = image.load_texture("media/crate.png")
+
 
  i=0
  init = 0
@@ -34,15 +37,7 @@ if (init) :
 # extras.lensflare(1,10,100,10)
 # scene.flag1("media/Flags/agnostechdemo1200912132.png",10,100,10)
 
- scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/LATIN_.MID",0)
- #scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",2)
-# scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/LATIN_.MID",5)
- scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",0)
-# scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",1)
- scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",3)
- scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",2)
-scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",3)
-# scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/LATIN_.MID",4)
+
 # healthbar=gui.bar(0,0,20,40,100,60)
 #print("aha")
 # if (0) : # can only be client or server
@@ -57,21 +52,22 @@ scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JIN
 
   # scene.sleep(1000)
 #gui.bar(healthbar,1,20,40,200,60) #does not draw onanimate it
-image.irotate(iaxe,i)
-#image.iscale(iaxe,2,2)
-i+=1
+
 #if i > 1:
 # image.iscale(iaxe,i,i)
 # i=1
 
-image.idraw(iaxe)
+
 #image.iscale(iaxe,1,1) #causes flicker
  #jungle = scene.addJungle()
  #scene.addTree("jungle",1,terrain,1,1,1)
+ track1 = scene.loadTrack('./APP/cowsynth/CUCurve.002.irrmesh',20,0,0)
+# scene.loadModel('./APP/cowsynth/CUCurve.002.irrmesh',"tex_id",0,0)
+ #scene.addModel('./APP/cowsynth/c.irrmesh',"media/dwarf.jpg","irrmesh",4)
 # track1 = scene.loadTrack('./data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
  #track1 = scene.loadLevel('extra/maps/urban.bsp',0,0,0)  # trackname , timeofday , lighting , track slot/stages
 # scene.setPosition(terrain ,4, -100,-10,-100)
- #scene.exportScene("/home/clay/test/scene.irr")
+# scene.exportScene("/home/clay/test/scene.irr")
  #stage = scene.loadTrack('./data/Stage3/Stage3.irr',20,0,0)
  #stage = scene.loadTrack('./StageData/irrb2/Hospital.irr',20,0,0)
 #table = scene.loadTrack('./FOOSEBALL/table_football.x',20,0,0)
@@ -83,25 +79,39 @@ image.idraw(iaxe)
 #should be able to add trees without terrain/orientation
 #scene.trees(terr,bush)
 #scene.addTree2(bush)
-
-#for(u32 i = 0 ; i < 1000 ; i++)
-# {
- # f32 cx = 100.0f + rand()%10040;
-#  f32 cy = 100.0f + rand()%10040;
- # int type = rand()%8+1;
-#  int seed = rand();
+#
+#for x in range(0,1000):
+# cx = 100 + rand(10040);
+# cy = 100 + rand(10040);
+# type = math.rand(8+1);
+# seed = rand();
 
 
 #MAIN LOOP
-
-
+ sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/LATIN_.MID",0)
+ #scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",2)
+# scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/LATIN_.MID",5)
+ sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",0)
+# scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",1)
+ sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",3)
+ sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",2)
+sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",3)
+# scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/LATIN_.MID",4)
+image.irotate(iaxe,i)
+#print seed
+#print type
+#print cx
+#print cy
+#image.iscale(iaxe,2,2)
+i+=1
+image.idraw(iaxe) #midpoint
 
 
 
 
 #timer
 
-#scene.using ('./RACING/racer/keys.pys',"1");
+scene.using ('./APP/cowsynth/keys.pys',"1");
 
 #irr.update(); #could set timing here, maybe smgr gui  etc  todo
 

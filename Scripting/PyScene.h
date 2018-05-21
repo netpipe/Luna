@@ -124,6 +124,37 @@ switch(action){
 
         //IAnimatedMesh* meshNoAssimp = smgr->getMesh("Media/ninja.b3d");
         //  assimp.exportMesh(mesh, "obj", "Media/export.obj");
+                if ( extension == ".irrmesh" ){ //extension == "b3d"){
+                printf ("loading irrmesh");
+                      //   IrrAssimp assimp(smgr);
+            IAnimatedMesh* mesh = assimp.getMesh(value1);
+        //    IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+             node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
+            //IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode( meshNoAssimp );
+
+
+//            	if (!mesh /*|| !meshNoAssimp*/)
+//                {
+//                    device->drop();
+//                    return 1;
+//                }
+
+            if (node /*&& nodeNoAssimp*/)
+            {
+                //node->setMaterialFlag(EMF_LIGHTING, false);
+                node->setDebugDataVisible(scene::EDS_SKELETON | scene::EDS_BBOX_ALL);
+                //node->setScale(core::vector3df(100, 100, 100));
+
+                //nodeNoAssimp->setPosition(core::vector3df(100, 0, 0));
+                //nodeNoAssimp->setMaterialFlag(EMF_LIGHTING, false);
+                //node->setMD2Animation(scene::EMAT_STAND);
+                node->setMaterialTexture( 0, driver->getTexture(value2) );
+            }
+            //     node->setPosition(vector3df(300,300,300));
+        }
+
+
         if ( extension == ".x" ){ //extension == "b3d"){
                 printf ("loading x");
                       //   IrrAssimp assimp(smgr);

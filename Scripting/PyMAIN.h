@@ -182,6 +182,8 @@ namespace Python {
     //media
     PyObject *PyIrr_FluidSynth(PyObject * self,PyObject * args);
 
+    //Math
+    PyObject * PyIrr_Rand(PyObject * self,PyObject * args);
 
 	// Model
     PyObject * PyIrr_aBillBoard(PyObject * self,PyObject * args);
