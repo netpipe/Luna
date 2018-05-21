@@ -231,6 +231,8 @@ int Luna::init(){
         device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 0,1);
      //   device = createDevice ( EDT_SOFTWARE,dimension2du (resolution[0],resolution[1]), 24, 0,1);
 // EDT_NULL       device = createDevice ( EDT_BURNINGSVIDEO,dimension2du (resolution[0],resolution[1]), 24, 0,1);
+//const irr::core::dimension2du& screenSize = driver->getScreenSize();
+//irr::core::vector2df screenSize(driver.getViewPort().getWidth(), driver.getViewPort().getHeight());
     };
     device->setWindowCaption ( L"Luna Engine v1-initial" );
     driver = device->getVideoDriver();

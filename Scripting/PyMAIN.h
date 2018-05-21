@@ -221,6 +221,9 @@ namespace Python {
     PyObject * PyIrr_iPosition(PyObject * self,PyObject * args);
     PyObject * PyIrr_iAdd(PyObject * self,PyObject * args);
     PyObject * PyIrr_iDraw(PyObject * self,PyObject * args);
+    PyObject * PyIrr_iAlpha(PyObject * self,PyObject * args);
+    PyObject * PyIrr_iTexture(PyObject * self,PyObject * args);
+
 
     PyMODINIT_FUNC init_irr(void);
 

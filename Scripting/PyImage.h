@@ -5,15 +5,16 @@ PyMethodDef irr_Image[] =
 	{"iposition",Python::PyIrr_iPosition,METH_VARARGS,"PyIrr_iPosition"},
 	{"iadd",Python::PyIrr_iAdd,METH_VARARGS,"PyIrr_iAdd"},
 	{"idraw",Python::PyIrr_iDraw,METH_VARARGS,"PyIrr_iAdd"},
+	{"ialpha",Python::PyIrr_iAlpha,METH_VARARGS,"ialpha"},
+	{"itexture",Python::PyIrr_iTexture,METH_VARARGS,"itexture"},
 	{NULL,NULL,0,NULL}
 };
 
 
 PyObject * Python::PyIrr_iRotate(PyObject * self,PyObject * args){
    	long node_id;
-//draw all in vector image stack
-float rot;
-	//Damn...thats a lot of parameters :)
+	float rot;
+
 	PyArg_ParseTuple(args,"lf",&node_id,&rot);
 	cImage* node = node_id;
 
@@ -24,24 +25,34 @@ return Py_BuildValue("l",node_id);
 }
 
 PyObject * Python::PyIrr_iScale(PyObject * self,PyObject * args){
-   	s32 node_id;
+   	long node_id;
+   	float X,Y;
 //	float size;
-//   	float px,py,pz,rx,ry,rz,sx,sy,sz;
-	//Damn...thats a lot of parameters :)
-//	PyArg_ParseTuple(args,"lffffffffff",&node_id,&size,&px,&py,&pz,&rx,&ry,&rz,&sx,&sy,&sz);
+	PyArg_ParseTuple(args,"lff",&node_id,&X,&Y);
+	cImage* node = node_id;
+	irr::core::vector2df news;
+	news.X=(X*-1);
+	news.Y=(Y*-1); // not sure why but had to invert values
 
-return Py_BuildValue("l",node_id);
+	node->SetScale(news);
+
+
+return Py_BuildValue("");
 
 }
 
 PyObject * Python::PyIrr_iPosition(PyObject * self,PyObject * args){
-   	s32 node_id;
+   	long node_id;
+   	float X,Y;
 //	float size;
-//   	float px,py,pz,rx,ry,rz,sx,sy,sz;
-	//Damn...thats a lot of parameters :)
-//	PyArg_ParseTuple(args,"lffffffffff",&node_id,&size,&px,&py,&pz,&rx,&ry,&rz,&sx,&sy,&sz);
+	PyArg_ParseTuple(args,"lff",&node_id,&X,&Y);
+	cImage* node = node_id;
 
-return Py_BuildValue("l",node_id);
+irr::core::position2di newpos;
+newpos.X=X;
+newpos.Y=Y;
+node->SetPosition(newpos);
+return Py_BuildValue("");
 
 }
 
@@ -49,7 +60,6 @@ PyObject * Python::PyIrr_iDraw(PyObject * self,PyObject * args){
    	long node_id;
 //draw all in vector image stack
 
-	//Damn...thats a lot of parameters :)
 	PyArg_ParseTuple(args,"l",&node_id);
 	cImage* node = node_id;
 
@@ -82,4 +92,28 @@ return Py_BuildValue("l",aImage);
 
 }
 
+PyObject * Python::PyIrr_iTexture(PyObject * self,PyObject * args){
+   	long node_id;
+   	char *texture;
+   	int type;
 
+	PyArg_ParseTuple(args,"lsi",&node_id,&texture,&type);
+	cImage* node = node_id;
+	video::ITexture* images = driver->getTexture(texture);
+
+//return Py_BuildValue("l",images);
+
+	node->SetTexture(images);
+	return Py_BuildValue("l",images);
+}
+
+PyObject * Python::PyIrr_iAlpha(PyObject * self,PyObject * args){
+   	long node_id;
+//draw all in vector image stack
+
+	//Damn...thats a lot of parameters :)
+	PyArg_ParseTuple(args,"l",&node_id);
+	cImage* node = node_id;
+
+	node->Draw(smgr);
+}

@@ -163,15 +163,28 @@ public:
         bool GetAnisotropicFilter() { return Material.TextureLayer[0].AnisotropicFilter > 0; };
         void SetRotation(irr::f32 newrot) { Rotation = newrot; };
         irr::f32 GetRotation() { return Rotation; };
-        int GetWidth() { return ImageRect.UpperLeftCorner.X-ImageRect.LowerRightCorner.X; };
-        int GetHeight() { return ImageRect.UpperLeftCorner.Y-ImageRect.LowerRightCorner.Y; };
-        int GetOrigWidth() { return OrigImageRect.UpperLeftCorner.X-ImageRect.LowerRightCorner.X; };
-        int GetOrigHeight() { return OrigImageRect.UpperLeftCorner.Y-ImageRect.LowerRightCorner.Y; };
+        int GetWidth() {
+                 return (ImageRect.UpperLeftCorner.X-ImageRect.LowerRightCorner.X);
+                 };
+        int GetHeight() {
+                 return (ImageRect.UpperLeftCorner.Y-ImageRect.LowerRightCorner.Y);
+                 };
+        irr::s32 GetOrigWidth() {
+                return (OrigImageRect.UpperLeftCorner.X-ImageRect.LowerRightCorner.X);
+                };
+        irr::s32 GetOrigHeight() {
+                 return (OrigImageRect.UpperLeftCorner.Y-ImageRect.LowerRightCorner.Y);
+                 };
         void SetTexture(irr::video::ITexture* tex) { Texture = tex; Material.TextureLayer[0].Texture = Texture; };
         irr::core::recti GetBoundRect() { return BoundRect; };
         void SetScale(irr::core::vector2df news) {
                 Scale = news;
-                ImageRect = irr::core::recti(OrigImageRect.UpperLeftCorner.X, OrigImageRect.UpperLeftCorner.Y, OrigImageRect.UpperLeftCorner.X+(irr::s32)(this->GetOrigWidth()*news.X), OrigImageRect.UpperLeftCorner.Y+(irr::s32)(this->GetOrigHeight()*news.Y));
+                ImageRect = irr::core::recti(OrigImageRect.UpperLeftCorner.X,
+                                              OrigImageRect.UpperLeftCorner.Y,
+                                              OrigImageRect.UpperLeftCorner.X+(irr::s32)
+                                             (this->GetOrigWidth()*news.X),
+                                              OrigImageRect.UpperLeftCorner.Y+(irr::s32)
+                                             (this->GetOrigHeight()*news.Y));
         }
         irr::video::ITexture *GetTexture() { return Texture; };
 };
