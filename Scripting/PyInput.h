@@ -2,103 +2,14 @@
 #define PYMAIN_H_INCLUDED
 //device->sleep(5,0); python delay for mainloop possibly use timers
 
-PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
-    float state,ammount,y,z;
-    int param;
-    long mVehicle;
-   // char * param;
-    PyArg_ParseTuple(args,"liffff",&mVehicle,&param,&state,&ammount,&y,&z);
- //   vector3df* position = VehicleParam(mVehicle,param,state,ammount,y,z);
-enum eparam{reset,accelerate,reverse,ebrake,brake,lsteer,rsteer};
-
-Vehicle *vehicle = mVehicle;
-//if param = "accelerate"
-//	action = 1
-
-//std::map<std::string, eparam> nodeMap;
-//int Iparam = nodeMap[param];
-//nodeMap["Cone"] = NODES::Cone;
-//nodeMap["Cone"] = ;
-
-//prob need one map for state too
-
-int Iparam=param;
-
-if ( state==0 ){  // use state for get and set var
-       switch (Iparam){
-
-            case eparam(reset):
-             //   m_cVehicle->resetVehicle();
-				vehicle->resetVehicle();
-                break;
-
-            case accelerate:
-                vehicle->accelerate(1);
-            break;
-
-            case reverse:
-                vehicle->reverse(1);
-                break;
-            case ebrake: //wind resistance
-                vehicle->reverse(ammount);
-                printf("ebrake");
-            break;
-
-            case brake:
-            	//printf('braking');
-                                vehicle->brake();
-//                   if (mEvent.getKeyState(    irr::EKEY_CODE( 0x26 ) ))//KEY_UP)  ) ///| getkey.keyUP
-//                            {m_cVehicle->accelerate(1);}// need gears or something haha
-//                    else if (!mEvent.getKeyState(  KEY_UP) && (m_cVehicle->getState() != EVEHICLE_REVERSING))
-                        //    m_cVehicle->accelerate(-1);   //wind resistance
-                break;
-
-            case lsteer:
-                vehicle->steer_left();
-                break;
-
-            case rsteer:
-         //       printf("steer right");
-                vehicle->steer_right();
-                break;
-			case 7:
-
-            case 8:
-            	vehicle->renderme();
-                break;
-            case 9:
-                vehicle->steer_reset();
-                break;
-            case 10:
-                printf ("case 10");
-//                            vector3df ha = camera->getAbsolutePosition();
-//      //  printf("Jump position: %f %f %f \n", pos[0], pos[1], pos[2]);
-//        camera->setPosition(vector3df( ha.X, ha.Y+40, ha.Z));
-                           //     luna->m_cPhysics->createBox( btVector3(pos.X, pos.Y, pos.Z), btVector3(scl.X, scl.Y, scl.Z), 10); //weight
-            break;
-            case 11:
-                   vehicle->setPosition(vector3df(ammount,y,z));
-
-            break;
-            case 12:
-                break;
-       }
-
-    } else if (state==1)
-    {   //get vars
-
-		switch (param){
-			case 0:
-			int returnvar = m_cVehicle->getState();
-			return Py_BuildValue("i",returnvar);
-			break;
-			case 11:
-				vector3df position = vehicle->getPosition();
-				return Py_BuildValue("l",position);
-		}
-    }
-  return Py_BuildValue("");
-}
+PyMethodDef irr_Input[] =
+{
+    {"getKey",Python::PyIrr_getKey,METH_VARARGS,"get key state"},
+    {"wii",Python::PyIrr_wii,METH_VARARGS,"wiimote access"},
+    {"gamepad",Python::PyIrr_gamePad,METH_VARARGS,"gamepad"},
+	{"mouse",Python::PyIrr_Mouse,METH_VARARGS,"gamepad"},
+    {NULL,NULL,0,NULL}
+};
 
 
 bool Python::CheckKeyState(int key){
@@ -120,7 +31,7 @@ PyObject * Python::PyIrr_getKey(PyObject * self,PyObject * args){
     std::string tempString;
 	char * tempString2;
 	//	EKEY_CODE ekey;
-	PyArg_ParseTuple(args,"s",&tempString2,&secondary);
+	PyArg_ParseTuple(args,"s",&tempString2);
 	tempString = tempString2;
 //  parse key_key from tempString  // use primary and secondary key checking for common keys
 
@@ -412,10 +323,12 @@ PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
 
 	return Py_BuildValue("");
 }
-
-
-
-
+PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
+int type;
+	PyArg_ParseTuple(args,"ss",&type);
+device->getCursorControl()->setVisible(type);
+  return Py_BuildValue("");
+}
 void Python::CheckKeyStates(){
 
 //obsolete moving this to python ni

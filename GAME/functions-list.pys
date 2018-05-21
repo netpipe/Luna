@@ -215,7 +215,7 @@ texture = "data/models/vehicles/oldChevy.bmp"
 #path animatior
 
 
-#irr.mouseVisible()
+#input.mouseVisible()
 #irr.addWayPoint() to path
 
 

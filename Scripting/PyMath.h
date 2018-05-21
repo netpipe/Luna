@@ -45,7 +45,8 @@ PyObject * Python::PyIrr_calcMath(PyObject * self,PyObject * args){
 PyObject * Python::PyIrr_Rand(PyObject * self,PyObject * args){
 
     int x,y;
-	PyArg_ParseTuple(args,"ii",&x,&y);
+	PyArg_ParseTuple(args,"i",&x,&y);
 
-		return Py_BuildValue("");
+
+		return Py_BuildValue("i",rand()%x+y);
 }

@@ -120,6 +120,8 @@ namespace Python {
     PyObject * PyIrr_addCar(PyObject * self,PyObject * args);
 
 
+
+
     //GUI
     PyObject * PyIrr_addHUD(PyObject * self,PyObject * args);
     PyObject * PyIrr_addVideo(PyObject * self,PyObject * args);
@@ -179,13 +181,16 @@ namespace Python {
     PyObject * PyIrr_wii(PyObject * self,PyObject * args);
     PyObject * PyIrr_recast(PyObject * self,PyObject * args);
     PyObject * PyIrr_media(PyObject * self,PyObject * args);
+    PyObject * PyIrr_Mouse(PyObject * self,PyObject * args);
+
+
     //media
     PyObject *PyIrr_FluidSynth(PyObject * self,PyObject * args);
 
     //Math
     PyObject * PyIrr_Rand(PyObject * self,PyObject * args);
 
-	// Model
+	// MESH Tools
     PyObject * PyIrr_aBillBoard(PyObject * self,PyObject * args);
     PyObject * PyIrr_addAnimatedMesh(PyObject * self,PyObject * args);
     PyObject * PyIrr_addMesh(PyObject * self,PyObject * args);
@@ -194,6 +199,7 @@ namespace Python {
     PyObject * PyIrr_using(PyObject * self,PyObject * args);
     PyObject * PyIrr_motionTrail(PyObject * self,PyObject * args);
     PyObject * PyIrr_Delete(PyObject * self,PyObject * args);
+    PyObject * PyIrr_setRotation(PyObject * self,PyObject * args);
 
     //Timers
     PyObject * PyIrr_Delay(PyObject * self,PyObject * args);

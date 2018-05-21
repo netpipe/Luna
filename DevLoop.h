@@ -383,7 +383,8 @@ device->getCursorControl()->setVisible(true);
 			menu->setVisible(true);
 			menu->setEnabled(true);
 			windows->setVisible(true);
-			//store eventrec0-
+			device->setEventReceiver(&receiver);
+			device->getCursorControl()->setVisible(true);
 		}else if (Python::bCodeEditor == 3	){
 
 			codeEditor->setEnabled(0);

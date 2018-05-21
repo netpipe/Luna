@@ -198,76 +198,7 @@ fluid_cmd_handler_t* cmd_handler = NULL;
   fluid_synth_t* synth = NULL;
 
 
-PyMethodDef irr_Scene[] =
-{
-/*
-startphysics
-loadlevel - subloader for tracks or levels
-ragdoll - needs a manager
-network connect / info / manager interface
-script reload and compile function
-reminder to actually check the names match with unstable ide's and whatnot
-*/
 
-	{"drawtext",Python::PyIrr_DrawText,METH_VARARGS,"Renders text to the screen with default font"},
-	{"add_cube",Python::PyIrr_AddCubeSceneNode,METH_VARARGS,"Adds a cube scene node"},
-    {"addCamera",Python::PyIrr_addCamera,METH_VARARGS,"sets camera vector"},
-    {"setCamera",Python::PyIrr_SetCamera,METH_VARARGS,"sets camera vector"},
-	{"getCamera",Python::PyIrr_GetCamera,METH_VARARGS,"getcamera vector"},
-	{"Reset",Python::PyIrr_Reset,METH_VARARGS,"Reset various parts of scripting system"},
-	{"addAMesh",Python::PyIrr_addAnimatedMesh,METH_VARARGS,"PyIrr_addAnimatedMesh"},
-	{"addMesh",Python::PyIrr_LoadMesh,METH_VARARGS,"PyIrr_addMesh"},
-    {"addModel",Python::PyIrr_loadModel,METH_VARARGS,"load model"},
-    {"loadTrack",Python::PyIrr_LoadTrack,METH_VARARGS,"load model"},
-    {"loadLevel",Python::PyIrr_LoadLevel,METH_VARARGS,"load model"},
-    {"Light",Python::PyIrr_Light,METH_VARARGS,"load model"},
-	//input
-    {"using",Python::PyIrr_using,METH_VARARGS,"for opening scripts within scripts"},
-    {"recast",Python::PyIrr_recast,METH_VARARGS,"recast navigation"},
-    {"addWheel",Python::PyIrr_recast,METH_VARARGS,"recast navigation"},
-    {"media",Python::PyIrr_media,METH_VARARGS,"media"},
-
-
-	//scene
-    {"tesselate",Python::PyIrr_tesselateImage,METH_VARARGS,"PyIrr_tesselateImage"},
-    {"atmosphere",Python::PyIrr_atmosphere,METH_VARARGS,"PyIrr_atmosphere"},
-
-    {"addvideo",Python::PyIrr_addVideo,METH_VARARGS,"PyIrr_addVideo"},
-    {"decals",Python::PyIrr_DecalManager,METH_VARARGS,"PyIrr_DecalManager"},
-    {"addwater",Python::PyIrr_WaterPlane,METH_VARARGS,"water plane reflective"},
-    {"setPosition",Python::PyIrr_setPosition,METH_VARARGS,"setPosition"},
-    {"getPosition",Python::PyIrr_getPosition,METH_VARARGS,"getPosition"},
-    {"addSphereNode",Python::PyIrr_addSphereNode,METH_VARARGS,"addSphereNode"},
-
-    {"addTerrain",Python::PyIrr_addTerrain,METH_VARARGS,"PyIrr_addTerrain"},
-    {"addTree",Python::PyIrr_Trees,METH_VARARGS,"PyIrr_addTree"},
-	{"addHUD",Python::PyIrr_addHUD,METH_VARARGS,"PyIrr_addHUD"},
-    {"exportScene",Python::PyIrr_ExportScene,METH_VARARGS,"PyIrr_ExportScene"},
-    {"SPARK",Python::PyIrr_SPARKA,METH_VARARGS,"SPARK MANAGER"},
-    {"grass",Python::PyIrr_FWGrass,METH_VARARGS,"grass"},
-    {"postprocess",Python::PyIrr_PostProcess,METH_VARARGS,"postProcess"},
-
-
-
-
-
-
-    //Physics
-    {"setVelocity",Python::PyIrr_setVelocity,METH_VARARGS,"setVelocity"},
-    {"motionTrail",Python::PyIrr_motionTrail,METH_VARARGS,"motionTrail"},
-
-    //Timers
-    {"delay",Python::PyIrr_Delay,METH_VARARGS,"delay"},
-    {"sleep",Python::PyIrr_Sleep,METH_VARARGS,"sleep"},
-    {"setTime",Python::PyIrr_setTime,METH_VARARGS,"setTime"},
-    {"getTime",Python::PyIrr_getTime,METH_VARARGS,"getTime"},
-
-    {"delete",Python::PyIrr_Delete,METH_VARARGS,"delete"},
-    {"pauseGame",Python::PyIrr_pauseGame,METH_VARARGS,"pauseGame"},
-    {"exit",Python::PyIrr_exit,METH_VARARGS,"exit"},
-
-	{NULL,NULL,0,NULL}
-};
 
 PyMethodDef irr_fun2[] =
 {
@@ -277,13 +208,6 @@ PyMethodDef irr_fun2[] =
         {NULL,NULL,0,NULL}
 };
 
-PyMethodDef irr_Input[] =
-{
-    {"getKey",Python::PyIrr_getKey,METH_VARARGS,"get key state"},
-    {"wii",Python::PyIrr_wii,METH_VARARGS,"wiimote access"},
-    {"gamepad",Python::PyIrr_gamePad,METH_VARARGS,"gamepad"},
-    {NULL,NULL,0,NULL}
-};
 
 void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventReceiver event){
     luna = luna1;
@@ -307,19 +231,6 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
     m_cScene->setupLights();//Scene, setup for lights.
     int lastFPS = -1;
     u32 timeStamp = device-> getTimer()-> getRealTime(),deltaTime = 0;
-
-	// some lights
-	video::SLight l;
-	scene::ILightSceneNode *light = smgr->addLightSceneNode(0,core::vector3df(50,100,50),video::SColorf(1,1,1,1.f),100);
-	l = light->getLightData();
-	l.Type = video::ELT_POINT;
-	l.AmbientColor = video::SColorf(.35,.35,.35);
-	l.SpecularColor = video::SColorf(.7,.7,.5);
-	l.DiffuseColor = video::SColorf(1,1,1);
-	l.CastShadows = true;
-	light->setLightData( l );
-//    scene::ILightSceneNode* light = smgr->addLightSceneNode( 0, core::vector3df(100,400,100),video::SColorf(1,1,1,1), 10.0f );
- //   smgr->addLightSceneNode(NULL, core::vector3df(0,100,0), video::SColorf(1.f, 1.f, 1.f), 2500, -1);
 
 //    device->getCursorControl()->setVisible(false);
     Elevator::Instance()->Instance();
