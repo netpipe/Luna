@@ -738,6 +738,7 @@
 		<Unit filename="TerrainFactory/water/RealisticWater.cpp" />
 		<Unit filename="TerrainFactory/water/RealisticWater.h" />
 		<Unit filename="TidBits.cpp" />
+		<Unit filename="entities/AI/backpropigation.cpp" />
 		<Unit filename="entities/AI/miNav/main.cpp" />
 		<Unit filename="entities/AI/miNav/miNav.cpp" />
 		<Unit filename="entities/AI/miNav/miNav.h" />
