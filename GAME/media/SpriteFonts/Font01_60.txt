@@ -1,0 +1,55 @@
+
+Use the following data in Construct 2:
+
+Character width: 85
+Character height: 77
+Character set: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,;:?!-&/+%$"
+
+
+Copy the following JSON text and paste into 'Char With JSON' (if you use SpriteFont+):
+
+{""c2array"":true,""size"":[2,40,1],""data"":[[[20],[21],[24],[26],[27],[28],[30],[33],[35],[36],[37],[39],[40],[41],[43],[44],[46],[48],[49],[50],[51],[52],[53],[54],[55],[56],[57],[59],[60],[61],[62],[63],[64],[65],[66],[67],[71],[72],[76],[85]],[["";:""],["".,""],[""!""],[""/""],[""-""],[""j""],[""il""],[""t\"""],[""f1""],[""I""],[""J""],[""+""],[""r""],[""cs""],[""z""],[""e""],[""a x7""],[""?""],[""ovy""],[""g245""],[""bdkpq""],[""u""],[""Chn3""],[""LS$""],[""Z""],[""69""],[""EF8""],[""GP""],[""T""],[""U""],[""Y0""],[""BRw""],[""K""],[""ADOQX&""],[""NV""],[""%""],[""H""],[""m""],[""M""],[""W""]]]}
+
+
+These are the details for building the character widths manually, with the SpriteFont 'Set character width' action:
+
+20  ";:"
+21  ".,"
+24  "!"
+26  "/"
+27  "-"
+28  "j"
+30  "il"
+33  "t""
+35  "f1"
+36  "I"
+37  "J"
+39  "+"
+40  "r"
+41  "cs"
+43  "z"
+44  "e"
+46  "ax7"
+48  "?"
+49  "ovy"
+50  "g245"
+51  "bdkpq"
+52  "u"
+53  "Chn3"
+54  "LS$"
+55  "Z"
+56  "69"
+57  "EF8"
+59  "GP"
+60  "T"
+61  "U"
+62  "Y0"
+63  "BRw"
+64  "K"
+65  "ADOQX&"
+66  "NV"
+67  "%"
+71  "H"
+72  "m"
+76  "M"
+85  "W"

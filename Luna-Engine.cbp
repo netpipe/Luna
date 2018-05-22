@@ -280,6 +280,7 @@
 					<Add library="sndfile" />
 					<Add library="pulse" />
 					<Add library="pulse-simple" />
+					<Add library="sqlite3" />
 					<Add directory="../LunaLibs/freetype-2.3.9/objs/.libs" />
 					<Add directory="../LunaLibs/net/enet-1.2.1" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Linux" />

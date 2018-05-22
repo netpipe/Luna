@@ -6,7 +6,7 @@ PyMethodDef irr_Camera[] = {
     {"addCamera",Python::PyIrr_addCamera,METH_VARARGS,"sets camera vector"},
     {"setCamera",Python::PyIrr_SetCamera,METH_VARARGS,"sets camera vector"},
 	{"getCamera",Python::PyIrr_GetCamera,METH_VARARGS,"getcamera vector"},
-{"screen",Python::PyIrr_getScreen,METH_VARARGS,"screenwidth"},
+	{"screen",Python::PyIrr_getScreen,METH_VARARGS,"screenwidth"},
 	{NULL,NULL,0,NULL}
 };
 
@@ -27,12 +27,17 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
     switch(t){
     case 1:
         cam = smgr->addCameraSceneNode();
+        		device->setEventReceiver ( &mEvent);
        // cam->setTarget(vector3df(0,0,0));
         break;
 
     case 2:
         cam = smgr->addCameraSceneNodeFPS();
        // cam->setTarget(vector3df(0,0,0));
+       	device->getCursorControl()->setVisible(false);
+		cam->setFarValue(10000.0f);
+		cam->setPosition(vector3df(x,y,z));
+	//cam->setNearValue(0.1f);
         break;
 
     case 3:
@@ -47,6 +52,10 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 
 		cam = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
 		device->setEventReceiver ( &mEvent);
+		device->getCursorControl()->setVisible(false);
+		cam->setFarValue(10000.0f);
+		cam->setPosition(vector3df(x,y,z));
+		//cam->setNearValue(0.1f);
 		break;
 	case 4:
 			cam = smgr->addCameraSceneNodeMaya();
@@ -68,10 +77,7 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 //        break;
 }
 
-	device->getCursorControl()->setVisible(false);
-	cam->setFarValue(10000.0f);
-	cam->setPosition(vector3df(x,y,z));
-	//cam->setNearValue(0.1f);
+
 
 
 //    if (t==1){
@@ -96,23 +102,24 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 
 PyObject * Python::PyIrr_SetCamera(PyObject * self,PyObject * args){ //active camera // parameters for fov possibly shaders aswell
 	//s32
-	int x,y,z,cam2;
+	int x,y,z;
+	long cam2;
 	//int
 
 	PyArg_ParseTuple(args,"lfff",&cam2,&x,&y,&z);
- //cam->setActiveCamera(cam);
-//	ICameraSceneNode *cam = cam2;
-//    cam->setPosition(vector3df(x,y,z));
+	ICameraSceneNode *cam = cam2;
+//	device->setActiveCamera(cam);
+    cam->setPosition(vector3df(x,y,z));
 
 
-//        if (bCarFollow) {
-//    // this is for putting the camera above the car
+        if (bCarFollow) {
+    // this is for putting the camera above the car
 //        btVector3 point = m_cVehicle->getVehiclePosition();
 //        camera->setPosition(vector3df(
 //          (f32)point[0],
 //          (f32)point[1]+10,
 //          (f32)point[2]-50));
-//    }
+    }
 
 
 //return Py_BuildValue("z",cam);
@@ -130,7 +137,6 @@ v = vector3df(x,y,z);
 //cam = smgr->getActiveCamera();
 return Py_BuildValue("fff",v.X,v.Y,v.Z);
 }
-
 
 
 //PyObject * Python::PyIrr_setEvent(PyObject * self,PyObject * args){

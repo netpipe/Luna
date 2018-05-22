@@ -15,7 +15,7 @@ import sound
 #INITIALIZE
 if (init) :
 
- camera = scene.addCamera(3,0,20,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
+ camera = scene.addCamera(1,0,20,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
  #physics.fpsweapon(camera) #pick 2 FPS for camera
 # Light1 = scene.Light(10,100,150,1,"111111") # type , vector, color
 # model = "data/models/vehicles/oldChevy-Truck.3ds"
@@ -28,7 +28,7 @@ if (init) :
 # image.iposition(iaxe,0,0)
  image.itexture(iaxe,"./APP/cowsynth/logo2.png",0)
  tex_id = image.load_texture("media/crate.png")
-# gui.codeeditor();
+# editor = gui.codeeditor();
 
  i=0
  init = 0
@@ -56,15 +56,20 @@ if (init) :
 #if i > 1:
 # image.iscale(iaxe,i,i)
 # i=1
-
-
+ window = gui.window("cowSynth",100,100,420,420)
+ gui.button(window,"button",10,10,120,120)
+ #gui.editbox(window,51,51,510,510)
+ #font = image.loadfont("/data/fonts/SpriteFonts/Font05_70_Normal.png")
+ font = image.loadfont("./data/myfont.png")
+# scene.drawtext(font,"cool bean tree",1,1,100,100)
 #image.iscale(iaxe,1,1) #causes flicker
  #jungle = scene.addJungle()
  #scene.addTree("jungle",1,terrain,1,1,1)
  track1 = scene.loadTrack('./APP/cowsynth/CUCurve.002.irrmesh',20,0,0)
+ input.sqlconnect("ha.db")
 # mesh.add
 # mesh.setRotation
- scene.rotation (track1,40,19,40)
+# scene.rotation (track1,40,19,40)
 # scene.scale(track1,50)
 # scene.loadModel('./APP/cowsynth/CUCurve.002.irrmesh',"tex_id",0,0)
  #scene.addModel('./APP/cowsynth/c.irrmesh',"media/dwarf.jpg","irrmesh",4)
@@ -92,14 +97,14 @@ if (init) :
 
 
 #MAIN LOOP
- sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/LATIN_.MID",0)
+ sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/TECHNO.MID",0)
  #scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",2)
 # scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/LATIN_.MID",5)
- sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",0)
+ sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/HAVANAGI.MID",0)
 # scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",1)
- sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",3)
- sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",2)
-sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",3)
+ sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/HAVANAGI.MID",3)
+ sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/HAVANAGI.MID",2)
+sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/HAVANAGI.MID",3)
 # scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/LATIN_.MID",4)
 image.irotate(iaxe,i)
 #print seed
@@ -111,7 +116,13 @@ i+=1
 image.idraw(iaxe) #midpoint
 irr.sleep(10)
 
-
+scene.drawtext(font,str(math.rand(8,1)),1,1,100,100)
+scene.drawtext(font,"cool bean tree",22,22,200,200)
+#mevent = irr.event(0)
+#eid = irr.event(1)
+#if mevent == "button":
+# print "button clicked"
+# print eid
 
 #timer
 

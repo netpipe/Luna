@@ -1,0 +1,53 @@
+
+Use the following data in Construct 2:
+
+Character width: 92
+Character height: 134
+Character set: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,;:?!-#"'&()[]`\/©@°+=*$£€<>×÷%
+
+
+Copy the following JSON text and paste into 'Char With JSON' (if you use SpriteFont+):
+
+{""c2array"":true,""size"":[2,38,1],""data"":[[[24],[29],[30],[33],[35],[36],[37],[40],[41],[42],[43],[44],[45],[46],[48],[49],[50],[52],[53],[54],[55],[56],[57],[58],[59],[60],[61],[63],[64],[66],[67],[68],[71],[75],[77],[80],[89],[92]],[[""'""],["",""],["".;:!`""],[""\"""],[""<>""],[""-""],[""[]""],[""I""],[""j""],[""()×""],[""/""],[""l=""],[""fir1""],[""°*""],[""\\+""],[""Jt""],[""Fz?÷""],[""Ls$""],[""c2""],[""k""],[""Cvx57""],[""SZbhp£""],[""Ea degnquy3€""],[""HKPTo""],[""B4689""],[""NX""],[""ADRUVY0""],[""G""],[""O""],[""M%""],[""&""],[""Q""],[""#""],[""m""],[""w""],[""@""],[""W""],[""©""]]]}
+
+
+These are the details for building the character widths manually, with the SpriteFont 'Set character width' action:
+
+24  "'"
+29  ","
+30  ".;:!`"
+33  """
+35  "<>"
+36  "-"
+37  "[]"
+40  "I"
+41  "j"
+42  "()×"
+43  "/"
+44  "l="
+45  "fir1"
+46  "°*"
+48  "\+"
+49  "Jt"
+50  "Fz?÷"
+52  "Ls$"
+53  "c2"
+54  "k"
+55  "Cvx57"
+56  "SZbhp£"
+57  "Eadegnquy3€"
+58  "HKPTo"
+59  "B4689"
+60  "NX"
+61  "ADRUVY0"
+63  "G"
+64  "O"
+66  "M%"
+67  "&"
+68  "Q"
+71  "#"
+75  "m"
+77  "w"
+80  "@"
+89  "W"
+92  "©"

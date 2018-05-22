@@ -12,6 +12,9 @@ PyMethodDef irr_Image[] =
 	{"abb",Python::PyIrr_aBillBoard,METH_VARARGS,"billboard"},
 	{"load_texture",Python::PyIrr_LoadTexture,METH_VARARGS,"Loads a texture"},
 	{"set_texture",Python::PyIrr_SetTexture,METH_VARARGS,"Adds a texture to a scene node"},
+	{"checkbounds",Python::PyIrr_icheckBounds,METH_VARARGS,"checkBounds"},
+	{"getbounds",Python::PyIrr_igetBounds,METH_VARARGS,"getbounds"},
+	{"loadfont",Python::PyIrr_LoadSpriteFont,METH_VARARGS,"loadfont"},
 
 	{NULL,NULL,0,NULL}
 };
@@ -204,3 +207,41 @@ PyObject * Python::PyIrr_SetTexture(PyObject * self,PyObject * args){
 	function with a return type of void in C++, in other words, no output values */
 	return Py_BuildValue("");
 };
+
+PyObject * Python::PyIrr_igetBounds(PyObject * self,PyObject * args){
+	long node_id;
+	irr::core::recti rect;
+	PyArg_ParseTuple(args,"l",&node_id);
+	cImage* node = node_id;
+
+	rect = node->GetBoundRect();
+	return Py_BuildValue("l",rect);
+}
+
+PyObject * Python::PyIrr_icheckBounds(PyObject * self,PyObject * args){
+	long node_id;
+	irr::core::recti rect;
+	PyArg_ParseTuple(args,"l",&node_id);
+	cImage* node = node_id;
+rect = node->GetBoundRect();
+
+
+	return Py_BuildValue("l",rect);
+}
+
+PyObject * Python::PyIrr_LoadSpriteFont(PyObject * self,PyObject * args){
+	long node_id;
+	char *stringy;
+	//irr::core::recti rect;
+	PyArg_ParseTuple(args,"s",&stringy);
+
+	gui::IGUIFont* font2 =
+		device->getGUIEnvironment()->getFont(stringy);
+	return Py_BuildValue("l",font2);
+}
+//PyObject * Python::PyIrr_Draw(PyObject * self,PyObject * args){
+//			if (font2)
+//				font2->draw(L"Also mixing with 3d graphics is possible.",
+//					core::rect<s32>(130,20,300,60),
+//					video::SColor(255,time % 255,time % 255,255));
+//

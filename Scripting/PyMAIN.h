@@ -103,6 +103,7 @@ namespace Python {
     PyObject * PyIrr_getPosition(PyObject * self,PyObject * args);
     PyObject * PyIrr_motionTrail(PyObject * self,PyObject * args);
 
+    PyObject * PyIrr_Event(PyObject * self,PyObject * args);
     PyObject * PyIrr_gamePad(PyObject * self,PyObject * args);
 
     //Physics
@@ -134,6 +135,8 @@ namespace Python {
     PyObject * PyIrr_GUIEditBox(PyObject * self,PyObject * args);
     PyObject * PyIrr_GUIBar(PyObject * self,PyObject * args);
     PyObject * PyIrr_sineGraph2d(PyObject * self,PyObject * args);
+
+
 
 
 
@@ -223,6 +226,8 @@ namespace Python {
     PyObject * PyIrr_Update(PyObject * self,PyObject * args);
     PyObject * PyIrr_irc(PyObject * self,PyObject * args);
 
+    PyObject * PyIrr_sqlconnect(PyObject * self,PyObject * args);
+    PyObject * PyIrr_sqlcommand(PyObject * self,PyObject * args);
 
 
     //Image
@@ -233,6 +238,9 @@ namespace Python {
     PyObject * PyIrr_iDraw(PyObject * self,PyObject * args);
     PyObject * PyIrr_iAlpha(PyObject * self,PyObject * args);
     PyObject * PyIrr_iTexture(PyObject * self,PyObject * args);
+    PyObject * PyIrr_icheckBounds(PyObject * self,PyObject * args);
+    PyObject * PyIrr_igetBounds(PyObject * self,PyObject * args);
+    PyObject * PyIrr_LoadSpriteFont(PyObject * self,PyObject * args);
 
 
     PyMODINIT_FUNC init_irr(void);

@@ -30,6 +30,9 @@ PyObject * Python::PyIrr_CodeEditor(PyObject * self,PyObject * args) {//active c
 bCodeEditor=1;
 device->getCursorControl()->setVisible(true);
 
+
+
+//return Py_BuildValue("l",luna->receiver);
 return Py_BuildValue("");
 }
 
@@ -62,17 +65,24 @@ PyObject * Python::PyIrr_ChatBox(PyObject * self,PyObject * args){
 
 PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args){
 
-IGUIFont * default_font;
+long font;
 	//Must make this useful someday, not today
 	char * message;
 	s32 x,y,x1,y1;
-	PyArg_ParseTuple(args,"sllll",&message,&x,&y,&x1,&y1); //may only need x,y when using ft2
+	PyArg_ParseTuple(args,"lsllll",&font,&message,&x,&y,&x1,&y1); //may only need x,y when using ft2
+IGUIFont * font2 = font;
+
+				//if (font2)
+				font2->draw(message,
+					core::rect<s32>(x,y,x1,y1),
+					video::SColor(255, 255, 255,255));
+
 	//The next three lines more or less give the procedure from converting a string of
 	//type char* to wchar_t*...generally this is pretty useful in Irrlicht,so note well
 //	int len = strlen(message) + 1;
 //	wchar_t * conv_message = new wchar_t[len];
 	///mbstowcs(0,conv_message,len,message,_TRUNCATE);
-printf("%s\n", message);
+//printf("%s\n", message);
 //wprintf("%s\n", model);
 	//guienv->addStaticText(conv_message,rect<s32>(x,y,x1,y1),SColor(255,255,255,255));
 //
@@ -86,17 +96,22 @@ printf("%s\n", message);
 //    font2->attach(&face,24); // scale this number with the screen
 //    font2->AntiAlias=1;
 
-    SpriteManager *sprites = new SpriteManager;
-    sprites->setup(driver, driver->getTexture("data/texture.png"));
-
-    int w = 400;
-    int h = 400;
-
-        fonts->setFontSource("data/pixel1.fnt", 256, 128);
-        fonts->setup(device, sprites);
+//    SpriteManager *sprites = new SpriteManager;
+//    sprites->setup(driver, driver->getTexture("./data/texture.png"));
 //
-
-        fonts->drawText("the quick brown fox\njumped over\n the lazy dog", 0, 0, w, h, BmFont::ALIGN_CENTER | BmFont::ALIGN_MIDDLE);
+//    int w = 400;
+//    int h = 400;
+//
+//        fonts->setFontSource("data/pixel1.fnt", 256, 128);
+//        fonts->setup(device, sprites);
+//        sprites->clear();
+//
+//        // add sprite from tile (0,0) size(8,8)
+//        Sprite *spr = sprites->addSprite(0,0,8,8);
+//        spr->setPosition(20, 20);
+//        spr->setScale(4.0f, 4.0f);
+//
+//        fonts->drawText("the quick brown fox\njumped over\n the lazy dog", 0, 0, w, h, BmFont::ALIGN_CENTER | BmFont::ALIGN_MIDDLE);
 
 
 
@@ -220,7 +235,17 @@ stringw ha=stra;
 }
 
 PyObject * Python::PyIrr_GUIButton(PyObject * self,PyObject * args){
-		return Py_BuildValue("");
+	float x1,y1,x2,y2;
+	long guienv2,window2;
+	wchar_t * stra;
+	PyArg_ParseTuple(args,"lsffff",&window2,&stra,&x1,&y1,&x2,&y2);
+	wchar_t *text = stra;
+IGUIWindow* window=window2;
+IGUIButton *button =	guienv->addButton (
+											rect<s32> ( x1,y1,x2,y2  ),
+											window, 105, text);
+
+		return Py_BuildValue("l",button);
 }
 
 PyObject * Python::PyIrr_GUIBar(PyObject * self,PyObject * args){

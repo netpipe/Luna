@@ -29,6 +29,38 @@ bool InGameEventReceiver::OnEvent ( const SEvent &event )
 
 		//let devloop know somehow to know when to run Lmain.py at all
   return false;
+  	if ( event.EventType == EET_GUI_EVENT )
+	{
+		s32 cid = event.GUIEvent.Caller->getID();
+
+		switch ( event.GUIEvent.EventType )
+		{
+			case EGET_BUTTON_CLICKED:
+				switch ( cid )
+				{
+					levent="button";
+					eid=cid;
+//					case 101:
+//						quit = true;
+//						return true;
+//					case 102:
+//						login = true;
+//						return true;
+//
+//					case 104:
+//						conRefOK = true;
+//						return true;
+//
+//					case 105:
+//						wrongPassOK = true;
+//						return true;
+//
+//					case 901:
+//						devLogin = true;
+//						return true;
+				}
+		}
+	}
 }
 
 bool InGameEventReceiver::getKeyState(EKEY_CODE key)

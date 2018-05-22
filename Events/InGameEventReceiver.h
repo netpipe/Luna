@@ -30,6 +30,8 @@ class InGameEventReceiver : public IEventReceiver
 	s32 mouseDeltaY;
 	s32 mouseX;
 	s32 mouseY;
+	char * levent;
+	s32 eid;
 
     void Init(void);
 

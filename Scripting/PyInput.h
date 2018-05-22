@@ -8,6 +8,8 @@ PyMethodDef irr_Input[] =
     {"wii",Python::PyIrr_wii,METH_VARARGS,"wiimote access"},
     {"gamepad",Python::PyIrr_gamePad,METH_VARARGS,"gamepad"},
 	{"mouse",Python::PyIrr_Mouse,METH_VARARGS,"gamepad"},
+	{"sqlconnect",Python::PyIrr_sqlconnect,METH_VARARGS,"gamepad"},
+	{"sqlcommand",Python::PyIrr_sqlcommand,METH_VARARGS,"gamepad"},
     {NULL,NULL,0,NULL}
 };
 
@@ -325,10 +327,172 @@ PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
 }
 PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
 int type;
-	PyArg_ParseTuple(args,"ss",&type);
+	PyArg_ParseTuple(args,"i",&type);
 device->getCursorControl()->setVisible(type);
   return Py_BuildValue("");
 }
+
+PyObject * Python::PyIrr_sqlconnect(PyObject * self,PyObject * args){
+int type;
+char * cstring;
+	PyArg_ParseTuple(args,"is",&type,&cstring);
+
+	  sqlite3 *db;
+   fprintf(stderr, "Opening DB \n");
+    rc = sqlite3_open( cstring, &db);
+    if( rc ){
+        fprintf(stderr,"Can't open database: %s\n", sqlite3_errmsg(db));
+  }
+     fprintf(stderr, "DB READY \n");
+
+//	    sqlCon *sq =new sqlCon(cstring);
+//    //  sq->execute(".dump");
+//     // needs error management if table exists it crashse
+//      sq->execute("CREATE TABLE learnss (y string,a integer, b string);");
+//    //  sq->execute("insert into learnss (y,a,b) VALUES('ssssnipples',33 , 34);");
+//    //  sq->execute("INSERT INTO learn (a,b) VALUES(33 , 34);");
+//        sq->execute("SELECT * FROM learnss where b like '34%';");
+//    //  sq->execute("SELECT * FROM learn");
+//    //  sq->execute("PRAGMA table_info(learnss)");
+//    //  sq->execute("SELECT * FROM sqlite_master WHERE tbl_name = 'learnss' AND type = 'table'");
+
+//  return Py_BuildValue("l",sq);
+return Py_BuildValue("l",db);
+}
+
+PyObject * Python::PyIrr_sqlcommand(PyObject * self,PyObject * args){
+int type;
+char * command;
+long sqlconn2;
+	PyArg_ParseTuple(args,"lis",&sqlconn2,&type,&command);
+//	sqlCon *sq=sqlconn2;
+//	sq->execute(cstring);
+sqlite3 *db=sqlconn2;
+  int nrow;
+  int ncol;
+   fprintf(stderr, "Executing Command \n");
+
+    rc = sqlite3_prepare(db, "PRAGMA table_info(learnss)", strlen(command), &stmt, 0);
+    int col_cnt = sqlite3_column_count(stmt);
+    printf("do tokanizing on  #%i Cols\n",col_cnt);
+
+
+
+            sqlite3_reset(stmt);
+            int result;
+
+            for ( int i=0; i < col_cnt/2  ;i++){
+                    rc = sqlite3_step(stmt);
+
+                const  unsigned char* vp = sqlite3_column_text(stmt, i);
+                printf( "%s ", vp);
+            };
+            printf("   =-=");
+       //     sqlite3_finalize(stmt);
+
+
+   rc = sqlite3_prepare(db, command, strlen(command), &stmt, 0); // -1 for the string length seems to work too.
+    //  rc = sqlite3_exec(db, command, sqlCon::callback, 0, &zErrMsg);
+
+
+
+/*  <<they should make coment folding into CB for certain things
+      rc = sqlite3_get_table(
+			db,              // An open database
+			command,        //SQL to be executed
+			&result,        //Result written to a char *[]  that this points to
+			&nrow,          //    Number of result rows written here
+			&ncol,           //Number of result columns written here
+			&zErrMsg          // Error msg written here
+			);
+
+	  printf("nrow=%d ncol=%d\n",nrow,ncol);
+	 // printf("PRINTING 2 ROWS ONLY \n");
+        for(int i=0 ; i < nrow+ncol; ++i){
+            printf("#%i ",i);
+            printf("%s ",result[i]);
+            //++i;
+            //printf("#%i ",i);
+            //printf("%s \n",result[i]);
+        }
+*/
+
+printf("   =-=");
+  if( rc!=SQLITE_OK ){
+    fprintf(stderr, "SQL error: %s\n", zErrMsg);
+    sqlite3_free(zErrMsg);
+  }
+
+    int rowcount;
+   col_cnt = sqlite3_column_count(stmt);
+printf("there is #%i columns \n",col_cnt);
+bool  finished = false;
+  while (!finished) {
+      if(col_cnt !=0){
+    rc = sqlite3_step(stmt);
+    switch (rc) {
+      case SQLITE_DONE:     //Execution finished.
+        finished = true;
+        sqlite3_reset(stmt);  //Resets the compiled statement for re-use.
+        //Execute logic for end of data set.
+        break;
+      case SQLITE_ROW:      //We have a row.
+        if (rowcount == 0) {
+         // Execute code for start of data set
+
+        }
+
+        //Scan all the columns.  Return value in "strg"
+        for (int a = 0; a < col_cnt; a++) {
+          //Get actual type.
+          switch (sqlite3_column_type(stmt, a)) {
+            case SQLITE_INTEGER:
+              result = sqlite3_column_int(stmt, a);
+              printf( "%d ", result);
+              break;
+            case SQLITE_FLOAT:
+              {
+                //Float to string.
+                double  dub;
+                dub = sqlite3_column_double(stmt, a);
+                printf( "%f", dub);
+              }
+              break;
+            case SQLITE_TEXT:
+             {
+                const  unsigned char* vp = sqlite3_column_text(stmt, a);
+                //  sqlite3_stmt *p = stmt;
+                printf( "%s ", vp);
+                //  while (*vp > 0)            //        { *p++ = *vp++;}
+              break;
+              }
+            case SQLITE_BLOB:
+              //Write to a file, dynamic memory ...
+              break;
+            case SQLITE_NULL:
+             {
+        //   stmt[0] = 0;
+              break;
+             }
+          }  //switch
+        }    //for
+ printf( "\n");
+       rowcount++;
+        break;
+             default:
+             {
+        sqlite3_finalize(stmt);
+        break;
+             }
+    };
+  } else {
+      printf( "EXECUTED A COMMAND WITH NULL RESULTS\n");
+     finished = true;};
+
+  }
+  return Py_BuildValue("");
+}
+
 void Python::CheckKeyStates(){
 
 //obsolete moving this to python ni

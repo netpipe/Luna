@@ -113,6 +113,12 @@ RibbonTrailSceneNode* rt;
 #include "../TerrainFactory/FWGrass/gen/CGrassGenerator.h"
 using namespace GrassGenerator;
 #include "../TerrainFactory/ProceduralTrees/kornJungle/Jungle.h"
+//#include "../Input/SQL/sqlCon.h"
+#include <sqlite3.h>
+    sqlite3_stmt* stmt;
+char *zErrMsg;
+  int rc;
+//sqlite3 *db;
 //#include <cwiid.h>
 //#include "../Input/Controllers/wii/wii.h"
 
@@ -204,8 +210,11 @@ PyMethodDef irr_function[] =
     {"sleep",Python::PyIrr_Sleep,METH_VARARGS,"sleep"},
     {"setTime",Python::PyIrr_setTime,METH_VARARGS,"setTime"},
     {"getTime",Python::PyIrr_getTime,METH_VARARGS,"getTime"},
+    {"event",Python::PyIrr_Event,METH_VARARGS,"event"},
 
 //        {"flare2",Python::PyIrr_Flare2,METH_VARARGS,"Loads Flare2"},
+
+
     {"formationdemo",Python::PyIrr_FormationDemo,METH_VARARGS,"Loads FormationDemo"},
     {"pauseGame",Python::PyIrr_pauseGame,METH_VARARGS,"pauseGame"},
     {"exit",Python::PyIrr_exit,METH_VARARGS,"exit"},
@@ -229,13 +238,13 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
  //   camera->setFarValue(10000);
     //camera = smgr->addCameraSceneNodeFPS();
     //  camera->setFOV(PI/2);
-   // device->setEventReceiver ( &mEvent);
+
     m_cScene = new Scene();
     m_cScene->registerIrrDevice(*device);
-    m_cScene->setupLights();//Scene, setup for lights.
+  //  m_cScene->setupLights();//Scene, setup for lights.
     int lastFPS = -1;
     u32 timeStamp = device-> getTimer()-> getRealTime(),deltaTime = 0;
-
+    device->setEventReceiver ( &mEvent);
 //    device->getCursorControl()->setVisible(false);
     Elevator::Instance()->Instance();
     ///Player::Instance()->Instance();//obsolete
@@ -401,6 +410,25 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
     #endif
 	}
 return Py_BuildValue("0");
+}
+
+PyObject * Python::PyIrr_Event(PyObject * self,PyObject * args){
+	//long * event;
+	int id;
+	PyArg_ParseTuple(args,"i",&id);
+//IEventReceiver *event2=event;
+	//setevent
+	//return events
+if  (id == 1){
+
+	return Py_BuildValue("i",mEvent.eid);
+}
+if  (id == 0){
+
+	return Py_BuildValue("s",mEvent.levent);
+}
+		return Py_BuildValue("");
+
 }
 
 PyObject * Python::PyIrr_Delete(PyObject * self,PyObject * args){ //active camera
