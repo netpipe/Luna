@@ -336,15 +336,15 @@
 				</Compiler>
 				<Linker>
 					<Add library="GL" />
+					<Add library="openal" />
 					<Add library="Xxf86vm" />
-					<Add library="pthread" />
-					<Add library="Xcursor" />
 					<Add library="X11" />
 					<Add library="dl" />
 					<Add library="irrNetLite22" />
 					<Add library="enet" />
 					<Add library="python2.7" />
 					<Add library="IrrOpenSteer" />
+					<Add library="pthread" />
 					<Add library="theora" />
 					<Add library="theoraplayer" />
 					<Add library="assimp" />
@@ -357,7 +357,6 @@
 					<Add library="pulse" />
 					<Add library="pulse-simple" />
 					<Add library="sqlite3" />
-					<Add library="bz2" />
 					<Add directory="../libs/RecastNavigation/DebugUtils/" />
 					<Add directory="../libs/RecastNavigation/Recast" />
 					<Add directory="../libs/RecastNavigation/DetourCrowd" />
