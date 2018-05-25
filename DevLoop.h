@@ -315,12 +315,18 @@ if ( !device->run() ) return 0;
 	MyEventReceiver receiver(context);
 
 	// And tell the device to use our custom event receiver.
-	device->setEventReceiver(&receiver);
+//	device->setEventReceiver(&receiver);
 
 	codeEditor->setEnabled(0);
 	codeEditor->setVisible(false);
 	menu->setVisible(false);
+
 	windows->setVisible(false);
+		IGUIWindow* windowss = guienv->addWindow(
+		rect<s32>(1 , 1 ,222 , 222 ),
+		false, // modal?
+		L"mhm");
+
 
 device->getCursorControl()->setVisible(true);
 //    	IrrAssimp assimp(smgr);
@@ -364,7 +370,7 @@ device->getCursorControl()->setVisible(true);
 		#endif
 
         smgr->drawAll();
-
+		//	device->setEventReceiver(&receiver);
 
 
 //        #ifdef PostProcess

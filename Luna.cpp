@@ -164,39 +164,39 @@ int Luna::doLogin ( const std::wstring &username, const std::wstring &password )
     int authd=0;
 
 while (!login){
-    iReturn = -3;
-    if(netManager->getConnectionStatus() != net::EICS_FAILED)
-		{
-        if (login==true){ iReturn= -1;};
-			net::SOutPacket packet;
-			if (connected==true)
-            {  // check if already logged in send reset to server
-                if (doit==true){ // send credentials if connected
-                    packet << "userLogin";
-                    printf("sending userLogin");
-                    netManager->sendOutPacket(packet);
-                }else{
-                    printf ("not connected-connecting \n");
-                    packet << "second";
-                    netManager->sendOutPacket(packet);
-                //    iReturn = -1; //
-                }
-            }
-		        netManager->update(500);
-                    printf ("not connected-connecting \n");
-    }
+//    iReturn = -3;
+//    if(netManager->getConnectionStatus() != net::EICS_FAILED)
+//		{
+//        if (login==true){ iReturn= -1;};
+//			net::SOutPacket packet;
+//			if (connected==true)
+//            {  // check if already logged in send reset to server
+//                if (doit==true){ // send credentials if connected
+//                    packet << "userLogin";
+//                    printf("sending userLogin");
+//                    netManager->sendOutPacket(packet);
+//                }else{
+//                    printf ("not connected-connecting \n");
+//                    packet << "second";
+//                    netManager->sendOutPacket(packet);
+//                //    iReturn = -1; //
+//                }
+//            }
+//		        netManager->update(500);
+//                    printf ("not connected-connecting \n");
+//    }
 }
    return -1;//iReturn;//-1; //good for debugging
 }
 
 int Luna::handleMessages(){
 //     set some variables
-		if (netManager->getConnectionStatus() != net::EICS_FAILED)
-		{
-        netManager->update(500);
+//		if (netManager->getConnectionStatus() != net::EICS_FAILED)
+//		{
+//        netManager->update(500);
 //		//	 packet.compressPacket();
 //		//	 packet.encryptPacket("hushthisissecret"); //16 char max
-		}
+	//	}
 return 0;
 }
 
@@ -237,6 +237,15 @@ int Luna::init(){
     driver = device->getVideoDriver();
     smgr = device->getSceneManager();
     guienv = device->getGUIEnvironment();
+
+//    	SAppContext context;
+//	context.device = device;
+//	context.counter = 0;
+////	context.listbox = listbox;
+//
+//    		InGameEventReceiver m_cInGameEvents(context);
+
+
     device->setEventReceiver ( &m_cInGameEvents );
 //Physics init
     m_cPhysics = new Physics();
@@ -244,9 +253,9 @@ int Luna::init(){
 
 //networking
     #ifdef NDEBUG
-        ClientNetCallback* clientCallback = new ClientNetCallback();
-        netManager = net::createIrrNetClient(clientCallback, "127.0.0.1");
-        netManager->setVerbose(true);           // debug messages
+//        ClientNetCallback* clientCallback = new ClientNetCallback();
+//        netManager = net::createIrrNetClient(clientCallback, "127.0.0.1");
+//        netManager->setVerbose(true);           // debug messages
     #endif
 
     return 0;
@@ -272,6 +281,7 @@ int Luna::Run(){
                         printf("mainloop");
                         device->setEventReceiver ( &m_cInGameEvents );
                         mainloop();
+                        //devloop();
                     }
             }
       //      getchar();

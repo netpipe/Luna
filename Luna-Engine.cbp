@@ -35,6 +35,8 @@
 					<Add directory="./entities/AI/recast/DetourTileCache/Include" />
 					<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/include" />
 					<Add directory="../LunaLibs/assimp-3.3.1/include" />
+					<Add directory="../LunaLibs/fluidsynth/include" />
+					<Add directory="../LunaLibs/fluidsynth/" />
 				</Compiler>
 				<Linker>
 					<Add library="GL" />
@@ -62,6 +64,7 @@
 					<Add directory="../LunaLibs/zlib-1.2.3" />
 					<Add directory="../LunaLibs/cAudio23/bin/gcc" />
 					<Add directory="../LunaLibs/libtheoraplayer/src/.libs" />
+					<Add directory="../LunaLibs/fluidsynth" />
 				</Linker>
 			</Target>
 			<Target title="Linux Release">
@@ -93,6 +96,8 @@
 					<Add directory="./entities/AI/recast/DetourTileCache/Include" />
 					<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/include" />
 					<Add directory="../LunaLibs/assimp-3.3.1/include" />
+					<Add directory="../LunaLibs/fluidsynth/include" />
+					<Add directory="../LunaLibs/fluidsynth/" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -122,6 +127,7 @@
 					<Add directory="../LunaLibs/zlib-1.2.3" />
 					<Add directory="../LunaLibs/cAudio23/bin/gcc" />
 					<Add directory="../LunaLibs/libtheoraplayer/src/.libs" />
+					<Add directory="../LunaLibs/fluidsynth" />
 				</Linker>
 			</Target>
 			<Target title="WinDebug">
@@ -307,22 +313,26 @@
 				<Compiler>
 					<Add option="-fpermissive" />
 					<Add option="-DNDEBUG" />
-					<Add directory="/home/Dev/libs/game/Irrlicht-SVN/source/Irrlicht" />
-					<Add directory="/home/Dev/libs/game/Irrlicht-SVN/include" />
-					<Add directory="../libs/net/irrNetLite22" />
-					<Add directory="../libs/net/enet/include" />
-					<Add directory="../libs/freetype-2.3.9/include" />
-					<Add directory="../libs/net/enet-1.2.1" />
+					<Add directory="../LunaLibs/irrlicht-1.8.4/source/Irrlicht" />
+					<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
+					<Add directory="../LunaLibs/net/irrNetLite22" />
+					<Add directory="../LunaLibs/freetype-2.3.9/include" />
+					<Add directory="../LunaLibs/net/enet-1.2.1/include" />
 					<Add directory="FileSystem/readblend" />
+					<Add directory="../LunaLibs/libtheora-1.1.1/include/theora" />
+					<Add directory="../LunaLibs/libtheoraplayer/include" />
 					<Add directory="/usr/include/AL" />
-					<Add directory="/usr/include/python2.7" />
-					<Add directory="../libs/libIrrOpenSteer_10-02-15/include" />
+					<Add directory="/usr/include/python" />
 					<Add directory="./entities/AI/recast/RecastDemo/Include" />
 					<Add directory="./entities/AI/recast/DebugUtils/Include" />
 					<Add directory="./entities/AI/recast/Recast/Include" />
 					<Add directory="./entities/AI/recast/Detour/Include" />
 					<Add directory="./entities/AI/recast/DetourCrowd/Include" />
 					<Add directory="./entities/AI/recast/DetourTileCache/Include" />
+					<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/include" />
+					<Add directory="../LunaLibs/assimp-3.3.1/include" />
+					<Add directory="../LunaLibs/fluidsynth/include" />
+					<Add directory="../LunaLibs/fluidsynth/" />
 				</Compiler>
 				<Linker>
 					<Add library="GL" />
@@ -331,29 +341,41 @@
 					<Add library="Xcursor" />
 					<Add library="X11" />
 					<Add library="dl" />
-					<Add library="irrnet" />
+					<Add library="irrNetLite22" />
 					<Add library="enet" />
 					<Add library="python2.7" />
-					<Add library="Recast" />
-					<Add library="Detour" />
-					<Add library="DebugUtils" />
-					<Add library="DetourCrowd" />
-					<Add library="DetourTileCache" />
 					<Add library="IrrOpenSteer" />
+					<Add library="theora" />
+					<Add library="theoraplayer" />
+					<Add library="assimp" />
+					<Add library="usb" />
+					<Add library="boost_thread" />
+					<Add library="boost_system" />
+					<Add library="fluidsynth" />
+					<Add library="readline" />
+					<Add library="sndfile" />
+					<Add library="pulse" />
+					<Add library="pulse-simple" />
+					<Add library="sqlite3" />
 					<Add library="bz2" />
-					<Add directory="../libs/freetype-2.3.9/objs/.libs" />
-					<Add directory="../libs/net/enet-1.2.1" />
-					<Add directory="/home/Dev/libs/game/Irrlicht-SVN/lib/Linux" />
-					<Add directory="../libs/Compiled/Linux" />
-					<Add directory="/home/Dev/libs/Media/libtheoraplayer/bin/" />
-					<Add directory="../libs/net/irrNetLite22" />
 					<Add directory="../libs/RecastNavigation/DebugUtils/" />
 					<Add directory="../libs/RecastNavigation/Recast" />
 					<Add directory="../libs/RecastNavigation/DetourCrowd" />
 					<Add directory="../libs/RecastNavigation/DetourTileCache" />
 					<Add directory="../libs/RecastNavigation/Detour" />
-					<Add directory="../libs/libIrrOpenSteer_10-02-15/lib" />
-					<Add directory="../libs/cAudio23/bin/gcc" />
+					<Add directory="../LunaLibs/freetype-2.3.9/objs/.libs" />
+					<Add directory="../LunaLibs/net/enet-1.2.1" />
+					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Linux" />
+					<Add directory="../LunaLibs/Compiled/Linux" />
+					<Add directory="../LunaLibs/libtheoraplayer/bin/Linux" />
+					<Add directory="../LunaLibs/net/irrNetLite22" />
+					<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/lib" />
+					<Add directory="./entities/AI/recast/DebugUtils/Include/" />
+					<Add directory="../LunaLibs/assimp-3.3.1/lib" />
+					<Add directory="../LunaLibs/zlib-1.2.3" />
+					<Add directory="../LunaLibs/cAudio23/bin/gcc" />
+					<Add directory="../LunaLibs/libtheoraplayer/" />
+					<Add directory="../LunaLibs/fluidsynth" />
 				</Linker>
 			</Target>
 			<Target title="1.7.3 debug">
@@ -483,7 +505,7 @@
 			<Add library="LinearMath" />
 			<Add library="freetype" />
 			<Add library="enet" />
-			<Add library="zlib" />
+			<Add library="z" />
 			<Add library="ogg" />
 			<Add library="theora" />
 			<Add library="theoraplayer" />

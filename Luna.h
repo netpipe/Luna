@@ -96,6 +96,12 @@ class Luna
     scene::IMetaTriangleSelector* metaSelector;
         scene::ISceneNodeAnimatorCollisionResponse* anim;
   //      ICameraSceneNode* camera;
+struct SAppContext
+{
+	IrrlichtDevice *device;
+	s32				counter;
+	IGUIListBox*	listbox;
+};
 
 	private:
 

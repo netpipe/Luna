@@ -98,14 +98,14 @@ if (init) :
 
 #MAIN LOOP
  sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/TECHNO.MID",0)
- #scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",2)
-# scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/LATIN_.MID",5)
- sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/HAVANAGI.MID",0)
-# scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",1)
- sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/HAVANAGI.MID",3)
- sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/HAVANAGI.MID",2)
-sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/HAVANAGI.MID",3)
-# scene.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/LATIN_.MID",4)
+ #sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",2)
+# sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/LATIN_.MID",5)
+# sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/HAVANAGI.MID",0)
+# sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",1)
+# sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/HAVANAGI.MID",3)
+# sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/HAVANAGI.MID",2)
+#sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/HAVANAGI.MID",3)
+ sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/TECHNO.MID",4)
 image.irotate(iaxe,i)
 #print seed
 #print type

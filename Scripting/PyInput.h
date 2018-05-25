@@ -7,9 +7,9 @@ PyMethodDef irr_Input[] =
     {"getKey",Python::PyIrr_getKey,METH_VARARGS,"get key state"},
     {"wii",Python::PyIrr_wii,METH_VARARGS,"wiimote access"},
     {"gamepad",Python::PyIrr_gamePad,METH_VARARGS,"gamepad"},
-	{"mouse",Python::PyIrr_Mouse,METH_VARARGS,"gamepad"},
-	{"sqlconnect",Python::PyIrr_sqlconnect,METH_VARARGS,"gamepad"},
-	{"sqlcommand",Python::PyIrr_sqlcommand,METH_VARARGS,"gamepad"},
+	{"mouse",Python::PyIrr_Mouse,METH_VARARGS,"mouse"},
+	{"sqlconnect",Python::PyIrr_sqlconnect,METH_VARARGS,"sqlconnect"},
+	{"sqlcommand",Python::PyIrr_sqlcommand,METH_VARARGS,"sqlcommand"},
     {NULL,NULL,0,NULL}
 };
 
@@ -325,9 +325,15 @@ PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
 
 	return Py_BuildValue("");
 }
+
 PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
 int type;
 	PyArg_ParseTuple(args,"i",&type);
+
+	//setcursor position
+	//get cursor position
+	//visible
+
 device->getCursorControl()->setVisible(type);
   return Py_BuildValue("");
 }

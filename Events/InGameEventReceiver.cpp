@@ -10,25 +10,10 @@ InGameEventReceiver::InGameEventReceiver()
 
 bool InGameEventReceiver::OnEvent ( const SEvent &event )
 {
-  if(event.EventType == EET_KEY_INPUT_EVENT)
-  {
-    keys[event.KeyInput.Key] = event.KeyInput.PressedDown;
-  }
-		if ( event.EventType == EET_MOUSE_INPUT_EVENT )
-		{
-//			if ( camera != NULL )
-//				camera->OnEvent ( event );
-			//printf("event on the mouse button");
 
-			mouseX = event.MouseInput.X;
-			mouseY = event.MouseInput.Y;
-			mouseDeltaX = event.MouseInput.X - mouseX;
-			mouseDeltaY = event.MouseInput.Y - mouseY;
-			return true;
-		}
 
 		//let devloop know somehow to know when to run Lmain.py at all
-  return false;
+
   	if ( event.EventType == EET_GUI_EVENT )
 	{
 		s32 cid = event.GUIEvent.Caller->getID();
@@ -42,7 +27,7 @@ bool InGameEventReceiver::OnEvent ( const SEvent &event )
 					eid=cid;
 //					case 101:
 //						quit = true;
-//						return true;
+						return true;
 //					case 102:
 //						login = true;
 //						return true;
@@ -61,6 +46,23 @@ bool InGameEventReceiver::OnEvent ( const SEvent &event )
 				}
 		}
 	}
+	  if(event.EventType == EET_KEY_INPUT_EVENT)
+  {
+    keys[event.KeyInput.Key] = event.KeyInput.PressedDown;
+  }
+		if ( event.EventType == EET_MOUSE_INPUT_EVENT )
+		{
+//			if ( camera != NULL )
+//				camera->OnEvent ( event );
+			//printf("event on the mouse button");
+
+			mouseX = event.MouseInput.X;
+			mouseY = event.MouseInput.Y;
+			mouseDeltaX = event.MouseInput.X - mouseX;
+			mouseDeltaY = event.MouseInput.Y - mouseY;
+			return true;
+		}
+	  return false;
 }
 
 bool InGameEventReceiver::getKeyState(EKEY_CODE key)

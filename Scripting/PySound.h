@@ -205,7 +205,7 @@ if( typee==0 ){
     }
    //  fluid_player_set_bpm (player,125);
 
-  //  fluid_player_set_loop(player,5);
+   // fluid_player_set_loop(player,5);
   //  fluid_player_play(player);
     //fluid_player_set_midi_tempo(player,480000);
 //fluid_player_join(player);
@@ -299,11 +299,12 @@ if (fluid_player_get_status(player) == FLUID_PLAYER_DONE )
 //        break;
     }
 
-else if (typee == 4){
+ if (typee == 4){
     printf("playing");
+        fluid_player_set_loop(player,5);
       //  fluid_player_join(player);
       //  fluid_player_add(player,param);
-      //  fluid_player_play(player);
+        fluid_player_play(player);
 //if (fluid_player_get_status(player) == FLUID_PLAYER_PLAYING)
 //{
 //    if (fluid_file_renderer_process_block(renderer) != FLUID_OK)

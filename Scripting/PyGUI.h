@@ -237,13 +237,15 @@ stringw ha=stra;
 PyObject * Python::PyIrr_GUIButton(PyObject * self,PyObject * args){
 	float x1,y1,x2,y2;
 	long guienv2,window2;
-	wchar_t * stra;
+	char * stra;
 	PyArg_ParseTuple(args,"lsffff",&window2,&stra,&x1,&y1,&x2,&y2);
-	wchar_t *text = stra;
+//	wchar_t *text = stra;
+	stringw ha=stra;
 IGUIWindow* window=window2;
 IGUIButton *button =	guienv->addButton (
 											rect<s32> ( x1,y1,x2,y2  ),
-											window, 105, text);
+											window, 105, ha.c_str());
+		//window->setEnabled(1);
 
 		return Py_BuildValue("l",button);
 }

@@ -1,131 +1,114 @@
-//this is a copy of the DevLoop.h to be used for main release binary target compiles
-#ifdef NDEBUG
-#define DSOUND
+#ifdef NDEBUG // if debug build then do this one
+#define PostProcess
+
+
+
+
 if ( !device->run() ) return 0;
-guienv->clear();
-smgr->clear();
-
-//camera = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
-//camera->setFOV(PI/2);
-    #ifdef PostProcess
-     //PostProcessing
-        IPostProc* ppRenderer = new CRendererPostProc( smgr, dimension2du( 1024, 512 ),
-                                                    true, true, SColor( 255u, 100u, 101u, 140u ) );
-
-        CEffectPostProc* ppBlurDOF = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), PP_BLURDOF );
-        CEffectPostProc* ppBlur = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), PP_BLUR, 0.00081f );
-                            ppBlur->setQuality( PPQ_GOOD );
-    #endif
-
-        #ifdef DSOUNDs
-        manager = cAudio::createAudioManager(true);  // broken has to be done from main
-       if(manager)
-       {
-         //   luna->manager->initialize(luna->manager->getAvailableDeviceName(0));
-            mysound = manager->create("bling","./media/bling.ogg",false);
-            mysound->play2d(true);
-
-    //        return Py_BuildValue("l",manager);
-        }
-        #endif
-
+    guienv->clear();
+    smgr->clear();
+	// Init the Custom GUI
 
 
 #define PYTHON
-    #ifdef PYTHON
+#ifdef PYTHON
+    //Python
         Python::registerIrrDevice(this,*device,m_cInGameEvents);
         Py_Initialize();            //Initialize Python
         Python::init_irr();         //Initialize our module
-        Python::ExecuteScript("./media/Lscript.pys"); //Using our handy dandy script execution function
-         //Python::PyIrr_LoadVehicle(m_cVehicle);
+        //Py_SetProgramName(), Py_SetPythonHome(), PyEval_InitThreads(), PyEval_ReleaseLock(), and PyEval_AcquireLock()
+        //https://docs.python.org/2/c-api/init.html
+        ///todo check for empty or missing files or impliment the using command
+        Python::ExecuteScript("./functions-list.pys"); // this is for testing
+		//Python::PyIrr_LoadVehicle(m_cVehicle);
         //Python::PyIrr_addTerrain("1");
-    #endif
+#endif
 
-// Scene, setup for lights.
-//  m_cScene = new Scene();
-//  m_cScene->registerIrrDevice(*device);
-//  m_cScene->setupLights();
-//   scene::ILightSceneNode* light = smgr->addLightSceneNode( 0, core::vector3df(100,100,100),
-//                                                       video::SColorf(1,1,1,1), 1000.0f );
-//    device->getCursorControl()->setVisible(false);
+    //camera = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
+	//smgr->addCameraSceneNodeFPS();
 
-//Create player.
-//  m_cPlayer = new Player();
-//   m_cPlayer->registerIrrlichtDevice(*device);
-//   m_cPlayer->initialize();
-//   m_cPlayer->setParent(camera);
 
-//    device->getGUIEnvironment()->
-//            addImage( driver->getTexture("data/textures/crosshairs/crosshair1.png"),
-//                      core::position2d<s32>((resolution[0]/2)-64,(resolution[1]/2)-64));
-//    //Timers
-    int lastFPS = -1;
-    u32 timeStamp = device-> getTimer()-> getRealTime(),deltaTime = 0;
+
     u32 then = device->getTimer()->getTime();
-//   AddShader();
+    int lastFPS;
 
-			net::SOutPacket packet;
-    while ( device->run() && !this->m_cInGameEvents.Quit )
+
+/**
+/////////////////////////////////////
+//      DEVLOOP  //////////////////
+///////////////////////////////////
+**/
+
+
+device->getCursorControl()->setVisible(true);
+//    	IrrAssimp assimp(smgr);
+//    IAnimatedMesh* mesh = assimp.getMesh("media/dwarf.x");
+////	if (!mesh /*|| !meshNoAssimp*/)
+////	{
+////		device->drop();
+////		return 1;
+////	}
+//
+//	IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+//	node->setAnimationSpeed(mesh->getAnimationSpeed());
+//
+
+//irr::core::string dir = "RACING/racer";
+	//irr::core::::string dir2 = "./" + dir2.c_str() + "/main.pys";
+//	printf("%s",dir2.c_str());
+//	char* convert = strdup(dir2.c_str());
+	//char* convert = const_cast<char*>(dir2.c_str());
+//			char * dir2 = "/RACING/racer/";
+//			char *dir ;
+//				strcat (dir, ".");
+//				strcat(dir, dir2);
+//				strcat(dir, "main.pys");
+//				puts (dir);
+  char * loader = "./RACING/racer/main.pys";
+   loader = "./APP/cowsynth/main.pys";
+
+    while ( device->run() && !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
     {
-
-//            CheckKeyStates();
-//                //Physics Timers
-//                    deltaTime = device->getTimer()->getRealTime() - timeStamp;
-//                    timeStamp = device->getTimer()->getRealTime();
-//                    m_cPhysics->updatePhysics(deltaTime);
-//                    m_cVehicle->renderme();
-//                   // m_cVehicle2->renderme();
-//                   // adevice->playAll();
         const u32 now = device->getTimer()->getTime();
 		frameDeltaTime = (f32)(now - then) / 1000.f; // Time in seconds
 		then = now;
 
-Python::PreRender();
-
+		#ifdef PYTHON
+        Python::PreRender();
         driver->beginScene ( true, true, SColor ( 0, 0, 0, 0 ) );
-
-    // run the main event processing loop
         Python::render();
-        #ifdef PostProcess
-            ppBlur->render( NULL );
-            //	ppBlurDOF->render( NULL );
-        #endif
+		#else
+		driver->beginScene ( true, true, SColor ( 0, 0, 0, 0 ) );
+		#endif
 
-        #ifdef DSOUND
-//            if(manager){
-//                if(mysound && !mysound->isPlaying())
-//                {
-//                    mysound->setVolume(0.5);
-//                    Set the IAudio Sound to play2d and loop
-//                   mysound->play2d(true);
-//                }
-//            }
-        #endif
-
-
-             //  device->sleep(5);
-//                btVector3 pos = m_cVehicle->getVehiclePosition();
-//                vector3df ha = vector3df(pos[0], pos[1]+5, pos[2]);
-//               btVector3 pos;
-//               vector3df ha ;
-//    packet << "handshake";  // seems this has to be sent first or nothing works
-//    netManager->sendOutPacket(packet);
- // process network messages
         smgr->drawAll();
-        guienv->drawAll();
+		//	device->setEventReceiver(&receiver);
+
+
+//        #ifdef PostProcess
+//			ppBlurDOF->render( NULL );
+//            ppBlur->render( NULL );
+//
+//        #endif
+
+
+ //       rt->render();
+
+		#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
         Python::preEnd();
+          Python::CheckKeyStates();
+    //      CheckKeyStates(); //check onEvent for any need to check keys
+    // loop for key checking and loop for game  only execute script if there was an event
+// pick a game directory and look for main.pys
+			Python::ExecuteScript(irr::core::stringc(loader));
+			//Python::ExecuteScript("./RACING/racer/main.pys");
+		guienv->drawAll();
         driver->endScene();
-        Python::CheckKeyStates();
+		#else
+		guienv->drawAll();
+        driver->endScene();
+		#endif
 
-                if ((f32)(now - then)>100)
-        {
-            driver->runAllOcclusionQueries(false);
-            driver->updateAllOcclusionQueries();
-            nodeVisible=driver->getOcclusionQueryResult(node)>0;
-            now=device->getTimer()->getTime();
-        }
-
-        //CheckKeyStates(); obsolete python does it above
         int fps = driver->getFPS();
 		if (lastFPS != fps)
 		{
@@ -133,17 +116,57 @@ Python::PreRender();
 			tmp += driver->getName();
 			tmp += L"] fps: ";
 			tmp += fps;
+
 			device->setWindowCaption(tmp.c_str());
 			lastFPS = fps;
-    //slows it down to a reasonable screenlag
-    handleMessages();
 		}
+     //  device->sleep(5); // pythonize this
+    }
 
-//device->sleep(1,0);
-}//end of runmain
+
+//#ifdef HUD
+// //     delete vidmaster;
+//#endif
+//    #ifdef BOIDS
+//     delete flock;
+//    #endif
+//
+//    #ifdef PostProcess
+//	 delete ppBlurDOF;
+//	 delete ppBlur;
+//	 delete ppRenderer;
+//    #endif
+//
+//	#ifdef ATMOSPHERE
+//     delete atmo;
+//    #endif
+//
+//	#ifdef ReflectiveWater
+//	 delete water;
+//	#endif
+//
+//	#ifdef RAG
+//		for (std::vector<RagDoll*>::iterator it = v_RagDolls.begin(); it != v_RagDolls.end(); ++it)
+//            (*it)->~RagDoll();
+//	#endif
+//
+//	//delete CHUD2;
+//	//delete m_cVehicle;
+//
+//	#ifdef COMPASS
+//	 delete Compass1;
+//	#endif
+//
+//	#ifdef FLAG     // should be the flagmanager
+//	delete irrFlagNode;
+//	#endif
+//
+//	#ifdef FLAG2     // should be the flagmanager
+//	delete flag;
+//	#endif
 
 	#ifdef PYTHON
-     Py_Finalize();
+		Py_Finalize();
     #endif
 
     #ifdef DSOUND
@@ -152,15 +175,45 @@ Python::PreRender();
         cAudio::destroyAudioManager(manager);
     #endif
     #ifdef PHYSICS
-clearBodies();
-#endif
-#ifdef SPARKA
+	clearBodies();
+	#endif
+
+
+
+	#ifdef SPARKA
 	cout << "\nSPARK FACTORY BEFORE DESTRUCTION :" << endl;
 	SPKFactory::getInstance().traceAll();
 	SPKFactory::getInstance().destroyAll();
 	cout << "\nSPARK FACTORY AFTER DESTRUCTION :" << endl;
 	SPKFactory::getInstance().traceAll();
 	device->drop();
+	#endif
+
+//	delete videoPlayer;
 #endif
 
-#endif // NDEBUG
+/*
+//		// I'm just using a basic cube scene node for the glass pane, "scaled to flatness".
+//		ISceneNode* GlassPane = smgr->addCubeSceneNode();
+//		GlassPane->setScale(vector3df(100,150,1));
+//		GlassPane->setPosition(core::vector3df(0,0,0));
+//		GlassPane->setRotation(vector3df(0,60,0));
+//
+//		// Here I make a RTT for the refraction, you can use a higher res one if you want,
+//		// I chose 512^2 for compatibility. I also load the normalmap.
+//		ITexture* RTTTex = driver->addRenderTargetTexture(dimension2du(512,512));
+//		ITexture* NormMap = driver->getTexture("shaders/glass-bubble/media/NormalMap.png");
+//
+//		GlassPane->setMaterialTexture(0, RTTTex);
+//		GlassPane->setMaterialTexture(1, NormMap);
+//
+//		io::path vshader = "shaders/glass-bubble/GlassV.glsl";
+//        io::path pshader = "shaders/glass-bubble/GlassP.glsl";
+//
+//		video::IGPUProgrammingServices* gpu = driver->getGPUProgrammingServices();
+//
+//		// I create the shader material for the glass pane.
+//		s32 GlassMat = gpu->addHighLevelShaderMaterialFromFiles(vshader,"main",EVST_VS_2_0,pshader,"main",EPST_PS_2_0,0);
+//
+//		GlassPane->setMaterialType(E_MATERIAL_TYPE(GlassMat));
+*/
