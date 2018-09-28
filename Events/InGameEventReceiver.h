@@ -41,7 +41,8 @@ class InGameEventReceiver : public IEventReceiver
 
 
 	// Private functions.
-	private:
+private:
+//	SAppContext & Context;
 };
 
 #endif

@@ -1,4 +1,4 @@
-Luna Game Engine
+Luna Irrlicht Game Engine
 
 ffmpeg and P5 glove driver are LGPL from the libs repo.
 engine is zlib other than sockets code being ported out for irc client and p5 glove controller/ awaiting email on that.
