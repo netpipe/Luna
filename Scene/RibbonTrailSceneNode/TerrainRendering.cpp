@@ -157,7 +157,7 @@ int main()
 	//if (device->isWindowActive())
 	{
 
-		driver->beginScene(true, true, 0 );
+		driver->beginScene(true, true, irr::video::SColor() );
 
 
 		smgr->drawAll();

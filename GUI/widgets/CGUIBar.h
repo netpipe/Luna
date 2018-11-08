@@ -46,7 +46,7 @@ class CGUIBar
    irr::core::rect<s32> rect[3];
 
 public:
-   CGUIBar(u16 x1, u16 y1, u16 x2, u16 y2, u8 start, IVideoDriver* driver);
+   CGUIBar(float x1, float y1, float x2, float y2, u8 start, IVideoDriver* driver);
    void draw();
    void setValue(u8 val);
    u8 getValue();

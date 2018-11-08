@@ -467,4 +467,3 @@ EMOKIT_DECLSPEC void emokit_delete(struct emokit_device* dev)
 }
 
 #endif
-#en

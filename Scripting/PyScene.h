@@ -29,7 +29,7 @@ reminder to actually check the names match with unstable ide's and whatnot
     {"addWheel",Python::PyIrr_recast,METH_VARARGS,"recast navigation"},
     {"media",Python::PyIrr_media,METH_VARARGS,"media"},
     {"rotation",Python::PyIrr_setRotation,METH_VARARGS,"rotation"},
-
+	{"screen",Python::PyIrr_getScreen,METH_VARARGS,"screenwidth"},
 
 
 	//scene
@@ -673,6 +673,21 @@ node = smgr->addLightSceneNode(0, core::vector3df(x,y,z),
 return Py_BuildValue("l",node);
 }
 
+
+PyObject * Python::PyIrr_getScreen(PyObject * self,PyObject * args) {
+    int type;
+    PyArg_ParseTuple(args,"i",&type);
+    if (type == 0){
+        return Py_BuildValue("i",driver->getViewPort().getWidth());
+    }
+    else if (type == 1){
+
+        return Py_BuildValue("i",driver->getViewPort().getHeight());
+    }
+//const irr::core::dimension2du& screenSize = driver->getScreenSize();
+//irr::core::vector2df screenSize(driver.getViewPort().getWidth(), driver.getViewPort().getHeight());
+
+}
 /*
 int setvideo (){// graphics combo
     gui::IGUIComboBox* box = guienv->addComboBox(

@@ -106,6 +106,10 @@ namespace Python {
     PyObject * PyIrr_Event(PyObject * self,PyObject * args);
     PyObject * PyIrr_gamePad(PyObject * self,PyObject * args);
 
+    //Functions
+    PyObject * PyIrr_WayPoint(PyObject * self,PyObject * args);
+    PyObject * PyIrr_exec(PyObject * self,PyObject * args);
+
     //Physics
     PyObject * PyIrr_Bullet(PyObject * self,PyObject * args); // try to seperate
     PyObject * PyIrr_RagMan(PyObject * self,PyObject * args);
@@ -135,6 +139,7 @@ namespace Python {
     PyObject * PyIrr_GUIEditBox(PyObject * self,PyObject * args);
     PyObject * PyIrr_GUIBar(PyObject * self,PyObject * args);
     PyObject * PyIrr_sineGraph2d(PyObject * self,PyObject * args);
+    PyObject * PyIrr_GUIslider(PyObject * self,PyObject * args);
 
 
 

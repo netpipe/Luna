@@ -191,6 +191,8 @@ if ( !device->run() ) return 0;
     //Python
         Python::registerIrrDevice(this,*device,m_cInGameEvents);
         Py_Initialize();            //Initialize Python
+        //PythonMultithreading goes here when time comes
+    //    PyEval_InitThreads() ; // nb: creates and locks the GIL
         Python::init_irr();         //Initialize our module
         //Py_SetProgramName(), Py_SetPythonHome(), PyEval_InitThreads(), PyEval_ReleaseLock(), and PyEval_AcquireLock()
         //https://docs.python.org/2/c-api/init.html
@@ -320,12 +322,13 @@ if ( !device->run() ) return 0;
 	codeEditor->setEnabled(0);
 	codeEditor->setVisible(false);
 	menu->setVisible(false);
-
-	windows->setVisible(false);
-		IGUIWindow* windowss = guienv->addWindow(
-		rect<s32>(1 , 1 ,222 , 222 ),
-		false, // modal?
-		L"mhm");
+//	windows->setVisible(false);
+//	windows->setVisible(true);
+//	windows->setVisible(false);
+//		IGUIWindow* windowss = guienv->addWindow(
+//		rect<s32>(1 , 1 ,222 , 222 ),
+//		false, // modal?
+//		L"mhm");
 
 
 device->getCursorControl()->setVisible(true);
@@ -354,6 +357,7 @@ device->getCursorControl()->setVisible(true);
 //				puts (dir);
   char * loader = "./RACING/racer/main.pys";
    loader = "./APP/cowsynth/main.pys";
+Python::bCodeEditor=3; // initial closed state
 
     while ( device->run() && !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
     {
@@ -381,9 +385,9 @@ device->getCursorControl()->setVisible(true);
 
 
  //       rt->render();
-
 		if (Python::bCodeEditor==1	){
 			Python::bCodeEditor=0;
+			windows->setVisible(true);
 			codeEditor->setEnabled(true);
 			codeEditor->setVisible(true);
 			menu->setVisible(true);
@@ -393,12 +397,12 @@ device->getCursorControl()->setVisible(true);
 			device->getCursorControl()->setVisible(true);
 			    device->setResizable(true);
 		}else if (Python::bCodeEditor == 3	){
-
+			Python::bCodeEditor = 0;
 			codeEditor->setEnabled(0);
 			codeEditor->setVisible(false);
 			menu->setVisible(false);
 			menu->setEnabled(false);
-			windows->setVisible(false);
+			windows->setVisible(false);  //! not sure why but causes crashing on startup
 		}
 		#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
         Python::preEnd();

@@ -15,7 +15,7 @@
 /*==============================================================================
   Constructor
 ==============================================================================*/
-CGUIBar::CGUIBar(u16 _x1, u16 _y1, u16 _x2, u16 _y2, u8 start, IVideoDriver* _driver)
+CGUIBar::CGUIBar(float _x1, float _y1, float _x2, float _y2, u8 start, IVideoDriver* _driver)
 {
    driver = _driver;
 

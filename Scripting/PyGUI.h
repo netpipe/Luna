@@ -19,7 +19,7 @@ PyMethodDef irr_gui[] =
 	{"editbox",Python::PyIrr_GUIEditBox,METH_VARARGS,"editbox"},
 	{"bar",Python::PyIrr_GUIBar,METH_VARARGS,"bar"},
 	{"sgraph",Python::PyIrr_sineGraph2d,METH_VARARGS,"sgraph"},
-
+	{"slider",Python::PyIrr_GUIslider,METH_VARARGS,"slider"},
 
 	{NULL,NULL,0,NULL}
 
@@ -176,12 +176,12 @@ PyObject * Python::PyIrr_tesselateImage(PyObject * self,PyObject * args){
 vector3df loc;
 char * path;
 PyArg_ParseTuple(args,"sfff",&path,&loc.X,&loc.Y,&loc.Z);
-#ifdef TESSIMAGE
-btesimage=1;
-tesImage = new TesselatedImage(device, "media/fireball.bmp", vector3df(-600,0,500), vector3df(500, 550, 1000), vector3df(-130,50,100), 45, 1500, 10);
-tesImage->startAnimation();
-return Py_BuildValue("l",tesImage);
-#endif
+	#ifdef TESSIMAGE
+		btesimage=1;
+		tesImage = new TesselatedImage(device, "media/fireball.bmp", vector3df(-600,0,500), vector3df(500, 550, 1000), vector3df(-130,50,100), 45, 1500, 10);
+		tesImage->startAnimation();
+		return Py_BuildValue("l",tesImage);
+	#endif
 return Py_BuildValue("");
 }
 
@@ -254,24 +254,33 @@ PyObject * Python::PyIrr_GUIBar(PyObject * self,PyObject * args){
 float x1,y1,x2,y2;
 long pwindow;
 int param;
-PyArg_ParseTuple(args,"liffff",&pwindow,&param,&x1,&y1,&x2,&y2);
+int ammount;
+
+// todo clickable set option for controlling sliders and things
+
+PyArg_ParseTuple(args,"liffffi",&pwindow,&param,&x1,&y1,&x2,&y2,&ammount);
 //todo put guienv here so it can be placed in windows
 //  CGUIBar* healthBar[4];
 CGUIBar* healthBar;
-switch (param){
-	case 0:
+//printf("param is %i",param);
+	if (param == 0) {
 //	CGUIBar* healthBar;
   // the 1st bar will go from 0 to 255
+		printf("creating bar \n");
 		u8 a=20;
-		healthBar = new CGUIBar(20,40, 200,60, a, driver);
+		healthBar = new CGUIBar(x1,y1, x2,y2, a, driver);
 		return Py_BuildValue("l",healthBar);
-	break;
-	case 1:
+	}
+
+	if (param == 1) {
+	//	printf("drawing window \n");
 		healthBar=pwindow;
+		healthBar->setValue(ammount);
 		healthBar->draw();
 		return Py_BuildValue("");
-	break;
-}
+//		break;
+	}
+
 		return Py_BuildValue("");
 }
 
@@ -318,6 +327,28 @@ PyObject * Python::PyIrr_GUITree(PyObject * self,PyObject * args){
 
 PyObject * Python::PyIrr_GUIText(PyObject * self,PyObject * args){
 		return Py_BuildValue("");
+}
+
+PyObject * Python::PyIrr_GUIslider(PyObject * self,PyObject * args){
+float x1,y1,x2,y2;
+int ammount;
+long pwindow;
+
+// you can use 0 as pwindow to place without a window
+PyArg_ParseTuple(args,"lffffi",&pwindow,&x1,&y1,&x2,&y2,&ammount);
+
+IGUIWindow* window=pwindow;
+
+	IGUIScrollBar* scrollbar = guienv->addScrollBar(true,
+			rect<s32>(x1, y1, x2, y2), window,  0);
+//	scrollbar->setMax(255);
+//	scrollbar->setPos(255);
+//	setSkinTransparency( scrollbar->getPos(), env->getSkin());
+
+	// set scrollbar position to alpha value of an arbitrary element
+	//env->getSkin()->getColor(EGDC_WINDOW).getAlpha()
+//	scrollbar->setPos(ammount);
+		return Py_BuildValue("l",scrollbar);
 }
 
 PyObject * Python::PyIrr_GUIEditBox(PyObject * self,PyObject * args){

@@ -6,7 +6,6 @@ PyMethodDef irr_Camera[] = {
     {"addCamera",Python::PyIrr_addCamera,METH_VARARGS,"sets camera vector"},
     {"setCamera",Python::PyIrr_SetCamera,METH_VARARGS,"sets camera vector"},
 	{"getCamera",Python::PyIrr_GetCamera,METH_VARARGS,"getcamera vector"},
-	{"screen",Python::PyIrr_getScreen,METH_VARARGS,"screenwidth"},
 	{NULL,NULL,0,NULL}
 };
 
@@ -130,12 +129,28 @@ PyObject * Python::PyIrr_GetCamera(PyObject * self,PyObject * args){
 // get  camera coords ;
 	s32 x,y,z,t;
 	vector3df v;
+	int param;
 			    ICameraSceneNode *cam;
-	PyArg_ParseTuple(args,"lfff",cam,&x,&y,&z);
-v = vector3df(x,y,z);
-//vector3df v = t->getPosition();
-//cam = smgr->getActiveCamera();
-return Py_BuildValue("fff",v.X,v.Y,v.Z);
+	PyArg_ParseTuple(args,"li",cam,param);
+
+	//v = vector3df(x,y,z);
+
+
+    if (param==0){
+		cam = smgr->getActiveCamera();
+		return Py_BuildValue("l");
+    } else if (param==1){
+    		v = cam->getPosition();
+    	return Py_BuildValue("f", v.X);
+    }else if (param==2){
+    		v = cam->getPosition();
+    	return Py_BuildValue("f", v.Y);
+    }else if (param==3){
+    		v = cam->getPosition();
+    	return Py_BuildValue("f", v.Z);
+    }
+
+	return Py_BuildValue("");
 }
 
 

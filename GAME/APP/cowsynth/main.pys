@@ -23,22 +23,31 @@ if (init) :
 # terrain = scene.addTerrain(1,-100,-103,-100,5,1,5,"media/terrain-heightmap.bmp","media/terrain.jpg","media/detailmap.jpg") # load last to make the physics work FIX  // possibly a load terrain xml function
 #resolution[0],resolution[1]
  iaxe = image.iadd("./APP/cowsynth/logo.png",0,0,scene.screen(0),scene.screen(1),0,0,960,540)
- #image.idraw(iaxe)
+ image.idraw(iaxe)
  image.iscale(iaxe,0.5,0.5)
+
+# background = image.iadd("./APP/cowsynth/logo.png",0,0,scene.screen(0),scene.screen(1),0,0,960,540)
+# image.idraw(background)
+# background2 = image.iadd("./APP/cowsynth/logo.png",0,0,scene.screen(0),scene.screen(1),0,0,960,540)
+# image.idraw(background2)
+
+ #have 2 seamless textures for the main window one as bg then scroll between the textures.
 # image.iposition(iaxe,0,0)
- image.itexture(iaxe,"./APP/cowsynth/logo2.png",0)
+# image.itexture(iaxe,"./APP/cowsynth/logo2.png",0)
  tex_id = image.load_texture("media/crate.png")
 # editor = gui.codeeditor();
 
  i=0
  init = 0
+ healthbar=gui.bar(0,0,20,40,200,300,60)#create
+
+
  #scene.addwater("none",1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
- #gui.codeeditor(1) #shader editor #cpu limiter incase of bad code
+# gui.codeeditor(1) #shader editor #cpu limiter incase of bad code
 # extras.lensflare(1,10,100,10)
 # scene.flag1("media/Flags/agnostechdemo1200912132.png",10,100,10)
 
 
-# healthbar=gui.bar(0,0,20,40,100,60)
 #print("aha")
 # if (0) : # can only be client or server
 #  if (1) :
@@ -57,7 +66,8 @@ if (init) :
 # image.iscale(iaxe,i,i)
 # i=1
  window = gui.window("cowSynth",100,100,420,420)
- gui.button(window,"button",10,10,120,120)
+ #gui.button(window,"button",10,10,120,120)
+ slider=gui.slider(window,150,45,350,60,50)
  #gui.editbox(window,51,51,510,510)
  #font = image.loadfont("/data/fonts/SpriteFonts/Font05_70_Normal.png")
  font = image.loadfont("./data/myfont.png")
@@ -66,7 +76,8 @@ if (init) :
  #jungle = scene.addJungle()
  #scene.addTree("jungle",1,terrain,1,1,1)
  track1 = scene.loadTrack('./APP/cowsynth/CUCurve.002.irrmesh',20,0,0)
- input.sqlconnect("ha.db")
+ #input.sqlconnect("ha.db")
+
 # mesh.add
 # mesh.setRotation
 # scene.rotation (track1,40,19,40)
@@ -97,16 +108,22 @@ if (init) :
 
 
 #MAIN LOOP
- sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/TECHNO.MID",0)
- #sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",2)
+# sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/TECHNO.MID",0)
+#sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",2)
 # sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/LATIN_.MID",5)
 # sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/HAVANAGI.MID",0)
 # sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/JINGLEBE.MID",1)
 # sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/HAVANAGI.MID",3)
 # sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/HAVANAGI.MID",2)
 #sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/HAVANAGI.MID",3)
- sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2","./APP/cowsynth/songs/TECHNO.MID",4)
+# songname="./APP/cowsynth/songs/new/come_out_and_play.mid"
+ #songname="./APP/cowsynth/songs/new/045bach.mid"
+ songname="./APP/cowsynth/songs/HAVANAGI.MID"
+ sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2",songname,0)
+ sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2",songname,4)
+
 image.irotate(iaxe,i)
+
 #print seed
 #print type
 #print cx
@@ -114,10 +131,17 @@ image.irotate(iaxe,i)
 #image.iscale(iaxe,2,2)
 i+=1
 image.idraw(iaxe) #midpoint
+#gui.bar(healthbar,1,20,40,200,60,100)
 irr.sleep(10)
+#import/export xml files for configs
 
-scene.drawtext(font,str(math.rand(8,1)),1,1,100,100)
-scene.drawtext(font,"cool bean tree",22,22,200,200)
+
+
+#scene.drawtext(font,str(math.rand(8,1)),1,1,100,100)
+#scene.drawtext(font,"cool bean tree",22,22,200,200)
+
+
+
 #mevent = irr.event(0)
 #eid = irr.event(1)
 #if mevent == "button":

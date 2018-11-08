@@ -214,10 +214,12 @@ PyMethodDef irr_function[] =
 
 //        {"flare2",Python::PyIrr_Flare2,METH_VARARGS,"Loads Flare2"},
 
+    {"wayman",Python::PyIrr_WayPoint,METH_VARARGS,"waypoint manager"},
 
     {"formationdemo",Python::PyIrr_FormationDemo,METH_VARARGS,"Loads FormationDemo"},
     {"pauseGame",Python::PyIrr_pauseGame,METH_VARARGS,"pauseGame"},
     {"exit",Python::PyIrr_exit,METH_VARARGS,"exit"},
+     {"exec",Python::PyIrr_exec,METH_VARARGS,"exec"},
         {NULL,NULL,0,NULL}
 };
 
@@ -264,8 +266,15 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
 
 #include "PyScene.h"
 // make a post draw loop instead of putting things into the checkkey
+PyObject * Python::PyIrr_exec(PyObject * self,PyObject * args){ //active camera
+char * script;
+char * arg;
+    PyArg_ParseTuple(args,"ss",&script,&arg);
+//sts = system(command);s
+//popen("wget http://google.com", "w");
+}
 
-PyObject * Python::PyIrr_using(PyObject * self,PyObject * args){ //active camera
+PyObject * Python::PyIrr_using(PyObject * self,PyObject * args){
 //ExecuteScript(irr::core::string<char> scriptname){
 char * script;
 char * arg;
@@ -275,7 +284,7 @@ char * arg;
 return Py_BuildValue("");
 }
 
-PyObject * Python::PyIrr_Delay(PyObject * self,PyObject * args){ //active camera
+PyObject * Python::PyIrr_Delay(PyObject * self,PyObject * args){ //PyIrr_Delay
     //repurpose this for a path move delay
     float * delay;
     PyArg_ParseTuple(args,"f",&delay);
@@ -283,14 +292,14 @@ PyObject * Python::PyIrr_Delay(PyObject * self,PyObject * args){ //active camera
 return Py_BuildValue("");
 }
 
-PyObject * Python::PyIrr_Sleep(PyObject * self,PyObject * args){ //active camera
+PyObject * Python::PyIrr_Sleep(PyObject * self,PyObject * args){
     int ammount;
     PyArg_ParseTuple(args,"i",&ammount);
     device->sleep(ammount);
 return Py_BuildValue("");
 }
 
-PyObject * Python::PyIrr_setTime(PyObject * self,PyObject * args){ //active camera
+PyObject * Python::PyIrr_setTime(PyObject * self,PyObject * args){
     int ammount;
     PyArg_ParseTuple(args,"f",&ammount);
 
@@ -311,20 +320,49 @@ PyObject * Python::PyIrr_getTime(PyObject * self,PyObject * args){ //active came
 return Py_BuildValue("i",tm);
 }
 
-PyObject * Python::PyIrr_getScreen(PyObject * self,PyObject * args) {
-    int type;
-    PyArg_ParseTuple(args,"i",&type);
-    if (type == 0){
-        return Py_BuildValue("i",driver->getViewPort().getWidth());
-    }
-    else if (type == 1){
 
-        return Py_BuildValue("i",driver->getViewPort().getHeight());
-    }
-//const irr::core::dimension2du& screenSize = driver->getScreenSize();
-//irr::core::vector2df screenSize(driver.getViewPort().getWidth(), driver.getViewPort().getHeight());
 
+PyObject * Python::PyIrr_WayPoint(PyObject * self,PyObject * args){
+ //add //remove // check // load // clear
+ // could have python scripted waypoint manager too
+irr::core::array<ISceneNode*> waypoints;
+
+
+//   if(waypoints.size() > 0)
+//  {
+//    for(u32 i = 0; i < waypoints.size()-1; i++)
+//    {
+//      waypoints[i]->remove();
+//      waypoints.erase(i);
+//    }
+//    waypoints.clear();
+//  }
+
+ //checking distance from node to waypoints
+ // playerPos = cam->getPosition(); or node position
+//  for(u32 i = 0; i < waypoints.size(); i++)
+//  {
+//    if(waypoints[i]->getPosition().getDistanceFrom(playerPos) < 50.0f)
+//    {
+//
+//
+//    }
+
+//      if(particleNodeArray.size() > 0)
+//  {
+//    for(u32 i = 0; i < particleNodeArray.size()-1; i++)
+//    {
+//      particleNodeArray[i]->drop();
+//      particleNodeArray.erase(i);
+//    }
+//    particleNodeArray.clear();
+//  }
+
+ // }
+
+    return Py_BuildValue("");
 }
+
 PyObject * Python::PyIrr_fpsWeapon(PyObject * self,PyObject * args){
 // need to attach to bones and/or nodes here
 bFPS = 1;
