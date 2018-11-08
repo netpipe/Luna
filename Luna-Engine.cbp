@@ -201,16 +201,31 @@
 					<Add directory="../libs/libogg-1.1.4/include" />
 					<Add directory="../libs/libvorbis-1.2.3/include" />
 					<Add directory="../libs/freetype-2.3.9/include" />
-					<Add directory="C:/Program Files/OpenAL 1.1 SDK" />
+					<Add directory="C:/Dev/openal-soft-1.19.1-bin/include/AL" />
 					<Add directory="../libs/net/enet-1.2.1/include" />
 					<Add directory="../libs/net/irrNetLite21" />
-					<Add directory="../libs/ffmpeg-0.5/libavcodec" />
-					<Add directory="../libs/ffmpeg-0.5/libavdevice" />
-					<Add directory="../libs/ffmpeg-0.5/" />
-					<Add directory="../libs/ffmpeg-0.5/libavformat" />
-					<Add directory="../libs/ffmpeg-0.5/libswscale" />
-					<Add directory="C:/Program Files/Python2.6/include" />
-					<Add directory="../libs/cAudio2/include" />
+					<Add directory="C:/Python26/include" />
+					<Add directory="../libs/cAudio23/include" />
+					<Add directory="../LunaLibs/Irrlicht/source/Irrlicht" />
+					<Add directory="../LunaLibs/Irrlicht/include" />
+					<Add directory="../LunaLibs/irrlicht-1.8.4/source/Irrlicht" />
+					<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
+					<Add directory="../LunaLibs/net/irrNetLite22" />
+					<Add directory="../LunaLibs/freetype-2.3.9/include" />
+					<Add directory="../LunaLibs/net/enet-1.2.1/include" />
+					<Add directory="FileSystem/readblend" />
+					<Add directory="../LunaLibs/libtheora-1.1.1/include/theora" />
+					<Add directory="../LunaLibs/libtheoraplayer/include" />
+					<Add directory="./entities/AI/recast/RecastDemo/Include" />
+					<Add directory="./entities/AI/recast/DebugUtils/Include" />
+					<Add directory="./entities/AI/recast/Recast/Include" />
+					<Add directory="./entities/AI/recast/Detour/Include" />
+					<Add directory="./entities/AI/recast/DetourCrowd/Include" />
+					<Add directory="./entities/AI/recast/DetourTileCache/Include" />
+					<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/include" />
+					<Add directory="../LunaLibs/assimp-3.3.1/include" />
+					<Add directory="../LunaLibs/fluidsynth/include" />
+					<Add directory="../LunaLibs/fluidsynth/" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -222,14 +237,14 @@
 					<Add library="pthreads" />
 					<Add library="cAudio" />
 					<Add directory="../libs/bullet/out/release8/libs" />
-					<Add directory="C:/Program Files/OpenAL 1.1 SDK/libs/Win32" />
+					<Add directory="../openal-soft-1.19.1-bin/libs/Win32" />
 					<Add directory="../libs/libogg-1.1.4/" />
 					<Add directory="../libs/libvorbis-1.2.3/" />
 					<Add directory="../libs/freetype-2.3.9" />
 					<Add directory="../libs/pthreads-w32-2-8-0-release" />
 					<Add directory="../libs/net/irrNetLite21" />
 					<Add directory="../libs/net/enet-1.2.1/bin/Release" />
-					<Add directory="C:/Program Files/Python2.6/libs" />
+					<Add directory="C:/Python26/libs" />
 					<Add directory="C:/Dev/Agnostic/Libs/bullet/out/release8/libs" />
 					<Add directory="../libs/net/enet-1.2/bin/Debug" />
 				</Linker>
