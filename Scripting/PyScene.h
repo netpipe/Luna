@@ -373,7 +373,7 @@ PyObject * Python::PyIrr_setRotation(PyObject * self,PyObject * args){
     long node_id;
     float x,y,z;
     PyArg_ParseTuple(args,"lfff",&node_id,&x,&y,&z);
-    ISceneNode *node = node_id;
+    ISceneNode *node = (ISceneNode*)node_id;
     node->setRotation(vector3df(x,y,z));
 
  return Py_BuildValue("");
@@ -385,10 +385,10 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
     int bullet;
     PyArg_ParseTuple(args,"lifff",&node_id,&bullet,&x,&y,&z);
     if (bullet == 1){
-            btRigidBody *test = node_id;
+            btRigidBody *test = (btRigidBody *)node_id;
             test->translate(btVector3 (x,y,z));
     }else if (bullet == 3){
-            Terrain* mnode =node_id;
+            Terrain* mnode = (Terrain*)node_id;
             vector3df newpos;
             //ITerrainSceneNode* node=mnode->terrain;
             newpos = vector3df(x,y,z)-mnode->terrain->getPosition();
@@ -400,7 +400,7 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
 
 
     }else if (bullet == 4){
-            Terrain* mnode =node_id;
+            Terrain* mnode =(Terrain*)node_id;
             vector3df newpos;
             //ITerrainSceneNode* node=mnode->terrain;
             newpos = vector3df(x,y,z)-mnode->cubeSceneNode->getPosition();
@@ -411,7 +411,7 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
          //   btRigidBody *test = mnode->mRigidBody;
 
 }else if (bullet == 0){
-    ISceneNode * node = node_id;// could also get from name smgr->getSceneNodeFromId(node_id);
+    ISceneNode * node = (ISceneNode *)node_id;// could also get from name smgr->getSceneNodeFromId(node_id);
     	if(node != NULL)
         {
             node->setPosition(vector3df(x,y,z));
@@ -435,7 +435,7 @@ PyObject * Python::PyIrr_getPosition(PyObject * self,PyObject * args){
     PyArg_ParseTuple(args,"llll",&node_id);
     ISceneNode *node = smgr->getSceneNodeFromId(node_id);
     vector3df position = node->getPosition();
-return Py_BuildValue("l",position);
+///return Py_BuildValue("l",position);
 }
 
 
@@ -445,7 +445,7 @@ PyObject * Python::PyIrr_setVelocity(PyObject * self,PyObject * args){
     long node;
     float x,y,z;
 	PyArg_ParseTuple(args,"lfff",&node,&x,&y,&z);
-	btRigidBody * test = node;
+	btRigidBody * test = (btRigidBody *)node;
 // if bullet or irrlicht scene node handle methods differently
 // inirtia calculation
 //	node->setPosition(vector3df(x,y,z));

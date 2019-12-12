@@ -1,5 +1,6 @@
 ///Main Python Function Includes
 ///Stuff Relivent to Initialization and management of scene / sound and managers.
+// there are includes at bottom of file for scripting too.
 
 #define DSOUND
 #include "../Luna.h"
@@ -37,8 +38,7 @@
     #define Image2D // Just testing out
     #define CHOPPER
     #define  OPENSTEER
-    #define VIDEO
-    #define DSOUND
+//    #define VIDEO
     #define PostProcess
 
 // Include the headers for post processing
@@ -178,17 +178,25 @@ char *zErrMsg;
 #include "PyNet.h"
 #define _GNU_SOURCE
 //    #undef __cplusplus
-#include "../Input/fluidsynthconfig.h"
-#include "utils/fluidsynth_priv.h"
+
 #if defined(HAVE_GETOPT_H)
 #include <getopt.h>
 #define GETOPT_SUPPORT 1
 #endif
 
+
+#ifdef __EMSCRIPTEN__
+#include "fluidlite.h"
+#else
+
+#include "../Input/fluidsynthconfig.h"
+#include "utils/fluidsynth_priv.h"
 #include "fluidsynth.h"
 //
 #include "bindings/fluid_lash.h"
 //
+#endif
+
 #ifndef WITH_MIDI
 #define WITH_MIDI 1
 #endif
@@ -203,7 +211,7 @@ fluid_cmd_handler_t* cmd_handler = NULL;
   fluid_audio_driver_t* adriver = NULL;
   fluid_synth_t* synth = NULL;
 
-
+#ifdef PYTHON
 PyMethodDef irr_function[] =
 {
     {"delay",Python::PyIrr_Delay,METH_VARARGS,"delay"},
@@ -286,7 +294,7 @@ return Py_BuildValue("");
 
 PyObject * Python::PyIrr_Delay(PyObject * self,PyObject * args){ //PyIrr_Delay
     //repurpose this for a path move delay
-    float * delay;
+    float delay;
     PyArg_ParseTuple(args,"f",&delay);
     device->sleep(delay);
 return Py_BuildValue("");
@@ -368,7 +376,7 @@ PyObject * Python::PyIrr_fpsWeapon(PyObject * self,PyObject * args){
 bFPS = 1;
     long pcam;
     PyArg_ParseTuple(args,"l",&pcam);
-    ICameraSceneNode* camera = pcam;
+    ICameraSceneNode* camera = (ICameraSceneNode*)pcam;
     device->getGUIEnvironment()->addImage( driver->getTexture("data/textures/crosshairs/crosshair1.png"),
                                             core::position2d<s32>((luna->resolution[0]/2)-64,(luna->resolution[1]/2)-64));
     #ifdef FPSWEAPON
@@ -497,3 +505,5 @@ PyObject * Python::PyIrr_exit(PyObject * self,PyObject * args){
 #include "PyCamera.h"
 #include "PyInput.h"
 #include "PyGUI.h"
+
+#endif

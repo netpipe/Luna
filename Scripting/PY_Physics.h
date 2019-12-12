@@ -87,7 +87,7 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
  //   vector3df* position = VehicleParam(mVehicle,param,state,ammount,y,z);
 enum eparam{reset,accelerate,reverse,ebrake,brake,lsteer,rsteer};
 
-Vehicle *vehicle = mVehicle;
+Vehicle *vehicle = (Vehicle *)mVehicle;
 //if param = "accelerate"
 //	action = 1
 
@@ -162,15 +162,16 @@ if ( state==0 ){  // use state for get and set var
 
     } else if (state==1)
     {   //get vars
-
+//int returnvar;
 		switch (param){
 			case 0:
-			int returnvar = m_cVehicle->getState();
-			return Py_BuildValue("i",returnvar);
-			break;
-			case 11:
+//				returnvar = m_cVehicle->getState();
+					return Py_BuildValue("i",m_cVehicle->getState());
+				break;
+			case 1:
 				vector3df position = vehicle->getPosition();
-				return Py_BuildValue("l",position);
+///				return Py_BuildValue("l",position);
+			break;
 		}
     }
   return Py_BuildValue("");

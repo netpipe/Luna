@@ -715,7 +715,7 @@ void *CopyMeshesIntoQuadsGrass(void *mCTD)
 #ifdef WINDOWS
             SwitchToThread();
 #else
-            pthread_yield();
+//!            pthread_yield();
 #endif
             //make the counter stay the same
             i-=3;

@@ -35,6 +35,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-fpermissive" />
 			<Add directory="/home/Dev/libs/net/RakNet-git/Source" />
 		</Compiler>
 		<Linker>
@@ -43,10 +44,6 @@
 		</Linker>
 		<Unit filename="FileTransferProgress.h" />
 		<Unit filename="main.cpp" />
-		<Extensions>
-			<code_completion />
-			<debugger />
-			<envvars />
-		</Extensions>
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

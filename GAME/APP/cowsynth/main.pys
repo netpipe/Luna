@@ -11,7 +11,6 @@ import sound
 
 #Project Description: CowSynth - (Cooperative work Synthesizer) multiuser networked midi synth/player client/server with alsa or midiwin ports.
 
-
 #INITIALIZE
 if (init) :
 
@@ -20,7 +19,7 @@ if (init) :
 # Light1 = scene.Light(10,100,150,1,"111111") # type , vector, color
 # model = "data/models/vehicles/oldChevy-Truck.3ds"
 # texture = "data/models/vehicles/oldChevy.bmp"
-# terrain = scene.addTerrain(1,-100,-103,-100,5,1,5,"media/terrain-heightmap.bmp","media/terrain.jpg","media/detailmap.jpg") # load last to make the physics work FIX  // possibly a load terrain xml function
+#terrain = scene.addTerrain(1,-100,-103,-100,5,1,5,"media/terrain-heightmap.bmp","media/terrain.jpg","media/detailmap.jpg") # load last to make the physics work FIX  // possibly a load terrain xml function
 #resolution[0],resolution[1]
  iaxe = image.iadd("./APP/cowsynth/logo.png",0,0,scene.screen(0),scene.screen(1),0,0,960,540)
  image.idraw(iaxe)
@@ -77,7 +76,15 @@ if (init) :
  #scene.addTree("jungle",1,terrain,1,1,1)
  track1 = scene.loadTrack('./APP/cowsynth/CUCurve.002.irrmesh',20,0,0)
  #input.sqlconnect("ha.db")
-
+ f= open("./demofile.txt","w+")
+ #print(f.read(5))
+ for i in range(10):
+  f.write("This is line %d\r\n" % (i+1))
+ f.close()
+ scene.using ('./APP/cowsynth/functions.pys',"1");
+ test()
+ #f.write("This is line %d\r\n",1)
+#maybe chmod the executable folder to disallow file creation
 # mesh.add
 # mesh.setRotation
 # scene.rotation (track1,40,19,40)
@@ -123,6 +130,47 @@ if (init) :
  sound.fluidsynth("./APP/cowsynth/soundfonts/Piano.SF2",songname,4)
 
 image.irotate(iaxe,i)
+
+xx="stringy1234 "
+#print xx+"fullstringtest"
+#print(xx[:2])
+array1=xx.split('1')
+#print array1[1]
+#print "array"+str(len(array1))
+array1.append("Honda "+"test")
+
+#print ' ' .join(["the","quick","brown","fox"])
+#print xx.ascii_uppercase()
+array1.pop(1) #1 Delete the second element of the cars array:
+#for ii in range(0,3):
+ #print ii
+ #print array1[1].strip() #removes whitespaces
+
+
+#https://www.w3schools.com/python/python_arrays.asp
+#append()	Adds an element at the end of the list
+#clear()	Removes all the elements from the list
+#copy()	Returns a copy of the list
+#count()	Returns the number of elements with the specified value
+#extend()	Add the elements of a list (or any iterable), to the end of the current list
+#index()	Returns the index of the first element with the specified value
+#insert()	Adds an element at the specified position
+#pop()	Removes the element at the specified position
+#remove()	Removes the first item with the specified value
+#reverse()	Reverses the order of the list
+#sort()	Sorts the list
+
+
+#"r" - Read - Default value. Opens a file for reading, error if the file does not exist
+#"a" - Append - Opens a file for appending, creates the file if it does not exist
+#"w" - Write - Opens a file for writing, creates the file if it does not exist
+#"x" - Create - Creates the specified file, returns an error if the file exists
+#"t" - Text - Default value. Text mode
+#"b" - Binary - Binary mode (e.g. images)
+
+#print "testing \n"
+#print math.rand()
+
 
 #print seed
 #print type

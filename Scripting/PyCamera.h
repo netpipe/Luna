@@ -106,7 +106,7 @@ PyObject * Python::PyIrr_SetCamera(PyObject * self,PyObject * args){ //active ca
 	//int
 
 	PyArg_ParseTuple(args,"lfff",&cam2,&x,&y,&z);
-	ICameraSceneNode *cam = cam2;
+	ICameraSceneNode *cam = (ICameraSceneNode *)cam2;
 //	device->setActiveCamera(cam);
     cam->setPosition(vector3df(x,y,z));
 

@@ -121,30 +121,30 @@ PyObject * Python::PyIrr_Send(PyObject * self,PyObject * args){
 	long netMan;
 	char *message2;
 	PyArg_ParseTuple(args,"ls",&netMan,&message2);
-	net::INetManager* netManager=netMan;
+	//net::INetManager* netManager=netMan;
 
 
-			net::SOutPacket packet;
-
-			// Then you can use the streaming operator << to add new data to it.
-			packet << "Help I am stuck on a mountain!";
-
-			// You can even chain the << operators like so, just like with ostream.
-			packet << core::vector3df(50.0f, 30.0f, 20.0f) << 50.0f;
-
-			// Compress the packet, not much to be said.
-			packet.compressPacket();
-
-			// Encrypt the packet. Note that here we are just using a simple key
-			// that is shared among the client and the server. In more sophisticated
-			// implementations you may want to generate a random key on the server for
-			// each client and send that using a shared key, then use the new key for
-			// further communication. Remember that the key should be 16 characters
-			// long, and obviously the client and server must share the same key.
-			packet.encryptPacket("hushthisissecret");
-
-			// A simple call to "sendOutPacket" will send the packet to the server.
-			netManager->sendOutPacket(packet);
+//			net::SOutPacket packet;
+//
+//			// Then you can use the streaming operator << to add new data to it.
+//			packet << "Help I am stuck on a mountain!";
+//
+//			// You can even chain the << operators like so, just like with ostream.
+//			packet << core::vector3df(50.0f, 30.0f, 20.0f) << 50.0f;
+//
+//			// Compress the packet, not much to be said.
+//			packet.compressPacket();
+//
+//			// Encrypt the packet. Note that here we are just using a simple key
+//			// that is shared among the client and the server. In more sophisticated
+//			// implementations you may want to generate a random key on the server for
+//			// each client and send that using a shared key, then use the new key for
+//			// further communication. Remember that the key should be 16 characters
+//			// long, and obviously the client and server must share the same key.
+//			packet.encryptPacket("hushthisissecret");
+//
+//			// A simple call to "sendOutPacket" will send the packet to the server.
+//			netManager->sendOutPacket(packet);
 
 //	todo You should open the file as binary on a Microsoft platform. DOS/Unix '\n' difference is an old problem.
 //http://www.cplusplus.com/forum/general/27659/
@@ -186,7 +186,7 @@ PyObject * Python::PyIrr_Receive(PyObject * self,PyObject * args){
 	long netMan;
 	char *message2;
 	PyArg_ParseTuple(args,"ls",&netMan,&message2);
-	net::INetManager* netManager=netMan;
+//	net::INetManager* netManager=netMan;
 
 //		while(1){ // receive whole file before continuing
 //		printf("Input local filename: ");
@@ -305,14 +305,14 @@ PyObject * Python::PyIrr_Update(PyObject * self,PyObject * args){
 
 	long netMan;
 	PyArg_ParseTuple(args,"l",&netMan);
-	net::INetManager* netManager=netMan;
+//	net::INetManager* netManager=netMan;
 
 		// Here is the update loop, we will exit if there is a connection problem.
-	   if (netManager->getConnectionStatus() != net::EICS_FAILED)
-		{
-			// Here we update.
-			netManager->update(0);
-		}
+//	   if (netManager->getConnectionStatus() != net::EICS_FAILED)
+//		{
+//			// Here we update.
+//			netManager->update(0);
+//		}
 	//	delete netManager;
 	//	delete clientCallback;
 

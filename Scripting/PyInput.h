@@ -2,6 +2,17 @@
 #define PYMAIN_H_INCLUDED
 //device->sleep(5,0); python delay for mainloop possibly use timers
 
+//#include "..//include/MaterialDensityPair.h"
+
+//#include "../Input/Model/PolyVox/PolyVoxCore/include/MaterialDensityPair.h"
+
+#include <PolyVoxCore/MaterialDensityPair.h>
+#include <PolyVoxCore/Material.h>
+#include <PolyVoxCore/CubicSurfaceExtractorWithNormals.h>
+#include <PolyVoxCore/SurfaceMesh.h>
+#include <PolyVoxCore/SimpleVolume.h>
+
+
 PyMethodDef irr_Input[] =
 {
     {"getKey",Python::PyIrr_getKey,METH_VARARGS,"get key state"},
@@ -10,6 +21,7 @@ PyMethodDef irr_Input[] =
 	{"mouse",Python::PyIrr_Mouse,METH_VARARGS,"mouse"},
 	{"sqlconnect",Python::PyIrr_sqlconnect,METH_VARARGS,"sqlconnect"},
 	{"sqlcommand",Python::PyIrr_sqlcommand,METH_VARARGS,"sqlcommand"},
+	{"voxelLoad",Python::PyIrr_voxelLoad,METH_VARARGS,"voxelLoad"},
     {NULL,NULL,0,NULL}
 };
 
@@ -281,6 +293,166 @@ PyObject * Python::PyIrr_getKey(PyObject * self,PyObject * args){
 }
 
 
+
+
+PyObject * Python::PyIrr_voxelLoad(PyObject * self,PyObject * args){
+
+	int type;
+//	char * gui,*driver,*smgr;
+	char * device;
+		char * path;
+	PyArg_ParseTuple(args,"ss",&device,&path);
+
+   wchar_t cBuffer[100];
+    int move;
+
+//    gui::IGUIEnvironment* device = device->getGUIEnvironment();
+
+//    gui::IGUIEnvironment* gui = device->getGUIEnvironment();
+//    video::IVideoDriver* driver = device->getVideoDriver();
+//    irr::scene::ISceneManager* smgr = device->getSceneManager();
+
+//    createMandelbulb(volData);
+
+
+
+    //Extract the surface
+//    PolyVox::SurfaceMesh<PolyVox::PositionMaterialNormal> polyvoxmesh;
+//    PolyVox::CubicSurfaceExtractorWithNormals<PolyVox::SimpleVolume< uint8_t >> surfaceExtractor(&volData, volData.getEnclosingRegion(), &polyvoxmesh);
+//    surfaceExtractor.execute();
+//
+//SMesh * testmesh = new SMesh();
+//
+//
+//    irr::scene::IMeshBuffer * testbuffer = ConvertMesh(polyvoxmesh);
+//    printf("%i ",testbuffer->getVertexCount());
+//    printf("%i ",testbuffer->getIndexCount());
+//    testmesh->addMeshBuffer(testbuffer);
+//    testmesh->recalculateBoundingBox();
+//
+//
+//    scene::ISceneNode * testnode = smgr->addMeshSceneNode(testmesh); //, core::vector3df(2000, 1000, 2000),core::vector3df(0, 100, 0),core::vector3df(20.0F, 20.0F, 20.0F));
+//
+//
+//    testnode->setMaterialFlag(EMF_LIGHTING, true);
+//
+//    testnode->setMaterialType( video::EMT_SOLID );
+//
+//    testnode->setMaterialTexture(0, driver->getTexture("textureatlas.bmp"));
+//    testnode->getMaterial(0).getTextureMatrix(0).setRotationDegrees(
+//                        core::vector3d<f32>(0.0f, 0.0f, 180 ));
+//    testnode->getMaterial(0).getTextureMatrix(0).setTextureTranslate(0.5f,0.5f);
+//    testnode->setRotation(core::vector3df(0.0f, 180.0f, 0.0f));
+//
+//    gui::IGUIFont* font =
+//        device->getGUIEnvironment()->getFont("arialbold.bmp");
+
+
+
+
+
+
+//irr::scene::IMeshBuffer* ConvertMesh(const PolyVox::SurfaceMesh<PolyVox::PositionMaterialNormal>& mesh) {
+//
+//
+//   const std::vector<uint32_t>& indices = mesh.getIndices();
+//   const std::vector<PolyVox::PositionMaterialNormal>& vertices = mesh.getVertices();
+//
+//   irr::scene::IDynamicMeshBuffer *mb = new irr::scene::CDynamicMeshBuffer(irr::video::EVT_STANDARD, irr::video::EIT_32BIT);
+//
+//   mb->getVertexBuffer().set_used(vertices.size());
+//   for (size_t i = 0; i < vertices.size(); ++i) {
+//       const PolyVox::Vector3DFloat& position = vertices[i].getPosition();
+//       const PolyVox::Vector3DFloat& normal = vertices[i].getNormal();
+//       mb->getVertexBuffer()[i].Pos.X = position.getX();
+//       mb->getVertexBuffer()[i].Pos.Y = position.getY();
+//       mb->getVertexBuffer()[i].Pos.Z = position.getZ();
+//       mb->getVertexBuffer()[i].Normal.X = normal.getX();
+//       mb->getVertexBuffer()[i].Normal.Y = normal.getY();
+//       mb->getVertexBuffer()[i].Normal.Z = normal.getZ();
+//       mb->getVertexBuffer()[i].Color = irr::video::SColor(255,0,200,200);
+//   }
+//
+//   mb->getIndexBuffer().set_used(indices.size());
+//   for (size_t i = 0; i < indices.size(); ++i) {
+//       mb->getIndexBuffer().setValue(i, indices[i]);
+//   }
+//   mb->recalculateBoundingBox();
+//   return mb;
+//}
+
+//
+// //http://irrlicht.sourceforge.net/forum/viewtopic.php?f=9&t=45175&p=284526&hilit=polyvox#p284526
+//
+//        //Transform voxel into mesh
+//PolyVox::SurfaceMesh<PolyVox::PositionMaterialNormal> mesh;
+//PolyVox::CubicSurfaceExtractorWithNormals< PolyVox::SimpleVolume<uint8_t> > surfaceExtractor(&volData, volData.getEnclosingRegion(), &mesh);
+////PolyVox::MarchingCubesSurfaceExtractor< PolyVox::SimpleVolume<uint8_t> > surfaceExtractor(&volData, volData.getEnclosingRegion(), &mesh);
+//surfaceExtractor.execute();
+//
+////Transform mesh into irrlicht mesh
+//irr::scene::IMeshSceneNode* levelMesh=sceneManager->addMeshSceneNode(convertPolyMesh(mesh));
+
+
+}
+
+irr::scene::SMesh* convertPolyMesh(const PolyVox::SurfaceMesh<PolyVox::PositionMaterialNormal>& meshPoly) {
+   //irr::scene::SMeshBuffer* buffer =new irr::scene::SMeshBuffer();
+   irr::scene::IDynamicMeshBuffer* buffer =new irr::scene::CDynamicMeshBuffer(irr::video::EVT_STANDARD, irr::video::EIT_32BIT);
+   irr::video::SColor clr(255,255,255,255);
+
+   const std::vector<uint32_t>& indices = meshPoly.getIndices();
+   const std::vector<PolyVox::PositionMaterialNormal>& vertices = meshPoly.getVertices();
+
+   // Create indices
+   //buffer->Indices.set_used(indices.size());
+//    for (size_t i=0; i<indices.size(); ++i) {
+//        buffer->Indices[i] = indices[i];
+//    }
+   buffer->getIndexBuffer().set_used(indices.size());
+   for (size_t i = 0; i < indices.size(); ++i) {
+       buffer->getIndexBuffer().setValue(i, indices[i]);
+   }
+
+   // Create vertices
+//    buffer->Vertices.reallocate(vertices.size());
+//    for (size_t i = 0; i < vertices.size(); ++i) {
+//        const PolyVox::Vector3DFloat& position = vertices[i].getPosition();
+//        const PolyVox::Vector3DFloat& normal = vertices[i].getNormal();
+//        buffer->Vertices.push_back(irr::video::S3DVertex(position.getX(),position.getY(),position.getZ(),normal.getX(),normal.getY(),normal.getZ(), clr, 0, 0));
+//    }
+   buffer->getVertexBuffer().set_used(vertices.size());
+   for (size_t i = 0; i < vertices.size(); ++i) {
+       const PolyVox::Vector3DFloat& position = vertices[i].getPosition();
+       const PolyVox::Vector3DFloat& normal = vertices[i].getNormal();
+       buffer->getVertexBuffer()[i].Pos.X = position.getX();
+       buffer->getVertexBuffer()[i].Pos.Y = position.getY();
+       buffer->getVertexBuffer()[i].Pos.Z = position.getZ();
+       buffer->getVertexBuffer()[i].Normal.X = normal.getX();
+       buffer->getVertexBuffer()[i].Normal.Y = normal.getY();
+       buffer->getVertexBuffer()[i].Normal.Z = normal.getZ();
+       buffer->getVertexBuffer()[i].Color = irr::video::SColor(255,255,255,255);
+   }
+
+   // Recalculate bounding box
+   buffer->recalculateBoundingBox();
+//    buffer->BoundingBox.reset(0,0,0);
+//    for (u32 i=0; i<vertices.size(); ++i) {
+//        buffer->BoundingBox.addInternalPoint(buffer->Vertices[i].Pos);
+//    }
+   //Create mesh
+   irr::scene::SMesh* mesh =new irr::scene::SMesh;
+   //irr::video::SMaterial mat;
+   //buffer->Material=mat;
+   mesh->addMeshBuffer(buffer);
+   buffer->drop();
+
+   mesh->recalculateBoundingBox();
+   return mesh;
+}
+
+
+
 PyObject * Python::PyIrr_wii(PyObject * self,PyObject * args){
 // wii device accessor keystate return
 	char * btaddr;
@@ -373,7 +545,7 @@ long sqlconn2;
 	PyArg_ParseTuple(args,"lis",&sqlconn2,&type,&command);
 //	sqlCon *sq=sqlconn2;
 //	sq->execute(cstring);
-sqlite3 *db=sqlconn2;
+sqlite3 *db=(sqlite3 *)sqlconn2;
   int nrow;
   int ncol;
    fprintf(stderr, "Executing Command \n");

@@ -30,6 +30,7 @@
 		<Compiler>
 			<Add option="-Wfatal-errors" />
 			<Add option="-W" />
+			<Add option="-fpermissive" />
 			<Add directory="../../LunaLibs/Irrlicht/include" />
 		</Compiler>
 		<Linker>
@@ -65,9 +66,6 @@
 		<Unit filename="viewports.cpp" />
 		<Unit filename="viewports.h" />
 		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
 			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>

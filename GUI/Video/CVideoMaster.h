@@ -1,3 +1,4 @@
+#ifdef VIDEO
 #ifndef CLASS_VIDEO_MASTER_H_INC
 #define CLASS_VIDEO_MASTER_H_INC
 
@@ -66,4 +67,5 @@ public :
   void removeVideoClipAll(bool irrRemoveTexture = false, bool irrDropImage = true);
 };
 
+#endif
 #endif

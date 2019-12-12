@@ -1,7 +1,10 @@
 #ifndef NDEBUG // if debug build then do this one
 #define PostProcess
 
+//#include "Luna.h"
 
+//todo fix GUI button render needs its own receiver
+//todo fix GUI instances into vector
 
 
     enum GUI_ELEMENTS
@@ -56,7 +59,9 @@ public:
 					{
 						case MENU_QUIT:
 							//Context.device->closeDevice();
+							#ifdef PYTHON
 							Python::bCodeEditor=3;
+							#endif
 							break;
 						case MENU_UNDO:
 							Context.codeEditor->undo();
@@ -176,17 +181,12 @@ private:
 };
 
 
-
-
-
-
 if ( !device->run() ) return 0;
     guienv->clear();
     smgr->clear();
 	// Init the Custom GUI
 
 
-#define PYTHON
 #ifdef PYTHON
     //Python
         Python::registerIrrDevice(this,*device,m_cInGameEvents);
@@ -200,6 +200,11 @@ if ( !device->run() ) return 0;
         Python::ExecuteScript("./functions-list.pys"); // this is for testing
 		//Python::PyIrr_LoadVehicle(m_cVehicle);
         //Python::PyIrr_addTerrain("1");
+
+           pyloader = "./APP/cowsynth/main.pys";
+
+Python::bCodeEditor=3; // initial closed state
+
 #endif
 
     //camera = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
@@ -355,9 +360,11 @@ device->getCursorControl()->setVisible(true);
 //				strcat(dir, dir2);
 //				strcat(dir, "main.pys");
 //				puts (dir);
-  char * loader = "./RACING/racer/main.pys";
-   loader = "./APP/cowsynth/main.pys";
-Python::bCodeEditor=3; // initial closed state
+ // char * loader = "./RACING/racer/main.pys";
+
+ //sidescroller texture
+//node->getMaterial(0)->getTextureMatrix(0).setTextureTranslate(x, y)
+
 
     while ( device->run() && !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
     {
@@ -385,6 +392,7 @@ Python::bCodeEditor=3; // initial closed state
 
 
  //       rt->render();
+ #ifdef PYTHON
 		if (Python::bCodeEditor==1	){
 			Python::bCodeEditor=0;
 			windows->setVisible(true);
@@ -404,13 +412,17 @@ Python::bCodeEditor=3; // initial closed state
 			menu->setEnabled(false);
 			windows->setVisible(false);  //! not sure why but causes crashing on startup
 		}
+		#endif
+
 		#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
         Python::preEnd();
           Python::CheckKeyStates();
-    //      CheckKeyStates(); //check onEvent for any need to check keys
+
+            //loader = "./RACING/racer/main.pys";
+    //    obsolete:CheckKeyStates(); check onEvent for any need to check keys
     // loop for key checking and loop for game  only execute script if there was an event
-// pick a game directory and look for main.pys
-			Python::ExecuteScript(irr::core::stringc(loader));
+	// pick a game directory and look for main.pys
+			Python::ExecuteScript(irr::core::stringc(pyloader));
 			//Python::ExecuteScript("./RACING/racer/main.pys");
 		guienv->drawAll();
         driver->endScene();

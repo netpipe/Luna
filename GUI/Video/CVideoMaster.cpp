@@ -1,3 +1,4 @@
+#ifdef VIDEO
 #include "CVideoMaster.h"
 #include <TheoraDataSource.h>
 
@@ -440,3 +441,4 @@ void CVideoMaster::removeVideoClipAll(bool irrRemoveTexture, bool irrDropImage)
     mIrrClip.erase(mIrrClip.size() - 1);
   }
 }
+#endif

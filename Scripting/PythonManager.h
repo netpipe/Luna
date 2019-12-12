@@ -3,6 +3,7 @@
 #include <vector>
 #include <string.h>
 #include <stdlib.h>
+//#define LONG_BIT = 4 * SIZEOF_LONG
 
 #include <irrlicht.h>
 using namespace std;

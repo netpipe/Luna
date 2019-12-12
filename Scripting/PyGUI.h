@@ -1,6 +1,9 @@
 #ifndef PYGUI_H_INCLUDED
 #define PYGUI_H_INCLUDED
 
+#include <iostream> // for strings
+using namespace std;
+
 PyMethodDef irr_gui[] =
 {
 	    //gui
@@ -36,25 +39,53 @@ device->getCursorControl()->setVisible(true);
 return Py_BuildValue("");
 }
 
+const wchar_t* char2wchar(const char* indata)
+{
+	std::string UTF8String;
+	static std::wstring UTF16String;
+	UTF8String = indata;
+	UTF16String.resize(UTF8String.length());
+	std::copy(UTF8String.begin(), UTF8String.end(), UTF16String.begin());
+	return UTF16String.c_str();
+}
+
 PyObject * Python::PyIrr_ChatBox(PyObject * self,PyObject * args){
 
             enum evars{create=0,add};
             char * tex_name;
+            char * message;
             int action;
-      	PyArg_ParseTuple(args,"s",&tex_name,&action);
+      	PyArg_ParseTuple(args,"si",&message,&action);
 
     switch(action){
         case 0:
+
+        //vectorChat.pushback =new gui::CGUIChatBox(  guienv, guienv->getRootGUIElement(),
+          //                                              230, core::rect<int>(20,40,300,500));
+
       chat = new gui::CGUIChatBox(  guienv, guienv->getRootGUIElement(),
                                                         230, core::rect<int>(20,40,300,500));
         break;
 
         case 1:
+//        string messagestr = message;
+//	char message2[300];
+//
+//	mbstowcs(message,message2,300);
+	//mbtowc(message,message2,300);
+
+	///wchar_t* message2 = char2wchar(message);
+
+      //  chat->addItem(message);
              //   for (int i=0;i < 100;i++){
  //                   chat->addItem(L"tex_name");
 //                    chat->addItem(tex_name, video::SColor(250, 220, 255, 255));
              //   };
         break;
+                case 2:
+				chat->clear();
+
+                break;
     }
 	return Py_BuildValue("");
 }
@@ -70,7 +101,7 @@ long font;
 	char * message;
 	s32 x,y,x1,y1;
 	PyArg_ParseTuple(args,"lsllll",&font,&message,&x,&y,&x1,&y1); //may only need x,y when using ft2
-IGUIFont * font2 = font;
+IGUIFont * font2 = (IGUIFont *)font;
 
 				//if (font2)
 				font2->draw(message,
@@ -189,11 +220,11 @@ return Py_BuildValue("");
 PyObject * Python::PyIrr_GUITabs(PyObject * self,PyObject * args){
 
 	rect<s32>				tabctrlrect(4, 24, 40 - 4, 40 - 4);
-	IGUITabControl* tabs	= guienv->addTabControl(tabctrlrect, 5115);
+	IGUITabControl* tabs	;//= guienv->addTabControl(tabctrlrect, 5115);
 	IGUITab* tab1			= tabs->addTab(L"general");
 	IGUITab* tab2			= tabs->addTab(L"navi");
 	IGUITab* tab3			= tabs->addTab(L"settings");
-
+//guienv->addTabControl(tabctrlrect, 5115)
 	//Tab 1
 //	environment->addButton(buttonrect + position2d<s32>(0, 0), tab1, 10101, L"Load GUI");
 	return Py_BuildValue("");
@@ -241,7 +272,7 @@ PyObject * Python::PyIrr_GUIButton(PyObject * self,PyObject * args){
 	PyArg_ParseTuple(args,"lsffff",&window2,&stra,&x1,&y1,&x2,&y2);
 //	wchar_t *text = stra;
 	stringw ha=stra;
-IGUIWindow* window=window2;
+IGUIWindow* window=(IGUIWindow*)window2;
 IGUIButton *button =	guienv->addButton (
 											rect<s32> ( x1,y1,x2,y2  ),
 											window, 105, ha.c_str());
@@ -274,7 +305,7 @@ CGUIBar* healthBar;
 
 	if (param == 1) {
 	//	printf("drawing window \n");
-		healthBar=pwindow;
+		healthBar=(CGUIBar* )pwindow;
 		healthBar->setValue(ammount);
 		healthBar->draw();
 		return Py_BuildValue("");
@@ -337,7 +368,7 @@ long pwindow;
 // you can use 0 as pwindow to place without a window
 PyArg_ParseTuple(args,"lffffi",&pwindow,&x1,&y1,&x2,&y2,&ammount);
 
-IGUIWindow* window=pwindow;
+IGUIWindow* window=(IGUIWindow*)pwindow;
 
 	IGUIScrollBar* scrollbar = guienv->addScrollBar(true,
 			rect<s32>(x1, y1, x2, y2), window,  0);
@@ -356,7 +387,7 @@ PyObject * Python::PyIrr_GUIEditBox(PyObject * self,PyObject * args){
 float x1,y1,x2,y2;
 long pwindow;
 PyArg_ParseTuple(args,"lffff",&pwindow,&x1,&y1,&x2,&y2);
-IGUIWindow* window = pwindow;
+IGUIWindow* window = (IGUIWindow*)pwindow;
 
    IGUIEditBox *textData = guienv->addEditBox(L"",rect<s32>(x1,y1,x2,y2),true,window,803);
    textData->setMax(5000);

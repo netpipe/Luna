@@ -82,7 +82,7 @@ using namespace gui;
 
 
 #define DPHYSICS
-#define PYTHON
+//#define PYTHON
 #include "Scripting/PythonManager.h"
 
 

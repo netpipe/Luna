@@ -206,7 +206,7 @@ PyObject * Python::PyIrr_BlindBoids(PyObject * self,PyObject * args) {//active c
 //        const u32 now = device->getTimer()->getTime();
 //        const f32 frameDeltaTime = (f32)(now - then) / 1000.0f; // Time in seconds
 //        then = now;
-#ifdef BOIDS
+#ifdef BOIDSs
 switch (param){
 // if  (bBlindBoids = true){
 case 0:
@@ -252,8 +252,8 @@ case 0:
     break;
 case 1:
     break;
-case 2:
-break;
+//case 2:
+//break;
 }
 #endif
 //Py_RETURN_NONE;

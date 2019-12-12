@@ -19,6 +19,17 @@ import gui
 
 init = 1  #start as true so that this loop is only ran once
 
+#launcher GUI
+
+ #iaxe = image.iadd("./APP/cowsynth/logo.png",0,0,scene.screen(0),scene.screen(1),0,0,960,540)
+ #image.idraw(iaxe)
+ #image.iscale(iaxe,0.5,0.5)
+
+ # window = gui.window("LauncherGUI",100,100,420,420)
+ # gui.listbox(window,20,20,120,120)
+ #gui.button(window,"launch",10,10,120,120)
+
+
 #scene.animator # circle line bezier ,array for waypoints
 #camera = scene.addCamera(2,1,0,1) # 1 regular , 2 FPS , 3 other types, 4 rpg, << todo types  / active / vector
 #Light1 = scene.Light(10,10,50,1,"111111") # type , vector, color

@@ -13,10 +13,11 @@
 				<Option projectResourceIncludeDirsRelation="1" />
 				<Linker>
 					<Add library="Xxf86vm" />
-					<Add library="irrNetLite21" />
+					<Add library="irrNetLite22" />
 					<Add library="GL" />
 					<Add library="enet" />
 					<Add library="Irrlicht" />
+					<Add library="X11" />
 					<Add directory="../../libs/net/irrNetLite21beta" />
 				</Linker>
 			</Target>
@@ -25,19 +26,19 @@
 			<Add alias="All" targets="default;" />
 		</VirtualTargets>
 		<Compiler>
-			<Add directory="../../../libs/net/irrNetLite21" />
+			<Add directory="../../../LunaLibs/net/irrNetLite22" />
 			<Add directory="/home/Dev/libs/game/Irrlicht-SVN/include" />
-			<Add directory="../../../libs/scripting/squirrel/sqlite/src" />
-			<Add directory="../../../libs/scripting/squirrel/SQUIRREL3/include" />
+			<Add directory="../../../LunaLibs/squirrel/include" />
+			<Add directory="../../../LunaLibs/net/enet-1.2.1" />
 		</Compiler>
 		<Linker>
 			<Add library="sqlite3" />
 			<Add library="squirrel" />
 			<Add library="sqstdlib" />
-			<Add directory="../../../libs/scripting/squirrel/sqlite/.libs" />
-			<Add directory="../../../libs/net/irrNetLite21" />
-			<Add directory="../../../libs/scripting/squirrel/SQUIRREL3/lib" />
+			<Add directory="../../../LunaLibs/squirrel/lib" />
+			<Add directory="../../../LunaLibs/net/irrNetLite22" />
 			<Add directory="/home/Dev/libs/game/Irrlicht-SVN/lib/Linux" />
+			<Add directory="../../../LunaLibs/net/enet-1.2.1" />
 		</Linker>
 		<Unit filename="includes/squirrel.h" />
 		<Unit filename="main.cpp" />
@@ -45,8 +46,6 @@
 		<Unit filename="sqlCon.h" />
 		<Unit filename="squirrel.cpp" />
 		<Extensions>
-			<code_completion />
-			<debugger />
 			<DoxyBlocks>
 				<comment_style block="0" line="0" />
 				<doxyfile_project />
@@ -56,7 +55,6 @@
 				<doxyfile_dot />
 				<general />
 			</DoxyBlocks>
-			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

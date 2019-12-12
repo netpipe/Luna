@@ -1,3 +1,4 @@
+#ifdef VIDEO
 #include "CAudioInterface_OpenAL.h"
 #include <climits>
 
@@ -168,3 +169,5 @@ CAudioInterface_OpenAL* CAudioInterfaceFactory_OpenAL::createInstance(TheoraVide
 {
   return new CAudioInterface_OpenAL(owner, nChannels, freq);
 }
+
+#endif

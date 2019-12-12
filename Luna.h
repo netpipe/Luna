@@ -39,7 +39,7 @@ class Luna
 		unsigned int resolution[2];
         IVideoDriver *driver;
 		ISceneManager *smgr;
-
+char * pyloader;
 
 		int init();
 		int shutdown();

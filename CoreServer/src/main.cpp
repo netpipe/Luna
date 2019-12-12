@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-#define headlessGUI //define for console mode only
+//#define headlessGUI //define for console mode only
 
 //#include "logging/logging.h"
 #include "sqlCon.h"
@@ -111,7 +111,7 @@ int main()
 {
 #ifndef headlessGUI
                     std::cout << "Create IrrDevice " ;
-	IrrlichtDevice *device = createDevice( video::EDT_BURNINGSVIDEO, dimension2d<s32>(640, 480), 16,
+	IrrlichtDevice *device = createDevice( video::EDT_OPENGL, dimension2d<u32>(640, 480), 16,
                                             false, false, false, 0);
 
                                             if (!device)return 1;
@@ -124,14 +124,14 @@ int main()
 	guienv->addStaticText(L"Server!",
 		rect<s32>(10,10,260,22), true);
 
-	IAnimatedMesh* mesh = smgr->getMesh("../../../libs/Irrlicht/media/sydney.md2");
+	IAnimatedMesh* mesh = smgr->getMesh("./media/sydney.md2");
 	if (!mesh)return 1;
 
 	IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
 	if (node)
 	{   node->setMaterialFlag(EMF_LIGHTING, false);
 		node->setMD2Animation(scene::EMAT_STAND);
-		node->setMaterialTexture( 0, driver->getTexture("../../../libs/Irrlicht/media/sydney.bmp") );
+		node->setMaterialTexture( 0, driver->getTexture("./media/sydney.bmp") );
 	}
 	smgr->addCameraSceneNode(0, vector3df(0,30,-40), vector3df(0,5,0));
 #endif
@@ -147,18 +147,27 @@ int main()
  //   Squirrel *SQ;
  //   SQ->do_main();
  //   SQ->LoadFile("test.nut");
-#define noSQL
+//#define noSQL
 #ifndef noSQL
+std::string a;
     sqlCon *sq =new sqlCon("ha.db");
     //  sq->execute(".dump");
-     // needs error management if table exists it crashse
-      sq->execute("CREATE TABLE learnss (y string,a integer, b string);");
-    //  sq->execute("insert into learnss (y,a,b) VALUES('ssssnipples',33 , 34);");
-    //  sq->execute("INSERT INTO learn (a,b) VALUES(33 , 34);");
-        sq->execute("SELECT * FROM learnss where b like '34%';");
-    //  sq->execute("SELECT * FROM learn");
-    //  sq->execute("PRAGMA table_info(learnss)");
-    //  sq->execute("SELECT * FROM sqlite_master WHERE tbl_name = 'learnss' AND type = 'table'");
+          //  sq->execute("PRAGMA table_info(Coins);"); //testing
+
+		int createcoins=0;
+		if ( createcoins==1 ){
+			sq->execute("CREATE TABLE Coins (coin integer, wallet string);");
+			for (int coin=1;coin < 100 ;++coin){
+				std::string test = "insert into Coins (coin,wallet) VALUES(" + std::to_string(coin) + " ,'ssssnipples');";
+				//printf("%s",(char*)chr);
+				const char *chr = test.c_str();
+				sq->execute((char*)chr);
+			}
+		}
+
+		// either scan through db to build coin list or remember what coins belong to your wallet
+		// search several dabatase ranges
+		  sq->execute("SELECT * FROM Coins where wallet like '%ssssnipples%';");
 #endif
 
 
@@ -168,6 +177,8 @@ int main()
     {
         // std::cout << "Sleeping for 150 units\n " ;
         // device->sleep(150,0);
+
+
 #else
 while(1){
     if(netManager->getConnectionStatus() != net::EICS_FAILED)
@@ -217,6 +228,7 @@ while(1){
 
 
 	device->drop();
+    }
 #endif
     delete netManager;
     delete serverCallback;

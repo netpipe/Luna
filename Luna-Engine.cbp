@@ -17,6 +17,8 @@
 				<Option use_console_runner="0" />
 				<Option projectResourceIncludeDirsRelation="1" />
 				<Compiler>
+					<Add option="-fpermissive" />
+					<Add option="-DPYTHON" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/source/Irrlicht" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
 					<Add directory="../LunaLibs/net/irrNetLite22" />
@@ -78,6 +80,7 @@
 					<Add option="-O2" />
 					<Add option="-fpermissive" />
 					<Add option="-DNDEBUG" />
+					<Add option="-DPYTHON" />
 					<Add directory="../LunaLibs/Irrlicht/source/Irrlicht" />
 					<Add directory="../LunaLibs/Irrlicht/include" />
 					<Add directory="../LunaLibs/net/irrNetLite22" />
@@ -243,6 +246,7 @@
 				<Option projectResourceIncludeDirsRelation="1" />
 				<Compiler>
 					<Add option="-fpermissive" />
+					<Add option="-DPYTHON" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/source/Irrlicht" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
 					<Add directory="../LunaLibs/net/irrNetLite22" />
@@ -265,7 +269,9 @@
 					<Add directory="../LunaLibs/fluidsynth/" />
 				</Compiler>
 				<Linker>
+					<Add option="`pkg-config gtk+-2.0 --libs`" />
 					<Add library="GL" />
+					<Add library="../LunaLibs/fluidsynth/libfluidsynth.a" />
 					<Add library="openal" />
 					<Add library="Xxf86vm" />
 					<Add library="X11" />
@@ -281,12 +287,13 @@
 					<Add library="usb" />
 					<Add library="boost_thread" />
 					<Add library="boost_system" />
-					<Add library="fluidsynth" />
-					<Add library="readline" />
 					<Add library="sndfile" />
+					<Add library="readline" />
 					<Add library="pulse" />
 					<Add library="pulse-simple" />
 					<Add library="sqlite3" />
+					<Add library="asound" />
+					<Add library="jack" />
 					<Add directory="../LunaLibs/freetype-2.3.9/objs/.libs" />
 					<Add directory="../LunaLibs/net/enet-1.2.1" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Linux" />
@@ -313,6 +320,7 @@
 				<Compiler>
 					<Add option="-fpermissive" />
 					<Add option="-DNDEBUG" />
+					<Add option="-DPYTHON" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/source/Irrlicht" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
 					<Add directory="../LunaLibs/net/irrNetLite22" />
@@ -463,11 +471,111 @@
 					<Add directory="/home/Dev/libs/game/irrlicht/irrlicht-1.7.3/lib/Linux" />
 				</Linker>
 			</Target>
+			<Target title="emscripten-debug">
+				<Option output="./GAME/Luna" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="GAME" />
+				<Option object_output=".emdobjs" />
+				<Option type="1" />
+				<Option compiler="emscripten" />
+				<Option use_console_runner="0" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Option projectIncludeDirsRelation="1" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Option projectLibDirsRelation="1" />
+				<Compiler>
+					<Add option="-D_IRR_STATIC_LIB_" />
+					<Add option="-D_IRR_EMSCRIPTEN_PLATFORM_" />
+					<Add option="-D__EMSCRIPTEN__" />
+					<Add directory="../EMLibs/irrlicht-ogl-es/irrlicht/include" />
+					<Add directory="../EMLibs/net/irrNetLite22" />
+					<Add directory="../EMLibs/freetype2/include" />
+					<Add directory="../EMLibs/net/enet/include" />
+					<Add directory="FileSystem/readblend" />
+					<Add directory="../EMLibs/media/Ogg/include" />
+					<Add directory="../EMLibs/media/Vorbis/include" />
+					<Add directory="../EMLibs/media/theora/include" />
+					<Add directory="../EMLibs/media/cAudio2/include" />
+					<Add directory="../EMLibs/media/libtheoraplayer/include" />
+					<Add directory="/home/netpipe/Desktop/EMScripten-AddonBundle/Libs/Scripting/EmCPython/Python-2.7/Include" />
+					<Add directory="./entities/AI/recast/RecastDemo/Include" />
+					<Add directory="./entities/AI/recast/DebugUtils/Include" />
+					<Add directory="./entities/AI/recast/Recast/Include" />
+					<Add directory="./entities/AI/recast/Detour/Include" />
+					<Add directory="./entities/AI/recast/DetourCrowd/Include" />
+					<Add directory="./entities/AI/recast/DetourTileCache/Include" />
+					<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/include" />
+					<Add directory="../EMLibs/media/assimp/include" />
+					<Add directory="../EMLibs/media/portable-FluidLite/include" />
+					<Add directory="/home/netpipe/Desktop/EMScripten-AddonBundle/Libs/Scripting/EmCPython/Python-2.7" />
+					<Add directory="../EMLibs/sqlite-amalgamation-3300100" />
+					<Add directory="../EMLibs/Physics/Bullet/bullet/src" />
+					<Add directory="../EMLibs/media/openal-soft/include" />
+					<Add directory="../EMLibs/SparkEngine/include" />
+					<Add directory="/home/netpipe/Desktop/EMScripten-AddonBundle/Libs/physics/Bullet/bullet/src" />
+					<Add directory="../EMLibs/zlib-1.2.3" />
+				</Compiler>
+				<Linker>
+					<Add option="-s ALLOW_MEMORY_GROWTH=1" />
+					<Add option="--preload-file media/" />
+					<Add option="-s FULL_ES2=1" />
+					<Add option="-s DISABLE_EXCEPTION_CATCHING=0" />
+					<Add option="-s NO_EXIT_RUNTIME=1" />
+					<Add option="--shared-memory" />
+					<Add library="GL" />
+					<Add library="openal" />
+					<Add library="X11" />
+					<Add library="dl" />
+					<Add library="irrNetLite22" />
+					<Add library="enet" />
+					<Add library="python2.7" />
+					<Add library="IrrOpenSteer" />
+					<Add library="pthread" />
+					<Add library="theora" />
+					<Add library="theoraplayer" />
+					<Add library="assimp" />
+					<Add library="GLESv2" />
+					<Add library="BulletSoftBody" />
+					<Add library="BulletDynamics" />
+					<Add library="BulletCollision" />
+					<Add library="LinearMath" />
+					<Add library="z" />
+					<Add directory="../EMLibs/freetype2/build" />
+					<Add directory="../EMLibs/net/enet" />
+					<Add directory="../EMLibs/irrlicht-ogl-es/irrlicht/lib/Linux" />
+					<Add directory="../LunaLibs/Compiled/Linux" />
+					<Add directory="../EMLibs/theoraplayer/bin/Linux" />
+					<Add directory="../EMLibs/net/irrNetLite22" />
+					<Add directory="../EMLibs/libIrrOpenSteer_10-02-15/lib" />
+					<Add directory="./entities/AI/recast/DebugUtils/Include/" />
+					<Add directory="../EMLibs/media/assimp/lib" />
+					<Add directory="../EMLibs/media/cAudio2/bin/gcc" />
+					<Add directory="../EMLibs/media/libtheoraplayer/src/.libs" />
+					<Add directory="../EMLibs/media/portable-FluidLite" />
+					<Add directory="../EMLibs/sqlite-amalgamation-3300100" />
+					<Add directory="/home/netpipe/Desktop/EMScripten-AddonBundle/Libs/Scripting/EmCPython/Python-2.7" />
+					<Add directory="../EMLibs/Physics/Bullet/bullet/src/BulletDynamics" />
+					<Add directory="../EMLibs/Physics/Bullet/bullet/src/BulletSoftBody" />
+					<Add directory="../EMLibs/Physics/Bullet/bullet/src/BulletCollision" />
+					<Add directory="../EMLibs/Physics/Bullet/bullet/src/LinearMath" />
+					<Add directory="../EMLibs/Compiled/emscripten" />
+					<Add directory="../EMLibs/media/Ogg" />
+					<Add directory="../EMLibs/media/Vorbis" />
+					<Add directory="../EMLibs/media/theora/" />
+					<Add directory="/home/netpipe/Desktop/EMScripten-AddonBundle/Libs/physics/Bullet/bullet/msvc/2008/lib/Release" />
+					<Add directory="../EMLibs/PolyVox/library/PolyVoxCore" />
+					<Add directory="../EMLibs/PolyVox/library/PolyVoxUtil" />
+					<Add directory="../EMLibs/zlib-1.2.3" />
+				</Linker>
+			</Target>
 		</Build>
 		<VirtualTargets>
 			<Add alias="All" targets="Linux Debug;Linux Release;" />
 		</VirtualTargets>
 		<Compiler>
+			<Add option="-I/usr/include/atk-1.0 -I/usr/include/pango-1.0" />
+			<Add option="-I/usr/include/pixman-1" />
+			<Add option="`pkg-config gtk+-2.0 --cflags`" />
 			<Add option="-DPARTICLES" />
 			<Add directory="Scene/SPARK" />
 			<Add directory="../LunaLibs/angelscript/include" />
@@ -483,7 +591,6 @@
 			<Add directory="../LunaLibs/libtheora-1.1.1/include/theora" />
 			<Add directory="../LunaLibs/libtheoraplayer/include" />
 			<Add directory="/usr/include/AL" />
-			<Add directory="/usr/include/python" />
 			<Add directory="./entities/AI/recast/RecastDemo/Include" />
 			<Add directory="./entities/AI/recast/DebugUtils/Include" />
 			<Add directory="./entities/AI/recast/Recast/Include" />
@@ -492,9 +599,9 @@
 			<Add directory="./entities/AI/recast/DetourTileCache/Include" />
 			<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/include" />
 			<Add directory="../LunaLibs/zlib-1.2.3" />
-			<Add directory="/usr/include/python2.7" />
 			<Add directory="../LunaLibs/libogg-1.1.4/include" />
 			<Add directory="../LunaLibs/libvorbis-1.2.3/include" />
+			<Add directory="../LunaLibs/PolyVox/library/PolyVoxCore/include" />
 		</Compiler>
 		<Linker>
 			<Add library="Irrlicht" />
@@ -513,6 +620,7 @@
 			<Add library="vorbisfile" />
 			<Add library="GL" />
 			<Add library="cAudio" />
+			<Add library="PolyVoxCore" />
 			<Add directory="../LunaLibs/libtheora-1.1.1/lib" />
 			<Add directory="../LunaLibs/cAudio23/cAudio/bin/gcc" />
 			<Add directory="../LunaLibs/freetype-2.3.9/objs/.libs" />
@@ -530,6 +638,7 @@
 			<Add directory="../LunaLibs/libogg-1.1.4/" />
 			<Add directory="../LunaLibs/libvorbis-1.2.3" />
 			<Add directory="../LunaLibs/libtheora-1.1.1" />
+			<Add directory="../LunaLibs/PolyVox/PolyVoxCore" />
 		</Linker>
 		<Unit filename="DevLoop.h" />
 		<Unit filename="Equipment/Rifle.cpp" />
@@ -540,9 +649,11 @@
 		<Unit filename="Events/Events.h" />
 		<Unit filename="Events/InGameEventReceiver.cpp" />
 		<Unit filename="Events/InGameEventReceiver.h" />
+		<Unit filename="GAME/APP/cowsynth/functions.pys" />
 		<Unit filename="GAME/APP/cowsynth/keys.pys" />
 		<Unit filename="GAME/APP/cowsynth/main.pys" />
 		<Unit filename="GAME/APP/cowsynth/net.pys" />
+		<Unit filename="GAME/APP/cowsynth/string.pys" />
 		<Unit filename="GAME/RACING/racer/keys.pys" />
 		<Unit filename="GAME/RACING/racer/main.pys" />
 		<Unit filename="GAME/RPG-SIM/minigolf/keys.pys" />
@@ -815,10 +926,6 @@
 		<Unit filename="entities/OpenSteer/plugins/4-MultiplePursuit/cMultiplePursuit.h" />
 		<Unit filename="entities/OpenSteer/plugins/4-MultiplePursuit/cMultiplePursuitPlugIn.cpp" />
 		<Unit filename="entities/OpenSteer/plugins/4-MultiplePursuit/cMultiplePursuitPlugIn.h" />
-		<Unit filename="entities/OpenSteer/plugins/5-Soccer/cSoccer.cpp" />
-		<Unit filename="entities/OpenSteer/plugins/5-Soccer/cSoccer.h" />
-		<Unit filename="entities/OpenSteer/plugins/5-Soccer/cSoccerPlugIn.cpp" />
-		<Unit filename="entities/OpenSteer/plugins/5-Soccer/cSoccerPlugIn.h" />
 		<Unit filename="entities/OpenSteer/plugins/6-Pedestrian/cPedestrian.cpp" />
 		<Unit filename="entities/OpenSteer/plugins/6-Pedestrian/cPedestrian.h" />
 		<Unit filename="entities/OpenSteer/plugins/6-Pedestrian/cPedestrianPlugIn.cpp" />
@@ -844,9 +951,6 @@
 		<Unit filename="entities/skeleton/Skeleton.cpp" />
 		<Unit filename="entities/skeleton/Skeleton.h" />
 		<Extensions>
-			<code_completion />
-			<debugger />
-			<envvars />
 			<DoxyBlocks>
 				<comment_style block="0" line="0" />
 				<doxyfile_project />

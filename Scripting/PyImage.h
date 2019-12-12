@@ -25,7 +25,7 @@ PyObject * Python::PyIrr_iRotate(PyObject * self,PyObject * args){
 	float rot;
 
 	PyArg_ParseTuple(args,"lf",&node_id,&rot);
-	cImage* node = node_id;
+	cImage* node = (cImage*)node_id;
 
 	node->SetRotation(rot);
      //   irr::f32 GetRotation() { return Rotation; };
@@ -38,7 +38,7 @@ PyObject * Python::PyIrr_iScale(PyObject * self,PyObject * args){
    	float X,Y;
 //	float size;
 	PyArg_ParseTuple(args,"lff",&node_id,&X,&Y);
-	cImage* node = node_id;
+	cImage* node = (cImage*)node_id;
 	irr::core::vector2df news;
 	news.X=(X*-1);
 	news.Y=(Y*-1); // not sure why but had to invert values
@@ -55,7 +55,7 @@ PyObject * Python::PyIrr_iPosition(PyObject * self,PyObject * args){
    	float X,Y;
 //	float size;
 	PyArg_ParseTuple(args,"lff",&node_id,&X,&Y);
-	cImage* node = node_id;
+	cImage* node = (cImage*)node_id;
 
 irr::core::position2di newpos;
 newpos.X=X;
@@ -71,7 +71,7 @@ PyObject * Python::PyIrr_iDraw(PyObject * self,PyObject * args){
 //midpoint
 
 	PyArg_ParseTuple(args,"l",&node_id);
-	cImage* node = node_id;
+	cImage* node = (cImage*)node_id;
 
 	node->Draw(smgr);
 
@@ -108,7 +108,7 @@ PyObject * Python::PyIrr_iTexture(PyObject * self,PyObject * args){
    	int type;
 
 	PyArg_ParseTuple(args,"lsi",&node_id,&texture,&type);
-	cImage* node = node_id;
+	cImage* node = (cImage*)node_id;
 	video::ITexture* images = driver->getTexture(texture);
 
 //return Py_BuildValue("l",images);
@@ -123,7 +123,7 @@ PyObject * Python::PyIrr_iAlpha(PyObject * self,PyObject * args){
 
 	//Damn...thats a lot of parameters :)
 	PyArg_ParseTuple(args,"l",&node_id);
-	cImage* node = node_id;
+	cImage* node = (cImage*)node_id;
 
 	node->Draw(smgr);
 }
@@ -196,7 +196,7 @@ PyObject * Python::PyIrr_SetTexture(PyObject * self,PyObject * args){
 	/*Quite similar to the scanf family of functions, don't you think? It take a format
 	string and some input data, and analyzes the input data and gives you the result
 	in a manner specified by the format string*/
-	ISceneNode * node = node_id;//smgr->getSceneNodeFromId(node_id);
+	ISceneNode * node = (ISceneNode *)node_id;//smgr->getSceneNodeFromId(node_id);
 	//printf("%i",node_id);
 	//printf("%i",tex_id);
 	if(node != NULL)
@@ -212,21 +212,21 @@ PyObject * Python::PyIrr_igetBounds(PyObject * self,PyObject * args){
 	long node_id;
 	irr::core::recti rect;
 	PyArg_ParseTuple(args,"l",&node_id);
-	cImage* node = node_id;
+	cImage* node = (cImage*)node_id;
 
 	rect = node->GetBoundRect();
-	return Py_BuildValue("l",rect);
+	return Py_BuildValue("l",&rect);
 }
 
 PyObject * Python::PyIrr_icheckBounds(PyObject * self,PyObject * args){
 	long node_id;
 	irr::core::recti rect;
 	PyArg_ParseTuple(args,"l",&node_id);
-	cImage* node = node_id;
+	cImage* node = (cImage*)node_id;
 rect = node->GetBoundRect();
 
 
-	return Py_BuildValue("l",rect);
+	return Py_BuildValue("l",&rect);
 }
 
 PyObject * Python::PyIrr_LoadSpriteFont(PyObject * self,PyObject * args){

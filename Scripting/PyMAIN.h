@@ -125,6 +125,8 @@ namespace Python {
     PyObject * PyIrr_addCar(PyObject * self,PyObject * args);
 
 
+    PyObject * PyIrr_voxelLoad(PyObject * self,PyObject * args);
+
 
 
     //GUI

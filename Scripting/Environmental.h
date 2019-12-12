@@ -572,7 +572,7 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
 //		Terrain *terr2=terr;
 //		}else{
 //		}
-	ITerrainSceneNode* terrain=terr;
+	ITerrainSceneNode* terrain=(ITerrainSceneNode*)terr;
 	if (action = "jungle"){
  	    jungleScene::Jungle *jungle =
         new jungleScene::Jungle(
@@ -580,7 +580,7 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
                 8,// chunk size. "chunk size" * "chunk size" = "tree count per chunk"
                 16,// max tree dimension diameter
                 4,// tree circular detail
-                terr,
+                terrain,
                 smgr,
                 -1);
 
@@ -784,7 +784,7 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
                 8,// chunk size. "chunk size" * "chunk size" = "tree count per chunk"
                 16,// max tree dimension diameter
                 4,// tree circular detail
-                terr,
+                terrain,
                 smgr,
                 -1);
 
