@@ -14,7 +14,7 @@ using namespace scene;
 using namespace io;
 
 #include <Python.h> // fix later -has to be in this order or the formationwrapper complains
-#include "../../Scene/Formation.h"
+#include "../Scene/Formation.h"
 #include "./PyFunctions.h"
 #include "../Scene/RainMan.h"
 
