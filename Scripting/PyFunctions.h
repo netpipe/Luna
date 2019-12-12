@@ -173,7 +173,7 @@ char *zErrMsg;
 //        cAudio::IAudioManager* managerID;
 //        cAudio::IAudioSource* mysound;
 
-
+#ifdef PYTHON
 #include "PyMAIN.h"
 #include "PyNet.h"
 #define _GNU_SOURCE
@@ -193,6 +193,7 @@ char *zErrMsg;
 #define WITH_MIDI 1
 #endif
 
+#endif //python
 fluid_cmd_handler_t* cmd_handler = NULL;
 
      fluid_settings_t* settings;
@@ -203,7 +204,7 @@ fluid_cmd_handler_t* cmd_handler = NULL;
   fluid_audio_driver_t* adriver = NULL;
   fluid_synth_t* synth = NULL;
 
-
+#ifdef PYTHON
 PyMethodDef irr_function[] =
 {
     {"delay",Python::PyIrr_Delay,METH_VARARGS,"delay"},
@@ -497,3 +498,5 @@ PyObject * Python::PyIrr_exit(PyObject * self,PyObject * args){
 #include "PyCamera.h"
 #include "PyInput.h"
 #include "PyGUI.h"
+
+#endif
