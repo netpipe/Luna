@@ -9,7 +9,7 @@
 #   include <windows.h>
 #endif
 
-//we can Â“useÂ” a namespace now because it will not carry on
+//we can “use” a namespace now because it will not carry on
 //into more source files (unlike from headers)
 using namespace irr;
 
@@ -715,7 +715,11 @@ void *CopyMeshesIntoQuadsGrass(void *mCTD)
 #ifdef WINDOWS
             SwitchToThread();
 #else
-            pthread_yield();
+#if __EMSCRIPTEN__
+         //   pthread_yield();
+            #else
+             pthread_yield();
+            #endif
 #endif
             //make the counter stay the same
             i-=3;
