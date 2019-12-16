@@ -265,13 +265,15 @@
 					<Add directory="./entities/AI/recast/DetourTileCache/Include" />
 					<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/include" />
 					<Add directory="../LunaLibs/assimp-3.3.1/include" />
-					<Add directory="../LunaLibs-current/media/fluidsynth-emscripten/src" />
-					<Add directory="../LunaLibs-current/media/fluidsynth-emscripten/include" />
+					<Add directory="../LunaLibs/media/fluidsynth-emscripten/src" />
+					<Add directory="../LunaLibs/media/fluidsynth-emscripten/include" />
+					<Add directory="../LunaLibs/Scripting/sqplus-code/sqplus" />
+					<Add directory="../LunaLibs/Scripting/sqplus-code/include" />
 				</Compiler>
 				<Linker>
 					<Add option="`pkg-config gtk+-2.0 --libs`" />
 					<Add library="GL" />
-					<Add library="../LunaLibs-current/media/fluidsynth-emscripten/src/libfluidsynth.a" />
+					<Add library="fluidsynth" />
 					<Add library="openal" />
 					<Add library="Xxf86vm" />
 					<Add library="X11" />
@@ -309,6 +311,7 @@
 					<Add directory="../LunaLibs/cAudio23/bin/gcc" />
 					<Add directory="../LunaLibs/libtheoraplayer/" />
 					<Add directory="../LunaLibs/fluidsynth" />
+					<Add directory="../LunaLibs/media/fluidsynth-emscripten/src" />
 				</Linker>
 			</Target>
 			<Target title="mineREL">
@@ -568,6 +571,103 @@
 					<Add directory="../EMLibs/PolyVox/library/PolyVoxCore" />
 					<Add directory="../EMLibs/PolyVox/library/PolyVoxUtil" />
 					<Add directory="../EMLibs/zlib-1.2.3" />
+				</Linker>
+			</Target>
+			<Target title="emscripten-projects">
+				<Option output="./GAME/Luna" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="GAME" />
+				<Option object_output=".emdobjs" />
+				<Option type="1" />
+				<Option compiler="emscripten" />
+				<Option use_console_runner="0" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Option projectIncludeDirsRelation="2" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Option projectLibDirsRelation="1" />
+				<Compiler>
+					<Add option="-D_IRR_STATIC_LIB_" />
+					<Add option="-D_IRR_EMSCRIPTEN_PLATFORM_" />
+					<Add option="-D__EMSCRIPTEN__" />
+					<Add directory="../emscripten-projects/irrlicht-ogl-es/irrlicht/include" />
+					<Add directory="../emscripten-projects/net/irrNetLite22" />
+					<Add directory="../emscripten-projects/freetype2/include" />
+					<Add directory="../emscripten-projects/net/enet/include" />
+					<Add directory="FileSystem/readblend" />
+					<Add directory="../emscripten-projects/media/Ogg/include" />
+					<Add directory="../emscripten-projects/media/Vorbis/include" />
+					<Add directory="../emscripten-projects/media/theora/include" />
+					<Add directory="../emscripten-projects/media/cAudio2/include" />
+					<Add directory="../emscripten-projects/media/libtheoraplayer/include" />
+					<Add directory="../emscripten-projects/Scripting/EmCPython/Python-2.7/Include" />
+					<Add directory="./entities/AI/recast/RecastDemo/Include" />
+					<Add directory="./entities/AI/recast/DebugUtils/Include" />
+					<Add directory="./entities/AI/recast/Recast/Include" />
+					<Add directory="./entities/AI/recast/Detour/Include" />
+					<Add directory="./entities/AI/recast/DetourCrowd/Include" />
+					<Add directory="./entities/AI/recast/DetourTileCache/Include" />
+					<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/include" />
+					<Add directory="../emscripten-projects/media/assimp/include" />
+					<Add directory="../emscripten-projects/media/portable-FluidLite/include" />
+					<Add directory="../emscripten-projects/sqlite/sqlite-amalgamation-3300100" />
+					<Add directory="../emscripten-projects/Physics/Bullet/bullet/src" />
+					<Add directory="../emscripten-projects/SparkEngine/include" />
+					<Add directory="../emscripten-projects/physics/Bullet/bullet/src" />
+					<Add directory="../emscripten-projects/compression/zlib-1.2.3" />
+					<Add directory="../emscripten-projects/scripting/sqplus/sqplus" />
+				</Compiler>
+				<Linker>
+					<Add option="-s ALLOW_MEMORY_GROWTH=1" />
+					<Add option="--preload-file media/" />
+					<Add option="-s FULL_ES2=1" />
+					<Add option="-s DISABLE_EXCEPTION_CATCHING=0" />
+					<Add option="-s NO_EXIT_RUNTIME=1" />
+					<Add option="--shared-memory" />
+					<Add library="GL" />
+					<Add library="openal" />
+					<Add library="X11" />
+					<Add library="dl" />
+					<Add library="irrNetLite22" />
+					<Add library="enet" />
+					<Add library="python2.7" />
+					<Add library="IrrOpenSteer" />
+					<Add library="pthread" />
+					<Add library="theora" />
+					<Add library="theoraplayer" />
+					<Add library="assimp" />
+					<Add library="GLESv2" />
+					<Add library="BulletSoftBody" />
+					<Add library="BulletDynamics" />
+					<Add library="BulletCollision" />
+					<Add library="LinearMath" />
+					<Add library="z" />
+					<Add directory="../emscripten-projects/freetype2/build" />
+					<Add directory="../emscripten-projects/net/enet" />
+					<Add directory="../emscripten-projects/irrlicht-ogl-es/irrlicht/lib/Linux" />
+					<Add directory="../LunaLibs/Compiled/Linux" />
+					<Add directory="../emscripten-projects/media/theoraplayer/bin/Linux" />
+					<Add directory="../emscripten-projects/net/irrNetLite22" />
+					<Add directory="../emscripten-projects/libIrrOpenSteer_10-02-15/lib" />
+					<Add directory="./entities/AI/recast/DebugUtils/Include/" />
+					<Add directory="../emscripten-projects/media/assimp/lib" />
+					<Add directory="../emscripten-projects/media/cAudio2/bin/gcc" />
+					<Add directory="../emscripten-projects/media/libtheoraplayer/src/.libs" />
+					<Add directory="../emscripten-projects/media/portable-FluidLite" />
+					<Add directory="../emscripten-projects/sqlite/sqlite-amalgamation-3300100" />
+					<Add directory="../emscripten-projects/Scripting/EmCPython/Python-2.7" />
+					<Add directory="../emscripten-projects/Physics/Bullet/bullet/src/BulletDynamics" />
+					<Add directory="../emscripten-projects/Physics/Bullet/bullet/src/BulletSoftBody" />
+					<Add directory="../emscripten-projects/Physics/Bullet/bullet/src/BulletCollision" />
+					<Add directory="../emscripten-projects/Physics/Bullet/bullet/src/LinearMath" />
+					<Add directory="../EMLibs/Compiled/emscripten" />
+					<Add directory="../emscripten-projects/media/Ogg" />
+					<Add directory="../emscripten-projects/media/Vorbis" />
+					<Add directory="../emscripten-projects/media/theora/" />
+					<Add directory="../emscripten-projects/physics/Bullet/bullet/msvc/2008/lib/Release" />
+					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxCore" />
+					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxUtil" />
+					<Add directory="../emscripten-projects/compression/zlib-1.2.3" />
+					<Add directory="../emscripten-projects/scripting/sqplus/lib" />
 				</Linker>
 			</Target>
 		</Build>
@@ -839,6 +939,7 @@
 		<Unit filename="Scripting/PyScene.h" />
 		<Unit filename="Scripting/PySound.h" />
 		<Unit filename="Scripting/PythonManager.h" />
+		<Unit filename="Scripting/sqminimal.cpp" />
 		<Unit filename="TerrainFactory/CloudSceneNode/CCloudSceneNode.cpp" />
 		<Unit filename="TerrainFactory/CloudSceneNode/CCloudSceneNode.h" />
 		<Unit filename="TerrainFactory/FWGrass/GrassLoader.cpp" />
