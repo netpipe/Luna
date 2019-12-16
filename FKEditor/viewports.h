@@ -59,7 +59,12 @@ public:
              IrrlichtDevice *device = 0;
              scene::ICameraSceneNode* Camera[5]={0,0};
              scene::IAnimatedMeshSceneNode* Model = 0;
-             core::vector3df oldcampos[5] = core::vector3df(0,0,0);
+             core::vector3df oldcampos[5];
+             oldcampos[0] = core::vector3df(0,0,0);
+             oldcampos[1] = core::vector3df(0,0,0);
+             oldcampos[2] = core::vector3df(0,0,0);
+             oldcampos[3] = core::vector3df(0,0,0);
+             oldcampos[4] = core::vector3df(0,0,0);
              scene::IBillboardSceneNode * bill=0;       // Origin reprensentation -- Billboard
              scene::ISceneNode* SkyBox=0;
              ISceneNode* ground = 0;

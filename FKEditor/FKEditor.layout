@@ -1,23 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
-	<ActiveTarget name="Debug" />
-	<File name="SceneManagement.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<ActiveTarget name="emscripten" />
+	<File name="viewports.h" open="1" top="1" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="5481" topLine="62" />
+			<Cursor1 position="1811" topLine="0" />
 		</Cursor>
 		<Folding>
-			<Collapse line="91" />
+			<Collapse line="15" />
 		</Folding>
 	</File>
 	<File name="ModelFunctions.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="3593" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="8" />
+		</Folding>
+	</File>
+	<File name="CGridSceneNode.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1367" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ItemCreation.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="SceneManagement.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="4" />
+			<Collapse line="25" />
+			<Collapse line="36" />
+			<Collapse line="60" />
+			<Collapse line="81" />
+		</Folding>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5481" topLine="62" />
 		</Cursor>
 	</File>
 	<File name="GuiCreation.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -25,47 +50,29 @@
 			<Cursor1 position="2538" topLine="0" />
 		</Cursor>
 		<Folding>
-			<Collapse line="41" />
+			<Collapse line="3" />
+			<Collapse line="162" />
+			<Collapse line="231" />
+			<Collapse line="279" />
 		</Folding>
-	</File>
-	<File name="CGridSceneNode.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1367" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="20" />
-		</Folding>
-	</File>
-	<File name="FileLoader.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="8565" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="1" />
-		</Folding>
-	</File>
-	<File name="ItemCreation.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="0" />
-		</Cursor>
 	</File>
 	<File name="event_receiver.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
-	</File>
-	<File name="viewports.h" open="1" top="1" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1811" topLine="35" />
-		</Cursor>
+		<Folding>
+			<Collapse line="14" />
+		</Folding>
 	</File>
 	<File name="menu_events.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="6582" topLine="0" />
 		</Cursor>
-		<Folding>
-			<Collapse line="1" />
-		</Folding>
 	</File>
-	<EditorTabsLayout layout="02c416605de5255e0011dedf00000002=0;FKEditor:FileLoader.h,1;FKEditor:main.cpp,2;FKEditor:ModelFunctions.h,3;FKEditor:GuiCreation.h,4;FKEditor:ItemCreation.h,5;FKEditor:event_receiver.h,6;FKEditor:menu_events.h,7;FKEditor:CGridSceneNode.h,8;FKEditor:SceneManagement.h,*9;FKEditor:viewports.h@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=460;besth=296;minw=460;minh=296;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=02c416605de5255e0011dedf00000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=200;besth=200;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=202|" />
+	<File name="FileLoader.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8565" topLine="0" />
+		</Cursor>
+	</File>
+	<EditorTabsLayout layout="03adac805df713bc00110e2c00000002=0;FKEditor:FileLoader.h,1;FKEditor:main.cpp,2;FKEditor:ModelFunctions.h,3;FKEditor:GuiCreation.h,4;FKEditor:ItemCreation.h,5;FKEditor:event_receiver.h,6;FKEditor:menu_events.h,7;FKEditor:CGridSceneNode.h,8;FKEditor:SceneManagement.h,*9;FKEditor:viewports.h@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=814;besth=348;minw=814;minh=348;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=03adac805df713bc00110e2c00000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=200;besth=200;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=202|" />
 </CodeBlocks_layout_file>

@@ -1,13 +1,23 @@
 #include <irrlicht.h>
 #include <iostream>
-
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
 using namespace irr;
 using namespace core;
 using namespace gui;
 using namespace video;
 using namespace scene;
 
+
+
 IrrlichtDevice *Device = 0;
+
+    video::IVideoDriver* driver;
+    IGUIEnvironment* env;
+    scene::ISceneManager* smgr ;
+
+
 video::E_DRIVER_TYPE driverType;
 core::stringc StartUpModelFile ;
 core::stringw MessageText;
@@ -88,81 +98,11 @@ files fileRequest; // use the filerequest class inside this program.
 
 #include "event_receiver.h"  // treatment of the events
 
-int main()
-{
-
-    driverType = video::EDT_OPENGL;
-    MyEventReceiver receiver;
-
-    Device = createDevice(driverType, dimension2du(1024, 768), 32,
-                          false, false, false, &receiver);
-
-    loadXMLConfig();
-    //printf ("Here is the current screen size: %i X %i \n",screensize.Width,screensize.Height);
-
-    if (Device == 0)
-        return 1; // could not create selected driver.
-
-    Device->setResizable(true);
-    Device->setWindowCaption(L"Irrlicht Engine - Loading...");
-    video::IVideoDriver* driver = Device->getVideoDriver();
-    IGUIEnvironment* env = Device->getGUIEnvironment();
-    scene::ISceneManager* smgr = Device->getSceneManager();
-    smgr->getParameters()->setAttribute(scene::COLLADA_CREATE_SCENE_INSTANCES, true);
-    driver->setTextureCreationFlag(video::ETCF_ALWAYS_32_BIT, true);
-    // add our media directory as "search path"
-   // Device->getFileSystem()->addFolderFileArchive ( "media/" );
-    icons=env->addEmptySpriteBank("list_bank");
-    selNode=0; // No selected node;
-    // Init the GUI
-    createSkin();
-    CreateMenus();
-    createToolbar();
-    createLights();
-    createLogo();
-    createSelect();
-    // Init the Viewports items
-    //use the class
-    viewp.init(Device,viewrightspace);
-    viewp.createSkyBox();
-    viewp.createBillboard();
-    viewp.createGround();
-    viewp.createGrid();
-    viewp.createCameras();
-    viewp.grid->setVisible(true);
-
-    // set window caption
-    Caption += " - [";
-    Caption += driver->getName();
-    Caption += "]";
-    Device->setWindowCaption(Caption.c_str());
-    // show about message box and load default model
-    //showAboutText();
-    loadModel(StartUpModelFile.c_str());
-    // draw everything
-    // Default fog value for certain scenes
-    driver->setFog(SColor(0,128,128,128),EFT_FOG_LINEAR, true, 500.0f, 2500.0f, 0.01f, true );
-    //Device->closeDevice(); // close the loader
-    // Clear all and reset the scene
-    selList->clear();
-    selNode=0;
-    lastNode=0;
-    fakecounter=0;
-    SceneAnalys(Device->getSceneManager()->getRootSceneNode());
-    viewp.gridvisibility=true;
-    viewp.groundvisibility=true;
-    viewp.gridvispers=true;
-    createIconBank();
-    //viewp.loading=true;
-    fileRequest.init(Device);
-    //fileRequest.draw();
-    appPath = Device->getFileSystem()->getWorkingDirectory();
-    //appPath+="\\ ";
-    Device->getSceneManager()->getRootSceneNode()->setName("root"); // Name the root node (Matching IRREdit)
-    while (Device->run() && driver)
-    {
-        if (Device->isWindowActive())
-        {
+void render(){
+  //  while (Device->run() && driver)
+  //  {
+       // if (Device->isWindowActive())
+       // {
             if (refresh)
             {
                 setCursor();
@@ -223,11 +163,107 @@ int main()
             }
             fpstext->setText(str.c_str());
             //fpstext->setText(s.c_str());
+      //  }
+      //  else
+            Device->sleep(500,0);
+    //}
+
+    }
+
+
+    void main_loop(){
+Device->run();
+    render();
+
+    }
+int main()
+{
+#ifdef __EMSCRIPTEN__
+    driverType = video::EDT_OGLES2;
+    #else
+     driverType = video::EDT_OPENGL;
+    #endif
+    MyEventReceiver receiver;
+
+    Device = createDevice(driverType, dimension2du(1024, 768), 32,
+                          false, false, false, &receiver);
+
+    loadXMLConfig();
+    //printf ("Here is the current screen size: %i X %i \n",screensize.Width,screensize.Height);
+
+    if (Device == 0)
+        return 1; // could not create selected driver.
+
+    Device->setResizable(true);
+    Device->setWindowCaption(L"Irrlicht Engine - Loading...");
+    driver = Device->getVideoDriver();
+    env = Device->getGUIEnvironment();
+     smgr = Device->getSceneManager();
+    smgr->getParameters()->setAttribute(scene::COLLADA_CREATE_SCENE_INSTANCES, true);
+    driver->setTextureCreationFlag(video::ETCF_ALWAYS_32_BIT, true);
+    // add our media directory as "search path"
+   // Device->getFileSystem()->addFolderFileArchive ( "media/" );
+    icons=env->addEmptySpriteBank("list_bank");
+    selNode=0; // No selected node;
+    // Init the GUI
+    createSkin();
+    CreateMenus();
+    createToolbar();
+    createLights();
+    createLogo();
+    createSelect();
+    // Init the Viewports items
+    //use the class
+    viewp.init(Device,viewrightspace);
+    viewp.createSkyBox();
+    viewp.createBillboard();
+    viewp.createGround();
+    viewp.createGrid();
+    viewp.createCameras();
+    viewp.grid->setVisible(true);
+
+    // set window caption
+    Caption += " - [";
+    Caption += driver->getName();
+    Caption += "]";
+    Device->setWindowCaption(Caption.c_str());
+    // show about message box and load default model
+    //showAboutText();
+    loadModel(StartUpModelFile.c_str());
+    // draw everything
+    // Default fog value for certain scenes
+    driver->setFog(SColor(0,128,128,128),EFT_FOG_LINEAR, true, 500.0f, 2500.0f, 0.01f, true );
+    //Device->closeDevice(); // close the loader
+    // Clear all and reset the scene
+    selList->clear();
+    selNode=0;
+    lastNode=0;
+    fakecounter=0;
+    SceneAnalys(Device->getSceneManager()->getRootSceneNode());
+    viewp.gridvisibility=true;
+    viewp.groundvisibility=true;
+    viewp.gridvispers=true;
+    createIconBank();
+    //viewp.loading=true;
+    fileRequest.init(Device);
+    //fileRequest.draw();
+    appPath = Device->getFileSystem()->getWorkingDirectory();
+    //appPath+="\\ ";
+    Device->getSceneManager()->getRootSceneNode()->setName("root"); // Name the root node (Matching IRREdit)
+
+#ifdef __EMSCRIPTEN__
+	emscripten_set_main_loop(main_loop,0,1);
+#else
+    while (Device->run() && driver)
+    {
+        if (Device->isWindowActive())
+        {
+ render();
         }
         else
             Device->sleep(500,0);
     }
-
+#endif
     Device->drop();
     return 0;
 }

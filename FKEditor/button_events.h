@@ -161,15 +161,15 @@ void buttonEvents(const SEvent& event)
 
             case 9000:
             {
-              loadModel("powercell/tools/PlayerStart.obj");
+              loadModel("media/powercell/tools/PlayerStart.obj");
             } break;
             case 9001:
             {
-              loadModel("powercell/tools/PowerCell.obj");
+              loadModel("media/powercell/tools/PowerCell.obj");
             } break;
             case 9002:
             {
-              loadModel("powercell/tools/HealthCell.obj");
+              loadModel("media/powercell/tools/HealthCell.obj");
             } break;
 
             case 64: // reset the animation for the model
