@@ -76,13 +76,13 @@ if (init) :
  #scene.addTree("jungle",1,terrain,1,1,1)
  track1 = scene.loadTrack('./APP/cowsynth/CUCurve.002.irrmesh',20,0,0)
  #input.sqlconnect("ha.db")
- f= open("./demofile.txt","w+")
+ #f= open("./demofile.txt","w+")
  #print(f.read(5))
- for i in range(10):
-  f.write("This is line %d\r\n" % (i+1))
- f.close()
+ #for i in range(10):
+ # f.write("This is line %d\r\n" % (i+1))
+ #f.close()
  scene.using ('./APP/cowsynth/functions.pys',"1");
- test()
+ #test()
  #f.write("This is line %d\r\n",1)
 #maybe chmod the executable folder to disallow file creation
 # mesh.add

@@ -173,7 +173,7 @@ char *zErrMsg;
 //        cAudio::IAudioManager* managerID;
 //        cAudio::IAudioSource* mysound;
 
-
+#ifdef PYTHON
 #include "PyMAIN.h"
 #include "PyNet.h"
 #define _GNU_SOURCE
@@ -201,6 +201,7 @@ char *zErrMsg;
 #define WITH_MIDI 1
 #endif
 
+#endif //python
 fluid_cmd_handler_t* cmd_handler = NULL;
 
      fluid_settings_t* settings;

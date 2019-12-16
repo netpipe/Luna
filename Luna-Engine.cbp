@@ -265,13 +265,13 @@
 					<Add directory="./entities/AI/recast/DetourTileCache/Include" />
 					<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/include" />
 					<Add directory="../LunaLibs/assimp-3.3.1/include" />
-					<Add directory="../LunaLibs/fluidsynth/include" />
-					<Add directory="../LunaLibs/fluidsynth/" />
+					<Add directory="../LunaLibs-current/media/fluidsynth-emscripten/src" />
+					<Add directory="../LunaLibs-current/media/fluidsynth-emscripten/include" />
 				</Compiler>
 				<Linker>
 					<Add option="`pkg-config gtk+-2.0 --libs`" />
 					<Add library="GL" />
-					<Add library="../LunaLibs/fluidsynth/libfluidsynth.a" />
+					<Add library="../LunaLibs-current/media/fluidsynth-emscripten/src/libfluidsynth.a" />
 					<Add library="openal" />
 					<Add library="Xxf86vm" />
 					<Add library="X11" />
@@ -287,13 +287,15 @@
 					<Add library="usb" />
 					<Add library="boost_thread" />
 					<Add library="boost_system" />
-					<Add library="sndfile" />
-					<Add library="readline" />
-					<Add library="pulse" />
-					<Add library="pulse-simple" />
 					<Add library="sqlite3" />
 					<Add library="asound" />
 					<Add library="jack" />
+					<Add library="readline" />
+					<Add library="sndfile" />
+					<Add library="pulse" />
+					<Add library="pulse-simple" />
+					<Add library="gmodule-2.0" />
+					<Add library="dbus-1" />
 					<Add directory="../LunaLibs/freetype-2.3.9/objs/.libs" />
 					<Add directory="../LunaLibs/net/enet-1.2.1" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Linux" />
