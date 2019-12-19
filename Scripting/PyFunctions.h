@@ -184,7 +184,6 @@ char *zErrMsg;
 #define GETOPT_SUPPORT 1
 #endif
 
-
 #ifdef __EMSCRIPTEN__
 ////#include "fluidlite.h"
 
