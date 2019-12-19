@@ -94,8 +94,7 @@ image.idraw(iaxe)
 
 #timer
 
-scene.using ('./RACING/racer/keys.pys',"1");
-
+#scene.using ('./RACING/racer/keys.pys',"1");
 #irr.update(); #could set timing here, maybe smgr gui  etc  todo
 
 

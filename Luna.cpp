@@ -227,10 +227,21 @@ int Luna::init(){
     IrrlichtDevice *nulldevice = createDevice(video::EDT_NULL);
     core::dimension2du res = nulldevice->getVideoModeList()->getDesktopResolution();
     nulldevice -> drop();
-        device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 1,1);
+    #ifdef __EMSCRIPTEN__
+        device = createDevice ( EDT_OGLES2,dimension2du (resolution[0],resolution[1]), 24, 1,1);
+    #else
+            device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 1,1);
+
+    #endif
    }else {
+
       // device = createDevice ( EDT_OPENGL,dimension2du (res.Width,res.Height ),  32, true, true, false, 0 );
+        #ifdef __EMSCRIPTEN__
+        device = createDevice ( EDT_OGLES2,dimension2du (resolution[0],resolution[1]), 24, 0,1);
+#else
         device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 0,1);
+
+#endif
      //   device = createDevice ( EDT_SOFTWARE,dimension2du (resolution[0],resolution[1]), 24, 0,1);
 // EDT_NULL       device = createDevice ( EDT_BURNINGSVIDEO,dimension2du (resolution[0],resolution[1]), 24, 0,1);
 

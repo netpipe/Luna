@@ -14,11 +14,9 @@
 				<Option object_output=".dobjs" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option use_console_runner="0" />
 				<Option projectResourceIncludeDirsRelation="1" />
 				<Compiler>
 					<Add option="-fpermissive" />
-					<Add option="-DPYTHON" />
 				</Compiler>
 			</Target>
 			<Target title="Linux Release">
@@ -26,7 +24,6 @@
 				<Option working_dir="./GAME/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option use_console_runner="0" />
 				<Option projectResourceIncludeDirsRelation="0" />
 				<Compiler>
 					<Add option="-O2" />
@@ -557,7 +554,6 @@
 					<Add option="-D_IRR_EMSCRIPTEN_PLATFORM_" />
 					<Add option="-D__EMSCRIPTEN__" />
 					<Add option="-DNO_GLIB" />
-					<Add option="-DPYTHON" />
 					<Add directory="../emscripten-projects/irrlicht-ogl-es-2019dec/include" />
 					<Add directory="../emscripten-projects/net/irrNetLite22" />
 					<Add directory="../emscripten-projects/media/freetype2.8/build" />
