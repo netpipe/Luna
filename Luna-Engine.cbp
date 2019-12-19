@@ -268,16 +268,14 @@
 					<Add directory="./entities/AI/recast/DetourTileCache/Include" />
 					<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/include" />
 					<Add directory="../LunaLibs/assimp-3.3.1/include" />
-					<Add directory="../LunaLibs/media/fluidsynth-emscripten/srcd" />
-					<Add directory="../LunaLibs/media/fluidsynth-emscripten/included" />
 					<Add directory="../LunaLibs/Scripting/sqplus-code/sqplus" />
 					<Add directory="../LunaLibs/Scripting/sqplus-code/include" />
 					<Add directory="../LunaLibs/cAudio23/cAudio/include" />
 					<Add directory="../LunaLibs/cAudio23/include" />
 					<Add directory="Scene/SPARK" />
 					<Add directory="../LunaLibs/bullet3-2.86.1/src" />
-					<Add directory="../LunaLibs/fluidsynth" />
-					<Add directory="../LunaLibs/fluidsynth/include" />
+					<Add directory="../LunaLibs/media/fluidsynth-emscripten/include" />
+					<Add directory="../LunaLibs/media/fluidsynth-emscripten/" />
 					<Add directory="../LunaLibs/SparkEngine/src" />
 					<Add directory="../LunaLibs/SparkEngine/include" />
 					<Add directory="../LunaLibs/PolyVox/library/PolyVoxCore/include" />
@@ -335,7 +333,6 @@
 					<Add directory="../LunaLibs/assimp-3.3.1/lib" />
 					<Add directory="../LunaLibs/zlib-1.2.3" />
 					<Add directory="../LunaLibs/libtheoraplayer/" />
-					<Add directory="../LunaLibs/media/fluidsynth-emscripten/srcd" />
 					<Add directory="../LunaLibs/cAudio23/cAudio/bin/gcc" />
 					<Add directory="../LunaLibs/bullet3-2.86.1/src/BulletDynamics" />
 					<Add directory="../LunaLibs/bullet3-2.86.1/src/BulletSoftBody" />
@@ -343,7 +340,7 @@
 					<Add directory="../LunaLibs/bullet3-2.86.1/src/LinearMath" />
 					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 					<Add directory="../LunaLibs/PolyVox/library/PolyVoxCore" />
-					<Add directory="../LunaLibs/media/fluidsynth-new/src" />
+					<Add directory="../LunaLibs/media/fluidsynth-emscripten/src" />
 				</Linker>
 			</Target>
 			<Target title="mineREL">
