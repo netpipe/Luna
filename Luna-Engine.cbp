@@ -17,6 +17,7 @@
 				<Option projectResourceIncludeDirsRelation="1" />
 				<Compiler>
 					<Add option="-fpermissive" />
+					<Add option="-DPYTHON" />
 				</Compiler>
 			</Target>
 			<Target title="Linux Release">
@@ -149,7 +150,6 @@
 				<Option projectResourceIncludeDirsRelation="1" />
 				<Compiler>
 					<Add option="-fpermissive" />
-					<Add option="-DPYTHON" />
 				</Compiler>
 				<Linker>
 					<Add option="`pkg-config gtk+-2.0 --libs`" />
