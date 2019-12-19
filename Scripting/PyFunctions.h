@@ -190,10 +190,10 @@ char *zErrMsg;
 #else
 
 #include "../Input/fluidsynthconfig.h"
-#include "src/utils/fluidsynth_priv.h"
+#include "utils/fluidsynth_priv.h"
 #include "fluidsynth.h"
 //
-#include "src/bindings/fluid_lash.h"
+#include "bindings/fluid_lash.h"
 //
 #endif
 
