@@ -185,15 +185,15 @@ char *zErrMsg;
 #endif
 
 
-#ifdef __EMSCRIPTEN__
-#include "fluidlite.h"
+#ifdef __EMSCRIPTEN__s
+//#include "fluidlite.h"
 #else
 
 #include "../Input/fluidsynthconfig.h"
-#include "utils/fluidsynth_priv.h"
+#include "src/utils/fluidsynth_priv.h"
 #include "fluidsynth.h"
 //
-#include "bindings/fluid_lash.h"
+#include "src/bindings/fluid_lash.h"
 //
 #endif
 
@@ -202,7 +202,7 @@ char *zErrMsg;
 #endif
 
 #endif //python
-fluid_cmd_handler_t* cmd_handler = NULL;
+    fluid_cmd_handler_t* cmd_handler = NULL;
 
      fluid_settings_t* settings;
   fluid_player_t* player = NULL;

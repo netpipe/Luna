@@ -121,7 +121,7 @@ PyObject * Python::PyIrr_SetCamera(PyObject * self,PyObject * args){ //active ca
     }
 
 
-//return Py_BuildValue("z",cam);
+return Py_BuildValue("z",cam);
 }
 
 PyObject * Python::PyIrr_GetCamera(PyObject * self,PyObject * args){

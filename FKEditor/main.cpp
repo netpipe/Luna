@@ -165,7 +165,7 @@ void render(){
             //fpstext->setText(s.c_str());
       //  }
       //  else
-            Device->sleep(500,0);
+            Device->sleep(10,0);
     //}
 
     }
