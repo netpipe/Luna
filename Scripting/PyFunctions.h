@@ -185,23 +185,34 @@ char *zErrMsg;
 #endif
 
 
-#ifdef __EMSCRIPTEN__s
-//#include "fluidlite.h"
-#else
+#ifdef __EMSCRIPTEN__
+////#include "fluidlite.h"
 
-#include "../Input/fluidsynthconfig.h"
-#include "src/utils/fluidsynth_priv.h"
-#include "fluidsynth.h"
-//
-#include "src/bindings/fluid_lash.h"
-//
+    #ifdef FLUIDSYNTH
+        #include "../Input/fluidsynthconfig.h"
+        #include "src/utils/fluidsynth_priv.h"
+        #include "fluidsynth.h"
+        //
+        #include "src/bindings/fluid_lash.h"
+    #endif
+#else
+    #ifdef FLUIDSYNTH
+        #include "../Input/fluidsynthconfig.h"
+        #include "src/utils/fluidsynth_priv.h"
+        #include "fluidsynth.h"
+
+        #include "src/bindings/fluid_lash.h"
+    #endif
 #endif
+#endif //python
 
 #ifndef WITH_MIDI
 #define WITH_MIDI 1
 #endif
 
-#endif //python
+
+
+#ifdef FLUIDSYNTH
     fluid_cmd_handler_t* cmd_handler = NULL;
 
      fluid_settings_t* settings;
@@ -211,7 +222,7 @@ char *zErrMsg;
   fluid_midi_driver_t* mdriver = NULL;
   fluid_audio_driver_t* adriver = NULL;
   fluid_synth_t* synth = NULL;
-
+#endif
 #ifdef PYTHON
 PyMethodDef irr_function[] =
 {

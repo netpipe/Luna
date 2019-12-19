@@ -38,7 +38,7 @@ return Py_BuildValue("l",managerID);
 }// make add sound method
 
 PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active camera
-
+#ifdef FLUIDSYNTH
 //http://www.fluidsynth.org/api/index.html#MIDIPlayerMem
     int typee;
     char * sound;
@@ -386,6 +386,6 @@ else if (typee == 5){
 
 //fluid_settings_setstr(settings, "audio.file.name", "/path/to/output.wav");
 
-
+#endif
 return Py_BuildValue("");
 }
