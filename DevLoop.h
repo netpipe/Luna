@@ -201,7 +201,9 @@ if ( !device->run() ) return 0;
 		//Python::PyIrr_LoadVehicle(m_cVehicle);
         //Python::PyIrr_addTerrain("1");
 
-           pyloader = "./APP/cowsynth/main.pys";
+          // pyloader = "./APP/cowsynth/main.pys";
+
+           pyloader = "./RACING/racer/main.pys";
 
 Python::bCodeEditor=3; // initial closed state
 

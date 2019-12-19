@@ -50,18 +50,16 @@ if (init) :
 
   # scene.sleep(1000)
 #gui.bar(healthbar,1,20,40,200,60) #does not draw onanimate it
-image.irotate(iaxe,i)
-i+=1
-image.idraw(iaxe)
+
  #jungle = scene.addJungle()
  #scene.addTree("jungle",1,terrain,1,1,1)
-# track1 = scene.loadTrack('./data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
+ #track1 = scene.loadTrack('./data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
  #track1 = scene.loadLevel('extra/maps/urban.bsp',0,0,0)  # trackname , timeofday , lighting , track slot/stages
 # scene.setPosition(terrain ,4, -100,-10,-100)
  #scene.exportScene("/home/clay/test/scene.irr")
- #stage = scene.loadTrack('./data/Stage3/Stage3.irr',20,0,0)
+ stage = scene.loadTrack('./data/Stage3/Stage3.irr',20,0,0)
  #stage = scene.loadTrack('./StageData/irrb2/Hospital.irr',20,0,0)
-#table = scene.loadTrack('./FOOSEBALL/table_football.x',20,0,0)
+ #table = scene.loadTrack('./FOOSEBALL/table_football.x',20,0,0)
  #scene.setPosition(table ,1, 10,-30,10)
 
  #sphere1 = scene.addSphereNode("data/textures/material/marble1_256.png",0,-1000,0, 5,5)
@@ -78,6 +76,9 @@ image.idraw(iaxe)
  # int type = rand()%8+1;
 #  int seed = rand();
 
+image.irotate(iaxe,i)
+i+=1
+image.idraw(iaxe)
 
 #MAIN LOOP
 
