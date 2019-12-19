@@ -112,21 +112,21 @@ IGUIFont * font2 = (IGUIFont *)font;
 	//type char* to wchar_t*...generally this is pretty useful in Irrlicht,so note well
 //	int len = strlen(message) + 1;
 //	wchar_t * conv_message = new wchar_t[len];
-	///mbstowcs(0,conv_message,len,message,_TRUNCATE);
-//printf("%s\n", message);
+//	mbstowcs(0,conv_message,len,message,_TRUNCATE);
+//printf("%s\n", mess0age);
 //wprintf("%s\n", model);
-	//guienv->addStaticText(conv_message,rect<s32>(x,y,x1,y1),SColor(255,255,255,255));
+//	guienv->addStaticText(conv_message,rect<s32>(x,y,x1,y1),SColor(255,255,255,255));
 //
 //	delete [] conv_message;
 
-//	guienv->addStaticText(L"sample text here!",rect<s32>(10,10,260,22), true);
-//
-//	    CGUITTFont *font2;
+	guienv->addStaticText(L"sample text here!",rect<s32>(10,10,260,22), true);
+
+	 //   CGUITTFont *font2;
 //    CGUITTFace face;
 //        font2 = new CGUITTFont(gui);
 //    font2->attach(&face,24); // scale this number with the screen
 //    font2->AntiAlias=1;
-
+//
 //    SpriteManager *sprites = new SpriteManager;
 //    sprites->setup(driver, driver->getTexture("./data/texture.png"));
 //
@@ -143,7 +143,7 @@ IGUIFont * font2 = (IGUIFont *)font;
 //        spr->setScale(4.0f, 4.0f);
 //
 //        fonts->drawText("the quick brown fox\njumped over\n the lazy dog", 0, 0, w, h, BmFont::ALIGN_CENTER | BmFont::ALIGN_MIDDLE);
-
+//
 
 
 	return Py_BuildValue("");

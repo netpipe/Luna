@@ -18,7 +18,7 @@
 #include "entities/player.h"
 //#include "Encryption/Blowfish.h"
 #include "Physics/Physics.h"
-//#include "Physics/Vehicle.h"
+#include "Physics/Vehicle.h"
 #include "Scene/Scene.h"
 #include <irrNet.h>
 #include "./Scene/decals/decalscenenode.h"
