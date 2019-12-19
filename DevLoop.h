@@ -197,14 +197,19 @@ if ( !device->run() ) return 0;
         //Py_SetProgramName(), Py_SetPythonHome(), PyEval_InitThreads(), PyEval_ReleaseLock(), and PyEval_AcquireLock()
         //https://docs.python.org/2/c-api/init.html
         ///todo check for empty or missing files or impliment the using command
+#ifndef __EMSCRIPTEN__
         Python::ExecuteScript("./functions-list.pys"); // this is for testing
+#endif
 		//Python::PyIrr_LoadVehicle(m_cVehicle);
         //Python::PyIrr_addTerrain("1");
 
           // pyloader = "./APP/cowsynth/main.pys";
+#ifdef __EMSCRIPTEN__
+pyloader = "./main.pys";
 
-           pyloader = "./RACING/racer/main.pys";
-
+		#else
+		           pyloader = "./RACING/racer/main.pys";
+#endif
 Python::bCodeEditor=3; // initial closed state
 
 #endif

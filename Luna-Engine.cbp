@@ -556,8 +556,8 @@
 					<Add option="-D_IRR_STATIC_LIB_" />
 					<Add option="-D_IRR_EMSCRIPTEN_PLATFORM_" />
 					<Add option="-D__EMSCRIPTEN__" />
-					<Add option="-DPYTHON" />
 					<Add option="-DNO_GLIB" />
+					<Add option="-DPYTHON" />
 					<Add directory="../emscripten-projects/irrlicht-ogl-es-2019dec/include" />
 					<Add directory="../emscripten-projects/net/irrNetLite22" />
 					<Add directory="../emscripten-projects/media/freetype2.8/build" />
@@ -591,11 +591,12 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s ALLOW_MEMORY_GROWTH=1" />
-					<Add option="--preload-file media/" />
+					<Add option="--preload-file GAME/RACING/racer/" />
 					<Add option="-s FULL_ES2=1" />
 					<Add option="-s DISABLE_EXCEPTION_CATCHING=0" />
 					<Add option="-s NO_EXIT_RUNTIME=1" />
 					<Add option="--shared-memory" />
+					<Add option="-s ERROR_ON_UNDEFINED_SYMBOLS=0" />
 					<Add library="GL" />
 					<Add library="openal" />
 					<Add library="X11" />
@@ -620,7 +621,6 @@
 					<Add library="SPARK_IRR" />
 					<Add library="sqlite3" />
 					<Add library="cAudio" />
-					<Add library="pthread" />
 					<Add library="PolyVoxCore" />
 					<Add library="ogg" />
 					<Add library="vorbis" />
