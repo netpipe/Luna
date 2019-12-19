@@ -36,47 +36,6 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add library="bz2" />
-					<Add library="GL" />
-					<Add library="openal" />
-					<Add library="Xxf86vm" />
-					<Add library="X11" />
-					<Add library="dl" />
-					<Add library="irrNetLite22" />
-					<Add library="enet" />
-					<Add library="python2.7" />
-					<Add library="IrrOpenSteer" />
-					<Add library="pthread" />
-					<Add library="theora" />
-					<Add library="theoraplayer" />
-					<Add library="assimp" />
-					<Add library="fluidsynth" />
-					<Add library="usb" />
-					<Add library="boost_thread" />
-					<Add library="boost_system" />
-					<Add library="sqlite3" />
-					<Add library="asound" />
-					<Add library="jack" />
-					<Add library="readline" />
-					<Add library="sndfile" />
-					<Add library="pulse" />
-					<Add library="pulse-simple" />
-					<Add library="gmodule-2.0" />
-					<Add library="dbus-1" />
-					<Add library="PolyVoxCore" />
-					<Add library="Irrlicht" />
-					<Add library="BulletSoftBody" />
-					<Add library="BulletDynamics" />
-					<Add library="BulletCollision" />
-					<Add library="LinearMath" />
-					<Add library="freetype" />
-					<Add library="z" />
-					<Add library="ogg" />
-					<Add library="vorbis" />
-					<Add library="vorbisfile" />
-					<Add library="cAudio" />
-					<Add library="SPARK" />
-					<Add library="SPARK_IRR" />
 				</Linker>
 			</Target>
 			<Target title="WinDebug">
@@ -811,10 +770,6 @@
 		<Unit filename="Scene/RainMan.h" />
 		<Unit filename="Scene/RibbonTrailSceneNode/RibbonTrailSceneNode.cpp" />
 		<Unit filename="Scene/RibbonTrailSceneNode/RibbonTrailSceneNode.h" />
-		<Unit filename="Scene/SPARK/SPK.h" />
-		<Unit filename="Scene/SPARK/SPK_All.cpp" />
-		<Unit filename="Scene/SPARK/SPK_IRR.h" />
-		<Unit filename="Scene/SPARK/SPK_IRR_ALL.cpp" />
 		<Unit filename="Scene/Scene.cpp" />
 		<Unit filename="Scene/Scene.h" />
 		<Unit filename="Scene/ShaderFactory.cpp" />
