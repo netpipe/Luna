@@ -302,7 +302,7 @@ PyObject * Python::PyIrr_voxelLoad(PyObject * self,PyObject * args){
 	char * device;
 		char * path;
 	PyArg_ParseTuple(args,"ss",&device,&path);
-
+#ifdef POLYVOX
    wchar_t cBuffer[100];
     int move;
 
@@ -392,10 +392,10 @@ PyObject * Python::PyIrr_voxelLoad(PyObject * self,PyObject * args){
 //
 ////Transform mesh into irrlicht mesh
 //irr::scene::IMeshSceneNode* levelMesh=sceneManager->addMeshSceneNode(convertPolyMesh(mesh));
-
+#endif
 
 }
-
+#ifdef POLYVOX
 irr::scene::SMesh* convertPolyMesh(const PolyVox::SurfaceMesh<PolyVox::PositionMaterialNormal>& meshPoly) {
    //irr::scene::SMeshBuffer* buffer =new irr::scene::SMeshBuffer();
    irr::scene::IDynamicMeshBuffer* buffer =new irr::scene::CDynamicMeshBuffer(irr::video::EVT_STANDARD, irr::video::EIT_32BIT);
@@ -451,7 +451,7 @@ irr::scene::SMesh* convertPolyMesh(const PolyVox::SurfaceMesh<PolyVox::PositionM
    return mesh;
 }
 
-
+#endif
 
 PyObject * Python::PyIrr_wii(PyObject * self,PyObject * args){
 // wii device accessor keystate return
@@ -514,7 +514,7 @@ PyObject * Python::PyIrr_sqlconnect(PyObject * self,PyObject * args){
 int type;
 char * cstring;
 	PyArg_ParseTuple(args,"is",&type,&cstring);
-
+#ifdef SQLITE
 	  sqlite3 *db;
    fprintf(stderr, "Opening DB \n");
     rc = sqlite3_open( cstring, &db);
@@ -536,6 +536,7 @@ char * cstring;
 
 //  return Py_BuildValue("l",sq);
 return Py_BuildValue("l",db);
+#endif
 }
 
 PyObject * Python::PyIrr_sqlcommand(PyObject * self,PyObject * args){
@@ -543,6 +544,7 @@ int type;
 char * command;
 long sqlconn2;
 	PyArg_ParseTuple(args,"lis",&sqlconn2,&type,&command);
+	#ifdef SQLITE
 //	sqlCon *sq=sqlconn2;
 //	sq->execute(cstring);
 sqlite3 *db=(sqlite3 *)sqlconn2;
@@ -668,6 +670,7 @@ bool  finished = false;
      finished = true;};
 
   }
+    #endif
   return Py_BuildValue("");
 }
 

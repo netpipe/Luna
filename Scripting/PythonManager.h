@@ -15,7 +15,11 @@ using namespace scene;
 using namespace io;
 
 #include <Python.h> // fix later -has to be in this order or the formationwrapper complains
+
+#ifdef FORMATION
 #include "../Scene/Formation.h"
+#endif
+
 #include "./PyFunctions.h"
 #include "../Scene/RainMan.h"
 

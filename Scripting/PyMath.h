@@ -14,6 +14,7 @@ PyObject * Python::PyIrr_calcMath(PyObject * self,PyObject * args){
 
     s32 tex_id,node_id;
 	PyArg_ParseTuple(args,"II",&node_id,&tex_id);
+	#ifdef SCALC
     SCalcExpr *calc = new SCalcExpr();
 
 	// try to parse the string
@@ -36,7 +37,7 @@ PyObject * Python::PyIrr_calcMath(PyObject * self,PyObject * args){
 	delete calc;
 
 	printf("Result = %0.3f\n", f);
-
+#endif
 	return Py_BuildValue("");
 }
 

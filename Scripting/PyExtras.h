@@ -68,7 +68,7 @@ PyMethodDef irr_Extras[] =
 };
 
 PyObject * Python::PyIrr_FormationDemo(PyObject * self,PyObject * args){
-    #ifdef FORMATIONDEMO
+    #ifdef FORMATION
     // FORMATION DEMO
     //WrapperClass::Formation *
     formationDemo=1;
@@ -89,6 +89,7 @@ PyObject * Python::PyIrr_lensFlare(PyObject * self,PyObject * args){
         int param;
         float x,y,z;
     PyArg_ParseTuple(args,"ifff",&param,&x,&y,&z);
+    #ifdef ATMOSPHERE
    //     scene::IMeshSceneNode* sunMeshNode;
     sunMeshNode = smgr->addSphereSceneNode(1, 1, smgr->getRootSceneNode());
     sunMeshNode->setMaterialTexture(0, driver->getTexture("media/mesh.png"));
@@ -116,7 +117,7 @@ PyObject * Python::PyIrr_lensFlare(PyObject * self,PyObject * args){
 
     }
 
-
+#endif
 Py_RETURN_NONE;
 }
 
@@ -206,7 +207,7 @@ PyObject * Python::PyIrr_BlindBoids(PyObject * self,PyObject * args) {//active c
 //        const u32 now = device->getTimer()->getTime();
 //        const f32 frameDeltaTime = (f32)(now - then) / 1000.0f; // Time in seconds
 //        then = now;
-#ifdef BOIDSs
+#ifdef BOIDS
 switch (param){
 // if  (bBlindBoids = true){
 case 0:

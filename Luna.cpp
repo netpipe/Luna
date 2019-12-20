@@ -15,81 +15,61 @@ using namespace video;
 using namespace io;
 using namespace gui;
 
+#ifdef ATMOSPHERE
 #include "Scene/ATMOsphere.cpp"
 #include "Scene/flares/CLensFlareSceneNode.h"
 //#include "Scene/flares/LensFlareSceneNode.h"
+#endif
+
 #include "Scene/flares/SceneNodeAnimatorFollowCamera.h"
 #include "GUI/compass/Compass.h"
+
+#ifdef BOIDS
 #include "Scene/boids/Flock.h"
+#endif
+
+#ifdef IRRc
 #include "Net/IRRc/Application.h"
+#endif
 
 //#include "GUI/cImage2D.h"
+#ifdef XEFFECTS
 #include "Scene/XEffects/effectWrapper.h"
+#endif
 
+#ifdef PHYSICS
 #include "./Input/Model/blender/IrrBlend.h"
 #include "./Input/Model/blender/BulletBlendReader.h"
 #include "./Input/Model/blender/blenderUp.h"
+#endif
 
 #include "./Equipment/firstPersonWeapon.h"
+
+#ifdef ATMOSPHERE
 #include "./TerrainFactory/CloudSceneNode/CCloudSceneNode.h"
+#endif
+
 #include "./Scene/decalManager/DecalManager.h"
 
+//#include "GUI/CodeEditor/CGUIEditBoxIRB.h"
+#include <fcntl.h> //needed for python
 
-#include "GUI/CodeEditor/CGUIEditBoxIRB.h"
+//#define PostProcess
 
-#include <fcntl.h>
+bool connected,doit,login=0;
+// vector3df tmpvect;
 
-#define PostProcess
-
+#define DPHYSICS
+//#define PYTHON
 //#include <boost/python.hpp>   #not used just for ideas maybe
+#include "Scripting/PythonManager.h"
 
+#ifdef NDEBUG
 #include <irrNet.h>
 
 //    net::SOutPacket rotationPacket;
     net::INetManager* netManager;
-   // bool connected,doit,login=0;
-   // vector3df tmpvect;
-        #include "Net/irrNetClient.h"
-//class ClientNetCallback : public net::INetCallback
-//{
-//public:
-//	// Our handlePacket function.
-//	virtual void handlePacket(net::SInPacket& packet)
-//	{
-//		// Just like the server, we obtain the packet id and print
-//		// the information based on the packet we received. I hope the
-//		// rest of this function is self-explanatory.
-//		c8 packetid;
-//		packet >> packetid;
-//
-//		switch((E_PACKET_TYPE)packetid)
-//		{
-//		case EPT_ROTATION:
-//			f32 cannonAngle;
-//			packet >> cannonAngle;
-//			std::cout << "Server says that the cannon angle is now " << cannonAngle << std::endl;
-//			break;
-//		case EPT_POWER:
-//			f32 cannonPower;
-//			packet >> cannonPower;
-//			std::cout << "Server says that the cannon power is now " << cannonPower << std::endl;
-//			break;
-//		default:
-//			// We don't care about any other types, so we catch them here and break.
-//			break;
-//		}
-//	}
-//};
-
-
-
-
-
-#define DPHYSICS
-
-//#define PYTHON
-
-#include "Scripting/PythonManager.h"
+	#include "Net/irrNetClient.h"
 
 
 
@@ -100,7 +80,6 @@ using namespace gui;
 //#include "TerrainFactory/GrassSceneNode/CWindGenerator.h"
 //    scene::CGrassPatchSceneNode *grass[1000];
 //scene::IWindGenerator *wind = createWindGenerator( 30.0f, 3.0f );
-
 class ClientNetCallback : public net::INetCallback{
 public:
 	virtual void handlePacket(net::SInPacket& packet)
@@ -138,8 +117,10 @@ public:
       //  tmpvect=vector3df(vec);
  //     std::cout << str.c_str();
 };
-
+#endif
 //ClientNetCallback* clientCallback;
+
+
 int icount=0;
 
 Luna::Luna ( int argc, char** argv ){}
@@ -165,6 +146,7 @@ int Luna::mainloop(){
 
 int Luna::doLogin ( const std::wstring &username, const std::wstring &password ){
     // 0 is ok, -1 logingood , 1 is no server connection
+     #ifdef NDEBUG
     std::string uname ( username.begin(), username.end() );
     std::string pword ( password.begin(), password.end() );
     int iReturn;
@@ -172,6 +154,7 @@ int Luna::doLogin ( const std::wstring &username, const std::wstring &password )
 
 while (!login){
     iReturn = -3;
+
     if(netManager->getConnectionStatus() != net::EICS_FAILED)
 		{
         if (login==true){ iReturn= -1;};
@@ -193,10 +176,12 @@ while (!login){
                     printf ("not connected-connecting \n");
     }
 }
+#endif
    return -1;//iReturn;//-1; //good for debugging
 }
 
 int Luna::handleMessages(){
+	#ifdef NDEBUG
 //     set some variables
 		if (netManager->getConnectionStatus() != net::EICS_FAILED)
 		{
@@ -204,6 +189,7 @@ int Luna::handleMessages(){
 		//	 packet.compressPacket();
 		//	 packet.encryptPacket("hushthisissecret"); //16 char max
 		}
+		#endif
 return 0;
 }
 
@@ -278,8 +264,9 @@ int Luna::shutdown(){
 
 //	delete videoPlayer;
 
-
+ #ifdef NDEBUG
     delete netManager;
+    #endif
 //    delete ClientNetCallback;
     delete m_cPhysics;
 //    delete m_cScene;
@@ -357,29 +344,29 @@ int Luna::Run(){
         events.devLogin=1;
     #endif
  //   driver->setVSync(0);
-        	if ( events.devLogin )  {
+        	if ( events.devLogin && !this->m_cInGameEvents.Quit && ( countr < 1500 ) )  {
+					countr=countr+1;
+					printf("%i",countr);
 					if (!iinit) {
 							  if ( init() < 0 ) return -1;
                     device->setEventReceiver ( &m_cInGameEvents );
                     devloop();
-#ifdef PYTHON
-#ifdef __EMSCRIPTEN__
-	TAR* tar;
-	if (tar_open(&tar, "./media/pydata.tar", NULL, O_RDONLY, 0, 0) != 0) {
-		fprintf(stderr, "Error: failed to open pydata.tar\n");
-		exit(1);
-	}
-	if (tar_extract_all(tar, (char*) "/") != 0) {
-		fprintf(stderr, "Error: failed to extract pydata.tar\n");
-		exit(1);
-	}
-	tar_close(tar);
+		#ifdef PYTHON
+			#ifdef __EMSCRIPTEN__
+				TAR* tar;
+				if (tar_open(&tar, "./media/pydata.tar", NULL, O_RDONLY, 0, 0) != 0) {
+					fprintf(stderr, "Error: failed to open pydata.tar\n");
+					exit(1);
+				}
+				if (tar_extract_all(tar, (char*) "/") != 0) {
+					fprintf(stderr, "Error: failed to extract pydata.tar\n");
+					exit(1);
+				}
+				tar_close(tar);
 
-	//Py_Initialize(); //Initialize Python
-	setenv("PYTHONHOME", "/", 0);
-
-	#endif
-
+				//Py_Initialize(); //Initialize Python
+				setenv("PYTHONHOME", "/", 0);
+			#endif
     //Python
         Python::registerIrrDevice(this,*device,m_cInGameEvents);
         Py_Initialize();            //Initialize Python
@@ -390,34 +377,36 @@ int Luna::Run(){
         //https://docs.python.org/2/c-api/init.html
         ///todo check for empty or missing files or impliment the using command
        // Python::ExecuteScript("functions-list.pys"); // this is for testing
-#ifdef __EMSCRIPTEN__
-        Python::ExecuteScript("./media/functions-list.pys"); // this is for testing
-#else
-   Python::ExecuteScript("./functions-list.pys"); // this is for testing
-#endif
-		//Python::PyIrr_LoadVehicle(m_cVehicle);
-        //Python::PyIrr_addTerrain("1");
-
-          // pyloader = "./APP/cowsynth/main.pys";
-#ifdef __EMSCRIPTEN__
-pyloader = "./media/main.pys";
-
+		#ifdef __EMSCRIPTEN__
+				Python::ExecuteScript("./media/functions-list.pys"); // this is for testing
 		#else
-		           pyloader = "./RACING/racer/main.pys";
-#endif
-Python::bCodeEditor=3; // initial closed state
+		   Python::ExecuteScript("./functions-list.pys"); // this is for testing
+		#endif
+				//Python::PyIrr_LoadVehicle(m_cVehicle);
+				//Python::PyIrr_addTerrain("1");
 
-#endif
-                    }
-                                            	#ifdef __EMSCRIPTEN__
-                                            	iinit=1;
-                                            	main_loop();
+				  // pyloader = "./APP/cowsynth/main.pys";
+		#ifdef __EMSCRIPTEN__
+		pyloader = "./media/main.pys";
+
+				#else
+						   pyloader = "./RACING/racer/main.pys";
+		#endif
+		Python::bCodeEditor=3; // initial closed state
+
+		#endif
+                    } //init
+								// run main loop
+								#ifdef __EMSCRIPTEN__
+								iinit=true;
+								main_loop();
                                 #else
-                                iinit=1;
+                                iinit=true;
                                 main_loop();
                                 #endif
 
                 }else{
+                	if (iinit){ shutdown(); exit(1); } // for exiting dev loop tmpfix
                 printf ("now entering the lobby");
                    if ( lobby() == -1 ) {
                         shutdown(); //exit
@@ -431,7 +420,10 @@ Python::bCodeEditor=3; // initial closed state
                     }
             }
       //      getchar();
-   // shutdown();
+      if (bshutdown==true) {
+		shutdown();
+		}
+
     return 1;
 }
 
@@ -446,9 +438,9 @@ void Luna::main_loop(){ //devloop actually
 		then = now;
 
 		#ifdef PYTHON
-        Python::PreRender();
+    //    Python::PreRender();
         driver->beginScene ( true, true, SColor ( 0, 0, 0, 0 ) );
-        Python::render();
+     //   Python::render();
 		#else
 		driver->beginScene ( true, true, SColor ( 31, 200, 111, 0 ) );
 		#endif
@@ -487,14 +479,11 @@ device->sleep(5);
 			windows->setVisible(false);  //! not sure why but causes crashing on startup
 		}
 		#endif //code_editor
-
-		#endif
+	#endif
 
 		#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
-        Python::preEnd();
+       // Python::preEnd();
           Python::CheckKeyStates();
-
-            //loader = "./RACING/racer/main.pys";
     //    obsolete:CheckKeyStates(); check onEvent for any need to check keys
     // loop for key checking and loop for game  only execute script if there was an event
 	// pick a game directory and look for main.pys

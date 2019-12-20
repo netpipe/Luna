@@ -199,7 +199,7 @@ PyObject * Python::PyIrr_omareDemo(PyObject * self,PyObject * args){
 PyObject * Python::PyIrr_bitCloud(PyObject * self,PyObject * args){
         int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
-#ifndef Bitcloud
+#ifdef Bitcloud
         clouds = new scene::CCloudSceneNode(
                 smgr->getRootSceneNode(), smgr,
                     device->getTimer(), 666, core::vector3df(0,0,0), core::vector3df(0,0,0), core::vector3df(1,1,1));
@@ -229,6 +229,7 @@ PyObject * Python::PyIrr_realCloud(PyObject * self,PyObject * args){
         int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
 	// add 1st cloud layer
+	#ifdef CLOUDS
 	cloudLayer1 = new scene::CloudSceneNode(smgr->getRootSceneNode(), smgr);
 	cloudLayer1->setTranslation(core::vector2d<f32>(0.008f, 0.0f));
 	cloudLayer1->getMaterial(0).setTexture(0, driver->getTexture("data/clouds/cloud01.png"));
@@ -245,6 +246,7 @@ PyObject * Python::PyIrr_realCloud(PyObject * self,PyObject * args){
 	cloudLayer3->getMaterial(0).setTexture(0, driver->getTexture("data/clouds/cloud03.png"));
 	cloudLayer3->setCloudHeight(0.35f, 0.0f, -0.15f);
 	cloudLayer3->setTextureScale(0.4f);
+	#endif
 };
 
 PyObject * Python::PyIrr_addTerrain(PyObject * self,PyObject * args) {//active camera
@@ -256,6 +258,7 @@ char * dmap;
 float sx,sy,sz,cx,cy,cz;
 int type;
 PyArg_ParseTuple(args,"iffffffsss",&type,&cx,&cy,&cz,&sx,&sy,&sz,&hmap,&tex,&dmap);
+#ifdef TERRAIN
     vector3df t_position = vector3df(cx,cy,cz);
     vector3df t_rotation = vector3df(0,0,0);
     vector3df t_scale = vector3df(sx,sy,sz);
@@ -344,6 +347,7 @@ if ( type == 1 ){
 //   luna->m_cPhysics->getDynamicsWorld()->addRigidBody(mRigidBody);
 
 return Py_BuildValue("l",terr);
+#endif
 }
 
 }
@@ -406,6 +410,7 @@ PyObject * Python::PyIrr_FWGrass(PyObject * self,PyObject * args){
 	float sx,sy,sz,cx,cy,cz;
 	int type;
 	PyArg_ParseTuple(args,"s",&dmap);
+	#ifdef VEGETATION
 
     GrassGenerator::CGrassGenerator* grassGenInstance = new CGrassGenerator(device);
 
@@ -423,7 +428,9 @@ PyObject * Python::PyIrr_FWGrass(PyObject * self,PyObject * args){
 	GrassLoader::loadGrass(dmap,smgr,
 							16.f,8.f,36.f,
 							40.f,43.f,46.f);
+							#endif
 return Py_BuildValue("");
+
 }
 
 PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic with shader
@@ -435,7 +442,7 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
 	int type;
 	//PyArg_ParseTuple(args,"fffi",&loc.X,&loc.Y,&loc.Z,&btree);
 	PyArg_ParseTuple(args,"silfff",&action,&type,&terr,&cx,&cy,&cz);
-
+#ifdef VEGETATION
 	//1 for klasger , KornJungle has both JTree and jungle
 
     // open terrain tree layout could probably even load grass sametime.
@@ -964,6 +971,7 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
 
 
 	}
+	#endif
 return Py_BuildValue("");
 };
 

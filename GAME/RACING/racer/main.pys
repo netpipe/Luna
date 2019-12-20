@@ -83,6 +83,9 @@ image.irotate(iaxe,i)
 i+=1
 image.idraw(iaxe)
 
+if input.getKey('KEY_ESCAPE') :
+ paused=1
+ scene.exit()
 #physics.VehicleParams(car1,8,0,0,0,0)
 #physics.VehicleParams(car2,8,0,0,0,0)
 

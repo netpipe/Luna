@@ -267,17 +267,22 @@ namespace Python {
     void PreRender();
     scene::IMeshBuffer* buff;
     Scene *m_cScene;
-    btRigidBody* ha2;
+    #ifdef PHYSICS
+        btRigidBody* ha2;
+    #endif
     bool bingo = true;
     bool yesim = true;
     scene::IBillboardSceneNode * bill;
     int nextDecal = 0;
-Application *app;
+#ifdef IRRc
+    Application *app;
+#endif
     bool flag1,flag2,bImage2d,bCompass,formationDemo,bAtmosphere,bWater,blensFlare,bBlindBoids=0;
     bool bOcclusion,bCar,bCarFollow,bSPARK,bDecals;
-
+#ifdef FORMATION
     WrapperClass::Formation * formation;
     f32 SpeedMultiplier;// = 1.1f;
+#endif
 
     #ifdef COMPASS
         Compass * Compass1;
@@ -360,9 +365,9 @@ void Python::render() {//active camera
 
         deltaTime = device->getTimer()->getRealTime() - timeStamp;
         timeStamp = device->getTimer()->getRealTime();
-
+#ifdef BOIDS
          if (bBlindBoids){flock->update(selecta,deltaTime,0);};
-
+#endif
         #ifdef TESSIMAGE
             if (btesimage){ tesImage->render(deltaTime); }
         #endif

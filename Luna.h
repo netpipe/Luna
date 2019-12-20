@@ -57,6 +57,8 @@ char * pyloader;
 		bool iinit=false;
 		   u32 then ;
     int lastFPS;
+    bool bshutdown=false;
+    int countr;
 
 		int AddShader();
 

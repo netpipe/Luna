@@ -7,39 +7,46 @@
 #include <cstdlib>
     #define MAX_DECALS 50
    // #define IRRCD   // irrlicht Collision Detection
-    #define IRRc
+   // #define IRRc
  //   #define PostProcess
     #define ReflectiveWater
     #define ReflectWater-Main
+
     #define TREES //very cpu intensive
-    #define ATMOSPHERE  //  freezes when no video acceleration is used
+   // #define ATMOSPHERE  //  freezes when no video acceleration is used
                         //  or as a user without access to video rights is used
-    #define DECALS2       // simple decals
+    //  #define FLARE
+  //  #define FLARE2  // more realistic and working
+
+   // #define DECALS2       // simple decals
     //#define DECALS       //decalmanager sortof working slow tho
-    #define TESSIMAGE
-    #define FLARE
-    #define FLARE2  // more realistic and working
+  //  #define TESSIMAGE
+
     #define EDITOR
     #define FLAG    //
     #define FLAG2   //FMX
-    #define COMPASS
-    #define BOIDS
+   // #define COMPASS
+  //  #define BOIDS
     #define TERRAIN
-    #define occlusion
-    #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
+  //  #define occlusion
+  //  #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
     #define BULLETCAR // if FPSWEAPON is enabled the car wont work. diff event rec
     #define LOADLEVELS // dont use this without bullet or with occlusion its slow?
-    #define BULLETBLEND
-    #define RAG   //bulletRagdoll
-    #define EXTRAS
-    #define DESTRUCTION
-    #define FORMATIONDEMO
-    #define HUD
-    #define Image2D // Just testing out
-    #define CHOPPER
-    #define  OPENSTEER
+  //  #define BULLETBLEND
+  //  #define RAG   //bulletRagdoll
+   // #define EXTRAS
+  //  #define DESTRUCTION
+  //  #define FORMATIONDEMO
+  //  #define HUD
+  //  #define Image2D // Just testing out
+  //  #define CHOPPER
+  //  #define  OPENSTEER
+  //  #define SQLITE
+//  #define VEGETATION
+//  #define SCALC
+
 //    #define VIDEO
-    #define PostProcess
+  //  #define PostProcess
 
 #ifdef PostProcess
 // Include the headers for post processing
@@ -108,52 +115,70 @@ RibbonTrailSceneNode* rt;
 #include "../Input/Model/IrrAssimp/IrrAssimp.h"
 
 #include "../GUI/cImage2D.h"
+#ifdef SPRITEMANAGER
 #include "../Scene/spriteManager/SpriteManager.h"
 #include "../Scene/spriteManager/BmFont.h"
 #include "../Scene/spriteManager/ParticleSystem.h"
-#include "../GUI/Math/SCalcExpr.h"
+#endif
 
+#ifdef SCALC
+#include "../GUI/Math/SCalcExpr.h"
+#endif
+#ifdef VEGETATION
 #include "../TerrainFactory/FWGrass/GrassLoader.h"
 #include "../TerrainFactory/FWGrass/gen/CGrassGenerator.h"
 using namespace GrassGenerator;
 #include "../TerrainFactory/ProceduralTrees/kornJungle/Jungle.h"
+#endif
+
+#ifdef SQLITE
 //#include "../Input/SQL/sqlCon.h"
 #include <sqlite3.h>
     sqlite3_stmt* stmt;
 char *zErrMsg;
   int rc;
 //sqlite3 *db;
+#endif
+
 //#include <cwiid.h>
 //#include "../Input/Controllers/wii/wii.h"
-
+#ifdef PostProcess
         CEffectPostProc* ppBlurDOF ;
          CEffectPostProc* ppBlur ;
          CEffectPostProc* ppMine;
-
+#endif
+#ifdef FT2
     BmFont *fonts = new BmFont;
-
+#endif
+    #ifdef SPRITES
     SpriteManager *sprites = new SpriteManager;
-
+#endif
     using namespace std;
     using namespace irr;
-
+#if PHYSICS
     btLogicManager* logicManager = new btLogicManager();
-    static std::vector<RagDoll*> v_RagDolls;
+        #ifdef RAGDOLL
+            static std::vector<RagDoll*> v_RagDolls;
+        #endif
     static std::vector<btRigidBody*> v_Boxes;
+    #endif
+
     irr::scene::ITriangleSelector* selecta = 0;
 
     scene::IMetaTriangleSelector* metaSelector;
   //  ICameraSceneNode* camera;
     scene::ITriangleSelector* selector;
     btTransform tr;
-
+#ifdef CLOUDS
     scene::CCloudSceneNode* clouds;  ///bitplane clouds
     f32 rot=1.0;
 
     scene::CloudSceneNode* cloudLayer1;
     scene::CloudSceneNode* cloudLayer2;
     scene::CloudSceneNode* cloudLayer3;
+#endif
 
+#ifdef LENSEFLARE
 #include "../Scene/flares/LensFlareSceneNode.h"
 #include "../Scene/flares/SceneNodeAnimatorFollowCamera.h"
     scene::LensFlareSceneNode* lensFlareNode;
@@ -164,8 +189,12 @@ char *zErrMsg;
   //  scene::IMeshSceneNode* sunMeshNode;
     CLensFlareSceneNode *lensFlareNode2;
 //    scene::LensFlareSceneNode* lensFlareNode;
+#endif
 
+//#ifdef 2DGRAPH
 #include "../GUI/sineGraph2d/SGraph2D.h"
+//#endif
+
 #include "../GUI/widgets/CGUIBar.h"
 
   //  Vehicle *m_cVehicle;
