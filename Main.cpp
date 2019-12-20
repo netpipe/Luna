@@ -9,17 +9,25 @@
 	#include <winsock2.h>
 #endif
 
-#ifdef __EMSCRIPTEN__
-#include <emscripten.h>
-#endif
+//#ifdef __EMSCRIPTEN__
+//#include <emscripten.h>
+//#endif
 int argc1=0;
  char** argv1;
+bool init=1;
+
+Luna game ( argc1,argv1 );
 
 void main_loop(){
-		Luna game ( argc1,argv1 );
+	if ( init ){
+			init=false;
 
 		game.Run();
+	//	game.main_loop();
+}else{
 
+		game.main_loop();
+}
 }
 
 int main ( int argc, char** argv )
@@ -34,6 +42,9 @@ int main ( int argc, char** argv )
 		Luna game ( argc,argv );
 
 		game.Run();
+		while (1){
+			game.main_loop();
+		}
 		#endif // __EMSCRIPTEN__
 		system("PAUSE");
 	return 0;

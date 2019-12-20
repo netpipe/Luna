@@ -1,5 +1,4 @@
 #ifndef NDEBUG // if debug build then do this one
-#define PostProcess
 
 //#include "Luna.h"
 
@@ -247,6 +246,8 @@ Python::bCodeEditor=3; // initial closed state
 	if (font)
       skin->setFont(font);
 
+     // #define CODEEDITOR
+#ifdef CODEEDITOR
 	device->setWindowCaption(L"Code editor example, using IRRlicht 1.7.2");
 
 	// Create the menus for the example with it default language (English)
@@ -341,8 +342,8 @@ Python::bCodeEditor=3; // initial closed state
 //		rect<s32>(1 , 1 ,222 , 222 ),
 //		false, // modal?
 //		L"mhm");
-
-
+#endif
+	windows->setVisible(true);
 device->getCursorControl()->setVisible(true);
 //    	IrrAssimp assimp(smgr);
 //    IAnimatedMesh* mesh = assimp.getMesh("media/dwarf.x");
@@ -372,153 +373,14 @@ device->getCursorControl()->setVisible(true);
  //sidescroller texture
 //node->getMaterial(0)->getTextureMatrix(0).setTextureTranslate(x, y)
 
-
-    while ( device->run() && !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
-    {
-        const u32 now = device->getTimer()->getTime();
-		frameDeltaTime = (f32)(now - then) / 1000.f; // Time in seconds
-		then = now;
-
-		#ifdef PYTHON
-        Python::PreRender();
-        driver->beginScene ( true, true, SColor ( 0, 0, 0, 0 ) );
-        Python::render();
-		#else
-		driver->beginScene ( true, true, SColor ( 0, 0, 0, 0 ) );
-		#endif
-
-        smgr->drawAll();
-		//	device->setEventReceiver(&receiver);
-
-
-//        #ifdef PostProcess
-//			ppBlurDOF->render( NULL );
-//            ppBlur->render( NULL );
+//                        	#ifdef __EMSCRIPTEN__
+//	emscripten_set_main_loop(main_loop,0,1);
+//#else
+//rendermain();
 //
-//        #endif
-
-
- //       rt->render();
- #ifdef PYTHON
-		if (Python::bCodeEditor==1	){
-			Python::bCodeEditor=0;
-			windows->setVisible(true);
-			codeEditor->setEnabled(true);
-			codeEditor->setVisible(true);
-			menu->setVisible(true);
-			menu->setEnabled(true);
-			windows->setVisible(true);
-			device->setEventReceiver(&receiver);
-			device->getCursorControl()->setVisible(true);
-			    device->setResizable(true);
-		}else if (Python::bCodeEditor == 3	){
-			Python::bCodeEditor = 0;
-			codeEditor->setEnabled(0);
-			codeEditor->setVisible(false);
-			menu->setVisible(false);
-			menu->setEnabled(false);
-			windows->setVisible(false);  //! not sure why but causes crashing on startup
-		}
-		#endif
-
-		#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
-        Python::preEnd();
-          Python::CheckKeyStates();
-
-            //loader = "./RACING/racer/main.pys";
-    //    obsolete:CheckKeyStates(); check onEvent for any need to check keys
-    // loop for key checking and loop for game  only execute script if there was an event
-	// pick a game directory and look for main.pys
-			Python::ExecuteScript(irr::core::stringc(pyloader));
-			//Python::ExecuteScript("./RACING/racer/main.pys");
-		guienv->drawAll();
-        driver->endScene();
-		#else
-		guienv->drawAll();
-        driver->endScene();
-		#endif
-
-        int fps = driver->getFPS();
-		if (lastFPS != fps)
-		{
-			core::stringw tmp(L"Luna Engine [");
-			tmp += driver->getName();
-			tmp += L"] fps: ";
-			tmp += fps;
-
-			device->setWindowCaption(tmp.c_str());
-			lastFPS = fps;
-		}
-     //  device->sleep(5); // pythonize this
-    }
-
-
-//#ifdef HUD
-// //     delete vidmaster;
 //#endif
-//    #ifdef BOIDS
-//     delete flock;
-//    #endif
-//
-//    #ifdef PostProcess
-//	 delete ppBlurDOF;
-//	 delete ppBlur;
-//	 delete ppRenderer;
-//    #endif
-//
-//	#ifdef ATMOSPHERE
-//     delete atmo;
-//    #endif
-//
-//	#ifdef ReflectiveWater
-//	 delete water;
-//	#endif
-//
-//	#ifdef RAG
-//		for (std::vector<RagDoll*>::iterator it = v_RagDolls.begin(); it != v_RagDolls.end(); ++it)
-//            (*it)->~RagDoll();
-//	#endif
-//
-//	//delete CHUD2;
-//	//delete m_cVehicle;
-//
-//	#ifdef COMPASS
-//	 delete Compass1;
-//	#endif
-//
-//	#ifdef FLAG     // should be the flagmanager
-//	delete irrFlagNode;
-//	#endif
-//
-//	#ifdef FLAG2     // should be the flagmanager
-//	delete flag;
-//	#endif
-
-	#ifdef PYTHON
-		Py_Finalize();
-    #endif
-
-    #ifdef DSOUND
-		manager->releaseAllSources();
-		manager->shutDown();
-        cAudio::destroyAudioManager(manager);
-    #endif
-    #ifdef PHYSICS
-	clearBodies();
-	#endif
 
 
-
-	#ifdef SPARKA
-	cout << "\nSPARK FACTORY BEFORE DESTRUCTION :" << endl;
-	SPKFactory::getInstance().traceAll();
-	SPKFactory::getInstance().destroyAll();
-	cout << "\nSPARK FACTORY AFTER DESTRUCTION :" << endl;
-	SPKFactory::getInstance().traceAll();
-	device->drop();
-	#endif
-
-//	delete videoPlayer;
 #endif
 
 /*

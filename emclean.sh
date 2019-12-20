@@ -4,7 +4,10 @@
 if (( $1 == "emscripten" )) ; then
 echo $1
 
-rm ./GAME/Luna.html
+if [ -f "./GAME/Luna.html" ]; then
+	rm ./GAME/Luna.html
+fi
+
 
 fi
 

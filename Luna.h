@@ -26,6 +26,9 @@
 //#include "Net/irrNetClient.h"
 #include <irrNet.h>
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
 //#include "TerrainFactory/GrassSceneNode/CGrassPatchSceneNode.h"
 //#include "Input/Model/IrrAssimp/IrrAssimp.h"
 
@@ -48,6 +51,11 @@ char * pyloader;
 		int devloop();
 		int doLogin ( const std::wstring &username, const std::wstring &password );
 		int handleMessages();
+		void rendermain();
+		void main_loop();
+
+		   u32 then ;
+    int lastFPS;
 
 		int AddShader();
 
