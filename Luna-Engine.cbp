@@ -423,6 +423,9 @@
 					<Add directory="../EMLibs/PolyVox/library/PolyVoxUtil" />
 					<Add directory="../EMLibs/zlib-1.2.3" />
 				</Linker>
+				<ExtraCommands>
+					<Add before="./emclean.sh emscripten" />
+				</ExtraCommands>
 			</Target>
 			<Target title="emscripten-projects">
 				<Option output="./GAME/Luna.html" prefix_auto="0" extension_auto="0" />
@@ -536,6 +539,9 @@
 					<Add directory="../emscripten-projects/scripting/sqplus/lib" />
 					<Add directory="../emscripten-projects/media/SparkEngine/lib/emscripten/static" />
 				</Linker>
+				<ExtraCommands>
+					<Add before="./emclean.sh emscripten" />
+				</ExtraCommands>
 			</Target>
 			<Target title="emscripten-projects-testing">
 				<Option output="./GAME/Luna.html" prefix_auto="0" extension_auto="0" />
@@ -587,7 +593,7 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s ALLOW_MEMORY_GROWTH=1" />
-					<Add option="--preload-file GAME/RACING/racer/" />
+					<Add option="--preload-file racer/" />
 					<Add option="-s FULL_ES2=1" />
 					<Add option="-s DISABLE_EXCEPTION_CATCHING=0" />
 					<Add option="-s NO_EXIT_RUNTIME=1" />
@@ -650,6 +656,9 @@
 					<Add directory="../emscripten-projects/scripting/sqplus/lib" />
 					<Add directory="../emscripten-projects/media/SparkEngine/lib/emscripten/static" />
 				</Linker>
+				<ExtraCommands>
+					<Add before="./emclean.sh emscripten" />
+				</ExtraCommands>
 			</Target>
 		</Build>
 		<VirtualTargets>
