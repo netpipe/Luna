@@ -412,6 +412,7 @@ device->sleep(5);
 
  //       rt->render();
  #ifdef PYTHON
+ #ifdef CODEEDITOR
 		if (Python::bCodeEditor==1	){
 			Python::bCodeEditor=0;
 			windows->setVisible(true);
@@ -431,6 +432,8 @@ device->sleep(5);
 			menu->setEnabled(false);
 			windows->setVisible(false);  //! not sure why but causes crashing on startup
 		}
+		#endif //code_editor
+
 		#endif
 
 		#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
