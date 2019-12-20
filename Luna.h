@@ -53,7 +53,7 @@ char * pyloader;
 		int handleMessages();
 		void rendermain();
 		void main_loop();
-
+		bool iinit=false;
 		   u32 then ;
     int lastFPS;
 

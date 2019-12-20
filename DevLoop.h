@@ -180,40 +180,40 @@ private:
 
 };
 
-if ( !device->run() ) return 0;
-    guienv->clear();
-    smgr->clear();
+//if ( !device->run() ) return 0;
+//    guienv->clear();
+//    smgr->clear();
 	// Init the Custom GUI
 
 
-#ifdef PYTHON
-    //Python
-        Python::registerIrrDevice(this,*device,m_cInGameEvents);
-        Py_Initialize();            //Initialize Python
-        //PythonMultithreading goes here when time comes
-    //    PyEval_InitThreads() ; // nb: creates and locks the GIL
-        Python::init_irr();         //Initialize our module
-        //Py_SetProgramName(), Py_SetPythonHome(), PyEval_InitThreads(), PyEval_ReleaseLock(), and PyEval_AcquireLock()
-        //https://docs.python.org/2/c-api/init.html
-        ///todo check for empty or missing files or impliment the using command
-#ifndef __EMSCRIPTEN__
-        Python::ExecuteScript("./media/2functions-list.pys"); // this is for testing
-#else
-   Python::ExecuteScript("./functions-list.pys"); // this is for testing
-#endif
-		//Python::PyIrr_LoadVehicle(m_cVehicle);
-        //Python::PyIrr_addTerrain("1");
-
-          // pyloader = "./APP/cowsynth/main.pys";
-#ifdef __EMSCRIPTEN__
-pyloader = "./media/main.pys";
-
-		#else
-		           pyloader = "./RACING/racer/main.pys";
-#endif
-Python::bCodeEditor=3; // initial closed state
-
-#endif
+//#ifdef PYTHON
+//    //Python
+//        Python::registerIrrDevice(this,*device,m_cInGameEvents);
+//        Py_Initialize();            //Initialize Python
+//        //PythonMultithreading goes here when time comes
+//    //    PyEval_InitThreads() ; // nb: creates and locks the GIL
+//        Python::init_irr();         //Initialize our module
+//        //Py_SetProgramName(), Py_SetPythonHome(), PyEval_InitThreads(), PyEval_ReleaseLock(), and PyEval_AcquireLock()
+//        //https://docs.python.org/2/c-api/init.html
+//        ///todo check for empty or missing files or impliment the using command
+//#ifndef __EMSCRIPTEN__
+//        Python::ExecuteScript("./media/functions-list.pys"); // this is for testing
+//#else
+//   Python::ExecuteScript("./functions-list.pys"); // this is for testing
+//#endif
+//		//Python::PyIrr_LoadVehicle(m_cVehicle);
+//        //Python::PyIrr_addTerrain("1");
+//
+//          // pyloader = "./APP/cowsynth/main.pys";
+//#ifdef __EMSCRIPTEN__
+//pyloader = "./media/main.pys";
+//
+//		#else
+//		           pyloader = "./RACING/racer/main.pys";
+//#endif
+//Python::bCodeEditor=3; // initial closed state
+//
+//#endif
 
     //camera = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
 	//smgr->addCameraSceneNodeFPS();
@@ -230,25 +230,27 @@ Python::bCodeEditor=3; // initial closed state
 ///////////////////////////////////
 **/
 
-	IGUIWindow* windows = guienv->addWindow(
-		rect<s32>(100 , 100 , 800 , 800 ),
-		false, // modal?
-		L"Test window");
+//	IGUIWindow* windows = guienv->addWindow(
+//		rect<s32>(100 , 100 , 800 , 800 ),
+//		false, // modal?
+//		L"Test window");
+//
+//
+//	guienv->createSkin(EGST_WINDOWS_METALLIC);
+//	IGUISkin*  skin = guienv->getSkin();
+//	skin->setColor(EGDC_HIGH_LIGHT ,video::SColor(192,222,237,243));
+//	skin->setColor(EGDC_BUTTON_TEXT  ,video::SColor(255,30,30,30));
+//	skin->setColor(EGDC_HIGH_LIGHT_TEXT ,video::SColor(255,30,30,30));
+//	skin->setColor(EGDC_3D_DARK_SHADOW  ,video::SColor(255,56,56,56));
+//	skin->setColor(EGDC_3D_SHADOW  ,video::SColor(255,85,85,85));
+//	skin->setColor(EGDC_3D_FACE  ,video::SColor(255,170,170,170));
+//	IGUIFont*  font = guienv->getFont("media/editor/fonts/arial10.xml");
+//	if (font)
+//      skin->setFont(font);
 
-
-	guienv->createSkin(EGST_WINDOWS_METALLIC);
-	IGUISkin*  skin = guienv->getSkin();
-	skin->setColor(EGDC_HIGH_LIGHT ,video::SColor(192,222,237,243));
-	skin->setColor(EGDC_BUTTON_TEXT  ,video::SColor(255,30,30,30));
-	skin->setColor(EGDC_HIGH_LIGHT_TEXT ,video::SColor(255,30,30,30));
-	skin->setColor(EGDC_3D_DARK_SHADOW  ,video::SColor(255,56,56,56));
-	skin->setColor(EGDC_3D_SHADOW  ,video::SColor(255,85,85,85));
-	skin->setColor(EGDC_3D_FACE  ,video::SColor(255,170,170,170));
-	IGUIFont*  font = guienv->getFont("media/editor/fonts/arial10.xml");
-	if (font)
-      skin->setFont(font);
-
+//	windows->setVisible(true);
      // #define CODEEDITOR
+
 #ifdef CODEEDITOR
 	device->setWindowCaption(L"Code editor example, using IRRlicht 1.7.2");
 
@@ -345,7 +347,7 @@ Python::bCodeEditor=3; // initial closed state
 //		false, // modal?
 //		L"mhm");
 #endif
-	windows->setVisible(true);
+
 device->getCursorControl()->setVisible(true);
 //    	IrrAssimp assimp(smgr);
 //    IAnimatedMesh* mesh = assimp.getMesh("media/dwarf.x");

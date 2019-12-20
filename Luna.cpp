@@ -41,7 +41,7 @@ using namespace gui;
 
 //#include <boost/python.hpp>   #not used just for ideas maybe
 
-//#include <irrNet.h>
+#include <irrNet.h>
 
 //    net::SOutPacket rotationPacket;
     net::INetManager* netManager;
@@ -349,18 +349,52 @@ int Luna::init(){
 }
 
 int Luna::Run(){
-    if ( init() < 0 ) return -1;
+
     events.devLogin=0;
     #ifndef NDEBUG
         events.devLogin=1;
     #endif
  //   driver->setVSync(0);
         	if ( events.devLogin )  {
+					if (!iinit) {
+							  if ( init() < 0 ) return -1;
                     device->setEventReceiver ( &m_cInGameEvents );
                     devloop();
+#ifdef PYTHON
+    //Python
+        Python::registerIrrDevice(this,*device,m_cInGameEvents);
+        Py_Initialize();            //Initialize Python
+        //PythonMultithreading goes here when time comes
+    //    PyEval_InitThreads() ; // nb: creates and locks the GIL
+        Python::init_irr();         //Initialize our module
+        //Py_SetProgramName(), Py_SetPythonHome(), PyEval_InitThreads(), PyEval_ReleaseLock(), and PyEval_AcquireLock()
+        //https://docs.python.org/2/c-api/init.html
+        ///todo check for empty or missing files or impliment the using command
+       // Python::ExecuteScript("functions-list.pys"); // this is for testing
+#ifdef __EMSCRIPTEN__
+        Python::ExecuteScript("media/functions-list.pys"); // this is for testing
+#else
+   Python::ExecuteScript("functions-list.pys"); // this is for testing
+#endif
+		//Python::PyIrr_LoadVehicle(m_cVehicle);
+        //Python::PyIrr_addTerrain("1");
+
+          // pyloader = "./APP/cowsynth/main.pys";
+#ifdef __EMSCRIPTEN__
+pyloader = "./media/main.pys";
+
+		#else
+		           pyloader = "./RACING/racer/main.pys";
+#endif
+Python::bCodeEditor=3; // initial closed state
+
+#endif
+                    }
                                             	#ifdef __EMSCRIPTEN__
+                                            	iinit=1;
                                             	main_loop();
                                 #else
+                                iinit=1;
                                 main_loop();
                                 #endif
 
