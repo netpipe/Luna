@@ -99,43 +99,43 @@ using namespace gui;
 //    scene::CGrassPatchSceneNode *grass[1000];
 //scene::IWindGenerator *wind = createWindGenerator( 30.0f, 3.0f );
 
-//class ClientNetCallback : public net::INetCallback{
-//public:
-//	virtual void handlePacket(net::SInPacket& packet)
-//	{
-//	 //	u16 playerId = packet.getPlayerId();
-//	//	packet.decryptPacket("hushthisissecret");
-//	//	packet.deCompressPacket();
-//        printf("handleing the Packet\n");
-//			core::stringc str;
-//		packet >> str;
-//
-//        if ( str == "first" ){  //great were connected
-//                std::cout << "we got handshake2" << str.c_str() << "\n"<< std::endl;
-//                connected=true;
-//                	//		    	packet2 << "actPack2";
-//
-//        }
-//        if ( str == "second" ){  // this would be the login data
-//                std::cout << "hit second connected! \n" << str.c_str() << "\n"<< std::endl;
-//           //     connected=true;
-//                doit=true;
-//                	//		    	packet2 << "actPack2";
-//        }
-//        if ( str == "actPack2"){
-//               std::cout << "AUTHORIZED!!" << str.c_str() << "\n" << std::endl;
-//               login=true;
-//               connected=true;
-////  if (!login){  // if has not logged in yet then send hands
-//        }else{
-//                std::cout << "other " << str.c_str() << "\n" << std::endl;
-//	}
-//        }
-////        resetV=true;
-//        // m_cVehicle2->resetVehicle();//( core::vector3df(vec[0],vec[1],vec[2]));
-//      //  tmpvect=vector3df(vec);
-// //     std::cout << str.c_str();
-//};
+class ClientNetCallback : public net::INetCallback{
+public:
+	virtual void handlePacket(net::SInPacket& packet)
+	{
+	 //	u16 playerId = packet.getPlayerId();
+	//	packet.decryptPacket("hushthisissecret");
+	//	packet.deCompressPacket();
+        printf("handleing the Packet\n");
+			core::stringc str;
+		packet >> str;
+
+        if ( str == "first" ){  //great were connected
+                std::cout << "we got handshake2" << str.c_str() << "\n"<< std::endl;
+                connected=true;
+                	//		    	packet2 << "actPack2";
+
+        }
+        if ( str == "second" ){  // this would be the login data
+                std::cout << "hit second connected! \n" << str.c_str() << "\n"<< std::endl;
+           //     connected=true;
+                doit=true;
+                	//		    	packet2 << "actPack2";
+        }
+        if ( str == "actPack2"){
+               std::cout << "AUTHORIZED!!" << str.c_str() << "\n" << std::endl;
+               login=true;
+               connected=true;
+//  if (!login){  // if has not logged in yet then send hands
+        }else{
+                std::cout << "other " << str.c_str() << "\n" << std::endl;
+	}
+        }
+//        resetV=true;
+        // m_cVehicle2->resetVehicle();//( core::vector3df(vec[0],vec[1],vec[2]));
+      //  tmpvect=vector3df(vec);
+ //     std::cout << str.c_str();
+};
 
 //ClientNetCallback* clientCallback;
 int icount=0;
@@ -359,6 +359,7 @@ int Luna::Run(){
                     device->setEventReceiver ( &m_cInGameEvents );
                     devloop();
                                             	#ifdef __EMSCRIPTEN__
+                                            	main_loop();
                                 #else
                                 main_loop();
                                 #endif
