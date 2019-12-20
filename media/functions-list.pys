@@ -1,0 +1,237 @@
+#
+#				LUNA GAME ENGINE FUNCTION TEST PYTHON SCRIPT
+#if your having trouble importing modules into the engine from define pyreturn as none
+
+# shall start with a mini golf and racing game script possibly flight sim and skidoo racer.
+
+#todo object builder build / texture - load objects/functions into a manager. watch / tv / common scripted objects / with cull checking  for placement in levels.
+#//! typedef btHashKey<int> btHashInt;  #put here temporarly was from recent bullet upgrade
+
+
+import irr
+import physics
+import extras
+import scene
+import input
+import image
+import net
+import gui
+
+init = 1  #start as true so that this loop is only ran once
+
+#launcher GUI
+
+ #iaxe = image.iadd("./APP/cowsynth/logo.png",0,0,scene.screen(0),scene.screen(1),0,0,960,540)
+ #image.idraw(iaxe)
+ #image.iscale(iaxe,0.5,0.5)
+
+ # window = gui.window("LauncherGUI",100,100,420,420)
+ # gui.listbox(window,20,20,120,120)
+ #gui.button(window,"launch",10,10,120,120)
+
+
+#scene.animator # circle line bezier ,array for waypoints
+#camera = scene.addCamera(2,1,0,1) # 1 regular , 2 FPS , 3 other types, 4 rpg, << todo types  / active / vector
+#Light1 = scene.Light(10,10,50,1,"111111") # type , vector, color
+
+# irr.formationdemo(1)
+# irr.omaredemo(1)               #billboard clouds
+
+
+#physics.opensteer(1)
+#irr.occlusionTest(1)            #broken #impliment nodemanager here for python occlusion someway to turn on and off
+#irr.image2d(1)                   #crashes without player being added first ? goes to background try to bring it as an overlay
+#irr.addHUD("data/HUD.xml")
+#iaxe = image.iadd()
+#image.idraw(iaxe)
+#irr.bullet(1)                      #its actually a recast test at the moment
+
+
+#scene.soundman(1,0,1,1)                # has to be loaded last or makes black screen
+#anim = irr.addAdnimator(1,"aha.b3d") #type line,circle attach to mesh
+
+#player = scene.addPlayer(1)
+#timer1 = scene.Timers()
+#print timer1.secondsLeft();
+#print timer1.get.seconds();
+#print timer1.day.seconds();
+
+#trigger list for object placements
+#golf holes and score manager loop
+#golfball = scene.addSphereNode("data/textures/material/marble1_256.png",0,20,5,5,5) #size,pos,texture
+#irr.setPosition(golfball,5,5,5)
+
+#gui.chatbox(1)                 # not really sure how to impliment fully yet needs some sort of server
+#scene.irc(1)
+#physics.bulletBlend(1)    #has to be loaded before the car if you want it...  fixed
+                            #needs to pass the sounds to the main loop or blackscreen... odd
+#scene.atmosphere(1)              # set time of day / moonphase (i broke it)
+#scene.bitcloud(1)
+#scene.realCloud(1)
+#extras.skydome("data/textures/skydomes/skydome_1_2048x512.jpg")
+#scene.addMesh("./media/dwarf.x")
+
+#dwarf = scene.addModel("media/dwarf.x","media/dwarf.jpg",0)
+#ninja = scene.addModel("media/ninja.b3d","media/nskinbl.jpg",0)
+#print dwarf
+#print ninja
+#scene.setPosition(dwarf , 100,100,1200)
+#scene.setPosition(ninja ,0, 10,10,10)
+#scene.loadModel("media/ShadRoom.b3d","texture",0,0)
+#terrain = scene.addTerrain(4,-3,5,0) # load last to make the physics work FIX  // possibly a load terrain xml function
+#track1 = scene.loadTrack('huge.3ds',0,0,0)  # trackname , timeofday , lighting , track slot/stages
+#input.gamepad()
+#input.wii('wii',1)
+#scene.addTree(terrain,1,1,1)
+#HUD = scene.HUD(add,xml)
+#HUDBar1 = HUD(HUD,add,value) #position
+#HUDBar1.(set,value)
+
+#scene.media("add","extra/reaction1.pk3")
+#scene.media("add","extra/rq3-upgrade-01.pk3")
+#scene.media("add","extra/rq3-upgrade-02.pk3")
+#scene.media("add","extra/rq3-base-01.pk3")
+#scene.media("add","extra/rq3-base-maps-01.pk3")
+#scene.media("add","media/quatrix.pk3")
+#track1 = scene.loadTrack('maps/quatrix.bsp',0,0,0)  # trackname , timeofday , lighting , track slot/stages
+#scene.addAMesh("media/maps/quatrix.bsp")  #works needs collision and physics still
+#scene.addAMesh("extra/maps/urban.bsp")  #works needs collision and physics still
+
+#these bsp loading attempts dont work yet
+#scene.loadModel("media/maps/quatrix.bsp") # assimp
+#scene.addAMesh("data/ge_archives.bsp")
+#scene.addModel("media/maps/quatrix.bsp","media/dwarf.jpg",0)
+
+#dwarf = scene.addModel("maps/quatrix.bsp","media/dwarf.jpg","b3d",0)
+
+
+#scene.addwater(1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
+#irr.addTree(terrain,5,5,5)
+#physics.ragman(1) # position , size , model, animation
+#extras.codeeditor()     #get script loading working and see about getting
+                            #reset working to reloadscripts ingame.
+
+#scene.lightning(1)  #try and get this mounted to a vehicle or shoot it from camera.
+#scene.beam(1)
+#scene.flag1("media/Flags/agnostechdemo1200912132.png",10,100,10)
+#scene.flag2("media/Flags/agnostechdemo1200912132.png",10,100,10)
+#scene.compass(1)
+
+#scene.recast("./media/dungeon.obj");
+
+#irr.tesselate(1) # deltatime needs work if its the only thing rendering then nothing happens.
+#       put these into the python
+#    /*! @param img       - The path to the image.
+#        @param startFr   - Vector defining the left(x1)/bottom(y1)/front(z1) position of the cube within the parts are being randomly positioned.
+#        @param startTo   - Vector defining the right(x2)/top(y2)/behind(z2) position of the cube with x2 > x1, y2 > y1, z2 > z1.
+#        @param targetPos - The bottom left position of the final compound image.
+#        @param speed     - Amount of units per seconds a part is moving to its target position.
+#        @param maxTes    - The maximum number of parts that should be used to split the image. If resolutionX * resolutionY < maxTes then a part represents more than one pixel.
+#        @param colChange - How quickly a part can correct its color to reach the final color, defined in 'one unit per RGB' per second.
+#        @param type      - What the parts should be made of, default is using a Billboard.
+#        @param dim       - The quadratic dimension of the billboard or the radius of the sphere. See parameter type.
+#        @param gap       - The gap between parts.
+#    */
+
+#physics.addHelicopter("data/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
+
+#need a way to assign camera target in py
+
+#extras.blindboids(1,0,1,1)
+#irr.decals(1)
+
+#physics.fpsweapon(1) #FPS not working yet
+#extras.lensFlare(1) # might not see without atmosphere enabled check pymain
+#scene.SPARK(1)
+
+
+#video1=scene.addvideo("./media/bunny.ogg",10.0,10.0,10.0)	# has to be loaded after soundman or crash
+#scene.setPosition(video1,0,11,100,22)
+
+#irr.draw_text("Gavin Robinson",20,40,150,70)   #known to cause crashing
+cube_id = scene.add_cube(0,12.0,0.0,0.0,25.0,0.0,    0.0,0.0,1.0,1.0,1.0)
+tex_id = image.load_texture("media/crate.png")
+#print tex_id #print cube_id #texture cube with video todo
+image.set_texture(cube_id,tex_id)
+#scene.setPosition(cube_id,50,355,350)
+scene.setPosition(cube_id,0,101,10,22)
+#irr.set_texture( irr.add_cube(1,12.0,0.0,0.0,25.0,0.0,    0.0,0.0,1.0,1.0,1.0),irr.load_texture("media/crate.png"))
+
+
+#billboard = billboardfunction(1)
+
+
+#must load car before track for now FIX ?
+#simplify this by specitying car types
+
+#irr.addCar( 1.0, 1.0, 			# scaleT,scaleE 	/ff
+#    1.0, 1.0, 1.0, 				# car scale vector 	/fff
+#	1.5, 1.5, 2.0,				# model scale 	/fff
+#    1.3, 0.4, 2.0,  			    # vehicle position  	/fff
+#    500, 100.0, 2200, 20.0, 	# weight, maxBreakingForce, maxEngineForce,SpeedINC /ifff
+#    0,							    #0=2RWD  3=2FWD  1=4wd  2=4wd+4wsteer 4=Trike 5=Bike /i
+#    -0.03, 6.0, 0.0, 0.7,
+#		#connectionHeight, suspensionStiffness ,
+#		#suspensionDamping, suspensionCompression /ffff
+#    -0.01, 100.0, 0.8, #rollInfluence, wheelFriction, wheelRadius,
+#	 0.6 ,0.1 ,0.45,	  #wheelWidth, steeringIncrement, steeringClamp /ffffff
+#    2.0, 0.3, 1.0    )  # cube_half_extents,wheelspacingx,wheelscale /fff
+
+#31 variables so far
+#scene.drawtext("cool bean tree",1,1,1,1)
+model = "data/models/vehicles/oldChevy-Truck.3ds"
+texture = "data/models/vehicles/oldChevy.bmp"
+
+#car1 = physics.addCar(model,texture,1.0,1.0,1.0,1.0,1.0,  1.5,1.5,2.0, 1.3,0.4,2.0,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
+#car2 = irr.addCar( 1.0,1.0, 1.0,1.0,1.0,  1.5,1.5,2.0, 1.3,0.4,2.0,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
+#ideally would be nice to be able to set car texture / model on the fly
+#setTexture(car1, "texture")
+#irr.exit()
+
+
+#scene.addwater("none",1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
+#gui.codeeditor(1) #shader editor #cpu limiter incase of bad code
+#window = gui.window("Test Winda",100 , 100 , 500 , 500 )
+#gui.editbox(window,80,80,250,235)
+#scene.postprocess()
+#net.irc()#notworking yet
+#scene.grass("./data/vegData/output.grs")
+
+#if (0) : # can only be client or server
+# if (1) :
+#  netman = net.connect()
+#  net.update(netman)
+#  net.send(netman,"shit yeah")
+#   net.update(netman)
+# else
+#netserver = net.server()
+#net.update(netserver)
+#scene.sleep(1000)
+#scene.flare(1)
+#                      NotWorking
+
+# healthbar=gui.bar(0,0,20,40,200,60)#create
+#gui.bar(healthbar,1,20,40,200,60) #render does not draw onanimate it
+
+#todo
+#irr.setEventRec()
+#wallClock = irr.addClock()
+#golfball.thrust(3,3,3)  #vector for  animated path with impulse factors   like newtons of force etc.  funphysics or bullet options maybe a unified physics system.
+# rb = irr.ribbonscenenode  -> attach to node with enable and disable
+#irr.attachCamera(camera,camera2)
+#irr.viewportAdd(rect,camera,visible) #viewportadd
+#textureManager - material handeling system / bumpmapping / shaders
+#/home/Dev/agnostic-codeg/irrdemos-code-modified/Demos/WIPs/Done/flight
+#/home/Dev/agnostic-codeg/irrdemos-code-modified/Demos/WIPs/Done/VIEWPORTS
+#path animatior
+
+
+#input.mouseVisible()
+#scene.screen(1)
+#irr.addWayPoint() to path
+
+
+
+
+
+#End of FILE
