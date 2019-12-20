@@ -37,6 +37,8 @@ using namespace gui;
 
 #include "GUI/CodeEditor/CGUIEditBoxIRB.h"
 
+#include <fcntl.h>
+
 #define PostProcess
 
 //#include <boost/python.hpp>   #not used just for ideas maybe
@@ -361,6 +363,23 @@ int Luna::Run(){
                     device->setEventReceiver ( &m_cInGameEvents );
                     devloop();
 #ifdef PYTHON
+#ifdef __EMSCRIPTEN__
+	TAR* tar;
+	if (tar_open(&tar, "./media/pydata.tar", NULL, O_RDONLY, 0, 0) != 0) {
+		fprintf(stderr, "Error: failed to open pydata.tar\n");
+		exit(1);
+	}
+	if (tar_extract_all(tar, (char*) "/") != 0) {
+		fprintf(stderr, "Error: failed to extract pydata.tar\n");
+		exit(1);
+	}
+	tar_close(tar);
+
+	//Py_Initialize(); //Initialize Python
+	setenv("PYTHONHOME", "/", 0);
+
+	#endif
+
     //Python
         Python::registerIrrDevice(this,*device,m_cInGameEvents);
         Py_Initialize();            //Initialize Python
@@ -372,9 +391,9 @@ int Luna::Run(){
         ///todo check for empty or missing files or impliment the using command
        // Python::ExecuteScript("functions-list.pys"); // this is for testing
 #ifdef __EMSCRIPTEN__
-        Python::ExecuteScript("media/functions-list.pys"); // this is for testing
+        Python::ExecuteScript("./media/functions-list.pys"); // this is for testing
 #else
-   Python::ExecuteScript("functions-list.pys"); // this is for testing
+   Python::ExecuteScript("./functions-list.pys"); // this is for testing
 #endif
 		//Python::PyIrr_LoadVehicle(m_cVehicle);
         //Python::PyIrr_addTerrain("1");

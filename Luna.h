@@ -11,9 +11,9 @@
 #include "Events/Events.h"
 #include "Events/InGameEventReceiver.h"
 #include "Scene/customNodes.h"
-
+#ifdef DSOUND
 #include <cAudio.h>
-
+#endif
 
 #include "entities/player.h"
 //#include "Encryption/Blowfish.h"
@@ -28,6 +28,7 @@
 
 #ifdef __EMSCRIPTEN__
 #include <emscripten.h>
+#include <libtar.h>
 #endif
 //#include "TerrainFactory/GrassSceneNode/CGrassPatchSceneNode.h"
 //#include "Input/Model/IrrAssimp/IrrAssimp.h"
@@ -70,9 +71,10 @@ char * pyloader;
 		//pthread_t soundThread
 
         //AUDIO--------------------------
-        cAudio::IAudioManager* manager;
-        cAudio::IAudioSource* mysound;
-
+        #ifdef DSOUND
+			cAudio::IAudioManager* manager;
+			cAudio::IAudioSource* mysound;
+		#endif
 		// Encryption--------------------
             //Encryption::Blowfish enc;
 		// Network related

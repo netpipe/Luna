@@ -33,8 +33,9 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
        return Py_BuildValue("l",mysound);
         break;
     }
-    #endif
+
 return Py_BuildValue("l",managerID);
+  #endif
 }// make add sound method
 
 PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active camera

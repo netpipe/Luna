@@ -22,10 +22,10 @@ namespace Python {
 
   //  cAudio::IAudioManager* manager;
   //  cAudio::IAudioSource* mysound;
-
+#ifdef DSOUND
          cAudio::IAudioManager* managerID = cAudio::createAudioManager(true);  // broken has to be done from main
         cAudio::IAudioSource* mysound;
-
+#endif
 
     ICameraSceneNode* camera;  //maybe put in vector for a cameraManager or do it in python
 
