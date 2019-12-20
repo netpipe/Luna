@@ -79,9 +79,9 @@ if (init) :
 #MAIN LOOP
 
 
-image.irotate(iaxe,i)
-i+=1
-image.idraw(iaxe)
+#image.irotate(iaxe,i)
+#i+=1
+#image.idraw(iaxe)
 
 #physics.VehicleParams(car1,8,0,0,0,0)
 #physics.VehicleParams(car2,8,0,0,0,0)

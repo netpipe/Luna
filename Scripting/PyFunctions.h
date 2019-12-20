@@ -2,7 +2,7 @@
 ///Stuff Relivent to Initialization and management of scene / sound and managers.
 // there are includes at bottom of file for scripting too.
 
-#define DSOUND
+//#define DSOUND
 #include "../Luna.h"
 #include <cstdlib>
     #define MAX_DECALS 50
@@ -41,6 +41,7 @@
 //    #define VIDEO
     #define PostProcess
 
+#ifdef PostProcess
 // Include the headers for post processing
 #include "../Scene/PostProcessing/CRendererPostProc.h"
 #include "../Scene/PostProcessing/CEffectPostProc.h"
@@ -48,6 +49,7 @@
 #include "../Scene/PostProcessing/CSplitPostProc.h"
 #include "../Scene/PostProcessing/CLensFlarePostProc.h"
 #include "../Scene/PostProcessing/CWaterPostProc.h"
+#endif
 
 #include "../Scene/CBeamSceneNode.h"
 #include "../Scene/BoltSceneNode.h"
@@ -60,7 +62,9 @@
 #include "../GUI/CHUD.h"
 //#include "../GUI/CodeEditor/CGUIEditBoxIRB.h"
 //CGUIEditBoxIRB * codeEditor;
-#include "../Scene/tesselatedImage/tesselatedImage.h""
+#ifdef TESSIMAGE
+#include "../Scene/tesselatedImage/tesselatedImage.h"
+#endif
 #include "../entities/chopper_control.h"
 #include "../TerrainFactory/WaterNode/CReflectedWater.h"
 #include "../TerrainFactory/water/RealisticWater.h"
