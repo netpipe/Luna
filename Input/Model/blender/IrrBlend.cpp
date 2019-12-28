@@ -1,3 +1,4 @@
+#ifdef BULLETBLEND
 
 
 
@@ -548,3 +549,4 @@ void	IrrlichtBulletBlendReader::convertLogicBricks()
 
 	}
 }
+#endif

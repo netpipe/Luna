@@ -1,3 +1,5 @@
+
+#ifdef BULLETBLEND
 /* Copyright (C) 2006 Charlie C
 *
 * This software is provided 'as-is', without any express or implied
@@ -32,3 +34,4 @@ extern void PrintLog(std::string str);
 }
 
 #endif//__LOG_H__
+#endif

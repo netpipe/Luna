@@ -1,3 +1,4 @@
+#ifdef FPS
 #ifndef _RIFLE_H
 #define _RIFLE_H 1
 
@@ -38,4 +39,5 @@ class Rifle
 		Physics *m_cPhysics;
 };
 
+#endif
 #endif

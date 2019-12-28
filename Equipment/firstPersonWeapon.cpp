@@ -1,3 +1,4 @@
+#ifdef FPS
 /*******************************************************************************
  Copyright (C) 2009 McCauley404@gmail.com
  First Person Weapon - zlib/BSD code by kat104
@@ -323,6 +324,6 @@ u8 firstPersonWeapon::getAmmo()
 }
 
 
-
+#endif
 
 

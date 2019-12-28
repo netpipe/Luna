@@ -1,3 +1,4 @@
+#ifdef OCCLUSION
 #include "Renderer.h"
 
 /*----------------------------------------------------------------------------*/
@@ -308,4 +309,4 @@ void Renderer22::updateCulling()
 {
  cull->update(cam->getPosition());
 }
-
+#endif

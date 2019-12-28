@@ -1,3 +1,4 @@
+#ifdef BULLETBLEND
 
 #include "IrrBlendNew.h"
 #include "BulletIrrlichtUtils.h"
@@ -474,3 +475,4 @@ void	IrrBlendNew::addLight(Blender::Object* tmpObject)
 {
 
 }
+#endif

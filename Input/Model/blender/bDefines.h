@@ -1,3 +1,4 @@
+#ifdef BULLETBLEND
 /* Copyright (C) 2006 Charlie C
 *
 * This software is provided 'as-is', without any express or implied
@@ -138,3 +139,4 @@
     s_i=p_i[3]; p_i[3]=p_i[4]; p_i[4]=s_i; }
 
 #endif//__B_DEFINES_H__
+#endif

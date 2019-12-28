@@ -1,3 +1,4 @@
+#ifdef BULLETBLEND
 
 
 #ifndef __IRR_BLEND_NEW_H
@@ -30,15 +31,15 @@ public:
 	IrrBlendNew(irr::IrrlichtDevice* device,irr::scene::ISceneManager* irrlichtSceneManager, btDiscreteDynamicsWorld* bulletWorld, btLogicManager* logicManager);
 
 	virtual ~IrrBlendNew();
-	
+
 	virtual	void	addCamera(Blender::Object* tmpObject);
-	
+
 	virtual	void	addLight(Blender::Object* tmpObject);
 
 	virtual void* createGraphicsObject(Blender::Object* tmpObject, class btCollisionObject* bulletObject);
 
 	irr::scene::ISceneNode*	createMeshNode(irr::video::S3DVertex* vertices, int numVertices, unsigned short int* indices, int numIndices,int numTriangles,class btCollisionObject* bulletObject,Blender::Object* tmpObject);
-	
+
 	virtual	void	createParentChildHierarchy();
 
 	virtual	void	convertLogicBricks();
@@ -47,3 +48,4 @@ public:
 
 
 #endif //__IRR_BLEND_NEW_H
+#endif

@@ -1,3 +1,4 @@
+#ifdef BULLETBLEND
 
 #include "BulletIrrlichtUtils.h"
 #include <irrlicht.h>
@@ -93,3 +94,4 @@ void	IrrMotionState::setWorldTransform(const btTransform& centerOfMassWorldTrans
 		m_irrNodes[i]->setRotation(irr::core::vector3df(EulerRotation[0], EulerRotation[1], EulerRotation[2]));
 	}
 }
+#endif

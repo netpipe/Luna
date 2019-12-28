@@ -1,3 +1,4 @@
+#ifdef BULLETBLEND
 #ifndef BLEND_TYPE_H
 #define BLEND_TYPE_H
 #include "abs-file.h"
@@ -15,4 +16,5 @@ extern "C" {
 }
 #endif
 
+#endif
 #endif

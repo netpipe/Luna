@@ -1,3 +1,4 @@
+#ifdef BULLETBLEND
 
 
 #ifndef __BULLET_BLEND_NEW_H
@@ -33,7 +34,7 @@ protected:
 	btCollisionObject* createBulletObject(Blender::Object* object);
 
 	btCollisionObject* findCollisionObject(Blender::Object* ob);
-	
+
 public:
 
 	BulletBlendReaderNew(class btDynamicsWorld* destinationWorld);
@@ -50,7 +51,7 @@ public:
 	virtual	void	convertLogicBricks() = 0;
 
 	virtual	void	createParentChildHierarchy()=0;
-	
+
 	//after each object is converter, including collision object, create a graphics object (and bind them)
 	virtual void*	createGraphicsObject(Blender::Object* tmpObject, class btCollisionObject* bulletObject)=0;
 
@@ -61,3 +62,4 @@ public:
 };
 
 #endif //__BULLET_BLEND_NEW_H
+#endif

@@ -1,3 +1,5 @@
+
+#ifdef BULLETBLEND
 /* Copyright (C) 2006 Charlie C
 *
 * This software is provided 'as-is', without any express or implied
@@ -69,7 +71,7 @@ namespace bParse {
 	public:
 		// buffer offset util
 		static int getNextBlock(bChunkInd *dataChunk,  char *dataPtr, const int flags);
-		
+
 		// file chunk offset
 		static int getOffset(int flags);
 
@@ -86,3 +88,4 @@ namespace bParse {
 }
 
 #endif//__BCHUNK_H__
+#endif

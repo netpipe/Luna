@@ -1,3 +1,5 @@
+
+#ifdef BULLETBLEND
 /*
 GameKit
 Copyright (c) 2009 Erwin Coumans  http://gamekit.googlecode.com
@@ -285,6 +287,6 @@ public:
 	virtual	void	addLight(_bObj* tmpObject)=0;
 
 };
-
+#endif
 
 #endif //BULLET_BLEND_READER_H

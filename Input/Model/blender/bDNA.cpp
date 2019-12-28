@@ -1,3 +1,4 @@
+#ifdef BULLETBLEND
 /* Copyright (C) 2006 Charlie C
 *
 * This software is provided 'as-is', without any express or implied
@@ -213,9 +214,9 @@ void bDNA::initCmpFlags(bDNA *memDNA)
 		if (oldLookup < memDNA->mStructs.size())
 		{
 			short *curStruct = memDNA->mStructs[oldLookup];
-#endif	
-	
-		
+#endif
+
+
 
 			// rebuild...
 			mCMPFlags[i] = FDF_STRUCT_NEQU;
@@ -395,7 +396,7 @@ void bDNA::init(char *data, int len, bool swap)
 		cp++;
 	}
 
-	
+
 	{
 		nr= (long)cp;
 		long mask=3;
@@ -557,7 +558,7 @@ int bDNA::getElementSize(short type, short name)
 	int ret =0;
 	int mult=1;
 
-	
+
 	if (nameInfo.m_isPointer)
 	//if (el[0] == '*' || el[1] == '*')
 	{
@@ -603,7 +604,7 @@ void bDNA::dumpTypeDefinitions()
 	int i;
 
 	int numTypes = mTypes.size();
-	
+
 	for (i=0;i<numTypes;i++)
 	{
 
@@ -623,7 +624,7 @@ void bDNA::dumpTypeDefinitions()
 		short* newStruct = mStructs[oldLookup];
 		char* typeName = mTypes[newStruct[0]];
 		printf("%3d: %s ",i,typeName);
-		
+
 		//char *name = mNames[oldStruct[1]];
 		int len = oldStruct[1];
 		printf(" (%d fields) ",len);
@@ -642,7 +643,7 @@ void bDNA::dumpTypeDefinitions()
 		printf("\n\n");
 
 	}
-	
+
 
 
 #if 0
@@ -678,7 +679,7 @@ void bDNA::dumpTypeDefinitions()
 
 
 
-
+#endif
 //eof
 
 

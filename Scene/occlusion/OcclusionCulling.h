@@ -1,3 +1,4 @@
+#ifdef OCCLUSION
 #ifndef BXPCULLING
 #define BXPCULLING
 
@@ -8,7 +9,7 @@
     *  create BXP file easily
     *  add light info into bxp, as well as fog, entity list
     *  with LOD should be optimal
-   
+
 */
 
 //#include <iostream>
@@ -86,4 +87,5 @@ public:
    void writeBXPfile(char* file);
 };
 
+#endif
 #endif

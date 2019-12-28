@@ -1,3 +1,4 @@
+#ifdef BULLETBLEND
 /* Copyright (C) 2006 Charlie C
 *
 * This software is provided 'as-is', without any express or implied
@@ -40,7 +41,7 @@ namespace bParse {
 	class bFile
 	{
 	protected:
-		
+
 		char				m_headerString[7];
 
 		bool				mOwnsBuffer;
@@ -54,20 +55,20 @@ namespace bParse {
 		bDNA*				mMemoryDNA;
 
 		std::vector<char*>	m_pointerFixupArray;
-		
+
 		std::vector<char*>	m_listBaseFixupArray;
 
 
-		// 
-	
+		//
+
 		bPtrMap				mDataPointers;
 
 
-		
+
 		int					mFlags;
 
 		virtual	void parseHeader();
-		
+
 		virtual	void parseData() = 0;
 
 		virtual void resolvePointers() = 0;
@@ -90,7 +91,7 @@ namespace bParse {
 
 	public:
 		bFile(const char *filename, const char headerString[7]);
-		
+
 		//todo: make memoryBuffer const char
 		//bFile( const char *memoryBuffer, int len);
 		bFile( char *memoryBuffer, int len, const char headerString[7]);
@@ -111,9 +112,10 @@ namespace bParse {
 		bool ok();
 
 		void parse(bool verboseDumpAllTypes);
-		
+
 	};
 }
 
 
 #endif//__BFILE_H__
+#endif

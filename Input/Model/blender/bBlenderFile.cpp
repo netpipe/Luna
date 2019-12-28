@@ -1,4 +1,4 @@
-
+#ifdef BULLETBLEND
 #include "bBlenderFile.h"
 #include "bMain.h"
 #include "bDefines.h"
@@ -57,7 +57,7 @@ void bBlenderFile::parseData()
 
 	while (dataChunk.code != DNA1)
 	{
-		
+
 
 
 
@@ -121,7 +121,7 @@ void bBlenderFile::resolvePointersMismatch()
 //			printf("listbase not found %x\n",cur);
 		}
 	}
-	
+
 	for (i=0;i<	m_pointerFixupArray.size();i++)
 	{
 		char* cur = m_pointerFixupArray.at(i);
@@ -150,7 +150,7 @@ void bBlenderFile::resolvePointersStruct(bChunkInd& dataChunk)
 	for (int block=0; block<dataChunk.nr; block++)
 	{
 		oldStruct = mFileDNA->getStruct(dataChunk.dna_nr);
-		
+
 		int elementLength = oldStruct[1];
 		oldStruct+=2;
 
@@ -214,9 +214,9 @@ void bBlenderFile::resolvePointers()
 
 	if (1) //mFlags & (FD_BITS_VARIES | FD_VERSION_VARIES))
 	{
-		resolvePointersMismatch();	
+		resolvePointersMismatch();
 	}
-	
+
 	{
 		for (int i=0;i<mMain->m_chunks.size();i++)
 		{
@@ -227,11 +227,11 @@ void bBlenderFile::resolvePointers()
 				//dataChunk.len
 				short int* oldStruct = mFileDNA->getStruct(dataChunk.dna_nr);
 				char* oldType = mFileDNA->getType(oldStruct[0]);
-				
+
 				//printf("------------------------------------------");
 				//printf("Struct %s\n",oldType);
 
-				
+
 
 				//skip certain structures
 		///Warning: certain structures might need to be skipped, such as CustomDataLayer, Link etc. Not skipping them causes crashes.
@@ -256,6 +256,8 @@ void bBlenderFile::resolvePointers()
 			}
 		}
 	}
-	
+
 	printf("resolvePointers end\n");
 }
+
+#endif

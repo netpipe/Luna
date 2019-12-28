@@ -1,3 +1,4 @@
+#ifdef BULLETBLEND
 /* Copyright (C) 2006 Charlie C
 *
 * This software is provided 'as-is', without any express or implied
@@ -82,7 +83,7 @@ namespace bParse {
 
 		void	dumpTypeDefinitions();
 
-	
+
 	private:
 		enum FileDNAFlags
 		{
@@ -111,3 +112,4 @@ namespace bParse {
 
 
 #endif//__BDNA_H__
+#endif

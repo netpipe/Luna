@@ -1,4 +1,4 @@
-
+#ifdef ATMOSPHERE
 /*
 Autor: Jonas Abramavicius aka Pazystamo
 Unfinished version
@@ -686,3 +686,4 @@ void setAmbientLight2(video::SColor color)
   a->drop();
 }
 };
+#endif

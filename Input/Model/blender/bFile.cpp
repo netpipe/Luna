@@ -1,3 +1,4 @@
+#ifdef BULLETBLEND
 /* Copyright (C) 2006 Charlie C
 *
 * This software is provided 'as-is', without any express or implied
@@ -62,7 +63,7 @@ bFile::bFile(const char *filename, const char headerString[7])
 
 		//
 		parseHeader();
-		
+
 	}
 }
 
@@ -83,9 +84,9 @@ bFile::bFile( char *memoryBuffer, int len, const char headerString[7])
 	}
 	mFileBuffer = memoryBuffer;
 	mFileLen = len;
-	
+
 	parseHeader();
-	
+
 }
 
 
@@ -213,12 +214,12 @@ void bFile::parse(bool verboseDumpAllTypes)
 	}
 
 	mFileDNA->initCmpFlags(mMemoryDNA);
-	
+
 	parseData();
-	
+
 	resolvePointers();
 
-	
+
 	printf("numAllocs = %d\n",numallocs);
 }
 
@@ -246,7 +247,7 @@ char* bFile::readStruct(char *head, bChunkInd&  dataChunk)
 	if (mFlags & FD_ENDIAN_SWAP)
 		swap(head, dataChunk);
 
-	
+
 
 	if (!mFileDNA->flagEqual(dataChunk.dna_nr))
 	{
@@ -499,17 +500,17 @@ void bFile::getMatchingFileDNA(short* dna_addr, bString lookupName,  bString loo
 		bString name = mFileDNA->getName(dna_addr[1]);
 
 		int eleLen = mFileDNA->getElementSize(dna_addr[0], dna_addr[1]);
-		
+
 
 		if (name == lookupName)
 		{
 			//int arrayLenold = mFileDNA->getArraySize((char*)name.c_str());
 			int arrayLen = mFileDNA->getArraySizeNew(dna_addr[1]);
 			//assert(arrayLenold == arrayLen);
-			
+
 			if (name[0] == '*')
 			{
-				
+
 
 				// cast pointers
 				int ptrFile = mFileDNA->getPointerSize();
@@ -620,5 +621,5 @@ void bFile::swapStruct(int dna_nr, char *data)
 		buf+=size;
 	}
 }
-
+#endif
 //eof

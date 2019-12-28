@@ -1,3 +1,4 @@
+#ifdef BULLETBLEND
 /* Copyright (C) 2006 Charlie C
 *
 * This software is provided 'as-is', without any express or implied
@@ -30,7 +31,7 @@ using namespace bParse;
 bMain::bMain(bBlenderFile *filePtr, const char *baseName, int fileVersion)
 	:	mFP(filePtr),
 		mVersion(fileVersion),
-		mName(baseName)	
+		mName(baseName)
 {
 	mData[ID_SCE]  = bListBasePtr();
 	mData[ID_LI]   = bListBasePtr();
@@ -408,13 +409,13 @@ void	bMain::dumpChunks(bParse::bDNA* dna)
 		bChunkInd& dataChunk = m_chunks[i];
 		char* codeptr = (char*)&dataChunk.code;
 		char codestr[5] = {codeptr[0],codeptr[1],codeptr[2],codeptr[3],0};
-		
+
 		short* newStruct = dna->getStruct(dataChunk.dna_nr);
 		char* typeName = dna->getType(newStruct[0]);
 		printf("%3d: %s  ",i,typeName);
 
 		printf("code=%s  ",codestr);
-		
+
 		printf("ptr=%p  ",dataChunk.oldPtr);
 		printf("len=%d  ",dataChunk.len);
 		printf("nr=%d  ",dataChunk.nr);
@@ -424,8 +425,8 @@ void	bMain::dumpChunks(bParse::bDNA* dna)
 		}
 		printf("\n");
 
-		
-		
+
+
 
 	}
 
@@ -434,7 +435,7 @@ void	bMain::dumpChunks(bParse::bDNA* dna)
 	ifd.success = 0;
 	ifd.IDname = NULL;
 	ifd.just_print_it = 1;
-	for (i=0; i<bf->m_blocks.size(); ++i) 
+	for (i=0; i<bf->m_blocks.size(); ++i)
 	{
 		BlendBlock* bb = bf->m_blocks[i];
 		printf("tag='%s'\tptr=%p\ttype=%s\t[%4d]",		bb->tag, bb,bf->types[bb->type_index].name,bb->m_array_entries_.size());
@@ -445,5 +446,5 @@ void	bMain::dumpChunks(bParse::bDNA* dna)
 
 }
 
-
+#endif
 //eof

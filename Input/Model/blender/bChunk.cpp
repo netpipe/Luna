@@ -1,3 +1,4 @@
+#ifdef BULLETBLEND
 /* Copyright (C) 2006 Charlie C
 *
 * This software is provided 'as-is', without any express or implied
@@ -188,5 +189,5 @@ int ChunkUtils::getNextBlock(bChunkInd *dataChunk,  char *dataPtr, const int fla
 }
 
 
-
+#endif
 //eof

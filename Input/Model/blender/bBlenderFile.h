@@ -1,4 +1,4 @@
-
+#ifdef BULLETBLEND
 #ifndef B_BLENDER_FILE_H
 #define B_BLENDER_FILE_H
 
@@ -19,7 +19,7 @@ namespace bParse {
 		bPtrMap				mLibPointers;
 
 		void resolvePointersMismatch();
-	
+
 		void resolvePointersStruct(bChunkInd& dataChunk);
 
 	public:
@@ -52,3 +52,4 @@ namespace bParse {
 };
 
 #endif //B_BLENDER_FILE_H
+#endif

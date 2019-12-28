@@ -1,3 +1,4 @@
+#ifdef BULLETBLEND
 /*
 GameKit
 Copyright (c) 2009 Erwin Coumans  http://gamekit.googlecode.com
@@ -3466,3 +3467,4 @@ blend_dump_blocks(BlendFile* bf)
 		printf("\n");
 	}
 }
+#endif

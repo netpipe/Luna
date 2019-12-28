@@ -1,3 +1,5 @@
+#ifdef BULLETBLEND
+
 #include "IrrBlendNew.h"
 #include "BulletIrrlichtUtils.h"
 #include "btBulletDynamicsCommon.h"
@@ -561,3 +563,6 @@ void	BulletBlendReaderNew::convertConstraints()
 	}
 }
 
+
+
+#endif

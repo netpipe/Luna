@@ -1,3 +1,4 @@
+#ifdef BULLETBLEND
 /*
 GameKit
 Copyright (c) 2009 Erwin Coumans  http://gamekit.googlecode.com
@@ -402,4 +403,6 @@ int mainOther(int argc,char** argv)
 
 	return 0;
 }
+
+#endif
 

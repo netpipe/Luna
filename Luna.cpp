@@ -363,7 +363,7 @@ int Luna::Run(){
 							  if ( init() < 0 ) return -1;
                     device->setEventReceiver ( &m_cInGameEvents );
                     devloop();
-		#ifdef PYTHON
+	#ifdef PYTHON
 			#ifdef __EMSCRIPTEN__
 				TAR* tar;
 				if (tar_open(&tar, "./media/pydata.tar", NULL, O_RDONLY, 0, 0) != 0) {
@@ -404,15 +404,15 @@ int Luna::Run(){
 			Python::bCodeEditor=3; // initial closed state
 		#endif
 
-		#endif //python
+	#endif //python
                     } //init
 								// run main loop
 								#ifdef __EMSCRIPTEN__
-								iinit=true;
-								main_loop();
+									iinit=true;
+									main_loop();
                                 #else
-                                iinit=true;
-                                main_loop();
+									iinit=true;
+									main_loop();
                                 #endif
 
                 }else{
@@ -474,7 +474,7 @@ int Luna::main_loop(){ //devloop actually
 
  //       rt->render();
  #ifdef PYTHON
- #ifdef CODEEDITOR
+ #ifdef EDITOR
 		if (Python::bCodeEditor==1	){
 			Python::bCodeEditor=0;
 			windows->setVisible(true);
@@ -523,7 +523,7 @@ int Luna::main_loop(){ //devloop actually
 			device->setWindowCaption(tmp.c_str());
 			lastFPS = fps;
 		}
-       device->sleep(5); // pythonize this
+       device->sleep(15); // pythonize this
 
               if ( this->m_cInGameEvents.Quit  ){ //Python::iexit==1
 	shutdown();

@@ -1,3 +1,4 @@
+#ifdef BULLETBLEND
 /***************************************************************
  * readblend.h --
  * ReadBlend, a data extraction API for Blender's .blend files
@@ -41,7 +42,7 @@
 #include "blendtype.h"
 
 #ifdef __cplusplus
-extern "C" { 
+extern "C" {
 #endif
 
 
@@ -215,7 +216,7 @@ void blend_object_array_getdims(BlendFile* blend_file,
    or NULL, etc) into the address pointed to by dest.  It's up to you to
    check that the data you're asking for will fit into the type you're
    trying to put it in (use blend_object_type() and see the BlendObjType
-   enum to check that the object's type is the one you're expecting.) 
+   enum to check that the object's type is the one you're expecting.)
 
    Composite structures (BLEND_OBJ_STRUCT) are not handled atomically;
    use blend_object_structure_getfield() to extract each named field from
@@ -327,9 +328,9 @@ typedef struct _bImage {
   void*	m_packedImagePtr;
   int m_sizePackedImage;
   char m_imagePathName [128];
-  
+
   int	m_ok;
-  
+
   int	m_xrep;
   int	m_yrep;
 
@@ -447,7 +448,7 @@ typedef struct _bObj{
   float		mass;//used for rigid body dynamics
   int gameflag; //used to detect object type (static, ghost, dynamic, rigid body, soft body)
   int boundtype; //used to detect collision shape type
-  
+
   union {
     void  *dummy;
     bMesh *mesh;
@@ -488,7 +489,8 @@ void blend_acquire_texlayer_from_obj(BlendFile *bf, BlendObject *tlobj,
                                      bTexLayer *tl);
 
 #ifdef __cplusplus
-} 
+}
 #endif
 
+#endif
 #endif

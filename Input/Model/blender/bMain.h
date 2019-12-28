@@ -1,3 +1,4 @@
+#ifdef BULLETBLEND
 /* Copyright (C) 2006 Charlie C
 *
 * This software is provided 'as-is', without any express or implied
@@ -108,3 +109,4 @@ namespace bParse {
 
 
 #endif//__BMAIN_H__
+#endif

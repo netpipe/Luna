@@ -1,3 +1,4 @@
+#ifdef BULLETBLEND
 /*
  * stdio/physfs abstraction layer 2004-02-06
  *
@@ -259,3 +260,4 @@ int	MY_ATEOF(MY_FILETYPE* fp);
 #endif /* USE_PHYSFS */
 
 #endif /* _ABS_FILE_H */
+#endif

@@ -1,3 +1,4 @@
+#ifdef BULLETBLEND
 
 #ifndef BULLET_IRRLICHT_UTILS_H
 #define BULLET_IRRLICHT_UTILS_H
@@ -91,3 +92,4 @@ public:
 };
 
 #endif //BULLET_IRRLICHT_UTILS_H
+#endif
