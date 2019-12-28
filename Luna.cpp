@@ -443,9 +443,9 @@ void Luna::main_loop(){ //devloop actually
 		then = now;
 
 		#ifdef PYTHON
-    //    Python::PreRender();
+        Python::PreRender();
         driver->beginScene ( true, true, SColor ( 0, 0, 0, 0 ) );
-     //   Python::render();
+        Python::render();
 		#else
 		driver->beginScene ( true, true, SColor ( 31, 200, 111, 0 ) );
 		#endif
