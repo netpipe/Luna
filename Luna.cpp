@@ -356,7 +356,7 @@ int Luna::Run(){
         events.devLogin=1;
     #endif
  //   driver->setVSync(0);
-//        	if ( events.devLogin && !this->m_cInGameEvents.Quit )  {
+        	if ( events.devLogin && !this->m_cInGameEvents.Quit )  {
 					//countr=countr+1;
 					//printf("%i",countr);
 					if (!iinit) {
@@ -431,21 +431,23 @@ int Luna::Run(){
                         //devloop();
                         return 0;
                     }
-         //   }
+            }
       //      getchar();
 //      if (bshutdown==true) {
 //		shutdown();
 		//}
 
-    return 1;
+//    return 1;
 }
 
 int Luna::main_loop(){ //devloop actually
 //#ifdef __EMSCRIPTEN__
+    //while (this->m_cInGameEvents.Quit
 //			emscripten_run_script("alert('hi')");
 
            device->run();
-
+                //&& !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
+   // {
 
 
         const u32 now = device->getTimer()->getTime();
@@ -523,11 +525,13 @@ int Luna::main_loop(){ //devloop actually
 		}
        device->sleep(5); // pythonize this
 
-	if ( this->m_cInGameEvents.Quit  ){ //Python::iexit==1
-		shutdown();
-		return 0;
+              if ( this->m_cInGameEvents.Quit  ){ //Python::iexit==1
+	shutdown();
+	return 0;
 	}else{
-		return 1;
+
+    return 1;
+
 	}
 
 }
