@@ -20,16 +20,17 @@ Luna game ( argc1,argv1 );
 int result=1;
 
 void main_loop(){
-			while (result==1 ){
-	if ( init ){
-			init=false;
+	while (result==1 ){
+		if ( init ){
+				init=false;
 
-		game.Run();
-		result = game.main_loop();
-}else{
+				game.Run();
+				result = game.main_loop();
+		}else{
 
-		result = game.main_loop();
-}
+				result = game.main_loop();
+		}
+	}
 }
 
 
