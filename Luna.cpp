@@ -59,7 +59,7 @@ using namespace gui;
 bool connected,doit,login=0;
 // vector3df tmpvect;
 
-#define DPHYSICS
+
 //#define PYTHON
 //#include <boost/python.hpp>   #not used just for ideas maybe
 #include "Scripting/PythonManager.h"
@@ -248,7 +248,7 @@ int Luna::shutdown(){
         cAudio::destroyAudioManager(manager);
     #endif
     #ifdef PHYSICS
-	clearBodies();
+	//clearBodies();
 	#endif
 
 
@@ -268,7 +268,9 @@ int Luna::shutdown(){
     delete netManager;
     #endif
 //    delete ClientNetCallback;
+#ifdef PHYSICS
     delete m_cPhysics;
+    #endif
 //    delete m_cScene;
  //   delete m_cVehicle;
   //  delete m_cPlayer;
@@ -324,14 +326,18 @@ int Luna::init(){
 
     device->setEventReceiver ( &m_cInGameEvents );
 //Physics init
+#ifdef PHYSICS
     m_cPhysics = new Physics();
     m_cPhysics->registerIrrDevice(device);
+#endif
 
 //networking
     #ifdef NDEBUG
-//        ClientNetCallback* clientCallback = new ClientNetCallback();
-//        netManager = net::createIrrNetClient(clientCallback, "127.0.0.1");
-//        netManager->setVerbose(true);           // debug messages
+    #ifdef NETWORK
+        ClientNetCallback* clientCallback = new ClientNetCallback();
+        netManager = net::createIrrNetClient(clientCallback, "127.0.0.1");
+        netManager->setVerbose(true);           // debug messages
+	#endif
     #endif
 
     return 0;
@@ -344,9 +350,9 @@ int Luna::Run(){
         events.devLogin=1;
     #endif
  //   driver->setVSync(0);
-        	if ( events.devLogin && !this->m_cInGameEvents.Quit && ( countr < 1500 ) )  {
-					countr=countr+1;
-					printf("%i",countr);
+        	if ( events.devLogin && !this->m_cInGameEvents.Quit )  {
+					//countr=countr+1;
+					//printf("%i",countr);
 					if (!iinit) {
 							  if ( init() < 0 ) return -1;
                     device->setEventReceiver ( &m_cInGameEvents );
@@ -379,22 +385,19 @@ int Luna::Run(){
        // Python::ExecuteScript("functions-list.pys"); // this is for testing
 		#ifdef __EMSCRIPTEN__
 				Python::ExecuteScript("./media/functions-list.pys"); // this is for testing
+						   	pyloader = "./media/main.pys";
 		#else
 		   Python::ExecuteScript("./functions-list.pys"); // this is for testing
-		#endif
 				//Python::PyIrr_LoadVehicle(m_cVehicle);
 				//Python::PyIrr_addTerrain("1");
-
-				  // pyloader = "./APP/cowsynth/main.pys";
-		#ifdef __EMSCRIPTEN__
-		pyloader = "./media/main.pys";
-
-				#else
-						   pyloader = "./RACING/racer/main.pys";
+				// pyloader = "./APP/cowsynth/main.pys";
+			pyloader = "./RACING/racer/main.pys";
 		#endif
-		Python::bCodeEditor=3; // initial closed state
 
+		#ifdef EDITOR
+			Python::bCodeEditor=3; // initial closed state
 		#endif
+		#endif //python
                     } //init
 								// run main loop
 								#ifdef __EMSCRIPTEN__
@@ -406,7 +409,7 @@ int Luna::Run(){
                                 #endif
 
                 }else{
-                	if (iinit){ shutdown(); exit(1); } // for exiting dev loop tmpfix
+//                	if (iinit){ shutdown(); exit(1); } // for exiting dev loop tmpfix
                 printf ("now entering the lobby");
                    if ( lobby() == -1 ) {
                         shutdown(); //exit
@@ -420,9 +423,9 @@ int Luna::Run(){
                     }
             }
       //      getchar();
-      if (bshutdown==true) {
-		shutdown();
-		}
+//      if (bshutdown==true) {
+//		shutdown();
+		//}
 
     return 1;
 }
@@ -430,6 +433,8 @@ int Luna::Run(){
 void Luna::main_loop(){ //devloop actually
 //#ifdef __EMSCRIPTEN__
     //while (
+//			emscripten_run_script("alert('hi')");
+
            device->run();
                 //&& !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
    // {

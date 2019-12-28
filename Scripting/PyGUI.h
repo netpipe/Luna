@@ -29,13 +29,14 @@ PyMethodDef irr_gui[] =
 };
 
 PyObject * Python::PyIrr_CodeEditor(PyObject * self,PyObject * args) {//active camera
-
+#ifdef EDITOR
 bCodeEditor=1;
 device->getCursorControl()->setVisible(true);
 
 
 
 //return Py_BuildValue("l",luna->receiver);
+#endif
 return Py_BuildValue("");
 }
 
@@ -56,7 +57,7 @@ PyObject * Python::PyIrr_ChatBox(PyObject * self,PyObject * args){
             char * message;
             int action;
       	PyArg_ParseTuple(args,"si",&message,&action);
-
+#ifdef EXTRAS
     switch(action){
         case 0:
 
@@ -87,6 +88,7 @@ PyObject * Python::PyIrr_ChatBox(PyObject * self,PyObject * args){
 
                 break;
     }
+    #endif
 	return Py_BuildValue("");
 }
 
@@ -154,6 +156,7 @@ PyObject * Python::PyIrr_addHUD(PyObject * self,PyObject * args){
     int state, value;
     char * loadFile;
     PyArg_ParseTuple(args,"sff",&loadFile,&state,&value);
+    #ifdef HUD
     enum states {openFile=0,Position,Rotation,Play,Pause};
 	int istate =  states(state);
 
@@ -171,7 +174,7 @@ PyObject * Python::PyIrr_addHUD(PyObject * self,PyObject * args){
 //        case 2:
 }
  //   #endif
-
+#endif
 return Py_BuildValue("");
  }
 

@@ -6,47 +6,6 @@
 #include "../Luna.h"
 #include <cstdlib>
     #define MAX_DECALS 50
-   // #define IRRCD   // irrlicht Collision Detection
-   // #define IRRc
- //   #define PostProcess
-    #define ReflectiveWater
-    #define ReflectWater-Main
-
-    #define TREES //very cpu intensive
-   // #define ATMOSPHERE  //  freezes when no video acceleration is used
-                        //  or as a user without access to video rights is used
-    //  #define FLARE
-  //  #define FLARE2  // more realistic and working
-
-   // #define DECALS2       // simple decals
-    //#define DECALS       //decalmanager sortof working slow tho
-  //  #define TESSIMAGE
-
-    #define EDITOR
-    #define FLAG    //
-    #define FLAG2   //FMX
-   // #define COMPASS
-  //  #define BOIDS
-    #define TERRAIN
-  //  #define occlusion
-  //  #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
-    #define BULLETCAR // if FPSWEAPON is enabled the car wont work. diff event rec
-    #define LOADLEVELS // dont use this without bullet or with occlusion its slow?
-  //  #define BULLETBLEND
-  //  #define RAG   //bulletRagdoll
-   // #define EXTRAS
-  //  #define DESTRUCTION
-  //  #define FORMATIONDEMO
-  //  #define HUD
-  //  #define Image2D // Just testing out
-  //  #define CHOPPER
-  //  #define  OPENSTEER
-  //  #define SQLITE
-//  #define VEGETATION
-//  #define SCALC
-
-//    #define VIDEO
-  //  #define PostProcess
 
 #ifdef PostProcess
 // Include the headers for post processing
@@ -57,11 +16,15 @@
 #include "../Scene/PostProcessing/CLensFlarePostProc.h"
 #include "../Scene/PostProcessing/CWaterPostProc.h"
 #endif
-
+#ifdef EXTRAS
 #include "../Scene/CBeamSceneNode.h"
 #include "../Scene/BoltSceneNode.h"
-#include "../Physics/Ragdoll.h"
 #include "../GUI/ChatBox/CGUIChatBox.h"
+#endif
+
+#ifdef RAGDOLL
+#include "../Physics/Ragdoll.h"
+#endif
 
 #include "../Scene/Obstacle.hpp"
 #include "../Scene/Elevator.hpp"
@@ -72,28 +35,45 @@
 #ifdef TESSIMAGE
 #include "../Scene/tesselatedImage/tesselatedImage.h"
 #endif
-#include "../entities/chopper_control.h"
-#include "../TerrainFactory/WaterNode/CReflectedWater.h"
-#include "../TerrainFactory/water/RealisticWater.h"
-//#include "../entities/player.h"
-#include "../entities/OpenSteer/cOpenSteerDemo.h"
-#undef useIrrExtensions13
-#define HUD
 
-#include "../TerrainFactory/realCloud/CloudSceneNode.h"
+#ifdef CHOPPER
+#include "../entities/chopper_control.h"
+#endif
+
+#ifdef WATER
+    #include "../TerrainFactory/WaterNode/CReflectedWater.h"
+    #include "../TerrainFactory/water/RealisticWater.h"
+#endif
+
+#ifdef OPENSTEER
+    //#include "../entities/player.h"
+    #include "../entities/OpenSteer/cOpenSteerDemo.h"
+    #undef useIrrExtensions13
+    #define HUD
+#endif
+
+#ifdef ATMOSPHERE
+    #include "../TerrainFactory/realCloud/CloudSceneNode.h"
+#endif
 
 #ifdef VIDEO
     #include "../GUI/Video/CVideoMaster.h"
     //#include "GUI/Video/videoPlayer.h"
 #endif
 
-#include "../Scene/RibbonTrailSceneNode/RibbonTrailSceneNode.h"
-RibbonTrailSceneNode* rt;
+#ifdef RIBBONTRAIL
+    #include "../Scene/RibbonTrailSceneNode/RibbonTrailSceneNode.h"
+    RibbonTrailSceneNode* rt;
+#endif
 
 #include "../Events/InGameEventReceiver.h"
 #include "../Scene/occlusion/Renderer.h"
-#include "../Scene/Flag/SimpleFlag.h"
-#include "../Scene/Flag/CFlagSceneNode.h"
+
+#ifdef FLAG
+    #include "../Scene/Flag/SimpleFlag.h"
+    #include "../Scene/Flag/CFlagSceneNode.h"
+#endif
+
 #include "../entities/skeleton/Skeleton.h"
 
 #include "../Physics/Vehicle.h"
@@ -112,9 +92,12 @@ RibbonTrailSceneNode* rt;
 //      #include "../Scene/RainMan.h"
     #endif
 
+#ifdef ASSIMP
 #include "../Input/Model/IrrAssimp/IrrAssimp.h"
+#endif
 
 #include "../GUI/cImage2D.h"
+
 #ifdef SPRITEMANAGER
 #include "../Scene/spriteManager/SpriteManager.h"
 #include "../Scene/spriteManager/BmFont.h"
@@ -124,11 +107,12 @@ RibbonTrailSceneNode* rt;
 #ifdef SCALC
 #include "../GUI/Math/SCalcExpr.h"
 #endif
+
 #ifdef VEGETATION
-#include "../TerrainFactory/FWGrass/GrassLoader.h"
-#include "../TerrainFactory/FWGrass/gen/CGrassGenerator.h"
-using namespace GrassGenerator;
-#include "../TerrainFactory/ProceduralTrees/kornJungle/Jungle.h"
+    #include "../TerrainFactory/FWGrass/GrassLoader.h"
+    #include "../TerrainFactory/FWGrass/gen/CGrassGenerator.h"
+    using namespace GrassGenerator;
+    #include "../TerrainFactory/ProceduralTrees/kornJungle/Jungle.h"
 #endif
 
 #ifdef SQLITE
@@ -147,15 +131,17 @@ char *zErrMsg;
          CEffectPostProc* ppBlur ;
          CEffectPostProc* ppMine;
 #endif
+
 #ifdef FT2
     BmFont *fonts = new BmFont;
 #endif
+
     #ifdef SPRITES
     SpriteManager *sprites = new SpriteManager;
 #endif
     using namespace std;
     using namespace irr;
-#if PHYSICS
+#ifdef PHYSICS
     btLogicManager* logicManager = new btLogicManager();
         #ifdef RAGDOLL
             static std::vector<RagDoll*> v_RagDolls;
@@ -417,6 +403,7 @@ irr::core::array<ISceneNode*> waypoints;
 
 PyObject * Python::PyIrr_fpsWeapon(PyObject * self,PyObject * args){
 // need to attach to bones and/or nodes here
+#ifdef FPS
 bFPS = 1;
     long pcam;
     PyArg_ParseTuple(args,"l",&pcam);
@@ -449,6 +436,7 @@ bFPS = 1;
         device->setEventReceiver(M4);
       //  return Py_BuildValue("l",agun);
     #endif
+    #endif // FPS
 return Py_BuildValue("");
 }
 

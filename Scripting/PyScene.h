@@ -127,6 +127,7 @@ PyObject * Python::PyIrr_loadModel(PyObject * self,PyObject * args) { // if tree
 
     int action;
     char * type,*value1,*value2;
+    #ifdef ASSIMP
 IrrAssimp assimp(smgr);
     PyArg_ParseTuple(args,"ssi",&value1,&value2,&action);
   //  PyArg_ParseTuple(args,"sss",&value1,&value2,&type);
@@ -356,8 +357,10 @@ switch(action){
     }
 
 	return Py_BuildValue("l",node);
+	#else
 //	        }
-//	        	return Py_BuildValue("");
+	        	return Py_BuildValue("");
+    #endif
 }
 
 //
@@ -497,7 +500,7 @@ PyObject * Python::PyIrr_addSphereNode(PyObject * self,PyObject * args){
     char * texture;
 	PyArg_ParseTuple(args,"sfffff",&texture,&x,&y,&z,&radius,&mass);
 	btRigidBody *test;
-
+#ifdef PHYSICS
   //  scene::ISceneNode * node_id = smgr->addSphereSceneNode(20); //radius  polycount , parent , id , position,rotation, scale
     //IVideoDriver::createImageFromFile().  //textures and heightmap
        //if ( icount > 15){ //sphere limiter
@@ -520,6 +523,7 @@ PyObject * Python::PyIrr_addSphereNode(PyObject * self,PyObject * args){
         //    }
 //return Py_BuildValue("");
 return Py_BuildValue("l",test);
+#endif
 };
 
 
@@ -587,12 +591,7 @@ tr.setIdentity();
     device->getSceneManager()->getMeshManipulator()->scaleMesh(mesh,trackScale);
     IAnimatedMeshSceneNode *node = device->getSceneManager()->addAnimatedMeshSceneNode(mesh);
 
-smgr->getMeshManipulator()->makePlanarTextureMapping(
-mesh, 0.004f);
 
-   // if(!mesh || !node) return;
-    node->setAutomaticCulling(EAC_OFF);
-     node->setMaterialFlag(EMF_LIGHTING, true);
     // node->setScale(trackScale);
     // node->setRotation(vector3df(45,90.f,110));
     node->setPosition(trackPosition);

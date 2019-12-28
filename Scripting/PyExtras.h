@@ -90,7 +90,7 @@ PyObject * Python::PyIrr_lensFlare(PyObject * self,PyObject * args){
         float x,y,z;
     PyArg_ParseTuple(args,"ifff",&param,&x,&y,&z);
     #ifdef ATMOSPHERE
-   //     scene::IMeshSceneNode* sunMeshNode;
+        scene::IMeshSceneNode* sunMeshNode;
     sunMeshNode = smgr->addSphereSceneNode(1, 1, smgr->getRootSceneNode());
     sunMeshNode->setMaterialTexture(0, driver->getTexture("media/mesh.png"));
     sunMeshNode->setMaterialType(video::EMT_TRANSPARENT_ALPHA_CHANNEL);
@@ -128,6 +128,7 @@ PyObject * Python::PyIrr_motionTrail(PyObject * self,PyObject * args) {
         s32 node_id;
     int x,y,z;
     PyArg_ParseTuple(args,"llll",&node_id,&x,&y,&z);
+    #ifdef RIBBONTRAIL
     //    if (btrailNode){
        //     rt->
   //  }
@@ -145,16 +146,19 @@ PyObject * Python::PyIrr_motionTrail(PyObject * self,PyObject * args) {
 	rt->setEnabled( true );
 
 return Py_BuildValue("l",rt);
+#endif
 }
 
 
 PyObject * Python::PyIrr_beam(PyObject * self,PyObject * args){
         int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+    #ifdef EXTRAS
 	scene::CBeamNode* beam = new scene::CBeamNode(smgr->getRootSceneNode(), smgr, -1, "./data/textures/sceneNodes/laserlf6.png" , "data/textures/sceneNodes/beam.png" );
 	beam->setLine(core::vector3df(0,0,0), core::vector3df(100,100,100), 5.0f);
 	beam->drop();
     return Py_BuildValue("l",beam);
+    #endif
 }
 
 

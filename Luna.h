@@ -1,35 +1,50 @@
-#ifndef PHYSIC
-#define PHYSIC
+#ifndef Luna_H
+#define Luna_H
 
 #include <vector>
 #include <string>
 #include <sstream>
 #include <map>
-
+#include "config.h"  // has the defines in it for compile
 //#include <pthread.h>
 
 #include "Events/Events.h"
 #include "Events/InGameEventReceiver.h"
 #include "Scene/customNodes.h"
+
 #ifdef DSOUND
 #include <cAudio.h>
 #endif
 
+
 #include "entities/player.h"
 //#include "Encryption/Blowfish.h"
+
+#ifdef PHYSICS
 #include "Physics/Physics.h"
 #include "Physics/Vehicle.h"
+#endif
 #include "Scene/Scene.h"
-#include <irrNet.h>
+
+#ifdef DECALS
 #include "./Scene/decals/decalscenenode.h"
+#endif
+
+#ifdef TERRAIN
 #include "TerrainFactory/Terrain.h"
+#endif
+
+#ifdef NETWORK
+#include <irrNet.h>
 //#include "Net/irrNetClient.h"
 #include <irrNet.h>
+#endif
 
 #ifdef __EMSCRIPTEN__
 #include <emscripten.h>
 #include <libtar.h>
 #endif
+
 //#include "TerrainFactory/GrassSceneNode/CGrassPatchSceneNode.h"
 //#include "Input/Model/IrrAssimp/IrrAssimp.h"
 
@@ -90,8 +105,9 @@ char * pyloader;
 		// Player Physics---------------
         Player *m_cPlayer;
         //  Scene *m_cScene;
+        #ifdef PHYSICS
 		Physics *m_cPhysics;
-
+		#endif
         SKeyMap keyMap[8]; // KEYMAP
         f32 frameDeltaTime;
 

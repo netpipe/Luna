@@ -605,6 +605,10 @@
 					<Add option="--shared-memory" />
 					<Add option="-s ERROR_ON_UNDEFINED_SYMBOLS=0" />
 					<Add option="-s ASYNCIFY=1" />
+					<Add option="-s TOTAL_MEMORY=64Mb" />
+					<Add option="-s ASSERTIONS=2" />
+					<Add option="--memory-init-file 0" />
+					<Add option="-s EMULATE_FUNCTION_POINTER_CASTS=1" />
 					<Add library="GL" />
 					<Add library="openal" />
 					<Add library="X11" />
@@ -628,7 +632,6 @@
 					<Add library="SPARK" />
 					<Add library="SPARK_IRR" />
 					<Add library="sqlite3" />
-					<Add library="cAudio" />
 					<Add library="PolyVoxCore" />
 					<Add library="ogg" />
 					<Add library="vorbis" />
@@ -1113,6 +1116,7 @@
 		<Unit filename="TerrainFactory/water/RealisticWater.cpp" />
 		<Unit filename="TerrainFactory/water/RealisticWater.h" />
 		<Unit filename="TidBits.cpp" />
+		<Unit filename="config.h" />
 		<Unit filename="entities/AI/backpropigation.h" />
 		<Unit filename="entities/AI/miNav/main.cpp" />
 		<Unit filename="entities/AI/miNav/miNav.cpp" />

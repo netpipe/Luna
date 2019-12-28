@@ -752,7 +752,7 @@ if (chopperEnabled){
 //    }
 
 
-
+#ifdef DECALS
   if(bDecals){
         btVector3 Normal;
 //      vector3df pos = camera->getPosition();
@@ -764,10 +764,11 @@ if (chopperEnabled){
 		line.end = line.start + (camera->getTarget() - line.start).normalize() * 1000.0f;
 
 
-
+#ifdef PHYSICS
         btVector3 rayHit = luna->m_cPhysics->RaycastWorld(btVector3(line.start.X, line.start.Y, line.start.Z),btVector3(line.end.X, line.end.Y, line.end.Z),Normal);
         printf("ray position position: %f %f %f \n", rayHit[0], rayHit[1], rayHit[2]);
         printf("hit normal vector: %f %f %f \n", Normal[0], Normal[1], Normal[2]);
+#endif
 
 #ifdef DECALS2s
 
@@ -852,7 +853,7 @@ if (chopperEnabled){
   }
 //}
 //device->sleep(5,0);
-
+#endif //decals
 
 //    if (mEvent.getKeyState(    KEY_KEY_4))    //SPACEBAR
 //    {

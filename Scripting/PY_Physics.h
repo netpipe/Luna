@@ -179,6 +179,7 @@ if ( state==0 ){  // use state for get and set var
 
 int osteerinit =0;
 PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){
+	#ifdef OPENSTEER
 //vector3df loc;
 //char * path;
 //PyArg_ParseTuple(args,"sfff",&loc.X,&loc.Y,&loc.Z);
@@ -197,8 +198,9 @@ PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){
 //    OpenSteer::OpenSteerDemo::selectNextPlugIn();
 //    }
     // were going to need more to this function maybe some internal calls for things like individual paths
-
+  #endif
         Py_RETURN_NONE;
+
 }
 
 PyObject * Python::PyIrr_addHelicopter(PyObject * self,PyObject * args) {
@@ -206,6 +208,7 @@ PyObject * Python::PyIrr_addHelicopter(PyObject * self,PyObject * args) {
 vector3df loc;
 char * path;
 PyArg_ParseTuple(args,"sfff",&path,&loc.X,&loc.Y,&loc.Z);
+#ifdef CHOPPER
 //active camera
   //  #ifdef CHOPPER
     IAnimatedMesh* mesh = smgr->getMesh(path);
@@ -217,6 +220,7 @@ PyArg_ParseTuple(args,"sfff",&path,&loc.X,&loc.Y,&loc.Z);
  //   #endif
      //device->getSceneManager()->isCulled(node);
             return Py_BuildValue("l",chopperControl);
+            #endif
 }
 
 PyObject * Python::PyIrr_BulletBlend(PyObject * self,PyObject * args) {
@@ -334,7 +338,9 @@ PyArg_ParseTuple(args,"ssfffffffffffifffifffffffffffff",&model,&texture,&scaleT,
     bCar=1;
          Vehicle* m_cVehicle = new Vehicle;
          m_cVehicle->registerIrrDevice(*device);
+         #ifdef PHYSICS
          m_cVehicle->registerPhysics(*luna->m_cPhysics);
+         #endif
          m_cVehicle->registerScene(*m_cScene);
          m_cVehicle->registerCamera(camera);
 
@@ -651,13 +657,15 @@ void Python::rfm(ISceneNode* node )
         {
             //  meshBuffer2->append( mesh->getMeshBuffer(i) );
           //  m_cScene->setGenericMaterial(node, i); //outdoor sun lumenation
+          #ifdef PHYSICS
             luna->m_cPhysics->convertIrrMeshBufferBtTriangleMesh(mesh->getMeshBuffer(i), collisionMesh, vector3df(1,1,1));
             //decalManager->addMesh(mesh->getMeshBuffer(i));
+            #endif
         }
-
+ #ifdef PHYSICS
     btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
     btRigidBody *test = luna->m_cPhysics->localCreateRigidBody(0, tr, trackShape, node);
-
+ #endif
          }
 	}
   }

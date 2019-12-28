@@ -20,7 +20,7 @@ PyMethodDef irr_Network[] =
 
 PyObject * Python::PyIrr_Connect(PyObject * self,PyObject * args){
 
-
+#ifdef NETWORK
 class ClientNetCallback : public net::INetCallback
 {
 public:
@@ -99,21 +99,25 @@ public:
 		netManager->setVerbose(true); // debug messages
 
 	return Py_BuildValue("l",netManager);
+	#endif
 }
 
 PyObject * Python::PyIrr_Disconnect(PyObject * self,PyObject * args){
-
+#ifdef NETWORK
 	return Py_BuildValue("");
+	#endif
 }
 
 PyObject * Python::PyIrr_Ping(PyObject * self,PyObject * args){
-
+#ifdef NETWORK
 	return Py_BuildValue("");
+	#endif
 }
 
 PyObject * Python::PyIrr_sendFile(PyObject * self,PyObject * args){
-
+#ifdef NETWORK
 	return Py_BuildValue("");
+		#endif
 }
 
 PyObject * Python::PyIrr_Send(PyObject * self,PyObject * args){
@@ -121,6 +125,7 @@ PyObject * Python::PyIrr_Send(PyObject * self,PyObject * args){
 	long netMan;
 	char *message2;
 	PyArg_ParseTuple(args,"ls",&netMan,&message2);
+	#ifdef NETWORK
 	//net::INetManager* netManager=netMan;
 
 
@@ -178,7 +183,7 @@ PyObject * Python::PyIrr_Send(PyObject * self,PyObject * args){
 //		free(mfcc);
 //	}
 
-
+#endif
 	return Py_BuildValue("");
 }
 
@@ -186,60 +191,61 @@ PyObject * Python::PyIrr_Receive(PyObject * self,PyObject * args){
 	long netMan;
 	char *message2;
 	PyArg_ParseTuple(args,"ls",&netMan,&message2);
+	#ifdef NETWORK
 //	net::INetManager* netManager=netMan;
 
-//		while(1){ // receive whole file before continuing
-//		printf("Input local filename: ");
-//		char localfile[1024];
-//		gets_s(localfile, 1024);
-//		if(localfile[0] == '.'){
-//			send(Socket, localfile, sizeof(localfile), 0);
-//			break;
-//		}
-//		printf("Input remote filename: ");
-//		char filename[1024];
-//		gets_s(filename, 1024);
-//		if(filename[0] == '.'){
-//			send(Socket, filename, sizeof(filename), 0);
-//			break;
-//		}
-//		send(Socket, filename, sizeof(filename), 0);
-//		char GotFileSize[1024];
-//		recv(Socket, GotFileSize, 1024, 0);
+		while(1){ // receive whole file before continuing
+		printf("Input local filename: ");
+		char localfile[1024];
+		gets_s(localfile, 1024);
+		if(localfile[0] == '.'){
+			send(Socket, localfile, sizeof(localfile), 0);
+			break;
+		}
+		printf("Input remote filename: ");
+		char filename[1024];
+		gets_s(filename, 1024);
+		if(filename[0] == '.'){
+			send(Socket, filename, sizeof(filename), 0);
+			break;
+		}
+		send(Socket, filename, sizeof(filename), 0);
+		char GotFileSize[1024];
+		recv(Socket, GotFileSize, 1024, 0);
 
-//
-//		long FileSize = atoi(GotFileSize);
-//		long SizeCheck = 0;
-//		FILE *fp = fopen(localfile, "w");
-//		char* mfcc;
-//		if(FileSize > 1499){
-//			mfcc = (char*)malloc(1500);
-//			while(SizeCheck < FileSize){
-//				int Received = recv(Socket, mfcc, 1500, 0);
-//				SizeCheck += Received;
-//				fwrite(mfcc, 1, Received, fp);
-//				fflush(fp);
-//				printf("Filesize: %d\nSizecheck: %d\nReceived: %d\n\n", FileSize, SizeCheck, Received);
-//			}
-//		}
-//		else{
-//			mfcc = (char*)malloc(FileSize + 1);
-//			int Received = recv(Socket, mfcc, FileSize, 0);
-//			fwrite(mfcc, 1, Received, fp);
-//			fflush(fp);
-//		}
-//		fclose(fp);
-//		Sleep(500);
-//		free(mfcc);
-//
-//	   if (netManager->getConnectionStatus() != net::EICS_FAILED)
-//		{
-//			// Here we update.
-//			netManager->update(0);
-//		}
-//
-//	}
 
+		long FileSize = atoi(GotFileSize);
+		long SizeCheck = 0;
+		FILE *fp = fopen(localfile, "w");
+		char* mfcc;
+		if(FileSize > 1499){
+			mfcc = (char*)malloc(1500);
+			while(SizeCheck < FileSize){
+				int Received = recv(Socket, mfcc, 1500, 0);
+				SizeCheck += Received;
+				fwrite(mfcc, 1, Received, fp);
+				fflush(fp);
+				printf("Filesize: %d\nSizecheck: %d\nReceived: %d\n\n", FileSize, SizeCheck, Received);
+			}
+		}
+		else{
+			mfcc = (char*)malloc(FileSize + 1);
+			int Received = recv(Socket, mfcc, FileSize, 0);
+			fwrite(mfcc, 1, Received, fp);
+			fflush(fp);
+		}
+		fclose(fp);
+		Sleep(500);
+		free(mfcc);
+
+	   if (netManager->getConnectionStatus() != net::EICS_FAILED)
+		{
+			// Here we update.
+			netManager->update(0);
+		}
+
+	}
+#endif
 	return Py_BuildValue("");
 }
 
@@ -256,6 +262,7 @@ PyObject * Python::PyIrr_Decrypt(PyObject * self,PyObject * args){
 PyObject * Python::PyIrr_Server(PyObject * self,PyObject * args){
 // on off restart
 // change host / port
+#ifdef NETWORK
 class MyNetCallback : public net::INetCallback
 {
 public:
@@ -293,11 +300,14 @@ public:
 		net::INetManager* netManager = net::createIrrNetServer(netCallback);
 
 	return Py_BuildValue("l",netManager);
+	#endif
 }
 
 PyObject * Python::PyIrr_restartServer(PyObject * self,PyObject * args){
 
+#ifdef NETWORK
 	return Py_BuildValue("");
+	#endif
 }
 
 
@@ -305,25 +315,28 @@ PyObject * Python::PyIrr_Update(PyObject * self,PyObject * args){
 
 	long netMan;
 	PyArg_ParseTuple(args,"l",&netMan);
-//	net::INetManager* netManager=netMan;
+	#ifdef NETWORK
+	net::INetManager* netManager=netMan;
 
-		// Here is the update loop, we will exit if there is a connection problem.
-//	   if (netManager->getConnectionStatus() != net::EICS_FAILED)
-//		{
-//			// Here we update.
-//			netManager->update(0);
-//		}
-	//	delete netManager;
-	//	delete clientCallback;
-
+		 Here is the update loop, we will exit if there is a connection problem.
+	   if (netManager->getConnectionStatus() != net::EICS_FAILED)
+		{
+			// Here we update.
+			netManager->update(0);
+		}
+		delete netManager;
+		delete clientCallback;
+#endif
 	return Py_BuildValue("");
 }
 
 
 PyObject * Python::PyIrr_irc(PyObject * self,PyObject * args){
-//	Application app(device);
-//app.registerIrrDevice(device);
-	//app.init();
+	#ifdef IIRc
+	Application app(device);
+	app.registerIrrDevice(device);
+	app.init();
+	#endif
 	return Py_BuildValue("");
 }
 

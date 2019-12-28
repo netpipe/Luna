@@ -160,6 +160,7 @@ return Py_BuildValue("");
 PyObject * Python::PyIrr_lightning(PyObject * self,PyObject * args){
         int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+    #ifdef EXTRAS
 switch(param){
     case 0:
         ISceneNode* sphere = smgr->addSphereSceneNode(10);
@@ -171,6 +172,7 @@ switch(param){
         lightning->setLine(irr::core::vector3df(50,50,50), irr::core::vector3df(0,0,0), 100, 5,10,3, false,10.0f, irr::video::SColor(255,0,0,255));
         lightning->drop();
     }
+    #endif
 //return Py_BuildValue("l",lightning);
 }
 
@@ -265,7 +267,9 @@ PyArg_ParseTuple(args,"iffffffsss",&type,&cx,&cy,&cz,&sx,&sy,&sz,&hmap,&tex,&dma
 
     		 terr = new Terrain;
 			terr->registerIrrDevice(*device);
+			#ifdef PHYSICS
 			terr->registerPhysics(*luna->m_cPhysics);
+			#endif
 			terr->Init();
 
 if ( type == 1 ){
@@ -368,6 +372,7 @@ return Py_BuildValue("0");
 
 
 PyObject * Python::PyIrr_WaterPlane(PyObject * self,PyObject * args){
+	#ifdef RealisticWater
 int waterType=2;
             char * script;
 
@@ -402,6 +407,7 @@ int waterType=2;
 	RealisticWaterSceneNode* water = new RealisticWaterSceneNode(smgr, width, height, resourcePath);
 	smgr->getRootSceneNode()->addChild(water);
 	}
+	#endif
 return Py_BuildValue("");
 }
 

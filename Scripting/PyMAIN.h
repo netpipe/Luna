@@ -16,8 +16,9 @@ namespace Python {
     vector<ITexture *> texture_array; //Our array of textures
     void registerIrrDevice(Luna *luna, IrrlichtDevice &device,InGameEventReceiver event);
 
+    #ifdef CHOPPER
     ChopperControl *chopperControl;
-
+#endif
     Luna *luna;
 
   //  cAudio::IAudioManager* manager;
@@ -47,15 +48,19 @@ namespace Python {
     Vehicle   *m_cVehicle;
     btRigidBody *ha;
 
-    gui::CGUIChatBox* chat;
-
+    #ifdef EXTRAS
+        gui::CGUIChatBox* chat;
+    #endif
     bool bPProcess,opensteer,chopperEnabled,HUDENABLED=0;
 
+    #ifdef FPS
+        firstPersonWeapon* M4;
+        bool bFPS;
+    #endif
 
-    firstPersonWeapon* M4;
-    bool bFPS;
-    int bCodeEditor;
-
+    #ifdef EDITOR
+        int bCodeEditor;
+    #endif
 
     #ifdef FLAG
     //	SimpleFlagNode	*irrFlagNode;
@@ -400,8 +405,9 @@ void Python::render() {//active camera
             (*it)->Update();
         #endif
 
+        #ifdef FPS
         if (bFPS){    M4->update(device->getTimer()->getTime());}
-
+        #endif
         //      }
         #endif
 
@@ -450,9 +456,11 @@ void Python::render() {//active camera
             }
         #endif
 
+        #ifdef OPENSTEER
         if (opensteer){ //OpenSteer::runGraphics();
         OpenSteer::OpenSteerDemo::updateSimulationAndRedraw();
          }
+         #endif
 
         #ifdef HUD
             if (HUDENABLED){
