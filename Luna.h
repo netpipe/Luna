@@ -102,8 +102,10 @@ char * pyloader;
 		std::wstring username;
 		std::wstring password;
 
+		#ifdef FPS
 		// Player Physics---------------
         Player *m_cPlayer;
+        #endif
         //  Scene *m_cScene;
         #ifdef PHYSICS
 		Physics *m_cPhysics;

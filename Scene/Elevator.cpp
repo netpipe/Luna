@@ -68,6 +68,7 @@ void Elevator::CheckCollisionWithPlayer(void)
 
 void Elevator::UpdatePlayerPosition(void)
 {
+    #ifdef FPS
   if(elevatorExists){
     if(ridingElevator){
       for(u32 i = 0; i < elevatorNode.size(); i++){
@@ -122,4 +123,5 @@ void Elevator::UpdatePlayerPosition(void)
       }
     }
   }
+  #endif
 }

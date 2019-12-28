@@ -22,7 +22,7 @@ void Collision::createRootCollision(void)
 
 void Collision::createPlayerCollision(void)
 {
-
+#ifdef FPS
   aabbox3d<f32> box = Player::Instance()->getPlayerNode()->getBoundingBox();
   ellipsoidRadius = box.MaxEdge - box.getCenter();
 
@@ -36,7 +36,7 @@ void Collision::createPlayerCollision(void)
 
   Player::Instance()->getPlayerNode()->addAnimator(anim);
   anim->drop();
-
+#endif
 }
 
 vector3df Collision::getEllipsoidRadius(void)

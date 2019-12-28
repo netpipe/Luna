@@ -30,7 +30,7 @@
 //  Player::Instance()->getPlayerNode()->setRotation( core::vector3df( 0, direction, 0 ) );
 //}
 
-
+#ifdef FPS
 Player::Player() {
   isFalling = false;
   isRunning = false;
@@ -236,3 +236,4 @@ void Player::setSpeed(float val)
 {
   moveSpeed = val;
 }
+#endif
