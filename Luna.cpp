@@ -523,13 +523,11 @@ int Luna::main_loop(){ //devloop actually
 		}
        device->sleep(5); // pythonize this
 
-              if ( this->m_cInGameEvents.Quit  ){ //Python::iexit==1
-	shutdown();
-	return 0;
+	if ( this->m_cInGameEvents.Quit  ){ //Python::iexit==1
+		shutdown();
+		return 0;
 	}else{
-
-    return 1;
-
+		return 1;
 	}
 
 }
