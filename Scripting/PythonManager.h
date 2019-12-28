@@ -20,9 +20,9 @@ using namespace io;
 #include "../Scene/Formation.h"
 #endif
 
-#define PYTHON_MINIMALTESTs
 #ifdef PYTHON_MINIMALTEST
 vector<ITexture *> texture_array;
+
 
 //IVideoDriver *driver = device->getVideoDriver();
 

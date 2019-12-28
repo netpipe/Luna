@@ -525,6 +525,7 @@ return Py_BuildValue("");
 
 PyObject * Python::PyIrr_exit(PyObject * self,PyObject * args){
     luna->m_cInGameEvents.Quit=true;
+//    iexit=1;
     return Py_BuildValue("");
 }
 

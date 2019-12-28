@@ -25,7 +25,7 @@
   //  #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
     #define BULLETCAR // if FPSWEAPON is enabled the car wont work. diff event rec
     #define LOADLEVELS // dont use this without bullet or with occlusion its slow?
-  //  #define BULLETBLEND
+    #define BULLETBLEND
   //  #define RAG   //bulletRagdoll
    // #define EXTRAS
   //  #define DESTRUCTION
@@ -39,7 +39,7 @@
 //  #define SCALC
 //#define FT2
 //#define SPRITES
-
+//#define PYTHON_MINIMALTEST
 
 //    #define VIDEO
   //  #define PostProcess

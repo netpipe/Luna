@@ -197,46 +197,48 @@ int Luna::shutdown(){
 
 
 
-//#ifdef HUD
-// //     delete vidmaster;
-//#endif
-//    #ifdef BOIDS
-//     delete flock;
-//    #endif
-//
-//    #ifdef PostProcess
-//	 delete ppBlurDOF;
-//	 delete ppBlur;
-//	 delete ppRenderer;
-//    #endif
-//
-//	#ifdef ATMOSPHERE
-//     delete atmo;
-//    #endif
-//
-//	#ifdef ReflectiveWater
-//	 delete water;
-//	#endif
-//
-//	#ifdef RAG
-//		for (std::vector<RagDoll*>::iterator it = v_RagDolls.begin(); it != v_RagDolls.end(); ++it)
-//            (*it)->~RagDoll();
-//	#endif
-//
-//	//delete CHUD2;
-//	//delete m_cVehicle;
-//
-//	#ifdef COMPASS
-//	 delete Compass1;
-//	#endif
-//
-//	#ifdef FLAG     // should be the flagmanager
-//	delete irrFlagNode;
-//	#endif
-//
-//	#ifdef FLAG2     // should be the flagmanager
-//	delete flag;
-//	#endif
+#ifdef HUD
+ //     delete vidmaster;
+#endif
+    #ifdef BOIDS
+     delete flock;
+    #endif
+
+    #ifdef PostProcess
+	 delete ppBlurDOF;
+	 delete ppBlur;
+	 delete ppRenderer;
+    #endif
+
+	#ifdef ATMOSPHERE
+    // delete atmo;
+    #endif
+
+	#ifdef ReflectiveWater
+	 delete water;
+	#endif
+
+	#ifdef RAG
+		for (std::vector<RagDoll*>::iterator it = v_RagDolls.begin(); it != v_RagDolls.end(); ++it)
+            (*it)->~RagDoll();
+	#endif
+
+	//delete CHUD2;
+	//delete m_cVehicle;
+
+	#ifdef COMPASS
+	 delete Compass1;
+	#endif
+
+	#ifdef FLAG     // should be the flagmanager
+//	if (bflagnode)
+//		delete irrFlagNode;
+
+	#endif
+
+	#ifdef FLAG2     // should be the flagmanager
+	delete flag;
+	#endif
 
 	#ifdef PYTHON
 		Py_Finalize();
@@ -261,19 +263,23 @@ int Luna::shutdown(){
 	SPKFactory::getInstance().traceAll();
 	device->drop();
 	#endif
-
-//	delete videoPlayer;
-
+#ifdef VIDEO
+	delete videoPlayer;
+#endif
  #ifdef NDEBUG
     delete netManager;
     #endif
 //    delete ClientNetCallback;
 #ifdef PHYSICS
     delete m_cPhysics;
-    #endif
 //    delete m_cScene;
- //   delete m_cVehicle;
-  //  delete m_cPlayer;
+//   delete m_cVehicle;
+
+    #endif
+ #ifdef FPS
+     delete m_cPlayer;
+     #endif
+
     guienv->drop();
     smgr->drop();
     device->drop();
@@ -397,6 +403,7 @@ int Luna::Run(){
 		#ifdef EDITOR
 			Python::bCodeEditor=3; // initial closed state
 		#endif
+
 		#endif //python
                     } //init
 								// run main loop
@@ -409,6 +416,8 @@ int Luna::Run(){
                                 #endif
 
                 }else{
+                	shutdown();
+                	return 0;
 //                	if (iinit){ shutdown(); exit(1); } // for exiting dev loop tmpfix
                 printf ("now entering the lobby");
                    if ( lobby() == -1 ) {
@@ -420,6 +429,7 @@ int Luna::Run(){
                         device->setEventReceiver ( &m_cInGameEvents );
                         mainloop();
                         //devloop();
+                        return 0;
                     }
             }
       //      getchar();
@@ -427,17 +437,19 @@ int Luna::Run(){
 //		shutdown();
 		//}
 
-    return 1;
+//    return 1;
 }
 
-void Luna::main_loop(){ //devloop actually
+int Luna::main_loop(){ //devloop actually
 //#ifdef __EMSCRIPTEN__
-    //while (
+    //while (this->m_cInGameEvents.Quit
 //			emscripten_run_script("alert('hi')");
 
            device->run();
                 //&& !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
    // {
+
+
         const u32 now = device->getTimer()->getTime();
 		frameDeltaTime = (f32)(now - then) / 1000.f; // Time in seconds
 		then = now;
@@ -452,7 +464,6 @@ void Luna::main_loop(){ //devloop actually
 
         smgr->drawAll();
 		//	device->setEventReceiver(&receiver);
-device->sleep(5);
 
 //        #ifdef PostProcess
 //			ppBlurDOF->render( NULL );
@@ -487,7 +498,7 @@ device->sleep(5);
 	#endif
 
 		#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
-       // Python::preEnd();
+          Python::preEnd();
           Python::CheckKeyStates();
     //    obsolete:CheckKeyStates(); check onEvent for any need to check keys
     // loop for key checking and loop for game  only execute script if there was an event
@@ -512,10 +523,20 @@ device->sleep(5);
 			device->setWindowCaption(tmp.c_str());
 			lastFPS = fps;
 		}
-     //  device->sleep(5); // pythonize this
-  //  }
-//#endif
+       device->sleep(5); // pythonize this
+
+              if ( this->m_cInGameEvents.Quit  ){ //Python::iexit==1
+	shutdown();
+	return 0;
+	}else{
+
+    return 1;
+
+	}
+
 }
+//#endif
+
 
 void Luna::CheckKeyStates(void){}
 

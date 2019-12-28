@@ -13,6 +13,8 @@ namespace Python {
     IGUIFont * default_font;
             SKeyMap keyMap[8]; // KEYMAP
 
+//    int iexit=0;
+
     vector<ITexture *> texture_array; //Our array of textures
     void registerIrrDevice(Luna *luna, IrrlichtDevice &device,InGameEventReceiver event);
 

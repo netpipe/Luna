@@ -89,6 +89,6 @@ if input.getKey('KEY_F2') : #could have a release action
 
 if input.getKey('KEY_ESCAPE') :
  paused=1
- scene.exit()
+ irr.exit()
 
 #irr.checkKeyState(){};
