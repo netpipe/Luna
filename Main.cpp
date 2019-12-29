@@ -2,7 +2,11 @@
 
 #ifndef TESTINGEMSCRIPTEN
 #include "Luna.h"
+
+    #include <unistd.h>
 #endif
+
+
 #include <irrlicht.h>
 using namespace irr;
 using namespace core;
@@ -24,14 +28,14 @@ using namespace gui;
 #include <emscripten.h>
 #endif
 
-    #include <unistd.h>
 
 int argc1=0;
  char** argv1;
 bool init=true;
 
-IrrlichtDevice *device;
+
 #ifdef TESTINGEMSCRIPTEN
+IrrlichtDevice *device;
         IVideoDriver *driver;
 		ISceneManager *smgr;
 #endif
@@ -56,14 +60,16 @@ sleep(0.1);
 		}
 		#endif
 
-#ifndef __EMSCRIPTEN__
+#ifndef TESTINGEMSCRIPTEN
+#ifdef __EMSCRIPTEN__
 void main_loop(){
 	Luna game ( argc1,argv1 );
-	while (!game.m_cInGameEvents.Quit){
+		while (1){
+	//while (!game.m_cInGameEvents.Quit){
 		if ( init ){
 				init=false;
 
-				game.Run(device);
+				game.Run();
 				//game.main_loop();
 		}else{
 
@@ -73,13 +79,15 @@ void main_loop(){
 	}
 }
 #endif
+#endif
+
 int main ( int argc, char** argv )
 {
 	#ifdef __OSX__
 		NSApplicationLoad();
 	#endif
 
-
+#ifdef TESTINGEMSCRIPTEN
 			#ifdef __EMSCRIPTEN__
 		   device = createDevice(video::EDT_OGLES2, core::dimension2du(800,600), 16, false, false, false);
 	#else
@@ -87,32 +95,34 @@ int main ( int argc, char** argv )
 
 	#endif
 
-		#ifdef TESTINGEMSCRIPTEN
+
 		driver = device->getVideoDriver();
 		smgr = device->getSceneManager();
 	   // guienv = device->getGUIEnvironment();
 
-	   	IAnimatedMesh* mesh = smgr->getMesh("./media/sydney.md2");
-	if (!mesh)
-	{
-		device->drop();
-		return 1;
-	}
-	IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
-
-		if (node)
-	{
-		node->setMaterialFlag(EMF_LIGHTING, false);
-		node->setMD2Animation(scene::EMAT_STAND);
-		node->setMaterialTexture( 0, driver->getTexture("./media/sydney.bmp") );
-	}
+//	   	IAnimatedMesh* mesh = smgr->getMesh("./media/sydney.md2");
+//	if (!mesh)
+//	{
+//		device->drop();
+//		return 1;
+//	}
+//	IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+//
+//		if (node)
+//	{
+//		node->setMaterialFlag(EMF_LIGHTING, false);
+//		node->setMD2Animation(scene::EMAT_STAND);
+//		node->setMaterialTexture( 0, driver->getTexture("./media/sydney.bmp") );
+//	}
 
 
 	   emscripten_set_main_loop(main_loop2,0,1);
 	#endif
 
 	#ifdef __EMSCRIPTEN__
-	//	emscripten_set_main_loop(main_loop,0,1);
+	#ifndef TESTINGEMSCRIPTEN
+		emscripten_set_main_loop(main_loop,0,1);
+		#endif
 	#else
 		while (device->run()){
 		main_loop();

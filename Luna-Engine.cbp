@@ -605,7 +605,6 @@
 					<Add option="-s NO_EXIT_RUNTIME=1" />
 					<Add option="--shared-memory" />
 					<Add option="-s ERROR_ON_UNDEFINED_SYMBOLS=0" />
-					<Add option="-s ASYNCIFY=1" />
 					<Add option="-s TOTAL_MEMORY=64Mb" />
 					<Add option="-s ASSERTIONS=2" />
 					<Add option="--memory-init-file 0" />
@@ -729,7 +728,6 @@
 					<Add option="-s NO_EXIT_RUNTIME=1" />
 					<Add option="--shared-memory" />
 					<Add option="-s ERROR_ON_UNDEFINED_SYMBOLS=0" />
-					<Add option="-s ASYNCIFY=1" />
 					<Add library="GL" />
 					<Add library="openal" />
 					<Add library="X11" />
@@ -807,7 +805,6 @@
 					<Add option="-D_IRR_EMSCRIPTEN_PLATFORM_" />
 					<Add option="-D__EMSCRIPTEN__" />
 					<Add option="-DNO_GLIB" />
-					<Add option="-DTESTINGEMSCRIPTEN" />
 					<Add directory="../emscripten-projects/irrlicht-ogl-es-2019dec/include" />
 					<Add directory="../emscripten-projects/net/irrNetLite22" />
 					<Add directory="../emscripten-projects/media/freetype2.8/build" />
@@ -845,7 +842,6 @@
 					<Add option="--preload-file media/" />
 					<Add option="-s FULL_ES2=1" />
 					<Add option="-s NO_EXIT_RUNTIME=1" />
-					<Add option="-s ASYNCIFY=1" />
 					<Add library="GLESv2" />
 					<Add library="GL" />
 					<Add library="Irrlicht" />

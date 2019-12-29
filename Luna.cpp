@@ -8,12 +8,7 @@
 
 #include <vector>
 using namespace std;
-using namespace irr;
-using namespace core;
-using namespace scene;
-using namespace video;
-using namespace io;
-using namespace gui;
+
 
 #ifdef ATMOSPHERE
 #include "Scene/ATMOsphere.cpp"
@@ -321,7 +316,7 @@ int Luna::init(){
 
       // device = createDevice ( EDT_OPENGL,dimension2du (res.Width,res.Height ),  32, true, true, false, 0 );
         #ifdef __EMSCRIPTEN__
-       device = createDevice(video::EDT_OGLES2, core::dimension2du(800,600), 16, false, false, false,&m_cInGameEvents);
+       device = createDevice(video::EDT_OGLES2, core::dimension2du(800,600), 16, false, false, false);
 #else
         device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 0,1);
 
@@ -347,6 +342,23 @@ int Luna::init(){
     #endif
 //	smgr->addCameraSceneNode(0, vector3df(0,30,-40), vector3df(0,5,0));
 
+
+	   	IAnimatedMesh* mesh = smgr->getMesh("./media/sydney.md2");
+	if (!mesh)
+	{
+		device->drop();
+		return 1;
+	}
+	IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+
+		if (node)
+	{
+		node->setMaterialFlag(EMF_LIGHTING, false);
+		node->setMD2Animation(scene::EMAT_STAND);
+		node->setMaterialTexture( 0, driver->getTexture("./media/sydney.bmp") );
+	}
+
+
 	device->getCursorControl()->setVisible(true);
 //Physics init
 #ifdef PHYSICS
@@ -367,16 +379,19 @@ int Luna::init(){
     return 1;
 }
 
-int Luna::Run(IrrlichtDevice *device2){
-	device=device2;
+//int Luna::Run(IrrlichtDevice *device2){
+int Luna::Run(){
+//	device=device2;
 //					if (iinit) {
 							  if ( init() < 0 ) return -1;
+							  #if EVENTS
     events.devLogin=0;
     #ifndef NDEBUG
         events.devLogin=1;
-
+#endif //events
  //   driver->setVSync(0);
         	if ( events.devLogin && !this->m_cInGameEvents.Quit )  {
+
 					//countr=countr+1;
 					//printf("%i",countr);
 					#ifdef EVENTS
@@ -436,7 +451,7 @@ int Luna::Run(IrrlichtDevice *device2){
 
 
 
-
+ #if EVENTS
             #else//       }else{
 //                	shutdown();
 //                	return 0;
@@ -454,6 +469,7 @@ int Luna::Run(IrrlichtDevice *device2){
                         return 0;
                     }
             }
+            #endif//events
             #endif
       //      getchar();
 //      if (bshutdown==true) {
@@ -469,7 +485,7 @@ void Luna::main_loop2(){
         smgr->drawAll();
 		//guienv->drawAll();
         driver->endScene();
-		device->sleep(15); // pythonize this
+//		device->sleep(15); // pythonize this
 }
 
 
@@ -555,7 +571,8 @@ void Luna::main_loop(){ //devloop actually
 			device->setWindowCaption(tmp.c_str());
 			lastFPS = fps;
 		}
-       device->sleep(8); // pythonize this
+		sleep(0.1);
+//       device->sleep(8); // pythonize this
 
 //	if ( this->m_cInGameEvents.Quit  ){ //Python::iexit==1
 //				shutdown();
