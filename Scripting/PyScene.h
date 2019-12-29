@@ -1,3 +1,4 @@
+#ifdef PYTHON
 ///SCENENODES and SCENESTUFF STUFF  -- included from pyfunctions
 ///TERRAIN
 
@@ -711,3 +712,4 @@ int setvideo (){// graphics combo
 // crouching
 // loc,rot or normal,look angle,head/camera normal(seperate from body
 // model, chat, decals, csgmodifier
+#endif

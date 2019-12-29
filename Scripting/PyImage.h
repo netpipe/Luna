@@ -1,3 +1,4 @@
+#ifdef PYTHON
 PyMethodDef irr_Image[] =
 {
     {"irotate",Python::PyIrr_iRotate,METH_VARARGS,"PyIrr_iRotate"},
@@ -245,3 +246,4 @@ PyObject * Python::PyIrr_LoadSpriteFont(PyObject * self,PyObject * args){
 //					core::rect<s32>(130,20,300,60),
 //					video::SColor(255,time % 255,time % 255,255));
 //
+#endif

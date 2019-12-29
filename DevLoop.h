@@ -6,19 +6,6 @@
 //todo fix GUI instances into vector
 
 
-    enum GUI_ELEMENTS
-{
-	MENU_QUIT = 200,
-	MENU_UNDO,
-	MENU_REDO,
-	MENU_CUT,
-	MENU_PASTE,
-	MENU_COPY,
-	MENU_DELETE,
-	MENU_LINECOUNT,
-	MENU_ENGLISH,
-	MENU_FRENCH,
-};
 
 // Declare a structure to hold some context for the event receiver so that it
 // has it available inside its OnEvent() method.
@@ -348,7 +335,6 @@
 //		L"mhm");
 #endif
 
-device->getCursorControl()->setVisible(true);
 //    	IrrAssimp assimp(smgr);
 //    IAnimatedMesh* mesh = assimp.getMesh("media/dwarf.x");
 ////	if (!mesh /*|| !meshNoAssimp*/)

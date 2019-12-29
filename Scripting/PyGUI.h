@@ -1,6 +1,6 @@
 #ifndef PYGUI_H_INCLUDED
 #define PYGUI_H_INCLUDED
-
+#ifdef PYTHON
 #include <iostream> // for strings
 using namespace std;
 
@@ -451,3 +451,4 @@ PyObject * Python::PyIrr_LoadShape(PyObject * self,PyObject * args){
 //	}
 
 #endif // PYGUI_H_INCLUDED
+#endif

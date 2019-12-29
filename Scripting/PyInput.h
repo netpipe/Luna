@@ -1,17 +1,18 @@
 #ifndef PYMAIN_H_INCLUDED
 #define PYMAIN_H_INCLUDED
+#ifdef PYTHON
 //device->sleep(5,0); python delay for mainloop possibly use timers
 
 //#include "..//include/MaterialDensityPair.h"
 
 //#include "../Input/Model/PolyVox/PolyVoxCore/include/MaterialDensityPair.h"
-
+#ifdef POLYVOX
 #include <PolyVoxCore/MaterialDensityPair.h>
 #include <PolyVoxCore/Material.h>
 #include <PolyVoxCore/CubicSurfaceExtractorWithNormals.h>
 #include <PolyVoxCore/SurfaceMesh.h>
 #include <PolyVoxCore/SimpleVolume.h>
-
+#endif
 
 PyMethodDef irr_Input[] =
 {
@@ -1041,6 +1042,5 @@ if (chopperEnabled){
 //device->sleep(5,0);
 }
 
-
-
+#endif
 #endif // PYMAIN_H_INCLUDED

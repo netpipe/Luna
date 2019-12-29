@@ -16,8 +16,10 @@
 #include <cAudio.h>
 #endif
 
-
+#ifdef FPS
 #include "entities/player.h"
+#endif
+
 //#include "Encryption/Blowfish.h"
 
 #ifdef PHYSICS
@@ -38,12 +40,13 @@
 #ifdef NETWORK
 #include <irrNet.h>
 //#include "Net/irrNetClient.h"
-#include <irrNet.h>
 #endif
 
 #ifdef __EMSCRIPTEN__
 #include <emscripten.h>
+#ifdef PYTHON
 #include <libtar.h>
+#endif
 #endif
 
 //#include "TerrainFactory/GrassSceneNode/CGrassPatchSceneNode.h"
@@ -132,6 +135,20 @@ struct SAppContext
 	IrrlichtDevice *device;
 	s32				counter;
 	IGUIListBox*	listbox;
+};
+
+    enum GUI_ELEMENTS
+{
+	MENU_QUIT = 200,
+	MENU_UNDO,
+	MENU_REDO,
+	MENU_CUT,
+	MENU_PASTE,
+	MENU_COPY,
+	MENU_DELETE,
+	MENU_LINECOUNT,
+	MENU_ENGLISH,
+	MENU_FRENCH,
 };
 
 	private:

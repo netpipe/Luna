@@ -197,8 +197,9 @@ char *zErrMsg;
   //  Vehicle *m_cVehicle2;
 
  //   static vector<Vehicle*> m_cVehicle;
-
+#ifdef FPS
     cSkeleton skeleton;
+    #endif
 //        cAudio::IAudioManager* managerID;
 //        cAudio::IAudioSource* mysound;
 

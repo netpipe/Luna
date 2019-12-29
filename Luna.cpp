@@ -21,8 +21,10 @@ using namespace gui;
 //#include "Scene/flares/LensFlareSceneNode.h"
 #endif
 
+#ifdef EXTRAS
 #include "Scene/flares/SceneNodeAnimatorFollowCamera.h"
 #include "GUI/compass/Compass.h"
+#endif
 
 #ifdef BOIDS
 #include "Scene/boids/Flock.h"
@@ -42,8 +44,9 @@ using namespace gui;
 #include "./Input/Model/blender/BulletBlendReader.h"
 #include "./Input/Model/blender/blenderUp.h"
 #endif
-
+#ifdef FPS
 #include "./Equipment/firstPersonWeapon.h"
+#endif
 
 #ifdef ATMOSPHERE
 #include "./TerrainFactory/CloudSceneNode/CCloudSceneNode.h"
@@ -52,7 +55,7 @@ using namespace gui;
 #include "./Scene/decalManager/DecalManager.h"
 
 //#include "GUI/CodeEditor/CGUIEditBoxIRB.h"
-#include <fcntl.h> //needed for python
+
 
 //#define PostProcess
 
@@ -60,9 +63,12 @@ bool connected,doit,login=0;
 // vector3df tmpvect;
 
 
-//#define PYTHON
 //#include <boost/python.hpp>   #not used just for ideas maybe
+#ifdef PYTHON
 #include "Scripting/PythonManager.h"
+#include <fcntl.h> //needed for python
+#endif
+
 
 #ifdef NDEBUG
 #include <irrNet.h>
@@ -129,6 +135,8 @@ Luna::~Luna(){}
 //void main_loop();
 
 int Luna::devloop(){
+
+
     #include "./DevLoop.h" //! DevLoop Entry
  //   system("PAUSE");
     return 0;
@@ -332,6 +340,9 @@ int Luna::init(){
 
 
     device->setEventReceiver ( &m_cInGameEvents );
+
+
+device->getCursorControl()->setVisible(true);
 //Physics init
 #ifdef PHYSICS
     m_cPhysics = new Physics();
@@ -513,22 +524,22 @@ int Luna::main_loop(){ //devloop actually
         driver->endScene();
 		#endif
 
-        int fps = driver->getFPS();
-		if (lastFPS != fps)
-		{
-			core::stringw tmp(L"Luna Engine [");
-			tmp += driver->getName();
-			tmp += L"] fps: ";
-			tmp += fps;
-
-			device->setWindowCaption(tmp.c_str());
-			lastFPS = fps;
-		}
+//        int fps = driver->getFPS();
+//		if (lastFPS != fps)
+//		{
+//			core::stringw tmp(L"Luna Engine [");
+//			tmp += driver->getName();
+//			tmp += L"] fps: ";
+//			tmp += fps;
+//
+//			device->setWindowCaption(tmp.c_str());
+//			lastFPS = fps;
+//		}
        device->sleep(15); // pythonize this
 
-              if ( this->m_cInGameEvents.Quit  ){ //Python::iexit==1
-	shutdown();
-	return 0;
+	if ( this->m_cInGameEvents.Quit  ){ //Python::iexit==1
+				shutdown();
+				return 0;
 	}else{
 
     return 1;

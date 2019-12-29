@@ -1,3 +1,4 @@
+#ifdef PYTHON
 PyMethodDef irr_Math[] =
 {
     {"calculate",Python::PyIrr_calcMath,METH_VARARGS,"calculate"},
@@ -49,3 +50,5 @@ PyObject * Python::PyIrr_Rand(PyObject * self,PyObject * args){
 	//srand(x);
 	return Py_BuildValue("i",rand());
 }
+
+#endif

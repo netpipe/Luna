@@ -20,7 +20,7 @@ PyMethodDef irr_Physics[] = {
 	};
 
 PyObject * Python::PyIrr_recast(PyObject * self,PyObject * args){
-
+#ifdef RECAST
 //io::IFileSystem* fs = device->getFileSystem();
 
 	//fs->addFileArchive(IRRLICHT_DIR);
@@ -77,6 +77,7 @@ PyArg_ParseTuple(args,"s",&path);
 //m_detailSampleDist = 6.0f;
 //m_detailSampleMaxError = 1.0f;
 //}
+#endif
 }
 
 PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){

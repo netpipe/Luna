@@ -1,5 +1,6 @@
 #ifndef PYSCENE_H_INCLUDED
 #define PYSCENE_H_INCLUDED
+#ifdef PYTHON
 /// we will also want a main loop python event manager that runs every loop something like pyKeyCheck.
 /// IF getting errors about missing python stuff make sure its in 3 places the function too
 
@@ -507,5 +508,5 @@ void Python::render() {//active camera
 }
 
 
-
+#endif //PYTHON
 #endif // PYSCENE_H_INCLUDED
