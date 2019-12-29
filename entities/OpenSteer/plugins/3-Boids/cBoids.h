@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 #ifndef C_TEMPLATE_H
 #define C_TEMPLATE_H
 
@@ -61,3 +62,4 @@ class Boid : public SimpleVehicle, public irr::scene::ISceneNode{
 
 
 #endif // C_TEMPLATE_H
+#endif

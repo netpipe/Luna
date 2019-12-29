@@ -1,3 +1,4 @@
+#ifdef ASSIMP
 #include "IrrAssimp.h"
 
 #include <iostream>
@@ -91,3 +92,4 @@ bool IrrAssimp::isLoadable(irr::core::stringc path)
     irr::core::getFileNameExtension(extension, path);
     return importer.IsExtensionSupported (extension.c_str());
 }
+#endif

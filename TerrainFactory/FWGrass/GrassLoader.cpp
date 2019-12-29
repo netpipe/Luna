@@ -1,3 +1,4 @@
+#ifdef FWGRASS
 #include "GrassLoader.h"
 
 using namespace irr;
@@ -379,3 +380,4 @@ void loadGrass(const io::path &filename, scene::ISceneManager* smgr,
 }
 
 }
+#endif

@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #include "cCaptureTheFlagPlugIn.h"
 
@@ -116,3 +117,4 @@ void CtfPlugIn::setInfoText(irr::gui::IGUIStaticText* st){
   txt += L"F2     remove one obstacle.";
   st->setText(txt.c_str());
 }
+#endif

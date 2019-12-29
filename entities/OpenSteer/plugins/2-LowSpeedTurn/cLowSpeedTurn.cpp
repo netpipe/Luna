@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #include "cLowSpeedTurn.h"
 
@@ -108,5 +109,6 @@ irr::video::SMaterial& LowSpeedTurn::getMaterial(irr::u32 i){
 void LowSpeedTurn::setMaterial(irr::video::SMaterial newMaterial){
   Material = newMaterial;
 }
+#endif
 
 

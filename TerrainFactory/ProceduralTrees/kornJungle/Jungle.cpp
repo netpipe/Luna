@@ -1,3 +1,6 @@
+#include "../config.h"
+
+#ifdef TREES
 #include "Jungle.h"
 #include "JungleChunk.h"
 #include <irrlicht.h>
@@ -189,3 +192,4 @@ namespace irr
         }
     }
 }
+#endif

@@ -57,8 +57,9 @@ SMaterial Mat;
 	// node can be manipulated like any other irrlicht node
 		irrFlagNode->setScale( vector3df(10) );
 		irrFlagNode->setPosition (vector3df (x,y,z));
-#endif
-     return Py_BuildValue("l",irrFlagNode);;
+
+     return Py_BuildValue("l",irrFlagNode);
+     #endif
 };
 
 PyObject * Python::PyIrr_Flag2(PyObject * self,PyObject * args) //more realistic with shader
@@ -351,9 +352,9 @@ if ( type == 1 ){
 //   luna->m_cPhysics->getDynamicsWorld()->addRigidBody(mRigidBody);
 
 return Py_BuildValue("l",terr);
-#endif
-}
 
+}
+#endif
 }
 
 
@@ -416,7 +417,7 @@ PyObject * Python::PyIrr_FWGrass(PyObject * self,PyObject * args){
 	float sx,sy,sz,cx,cy,cz;
 	int type;
 	PyArg_ParseTuple(args,"s",&dmap);
-	#ifdef VEGETATION
+	#ifdef FWGRASS
 
     GrassGenerator::CGrassGenerator* grassGenInstance = new CGrassGenerator(device);
 
@@ -478,6 +479,7 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
      //   tree->rotation(btQuaternion( btVector3(0,1,0), PI ));
 
      if (action == "1" ){ //klasgers trees
+			#ifdef TREES
 		//if (action == "Tree"){
 		CTreeGenerator* generator = 0;
 		//vector <CTreeSceneNode*> tree2;
@@ -580,6 +582,7 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
 
 
 	return Py_BuildValue("l",tree2);
+	#endif
 	}else{ //kornjungles trees
 //		if (terraintype){
 //		Terrain *terr2=terr;
@@ -587,6 +590,7 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
 //		}
 	ITerrainSceneNode* terrain=(ITerrainSceneNode*)terr;
 	if (action = "jungle"){
+			#ifdef TREES
  	    jungleScene::Jungle *jungle =
         new jungleScene::Jungle(
                 10240, // world size
@@ -788,9 +792,11 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
         }
     }
     return Py_BuildValue("l",jungle);
+    #endif
 	}
 
 	if (action == "JTree"){
+			#ifdef TREES
 		 	    jungleScene::Jungle *jungle =
         new jungleScene::Jungle(
                 10240, // world size
@@ -973,10 +979,12 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
 				}
 			}
 				return Py_BuildValue("l",jungle);
+				#endif
 		}
 
 
 	}
+
 	#endif
 return Py_BuildValue("");
 };

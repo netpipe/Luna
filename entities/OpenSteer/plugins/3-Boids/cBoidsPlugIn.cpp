@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #include "cBoidsPlugIn.h"
 
@@ -323,3 +324,4 @@ void BoidsPlugIn::setInfoText(irr::gui::IGUIStaticText* st){
   txt += L"F4     next flock boundary condition.";
   st->setText(txt.c_str());
 }
+#endif

@@ -1,3 +1,4 @@
+#ifdef ASSIMP
 #ifndef IRRASSIMP_H
 #define IRRASSIMP_H
 
@@ -64,3 +65,4 @@ class IrrAssimp
 };
 
 #endif // IRRASSIMP_H
+#endif

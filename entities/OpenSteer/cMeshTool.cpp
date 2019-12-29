@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 #include "cMeshTool.h"
 
 datMesh getMesh_VehicleDisk(float radius, float height, bool showDirIndicator){
@@ -610,3 +611,4 @@ datMesh getMesh_Path(OpenSteer::PolylineSegmentedPathwaySingleRadius* path){
 
   return mRet;
 }
+#endif

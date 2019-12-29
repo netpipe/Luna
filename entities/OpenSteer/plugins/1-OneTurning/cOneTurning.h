@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 #ifndef CONETURNING_H
 #define CONETURNING_H
 
@@ -40,3 +41,4 @@ class OneTurning : public SimpleVehicle, public irr::scene::ISceneNode{
 
 
 #endif // CONETURNING_H
+#endif

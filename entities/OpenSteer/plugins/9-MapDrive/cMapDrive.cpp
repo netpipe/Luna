@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #include "cMapDrive.h"
 
@@ -1297,4 +1298,5 @@ OpenSteer::PolylineSegmentedPathwaySegmentRadii::size_type mapPointToSegmentInde
   OpenSteer::mapPointToPathAlike(pathway, point, mapping);
   return mapping.segmentIndex;
 }
+#endif
 

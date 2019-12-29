@@ -1,3 +1,4 @@
+ #ifdef CHOPPER
     #ifndef _CHOPPER_CONTROL_H_
     #define _CHOPPER_CONTROL_H_
 
@@ -160,4 +161,4 @@
 
 
     #endif // _CHOPPER_CONTROL_H_
-
+#endif

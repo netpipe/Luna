@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #ifndef C_Pedestrian_PLUGIN_H
 #define C_Pedestrian_PLUGIN_H
@@ -59,3 +60,4 @@ class PedestrianPlugIn : public PlugIn{
 };
 
 #endif // C_Pedestrian_PLUGIN_H
+#endif

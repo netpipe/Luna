@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #include "cOneTurning.h"
 
@@ -90,3 +91,4 @@ void OneTurning::setMaterial(irr::video::SMaterial newMaterial){
 }
 
 
+#endif

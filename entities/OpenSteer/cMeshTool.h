@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 #ifndef CMESHTOOL_H
 #define CMESHTOOL_H
 
@@ -74,3 +75,4 @@ datMesh getMesh_Path(OpenSteer::PolylineSegmentedPathwaySingleRadius* path);
 datMesh getMesh_Path(OpenSteer::PolylineSegmentedPathwaySegmentRadii* path);
 
 #endif // CMESHTOOL_H
+#endif

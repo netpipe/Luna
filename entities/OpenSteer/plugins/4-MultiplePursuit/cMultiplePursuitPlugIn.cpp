@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #include "cMultiplePursuitPlugIn.h"
 
@@ -79,3 +80,4 @@ void MpPlugIn::setInfoText(irr::gui::IGUIStaticText* st){
 
   st->setText(txt.c_str());
 }
+#endif

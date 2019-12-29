@@ -108,10 +108,13 @@
 #include "../GUI/Math/SCalcExpr.h"
 #endif
 
-#ifdef VEGETATION
+#ifdef FWGRASS
     #include "../TerrainFactory/FWGrass/GrassLoader.h"
-    #include "../TerrainFactory/FWGrass/gen/CGrassGenerator.h"
+        #include "../TerrainFactory/FWGrass/gen/CGrassGenerator.h"
     using namespace GrassGenerator;
+#endif
+
+#ifdef TREES
     #include "../TerrainFactory/ProceduralTrees/kornJungle/Jungle.h"
 #endif
 
@@ -141,8 +144,10 @@ char *zErrMsg;
 #endif
     using namespace std;
     using namespace irr;
-#ifdef PHYSICS
+    #ifdef PHYSICS
+    #ifdef BULLETBLEND //  ?? might be for ragdoll
     btLogicManager* logicManager = new btLogicManager();
+    #endif
         #ifdef RAGDOLL
             static std::vector<RagDoll*> v_RagDolls;
         #endif

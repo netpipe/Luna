@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #ifndef CONETURNINGPLUGIN_H
 #define CONETURNINGPLUGIN_H
@@ -44,3 +45,4 @@ class OneTurningPlugIn : public PlugIn{
 };
 
 #endif // CONETURNINGPLUGIN_H
+#endif

@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #include "cPedestrianPlugIn.h"
 
@@ -154,3 +155,4 @@ void PedestrianPlugIn::setInfoText(irr::gui::IGUIStaticText* st){
   txt += L"F5     toggle wander component on/off.";
   st->setText(txt.c_str());
 }
+#endif

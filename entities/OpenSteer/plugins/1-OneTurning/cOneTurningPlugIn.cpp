@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #include "cOneTurningPlugIn.h"
 
@@ -63,3 +64,4 @@ void OneTurningPlugIn::setInfoText(irr::gui::IGUIStaticText* st){
 
   st->setText(txt.c_str());
 }
+#endif

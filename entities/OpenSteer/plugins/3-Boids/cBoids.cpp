@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #include "cBoids.h"
 
@@ -204,4 +205,5 @@ void Boid::annotateAvoidObstacle(const float minDistanceToCollision){
   annotationLine(BL, BR, white);
   annotationLine(BR, FR, white);
 }
+#endif
 

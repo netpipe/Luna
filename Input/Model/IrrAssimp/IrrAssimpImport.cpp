@@ -1,3 +1,4 @@
+#ifdef ASSIMP
 #include "IrrAssimpImport.h"
 #include <iostream>
 
@@ -415,3 +416,4 @@ void IrrAssimpImport::computeLocal(scene::ISkinnedMesh* mesh, const aiScene* pSc
     else
         ;   //std::cout << "Root ?" << std::endl;
 }
+#endif

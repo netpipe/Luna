@@ -1,3 +1,4 @@
+#ifdef ASSIMP
 #ifndef IRRASSIMPIMPORT_H
 #define IRRASSIMPIMPORT_H
 
@@ -34,3 +35,4 @@ class IrrAssimpImport
 };
 
 #endif // IRRASSIMPIMPORT_H
+#endif

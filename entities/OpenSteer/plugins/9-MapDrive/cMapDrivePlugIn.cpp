@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #include "cMapDrivePlugIn.h"
 
@@ -169,3 +170,4 @@ void MapDrivePlugIn::setInfoText(irr::gui::IGUIStaticText* st){
   txt += L"F5     toggle curved prediction.";
   st->setText(txt.c_str());
 }
+#endif

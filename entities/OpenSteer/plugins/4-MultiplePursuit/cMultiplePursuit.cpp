@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #include "cMultiplePursuit.h"
 
@@ -144,4 +145,5 @@ void MpPursuer::update(const float currentTime, const float elapsedTime){
   // update motion trail
 //  recordTrailVertex(currentTime, position());
 }
+#endif
 

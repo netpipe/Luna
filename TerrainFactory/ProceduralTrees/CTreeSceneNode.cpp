@@ -1,3 +1,5 @@
+#include "../config.h"
+#ifdef TREES
 /*
     Written by Asger Feldthaus
 
@@ -274,3 +276,4 @@ void CTreeSceneNode::updateBillboard()
 //}
 } // namespace scene
 } // namespace irr
+#endif

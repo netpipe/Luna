@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #include "cPedestrian.h"
 
@@ -275,4 +276,6 @@ void Pedestrian::newPD(ProximityDatabase& pd){
   // allocate a token for this boid in the proximity database
   proximityToken = pd.allocateToken (this);
 }
+
+#endif
 

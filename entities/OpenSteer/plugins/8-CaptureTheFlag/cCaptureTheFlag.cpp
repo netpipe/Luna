@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #include "cCaptureTheFlag.h"
 
@@ -488,3 +489,4 @@ irr::video::SMaterial& CtfEnemy::getMaterial(irr::u32 i){
 void CtfEnemy::setMaterial(irr::video::SMaterial newMaterial){
   Material = newMaterial;
 }
+#endif

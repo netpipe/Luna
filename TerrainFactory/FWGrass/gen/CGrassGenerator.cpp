@@ -1,3 +1,4 @@
+#ifdef FWGRASS
 #include "CGrassGenerator.h"
 
 #include <iostream>
@@ -1623,3 +1624,4 @@ bool CGrassGenerator::writeOut(const irr::io::path& Filename)
 }
 
 } // namespace GrassGenerator
+#endif

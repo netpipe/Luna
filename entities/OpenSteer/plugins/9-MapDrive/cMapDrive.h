@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 #ifndef C_MapDrive_H
 #define C_MapDrive_H
 
@@ -376,3 +377,4 @@ class MapDriver : public SimpleVehicle, public irr::scene::ISceneNode{
 
 
 #endif // C_MapDrive_H
+#endif

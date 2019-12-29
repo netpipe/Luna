@@ -391,6 +391,7 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
             btRigidBody *test = (btRigidBody *)node_id;
             test->translate(btVector3 (x,y,z));
     }else if (bullet == 3){
+        #ifdef TERRAIN
             Terrain* mnode = (Terrain*)node_id;
             vector3df newpos;
             //ITerrainSceneNode* node=mnode->terrain;
@@ -398,11 +399,12 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
 
             mnode->terrain->setPosition(vector3df(x,y,z));
             mnode->mRigidBody->translate(btVector3 (newpos.X,newpos.Y,newpos.Z));
-
+        #endif
          //   btRigidBody *test = mnode->mRigidBody;
 
 
     }else if (bullet == 4){
+        #ifdef TERRAIN
             Terrain* mnode =(Terrain*)node_id;
             vector3df newpos;
             //ITerrainSceneNode* node=mnode->terrain;
@@ -410,7 +412,7 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
 
             mnode->cubeSceneNode->setPosition(vector3df(x,y,z));
             mnode->mRigidBody->translate(btVector3 (newpos.X,newpos.Y,newpos.Z));
-
+        #endif
          //   btRigidBody *test = mnode->mRigidBody;
 
 }else if (bullet == 0){

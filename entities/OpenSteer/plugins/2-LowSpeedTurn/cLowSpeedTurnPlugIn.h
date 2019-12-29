@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #ifndef C_LowSpeedTurnPlugIn_H
 #define C_LowSpeedTurnPlugIn_H
@@ -42,3 +43,4 @@ class LowSpeedTurnPlugIn : public PlugIn{
 };
 
 #endif // C_LowSpeedTurnPlugIn_H
+#endif

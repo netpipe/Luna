@@ -1,3 +1,4 @@
+#ifdef ASSIMP
 #include "IrrAssimpExport.h"
 #include <iostream>
 const struct aiScene* scene = NULL;
@@ -161,3 +162,4 @@ void IrrAssimpExport::writeFile(irr::scene::IMesh* mesh, irr::core::stringc form
     delete scene;
 }
 
+#endif

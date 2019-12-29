@@ -1,3 +1,6 @@
+#include "../config.h"
+#ifdef TERRAIN
+
 /// todo make some random trees for terrain
 // patch grid for larger terrain or go procedural
 // impliment planet handler with sphere mapping.
@@ -11,11 +14,15 @@ using namespace scene;
 using namespace core;
 #include "open-simplex-noise.h"
 
-#include "./ProceduralTrees/kornJungle/Jungle.h"
+#ifdef TREES
+    #include "./ProceduralTrees/kornJungle/Jungle.h"
+#endif
 
 #define LEAF_TYPE 0
 #define NODE_TYPE 1
 #define TILETHRESHOLD 10.0f
+
+
 #include "Terrain.h"
 
 
@@ -776,7 +783,7 @@ void Terrain::tick(const float &CamX, const float &CamY, const float &CamZ)
 }
 */
 
-
+#ifdef TREES
 CTreeSceneNode* Terrain::MakeTrees(vector3df aha,int treetype,char * action){
     // type of tree
     //make the treestack more global ?
@@ -863,7 +870,7 @@ s32 seed = 0;
     //}
     //return pointer to treenode
     return (tree2);
-}
+
 
 
 
@@ -1248,7 +1255,8 @@ s32 seed = 0;
 
 
 }
-
+  #endif
+#endif
 
 
 

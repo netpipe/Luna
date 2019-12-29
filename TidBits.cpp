@@ -471,7 +471,7 @@ return false;
 //
 
     //for irrlicht CD
-    #ifdef irrCD
+    #ifdef IRRCD
     recursiveFillMetaSelector( terrainNode, metaSelector );
   //  recursiveFillMetaSelector( m_irrDevice->getSceneManager()->getRootSceneNode() , metaSelector );
 

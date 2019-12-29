@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #include "cPedestriansWalkingAnEight.h"
 
@@ -239,3 +240,5 @@ irr::video::SMaterial& Pedestrian8::getMaterial(irr::u32 i){
 void Pedestrian8::setMaterial(irr::video::SMaterial newMaterial){
   Material = newMaterial;
 }
+
+#endif

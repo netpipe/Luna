@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 #ifndef C_CtfBase_H
 #define C_CtfBase_H
 
@@ -109,3 +110,5 @@ class CtfEnemy : public CtfBase{
 };
 
 #endif // C_CtfBase_H
+
+#endif // OPENSTEER

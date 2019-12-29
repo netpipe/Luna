@@ -1221,7 +1221,6 @@
 		<Unit filename="TerrainFactory/ProceduralTrees/kornJungle/JungleChunk.h" />
 		<Unit filename="TerrainFactory/ProceduralTrees/kornJungle/TreeSeed.cpp" />
 		<Unit filename="TerrainFactory/ProceduralTrees/kornJungle/TreeSeed.h" />
-		<Unit filename="TerrainFactory/ProceduralTrees/kornJungle/main.cpp" />
 		<Unit filename="TerrainFactory/Terrain.cpp" />
 		<Unit filename="TerrainFactory/Terrain.h" />
 		<Unit filename="TerrainFactory/WaterNode/CReflectedWater.cpp" />

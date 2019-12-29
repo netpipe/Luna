@@ -47,8 +47,10 @@ namespace Python {
 //IrrAssimp assimp(ISceneManager* );
 //            IrrAssimp assimp(ISceneManager);
  // put into a vector or array
+ #ifdef PHYSICS
     Vehicle   *m_cVehicle;
     btRigidBody *ha;
+    #endif
 
     #ifdef EXTRAS
         gui::CGUIChatBox* chat;

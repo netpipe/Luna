@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com) */
 #ifndef OPENSTEER_OPENSTEERDEMO_H
 #define OPENSTEER_OPENSTEERDEMO_H
@@ -138,3 +139,4 @@ float getWindowWidth();
 } // namespace OpenSteer
 
 #endif // OPENSTEER_OPENSTEERDEMO_H
+#endif

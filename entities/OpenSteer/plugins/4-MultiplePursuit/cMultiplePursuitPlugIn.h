@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #ifndef C_MpPlugIn_H
 #define C_MpPlugIn_H
@@ -45,3 +46,4 @@ class MpPlugIn : public PlugIn{
 };
 
 #endif // C_MpPlugIn_H
+#endif

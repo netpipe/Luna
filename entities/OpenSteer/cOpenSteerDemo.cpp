@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com) */
 
 #include "cOpenSteerDemo.h"
@@ -524,3 +525,5 @@ void OpenSteer::OpenSteerDemo::keyboardMiniHelp(){
   std::cout << "      H: Print minimal help (this text)." << std::endl << std::flush;
   std::cout << "    Esc: Close program." <<  std::endl << std::flush;
 }
+
+#endif

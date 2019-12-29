@@ -1,3 +1,4 @@
+#ifdef TREES
 #include <irrlicht.h>
 #include "Jungle.h"
 
@@ -280,4 +281,4 @@ int zmain(int argc, char** argv)
 
     return 0;
 }
-
+#endif

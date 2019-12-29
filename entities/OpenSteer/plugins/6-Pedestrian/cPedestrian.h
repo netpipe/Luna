@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 #ifndef C_Pedestrian_H
 #define C_Pedestrian_H
 
@@ -61,3 +62,4 @@ class Pedestrian : public SimpleVehicle, public irr::scene::ISceneNode{
 };
 
 #endif // C_Pedestrian_H
+#endif

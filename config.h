@@ -1,12 +1,16 @@
+ #ifndef INCLUDES
+ #define INCLUDES
+
     #define IRRCD   // irrlicht Collision Detection
    // #define IRRc
  //   #define PostProcess
   //  #define ReflectiveWater
   //  #define ReflectWater-Main
-#define DPHYSICS
-#define PHYSICS
-    #define TREES //very cpu intensive
-    #define ATMOSPHERE  //  freezes when no video acceleration is used
+  #define DPHYSICS
+  #define PHYSICS
+  //#define VEGETATION
+  //  #define TREES //very cpu intensive
+  //  #define ATMOSPHERE  //  freezes when no video acceleration is used
                         //  or as a user without access to video rights is used
     //  #define FLARE
   //  #define FLARE2  // more realistic and working
@@ -16,16 +20,17 @@
   //  #define TESSIMAGE
 
   //  #define EDITOR
-    #define FLAG    //
+  //  #define FLAG    //
   //  #define FLAG2   //FMX
    // #define COMPASS
   //  #define BOIDS
-    #define TERRAIN
-  //  #define occlusion
+  #define TERRAIN
+  //  #define occlusion.
+//#define OCCLUSION
   //  #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
     #define BULLETCAR // if FPSWEAPON is enabled the car wont work. diff event rec
     #define LOADLEVELS // dont use this without bullet or with occlusion its slow?
-    #define BULLETBLEND
+  //  #define BULLETBLEND
   //  #define RAG   //bulletRagdoll
    // #define EXTRAS
   //  #define DESTRUCTION
@@ -35,7 +40,7 @@
   //  #define CHOPPER
   //  #define  OPENSTEER
   //  #define SQLITE
-//  #define VEGETATION
+
 //  #define SCALC
 //#define FT2
 //#define SPRITES
@@ -43,3 +48,4 @@
 
 //    #define VIDEO
   //  #define PostProcess
+  #endif

@@ -1,3 +1,4 @@
+#ifdef OPENSTEER
 #ifndef C_LowSpeedTurn_H
 #define C_LowSpeedTurn_H
 
@@ -45,3 +46,4 @@ class LowSpeedTurn : public SimpleVehicle, public irr::scene::ISceneNode{
 
 
 #endif // C_LowSpeedTurn_H
+#endif

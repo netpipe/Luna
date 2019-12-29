@@ -1,3 +1,5 @@
+#ifdef OPENSTEER
+
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #include "cLowSpeedTurnPlugIn.h"
 
@@ -77,3 +79,4 @@ void LowSpeedTurnPlugIn::setInfoText(irr::gui::IGUIStaticText* st){
 
   st->setText(txt.c_str());
 }
+#endif
