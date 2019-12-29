@@ -20,7 +20,7 @@ IrrlichtDevice *device;
 		ISceneManager *smgr;
 
 
-
+#ifndef __EMSCRIPTEN__
 void main_loop(){
 	Luna game ( argc1,argv1 );
 	while (!game.m_cInGameEvents.Quit){
@@ -36,6 +36,7 @@ void main_loop(){
 		}
 	}
 }
+#endif
 
 void main_loop2(){ //emscripten testing
 
@@ -45,6 +46,7 @@ void main_loop2(){ //emscripten testing
 		//guienv->drawAll();
         driver->endScene();
 		device->sleep(15); // pythonize this
+
 		}
 
 
@@ -58,7 +60,7 @@ int main ( int argc, char** argv )
         #ifdef __EMSCRIPTEN__
        device = createDevice(video::EDT_OGLES2, core::dimension2du(800,600), 16, false, false, false);
 #else
-        device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 0,1);
+         device = createDevice(video::EDT_OPENGL, core::dimension2du(800,600), 16, false, false, false);
 
 #endif
     driver = device->getVideoDriver();
@@ -68,7 +70,7 @@ int main ( int argc, char** argv )
 	#ifdef __EMSCRIPTEN__
 	emscripten_set_main_loop(main_loop2,0,1);
 #else
-
+while (device->run())
 main_loop();
 		#endif // __EMSCRIPTEN__
 		system("PAUSE");
