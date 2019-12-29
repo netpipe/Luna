@@ -1,4 +1,8 @@
-//#include "Luna.h"
+//#define TESTINGEMSCRIPTEN also set in project options
+
+#ifndef TESTINGEMSCRIPTEN
+#include "Luna.h"
+#endif
 #include <irrlicht.h>
 using namespace irr;
 using namespace core;
@@ -22,9 +26,6 @@ using namespace gui;
 int argc1=0;
  char** argv1;
 bool init=true;
-//#define TESTINGEMSCRIPTEN also set in project options
-
-
 
 IrrlichtDevice *device;
 #ifdef TESTINGEMSCRIPTEN
