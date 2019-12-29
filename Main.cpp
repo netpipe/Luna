@@ -20,6 +20,19 @@ IrrlichtDevice *device;
 		ISceneManager *smgr;
 
 
+
+
+void main_loop2(){ //emscripten testing
+
+		device->run();
+		driver->beginScene ( true, true, SColor ( 31, 200, 111, 0 ) );
+        smgr->drawAll();
+		//guienv->drawAll();
+        driver->endScene();
+		device->sleep(15); // pythonize this
+
+		}
+
 #ifndef __EMSCRIPTEN__
 void main_loop(){
 	Luna game ( argc1,argv1 );
@@ -37,19 +50,6 @@ void main_loop(){
 	}
 }
 #endif
-
-void main_loop2(){ //emscripten testing
-
-		device->run();
-		driver->beginScene ( true, true, SColor ( 31, 200, 111, 0 ) );
-        smgr->drawAll();
-		//guienv->drawAll();
-        driver->endScene();
-		device->sleep(15); // pythonize this
-
-		}
-
-
 int main ( int argc, char** argv )
 {
 	#ifdef __OSX__
