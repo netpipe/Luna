@@ -44,6 +44,7 @@ using namespace gui;
 #include "./Input/Model/blender/BulletBlendReader.h"
 #include "./Input/Model/blender/blenderUp.h"
 #endif
+
 #ifdef FPS
 #include "./Equipment/firstPersonWeapon.h"
 #endif
@@ -51,8 +52,9 @@ using namespace gui;
 #ifdef ATMOSPHERE
 #include "./TerrainFactory/CloudSceneNode/CCloudSceneNode.h"
 #endif
-
+#ifdef DECALS
 #include "./Scene/decalManager/DecalManager.h"
+#endif
 
 //#include "GUI/CodeEditor/CGUIEditBoxIRB.h"
 
@@ -420,16 +422,25 @@ int Luna::Run(){
                     } //init
 								// run main loop
 								#ifdef __EMSCRIPTEN__
-									iinit=true;
 									main_loop();
                                 #else
-									iinit=true;
 									main_loop();
                                 #endif
 
+
+//           device->run();
+//     driver->beginScene ( true, true, SColor ( 31, 200, 111, 0 ) );
+//		#endif
+//
+//        smgr->drawAll();
+//        		guienv->drawAll();
+//        driver->endScene();
+// device->sleep(15); // pythonize this
+
+
             #else//       }else{
-                	shutdown();
-                	return 0;
+//                	shutdown();
+//                	return 0;
 //                	if (iinit){ shutdown(); exit(1); } // for exiting dev loop tmpfix
                 printf ("now entering the lobby");
                    if ( lobby() == -1 ) {
