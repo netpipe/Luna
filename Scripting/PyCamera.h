@@ -1,5 +1,6 @@
 #ifndef PYCAMERA_INCLUDED
 #define PYCAMERA_INCLUDED
+#include "../config.h"
 #ifdef PYTHON
 #include <irrlicht.h>
 PyMethodDef irr_Camera[] = {
@@ -50,7 +51,9 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 		keyMap[7].Action = EKA_STRAFE_RIGHT;    keyMap[7].KeyCode = KEY_KEY_D;
 
 		cam = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
+#ifdef EVENTS
 		device->setEventReceiver ( &mEvent);
+		#endif
 		device->getCursorControl()->setVisible(false);
 		cam->setFarValue(10000.0f);
 		cam->setPosition(vector3df(x,y,z));

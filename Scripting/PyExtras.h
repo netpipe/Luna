@@ -1,3 +1,5 @@
+#include "../config.h"
+#ifdef PYTHON
 //#ifdef EXTRAS
 /// extra stuff that should eventually find a new file to go into.
 
@@ -264,5 +266,5 @@ case 1:
 //Py_RETURN_NONE;
 return Py_BuildValue("");
 }
-
+#endif
 //#endif

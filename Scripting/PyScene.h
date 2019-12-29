@@ -1,3 +1,4 @@
+#include "../config.h"
 #ifdef PYTHON
 ///SCENENODES and SCENESTUFF STUFF  -- included from pyfunctions
 ///TERRAIN

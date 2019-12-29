@@ -1,7 +1,8 @@
- #ifndef INCLUDES
- #define INCLUDES
+// #ifndef INCLUDES
+// #define INCLUDES
 
     #define IRRCD   // irrlicht Collision Detection
+    #define EVENTS
    // #define IRRc
  //   #define PostProcess
   //  #define ReflectiveWater
@@ -27,7 +28,7 @@
   //  #define FLAG2   //FMX
    // #define COMPASS
   //  #define BOIDS
-  //#define TERRAIN
+  #define TERRAIN
   //  #define occlusion.
 //#define OCCLUSION
   //  #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
@@ -52,4 +53,4 @@
 
 //    #define VIDEO
   //  #define PostProcess
-  #endif
+//  #endif

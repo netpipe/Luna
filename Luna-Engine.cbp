@@ -847,9 +847,6 @@
 					<Add library="GLESv2" />
 					<Add library="GL" />
 					<Add library="Irrlicht" />
-					<Add library="pthread" />
-					<Add library="dl" />
-					<Add library="z" />
 					<Add directory="../emscripten-projects/media/freetype2.8/build" />
 					<Add directory="../emscripten-projects/net/enet" />
 					<Add directory="../emscripten-projects/irrlicht-ogl-es-2019dec/lib/Linux" />

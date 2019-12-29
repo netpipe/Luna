@@ -1,3 +1,4 @@
+#include "../config.h"
 #ifdef PYTHON
 ///Main Python Function Includes
 ///Stuff Relivent to Initialization and management of scene / sound and managers.
@@ -17,6 +18,7 @@
 #include "../Scene/PostProcessing/CLensFlarePostProc.h"
 #include "../Scene/PostProcessing/CWaterPostProc.h"
 #endif
+
 #ifdef EXTRAS
 #include "../Scene/CBeamSceneNode.h"
 #include "../Scene/BoltSceneNode.h"
@@ -32,9 +34,15 @@
 #include "../Scene/Elevator.hpp"
 #include "../Physics/Collision.hpp"
 #endif
+#ifdef CHUD
 #include "../GUI/CHUD.h"
+#endif
+
+#ifdef CODEEDITOR
 //#include "../GUI/CodeEditor/CGUIEditBoxIRB.h"
 //CGUIEditBoxIRB * codeEditor;
+#endif
+
 #ifdef TESSIMAGE
 #include "../Scene/tesselatedImage/tesselatedImage.h"
 #endif
@@ -69,8 +77,13 @@
     RibbonTrailSceneNode* rt;
 #endif
 
+#ifdef EVENTS
 #include "../Events/InGameEventReceiver.h"
+#endif
+
+#ifdef OCCLUSION
 #include "../Scene/occlusion/Renderer.h"
+#endif
 
 #ifdef FLAG
     #include "../Scene/Flag/SimpleFlag.h"
@@ -90,9 +103,10 @@
     RecastUtil* recast = 0;
 #endif
 
-#include "../Scene/particles.h"
 
     #ifdef SPARK
+    #include "../Scene/particles.h"
+
         #include "../Scene/SPARK/SPK.h"
         #include "../Scene/SPARK/SPK_IRR.h"
         using namespace SPK;
@@ -104,7 +118,9 @@
 #include "../Input/Model/IrrAssimp/IrrAssimp.h"
 #endif
 
+#ifdef CHUD
 #include "../GUI/cImage2D.h"
+#endif
 
 #ifdef SPRITEMANAGER
 #include "../Scene/spriteManager/SpriteManager.h"
@@ -147,11 +163,13 @@ char *zErrMsg;
     BmFont *fonts = new BmFont;
 #endif
 
-    #ifdef SPRITES
+#ifdef SPRITES
     SpriteManager *sprites = new SpriteManager;
 #endif
-    using namespace std;
-    using namespace irr;
+
+using namespace std;
+using namespace irr;
+
     #ifdef PHYSICS
     #ifdef BULLETBLEND //  ?? might be for ragdoll
     btLogicManager* logicManager = new btLogicManager();
@@ -167,6 +185,7 @@ char *zErrMsg;
     scene::IMetaTriangleSelector* metaSelector;
   //  ICameraSceneNode* camera;
     scene::ITriangleSelector* selector;
+
     #ifdef PHYSICS
     btTransform tr;
     #endif
@@ -296,8 +315,10 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
     //camera = smgr->addCameraSceneNodeFPS();
     //  camera->setFOV(PI/2);
 
+    #ifdef SCENE
     m_cScene = new Scene();
     m_cScene->registerIrrDevice(*device);
+    #endif
   //  m_cScene->setupLights();//Scene, setup for lights.
     int lastFPS = -1;
     u32 timeStamp = device-> getTimer()-> getRealTime(),deltaTime = 0;

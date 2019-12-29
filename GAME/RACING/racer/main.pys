@@ -27,9 +27,9 @@ if (init) :
 # physics.VehicleParams(car2,11,0,20,100,20) #position
 # physics.VehicleParams(car1,8,0,0,0,0)
 # physics.addHelicopter("data/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
- iaxe = image.iadd("./media/axe.jpg",10,10,500,500,10,10,800,800)
- i=0
- init = 0
+# iaxe = image.iadd("./media/axe.jpg",10,10,500,500,10,10,800,800)
+# i=0
+# init = 0
  #scene.addwater("none",1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
  #gui.codeeditor(1) #shader editor #cpu limiter incase of bad code
 # extras.lensflare(1,10,100,10)
@@ -79,9 +79,9 @@ if (init) :
 #MAIN LOOP
 
 
-image.irotate(iaxe,i)
-i+=1
-image.idraw(iaxe)
+#image.irotate(iaxe,i)
+#i+=1
+#image.idraw(iaxe)
 
 if input.getKey('KEY_ESCAPE') :
  paused=1

@@ -1,5 +1,6 @@
 #ifndef PYSCENE_H_INCLUDED
 #define PYSCENE_H_INCLUDED
+#include "../config.h"
 #ifdef PYTHON
 /// we will also want a main loop python event manager that runs every loop something like pyKeyCheck.
 /// IF getting errors about missing python stuff make sure its in 3 places the function too
@@ -10,14 +11,18 @@ namespace Python {
     IVideoDriver * driver;
     ISceneManager * smgr;
     IGUIEnvironment * guienv;
+    #ifdef EVENTS
     InGameEventReceiver mEvent;
+    #endif
+
+    void registerIrrDevice(Luna *luna, IrrlichtDevice &device,InGameEventReceiver event);
+
     IGUIFont * default_font;
             SKeyMap keyMap[8]; // KEYMAP
 
 //    int iexit=0;
 
     vector<ITexture *> texture_array; //Our array of textures
-    void registerIrrDevice(Luna *luna, IrrlichtDevice &device,InGameEventReceiver event);
 
     #ifdef CHOPPER
     ChopperControl *chopperControl;

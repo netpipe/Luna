@@ -1,3 +1,4 @@
+#ifdef CHUD
 /*
   Copyright (C) 2008-2009 by "Katsankat" mccauley404@gmail.com
 
@@ -87,3 +88,4 @@ CGUIBar::~CGUIBar()
 {
 
 }
+#endif

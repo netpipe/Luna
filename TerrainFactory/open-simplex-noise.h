@@ -1,5 +1,6 @@
 #ifndef OPEN_SIMPLEX_NOISE_H__
 #define OPEN_SIMPLEX_NOISE_H__
+#include "../config.h"
 #ifdef TERRAIN
 /*
  * OpenSimplex (Simplectic) Noise in C.

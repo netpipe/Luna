@@ -1,4 +1,5 @@
 //#include "stdafx.h"
+#include "../config.h"
 #ifdef PHYSICS
 #ifdef BTMISSILE
 #include <iostream>

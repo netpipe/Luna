@@ -1,3 +1,4 @@
+#include "../config.h"
 #ifdef PYTHON
 #include <stdio.h>
 #include <vector>

@@ -1,4 +1,6 @@
+#include "../config.h"
 #ifdef PYTHON
+
 PyMethodDef irr_Math[] =
 {
     {"calculate",Python::PyIrr_calcMath,METH_VARARGS,"calculate"},

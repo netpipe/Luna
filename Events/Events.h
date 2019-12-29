@@ -1,6 +1,8 @@
 #ifndef EVENTS_H
 #define EVENTS_H
 
+#include "../config.h"
+#ifdef EVENTS
 #include <queue>
 
 #include <irrlicht.h>
@@ -51,5 +53,5 @@ class EventRec : public IEventReceiver
 		CCameraSceneNode *camera;
 };
 
-
+#endif
 #endif

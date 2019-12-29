@@ -1,3 +1,4 @@
+#include "../config.h"
 #ifdef PHYSICS
 #include "Physics.h"
 /*testing

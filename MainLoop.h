@@ -1,4 +1,4 @@
-#ifdef NDEBUG // if debug build then do this one
+#ifdef NDEBUGs // if debug build then do this one
 #define PostProcess
 
 

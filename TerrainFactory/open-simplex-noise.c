@@ -1,3 +1,4 @@
+#include "../config.h"
 #ifdef TERRAIN
 /*
  * OpenSimplex (Simplectic) Noise in C.

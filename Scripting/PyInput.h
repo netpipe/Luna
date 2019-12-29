@@ -1,5 +1,6 @@
 #ifndef PYMAIN_H_INCLUDED
 #define PYMAIN_H_INCLUDED
+#include "../config.h"
 #ifdef PYTHON
 //device->sleep(5,0); python delay for mainloop possibly use timers
 

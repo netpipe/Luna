@@ -1,3 +1,4 @@
+#include "../config.h"
 #ifdef EVENTS
 #include "InGameEventReceiver.h"
 

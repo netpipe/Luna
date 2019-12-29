@@ -1,3 +1,4 @@
+#include "../config.h"
 #ifdef PYTHON
 PyMethodDef irr_Image[] =
 {
@@ -26,11 +27,13 @@ PyObject * Python::PyIrr_iRotate(PyObject * self,PyObject * args){
 	float rot;
 
 	PyArg_ParseTuple(args,"lf",&node_id,&rot);
+	#ifdef Image2D
 	cImage* node = (cImage*)node_id;
 
 	node->SetRotation(rot);
      //   irr::f32 GetRotation() { return Rotation; };
 return Py_BuildValue("l",node_id);
+#endif
 
 }
 
@@ -38,6 +41,7 @@ PyObject * Python::PyIrr_iScale(PyObject * self,PyObject * args){
    	long node_id;
    	float X,Y;
 //	float size;
+	#ifdef Image2D
 	PyArg_ParseTuple(args,"lff",&node_id,&X,&Y);
 	cImage* node = (cImage*)node_id;
 	irr::core::vector2df news;
@@ -45,7 +49,7 @@ PyObject * Python::PyIrr_iScale(PyObject * self,PyObject * args){
 	news.Y=(Y*-1); // not sure why but had to invert values
 
 	node->SetScale(news);
-
+#endif
 
 return Py_BuildValue("");
 
@@ -56,12 +60,14 @@ PyObject * Python::PyIrr_iPosition(PyObject * self,PyObject * args){
    	float X,Y;
 //	float size;
 	PyArg_ParseTuple(args,"lff",&node_id,&X,&Y);
+		#ifdef Image2D
 	cImage* node = (cImage*)node_id;
 
 irr::core::position2di newpos;
 newpos.X=X;
 newpos.Y=Y;
 node->SetPosition(newpos);
+#endif
 return Py_BuildValue("");
 
 }
@@ -70,12 +76,12 @@ PyObject * Python::PyIrr_iDraw(PyObject * self,PyObject * args){
    	long node_id;
 //draw all in vector image stack
 //midpoint
-
+	#ifdef Image2D
 	PyArg_ParseTuple(args,"l",&node_id);
 	cImage* node = (cImage*)node_id;
 
 	node->Draw(smgr);
-
+#endif
 return Py_BuildValue("");
 
 }
@@ -84,6 +90,7 @@ PyObject * Python::PyIrr_iAdd(PyObject * self,PyObject * args){
    //	s32 node_id;
 //	float size;
 //bImage2d =1;
+	#ifdef Image2D
 	char * texture;
    	float x1,y1,x2,y2,xx1,yy1,xx2,yy2;
 	//Damn...thats a lot of parameters :)
@@ -100,14 +107,14 @@ cImage* aImage = new cImage(images, nsize, textpos);
 
 
 return Py_BuildValue("l",aImage);
-
+#endif
 }
 
 PyObject * Python::PyIrr_iTexture(PyObject * self,PyObject * args){
    	long node_id;
    	char *texture;
    	int type;
-
+	#ifdef Image2D
 	PyArg_ParseTuple(args,"lsi",&node_id,&texture,&type);
 	cImage* node = (cImage*)node_id;
 	video::ITexture* images = driver->getTexture(texture);
@@ -116,6 +123,7 @@ PyObject * Python::PyIrr_iTexture(PyObject * self,PyObject * args){
 
 	node->SetTexture(images);
 	return Py_BuildValue("l",images);
+	#endif
 }
 
 PyObject * Python::PyIrr_iAlpha(PyObject * self,PyObject * args){
@@ -124,9 +132,11 @@ PyObject * Python::PyIrr_iAlpha(PyObject * self,PyObject * args){
 
 	//Damn...thats a lot of parameters :)
 	PyArg_ParseTuple(args,"l",&node_id);
+		#ifdef Image2D
 	cImage* node = (cImage*)node_id;
 
 	node->Draw(smgr);
+	#endif
 }
 
 
@@ -213,21 +223,25 @@ PyObject * Python::PyIrr_igetBounds(PyObject * self,PyObject * args){
 	long node_id;
 	irr::core::recti rect;
 	PyArg_ParseTuple(args,"l",&node_id);
+		#ifdef Image2D
 	cImage* node = (cImage*)node_id;
 
 	rect = node->GetBoundRect();
 	return Py_BuildValue("l",&rect);
+	#endif
 }
 
 PyObject * Python::PyIrr_icheckBounds(PyObject * self,PyObject * args){
 	long node_id;
 	irr::core::recti rect;
 	PyArg_ParseTuple(args,"l",&node_id);
+		#ifdef Image2D
 	cImage* node = (cImage*)node_id;
 rect = node->GetBoundRect();
 
 
 	return Py_BuildValue("l",&rect);
+	#endif
 }
 
 PyObject * Python::PyIrr_LoadSpriteFont(PyObject * self,PyObject * args){

@@ -74,6 +74,7 @@ char * pyloader;
 		int handleMessages();
 		void rendermain();
 		void main_loop();
+		void main_loop2();
 		bool iinit=true;
 		   u32 then ;
     int lastFPS;
@@ -86,8 +87,9 @@ char * pyloader;
 
 		IGUIEnvironment *guienv;
 
-		//EventRec events;
+
 		#ifdef EVENTS
+		EventRec events;
 		InGameEventReceiver m_cInGameEvents;
 		#endif
         // Factory threads

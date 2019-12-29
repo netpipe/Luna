@@ -19,16 +19,16 @@ bool init=true;
 Luna game ( argc1,argv1 );
 
 void main_loop(){
-//	while (!game.m_cInGameEvents.Quit){
-				while (1){
+	while (!game.m_cInGameEvents.Quit){
 		if ( init ){
 				init=false;
 
 				game.Run();
-			//	game.main_loop();
+				game.main_loop2();
 		}else{
 
-				game.main_loop();
+				game.main_loop2();
+				//game.main_loop();
 		}
 	}
 }

@@ -1,5 +1,6 @@
 #ifndef PYGUI_H_INCLUDED
 #define PYGUI_H_INCLUDED
+#include "../config.h"
 #ifdef PYTHON
 #include <iostream> // for strings
 using namespace std;
@@ -295,6 +296,7 @@ int ammount;
 PyArg_ParseTuple(args,"liffffi",&pwindow,&param,&x1,&y1,&x2,&y2,&ammount);
 //todo put guienv here so it can be placed in windows
 //  CGUIBar* healthBar[4];
+#ifdef CHUD
 CGUIBar* healthBar;
 //printf("param is %i",param);
 	if (param == 0) {
@@ -314,7 +316,7 @@ CGUIBar* healthBar;
 		return Py_BuildValue("");
 //		break;
 	}
-
+#endif
 		return Py_BuildValue("");
 }
 
