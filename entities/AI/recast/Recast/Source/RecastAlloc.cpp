@@ -1,3 +1,4 @@
+#ifdef RECAST
 //
 // Copyright (c) 2009-2010 Mikko Mononen memon@inside.org
 //
@@ -50,7 +51,7 @@ void* rcAlloc(int size, rcAllocHint hint)
 ///
 /// @warning This function leaves the value of @p ptr unchanged.  So it still
 /// points to the same (now invalid) location, and not to null.
-/// 
+///
 /// @see rcAllocSetCustom
 void rcFree(void* ptr)
 {
@@ -60,11 +61,11 @@ void rcFree(void* ptr)
 
 /// @class rcIntArray
 ///
-/// While it is possible to pre-allocate a specific array size during 
-/// construction or by using the #resize method, certain methods will 
+/// While it is possible to pre-allocate a specific array size during
+/// construction or by using the #resize method, certain methods will
 /// automatically resize the array as needed.
 ///
-/// @warning The array memory is not initialized to zero when the size is 
+/// @warning The array memory is not initialized to zero when the size is
 /// manually set during construction or when using #resize.
 
 /// @par
@@ -85,4 +86,4 @@ void rcIntArray::resize(int n)
 	}
 	m_size = n;
 }
-
+#endif

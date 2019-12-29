@@ -1,3 +1,4 @@
+#ifdef RECAST
 //
 // Copyright (c) 2009-2010 Mikko Mononen memon@inside.org
 //
@@ -34,7 +35,7 @@ static const unsigned int DT_OUT_OF_MEMORY = 1 << 2;	// Operation ran out of mem
 static const unsigned int DT_INVALID_PARAM = 1 << 3;	// An input parameter was invalid.
 static const unsigned int DT_BUFFER_TOO_SMALL = 1 << 4;	// Result buffer for the query was too small to store all results.
 static const unsigned int DT_OUT_OF_NODES = 1 << 5;		// Query ran out of nodes during search.
-static const unsigned int DT_PARTIAL_RESULT = 1 << 6;	// Query did not reach the end location, returning best guess. 
+static const unsigned int DT_PARTIAL_RESULT = 1 << 6;	// Query did not reach the end location, returning best guess.
 
 
 // Returns true of status is success.
@@ -60,5 +61,5 @@ inline bool dtStatusDetail(dtStatus status, unsigned int detail)
 {
 	return (status & detail) != 0;
 }
-
+#endif
 #endif // DETOURSTATUS_H

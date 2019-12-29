@@ -1,6 +1,6 @@
 #ifndef _RECAST_UTIL_H_
 #define _RECAST_UTIL_H_
-
+#ifdef RECAST
 #include <stdio.h>
 #include <cstddef>
 #include <math.h>
@@ -94,3 +94,4 @@ public:
 
 
 #endif // _RECAST_UTIL_H_
+#endif

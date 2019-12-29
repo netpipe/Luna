@@ -1,4 +1,6 @@
+#ifdef RECAST
 #include "recast_util.h"
+
 //#include <SampleInterfaces.h>
 
 using namespace std;
@@ -686,4 +688,5 @@ bool RecastUtil::setMeshBufferData
     }
 
 */
+#endif
 

@@ -1,3 +1,4 @@
+#ifdef RECAST
 //
 // Copyright (c) 2009-2010 Mikko Mononen memon@inside.org
 //
@@ -30,7 +31,7 @@ duFileIO::~duFileIO()
 {
 	// Empty
 }
-	
+
 static void ioprintf(duFileIO* io, const char* format, ...)
 {
 	char line[256];
@@ -46,25 +47,25 @@ bool duDumpPolyMeshToObj(rcPolyMesh& pmesh, duFileIO* io)
 {
 	if (!io)
 	{
-		printf("duDumpPolyMeshToObj: input IO is null.\n"); 
+		printf("duDumpPolyMeshToObj: input IO is null.\n");
 		return false;
 	}
 	if (!io->isWriting())
 	{
-		printf("duDumpPolyMeshToObj: input IO not writing.\n"); 
+		printf("duDumpPolyMeshToObj: input IO not writing.\n");
 		return false;
 	}
-	
+
 	const int nvp = pmesh.nvp;
 	const float cs = pmesh.cs;
 	const float ch = pmesh.ch;
 	const float* orig = pmesh.bmin;
-	
+
 	ioprintf(io, "# Recast Navmesh\n");
 	ioprintf(io, "o NavMesh\n");
 
 	ioprintf(io, "\n");
-	
+
 	for (int i = 0; i < pmesh.nverts; ++i)
 	{
 		const unsigned short* v = &pmesh.verts[i*3];
@@ -82,10 +83,10 @@ bool duDumpPolyMeshToObj(rcPolyMesh& pmesh, duFileIO* io)
 		for (int j = 2; j < nvp; ++j)
 		{
 			if (p[j] == RC_MESH_NULL_IDX) break;
-			ioprintf(io, "f %d %d %d\n", p[0]+1, p[j-1]+1, p[j]+1); 
+			ioprintf(io, "f %d %d %d\n", p[0]+1, p[j-1]+1, p[j]+1);
 		}
 	}
-	
+
 	return true;
 }
 
@@ -93,18 +94,18 @@ bool duDumpPolyMeshDetailToObj(rcPolyMeshDetail& dmesh, duFileIO* io)
 {
 	if (!io)
 	{
-		printf("duDumpPolyMeshDetailToObj: input IO is null.\n"); 
+		printf("duDumpPolyMeshDetailToObj: input IO is null.\n");
 		return false;
 	}
 	if (!io->isWriting())
 	{
-		printf("duDumpPolyMeshDetailToObj: input IO not writing.\n"); 
+		printf("duDumpPolyMeshDetailToObj: input IO not writing.\n");
 		return false;
 	}
-	
+
 	ioprintf(io, "# Recast Navmesh\n");
 	ioprintf(io, "o NavMesh\n");
-	
+
 	ioprintf(io, "\n");
 
 	for (int i = 0; i < dmesh.nverts; ++i)
@@ -112,9 +113,9 @@ bool duDumpPolyMeshDetailToObj(rcPolyMeshDetail& dmesh, duFileIO* io)
 		const float* v = &dmesh.verts[i*3];
 		ioprintf(io, "v %f %f %f\n", v[0],v[1],v[2]);
 	}
-	
+
 	ioprintf(io, "\n");
-	
+
 	for (int i = 0; i < dmesh.nmeshes; ++i)
 	{
 		const unsigned int* m = &dmesh.meshes[i*4];
@@ -130,7 +131,7 @@ bool duDumpPolyMeshDetailToObj(rcPolyMeshDetail& dmesh, duFileIO* io)
 					(int)(bverts+tris[j*4+2])+1);
 		}
 	}
-	
+
 	return true;
 }
 
@@ -141,23 +142,23 @@ bool duDumpContourSet(struct rcContourSet& cset, duFileIO* io)
 {
 	if (!io)
 	{
-		printf("duDumpContourSet: input IO is null.\n"); 
+		printf("duDumpContourSet: input IO is null.\n");
 		return false;
 	}
 	if (!io->isWriting())
 	{
-		printf("duDumpContourSet: input IO not writing.\n"); 
+		printf("duDumpContourSet: input IO not writing.\n");
 		return false;
 	}
-	
+
 	io->write(&CSET_MAGIC, sizeof(CSET_MAGIC));
 	io->write(&CSET_VERSION, sizeof(CSET_VERSION));
 
 	io->write(&cset.nconts, sizeof(cset.nconts));
-	
+
 	io->write(cset.bmin, sizeof(cset.bmin));
 	io->write(cset.bmax, sizeof(cset.bmax));
-	
+
 	io->write(&cset.cs, sizeof(cset.cs));
 	io->write(&cset.ch, sizeof(cset.ch));
 
@@ -183,21 +184,21 @@ bool duReadContourSet(struct rcContourSet& cset, duFileIO* io)
 {
 	if (!io)
 	{
-		printf("duReadContourSet: input IO is null.\n"); 
+		printf("duReadContourSet: input IO is null.\n");
 		return false;
 	}
 	if (!io->isReading())
 	{
-		printf("duReadContourSet: input IO not reading.\n"); 
+		printf("duReadContourSet: input IO not reading.\n");
 		return false;
 	}
-	
+
 	int magic = 0;
 	int version = 0;
-	
+
 	io->read(&magic, sizeof(magic));
 	io->read(&version, sizeof(version));
-	
+
 	if (magic != CSET_MAGIC)
 	{
 		printf("duReadContourSet: Bad voodoo.\n");
@@ -208,7 +209,7 @@ bool duReadContourSet(struct rcContourSet& cset, duFileIO* io)
 		printf("duReadContourSet: Bad version.\n");
 		return false;
 	}
-	
+
 	io->read(&cset.nconts, sizeof(cset.nconts));
 
 	cset.conts = (rcContour*)rcAlloc(sizeof(rcContour)*cset.nconts, RC_ALLOC_PERM);
@@ -218,17 +219,17 @@ bool duReadContourSet(struct rcContourSet& cset, duFileIO* io)
 		return false;
 	}
 	memset(cset.conts, 0, sizeof(rcContour)*cset.nconts);
-	
+
 	io->read(cset.bmin, sizeof(cset.bmin));
 	io->read(cset.bmax, sizeof(cset.bmax));
-	
+
 	io->read(&cset.cs, sizeof(cset.cs));
 	io->read(&cset.ch, sizeof(cset.ch));
-	
+
 	io->read(&cset.width, sizeof(cset.width));
 	io->read(&cset.height, sizeof(cset.height));
 	io->read(&cset.borderSize, sizeof(cset.borderSize));
-	
+
 	for (int i = 0; i < cset.nconts; ++i)
 	{
 		rcContour& cont = cset.conts[i];
@@ -249,14 +250,14 @@ bool duReadContourSet(struct rcContourSet& cset, duFileIO* io)
 			printf("duReadContourSet: Could not alloc contour rverts (%d)\n", cont.nrverts);
 			return false;
 		}
-		
+
 		io->read(cont.verts, sizeof(int)*4*cont.nverts);
 		io->read(cont.rverts, sizeof(int)*4*cont.nrverts);
 	}
-	
+
 	return true;
 }
-	
+
 
 static const int CHF_MAGIC = ('r' << 24) | ('c' << 16) | ('h' << 8) | 'f';
 static const int CHF_VERSION = 3;
@@ -265,18 +266,18 @@ bool duDumpCompactHeightfield(struct rcCompactHeightfield& chf, duFileIO* io)
 {
 	if (!io)
 	{
-		printf("duDumpCompactHeightfield: input IO is null.\n"); 
+		printf("duDumpCompactHeightfield: input IO is null.\n");
 		return false;
 	}
 	if (!io->isWriting())
 	{
-		printf("duDumpCompactHeightfield: input IO not writing.\n"); 
+		printf("duDumpCompactHeightfield: input IO not writing.\n");
 		return false;
 	}
-	
+
 	io->write(&CHF_MAGIC, sizeof(CHF_MAGIC));
 	io->write(&CHF_VERSION, sizeof(CHF_VERSION));
-	
+
 	io->write(&chf.width, sizeof(chf.width));
 	io->write(&chf.height, sizeof(chf.height));
 	io->write(&chf.spanCount, sizeof(chf.spanCount));
@@ -318,21 +319,21 @@ bool duReadCompactHeightfield(struct rcCompactHeightfield& chf, duFileIO* io)
 {
 	if (!io)
 	{
-		printf("duReadCompactHeightfield: input IO is null.\n"); 
+		printf("duReadCompactHeightfield: input IO is null.\n");
 		return false;
 	}
 	if (!io->isReading())
 	{
-		printf("duReadCompactHeightfield: input IO not reading.\n"); 
+		printf("duReadCompactHeightfield: input IO not reading.\n");
 		return false;
 	}
 
 	int magic = 0;
 	int version = 0;
-	
+
 	io->read(&magic, sizeof(magic));
 	io->read(&version, sizeof(version));
-	
+
 	if (magic != CHF_MAGIC)
 	{
 		printf("duReadCompactHeightfield: Bad voodoo.\n");
@@ -343,27 +344,27 @@ bool duReadCompactHeightfield(struct rcCompactHeightfield& chf, duFileIO* io)
 		printf("duReadCompactHeightfield: Bad version.\n");
 		return false;
 	}
-	
+
 	io->read(&chf.width, sizeof(chf.width));
 	io->read(&chf.height, sizeof(chf.height));
 	io->read(&chf.spanCount, sizeof(chf.spanCount));
-	
+
 	io->read(&chf.walkableHeight, sizeof(chf.walkableHeight));
 	io->read(&chf.walkableClimb, sizeof(chf.walkableClimb));
 	io->write(&chf.borderSize, sizeof(chf.borderSize));
 
 	io->read(&chf.maxDistance, sizeof(chf.maxDistance));
 	io->read(&chf.maxRegions, sizeof(chf.maxRegions));
-	
+
 	io->read(chf.bmin, sizeof(chf.bmin));
 	io->read(chf.bmax, sizeof(chf.bmax));
-	
+
 	io->read(&chf.cs, sizeof(chf.cs));
 	io->read(&chf.ch, sizeof(chf.ch));
-	
+
 	int tmp = 0;
 	io->read(&tmp, sizeof(tmp));
-	
+
 	if (tmp & 1)
 	{
 		chf.cells = (rcCompactCell*)rcAlloc(sizeof(rcCompactCell)*chf.width*chf.height, RC_ALLOC_PERM);
@@ -404,7 +405,7 @@ bool duReadCompactHeightfield(struct rcCompactHeightfield& chf, duFileIO* io)
 		}
 		io->read(chf.areas, sizeof(unsigned char)*chf.spanCount);
 	}
-	
+
 	return true;
 }
 
@@ -419,7 +420,7 @@ static void logLine(rcContext& ctx, rcTimerLabel label, const char* name, const 
 void duLogBuildTimes(rcContext& ctx, const int totalTimeUsec)
 {
 	const float pc = 100.0f / totalTimeUsec;
- 
+
 	ctx.log(RC_LOG_PROGRESS, "Build Times");
 	logLine(ctx, RC_TIMER_RASTERIZE_TRIANGLES,		"- Rasterize", pc);
 	logLine(ctx, RC_TIMER_BUILD_COMPACTHEIGHTFIELD,	"- Build Compact", pc);
@@ -448,4 +449,4 @@ void duLogBuildTimes(rcContext& ctx, const int totalTimeUsec)
 	logLine(ctx, RC_TIMER_MERGE_POLYMESHDETAIL,		"- Merge Polymesh Details", pc);
 	ctx.log(RC_LOG_PROGRESS, "=== TOTAL:\t%.2fms", totalTimeUsec/1000.0f);
 }
-
+#endif

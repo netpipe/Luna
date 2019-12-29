@@ -1,3 +1,4 @@
+#ifdef RECAST
 /*
 #include <irrlicht.h>
 #include <iostream>
@@ -238,3 +239,4 @@ int mainb()
 }
 
 */
+#endif

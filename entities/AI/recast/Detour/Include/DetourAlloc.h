@@ -18,7 +18,7 @@
 
 #ifndef DETOURALLOCATOR_H
 #define DETOURALLOCATOR_H
-
+#ifdef RECAST
 /// Provides hint values to the memory allocator on how long the
 /// memory is expected to be used.
 enum dtAllocHint
@@ -56,4 +56,5 @@ void* dtAlloc(int size, dtAllocHint hint);
 /// @see dtAlloc
 void dtFree(void* ptr);
 
+#endif
 #endif

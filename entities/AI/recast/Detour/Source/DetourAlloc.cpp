@@ -1,3 +1,4 @@
+#ifdef RECAST
 //
 // Copyright (c) 2009-2010 Mikko Mononen memon@inside.org
 //
@@ -48,3 +49,4 @@ void dtFree(void* ptr)
 	if (ptr)
 		sFreeFunc(ptr);
 }
+#endif

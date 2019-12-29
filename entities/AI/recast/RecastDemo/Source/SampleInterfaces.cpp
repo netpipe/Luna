@@ -1,3 +1,4 @@
+#ifdef RECAST
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include <stdio.h>
@@ -317,4 +318,4 @@ bool FileIO::read(void* ptr, const size_t size)
 	return true;
 }
 
-
+#endif

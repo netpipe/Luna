@@ -1,3 +1,4 @@
+
 //
 // Copyright (c) 2009-2010 Mikko Mononen memon@inside.org
 //
@@ -18,7 +19,7 @@
 
 #ifndef DETOURASSERT_H
 #define DETOURASSERT_H
-
+#ifdef RECAST
 // Note: This header file's only purpose is to include define assert.
 // Feel free to change the file and include your own implementation instead.
 
@@ -30,4 +31,6 @@
 #	define dtAssert assert
 #endif
 
+#endif
 #endif // DETOURASSERT_H
+

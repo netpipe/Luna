@@ -1,3 +1,4 @@
+#ifdef RECAST
 //
 // Copyright (c) 2009-2010 Mikko Mononen memon@inside.org
 //
@@ -57,4 +58,5 @@ int getPerfDeltaTimeUsec(const TimeVal start, const TimeVal end)
 	return (int)(end - start);
 }
 
+#endif
 #endif
