@@ -1,4 +1,4 @@
-
+#ifdef PYTHON
 //lacking the manager part but still good in theroy
 // impliment vector stashing of multiple flags and culling when not visible to save resources
 
@@ -1168,4 +1168,4 @@ PyObject * Python::PyIrr_SPARKA(PyObject * self,PyObject * args) //active camera
 	return Py_BuildValue("");
 #endif
 }
-
+#endif

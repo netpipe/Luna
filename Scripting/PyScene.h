@@ -398,7 +398,9 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
             newpos = vector3df(x,y,z)-mnode->terrain->getPosition();
 
             mnode->terrain->setPosition(vector3df(x,y,z));
+            #ifdef PHYSICS
             mnode->mRigidBody->translate(btVector3 (newpos.X,newpos.Y,newpos.Z));
+            #endif
         #endif
          //   btRigidBody *test = mnode->mRigidBody;
 
@@ -411,7 +413,9 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
             newpos = vector3df(x,y,z)-mnode->cubeSceneNode->getPosition();
 
             mnode->cubeSceneNode->setPosition(vector3df(x,y,z));
+            #ifdef PHYSICS
             mnode->mRigidBody->translate(btVector3 (newpos.X,newpos.Y,newpos.Z));
+            #endif
         #endif
          //   btRigidBody *test = mnode->mRigidBody;
 

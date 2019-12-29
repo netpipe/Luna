@@ -21,7 +21,7 @@
 
 #ifndef H_SPK
 #define H_SPK
-
+#ifdef SPARK
 // Defines
 #include "Core/SPK_DEF.h"
 
@@ -75,4 +75,5 @@
 #include "Extensions/Renderers/SPK_LineRendererInterface.h" // 1.04
 #include "Extensions/Renderers/SPK_Oriented3DRendererInterface.h" // 1.04
 
+#endif
 #endif

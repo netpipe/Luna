@@ -74,17 +74,22 @@
     #include "../Scene/Flag/CFlagSceneNode.h"
 #endif
 
+#ifdef FPS
 #include "../entities/skeleton/Skeleton.h"
-
+#endif
+#ifdef PHYSICS
 #include "../Physics/Vehicle.h"
+#endif
+#ifdef RECAST
 #include "../entities/AI/recast_util.h"
     scene::ISceneNode* node = 0;
     scene::ISceneNode* naviNode = 0;
     RecastUtil* recast = 0;
+#endif
 
 #include "../Scene/particles.h"
-#define SPARKA
-    #ifdef SPARKA
+
+    #ifdef SPARK
         #include "../Scene/SPARK/SPK.h"
         #include "../Scene/SPARK/SPK_IRR.h"
         using namespace SPK;

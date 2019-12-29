@@ -6,8 +6,9 @@
  //   #define PostProcess
   //  #define ReflectiveWater
   //  #define ReflectWater-Main
-  #define DPHYSICS
-  #define PHYSICS
+  //#define SPARK
+ // #define DPHYSICS
+ // #define PHYSICS
   //#define VEGETATION
   //  #define TREES //very cpu intensive
   //  #define ATMOSPHERE  //  freezes when no video acceleration is used
@@ -28,15 +29,15 @@
   //  #define occlusion.
 //#define OCCLUSION
   //  #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
-    #define BULLETCAR // if FPSWEAPON is enabled the car wont work. diff event rec
-    #define LOADLEVELS // dont use this without bullet or with occlusion its slow?
+  //  #define BULLETCAR // if FPSWEAPON is enabled the car wont work. diff event rec
+ //   #define LOADLEVELS // dont use this without bullet or with occlusion its slow?
   //  #define BULLETBLEND
   //  #define RAG   //bulletRagdoll
    // #define EXTRAS
   //  #define DESTRUCTION
   //  #define FORMATIONDEMO
   //  #define HUD
-    #define Image2D // Just testing out
+  //  #define Image2D // Just testing out
   //  #define CHOPPER
   //  #define  OPENSTEER
   //  #define SQLITE

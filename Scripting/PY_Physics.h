@@ -1,3 +1,4 @@
+#ifdef PYTHON
 ///PHYSICS
 
 PyMethodDef irr_Physics[] = {
@@ -166,7 +167,9 @@ if ( state==0 ){  // use state for get and set var
 		switch (param){
 			case 0:
 //				returnvar = m_cVehicle->getState();
+#ifdef PHGYSICS
 					return Py_BuildValue("i",m_cVehicle->getState());
+					#endif
 				break;
 			case 1:
 				vector3df position = vehicle->getPosition();
@@ -738,3 +741,4 @@ void Python::rfm(ISceneNode* node )
 //Collision::Instance()->createRootCollision();
 
 //material system for friction / lusture / magnetic / density
+#endif

@@ -291,7 +291,8 @@ int Luna::shutdown(){
 
 int Luna::init(){
     bool FULLSCREEN=0;
-    resolution[0]= 1024; resolution[1]= 768;
+    resolution[0]= 800; resolution[1]= 600;
+        resolution[0]= 400; resolution[1]= 400;
    //   resolution[0]= 2024; resolution[1]= 2768;
 
    if (FULLSCREEN){
@@ -455,9 +456,9 @@ int Luna::main_loop(){ //devloop actually
 		then = now;
 
 		#ifdef PYTHON
-        Python::PreRender();
+       // Python::PreRender();
         driver->beginScene ( true, true, SColor ( 0, 0, 0, 0 ) );
-        Python::render();
+       // Python::render();
 		#else
 		driver->beginScene ( true, true, SColor ( 31, 200, 111, 0 ) );
 		#endif

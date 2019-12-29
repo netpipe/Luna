@@ -806,7 +806,6 @@
 					<Add option="-D_IRR_EMSCRIPTEN_PLATFORM_" />
 					<Add option="-D__EMSCRIPTEN__" />
 					<Add option="-DNO_GLIB" />
-					<Add option="-DPYTHON" />
 					<Add directory="../emscripten-projects/irrlicht-ogl-es-2019dec/include" />
 					<Add directory="../emscripten-projects/net/irrNetLite22" />
 					<Add directory="../emscripten-projects/media/freetype2.8/build" />
@@ -853,27 +852,13 @@
 					<Add option="--memory-init-file 0" />
 					<Add option="-s EMULATE_FUNCTION_POINTER_CASTS=1" />
 					<Add library="GL" />
-					<Add library="openal" />
-					<Add library="X11" />
 					<Add library="dl" />
 					<Add library="python2.7" />
-					<Add library="IrrOpenSteer" />
 					<Add library="pthread" />
-					<Add library="theora" />
 					<Add library="theoraplayer" />
 					<Add library="GLESv2" />
-					<Add library="BulletSoftBody" />
-					<Add library="BulletDynamics" />
-					<Add library="BulletCollision" />
-					<Add library="LinearMath" />
 					<Add library="z" />
 					<Add library="Irrlicht" />
-					<Add library="freetype" />
-					<Add library="SPARK" />
-					<Add library="SPARK_IRR" />
-					<Add library="ogg" />
-					<Add library="vorbis" />
-					<Add library="vorbisfile" />
 					<Add library="tar" />
 					<Add directory="../emscripten-projects/media/freetype2.8/build" />
 					<Add directory="../emscripten-projects/net/enet" />
@@ -1147,6 +1132,10 @@
 		<Unit filename="Scene/RainMan.h" />
 		<Unit filename="Scene/RibbonTrailSceneNode/RibbonTrailSceneNode.cpp" />
 		<Unit filename="Scene/RibbonTrailSceneNode/RibbonTrailSceneNode.h" />
+		<Unit filename="Scene/SPARK/SPK.h" />
+		<Unit filename="Scene/SPARK/SPK_All.cpp" />
+		<Unit filename="Scene/SPARK/SPK_IRR.h" />
+		<Unit filename="Scene/SPARK/SPK_IRR_ALL.cpp" />
 		<Unit filename="Scene/Scene.cpp" />
 		<Unit filename="Scene/Scene.h" />
 		<Unit filename="Scene/ShaderFactory.cpp" />

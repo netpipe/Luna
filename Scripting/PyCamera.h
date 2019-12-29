@@ -1,6 +1,6 @@
 #ifndef PYCAMERA_INCLUDED
 #define PYCAMERA_INCLUDED
-
+#ifdef PYTHON
 #include <irrlicht.h>
 PyMethodDef irr_Camera[] = {
     {"addCamera",Python::PyIrr_addCamera,METH_VARARGS,"sets camera vector"},
@@ -187,3 +187,4 @@ PyObject * Python::PyIrr_GetCamera(PyObject * self,PyObject * args){
 //sm->setActiveCamera(camera);
 
 #endif // PYCAMERA_INCLUDED
+#endif

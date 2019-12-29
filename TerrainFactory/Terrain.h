@@ -101,9 +101,12 @@ class Terrain
 //		friend class Azadi;
 		static int setter;
 		ITerrainSceneNode* Terrain2(vector3df ,vector3df ,char *hmap,char *tex,char* dmap);
+		#ifdef PHYSICS
 		btRigidBody* mRigidBody;
+		#endif
+		#ifdef TERRAIN
 		ITerrainSceneNode* terrain;
-
+		#endif
     void Render(char*,vector3df terrainPosition,vector3df terrainRotation,vector3df terrainScale,int LOD);
     #ifdef TREES
     CTreeSceneNode* MakeTrees(vector3df aha,int treetype,char *);

@@ -1,3 +1,4 @@
+#ifdef SPARK
 //////////////////////////////////////////////////////////////////////////////////
 // SPARK particle engine														//
 // Copyright (C) 2008-2009 - Julien Fryer - julienfryer@gmail.com				//
@@ -76,3 +77,4 @@
 // Renderer Interfaces
 #include "Extensions/Renderers/SPK_QuadRendererInterface.cpp" // 1.04
 #include "Extensions/Renderers/SPK_Oriented3DRendererInterface.cpp" // 1.04
+#endif

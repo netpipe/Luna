@@ -1,3 +1,4 @@
+#ifdef SPARK
 //////////////////////////////////////////////////////////////////////////////////
 // SPARK Irrlicht Rendering library												//
 // Copyright (C) 2008-2009														//
@@ -42,3 +43,5 @@
 #include "RenderingAPIs/Irrlicht/SPK_IRRPointRenderer.cpp"
 #include "RenderingAPIs/Irrlicht/SPK_IRRLineRenderer.cpp"
 #include "RenderingAPIs/Irrlicht/SPK_IRRQuadRenderer.cpp"
+
+#endif
