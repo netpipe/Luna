@@ -17,10 +17,10 @@ if (init) :
  camera = scene.addCamera(3,0,20,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
  #physics.fpsweapon(camera)
  Light1 = scene.Light(10,100,150,1,"111111") # type , vector, color
-# model = "data/models/vehicles/oldChevy-Truck.3ds"
-# texture = "data/models/vehicles/oldChevy.bmp"
-# terrain = scene.addTerrain(1,-100,-103,-100,5,1,5,"media/terrain-heightmap.bmp","media/terrain.jpg","media/detailmap.jpg") # load last to make the physics work FIX  // possibly a load terrain xml function
-# scene.setPosition(terrain,4,-111,-20,22)
+ model = "data/models/vehicles/oldChevy-Truck.3ds"
+ texture = "data/models/vehicles/oldChevy.bmp"
+ terrain = scene.addTerrain(1,-100,-103,-100,5,1,5,"media/terrain-heightmap.bmp","media/terrain.jpg","media/detailmap.jpg") # load last to make the physics work FIX  // possibly a load terrain xml function
+ scene.setPosition(terrain,4,-111,-20,22)
 # car1 = physics.addCar(model,texture, 3.0,1.0, 1.5,1.5,2.5,  1.5,1.5,1.4, 1.0,1.0,10,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 2.0)
 # car2 = physics.addCar(model,texture, 1.0,1.0, 1.5,1.5,2.5,  1.5,1.5,1.4, 1.0,1.0,1.0,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
 # physics.VehicleParams(car2,0,0,0,0,0) #reset position
@@ -79,9 +79,9 @@ if (init) :
 #MAIN LOOP
 
 
-#image.irotate(iaxe,i)
-#i+=1
-#image.idraw(iaxe)
+image.irotate(iaxe,i)
+i+=1
+image.idraw(iaxe)
 
 if input.getKey('KEY_ESCAPE') :
  paused=1

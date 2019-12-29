@@ -847,6 +847,7 @@
 					<Add option="-s TOTAL_MEMORY=64Mb" />
 					<Add option="-s ASSERTIONS=2" />
 					<Add option="--memory-init-file 0" />
+					<Add option="-s ASYNCIFY=1" />
 					<Add library="GLESv2" />
 					<Add library="GL" />
 					<Add library="Irrlicht" />

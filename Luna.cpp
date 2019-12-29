@@ -432,7 +432,8 @@ int Luna::Run(){
 				//Python::PyIrr_LoadVehicle(m_cVehicle);
 				//Python::PyIrr_addTerrain("1");
 				// pyloader = "./APP/cowsynth/main.pys";
-			pyloader = "./RACING/racer/main.pys";
+		//	pyloader = "./RACING/racer/main.pys";
+			pyloader = "../media/main.pys"; // run from emscripten dir for now
 		#endif
 
 		#ifdef CODEEDITOR
@@ -440,6 +441,7 @@ int Luna::Run(){
 		#endif
 
 	#endif //python
+
 //                    } //init
 								// run main loop
 								#ifdef __EMSCRIPTEN__
