@@ -1,3 +1,4 @@
+#ifdef FPS
 /*
 
 Skeletal human animation class - cpp-file
@@ -679,3 +680,4 @@ void cSkeleton::animInterpolation() {
 core::vector3df cSkeleton::getSkeletonVelocity() const {
 	return skeletonVelocity;
 }
+#endif

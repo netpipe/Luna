@@ -1,4 +1,5 @@
 //#include "stdafx.h"
+#ifdef PHYSICS
 #ifdef BTMISSILE
 #include <iostream>
 #include <map>
@@ -479,4 +480,5 @@ ISceneManager *smgr = device->getSceneManager();
 
     return 0;
 }
+#endif
 #endif

@@ -1,3 +1,4 @@
+#ifdef FPS
 /*
 
 BMaths.cpp
@@ -26,3 +27,4 @@ core::vector3df matrixRotation(core::vector3df rotation, core::vector3df vec)
 
 	return t.getRotationDegrees();
 };
+#endif

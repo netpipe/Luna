@@ -1,3 +1,4 @@
+#ifdef MINAV
 /*
 miNav - Mindinsomnia AI Pathfinding Navigation
 (C) Grady O'Neill 2007
@@ -480,3 +481,4 @@ namespace miNav
         this->Maps--;
     }
 }
+#endif

@@ -1,4 +1,4 @@
-
+#ifdef TESSELATE
 #ifndef TESSELATEDIMAGE_H_
 #define TESSELATEDIMAGE_H_
 
@@ -105,4 +105,5 @@ private:
 };
 
 
+#endif
 #endif

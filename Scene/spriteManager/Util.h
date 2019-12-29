@@ -1,6 +1,6 @@
 #ifndef UTIL_H
 #define UTIL_H
-
+#ifdef SPRITEMAN
 #include <irrlicht.h>
 
 inline bool interpolatePosition(irr::core::vector2df &from, irr::core::vector2df to, float speed, irr::u32 t)
@@ -26,7 +26,7 @@ inline bool interpolatePosition(float &fromX, float &fromY, float toX, float toY
 {
     if (fromX == toX && fromY == toY)
         return false;
-        
+
     irr::core::vector2df from(fromX, fromY);
     irr::core::vector2df to(toX, toY);
     irr::core::vector2df dir = to - from;
@@ -76,4 +76,5 @@ inline int readLine(irr::io::IReadFile *file, irr::c8* line)
 }
 
 
+#endif
 #endif

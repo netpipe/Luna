@@ -1,5 +1,6 @@
 #ifndef _Collision_HPP_
 #define _Collision_HPP_
+#ifdef PHYSICS
 #include <irrlicht.h>
 //#include "Globals.hpp"
 using namespace irr;
@@ -58,5 +59,6 @@ class Collision
 
 };
 
+#endif
 #endif
 

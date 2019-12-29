@@ -1,6 +1,6 @@
 #ifndef COMPASS_H_
 #define COMPASS_H_
-
+#ifdef EXTRAS
 #include <IGUIElement.h>
 #include <SMeshBuffer.h>
 
@@ -52,3 +52,4 @@ private:
 };
 
 #endif /*COMPASS_H_*/
+#endif

@@ -366,9 +366,9 @@ int Luna::Run(){
     events.devLogin=0;
     #ifndef NDEBUG
         events.devLogin=1;
-    #endif
+
  //   driver->setVSync(0);
-        	if ( events.devLogin && !this->m_cInGameEvents.Quit )  {
+//        	if ( events.devLogin && !this->m_cInGameEvents.Quit )  {
 					//countr=countr+1;
 					//printf("%i",countr);
 					if (!iinit) {
@@ -427,7 +427,7 @@ int Luna::Run(){
 									main_loop();
                                 #endif
 
-                }else{
+            #else//       }else{
                 	shutdown();
                 	return 0;
 //                	if (iinit){ shutdown(); exit(1); } // for exiting dev loop tmpfix
@@ -444,6 +444,7 @@ int Luna::Run(){
                         return 0;
                     }
             }
+            #endif
       //      getchar();
 //      if (bshutdown==true) {
 //		shutdown();
@@ -452,7 +453,7 @@ int Luna::Run(){
 //    return 1;
 }
 
-int Luna::main_loop(){ //devloop actually
+void Luna::main_loop(){ //devloop actually
 //#ifdef __EMSCRIPTEN__
     //while (this->m_cInGameEvents.Quit
 //			emscripten_run_script("alert('hi')");
@@ -537,14 +538,14 @@ int Luna::main_loop(){ //devloop actually
 //		}
        device->sleep(15); // pythonize this
 
-	if ( this->m_cInGameEvents.Quit  ){ //Python::iexit==1
-				shutdown();
-				return 0;
-	}else{
+//	if ( this->m_cInGameEvents.Quit  ){ //Python::iexit==1
+//				shutdown();
+//				//return 0;
+//	}else{
 
-    return 1;
+//    return 1;
 
-	}
+//	}
 
 }
 //#endif

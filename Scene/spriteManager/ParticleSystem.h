@@ -1,6 +1,6 @@
 #ifndef _PARTICLESYSTEM_H_
 #define _PARTICLESYSTEM_H_
-
+#ifdef SPRITEMAN
 #include <irrlicht.h>
 
 class SpriteManager;
@@ -426,3 +426,4 @@ public:
 
 
 #endif // _PARTICLESYSTEM_H_
+#endif

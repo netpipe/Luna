@@ -1,6 +1,6 @@
 #ifndef PATHFINDER_H
 #define PATHFINDER_H
-
+#ifdef SPRITEMAN
 #include <irrlicht.h>
 
 class PathFinderMap
@@ -75,3 +75,4 @@ private:
 };
 
 #endif // PATHFINDER_H
+#endif

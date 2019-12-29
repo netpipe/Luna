@@ -1,3 +1,4 @@
+#ifdef SPRITEMAN
 #include "Sprite.h"
 
 using namespace irr;
@@ -257,4 +258,4 @@ bool Sprite::hitTest(float x, float y)
         return true;
     return false;
 }
-
+#endif

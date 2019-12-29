@@ -1,3 +1,4 @@
+#ifdef BOIDS
 #include "BoidSceneNode.h"
 #include <ISceneManager.h>
 #include <IVideoDriver.h>
@@ -533,3 +534,4 @@ void BoidSceneNode::stopPerching()
 
 }
 }
+#endif

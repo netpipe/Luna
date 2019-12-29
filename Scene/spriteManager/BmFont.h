@@ -1,3 +1,4 @@
+#ifdef SPRITEMAN
 #ifndef _BMFONT_H_
 #define _BMFONT_H_
 
@@ -78,7 +79,7 @@ protected:
     float offsetX;
     float offsetY;
     float scale;
-    
+
     float textWidth;
     float textHeight;
     bool textMetricsOnly;
@@ -91,3 +92,4 @@ protected:
 
 
 #endif // _BMFONT_H_
+#endif

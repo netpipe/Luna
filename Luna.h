@@ -72,7 +72,7 @@ char * pyloader;
 		int doLogin ( const std::wstring &username, const std::wstring &password );
 		int handleMessages();
 		void rendermain();
-		int main_loop();
+		void main_loop();
 		bool iinit=false;
 		   u32 then ;
     int lastFPS;

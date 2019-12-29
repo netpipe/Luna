@@ -1,6 +1,6 @@
 #ifndef _SPRITE_H_
 #define _SPRITE_H_
-
+#ifdef SPRITEMAN
 #include <irrlicht.h>
 
 #define MAX_SPRITE_DATA 8
@@ -107,3 +107,4 @@ protected:
 
 
 #endif // _SPRITE_H_
+#endif

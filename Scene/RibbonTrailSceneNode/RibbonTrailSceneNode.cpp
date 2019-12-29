@@ -1,3 +1,4 @@
+#ifdef RIBBONTRAIL
 #include "irrlicht.h"
 using namespace irr;
 #include "RibbonTrailSceneNode.h"
@@ -332,4 +333,4 @@ void RibbonTrailSceneNode::render()
 	}
 
 }
-
+#endif

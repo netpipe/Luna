@@ -1,3 +1,4 @@
+#ifdef FPS
 /*
 
 BMaths.h
@@ -11,3 +12,4 @@ using namespace core;
 
 // rotates a bone
 core::vector3df matrixRotation(core::vector3df rotation, core::vector3df vec);
+#endif

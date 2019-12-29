@@ -1,3 +1,4 @@
+#ifdef SPRITEMAN
 #include "BmFont.h"
 #include "Util.h"
 #include "SpriteManager.h"
@@ -329,4 +330,4 @@ void BmFont::setScale(float s)
 {
     scale = s;
 }
-
+#endif

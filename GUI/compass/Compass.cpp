@@ -1,3 +1,4 @@
+#ifdef EXTRAS
 #include "Compass.h"
 #include <IGUIEnvironment.h>
 #include <IVideoDriver.h>
@@ -72,3 +73,4 @@ const void Compass::SetupQuadMesh(irr::scene::SMeshBuffer& mesh, const irr::f32 
 	mesh.getMaterial().Lighting = false;
 	mesh.getMaterial().MaterialType = irr::video::EMT_TRANSPARENT_ALPHA_CHANNEL;
 }
+#endif

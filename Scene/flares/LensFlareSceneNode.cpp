@@ -1,3 +1,4 @@
+#ifdef FLARES
 #include "LensFlareSceneNode.h"
 #include "IVideoDriver.h"
 #include "ISceneManager.h"
@@ -258,3 +259,4 @@ ISceneNode* LensFlareSceneNode::clone(ISceneNode* newParent, ISceneManager* newM
 }// end irr namespace
 }// end scene namespace
 
+#endif

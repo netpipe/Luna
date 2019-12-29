@@ -41,7 +41,7 @@
 
 // You can use it as you want. If you find this code usefull, some credit will be apreciated.
 // Questions, comments, requests: paulo_cmv@hotmail.com
-
+#ifdef RIBBONTRAIL
 #pragma once
 using namespace irr;
 
@@ -141,3 +141,4 @@ public:
 
 	void setShowDebug( bool visible );
 };
+#endif

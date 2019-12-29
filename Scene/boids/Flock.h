@@ -1,6 +1,6 @@
 #ifndef FLOCK_H_
 #define FLOCK_H_
-
+#ifdef BOIDS
 #include <irrArray.h>
 #include <vector3d.h>
 #include <irrlicht.h>
@@ -114,3 +114,4 @@ private:
 };
 
 #endif /* FLOCK_H_ */
+#endif

@@ -1,6 +1,6 @@
 #ifndef _CLENSFLARESCENENODE_H_INCLUDED_
 #define _CLENSFLARESCENENODE_H_INCLUDED_
-
+#ifdef FLARES
 #include "ILensFlareSceneNode.h"
 
 namespace irr
@@ -65,4 +65,5 @@ class CLensFlareSceneNode : public ILensFlareSceneNode {
 
 } // end namespace scene
 } // end namespace irr
+#endif
 #endif

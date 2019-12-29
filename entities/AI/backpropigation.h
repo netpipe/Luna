@@ -1,7 +1,8 @@
+
 // blindside's neuralnetworking example demo.
 #ifndef ANN_INCLUDE_H
 #define ANN_INCLUDE_H
-
+#ifdef AI-BP
 #include <vector>
 #include <math.h>
 #include <time.h>
@@ -49,7 +50,7 @@ public:
    bool loadNeuralMap(const char* filename);
 private:
    Ann::ITrainer* trainer;
-   
+
    std::vector<Ann::INode*> inputLayer;
    std::vector<std::vector<Ann::INode*> > workLayers;
    std::vector<Ann::INode*> outputLayer;
@@ -76,7 +77,7 @@ public:
    }
 
    float weight;
-   Ann::INode* pointer;   
+   Ann::INode* pointer;
 };
 
 
@@ -88,7 +89,7 @@ public:
       : pointer(nodeLink), weight(weightIn) {}
 
    float* weight;
-   Ann::INode* pointer;   
+   Ann::INode* pointer;
 };
 
 
@@ -103,7 +104,7 @@ public:
    std::vector<Ann::Link>& getLinks()
    {
       return links;
-   }   
+   }
 
    float delta;
    float bias;
@@ -194,7 +195,7 @@ Ann::Ann(size_t numberOfWorkLayers, size_t numberOfWorkers, size_t numberOfInput
       inputLayer.push_back(new InputNode(0));
 
    inputLayerSize = inputLayer.size();
-   
+
    // Push back the input layer.
    workLayers.push_back(inputLayer);
 
@@ -210,7 +211,7 @@ Ann::Ann(size_t numberOfWorkLayers, size_t numberOfWorkers, size_t numberOfInput
 
    workLayerSize = numberOfWorkers;
    workLayersSize = workLayers.size();
-   
+
    for(size_t i = 0;i < numberOfOutputs;++i)
       outputLayer.push_back(new BasicNode(workLayers[workLayersSize - 1]));
 
@@ -232,7 +233,7 @@ void Ann::backPropagate(size_t iterations)
       outputValues.resize(outputLayerSize);
 
       // Training is performed here.
-      if(trainer)   
+      if(trainer)
          trainer->train(inputValues, outputValues, this);
 
       // Update input values.
@@ -296,7 +297,7 @@ Ann::~Ann()
 {
    for(size_t i = 0;i < inputLayerSize;++i)
       delete inputLayer[i];
-   
+
    for(size_t g = 1;g < workLayersSize;++g)
       for(size_t i = 0;i < workLayerSize;++i)
          delete (workLayers[g])[i];
@@ -325,7 +326,7 @@ void Ann::saveNeuralMap(const char* filename)
             fwrite(&workLayers[g][i]->getLinks()[j].weight, sizeof(float), 1, file);
       }
    }
-   
+
    for(size_t i = 0;i < outputLayerSize;++i)
    {
       fwrite(&outputLayer[i]->bias, sizeof(float), 1, file);
@@ -334,7 +335,7 @@ void Ann::saveNeuralMap(const char* filename)
       for(size_t j = 0;j < linksSize;++j)
          fwrite(&outputLayer[i]->getLinks()[j].weight, sizeof(float), 1, file);
    }
-   
+
    fclose(file);
 }
 
@@ -379,7 +380,7 @@ bool Ann::loadNeuralMap(const char* filename)
             fread(&workLayers[g][i]->getLinks()[j].weight, sizeof(float), 1, file);
       }
    }
-   
+
    for(size_t i = 0;i < outputLayerSize;++i)
    {
       fread(&outputLayer[i]->bias, sizeof(float), 1, file);
@@ -388,12 +389,12 @@ bool Ann::loadNeuralMap(const char* filename)
       for(size_t j = 0;j < linksSize;++j)
          fread(&outputLayer[i]->getLinks()[j].weight, sizeof(float), 1, file);
    }
-   
+
    fclose(file);
 
    return true;
 }
 
 #endif
-
+#endif
 // Copyright Ahmed Hilali 2008 (C)

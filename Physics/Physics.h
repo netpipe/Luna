@@ -1,6 +1,6 @@
 #ifndef PHYSICS_H
 #define PHYSICS_H
-
+#ifdef PHYSICS
 #include <irrlicht.h>
 
 #include <btBulletDynamicsCommon.h>
@@ -97,4 +97,5 @@ class Physics
 		btSequentialImpulseConstraintSolver *solver;
 };
 
+#endif
 #endif

@@ -1,3 +1,4 @@
+#ifdef PHYSICS
 #include "Physics.h"
 /*testing
 #include "../FileSystem/BulletBlendReader.h"
@@ -422,3 +423,4 @@ void Physics::registerIrrDevice(IrrlichtDevice *device) {
 	m_irrDevice = device;
 
 }
+#endif

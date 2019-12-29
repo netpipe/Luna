@@ -1,6 +1,6 @@
 #ifndef RAGDOLL_H_INCLUDED
 #define RAGDOLL_H_INCLUDED
-
+#ifdef PHYSICS
 #include <iostream>
 
 #include "LinearMath/btAlignedObjectArray.h"
@@ -74,5 +74,5 @@ public:
 };
 
 
-
+#endif
 #endif // RAGDOLL_H_INCLUDED

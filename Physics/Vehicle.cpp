@@ -1,3 +1,4 @@
+#ifdef PHYSICS
 #include "Vehicle.h"
 #ifdef TERRAIN
 #include "../TerrainFactory/Terrain.h"
@@ -753,5 +754,5 @@ scaleEa = scaleE2;
 // wheelSpacingZ =wheelSpacingZ2;
  wheelScaleFactor = wheelScaleFactor2;
 }
-
+#endif
 

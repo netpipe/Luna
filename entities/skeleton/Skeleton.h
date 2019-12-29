@@ -1,3 +1,4 @@
+#ifdef FPS
 /*
 
 Skeletal human animation class - header-file
@@ -161,4 +162,5 @@ private:
 
 };
 
+#endif
 #endif
