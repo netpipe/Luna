@@ -15,3 +15,7 @@ https://github.com/tecan/IrrlichtDemos
 
 sourceforge version compiles in virtualbox and on wine itself aswell as linux, very outdated though.
 http://sourceforge.net/projects/agnostic/
+
+
+TODO
+find emscripten SLOWDOWN in main loop , i've set minimal build options with no avail sofar.
