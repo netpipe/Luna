@@ -81,9 +81,10 @@ bool connected,doit,login=0;
 
 
 
-
-//#include "./Scene/RibbonTrailSceneNode/RibbonTrailSceneNode.h"
-//       RibbonTrailSceneNode* rt;
+#ifdef RIBBONTRAIL
+#include "./Scene/RibbonTrailSceneNode/RibbonTrailSceneNode.h"
+       RibbonTrailSceneNode* rt;
+#endif
 
 //#include "TerrainFactory/GrassSceneNode/CWindGenerator.h"
 //    scene::CGrassPatchSceneNode *grass[1000];
@@ -338,13 +339,14 @@ int Luna::init(){
 //	context.counter = 0;
 ////	context.listbox = listbox;
 //
-//    		InGameEventReceiver m_cInGameEvents(context);
+    //		InGameEventReceiver m_cInGameEvents(context);
 
-
+#ifdef EVENTS
     device->setEventReceiver ( &m_cInGameEvents );
+    #endif
+//	smgr->addCameraSceneNode(0, vector3df(0,30,-40), vector3df(0,5,0));
 
-
-device->getCursorControl()->setVisible(true);
+	device->getCursorControl()->setVisible(true);
 //Physics init
 #ifdef PHYSICS
     m_cPhysics = new Physics();
@@ -360,22 +362,24 @@ device->getCursorControl()->setVisible(true);
 	#endif
     #endif
 
+    iinit=0;
     return 0;
 }
 
 int Luna::Run(){
-
-    events.devLogin=0;
+					if (iinit) {
+							  if ( init() < 0 ) return -1;
+//    events.devLogin=0;
     #ifndef NDEBUG
-        events.devLogin=1;
+    //    events.devLogin=1;
 
  //   driver->setVSync(0);
 //        	if ( events.devLogin && !this->m_cInGameEvents.Quit )  {
 					//countr=countr+1;
 					//printf("%i",countr);
-					if (!iinit) {
-							  if ( init() < 0 ) return -1;
+					#ifdef EVENTS
                     device->setEventReceiver ( &m_cInGameEvents );
+                    #endif
                     devloop();
 	#ifdef PYTHON
 			#ifdef __EMSCRIPTEN__
@@ -414,7 +418,7 @@ int Luna::Run(){
 			pyloader = "./RACING/racer/main.pys";
 		#endif
 
-		#ifdef EDITOR
+		#ifdef CODEEDITOR
 			Python::bCodeEditor=3; // initial closed state
 		#endif
 
@@ -461,7 +465,7 @@ void Luna::main_loop(){
 		device->run();
 		driver->beginScene ( true, true, SColor ( 31, 200, 111, 0 ) );
         smgr->drawAll();
-		guienv->drawAll();
+		//guienv->drawAll();
         driver->endScene();
 		device->sleep(15); // pythonize this
 }

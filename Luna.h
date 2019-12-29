@@ -43,7 +43,7 @@
 #endif
 
 #ifdef __EMSCRIPTEN__
-#include <emscripten.h>
+//#include <emscripten.h>
 #ifdef PYTHON
 #include <libtar.h>
 #endif
@@ -62,6 +62,7 @@ class Luna
 		unsigned int resolution[2];
         IVideoDriver *driver;
 		ISceneManager *smgr;
+
 char * pyloader;
 
 		int init();
@@ -73,7 +74,7 @@ char * pyloader;
 		int handleMessages();
 		void rendermain();
 		void main_loop();
-		bool iinit=false;
+		bool iinit=true;
 		   u32 then ;
     int lastFPS;
     bool bshutdown=false;
@@ -85,9 +86,10 @@ char * pyloader;
 
 		IGUIEnvironment *guienv;
 
-		EventRec events;
+		//EventRec events;
+		#ifdef EVENTS
 		InGameEventReceiver m_cInGameEvents;
-
+		#endif
         // Factory threads
 		//pthread_t soundThread
 

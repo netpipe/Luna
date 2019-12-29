@@ -9,9 +9,9 @@
 	#include <winsock2.h>
 #endif
 
-//#ifdef __EMSCRIPTEN__
-//#include <emscripten.h>
-//#endif
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
 int argc1=0;
  char** argv1;
 bool init=true;
@@ -19,7 +19,8 @@ bool init=true;
 Luna game ( argc1,argv1 );
 
 void main_loop(){
-	while (!game.m_cInGameEvents.Quit){
+//	while (!game.m_cInGameEvents.Quit){
+				while (1){
 		if ( init ){
 				init=false;
 

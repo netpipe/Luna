@@ -1,6 +1,6 @@
 #ifndef _IN_GAME_EVENTS_H
 #define _IN_GAME_EVENTS_H 1
-
+#ifdef EVENTS
 #include <irrlicht.h>
 #include "../Physics/Physics.h"
 #include "../Physics/Vehicle.h"
@@ -45,4 +45,5 @@ private:
 //	SAppContext & Context;
 };
 
+#endif
 #endif

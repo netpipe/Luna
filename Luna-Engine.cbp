@@ -842,12 +842,8 @@
 					<Add option="-s ALLOW_MEMORY_GROWTH=1" />
 					<Add option="--preload-file media/" />
 					<Add option="-s FULL_ES2=1" />
-					<Add option="-s DISABLE_EXCEPTION_CATCHING=0" />
 					<Add option="-s NO_EXIT_RUNTIME=1" />
 					<Add option="-s ASYNCIFY=1" />
-					<Add option="-s ASSERTIONS=2" />
-					<Add option="--memory-init-file 0" />
-					<Add option="-s EMULATE_FUNCTION_POINTER_CASTS=1" />
 					<Add library="GLESv2" />
 					<Add library="GL" />
 					<Add library="Irrlicht" />

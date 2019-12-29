@@ -1,3 +1,4 @@
+#ifdef PYTHON
 ///Main Python Function Includes
 ///Stuff Relivent to Initialization and management of scene / sound and managers.
 // there are includes at bottom of file for scripting too.
@@ -557,4 +558,5 @@ PyObject * Python::PyIrr_exit(PyObject * self,PyObject * args){
 #include "PyInput.h"
 #include "PyGUI.h"
 
+#endif
 #endif

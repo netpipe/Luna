@@ -1,3 +1,4 @@
+#ifdef FPS
 #include "player.h"
 //void Camera::moveCameraControl()
 //{
@@ -236,4 +237,5 @@ void Player::setSpeed(float val)
 {
   moveSpeed = val;
 }
+#endif
 #endif

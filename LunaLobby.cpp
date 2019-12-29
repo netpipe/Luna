@@ -1,4 +1,4 @@
-
+#ifdef NDEBUG
 #include "Luna.h"
 
 int Luna::lobby() {
@@ -151,4 +151,4 @@ int Luna::lobby() {
 	return 0;
 //	#endif
 }
-
+#endif

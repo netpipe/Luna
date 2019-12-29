@@ -14,18 +14,20 @@
   //  #define ATMOSPHERE  //  freezes when no video acceleration is used
                         //  or as a user without access to video rights is used
     //  #define FLARE
+    //#define FLARES
   //  #define FLARE2  // more realistic and working
 
    // #define DECALS2       // simple decals
     //#define DECALS       //decalmanager sortof working slow tho
   //  #define TESSIMAGE
+  //#define TESSELATE
 
-  //  #define EDITOR
+  //  #define CODEEDITOR
   //  #define FLAG    //
   //  #define FLAG2   //FMX
    // #define COMPASS
   //  #define BOIDS
-  #define TERRAIN
+  //#define TERRAIN
   //  #define occlusion.
 //#define OCCLUSION
   //  #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
@@ -46,6 +48,7 @@
 //#define FT2
 //#define SPRITES
 //#define PYTHON_MINIMALTEST
+//#define PYTHON
 
 //    #define VIDEO
   //  #define PostProcess

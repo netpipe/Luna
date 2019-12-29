@@ -1,6 +1,6 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-
+#ifdef FPS
 #include <string>
 #include <irrlicht.h>
 #ifdef FPS
@@ -97,5 +97,6 @@ void shoot(void);
     IrrlichtDevice *irrDevice;
     IMetaTriangleSelector *metaSelector;
 };
+#endif
 #endif
 #endif
