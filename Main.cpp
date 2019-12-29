@@ -39,7 +39,7 @@ void main_loop2(){ //emscripten testing
 		}
 		#endif
 
-#ifndef __EMSCRIPTEN__
+//#ifndef __EMSCRIPTEN__
 void main_loop(){
 	Luna game ( argc1,argv1 );
 	while (!game.m_cInGameEvents.Quit){
@@ -55,7 +55,7 @@ void main_loop(){
 		}
 	}
 }
-#endif
+//#endif
 int main ( int argc, char** argv )
 {
 	#ifdef __OSX__
@@ -78,7 +78,7 @@ int main ( int argc, char** argv )
 	#endif
 
 	#ifdef __EMSCRIPTEN__
-		emscripten_set_main_loop(main_loop,0,1);
+	//	emscripten_set_main_loop(main_loop,0,1);
 	#else
 		while (device->run()){
 		main_loop();

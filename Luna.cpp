@@ -475,7 +475,7 @@ void Luna::main_loop2(){
 
 void Luna::main_loop(){ //devloop actually
 #ifdef __EMSCRIPTEN__
-			emscripten_run_script("alert('testing 123')"); // waited for user to press button before opening another.
+//			emscripten_run_script("alert('testing 123')"); // waited for user to press button before opening another.
 #endif
            device->run();
                 //&& !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
