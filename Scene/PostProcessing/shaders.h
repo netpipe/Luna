@@ -1,3 +1,4 @@
+#ifdef PostProcess
 // PostProcessing Shaders
 // David Evans, 2009
 
@@ -158,3 +159,5 @@
 #define DX_PLAINREF2 ""
 #define DX_FELT1 ""
 #define DX_FELT2 ""
+
+#endif

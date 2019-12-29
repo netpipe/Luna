@@ -1,3 +1,4 @@
+#ifdef PostProcess
 #include <irrlicht.h>
 #include "CEffectPostProc.h"
 
@@ -844,3 +845,4 @@ void CEffectPostProc::renderEffect( irr::video::ITexture* target ) {
 	driver->setMaterial( *usemat );
 	driver->drawMeshBuffer( Mesh );
 }
+#endif

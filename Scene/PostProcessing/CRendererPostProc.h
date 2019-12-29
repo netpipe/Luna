@@ -3,7 +3,7 @@
 
 #ifndef __C_RENDERER_POST_PROC_H_INCLUDED__
 #define __C_RENDERER_POST_PROC_H_INCLUDED__
-
+#ifdef PostProcess
 #include "IPostProc.h"
 
 class CRendererPostProc : public IPostProc {
@@ -24,4 +24,5 @@ public:
 	void setParameters( bool cb, bool cz, irr::video::SColor col ) { setClearBackBuffer( cbb ); setClearZBuffer( cz ); setColor( col ); }
 };
 
+#endif
 #endif

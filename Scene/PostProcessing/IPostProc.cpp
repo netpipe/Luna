@@ -1,3 +1,4 @@
+#ifdef PostProcess
 #include <irrlicht.h>
 #include "IPostProc.h"
 
@@ -303,3 +304,4 @@ void IPostProc::removeOut( IPostProc* o, irr::u8 n ) {
 	}
 	outs.set_used( outs.size( ) - del );
 }
+#endif

@@ -9,7 +9,7 @@
 
 #ifndef __C_TRANSITION_POST_PROC_H_INCLUDED__
 #define __C_TRANSITION_POST_PROC_H_INCLUDED__
-
+#ifdef PostProcess
 #include "IPostProc.h"
 
 class CTransitionPostProc : public IPostProc {
@@ -30,4 +30,5 @@ public:
 	irr::f32 getBlend( ) { return ps; };
 };
 
+#endif
 #endif

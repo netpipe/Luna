@@ -21,6 +21,7 @@
 
 #ifndef H_SPK
 #define H_SPK
+#include "../config.h"
 #ifdef SPARK
 // Defines
 #include "Core/SPK_DEF.h"

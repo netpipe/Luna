@@ -1,3 +1,4 @@
+#ifdef PostProcess
 #include <irrlicht.h>
 #include "CWaterPostProc.h"
 
@@ -135,3 +136,4 @@ void CWaterPostProc::renderEffect( irr::video::ITexture* target ) {
 		driver->drawMeshBuffer( Mesh );
 	}
 }
+#endif

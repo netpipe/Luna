@@ -1,3 +1,4 @@
+#ifdef PostProcess
 #include <irrlicht.h>
 #include "CTransitionPostProc.h"
 
@@ -92,3 +93,4 @@ void CTransitionPostProc::renderEffect( irr::video::ITexture* target ) {
 	driver->setMaterial( quality <= PPQ_FAST ? matFast : mat );
 	driver->drawMeshBuffer( Mesh );
 }
+#endif

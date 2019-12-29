@@ -1,5 +1,6 @@
 #ifndef __C_SHADER_CALLBACKS_H_INCLUDED__
 #define __C_SHADER_CALLBACKS_H_INCLUDED__
+#ifdef PostProcess
 class CTexturesShaderCallback : public irr::video::IShaderConstantSetCallBack {
 public:
 	virtual void OnSetConstants( irr::video::IMaterialRendererServices* services, irr::s32 num ) {
@@ -8,7 +9,7 @@ public:
 										* driver->getTransform( irr::video::ETS_VIEW )
 										* driver->getTransform( irr::video::ETS_WORLD );
 		services->setVertexShaderConstant("worldViewProj", worldViewProj.pointer( ), 16 );
-		
+
 		if( num == 0 )
 			return;
 		irr::s32 t1 = 0, t2 = 1, t3 = 2, t4 = 3;
@@ -28,7 +29,7 @@ class CShaderCallback : public irr::video::IShaderConstantSetCallBack {
 	irr::f32 randNum;
 	irr::f32 params[8];
 	irr::f32 time;
-	
+
 public:
 	bool usesrand;
 	bool usestime;
@@ -51,8 +52,8 @@ public:
 		if( usesnum > 4u )	services->setPixelShaderConstant( "v4", &params[ 4u ], 1 );
 		if( usesnum > 5u )	services->setPixelShaderConstant( "v5", &params[ 5u ], 1 );
 		if( usesnum > 6u )	services->setPixelShaderConstant( "v6", &params[ 6u ], 1 );
-		if( usesnum > 7u )	services->setPixelShaderConstant( "v7", &params[ 7u ], 1 ); 
-		
+		if( usesnum > 7u )	services->setPixelShaderConstant( "v7", &params[ 7u ], 1 );
+
 		if( num == 0 )
 			return;
 		irr::s32 t1 = 0, t2 = 1, t3 = 2, t4 = 3;
@@ -90,4 +91,5 @@ public:
 	void setTime( irr::f32 to ) { time = to; }
 	irr::f32 getTime( ) { return time; }
 };
+#endif
 #endif
