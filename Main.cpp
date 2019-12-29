@@ -15,15 +15,19 @@
 int argc1=0;
  char** argv1;
 bool init=true;
+IrrlichtDevice *device;
+        IVideoDriver *driver;
+		ISceneManager *smgr;
 
-Luna game ( argc1,argv1 );
+
 
 void main_loop(){
+	Luna game ( argc1,argv1 );
 	while (!game.m_cInGameEvents.Quit){
 		if ( init ){
 				init=false;
 
-				game.Run();
+				game.Run(device);
 				//game.main_loop();
 		}else{
 
@@ -33,6 +37,16 @@ void main_loop(){
 	}
 }
 
+void main_loop2(){
+
+		device->run();
+		driver->beginScene ( true, true, SColor ( 31, 200, 111, 0 ) );
+        smgr->drawAll();
+		//guienv->drawAll();
+        driver->endScene();
+		device->sleep(15); // pythonize this
+		}
+
 
 int main ( int argc, char** argv )
 {
@@ -40,9 +54,21 @@ int main ( int argc, char** argv )
 		NSApplicationLoad();
 	#endif
 
-	#ifdef __EMSCRIPTEN__
-	emscripten_set_main_loop(main_loop,0,1);
+
+        #ifdef __EMSCRIPTEN__
+       device = createDevice(video::EDT_OGLES2, core::dimension2du(800,600), 16, false, false, false);
 #else
+        device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 0,1);
+
+#endif
+    driver = device->getVideoDriver();
+    smgr = device->getSceneManager();
+   // guienv = device->getGUIEnvironment();
+
+	#ifdef __EMSCRIPTEN__
+	emscripten_set_main_loop(main_loop2,0,1);
+#else
+
 main_loop();
 		#endif // __EMSCRIPTEN__
 		system("PAUSE");

@@ -320,7 +320,7 @@ int Luna::init(){
 
       // device = createDevice ( EDT_OPENGL,dimension2du (res.Width,res.Height ),  32, true, true, false, 0 );
         #ifdef __EMSCRIPTEN__
-        device = createDevice ( EDT_OGLES2,dimension2du (resolution[0],resolution[1]), 24, 0,1);
+       device = createDevice(video::EDT_OGLES2, core::dimension2du(800,600), 16, false, false, false,&m_cInGameEvents);
 #else
         device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 0,1);
 
@@ -366,7 +366,8 @@ int Luna::init(){
     return 1;
 }
 
-int Luna::Run(){
+int Luna::Run(IrrlichtDevice *device2){
+	device=device2;
 //					if (iinit) {
 							  if ( init() < 0 ) return -1;
     events.devLogin=0;
