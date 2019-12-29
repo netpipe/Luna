@@ -1,9 +1,10 @@
 #ifdef PHYSICS
 #include "Collision.hpp"
+#ifdef FPS
 #include "../entities/player.h"
 #include "../Scene/Obstacle.hpp"
 #include "../Scene/Elevator.hpp"
-
+#endif
 Collision *Collision::m_collision = NULL;
 Collision Collision::m_default_collision_buffer;
 

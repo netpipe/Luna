@@ -88,7 +88,7 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
     PyArg_ParseTuple(args,"liffff",&mVehicle,&param,&state,&ammount,&y,&z);
  //   vector3df* position = VehicleParam(mVehicle,param,state,ammount,y,z);
 enum eparam{reset,accelerate,reverse,ebrake,brake,lsteer,rsteer};
-
+#ifdef PHYSICS
 Vehicle *vehicle = (Vehicle *)mVehicle;
 //if param = "accelerate"
 //	action = 1
@@ -178,6 +178,7 @@ if ( state==0 ){  // use state for get and set var
 			break;
 		}
     }
+    #endif
   return Py_BuildValue("");
 }
 
@@ -402,7 +403,9 @@ PyObject * Python::PyIrr_LoadVehicle(PyObject * self,PyObject * args){
 	 return Py_BuildValue("");  }
 
 PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
+	#ifdef PHYSICS
 tr.setIdentity();
+#endif
     int param,state,ammount;
     char * path;
     //char * file;
@@ -649,9 +652,10 @@ void Python::rfm(ISceneNode* node )
 
             //node->getMaterial(0).MaterialType = EMT_ONETEXTURE_BLEND;
             //node->setFlag(EMF_TRILINEAR_FILTER, true);
+            #ifdef PHYSICS
 		tr.setOrigin(btVector3(0,0,0));
          btTriangleMesh *collisionMesh = new btTriangleMesh();
-
+#endif
   //  m_cScene->setGenericMaterial(node, 0);
 
     int meshCount = mesh->getMeshBufferCount();

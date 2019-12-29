@@ -141,11 +141,14 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
     u32 timeStamp = device-> getTimer()-> getRealTime(),deltaTime = 0;
     device->setEventReceiver ( &mEvent);
 //    device->getCursorControl()->setVisible(false);
+#ifdef FPS
     Elevator::Instance()->Instance();
+
     ///Player::Instance()->Instance();//obsolete
     //    Collision::Instance()->Instance();
     ///Player::Instance()->setDevice(device); //obsolete
     //   Collision::Instance()->setDevice(device);
+    #endif
 
 //    scene::IAnimatedMesh *mesh = (IAnimatedMesh*) smgr->getMesh("media/player/player.x");
 //	scene::IAnimatedMeshSceneNode *skelNode = (IAnimatedMeshSceneNode*) smgr->addAnimatedMeshSceneNode(mesh);

@@ -385,5 +385,5 @@ public:
 	}
 	*/
 };
-
+#endif
 #endif // define __INCREMENTOR__

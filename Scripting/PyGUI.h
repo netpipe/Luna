@@ -320,7 +320,7 @@ CGUIBar* healthBar;
 
 PyObject * Python::PyIrr_sineGraph2d(PyObject * self,PyObject * args){
 
-
+#ifdef SGRAPH2D
 SGraph2D* graph = new SGraph2D(
 guienv, // GUI environment
 guienv->getRootGUIElement(), // parent
@@ -329,6 +329,7 @@ irr::core::recti(0,0,600,400), // GUI element boundaries
 irr::core::rectf( -10.0f, -10.0f, 20.0f, 10.0f ), // graph window
 true, // use marks or lines?
 true // use tick marks?
+
 );
 
 
@@ -353,9 +354,11 @@ graph->drawOnGraph( pt, video::SColor(255,255,0,0) );
 graph->drop();
 graph = 0;
 		return Py_BuildValue("l",graph);
+		#endif
 }
 
 PyObject * Python::PyIrr_GUITree(PyObject * self,PyObject * args){
+
 		return Py_BuildValue("");
 }
 

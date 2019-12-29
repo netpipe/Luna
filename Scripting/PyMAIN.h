@@ -41,8 +41,9 @@ namespace Python {
     void render();
     void rfm(irr::scene::ISceneNode*);
 
-
+#ifdef PHYSICS
     int VehicleParam(Vehicle *vehicle,int param,float state,float ammount,float y,float z);
+    #endif
     bool CheckKeyState(int key);
 
 //IrrAssimp assimp(ISceneManager* );

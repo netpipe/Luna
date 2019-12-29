@@ -14,7 +14,7 @@
 //#endif
 int argc1=0;
  char** argv1;
-bool init=1;
+bool init=true;
 
 Luna game ( argc1,argv1 );
 
@@ -42,14 +42,7 @@ int main ( int argc, char** argv )
 	#ifdef __EMSCRIPTEN__
 	emscripten_set_main_loop(main_loop,0,1);
 #else
-
-		game.Run();
-
-		while ( !game.m_cInGameEvents.Quit){
-		//while (result==1 ){
-		//		while (1){
-			 game.main_loop();
-		}
+main_loop();
 		#endif // __EMSCRIPTEN__
 		system("PAUSE");
 	return 0;

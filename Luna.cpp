@@ -487,7 +487,7 @@ void Luna::main_loop(){ //devloop actually
 
  //       rt->render();
  #ifdef PYTHON
- #ifdef EDITOR
+ #ifdef CODEEDITOR
 		if (Python::bCodeEditor==1	){
 			Python::bCodeEditor=0;
 			windows->setVisible(true);

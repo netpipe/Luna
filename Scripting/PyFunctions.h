@@ -26,9 +26,11 @@
 #include "../Physics/Ragdoll.h"
 #endif
 
+#ifdef FPS
 #include "../Scene/Obstacle.hpp"
 #include "../Scene/Elevator.hpp"
 #include "../Physics/Collision.hpp"
+#endif
 #include "../GUI/CHUD.h"
 //#include "../GUI/CodeEditor/CGUIEditBoxIRB.h"
 //CGUIEditBoxIRB * codeEditor;
@@ -164,7 +166,10 @@ char *zErrMsg;
     scene::IMetaTriangleSelector* metaSelector;
   //  ICameraSceneNode* camera;
     scene::ITriangleSelector* selector;
+    #ifdef PHYSICS
     btTransform tr;
+    #endif
+
 #ifdef CLOUDS
     scene::CCloudSceneNode* clouds;  ///bitplane clouds
     f32 rot=1.0;
@@ -187,9 +192,9 @@ char *zErrMsg;
 //    scene::LensFlareSceneNode* lensFlareNode;
 #endif
 
-//#ifdef 2DGRAPH
+#ifdef SGRAPH2D
 #include "../GUI/sineGraph2d/SGraph2D.h"
-//#endif
+#endif
 
 #include "../GUI/widgets/CGUIBar.h"
 
@@ -297,7 +302,9 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
     u32 timeStamp = device-> getTimer()-> getRealTime(),deltaTime = 0;
     device->setEventReceiver ( &mEvent);
 //    device->getCursorControl()->setVisible(false);
+#ifdef FPS
     Elevator::Instance()->Instance();
+    #endif
     ///Player::Instance()->Instance();//obsolete
     //    Collision::Instance()->Instance();
     ///Player::Instance()->setDevice(device); //obsolete
