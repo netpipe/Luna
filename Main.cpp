@@ -15,13 +15,18 @@
 int argc1=0;
  char** argv1;
 bool init=true;
+//#define TESTINGEMSCRIPTEN also set in project options
+
+
+
 IrrlichtDevice *device;
+#ifdef TESTINGEMSCRIPTEN
         IVideoDriver *driver;
 		ISceneManager *smgr;
+#endif
 
 
-
-
+#ifdef TESTINGEMSCRIPTEN
 void main_loop2(){ //emscripten testing
 
 		device->run();
@@ -32,6 +37,7 @@ void main_loop2(){ //emscripten testing
 		device->sleep(15); // pythonize this
 
 		}
+		#endif
 
 #ifndef __EMSCRIPTEN__
 void main_loop(){
@@ -57,21 +63,26 @@ int main ( int argc, char** argv )
 	#endif
 
 
-        #ifdef __EMSCRIPTEN__
-       device = createDevice(video::EDT_OGLES2, core::dimension2du(800,600), 16, false, false, false);
-#else
-         device = createDevice(video::EDT_OPENGL, core::dimension2du(800,600), 16, false, false, false);
+			#ifdef __EMSCRIPTEN__
+		   device = createDevice(video::EDT_OGLES2, core::dimension2du(800,600), 16, false, false, false);
+	#else
+			 device = createDevice(video::EDT_OPENGL, core::dimension2du(800,600), 16, false, false, false);
 
-#endif
-    driver = device->getVideoDriver();
-    smgr = device->getSceneManager();
-   // guienv = device->getGUIEnvironment();
+	#endif
+
+		#ifdef TESTINGEMSCRIPTEN
+		driver = device->getVideoDriver();
+		smgr = device->getSceneManager();
+	   // guienv = device->getGUIEnvironment();
+	   emscripten_set_main_loop(main_loop2,0,1);
+	#endif
 
 	#ifdef __EMSCRIPTEN__
-	emscripten_set_main_loop(main_loop2,0,1);
-#else
-while (device->run())
-main_loop();
+		emscripten_set_main_loop(main_loop,0,1);
+	#else
+		while (device->run()){
+		main_loop();
+		}
 		#endif // __EMSCRIPTEN__
 		system("PAUSE");
 	return 0;

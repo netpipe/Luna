@@ -8,9 +8,10 @@
 #include "config.h"  // has the defines in it for compile
 //#include <pthread.h>
 
+#ifdef EVENTS
 #include "Events/Events.h"
 #include "Events/InGameEventReceiver.h"
-//#include "Scene/customNodes.h"
+#endif
 
 #ifdef DSOUND
 #include <cAudio.h>
@@ -27,7 +28,10 @@
 #include "Physics/Vehicle.h"
 #endif
 
+#ifdef SCENE
 #include "Scene/Scene.h"
+//#include "Scene/customNodes.h"
+#endif
 
 #ifdef DECALS
 #include "./Scene/decals/decalscenenode.h"

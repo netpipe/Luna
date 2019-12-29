@@ -302,8 +302,9 @@ int Luna::shutdown(){
 
 int Luna::init(){
     bool FULLSCREEN=0;
-    resolution[0]= 800; resolution[1]= 600;
-        resolution[0]= 400; resolution[1]= 400;
+    resolution[0]= 1024; resolution[1]= 768;
+   // resolution[0]= 800; resolution[1]= 600;
+    //    resolution[0]= 400; resolution[1]= 400;
    //   resolution[0]= 2024; resolution[1]= 2768;
 
    if (FULLSCREEN){
@@ -473,10 +474,9 @@ void Luna::main_loop2(){
 
 
 void Luna::main_loop(){ //devloop actually
-//#ifdef __EMSCRIPTEN__
-    //while (this->m_cInGameEvents.Quit
-//			emscripten_run_script("alert('hi')");
-
+#ifdef __EMSCRIPTEN__
+			emscripten_run_script("alert('testing 123')"); // waited for user to press button before opening another.
+#endif
            device->run();
                 //&& !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
    // {
@@ -544,26 +544,24 @@ void Luna::main_loop(){ //devloop actually
         driver->endScene();
 		#endif
 
-//        int fps = driver->getFPS();
-//		if (lastFPS != fps)
-//		{
-//			core::stringw tmp(L"Luna Engine [");
-//			tmp += driver->getName();
-//			tmp += L"] fps: ";
-//			tmp += fps;
-//
-//			device->setWindowCaption(tmp.c_str());
-//			lastFPS = fps;
-//		}
-       device->sleep(15); // pythonize this
+        int fps = driver->getFPS();
+		if (lastFPS != fps)
+		{
+			core::stringw tmp(L"Luna Engine [");
+			tmp += driver->getName();
+			tmp += L"] fps: ";
+			tmp += fps;
+
+			device->setWindowCaption(tmp.c_str());
+			lastFPS = fps;
+		}
+       device->sleep(8); // pythonize this
 
 //	if ( this->m_cInGameEvents.Quit  ){ //Python::iexit==1
 //				shutdown();
 //				//return 0;
 //	}else{
-
 //    return 1;
-
 //	}
 
 }

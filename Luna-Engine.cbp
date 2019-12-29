@@ -807,6 +807,7 @@
 					<Add option="-D_IRR_EMSCRIPTEN_PLATFORM_" />
 					<Add option="-D__EMSCRIPTEN__" />
 					<Add option="-DNO_GLIB" />
+					<Add option="-DTESTINGEMSCRIPTEN" />
 					<Add directory="../emscripten-projects/irrlicht-ogl-es-2019dec/include" />
 					<Add directory="../emscripten-projects/net/irrNetLite22" />
 					<Add directory="../emscripten-projects/media/freetype2.8/build" />
