@@ -23,6 +23,9 @@ using namespace gui;
 #ifdef __EMSCRIPTEN__
 #include <emscripten.h>
 #endif
+
+    #include <unistd.h>
+
 int argc1=0;
  char** argv1;
 bool init=true;
@@ -34,6 +37,10 @@ IrrlichtDevice *device;
 #endif
 
 
+//    void sleep(unsigned milliseconds)
+//    {
+//        usleep(milliseconds * 1000); // takes microseconds
+//    }
 #ifdef TESTINGEMSCRIPTEN
 void main_loop2(){ //emscripten testing
 
@@ -42,7 +49,9 @@ void main_loop2(){ //emscripten testing
         smgr->drawAll();
 		//guienv->drawAll();
         driver->endScene();
-		device->sleep(15); // pythonize this
+	//	device->sleep(15); // pythonize this
+sleep(0.1);
+//emscripten_sleep(1);
 
 		}
 		#endif
