@@ -384,13 +384,13 @@ int Luna::Run(){
 //	device=device2;
 //					if (iinit) {
 							  if ( init() < 0 ) return -1;
-							  #if EVENTS
+							  #ifdef EVENTS
     events.devLogin=0;
     #ifndef NDEBUG
         events.devLogin=1;
 #endif //events
  //   driver->setVSync(0);
-        	if ( events.devLogin && !this->m_cInGameEvents.Quit )  {
+//        	if ( events.devLogin && !this->m_cInGameEvents.Quit )  {
 
 					//countr=countr+1;
 					//printf("%i",countr);
@@ -440,18 +440,18 @@ int Luna::Run(){
 		#endif
 
 	#endif //python
-                    } //init
+//                    } //init
 								// run main loop
 								#ifdef __EMSCRIPTEN__
-									main_loop();
+								//	main_loop();
                                 #else
-									main_loop();
+								//	main_loop();
                                 #endif
 
 
 
 
- #if EVENTS
+ #ifdef EVENTS
             #else//       }else{
 //                	shutdown();
 //                	return 0;
@@ -571,7 +571,7 @@ void Luna::main_loop(){ //devloop actually
 			device->setWindowCaption(tmp.c_str());
 			lastFPS = fps;
 		}
-		sleep(0.1);
+		//sleep(0.1);
 //       device->sleep(8); // pythonize this
 
 //	if ( this->m_cInGameEvents.Quit  ){ //Python::iexit==1

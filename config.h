@@ -2,7 +2,7 @@
  #define INCLUDES
 
    // #define IRRCD   // irrlicht Collision Detection
-   // #define EVENTS
+    #define EVENTS
    // #define SCENE
    // #define IRRc
  //   #define PostProcess
@@ -29,7 +29,7 @@
   //  #define FLAG2   //FMX
    // #define COMPASS
   //  #define BOIDS
- // #define TERRAIN
+  #define TERRAIN
   //  #define occlusion.
 //#define OCCLUSION
   //  #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
@@ -41,7 +41,7 @@
   //  #define DESTRUCTION
   //  #define FORMATIONDEMO
   //  #define HUD
-  //  #define Image2D // Just testing out
+    #define Image2D // Just testing out
   //  #define CHOPPER
   //  #define  OPENSTEER
   //  #define SQLITE

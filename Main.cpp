@@ -3,17 +3,21 @@
 #ifndef TESTINGEMSCRIPTEN
 #include "Luna.h"
 
+
+#else
     #include <unistd.h>
-#endif
 
-
-#include <irrlicht.h>
+    #include <irrlicht.h>
 using namespace irr;
 using namespace core;
 using namespace scene;
 using namespace video;
 using namespace io;
 using namespace gui;
+#endif
+
+
+
 #include <cstdio>
 
 #ifdef __APPLE__
@@ -34,10 +38,13 @@ int argc1=0;
 bool init=true;
 
 
+
 #ifdef TESTINGEMSCRIPTEN
 IrrlichtDevice *device;
         IVideoDriver *driver;
 		ISceneManager *smgr;
+#else
+	Luna game ( argc1,argv1 );
 #endif
 
 
@@ -63,14 +70,14 @@ sleep(0.1);
 #ifndef TESTINGEMSCRIPTEN
 #ifdef __EMSCRIPTEN__
 void main_loop(){
-	Luna game ( argc1,argv1 );
-		while (1){
-	//while (!game.m_cInGameEvents.Quit){
+
+//		while (1){
+	while (!game.m_cInGameEvents.Quit){
 		if ( init ){
 				init=false;
 
 				game.Run();
-				//game.main_loop();
+				game.main_loop();
 		}else{
 
 				game.main_loop();
@@ -124,8 +131,11 @@ int main ( int argc, char** argv )
 		emscripten_set_main_loop(main_loop,0,1);
 		#endif
 	#else
-		while (device->run()){
-		main_loop();
+			game.Run();
+while (!game.m_cInGameEvents.Quit){
+		//while (device->run()){
+
+		game.main_loop();
 		}
 		#endif // __EMSCRIPTEN__
 		system("PAUSE");
