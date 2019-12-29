@@ -1,6 +1,6 @@
 #ifndef _CLOUDSCENENODE_H
 #define _CLOUDSCENENODE_H
-
+#ifdef ATMOSPHERE
 #include <ISceneNode.h>
 #include <S3DVertex.h>
 
@@ -130,4 +130,5 @@ namespace scene
 } // end namespace scene
 } // end namespace irr
 
+#endif
 #endif

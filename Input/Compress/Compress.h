@@ -1,6 +1,6 @@
 #ifndef __AZADIARCHIVE_H__
 #define __AZADIARCHIVE_H__
-
+#ifdef COMPRESS
 #include <string>
 #include <zlib.h>
 #include <iostream>
@@ -53,4 +53,5 @@ class Decomp
 		std::vector<char> buff;
 };
 
+#endif
 #endif

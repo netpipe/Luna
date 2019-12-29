@@ -1,3 +1,4 @@
+
 //
 // Reflected Water.
 // sio2 'at' users.sourceforge.net
@@ -6,7 +7,7 @@
 
 #ifndef _CREFLECTEDWATER_SHADERCODE_H
 #define _CREFLECTEDWATER_SHADERCODE_H
-
+#ifdef WATER
 const irr::c8 WATER_VERTEX_GLSL[] =
             "uniform float Time;\n" \
             "uniform float WaveHeight, WaveLength, WaveSpeed;\n" \
@@ -171,3 +172,4 @@ const irr::c8 CLAMP_HLSL[] =
 
 #endif
 
+#endif

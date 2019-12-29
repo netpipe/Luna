@@ -16,7 +16,7 @@
 //   misrepresented as being the original software.
 //3. This notice may not be removed or altered from any source distribution.
 
-
+#ifdef ATMOSPHERE
 #include "CloudSceneNode.h"
 #include "IVideoDriver.h"
 #include "ISceneManager.h"
@@ -404,3 +404,4 @@ ISceneNode* CloudSceneNode::clone(ISceneNode* newParent, ISceneManager* newManag
 
 } // end namespace scene
 } // end namespace irr
+#endif
