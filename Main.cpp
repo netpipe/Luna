@@ -37,7 +37,7 @@ void main_loop(){
 	}
 }
 
-void main_loop2(){
+void main_loop2(){ //emscripten testing
 
 		device->run();
 		driver->beginScene ( true, true, SColor ( 31, 200, 111, 0 ) );
