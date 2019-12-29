@@ -428,14 +428,7 @@ int Luna::Run(){
                                 #endif
 
 
-//           device->run();
-//     driver->beginScene ( true, true, SColor ( 31, 200, 111, 0 ) );
-//		#endif
-//
-//        smgr->drawAll();
-//        		guienv->drawAll();
-//        driver->endScene();
-// device->sleep(15); // pythonize this
+
 
 
             #else//       }else{
@@ -464,101 +457,111 @@ int Luna::Run(){
 //    return 1;
 }
 
-void Luna::main_loop(){ //devloop actually
-//#ifdef __EMSCRIPTEN__
-    //while (this->m_cInGameEvents.Quit
-//			emscripten_run_script("alert('hi')");
-
-           device->run();
-                //&& !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
-   // {
-
-
-        const u32 now = device->getTimer()->getTime();
-		frameDeltaTime = (f32)(now - then) / 1000.f; // Time in seconds
-		then = now;
-
-		#ifdef PYTHON
-       // Python::PreRender();
-        driver->beginScene ( true, true, SColor ( 0, 0, 0, 0 ) );
-       // Python::render();
-		#else
+void Luna::main_loop(){
+		device->run();
 		driver->beginScene ( true, true, SColor ( 31, 200, 111, 0 ) );
-		#endif
-
         smgr->drawAll();
-		//	device->setEventReceiver(&receiver);
-
-//        #ifdef PostProcess
-//			ppBlurDOF->render( NULL );
-//            ppBlur->render( NULL );
-//
-//        #endif
-
-
- //       rt->render();
- #ifdef PYTHON
- #ifdef CODEEDITOR
-		if (Python::bCodeEditor==1	){
-			Python::bCodeEditor=0;
-			windows->setVisible(true);
-			codeEditor->setEnabled(true);
-			codeEditor->setVisible(true);
-			menu->setVisible(true);
-			menu->setEnabled(true);
-			windows->setVisible(true);
-			device->setEventReceiver(&receiver);
-			device->getCursorControl()->setVisible(true);
-			    device->setResizable(true);
-		}else if (Python::bCodeEditor == 3	){
-			Python::bCodeEditor = 0;
-			codeEditor->setEnabled(0);
-			codeEditor->setVisible(false);
-			menu->setVisible(false);
-			menu->setEnabled(false);
-			windows->setVisible(false);  //! not sure why but causes crashing on startup
-		}
-		#endif //code_editor
-	#endif
-
-		#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
-          Python::preEnd();
-          Python::CheckKeyStates();
-    //    obsolete:CheckKeyStates(); check onEvent for any need to check keys
-    // loop for key checking and loop for game  only execute script if there was an event
-	// pick a game directory and look for main.pys
-			Python::ExecuteScript(irr::core::stringc(pyloader));
-			//Python::ExecuteScript("./RACING/racer/main.pys");
 		guienv->drawAll();
         driver->endScene();
-		#else
-		guienv->drawAll();
-        driver->endScene();
-		#endif
-
-//        int fps = driver->getFPS();
-//		if (lastFPS != fps)
-//		{
-//			core::stringw tmp(L"Luna Engine [");
-//			tmp += driver->getName();
-//			tmp += L"] fps: ";
-//			tmp += fps;
-//
-//			device->setWindowCaption(tmp.c_str());
-//			lastFPS = fps;
-//		}
-       device->sleep(15); // pythonize this
-
-//	if ( this->m_cInGameEvents.Quit  ){ //Python::iexit==1
-//				shutdown();
-//				//return 0;
-//	}else{
-
-//    return 1;
-
-//	}
-
+		device->sleep(15); // pythonize this
 }
+
+//
+//void Luna::main_loop(){ //devloop actually
+////#ifdef __EMSCRIPTEN__
+//    //while (this->m_cInGameEvents.Quit
+////			emscripten_run_script("alert('hi')");
+//
+//           device->run();
+//                //&& !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
+//   // {
+//
+//
+//        const u32 now = device->getTimer()->getTime();
+//		frameDeltaTime = (f32)(now - then) / 1000.f; // Time in seconds
+//		then = now;
+//
+//		#ifdef PYTHON
+//       // Python::PreRender();
+//        driver->beginScene ( true, true, SColor ( 0, 0, 0, 0 ) );
+//       // Python::render();
+//		#else
+//		driver->beginScene ( true, true, SColor ( 31, 200, 111, 0 ) );
+//		#endif
+//
+//        smgr->drawAll();
+//		//	device->setEventReceiver(&receiver);
+//
+////        #ifdef PostProcess
+////			ppBlurDOF->render( NULL );
+////            ppBlur->render( NULL );
+////
+////        #endif
+//
+//
+// //       rt->render();
+// #ifdef PYTHON
+// #ifdef CODEEDITOR
+//		if (Python::bCodeEditor==1	){
+//			Python::bCodeEditor=0;
+//			windows->setVisible(true);
+//			codeEditor->setEnabled(true);
+//			codeEditor->setVisible(true);
+//			menu->setVisible(true);
+//			menu->setEnabled(true);
+//			windows->setVisible(true);
+//			device->setEventReceiver(&receiver);
+//			device->getCursorControl()->setVisible(true);
+//			    device->setResizable(true);
+//		}else if (Python::bCodeEditor == 3	){
+//			Python::bCodeEditor = 0;
+//			codeEditor->setEnabled(0);
+//			codeEditor->setVisible(false);
+//			menu->setVisible(false);
+//			menu->setEnabled(false);
+//			windows->setVisible(false);  //! not sure why but causes crashing on startup
+//		}
+//		#endif //code_editor
+//	#endif
+//
+//		#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
+//          Python::preEnd();
+//          Python::CheckKeyStates();
+//    //    obsolete:CheckKeyStates(); check onEvent for any need to check keys
+//    // loop for key checking and loop for game  only execute script if there was an event
+//	// pick a game directory and look for main.pys
+//			Python::ExecuteScript(irr::core::stringc(pyloader));
+//			//Python::ExecuteScript("./RACING/racer/main.pys");
+//		guienv->drawAll();
+//        driver->endScene();
+//		#else
+//		guienv->drawAll();
+//        driver->endScene();
+//		#endif
+//
+////        int fps = driver->getFPS();
+////		if (lastFPS != fps)
+////		{
+////			core::stringw tmp(L"Luna Engine [");
+////			tmp += driver->getName();
+////			tmp += L"] fps: ";
+////			tmp += fps;
+////
+////			device->setWindowCaption(tmp.c_str());
+////			lastFPS = fps;
+////		}
+//       device->sleep(15); // pythonize this
+//
+////	if ( this->m_cInGameEvents.Quit  ){ //Python::iexit==1
+////				shutdown();
+////				//return 0;
+////	}else{
+//
+////    return 1;
+//
+////	}
+//
+//}
 //#endif
 
 
