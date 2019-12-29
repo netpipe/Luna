@@ -1,6 +1,7 @@
 #ifndef _Elevator_H_
 #define _Elevator_H_
-
+#include "../config.h"
+#ifdef FPS
 //#include "Globals.hpp"
 #include <irrlicht.h>
 using namespace irr;
@@ -44,4 +45,5 @@ class Elevator
 
 };
 
+#endif
 #endif

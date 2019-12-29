@@ -1,3 +1,4 @@
+#include "../config.h"
 #ifdef PHYSICS
 #include "Collision.hpp"
 #ifdef FPS
@@ -56,7 +57,7 @@ void Collision::recursiveFillMetaSelector(ISceneNode* node, IMetaTriangleSelecto
 //  Output::Instance()->w("Node name is: %s \n",node->getName());
  // Output::Instance()->w("Node id is: %d \n",node->getID());
  // Output::Instance()->w("Node type: ");
-
+#ifdef FPS
   if(strcmp(node->getName(), "elevator") == 0)
   {
   	node->setMaterialType(EMT_LIGHTMAP_M4);
@@ -75,6 +76,7 @@ void Collision::recursiveFillMetaSelector(ISceneNode* node, IMetaTriangleSelecto
   {
 		Obstacle::Instance()->Add(node);
   }
+  #endif
   if(strcmp(node->getName(), "level") == 0)
   {
     //! Enable fog for all materials on the level node.

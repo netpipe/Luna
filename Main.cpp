@@ -24,10 +24,10 @@ void main_loop(){
 				init=false;
 
 				game.Run();
-				game.main_loop2();
+				//game.main_loop();
 		}else{
 
-				game.main_loop2();
+				game.main_loop();
 				//game.main_loop();
 		}
 	}

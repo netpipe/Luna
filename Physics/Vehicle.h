@@ -1,5 +1,6 @@
 #ifndef VEHICLE_H
 #define VEHICLE_H
+#include "../config.h"
 #ifdef PHYSICS
 #include <stdlib.h>
 #include <stdio.h>

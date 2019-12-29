@@ -1,5 +1,4 @@
 #include "../config.h"
-#ifdef PYTHON
 ///Main Python Function Includes
 ///Stuff Relivent to Initialization and management of scene / sound and managers.
 // there are includes at bottom of file for scripting too.
@@ -118,7 +117,7 @@
 #include "../Input/Model/IrrAssimp/IrrAssimp.h"
 #endif
 
-#ifdef CHUD
+#ifdef Image2D
 #include "../GUI/cImage2D.h"
 #endif
 
@@ -180,11 +179,13 @@ using namespace irr;
     static std::vector<btRigidBody*> v_Boxes;
     #endif
 
+    #ifdef IRRCD
     irr::scene::ITriangleSelector* selecta = 0;
 
     scene::IMetaTriangleSelector* metaSelector;
   //  ICameraSceneNode* camera;
     scene::ITriangleSelector* selector;
+#endif
 
     #ifdef PHYSICS
     btTransform tr;
@@ -277,6 +278,7 @@ using namespace irr;
   fluid_audio_driver_t* adriver = NULL;
   fluid_synth_t* synth = NULL;
 #endif
+
 #ifdef PYTHON
 PyMethodDef irr_function[] =
 {
@@ -579,5 +581,4 @@ PyObject * Python::PyIrr_exit(PyObject * self,PyObject * args){
 #include "PyInput.h"
 #include "PyGUI.h"
 
-#endif
 #endif

@@ -1,7 +1,9 @@
-#ifdef TESSELATE
+
+
 #ifndef TESSELATEDIMAGE_H_
 #define TESSELATEDIMAGE_H_
-
+#ifdef TESSELATE
+#include "../config.h"
 #include <irrlicht.h>
 
 using namespace irr;

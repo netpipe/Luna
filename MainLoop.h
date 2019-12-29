@@ -10,7 +10,6 @@ if ( !device->run() ) return 0;
 	// Init the Custom GUI
 
 
-//#define PYTHON
 #ifdef PYTHON
     //Python
         Python::registerIrrDevice(this,*device,m_cInGameEvents);

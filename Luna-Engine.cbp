@@ -152,6 +152,7 @@
 				<Compiler>
 					<Add option="-fpermissive" />
 					<Add option="-DPYTHON" />
+					<Add option="-DPHYSICS" />
 				</Compiler>
 				<Linker>
 					<Add option="`pkg-config gtk+-2.0 --libs`" />

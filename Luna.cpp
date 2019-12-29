@@ -367,14 +367,14 @@ int Luna::init(){
 }
 
 int Luna::Run(){
-					if (iinit) {
+//					if (iinit) {
 							  if ( init() < 0 ) return -1;
-//    events.devLogin=0;
+    events.devLogin=0;
     #ifndef NDEBUG
-    //    events.devLogin=1;
+        events.devLogin=1;
 
  //   driver->setVSync(0);
-//        	if ( events.devLogin && !this->m_cInGameEvents.Quit )  {
+        	if ( events.devLogin && !this->m_cInGameEvents.Quit )  {
 					//countr=countr+1;
 					//printf("%i",countr);
 					#ifdef EVENTS
@@ -426,9 +426,9 @@ int Luna::Run(){
                     } //init
 								// run main loop
 								#ifdef __EMSCRIPTEN__
-								//	main_loop();
+									main_loop();
                                 #else
-								//	main_loop();
+									main_loop();
                                 #endif
 
 
@@ -486,9 +486,9 @@ void Luna::main_loop(){ //devloop actually
 		then = now;
 
 		#ifdef PYTHON
-       // Python::PreRender();
+		Python::PreRender();
         driver->beginScene ( true, true, SColor ( 0, 0, 0, 0 ) );
-       // Python::render();
+        Python::render();
 		#else
 		driver->beginScene ( true, true, SColor ( 31, 200, 111, 0 ) );
 		#endif

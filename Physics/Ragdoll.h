@@ -1,5 +1,6 @@
 #ifndef RAGDOLL_H_INCLUDED
 #define RAGDOLL_H_INCLUDED
+#include "../config.h"
 #ifdef PHYSICS
 #include <iostream>
 

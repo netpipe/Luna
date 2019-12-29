@@ -1,3 +1,4 @@
+#include "../config.h"
 #ifdef FPS
 #include "Elevator.hpp"
 #include "../entities/player.h"

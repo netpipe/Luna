@@ -1,9 +1,12 @@
+#include "../config.h"
 #ifdef PHYSICS
 #include "Vehicle.h"
+
 #ifdef TERRAIN
 #include "../TerrainFactory/Terrain.h"
 #endif
 #include <string.h>
+
 #ifdef FPS
 #include "../Scene/Elevator.hpp"
 #endif
