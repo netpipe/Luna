@@ -1,4 +1,11 @@
-#include "Luna.h"
+//#include "Luna.h"
+#include <irrlicht.h>
+using namespace irr;
+using namespace core;
+using namespace scene;
+using namespace video;
+using namespace io;
+using namespace gui;
 #include <cstdio>
 
 #ifdef __APPLE__
@@ -39,7 +46,7 @@ void main_loop2(){ //emscripten testing
 		}
 		#endif
 
-//#ifndef __EMSCRIPTEN__
+#ifndef __EMSCRIPTEN__
 void main_loop(){
 	Luna game ( argc1,argv1 );
 	while (!game.m_cInGameEvents.Quit){
@@ -55,7 +62,7 @@ void main_loop(){
 		}
 	}
 }
-//#endif
+#endif
 int main ( int argc, char** argv )
 {
 	#ifdef __OSX__
@@ -74,6 +81,23 @@ int main ( int argc, char** argv )
 		driver = device->getVideoDriver();
 		smgr = device->getSceneManager();
 	   // guienv = device->getGUIEnvironment();
+
+	   	IAnimatedMesh* mesh = smgr->getMesh("./media/sydney.md2");
+	if (!mesh)
+	{
+		device->drop();
+		return 1;
+	}
+	IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+
+		if (node)
+	{
+		node->setMaterialFlag(EMF_LIGHTING, false);
+		node->setMD2Animation(scene::EMAT_STAND);
+		node->setMaterialTexture( 0, driver->getTexture("./media/sydney.bmp") );
+	}
+
+
 	   emscripten_set_main_loop(main_loop2,0,1);
 	#endif
 

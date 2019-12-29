@@ -841,11 +841,15 @@
 					<Add directory="../emscripten-projects/compression/libtar/build/include" />
 				</Compiler>
 				<Linker>
-					<Add option="-s ALLOW_MEMORY_GROWTH=1" />
-					<Add option="--preload-file media/" />
 					<Add option="-s FULL_ES2=1" />
+					<Add option="--preload-file media/" />
+					<Add option="-s DISABLE_EXCEPTION_CATCHING=0" />
 					<Add option="-s NO_EXIT_RUNTIME=1" />
-					<Add option="-s ASYNCIFY=1" />
+					<Add option="-s TOTAL_MEMORY=64Mb" />
+					<Add option="-s ASSERTIONS=2" />
+					<Add option="--memory-init-file 0" />
+					<Add option="-s EMULATE_FUNCTION_POINTER_CASTS=1" />
+					<Add option="-s ERROR_ON_UNDEFINED_SYMBOLS=0" />
 					<Add library="GLESv2" />
 					<Add library="GL" />
 					<Add library="Irrlicht" />
@@ -985,18 +989,7 @@
 			<Add directory="../LunaLibs/PolyVox/library/PolyVoxCore" />
 			<Add directory="../LunaLibs/media/fluidsynth-emscripten/src" />
 		</Linker>
-		<Unit filename="DevLoop.h" />
-		<Unit filename="Events/Events.cpp" />
-		<Unit filename="Events/Events.h" />
-		<Unit filename="Events/InGameEventReceiver.cpp" />
-		<Unit filename="Events/InGameEventReceiver.h" />
-		<Unit filename="Luna.cpp" />
-		<Unit filename="Luna.h" />
-		<Unit filename="LunaLobby.cpp" />
 		<Unit filename="Main.cpp" />
-		<Unit filename="MainLoop.h" />
-		<Unit filename="TidBits.cpp" />
-		<Unit filename="config.h" />
 		<Extensions>
 			<DoxyBlocks>
 				<comment_style block="0" line="0" />
