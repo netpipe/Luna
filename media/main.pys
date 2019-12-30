@@ -19,17 +19,17 @@ if (init) :
  Light1 = scene.Light(10,100,150,1,"111111") # type , vector, color
  model = "data/models/vehicles/oldChevy-Truck.3ds"
  texture = "data/models/vehicles/oldChevy.bmp"
- terrain = scene.addTerrain(1,-100,-103,-100,5,1,5,"media/terrain-heightmap.bmp","media/terrain.jpg","media/detailmap.jpg") # load last to make the physics work FIX  // possibly a load terrain xml function
- scene.setPosition(terrain,4,-111,-20,22)
+# terrain = scene.addTerrain(1,-100,-103,-100,5,1,5,"media/terrain-heightmap.bmp","media/terrain.jpg","media/detailmap.jpg") # load last to make the physics work FIX  // possibly a load terrain xml function
+# scene.setPosition(terrain,4,-111,-20,22)
 # car1 = physics.addCar(model,texture, 3.0,1.0, 1.5,1.5,2.5,  1.5,1.5,1.4, 1.0,1.0,10,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 2.0)
 # car2 = physics.addCar(model,texture, 1.0,1.0, 1.5,1.5,2.5,  1.5,1.5,1.4, 1.0,1.0,1.0,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
 # physics.VehicleParams(car2,0,0,0,0,0) #reset position
 # physics.VehicleParams(car2,11,0,20,100,20) #position
 # physics.VehicleParams(car1,8,0,0,0,0)
 # physics.addHelicopter("data/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
- iaxe = image.iadd("./media/axe.jpg",10,10,500,500,10,10,800,800)
- i=0
- init = 0
+# iaxe = image.iadd("./media/axe.jpg",10,10,500,500,10,10,800,800)
+# i=0
+
  #scene.addwater("none",1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
  #gui.codeeditor(1) #shader editor #cpu limiter incase of bad code
 # extras.lensflare(1,10,100,10)
@@ -37,6 +37,8 @@ if (init) :
 # extras.blindboids(1,0,1,1)
 # gui.sgraph()
 # healthbar=gui.bar(0,0,20,40,100,60)
+
+
 
 # if (0) : # can only be client or server
 #  if (1) :
@@ -75,6 +77,12 @@ if (init) :
 #  f32 cy = 100.0f + rand()%10040;
  # int type = rand()%8+1;
 #  int seed = rand();
+
+
+#INIT ALL DONE
+ init = 0  #has to be set so loop runs properly
+
+
 
 #MAIN LOOP
 

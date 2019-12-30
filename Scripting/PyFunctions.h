@@ -300,8 +300,8 @@ PyMethodDef irr_function[] =
 };
 
 
-void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventReceiver event){
-    luna = luna1;
+void Python::registerIrrDevice(IrrlichtDevice &Device,InGameEventReceiver event){
+///    luna = luna1;
     device = &Device;
     driver = device->getVideoDriver();
     smgr   = device->getSceneManager();
@@ -368,14 +368,19 @@ PyObject * Python::PyIrr_Delay(PyObject * self,PyObject * args){ //PyIrr_Delay
     //repurpose this for a path move delay
     float delay;
     PyArg_ParseTuple(args,"f",&delay);
-    device->sleep(delay);
+    sleep(delay);
+//using unistd's sleep function to avoid using asyncify for emscripten
+
+    //device->sleep(delay);
 return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_Sleep(PyObject * self,PyObject * args){
     int ammount;
     PyArg_ParseTuple(args,"i",&ammount);
-    device->sleep(ammount);
+    //using unistd's sleep function to avoid using asyncify for emscripten
+    sleep(ammount);
+   // device->sleep(ammount);
 return Py_BuildValue("");
 }
 
@@ -560,13 +565,13 @@ PyObject * Python::PyIrr_Delete(PyObject * self,PyObject * args){ //active camer
 }
 
 PyObject * Python::PyIrr_pauseGame(PyObject * self,PyObject * args){
-    luna->m_cInGameEvents.Quit=true;
+///    luna->m_cInGameEvents.Quit=true;
 return Py_BuildValue("");
 }
 
 
 PyObject * Python::PyIrr_exit(PyObject * self,PyObject * args){
-    luna->m_cInGameEvents.Quit=true;
+///    luna->m_cInGameEvents.Quit=true;
 //    iexit=1;
     return Py_BuildValue("");
 }

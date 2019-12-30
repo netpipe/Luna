@@ -527,6 +527,7 @@ PyObject * Python::PyIrr_addSphereNode(PyObject * self,PyObject * args){
           //  bingo=1;
         //    if (bingo) { // suposed to only create 1 sphere then transport you to it if its made already
              //   luna->m_cPhysics->createSphere( btVector3(pos.X, pos.Y, pos.Z),2,5);
+
             test = luna->m_cPhysics->createSphere( texture, btVector3(x, y, z),radius,mass);
 
 //                //ha2->setAngularVelocity(btVector3(400,400,400));

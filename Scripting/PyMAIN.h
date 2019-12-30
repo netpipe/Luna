@@ -12,10 +12,11 @@ namespace Python {
     ISceneManager * smgr;
     IGUIEnvironment * guienv;
     #ifdef EVENTS
-    InGameEventReceiver mEvent;
+        InGameEventReceiver mEvent;
     #endif
 
-    void registerIrrDevice(Luna *luna, IrrlichtDevice &device,InGameEventReceiver event);
+   // void registerIrrDevice(Luna *luna, IrrlichtDevice &device,InGameEventReceiver event);
+    void registerIrrDevice( IrrlichtDevice &device,InGameEventReceiver event);
 
     IGUIFont * default_font;
             SKeyMap keyMap[8]; // KEYMAP
@@ -25,16 +26,17 @@ namespace Python {
     vector<ITexture *> texture_array; //Our array of textures
 
     #ifdef CHOPPER
-    ChopperControl *chopperControl;
-#endif
-    Luna *luna;
+        ChopperControl *chopperControl;
+    #endif
 
-  //  cAudio::IAudioManager* manager;
+///    Luna *luna;
+
+    #ifdef DSOUND
+      //  cAudio::IAudioManager* manager;
   //  cAudio::IAudioSource* mysound;
-#ifdef DSOUND
-         cAudio::IAudioManager* managerID = cAudio::createAudioManager(true);  // broken has to be done from main
+        cAudio::IAudioManager* managerID = cAudio::createAudioManager(true);  // broken has to be done from main
         cAudio::IAudioSource* mysound;
-#endif
+    #endif
 
     ICameraSceneNode* camera;  //maybe put in vector for a cameraManager or do it in python
 
@@ -46,8 +48,8 @@ namespace Python {
     void render();
     void rfm(irr::scene::ISceneNode*);
 
-#ifdef PHYSICS
-    int VehicleParam(Vehicle *vehicle,int param,float state,float ammount,float y,float z);
+    #ifdef PHYSICS
+        int VehicleParam(Vehicle *vehicle,int param,float state,float ammount,float y,float z);
     #endif
     bool CheckKeyState(int key);
 
@@ -76,22 +78,28 @@ namespace Python {
     #ifdef FLAG
     //	SimpleFlagNode	*irrFlagNode;
     #endif
+
     #ifdef HUD
         CHUD* CHUD2 = new CHUD();
     #endif
+
     #ifdef ATMOSPHERE
         ATMOsphere *atmo;
     #endif
+
     #ifdef VIDEO
         CVideoMaster    *vidmaster;
     #endif
+
     #ifdef TESSIMAGE
         TesselatedImage *tesImage;
         bool btesimage=0;
     #endif
+
     #ifdef ReflectiveWater
         CReflectedWater *water;
     #endif
+
     #ifdef occlusion
         Renderer22 *RenderMan;
     #endif
@@ -461,7 +469,7 @@ void Python::render() {//active camera
             }
         #endif
 
-        #ifdef Image2D
+        #ifdef Image2Ds
             if (bImage2d){
                 image->Draw(smgr);
             }
@@ -501,16 +509,17 @@ void Python::render() {//active camera
 
         #ifdef PostProcess
         if ( bPProcess ){
-        ppMine->setParameters( min_( 1.0f, device->getTimer( )->getTime( ) * 0.0002f ) );
+            ppMine->setParameters( min_( 1.0f, device->getTimer( )->getTime( ) * 0.0002f ) );
 
-        f32 p = sinf( device->getTimer( )->getTime( ) * 0.0005f ) * 0.5f - 0.2f;
-        ppBlurDOF->setParameters( p * 100.0f + 80.0f, p * 100.0f + 110.0f, p * 100.0f + 160.0f, p * 100.0f + 240.0f, 0.01f );
+            f32 p = sinf( device->getTimer( )->getTime( ) * 0.0005f ) * 0.5f - 0.2f;
+            ppBlurDOF->setParameters( p * 100.0f + 80.0f, p * 100.0f + 110.0f, p * 100.0f + 160.0f, p * 100.0f + 240.0f, 0.01f );
 
         }
         #endif
 
         // rt->render(); //ribbon trail scenenode
-        device->sleep(5);
+//        device->sleep(5);
+
 }
 
 

@@ -1,7 +1,9 @@
 #ifndef PHYSICS_H
 #define PHYSICS_H
+
 #include "../config.h"
 #ifdef PHYSICS
+
 #include <irrlicht.h>
 
 #include <btBulletDynamicsCommon.h>

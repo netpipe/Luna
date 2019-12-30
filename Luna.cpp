@@ -200,12 +200,10 @@ return 0;
 }
 
 int Luna::shutdown(){
+	#ifdef HUD
+		//delete CHUD2;
+	#endif
 
-
-
-#ifdef HUD
- //     delete vidmaster;
-#endif
     #ifdef BOIDS
      delete flock;
     #endif
@@ -229,11 +227,8 @@ int Luna::shutdown(){
             (*it)->~RagDoll();
 	#endif
 
-	//delete CHUD2;
-	//delete m_cVehicle;
-
 	#ifdef COMPASS
-	 delete Compass1;
+		delete Compass1;
 	#endif
 
 	#ifdef FLAG     // should be the flagmanager
@@ -243,7 +238,7 @@ int Luna::shutdown(){
 	#endif
 
 	#ifdef FLAG2     // should be the flagmanager
-	delete flag;
+		delete flag;
 	#endif
 
 	#ifdef PYTHON
@@ -255,21 +250,22 @@ int Luna::shutdown(){
 		manager->shutDown();
         cAudio::destroyAudioManager(manager);
     #endif
+
     #ifdef PHYSICS
-	//clearBodies();
+		//clearBodies();
+		//delete m_cVehicle;
 	#endif
-
-
 
 	#ifdef SPARKA
-	cout << "\nSPARK FACTORY BEFORE DESTRUCTION :" << endl;
-	SPKFactory::getInstance().traceAll();
-	SPKFactory::getInstance().destroyAll();
-	cout << "\nSPARK FACTORY AFTER DESTRUCTION :" << endl;
-	SPKFactory::getInstance().traceAll();
-	device->drop();
+		cout << "\nSPARK FACTORY BEFORE DESTRUCTION :" << endl;
+		SPKFactory::getInstance().traceAll();
+		SPKFactory::getInstance().destroyAll();
+		cout << "\nSPARK FACTORY AFTER DESTRUCTION :" << endl;
+		SPKFactory::getInstance().traceAll();
+		device->drop();
 	#endif
 #ifdef VIDEO
+ //     delete vidmaster;
 	delete videoPlayer;
 #endif
  #ifdef NDEBUG
@@ -282,9 +278,9 @@ int Luna::shutdown(){
 //   delete m_cVehicle;
 
     #endif
- #ifdef FPS
-     delete m_cPlayer;
-     #endif
+	#ifdef FPS
+		delete m_cPlayer;
+	#endif
 
     guienv->drop();
     smgr->drop();
@@ -337,8 +333,8 @@ int Luna::init(){
 //
     //		InGameEventReceiver m_cInGameEvents(context);
 
-#ifdef EVENTS
-    device->setEventReceiver ( &m_cInGameEvents );
+	#ifdef EVENTS
+		device->setEventReceiver ( &m_cInGameEvents );
     #endif
 //	smgr->addCameraSceneNode(0, vector3df(0,30,-40), vector3df(0,5,0));
 
@@ -360,11 +356,12 @@ int Luna::init(){
 
 
 	device->getCursorControl()->setVisible(true);
+
 //Physics init
-#ifdef PHYSICS
-    m_cPhysics = new Physics();
-    m_cPhysics->registerIrrDevice(device);
-#endif
+	#ifdef PHYSICS
+		m_cPhysics = new Physics();
+		m_cPhysics->registerIrrDevice(device);
+	#endif
 
 //networking
     #ifdef NDEBUG
@@ -384,11 +381,16 @@ int Luna::Run(){
 //	device=device2;
 //					if (iinit) {
 							  if ( init() < 0 ) return -1;
-							  #ifdef EVENTS
-    events.devLogin=0;
-    #ifndef NDEBUG
-        events.devLogin=1;
-#endif //events
+		#ifdef EVENTS
+		events.devLogin=0;
+		#endif //events
+
+		#ifndef NDEBUG
+			#ifdef EVENTS
+			events.devLogin=1;
+			#endif //events
+
+
  //   driver->setVSync(0);
 //        	if ( events.devLogin && !this->m_cInGameEvents.Quit )  {
 
@@ -397,7 +399,9 @@ int Luna::Run(){
 					#ifdef EVENTS
                     device->setEventReceiver ( &m_cInGameEvents );
                     #endif
-                    devloop();
+
+                   // devloop();
+
 	#ifdef PYTHON
 			#ifdef __EMSCRIPTEN__
 				TAR* tar;
@@ -415,7 +419,9 @@ int Luna::Run(){
 				setenv("PYTHONHOME", "/", 0);
 			#endif
     //Python
-        Python::registerIrrDevice(this,*device,m_cInGameEvents);
+            Python::registerIrrDevice(*device,m_cInGameEvents);
+
+      //  Python::registerIrrDevice(this,*device,m_cInGameEvents);
         Py_Initialize();            //Initialize Python
         //PythonMultithreading goes here when time comes
     //    PyEval_InitThreads() ; // nb: creates and locks the GIL
@@ -443,17 +449,12 @@ int Luna::Run(){
 	#endif //python
 
 //                    } //init
-								// run main loop
+								// run main loop its called from main.cpp now instead
 								#ifdef __EMSCRIPTEN__
 								//	main_loop();
                                 #else
 								//	main_loop();
                                 #endif
-
-
-
-
- #ifdef EVENTS
             #else//       }else{
 //                	shutdown();
 //                	return 0;
@@ -471,12 +472,13 @@ int Luna::Run(){
                         return 0;
                     }
             }
-            #endif//events
             #endif
-      //      getchar();
-//      if (bshutdown==true) {
-//		shutdown();
-		//}
+
+
+		//	if (bshutdown==true) {
+		//		shutdown();
+				//	getchar(); // trick to prevent window closing,
+		//	}
 
 //    return 1;
 }
@@ -488,6 +490,7 @@ void Luna::main_loop2(){
 		//guienv->drawAll();
         driver->endScene();
 //		device->sleep(15); // pythonize this
+		sleep(0.1);
 }
 
 
