@@ -57,8 +57,9 @@ SMaterial Mat;
 	// node can be manipulated like any other irrlicht node
 		irrFlagNode->setScale( vector3df(10) );
 		irrFlagNode->setPosition (vector3df (x,y,z));
-#endif
+
      return Py_BuildValue("l",irrFlagNode);
+    #endif
 };
 
 PyObject * Python::PyIrr_Flag2(PyObject * self,PyObject * args) //more realistic with shader
@@ -351,9 +352,9 @@ if ( type == 1 ){
 //   luna->m_cPhysics->getDynamicsWorld()->addRigidBody(mRigidBody);
 
 return Py_BuildValue("l",terr);
-#endif
-}
 
+}
+#endif
 }
 
 

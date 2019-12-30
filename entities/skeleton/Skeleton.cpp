@@ -1,4 +1,5 @@
-#ifdef FPS
+#include "../config.h"
+#ifdef SKELETON
 /*
 
 Skeletal human animation class - cpp-file

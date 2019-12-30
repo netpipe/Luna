@@ -1,3 +1,5 @@
+#include "../config.h"
+#ifdef TERRAIN
 /// todo make some random trees for terrain
 // patch grid for larger terrain or go procedural
 // impliment planet handler with sphere mapping.
@@ -1264,3 +1266,4 @@ s32 seed = 0;
 
 
 
+#endif

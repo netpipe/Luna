@@ -1,3 +1,4 @@
+#ifdef FLAG
 //********************************************************************************************
 // File:	CFlagSceneNode.cpp
 // Purpose:	Realtime flag vertex animation. Based on Flagsim by
@@ -294,3 +295,4 @@ void CFlagSceneNode::UpdateVertices(float timeOffset)
 }
 
 //********************************************************************************************
+#endif

@@ -76,6 +76,7 @@ PyArg_ParseTuple(args,"s",&path);
 //m_detailSampleDist = 6.0f;
 //m_detailSampleMaxError = 1.0f;
 //}
+  return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
@@ -86,7 +87,7 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
     PyArg_ParseTuple(args,"liffff",&mVehicle,&param,&state,&ammount,&y,&z);
  //   vector3df* position = VehicleParam(mVehicle,param,state,ammount,y,z);
 enum eparam{reset,accelerate,reverse,ebrake,brake,lsteer,rsteer};
-
+#ifdef PHYSICS
 Vehicle *vehicle = (Vehicle *)mVehicle;
 //if param = "accelerate"
 //	action = 1
@@ -175,6 +176,8 @@ if ( state==0 ){  // use state for get and set var
 		}
     }
   return Py_BuildValue("");
+  #endif
+    return Py_BuildValue("");
 }
 
 int osteerinit =0;
@@ -377,9 +380,9 @@ PyArg_ParseTuple(args,"ssfffffffffffifffifffffffffffff",&model,&texture,&scaleT,
 
   //   Vehicles->push_back(m_cVehicle);
 return Py_BuildValue("l",m_cVehicle);
-#else
-return Py_BuildValue("0");
 #endif
+return Py_BuildValue("");
+
 }
 
 PyObject * Python::PyIrr_Bullet(PyObject * self,PyObject * args){
@@ -398,7 +401,9 @@ PyObject * Python::PyIrr_LoadVehicle(PyObject * self,PyObject * args){
 	 return Py_BuildValue("");  }
 
 PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
-tr.setIdentity();
+	#ifdef TERRAIN
+		tr.setIdentity();
+	#endif
     int param,state,ammount;
     char * path;
     //char * file;
@@ -491,7 +496,7 @@ mesh, 0.004f);
 	metaSelector->drop();
 #endif
 
-#ifdef DPHYSICS
+#ifdef PHYSICS
     tr.setOrigin(btVector3(trackPosition.X, trackPosition.Y, trackPosition.Z));
     btTriangleMesh *collisionMesh = new btTriangleMesh();
 
@@ -551,6 +556,7 @@ return Py_BuildValue("l",test);
 	}
 
     #endif
+      return Py_BuildValue("");
 }
 
 void Python::rfm(ISceneNode* node )
@@ -645,9 +651,14 @@ void Python::rfm(ISceneNode* node )
 
             //node->getMaterial(0).MaterialType = EMT_ONETEXTURE_BLEND;
             //node->setFlag(EMF_TRILINEAR_FILTER, true);
+            #ifdef TERRAIN
 		tr.setOrigin(btVector3(0,0,0));
-         btTriangleMesh *collisionMesh = new btTriangleMesh();
+		#endif
 
+		#ifdef PHYSICS
+         btTriangleMesh *collisionMesh = new btTriangleMesh();
+		#endif
+//#define PYTHON
   //  m_cScene->setGenericMaterial(node, 0);
 
     int meshCount = mesh->getMeshBufferCount();

@@ -1,3 +1,5 @@
+#include "../config.h"
+#ifdef TREES
 /*
     Written by Asger Feldthaus
 
@@ -745,5 +747,5 @@ void CTreeGenerator::appendBranch( const core::matrix4& transform, SBranch* bran
 } // namespace scene
 } // namespace irr
 
-
+#endif
 

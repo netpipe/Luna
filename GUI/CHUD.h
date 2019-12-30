@@ -1,3 +1,4 @@
+#include "../config.h"
 #ifdef HUD
 #include <irrlicht.h>
 #include "Font/CGUITTFont.h"

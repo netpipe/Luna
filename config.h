@@ -1,22 +1,23 @@
 // #ifndef INCLUDES
 // #define INCLUDES
-
+ #define PYTHON
    // #define IRRCD   // irrlicht Collision Detection
     #define EVENTS
     #define FPS
-    #define SGRAPH2D
-   // #define SCENE
+   // #define SGRAPH2D
+   // #define WIND
+    #define SCENE
    // #define IRRc
  //   #define PostProcess
   //  #define ReflectiveWater
   //  #define ReflectWater-Main
   //#define SPARK
-  #define DPHYSICS
-  #define FPS
   #define PHYSICS
+ // #define SKELETON
+
   //#define VEGETATION
     #define TREES //very cpu intensive
-    #define ATMOSPHERE  //  freezes when no video acceleration is used
+  //  #define ATMOSPHERE  //  freezes when no video acceleration is used
                         //  or as a user without access to video rights is used
     //  #define FLARE
     //#define FLARES
@@ -28,7 +29,7 @@
   //#define TESSELATE
 
   //  #define CODEEDITOR
-    #define FLAG    //
+  //  #define FLAG    //
   //  #define FLAG2   //FMX
    // #define COMPASS
   //  #define BOIDS
@@ -36,6 +37,8 @@
   //  #define occlusion.
 //#define OCCLUSION
   //  #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
+
+  //if bullet carnot enabled with physics and car calls it crashes FIXME
     #define BULLETCAR // if FPSWEAPON is enabled the car wont work. diff event rec
     #define LOADLEVELS // dont use this without bullet or with occlusion its slow?
   //  #define BULLETBLEND
@@ -43,8 +46,8 @@
    // #define EXTRAS
   //  #define DESTRUCTION
   //  #define FORMATIONDEMO
-  //  #define HUD
-  //  #define CHUD
+   // #define HUD
+   // #define CHUD
     #define Image2D // Just testing out
   //  #define CHOPPER
   //  #define  OPENSTEER
@@ -54,7 +57,7 @@
 //#define FT2
 //#define SPRITES
 //#define PYTHON_MINIMALTEST
-//#define PYTHON
+
 
 //    #define VIDEO
   //  #define PostProcess

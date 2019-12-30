@@ -643,7 +643,7 @@ void Vehicle::recursiveFillMetaSelector(scene::ISceneNode* node, scene::IMetaTri
          }
      }
   }
-
+#ifdef FPS
   if(strcmp(node->getName(), "elevator") == 0)  {
         node->setMaterialType(EMT_LIGHTMAP_M4);
         node->setMaterialFlag(EMF_LIGHTING, false);
@@ -656,7 +656,7 @@ void Vehicle::recursiveFillMetaSelector(scene::ISceneNode* node, scene::IMetaTri
   if(strcmp(node->getName(), "obstacle") == 0)  {
 	//	Obstacle::Instance()->Add(node);
   }
-
+#endif
   if (node->getType() ==   ESNT_ANIMATED_MESH) printf("Animated Mesh! \n\n");
   if (node->getType() ==   ESNT_SKY_BOX) printf("SkyBox! \n\n");
   if (node->getType() ==   ESNT_CAMERA_FPS) printf("Fps Camera! \n\n");

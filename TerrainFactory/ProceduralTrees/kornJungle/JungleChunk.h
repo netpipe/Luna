@@ -1,6 +1,8 @@
+
 #ifndef JUNGGLECHUNK_H
 #define JUNGGLECHUNK_H
-
+#include "../config.h"
+#ifdef TREES
 #include <irrlicht.h>
 #include "TreeSeed.h"
 
@@ -101,3 +103,4 @@ namespace irr
 }
 
 #endif // JUNGGLECHUNK_H
+#endif

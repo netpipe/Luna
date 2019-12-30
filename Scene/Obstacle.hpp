@@ -1,5 +1,6 @@
 #ifndef OBSTACLE_H
 #define OBSTACLE_H
+#ifdef FPS
 #include <irrlicht.h>
 using namespace irr;
 
@@ -30,3 +31,4 @@ class Obstacle
 };
 
 #endif // OBSTACLE_H
+#endif

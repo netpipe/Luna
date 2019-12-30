@@ -82,9 +82,10 @@ char * pyloader;
 
 		IGUIEnvironment *guienv;
 
+		#ifdef EVENTS
 		EventRec events;
 		InGameEventReceiver m_cInGameEvents;
-
+		#endif
         // Factory threads
 		//pthread_t soundThread
 
@@ -102,9 +103,11 @@ char * pyloader;
         // Character related
 		std::wstring username;
 		std::wstring password;
-
+		#ifdef FPS
 		// Player Physics---------------
-        Player *m_cPlayer;
+			Player *m_cPlayer;
+        #endif
+
         //  Scene *m_cScene;
         #ifdef PHYSICS
 		Physics *m_cPhysics;

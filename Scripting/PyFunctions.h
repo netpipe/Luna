@@ -1,7 +1,7 @@
 ///Main Python Function Includes
 ///Stuff Relivent to Initialization and management of scene / sound and managers.
 // there are includes at bottom of file for scripting too.
-
+//#include "../config.h"
 //#define DSOUND
 #include "../Luna.h"
 #include <cstdlib>
@@ -26,10 +26,15 @@
 #include "../Physics/Ragdoll.h"
 #endif
 
+#ifdef FPS
 #include "../Scene/Obstacle.hpp"
 #include "../Scene/Elevator.hpp"
 #include "../Physics/Collision.hpp"
+#endif
+
+#ifdef HUD
 #include "../GUI/CHUD.h"
+#endif
 //#include "../GUI/CodeEditor/CGUIEditBoxIRB.h"
 //CGUIEditBoxIRB * codeEditor;
 #ifdef TESSIMAGE
@@ -164,7 +169,10 @@ char *zErrMsg;
     scene::IMetaTriangleSelector* metaSelector;
   //  ICameraSceneNode* camera;
     scene::ITriangleSelector* selector;
+    #ifdef PHYSICS
     btTransform tr;
+    #endif
+
 #ifdef CLOUDS
     scene::CCloudSceneNode* clouds;  ///bitplane clouds
     f32 rot=1.0;
@@ -174,7 +182,7 @@ char *zErrMsg;
     scene::CloudSceneNode* cloudLayer3;
 #endif
 
-#ifdef LENSEFLARE
+#ifdef FLARE
 #include "../Scene/flares/LensFlareSceneNode.h"
 #include "../Scene/flares/SceneNodeAnimatorFollowCamera.h"
     scene::LensFlareSceneNode* lensFlareNode;
@@ -187,9 +195,9 @@ char *zErrMsg;
 //    scene::LensFlareSceneNode* lensFlareNode;
 #endif
 
-//#ifdef 2DGRAPH
+#ifdef SGRAPH2D
 #include "../GUI/sineGraph2d/SGraph2D.h"
-//#endif
+#endif
 
 #include "../GUI/widgets/CGUIBar.h"
 
@@ -233,6 +241,7 @@ char *zErrMsg;
         #include "src/bindings/fluid_lash.h"
     #endif
 #endif
+
 #endif //python
 
 #ifndef WITH_MIDI
@@ -297,12 +306,13 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
     u32 timeStamp = device-> getTimer()-> getRealTime(),deltaTime = 0;
     device->setEventReceiver ( &mEvent);
 //    device->getCursorControl()->setVisible(false);
+#ifdef FPS
     Elevator::Instance()->Instance();
     ///Player::Instance()->Instance();//obsolete
     //    Collision::Instance()->Instance();
     ///Player::Instance()->setDevice(device); //obsolete
     //   Collision::Instance()->setDevice(device);
-
+#endif
 //    scene::IAnimatedMesh *mesh = (IAnimatedMesh*) smgr->getMesh("media/player/player.x");
 //	scene::IAnimatedMeshSceneNode *skelNode = (IAnimatedMeshSceneNode*) smgr->addAnimatedMeshSceneNode(mesh);
 	//cSkeleton skeleton; // moved externally
@@ -423,7 +433,7 @@ bFPS = 1;
     ICameraSceneNode* camera = (ICameraSceneNode*)pcam;
     device->getGUIEnvironment()->addImage( driver->getTexture("data/textures/crosshairs/crosshair1.png"),
                                             core::position2d<s32>((luna->resolution[0]/2)-64,(luna->resolution[1]/2)-64));
-    #ifdef FPSWEAPON
+    #ifdef FPS
           IAnimatedMesh*   gunmesh = smgr->getMesh("data/models/weapons/M4/3d_person/M4A1d.3ds");
           scene::IAnimatedMeshSceneNode* agun;
           agun = smgr->addAnimatedMeshSceneNode(gunmesh);

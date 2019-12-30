@@ -1,6 +1,6 @@
 #ifndef VEHICLE_H
 #define VEHICLE_H
-
+#ifdef PHYSICS
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -229,3 +229,4 @@ class Vehicle{
     #endif
 #endif
 
+#endif

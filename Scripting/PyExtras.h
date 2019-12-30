@@ -89,7 +89,7 @@ PyObject * Python::PyIrr_lensFlare(PyObject * self,PyObject * args){
         int param;
         float x,y,z;
     PyArg_ParseTuple(args,"ifff",&param,&x,&y,&z);
-    #ifdef ATMOSPHERE
+    #ifdef FLARE
         scene::IMeshSceneNode* sunMeshNode;
     sunMeshNode = smgr->addSphereSceneNode(1, 1, smgr->getRootSceneNode());
     sunMeshNode->setMaterialTexture(0, driver->getTexture("media/mesh.png"));

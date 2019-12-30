@@ -2,7 +2,8 @@
 #define PYSCENE_H_INCLUDED
 /// we will also want a main loop python event manager that runs every loop something like pyKeyCheck.
 /// IF getting errors about missing python stuff make sure its in 3 places the function too
-
+#include "../config.h"
+#ifdef PYTHON
 namespace Python {
     void ExecuteScript(irr::core::string<char> scriptname);
     IrrlichtDevice * device;
@@ -39,14 +40,17 @@ namespace Python {
     void rfm(irr::scene::ISceneNode*);
 
 
+    #ifdef PHYSICS
     int VehicleParam(Vehicle *vehicle,int param,float state,float ammount,float y,float z);
+     Vehicle   *m_cVehicle;
+    btRigidBody *ha;
+  #endif
     bool CheckKeyState(int key);
 
 //IrrAssimp assimp(ISceneManager* );
 //            IrrAssimp assimp(ISceneManager);
  // put into a vector or array
-    Vehicle   *m_cVehicle;
-    btRigidBody *ha;
+
 
     #ifdef EXTRAS
         gui::CGUIChatBox* chat;
@@ -377,7 +381,7 @@ void Python::render() {//active camera
             if (btesimage){ tesImage->render(deltaTime); }
         #endif
 
-        #ifdef DPHYSICS
+        #ifdef PHYSICS
          //    if (bPhysics){  // fix later should
         luna->m_cPhysics->updatePhysics(deltaTime);
 
@@ -505,3 +509,4 @@ void Python::render() {//active camera
 
 
 #endif // PYSCENE_H_INCLUDED
+#endif

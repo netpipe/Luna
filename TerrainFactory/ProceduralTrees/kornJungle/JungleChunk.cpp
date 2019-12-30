@@ -1,3 +1,5 @@
+#include "../config.h"
+#ifdef TREES
 #include "JungleChunk.h"
 #include "TreeSeed.h"
 #include "Jungle.h"
@@ -558,3 +560,4 @@ namespace irr
         }
     }
 }
+#endif

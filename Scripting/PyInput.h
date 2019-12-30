@@ -926,7 +926,7 @@ if (chopperEnabled){
 //#endif
 
 //#define bskeleton
-#ifdef bskeleton
+#ifdef SKELETON
 /**/
 	if (mEvent.getKeyState(KEY_KEY_S)) {
 		skeleton.setAnimType(CSK_ANIM_BACKWARD);

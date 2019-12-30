@@ -1,5 +1,6 @@
 #ifndef PLAYER_H
 #define PLAYER_H
+#include "../config.h"
 #ifdef FPS
 #include <string>
 #include <irrlicht.h>

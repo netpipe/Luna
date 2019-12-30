@@ -1,3 +1,5 @@
+#include "../config.h"
+#ifdef FPS
 #include "Elevator.hpp"
 #include "../entities/player.h"
 #include "../Physics/Collision.hpp"
@@ -123,3 +125,4 @@ void Elevator::UpdatePlayerPosition(void)
     }
   }
 }
+#endif

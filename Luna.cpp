@@ -195,48 +195,46 @@ return 0;
 
 int Luna::shutdown(){
 
+	#ifdef HUD
+		//delete CHUD2;
+	#endif
 
+    #ifdef BOIDS
+     delete flock;
+    #endif
 
-//#ifdef HUD
-// //     delete vidmaster;
-//#endif
-//    #ifdef BOIDS
-//     delete flock;
-//    #endif
-//
-//    #ifdef PostProcess
-//	 delete ppBlurDOF;
-//	 delete ppBlur;
-//	 delete ppRenderer;
-//    #endif
-//
-//	#ifdef ATMOSPHERE
-//     delete atmo;
-//    #endif
-//
-//	#ifdef ReflectiveWater
-//	 delete water;
-//	#endif
-//
-//	#ifdef RAG
-//		for (std::vector<RagDoll*>::iterator it = v_RagDolls.begin(); it != v_RagDolls.end(); ++it)
-//            (*it)->~RagDoll();
-//	#endif
-//
-//	//delete CHUD2;
-//	//delete m_cVehicle;
-//
-//	#ifdef COMPASS
-//	 delete Compass1;
-//	#endif
-//
-//	#ifdef FLAG     // should be the flagmanager
-//	delete irrFlagNode;
-//	#endif
-//
-//	#ifdef FLAG2     // should be the flagmanager
-//	delete flag;
-//	#endif
+    #ifdef PostProcess
+	 delete ppBlurDOF;
+	 delete ppBlur;
+	 delete ppRenderer;
+    #endif
+
+	#ifdef ATMOSPHERE
+    // delete atmo;
+    #endif
+
+	#ifdef ReflectiveWater
+	 delete water;
+	#endif
+
+	#ifdef RAG
+		for (std::vector<RagDoll*>::iterator it = v_RagDolls.begin(); it != v_RagDolls.end(); ++it)
+            (*it)->~RagDoll();
+	#endif
+
+	#ifdef COMPASS
+		delete Compass1;
+	#endif
+
+	#ifdef FLAG     // should be the flagmanager
+//	if (bflagnode)
+//		delete irrFlagNode;
+
+	#endif
+
+	#ifdef FLAG2     // should be the flagmanager
+		delete flag;
+	#endif
 
 	#ifdef PYTHON
 		Py_Finalize();
@@ -247,33 +245,38 @@ int Luna::shutdown(){
 		manager->shutDown();
         cAudio::destroyAudioManager(manager);
     #endif
+
     #ifdef PHYSICS
-	//clearBodies();
+		//clearBodies();
+		//delete m_cVehicle;
 	#endif
-
-
 
 	#ifdef SPARKA
-	cout << "\nSPARK FACTORY BEFORE DESTRUCTION :" << endl;
-	SPKFactory::getInstance().traceAll();
-	SPKFactory::getInstance().destroyAll();
-	cout << "\nSPARK FACTORY AFTER DESTRUCTION :" << endl;
-	SPKFactory::getInstance().traceAll();
-	device->drop();
+		cout << "\nSPARK FACTORY BEFORE DESTRUCTION :" << endl;
+		SPKFactory::getInstance().traceAll();
+		SPKFactory::getInstance().destroyAll();
+		cout << "\nSPARK FACTORY AFTER DESTRUCTION :" << endl;
+		SPKFactory::getInstance().traceAll();
+		device->drop();
 	#endif
-
-//	delete videoPlayer;
-
+#ifdef VIDEO
+ //     delete vidmaster;
+	delete videoPlayer;
+#endif
  #ifdef NDEBUG
     delete netManager;
     #endif
 //    delete ClientNetCallback;
 #ifdef PHYSICS
     delete m_cPhysics;
-    #endif
 //    delete m_cScene;
- //   delete m_cVehicle;
-  //  delete m_cPlayer;
+//   delete m_cVehicle;
+
+    #endif
+	#ifdef FPS
+		delete m_cPlayer;
+	#endif
+
     guienv->drop();
     smgr->drop();
     device->drop();
@@ -281,6 +284,7 @@ int Luna::shutdown(){
     delete smgr;
     delete guienv;
     return 0;
+
 }
 
 int Luna::init(){
