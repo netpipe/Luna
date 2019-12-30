@@ -1,10 +1,11 @@
-//#define TESTINGEMSCRIPTEN also set in project options
+#define TESTINGEMSCRIPTEN also set in project options
 
 #ifndef TESTINGEMSCRIPTEN
 #include "Luna.h"
 
 
 #else
+#include "Luna.h"
     #include <unistd.h>
 
     #include <irrlicht.h>
@@ -43,6 +44,7 @@ bool init=true;
 IrrlichtDevice *device;
         IVideoDriver *driver;
 		ISceneManager *smgr;
+			Luna game ( argc1,argv1 );
 #else
 	Luna game ( argc1,argv1 );
 #endif
@@ -55,11 +57,13 @@ IrrlichtDevice *device;
 #ifdef TESTINGEMSCRIPTEN
 void main_loop2(){ //emscripten testing
 
-		device->run();
-		driver->beginScene ( true, true, SColor ( 31, 200, 111, 0 ) );
-        smgr->drawAll();
-		//guienv->drawAll();
-        driver->endScene();
+						game.main_loop2();
+
+//		device->run();
+//		driver->beginScene ( true, true, SColor ( 31, 200, 111, 0 ) );
+//        smgr->drawAll();
+//		//guienv->drawAll();
+//        driver->endScene();
 	//	device->sleep(15); // pythonize this
 sleep(0.1);
 //emscripten_sleep(1);
@@ -67,25 +71,48 @@ sleep(0.1);
 		}
 		#endif
 
-#ifndef TESTINGEMSCRIPTEN
-#ifdef __EMSCRIPTEN__
-void main_loop(){
+//standard main loop while testing
+#ifdef TESTINGEMSCRIPTEN
+	#ifndef __EMSCRIPTEN__
+		void main_loop(){
 
-//		while (1){
-	while (!game.m_cInGameEvents.Quit){
-		if ( init ){
-				init=false;
+		//		while (1){
+			while (!game.m_cInGameEvents.Quit){
+				if ( init ){
+						init=false;
 
-				game.Run();
-				game.main_loop2();
-		}else{
+						game.Run(device);
+						game.main_loop();
+				}else{
 
-				game.main_loop2();
-				//game.main_loop();
+						game.main_loop();
+						//game.main_loop();
+				}
+			}
 		}
-	}
-}
+	#endif
 #endif
+
+//emscripten testing mainloop
+#ifdef TESTINGEMSCRIPTEN
+	#ifdef __EMSCRIPTEN__
+		void main_loop(){
+
+		//		while (1){
+		//	while (!game.m_cInGameEvents.Quit){
+				if ( init ){
+						init=false;
+
+						game.Run(device);
+						game.main_loop();
+				}else{
+
+						game.main_loop();
+						//game.main_loop();
+				}
+			//}
+		}
+	#endif
 #endif
 
 int main ( int argc, char** argv )
@@ -93,7 +120,7 @@ int main ( int argc, char** argv )
 	#ifdef __OSX__
 		NSApplicationLoad();
 	#endif
-
+#ifdef __EMSCRIPTEN__
 #ifdef TESTINGEMSCRIPTEN
 			#ifdef __EMSCRIPTEN__
 		   device = createDevice(video::EDT_OGLES2, core::dimension2du(800,600), 16, false, false, false);
@@ -125,20 +152,22 @@ int main ( int argc, char** argv )
 
 	   emscripten_set_main_loop(main_loop2,0,1);
 	#endif
+	#endif
 
 	#ifdef __EMSCRIPTEN__
-	#ifndef TESTINGEMSCRIPTEN
+		#ifndef TESTINGEMSCRIPTEN
 		emscripten_set_main_loop(main_loop,0,1);
 		#endif
-	#else
-			game.Run();
-while (!game.m_cInGameEvents.Quit){
+	#else // standard main without emscripten
+		game.Run(device);
+		while (!game.m_cInGameEvents.Quit){
 		//while (device->run()){
 
-		game.main_loop();
+			game.main_loop();
 		}
-		#endif // __EMSCRIPTEN__
-		system("PAUSE");
-	return 0;
+	#endif // __EMSCRIPTEN__
+
+	system("PAUSE");
+return 0;
 }
 

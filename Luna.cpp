@@ -297,7 +297,7 @@ int Luna::init(){
    // resolution[0]= 800; resolution[1]= 600;
     //    resolution[0]= 400; resolution[1]= 400;
    //   resolution[0]= 2024; resolution[1]= 2768;
-
+#ifdef TESTINGEMSCRIPTEN
    if (FULLSCREEN){
     IrrlichtDevice *nulldevice = createDevice(video::EDT_NULL);
     core::dimension2du res = nulldevice->getVideoModeList()->getDesktopResolution();
@@ -312,7 +312,7 @@ int Luna::init(){
 
       // device = createDevice ( EDT_OPENGL,dimension2du (res.Width,res.Height ),  32, true, true, false, 0 );
         #ifdef __EMSCRIPTEN__
-       device = createDevice(video::EDT_OGLES2, core::dimension2du(800,600), 16, false, false, false);
+       device = createDevice(video::EDT_OGLES2,dimension2du (resolution[0],resolution[1]), 24, 0,1);
 #else
         device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 0,1);
 
@@ -321,6 +321,7 @@ int Luna::init(){
 // EDT_NULL       device = createDevice ( EDT_BURNINGSVIDEO,dimension2du (resolution[0],resolution[1]), 24, 0,1);
 
     };
+#endif //testingemscripten
     device->setWindowCaption ( L"Luna Engine v1-initial" );
     driver = device->getVideoDriver();
     smgr = device->getSceneManager();
@@ -339,20 +340,20 @@ int Luna::init(){
 //	smgr->addCameraSceneNode(0, vector3df(0,30,-40), vector3df(0,5,0));
 
 
-	   	IAnimatedMesh* mesh = smgr->getMesh("./media/sydney.md2");
-	if (!mesh)
-	{
-		device->drop();
-		return 1;
-	}
-	IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
-
-		if (node)
-	{
-		node->setMaterialFlag(EMF_LIGHTING, false);
-		node->setMD2Animation(scene::EMAT_STAND);
-		node->setMaterialTexture( 0, driver->getTexture("./media/sydney.bmp") );
-	}
+//	   	IAnimatedMesh* mesh = smgr->getMesh("./media/sydney.md2");
+//	if (!mesh)
+//	{
+//		device->drop();
+//		return 1;
+//	}
+//	IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+//
+//		if (node)
+//	{
+//		node->setMaterialFlag(EMF_LIGHTING, false);
+//		node->setMD2Animation(scene::EMAT_STAND);
+//		node->setMaterialTexture( 0, driver->getTexture("./media/sydney.bmp") );
+//	}
 
 
 	device->getCursorControl()->setVisible(true);
@@ -376,9 +377,9 @@ int Luna::init(){
     return 1;
 }
 
-//int Luna::Run(IrrlichtDevice *device2){
-int Luna::Run(){
-//	device=device2;
+int Luna::Run(IrrlichtDevice *device2){
+//int Luna::Run(){
+	device=device2;
 //					if (iinit) {
 							  if ( init() < 0 ) return -1;
 		#ifdef EVENTS

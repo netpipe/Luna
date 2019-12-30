@@ -842,7 +842,7 @@
 					<Add option="-s TOTAL_MEMORY=64Mb" />
 					<Add option="-s ASSERTIONS=2" />
 					<Add option="--memory-init-file 0" />
-					<Add option="-s ASYNCIFY=1" />
+					<Add option="-s DISABLE_DEPRECATED_FIND_EVENT_TARGET_BEHAVIOR=1" />
 					<Add library="GLESv2" />
 					<Add library="GL" />
 					<Add library="Irrlicht" />
@@ -932,27 +932,21 @@
 					<Add directory="../emscripten-projects/compression/libtar/build/include" />
 				</Compiler>
 				<Linker>
-					<Add option="-s ALLOW_MEMORY_GROWTH=1" />
-					<Add option="--preload-file media/" />
 					<Add option="-s FULL_ES2=1" />
+					<Add option="--preload-file media/" />
 					<Add option="-s DISABLE_EXCEPTION_CATCHING=0" />
 					<Add option="-s NO_EXIT_RUNTIME=1" />
-					<Add option="--shared-memory" />
-					<Add option="-s ERROR_ON_UNDEFINED_SYMBOLS=0" />
 					<Add option="-s TOTAL_MEMORY=64Mb" />
 					<Add option="-s ASSERTIONS=2" />
 					<Add option="--memory-init-file 0" />
 					<Add option="-s EMULATE_FUNCTION_POINTER_CASTS=1" />
+					<Add option="-s ERROR_ON_UNDEFINED_SYMBOLS=0" />
+					<Add library="GLESv2" />
 					<Add library="GL" />
 					<Add library="openal" />
-					<Add library="dl" />
 					<Add library="python2.7" />
 					<Add library="pthread" />
-					<Add library="assimp" />
-					<Add library="GLESv2" />
-					<Add library="z" />
 					<Add library="Irrlicht" />
-					<Add library="freetype" />
 					<Add library="tar" />
 					<Add directory="../emscripten-projects/media/freetype2.8/build" />
 					<Add directory="../emscripten-projects/net/enet" />

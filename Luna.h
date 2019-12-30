@@ -69,8 +69,8 @@ class Luna
 	public:
 		Luna ( int argc, char** argv );
 		~Luna(); // Cleans up the engine
-//		int Run(IrrlichtDevice *device);
-	int Run();
+		int Run(IrrlichtDevice *device);
+//	int Run();
 		IrrlichtDevice *device;
 		unsigned int resolution[2];
         IVideoDriver *driver;
