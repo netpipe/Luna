@@ -1,15 +1,7 @@
-#include "../config.h"
-#ifdef PHYSICS
 #include "Vehicle.h"
-
-#ifdef TERRAIN
 #include "../TerrainFactory/Terrain.h"
-#endif
 #include <string.h>
-
-#ifdef FPS
 #include "../Scene/Elevator.hpp"
-#endif
 
 using namespace irr;
 using namespace core;
@@ -645,7 +637,7 @@ void Vehicle::recursiveFillMetaSelector(scene::ISceneNode* node, scene::IMetaTri
          }
      }
   }
-#ifdef FPS
+
   if(strcmp(node->getName(), "elevator") == 0)  {
         node->setMaterialType(EMT_LIGHTMAP_M4);
         node->setMaterialFlag(EMF_LIGHTING, false);
@@ -654,7 +646,7 @@ void Vehicle::recursiveFillMetaSelector(scene::ISceneNode* node, scene::IMetaTri
         printf("elevator added");
         //    Elevator::Instance()->Clear();
   }
-#endif
+
   if(strcmp(node->getName(), "obstacle") == 0)  {
 	//	Obstacle::Instance()->Add(node);
   }
@@ -757,5 +749,5 @@ scaleEa = scaleE2;
 // wheelSpacingZ =wheelSpacingZ2;
  wheelScaleFactor = wheelScaleFactor2;
 }
-#endif
+
 

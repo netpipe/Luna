@@ -1,4 +1,3 @@
-#ifdef Image2D
 class cImage {
         irr::core::recti ImageRect, OrigImageRect, TextureRect, BoundRect;
         irr::core::position2di RotationPoint;
@@ -189,4 +188,3 @@ public:
         }
         irr::video::ITexture *GetTexture() { return Texture; };
 };
-#endif

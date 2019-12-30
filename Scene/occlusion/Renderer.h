@@ -1,4 +1,3 @@
-#ifdef OCCLUSION
 #ifndef BXWRAPPERH
 #define BXWRAPPERH
 
@@ -43,5 +42,4 @@ public:
  ~Renderer22();
 };
 
-#endif
 #endif

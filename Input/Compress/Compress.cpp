@@ -1,4 +1,3 @@
-#ifdef COMPRESS
 // AzadiArchive.cpp : Defines the entry point for the console application.
 //
 
@@ -373,4 +372,4 @@ Decomp::~Decomp()
 {
     archive.close();
 }
-#endif
+

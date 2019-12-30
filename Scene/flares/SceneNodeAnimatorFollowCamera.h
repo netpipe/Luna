@@ -1,6 +1,6 @@
 #ifndef _SCENENODEANIMATORFOLLOWCAMERA_H
 #define _SCENENODEANIMATORFOLLOWCAMERA_H
-#ifdef FLARES
+
 #include <irrlicht.h>
 
 namespace irr
@@ -25,7 +25,7 @@ namespace scene
 
 		// returns type of the scene node animator
 		virtual ESCENE_NODE_ANIMATOR_TYPE getType() const;
-
+		
 		// creates a clone of this animator.
 		/** Please note that you will have to drop
 		(IReferenceCounted::drop()) the returned pointer after calling this. */
@@ -33,7 +33,7 @@ namespace scene
 
 		// returns the start position
 		core::vector3df& getStartPosition() { return StartPosition; }
-
+		
 		// sets the start position
 		void setStartPosition(core::vector3df& startPosition) { StartPosition = startPosition; }
 
@@ -48,4 +48,3 @@ namespace scene
 
 #endif
 
-#endif

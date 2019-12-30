@@ -1,4 +1,3 @@
-#ifdef SPRITEMAN
 #include "PathFinder.h"
 
 PathNode::PathNode(int x, int y, int c) : x(x), y(y), cost(c), parent(0)
@@ -111,7 +110,7 @@ PathNode* PathFinder::addNode(int x, int y, PathNode* parent)
     PathNode *n = new PathNode(x, y, distanceSq);
     n->parent = parent;
     nodePaths.push_back(n);
-
+    
     if (distanceSq == 1) {
         if (!nearestPathNode) {
             nearestPathNode = n;
@@ -174,4 +173,3 @@ void PathFinder::savePath(PathFinderMap *map)
         }
     }
 }
-#endif

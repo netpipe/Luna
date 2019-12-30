@@ -1,7 +1,7 @@
 #ifdef _WIN32
 #pragma once
 #endif
-#ifdef FLAG
+
 //********************************************************************************************
 // File:   CWindGen.h
 // Purpose:*sniggers* generate some wind *sniggers*, should be renamed CRoganJosh :)
@@ -85,5 +85,4 @@ public:
 };
 
 
-#endif
 #endif

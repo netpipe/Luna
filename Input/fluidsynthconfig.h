@@ -1,6 +1,6 @@
 #ifndef CONFIG_H
 #define CONFIG_H
-#ifdef FLUIDSYNTH
+
 /* Define to enable ALSA driver */
 #define ALSA_SUPPORT 1
 
@@ -222,4 +222,3 @@
 #endif
 
 #endif /* CONFIG_H */
-#endif

@@ -3,7 +3,7 @@
 
 #ifndef __C_EFFECT_POST_PROC_H_INCLUDED__
 #define __C_EFFECT_POST_PROC_H_INCLUDED__
-#ifdef PostProcess
+
 #include "IPostProc.h"
 
 // A random number used to check if no value was given. This should probably be replaced with some special float value.
@@ -101,5 +101,4 @@ public:
 	void setParameters( irr::f32 para1 = 0.0f, irr::f32 para2 = 0.0f, irr::f32 para3 = 0.0f, irr::f32 para4 = 0.0f, irr::f32 para5 = 0.0f, irr::f32 para6 = 0.0f, irr::f32 para7 = 0.0f, irr::f32 para8 = 0.0f );
 };
 
-#endif
 #endif

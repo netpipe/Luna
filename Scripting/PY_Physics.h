@@ -1,5 +1,3 @@
-#include "../config.h"
-#ifdef PYTHON
 ///PHYSICS
 
 PyMethodDef irr_Physics[] = {
@@ -21,14 +19,14 @@ PyMethodDef irr_Physics[] = {
 	};
 
 PyObject * Python::PyIrr_recast(PyObject * self,PyObject * args){
-#ifdef RECAST
+
 //io::IFileSystem* fs = device->getFileSystem();
 
 	//fs->addFileArchive(IRRLICHT_DIR);
 	//#define IRRLICHT_DIR "media"
 char * path;
 PyArg_ParseTuple(args,"s",&path);
-
+#ifdef RECAST
 	char * MODEL_FILE = path;//"./media/dungeon.obj"
 	node = smgr->addOctreeSceneNode(smgr->getMesh(MODEL_FILE));
 	smgr->getMeshManipulator()->setVertexColorAlpha(smgr->getMesh(MODEL_FILE), 2);
@@ -59,7 +57,7 @@ PyArg_ParseTuple(args,"s",&path);
 			smesh->drop();
 		}
 	}
-
+#endif
 	//vector<irr::core::vector3df> lstPoints = recast->returnPath(vector3df_Start, vector3df_End);
 //void RecastUtilM::resetCommonSettings()
 //{
@@ -78,7 +76,6 @@ PyArg_ParseTuple(args,"s",&path);
 //m_detailSampleDist = 6.0f;
 //m_detailSampleMaxError = 1.0f;
 //}
-#endif
 }
 
 PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
@@ -89,7 +86,7 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
     PyArg_ParseTuple(args,"liffff",&mVehicle,&param,&state,&ammount,&y,&z);
  //   vector3df* position = VehicleParam(mVehicle,param,state,ammount,y,z);
 enum eparam{reset,accelerate,reverse,ebrake,brake,lsteer,rsteer};
-#ifdef PHYSICS
+
 Vehicle *vehicle = (Vehicle *)mVehicle;
 //if param = "accelerate"
 //	action = 1
@@ -169,9 +166,7 @@ if ( state==0 ){  // use state for get and set var
 		switch (param){
 			case 0:
 //				returnvar = m_cVehicle->getState();
-#ifdef PHGYSICS
 					return Py_BuildValue("i",m_cVehicle->getState());
-					#endif
 				break;
 			case 1:
 				vector3df position = vehicle->getPosition();
@@ -179,7 +174,6 @@ if ( state==0 ){  // use state for get and set var
 			break;
 		}
     }
-    #endif
   return Py_BuildValue("");
 }
 
@@ -404,9 +398,7 @@ PyObject * Python::PyIrr_LoadVehicle(PyObject * self,PyObject * args){
 	 return Py_BuildValue("");  }
 
 PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
-	#ifdef PHYSICS
 tr.setIdentity();
-#endif
     int param,state,ammount;
     char * path;
     //char * file;
@@ -653,10 +645,9 @@ void Python::rfm(ISceneNode* node )
 
             //node->getMaterial(0).MaterialType = EMT_ONETEXTURE_BLEND;
             //node->setFlag(EMF_TRILINEAR_FILTER, true);
-            #ifdef PHYSICS
 		tr.setOrigin(btVector3(0,0,0));
          btTriangleMesh *collisionMesh = new btTriangleMesh();
-#endif
+
   //  m_cScene->setGenericMaterial(node, 0);
 
     int meshCount = mesh->getMeshBufferCount();
@@ -747,4 +738,3 @@ void Python::rfm(ISceneNode* node )
 //Collision::Instance()->createRootCollision();
 
 //material system for friction / lusture / magnetic / density
-#endif

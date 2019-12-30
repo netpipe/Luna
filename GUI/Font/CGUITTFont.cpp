@@ -1,4 +1,3 @@
-#ifdef TTF
 #include <irrlicht.h>
 using namespace irr;
 #include "CGUITTFont.h"
@@ -576,4 +575,3 @@ void CGUITTFont::setInvisibleCharacters( const wchar_t *s )
 
 } // end namespace gui
 } // end namespace irr
-#endif

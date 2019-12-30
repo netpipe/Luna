@@ -1,5 +1,3 @@
-#include "../config.h"
-#ifdef PHYSICS
 /*
 Bullet Continuous Collision Detection and Physics Library
 Ragdoll Demo
@@ -450,4 +448,3 @@ void RagDoll::Update()
 		v_Nodes[i]->setRotation( core::vector3df(bulletEuler.x(), bulletEuler.y(), bulletEuler.z()) );
 	}
 }
-#endif

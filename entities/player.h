@@ -1,9 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-#ifdef FPS
+
 #include <string>
 #include <irrlicht.h>
-#ifdef FPS
 #include "../Equipment/Rifle.h"
 
 using namespace irr;
@@ -97,6 +96,5 @@ void shoot(void);
     IrrlichtDevice *irrDevice;
     IMetaTriangleSelector *metaSelector;
 };
-#endif
-#endif
+
 #endif

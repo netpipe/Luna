@@ -8,18 +8,18 @@ with fewer keystrokes.
 
 #ifndef __INCREMENTOR__
 #define __INCREMENTOR__
-#ifdef SGRAPH2D
+
 
 enum ECycleType
 {
 	/* This incrementor is to act like a boolean value, switching back and forth
 	between 0 and 1. */
 	CYC_BOOLEAN = 0,
-
+	
 	/* This incrementor must be set to the min value after reaching the max value
 	or must be set to the max value if decremented from the min value. */
 	CYC_REPEAT,
-
+	
 	/* This incrementor counts up and down like an ordinary integer. */
 	CYC_DEFAULT
 };
@@ -43,36 +43,36 @@ public:
 		)
 		: value( start_val ), step( start_step ), min(start_min), max( start_max ), cycle( type )
 	{}
-
-
+	
+	
 	//! Deconstructor
 	~Inc<Num>() {}
-
-
+	
+	
 	//! Get type of cycle
 	ECycleType getCycleType()
 	{
 		return cycle;
 	}
-
+	
 	//! Set the cycle type directly
 	void setCycleType( ECycleType type )
 	{
 		cycle = type;
 	}
-
+	
 	//! Set the cycle type to the default
 	void ctDef()
 	{
 		cycle = CYC_DEFAULT;
 	}
-
+	
 	//! Set the cycle type to boolean
 	void ctBool()
 	{
 		cycle = CYC_BOOLEAN;
 	}
-
+	
 	//! Set the cycle type to repeat
 	void ctRpt()
 	{
@@ -130,12 +130,12 @@ public:
 	{
 		return step;
 	}
-
+	
 	Num& getMin()
 	{
 		return min;
 	}
-
+	
 	Num& getMax()
 	{
 		return max;
@@ -145,18 +145,18 @@ public:
 	{
 		value = new_val;
 	}
-
+	
 	void setStep( Num new_step )
 	{
 		step = new_step;
 	}
-
+	
 	void setMin( Num new_min )
 	{
 		min = new_min;
 		clampVal();
 	}
-
+	
 	void setMax( Num new_max )
 	{
 		max = new_max;
@@ -223,7 +223,7 @@ public:
 
 
 // ********* Shortcut operators ***********
-
+	
 	bool operator++ ()
 	{
 		switch( cycle )
@@ -231,7 +231,7 @@ public:
 		case CYC_BOOLEAN:
 			value++;
 			break;
-
+		
 		case CYC_REPEAT:
 			if ( value == max )
 			{
@@ -241,14 +241,14 @@ public:
 				value += step;
 			}
 			break;
-
+		
 		default:
 			value += step;
 		}
 
 		return outOfBounds();
 	}
-
+	
 	bool operator-- ()
 	{
 		switch( cycle )
@@ -256,7 +256,7 @@ public:
 		case CYC_BOOLEAN:
 			value--;
 			break;
-
+			
 		case CYC_REPEAT:
 			if ( value == min )
 			{
@@ -266,44 +266,44 @@ public:
 				value -= step;
 			}
 			break;
-
+			
 		default:
 			value -= step;
 		}
 
 		return outOfBounds();
 	}
-
+	
 	bool operator==( Inc<Num>& other )
 	{
 		return value == other.value;
 	}
-
+	
 	bool operator>( Inc<Num>& other )
 	{
 		return value > other.value;
 	}
-
+	
 	bool operator>=( Inc<Num>& other )
 	{
 		return value >= other.value;
 	}
-
+	
 	bool operator<( Inc<Num>& other )
 	{
 		return value < other.value;
 	}
-
+	
 	bool operator<=( Inc<Num>& other )
 	{
 		return value <= other.value;
 	}
-
+	
 	Inc<Num>& operator=( Inc<Num>& other )
-	{
+	{		
 		return copy(other);
 	}
-
+	
 	Inc<Num>& copy( Inc<Num>& other )
 	{
 		value = other.value;
@@ -311,7 +311,7 @@ public:
 		min = other.min;
 		max = other.max;
 		cycle = other.cycle;
-
+		
 		return *this;
 	}
 
@@ -385,5 +385,5 @@ public:
 	}
 	*/
 };
-#endif
+
 #endif // define __INCREMENTOR__

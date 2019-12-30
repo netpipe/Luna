@@ -1,5 +1,3 @@
-#include "../config.h"
-#ifdef FPS
 #include "Elevator.hpp"
 #include "../entities/player.h"
 #include "../Physics/Collision.hpp"
@@ -53,9 +51,9 @@ void Elevator::CheckCollisionWithPlayer(void)
     for(u32 i = 0; i < elevatorNode.size(); i++)
     {
       elevatorBox = elevatorNode[i]->getTransformedBoundingBox();
-#ifdef IRRCD
+
       elevatorBoxExpanded = Collision::Instance()->expandBox(elevatorBox, 1000.0f);
-#endif
+
     //  playerPos = Player::Instance()->getPlayerNode()->getPosition();
      /// playerPos.Y -= 25.0f;
 
@@ -70,7 +68,6 @@ void Elevator::CheckCollisionWithPlayer(void)
 
 void Elevator::UpdatePlayerPosition(void)
 {
-    #ifdef FPS
   if(elevatorExists){
     if(ridingElevator){
       for(u32 i = 0; i < elevatorNode.size(); i++){
@@ -125,6 +122,4 @@ void Elevator::UpdatePlayerPosition(void)
       }
     }
   }
-  #endif
 }
-#endif

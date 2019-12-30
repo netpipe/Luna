@@ -12,7 +12,7 @@
 
 #ifndef _C_FLAG_SCENENODE_H_INCLUDED_
 #define _C_FLAG_SCENENODE_H_INCLUDED_
-#ifdef FLAG
+
 #include "irrlicht.h"
 
 using namespace irr;
@@ -311,7 +311,7 @@ f32	WindWave;
 
 };
 
-#endif
+
 
 #endif  // _C_FLAG_SCENENODE_H_INCLUDED_
 

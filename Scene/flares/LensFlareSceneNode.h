@@ -1,6 +1,6 @@
 #ifndef _CLENSFLARESCENENODE_H
 #define _CLENSFLARESCENENODE_H
-#ifdef FLARES
+
 #include <ISceneNode.h>
 #include <S3DVertex.h>
 
@@ -114,4 +114,3 @@ namespace scene
 
 #endif
 
-#endif

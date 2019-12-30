@@ -1,4 +1,4 @@
-#ifdef NDEBUG
+
 #include "Luna.h"
 
 int Luna::lobby() {
@@ -143,7 +143,7 @@ int Luna::lobby() {
 		guienv->drawAll();
 		driver->endScene();
 
-        device->sleep ( 10, true );
+//        device->sleep ( 10, true );
 
 
 	}
@@ -151,4 +151,4 @@ int Luna::lobby() {
 	return 0;
 //	#endif
 }
-#endif
+

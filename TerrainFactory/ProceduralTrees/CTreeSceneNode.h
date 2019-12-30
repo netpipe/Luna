@@ -1,4 +1,3 @@
-
 /*
     Written by Asger Feldthaus
 
@@ -7,8 +6,7 @@
 
 #ifndef _C_TREE_SCENE_NODE_H_
 #define _C_TREE_SCENE_NODE_H_
-#include "../config.h"
-#ifdef TREES
+
 #include <ISceneNode.h>
 #include "CBillboardGroupSceneNode.h"
 #include "CTreeGenerator.h"
@@ -99,5 +97,4 @@ private:
 } // namespace scene
 } // namespace irr
 
-#endif
 #endif

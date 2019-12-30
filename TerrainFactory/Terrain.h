@@ -1,5 +1,3 @@
-#include "../config.h"
-#ifdef TERRAIN
 #ifndef TERRAIN_H
 #define TERRAIN_H
 
@@ -15,17 +13,12 @@ using namespace scene;
 using namespace video;
 using namespace io;
 using namespace gui;
-#ifdef PHYSICS
-	#include "../Physics/Physics.h"
-#endif
+#include "../Physics/Physics.h"
 #include "../Scene/Scene.h"
 
-#ifdef TREES
 #include "ProceduralTrees/CTreeGenerator.h"
 #include "ProceduralTrees/CBillboardGroupSceneNode.h"
 #include "ProceduralTrees/CTreeSceneNode.h"
-#endif
-
 #include <vector>
 using namespace std;
 
@@ -61,24 +54,17 @@ class Terrain
         // Irrlicht variables.
             IrrlichtDevice *m_irrDevice;
             Scene *m_cScene;
-
+            Physics *m_cPhysics;
             scene::ISceneManager* smgr;
             video::IVideoDriver* driver;
 
-            #ifdef PHYSICS
-            Physics *m_cPhysics;
-                btTransform tr;
+
+    btTransform tr;
 
     btRigidBody*	localCreateRigidBody(float mass, const btTransform& startTransform,btCollisionShape* shape, ISceneNode *node);
-    void registerPhysics(Physics &physics);
-            btBvhTriangleMeshShape *trackShape;
-            #endif
-
-
-
 
     void registerIrrDevice(IrrlichtDevice &device);
-
+    void registerPhysics(Physics &physics);
     void registerScene(Scene &scene);
 
             //SMeshBuffer* pNode1 ;
@@ -87,7 +73,7 @@ class Terrain
         unsigned int *uiList;
         SMesh * cubeMesh;
         ISceneNode * cubeSceneNode;
-
+        btBvhTriangleMeshShape *trackShape;
 
 		unsigned int CalcNodeNum ( unsigned int max,unsigned int min );
 		void CreateGrid ( unsigned int w,unsigned int h );
@@ -101,16 +87,12 @@ class Terrain
 //		friend class Azadi;
 		static int setter;
 		ITerrainSceneNode* Terrain2(vector3df ,vector3df ,char *hmap,char *tex,char* dmap);
-		#ifdef PHYSICS
 		btRigidBody* mRigidBody;
-		#endif
-		#ifdef TERRAIN
 		ITerrainSceneNode* terrain;
-		#endif
+
     void Render(char*,vector3df terrainPosition,vector3df terrainRotation,vector3df terrainScale,int LOD);
-    #ifdef TREES
     CTreeSceneNode* MakeTrees(vector3df aha,int treetype,char *);
-#endif
+
 
 
 
@@ -135,5 +117,4 @@ class Terrain
 //		std::vector<std::vector<std::vector<NODE *> > > planets;
 };
 
-#endif
 #endif

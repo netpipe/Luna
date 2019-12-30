@@ -1,4 +1,3 @@
-#ifdef BOIDS
 #include "Flock.h"
 #include <ISceneManager.h>
 //#include "Configuration.h"
@@ -119,4 +118,3 @@ void Flock::removeBoid(irr::scene::BoidSceneNode* const boid)
 		}
 	}
 }
-#endif

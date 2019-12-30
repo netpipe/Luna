@@ -1,5 +1,3 @@
-#include "../config.h"
-#ifdef TREES
 /*
     Written by Asger Feldthaus
 
@@ -265,4 +263,3 @@ void CBillboardGroupSceneNode::updateBillboards()
 
 } // namespace scene
 } // namespace irr
-#endif

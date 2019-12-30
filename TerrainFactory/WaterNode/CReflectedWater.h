@@ -6,7 +6,7 @@
 
 #ifndef _CREFLECTEDWATER_H
 #define _CREFLECTEDWATER_H
-#ifdef WATER
+
 #include <irrlicht.h>
 
 using namespace irr;
@@ -46,5 +46,4 @@ public:
    video::ITexture         *m_rt;
 };
 
-#endif
 #endif

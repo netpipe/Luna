@@ -1,4 +1,4 @@
-#ifdef NDEBUGs // if debug build then do this one
+#ifdef NDEBUG // if debug build then do this one
 #define PostProcess
 
 
@@ -10,6 +10,7 @@ if ( !device->run() ) return 0;
 	// Init the Custom GUI
 
 
+//#define PYTHON
 #ifdef PYTHON
     //Python
         Python::registerIrrDevice(this,*device,m_cInGameEvents);

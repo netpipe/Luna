@@ -10,7 +10,7 @@
 
     #ifndef _IGRAPH2D_
     #define _IGRAPH2D_
-#ifdef SGRAPH2D
+
     namespace irr
     {
     namespace gui
@@ -105,4 +105,3 @@
     } // end namespace irr
 
     #endif // define _IGRAPH2D_
-#endif

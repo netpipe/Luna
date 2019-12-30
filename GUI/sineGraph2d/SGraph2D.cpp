@@ -1,4 +1,3 @@
-#ifdef SGRAPH2
     /*
     Simple Graph
     (c) Nicolaus Anderson
@@ -567,5 +566,5 @@
         viddriver->draw2DLine( drawline.start, drawline.end, color );
     }
 
-#endif
+
     #endif // define __SIMPLEGRAPH2D_CPP__

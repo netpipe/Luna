@@ -1,5 +1,4 @@
-#include "../config.h"
-#ifdef TESSELATE
+
 #include "tesselatedImage.h"
 
 /* ************************************************************** *
@@ -325,4 +324,3 @@ bool TesselatedImage::hasAnimationFinished()
     else
         return false;
 }
-#endif

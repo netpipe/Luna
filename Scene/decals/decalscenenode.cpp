@@ -1,4 +1,4 @@
-#ifdef DECALS
+
 /*
 bullethole/decal class
 by Armen138
@@ -166,4 +166,3 @@ const core::aabbox3d<f32>& ArmDecalSceneNode::getBoundingBox() const
 return Box;
 }
 
-#endif

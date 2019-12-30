@@ -1,6 +1,6 @@
 #ifndef BOIDSCENENODE_H_
 #define BOIDSCENENODE_H_
-#ifdef BOIDS
+
 #include <IMeshSceneNode.h>
 
 namespace irrklang
@@ -150,4 +150,3 @@ private:
 }
 }
 #endif /* BOIDSCENENODE_H_ */
-#endif

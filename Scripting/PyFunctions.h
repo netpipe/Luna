@@ -1,4 +1,3 @@
-#include "../config.h"
 ///Main Python Function Includes
 ///Stuff Relivent to Initialization and management of scene / sound and managers.
 // there are includes at bottom of file for scripting too.
@@ -17,7 +16,6 @@
 #include "../Scene/PostProcessing/CLensFlarePostProc.h"
 #include "../Scene/PostProcessing/CWaterPostProc.h"
 #endif
-
 #ifdef EXTRAS
 #include "../Scene/CBeamSceneNode.h"
 #include "../Scene/BoltSceneNode.h"
@@ -28,20 +26,12 @@
 #include "../Physics/Ragdoll.h"
 #endif
 
-#ifdef FPS
 #include "../Scene/Obstacle.hpp"
 #include "../Scene/Elevator.hpp"
 #include "../Physics/Collision.hpp"
-#endif
-#ifdef CHUD
 #include "../GUI/CHUD.h"
-#endif
-
-#ifdef CODEEDITOR
 //#include "../GUI/CodeEditor/CGUIEditBoxIRB.h"
 //CGUIEditBoxIRB * codeEditor;
-#endif
-
 #ifdef TESSIMAGE
 #include "../Scene/tesselatedImage/tesselatedImage.h"
 #endif
@@ -76,25 +66,18 @@
     RibbonTrailSceneNode* rt;
 #endif
 
-#ifdef EVENTS
 #include "../Events/InGameEventReceiver.h"
-#endif
-
-#ifdef OCCLUSION
 #include "../Scene/occlusion/Renderer.h"
-#endif
 
 #ifdef FLAG
     #include "../Scene/Flag/SimpleFlag.h"
     #include "../Scene/Flag/CFlagSceneNode.h"
 #endif
 
-#ifdef FPS
 #include "../entities/skeleton/Skeleton.h"
-#endif
-#ifdef PHYSICS
+
 #include "../Physics/Vehicle.h"
-#endif
+
 #ifdef RECAST
 #include "../entities/AI/recast_util.h"
     scene::ISceneNode* node = 0;
@@ -102,10 +85,9 @@
     RecastUtil* recast = 0;
 #endif
 
-
-    #ifdef SPARK
-    #include "../Scene/particles.h"
-
+#include "../Scene/particles.h"
+#define SPARKA
+    #ifdef SPARKA
         #include "../Scene/SPARK/SPK.h"
         #include "../Scene/SPARK/SPK_IRR.h"
         using namespace SPK;
@@ -117,9 +99,7 @@
 #include "../Input/Model/IrrAssimp/IrrAssimp.h"
 #endif
 
-#ifdef Image2D
 #include "../GUI/cImage2D.h"
-#endif
 
 #ifdef SPRITEMANAGER
 #include "../Scene/spriteManager/SpriteManager.h"
@@ -131,13 +111,10 @@
 #include "../GUI/Math/SCalcExpr.h"
 #endif
 
-#ifdef FWGRASS
+#ifdef VEGETATION
     #include "../TerrainFactory/FWGrass/GrassLoader.h"
-        #include "../TerrainFactory/FWGrass/gen/CGrassGenerator.h"
+    #include "../TerrainFactory/FWGrass/gen/CGrassGenerator.h"
     using namespace GrassGenerator;
-#endif
-
-#ifdef TREES
     #include "../TerrainFactory/ProceduralTrees/kornJungle/Jungle.h"
 #endif
 
@@ -162,35 +139,27 @@ char *zErrMsg;
     BmFont *fonts = new BmFont;
 #endif
 
-#ifdef SPRITES
+    #ifdef SPRITES
     SpriteManager *sprites = new SpriteManager;
 #endif
-
-using namespace std;
-using namespace irr;
-
-    #ifdef PHYSICS
-    #ifdef BULLETBLEND //  ?? might be for ragdoll
+    using namespace std;
+    using namespace irr;
+#ifdef PHYSICS
+#ifdef BULLETBLEND
     btLogicManager* logicManager = new btLogicManager();
-    #endif
         #ifdef RAGDOLL
             static std::vector<RagDoll*> v_RagDolls;
         #endif
     static std::vector<btRigidBody*> v_Boxes;
     #endif
+    #endif
 
-    #ifdef IRRCD
     irr::scene::ITriangleSelector* selecta = 0;
 
     scene::IMetaTriangleSelector* metaSelector;
   //  ICameraSceneNode* camera;
     scene::ITriangleSelector* selector;
-#endif
-
-    #ifdef PHYSICS
     btTransform tr;
-    #endif
-
 #ifdef CLOUDS
     scene::CCloudSceneNode* clouds;  ///bitplane clouds
     f32 rot=1.0;
@@ -213,9 +182,9 @@ using namespace irr;
 //    scene::LensFlareSceneNode* lensFlareNode;
 #endif
 
-#ifdef SGRAPH2D
+//#ifdef 2DGRAPH
 #include "../GUI/sineGraph2d/SGraph2D.h"
-#endif
+//#endif
 
 #include "../GUI/widgets/CGUIBar.h"
 
@@ -223,9 +192,8 @@ using namespace irr;
   //  Vehicle *m_cVehicle2;
 
  //   static vector<Vehicle*> m_cVehicle;
-#ifdef FPS
+
     cSkeleton skeleton;
-    #endif
 //        cAudio::IAudioManager* managerID;
 //        cAudio::IAudioSource* mysound;
 
@@ -278,7 +246,6 @@ using namespace irr;
   fluid_audio_driver_t* adriver = NULL;
   fluid_synth_t* synth = NULL;
 #endif
-
 #ifdef PYTHON
 PyMethodDef irr_function[] =
 {
@@ -300,8 +267,8 @@ PyMethodDef irr_function[] =
 };
 
 
-void Python::registerIrrDevice(IrrlichtDevice &Device,InGameEventReceiver event){
-///    luna = luna1;
+void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventReceiver event){
+    luna = luna1;
     device = &Device;
     driver = device->getVideoDriver();
     smgr   = device->getSceneManager();
@@ -317,18 +284,14 @@ void Python::registerIrrDevice(IrrlichtDevice &Device,InGameEventReceiver event)
     //camera = smgr->addCameraSceneNodeFPS();
     //  camera->setFOV(PI/2);
 
-    #ifdef SCENE
     m_cScene = new Scene();
     m_cScene->registerIrrDevice(*device);
-    #endif
   //  m_cScene->setupLights();//Scene, setup for lights.
     int lastFPS = -1;
     u32 timeStamp = device-> getTimer()-> getRealTime(),deltaTime = 0;
     device->setEventReceiver ( &mEvent);
 //    device->getCursorControl()->setVisible(false);
-#ifdef FPS
     Elevator::Instance()->Instance();
-    #endif
     ///Player::Instance()->Instance();//obsolete
     //    Collision::Instance()->Instance();
     ///Player::Instance()->setDevice(device); //obsolete
@@ -368,19 +331,14 @@ PyObject * Python::PyIrr_Delay(PyObject * self,PyObject * args){ //PyIrr_Delay
     //repurpose this for a path move delay
     float delay;
     PyArg_ParseTuple(args,"f",&delay);
-    sleep(delay);
-//using unistd's sleep function to avoid using asyncify for emscripten
-
-    //device->sleep(delay);
+ //   device->sleep(delay);
 return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_Sleep(PyObject * self,PyObject * args){
     int ammount;
     PyArg_ParseTuple(args,"i",&ammount);
-    //using unistd's sleep function to avoid using asyncify for emscripten
-    sleep(ammount);
-   // device->sleep(ammount);
+//    device->sleep(ammount);
 return Py_BuildValue("");
 }
 
@@ -565,14 +523,13 @@ PyObject * Python::PyIrr_Delete(PyObject * self,PyObject * args){ //active camer
 }
 
 PyObject * Python::PyIrr_pauseGame(PyObject * self,PyObject * args){
-///    luna->m_cInGameEvents.Quit=true;
+    luna->m_cInGameEvents.Quit=true;
 return Py_BuildValue("");
 }
 
 
 PyObject * Python::PyIrr_exit(PyObject * self,PyObject * args){
-///    luna->m_cInGameEvents.Quit=true;
-//    iexit=1;
+    luna->m_cInGameEvents.Quit=true;
     return Py_BuildValue("");
 }
 

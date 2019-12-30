@@ -1,4 +1,3 @@
-#ifdef DECALS
 #include <irrlicht.h>
 #include <time.h>
 
@@ -59,4 +58,3 @@ void render();
 const core::aabbox3d<f32>& getBoundingBox() const;
 
 };
-#endif

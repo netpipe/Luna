@@ -1,5 +1,3 @@
-#include "../config.h"
-#ifdef PYTHON
 PyMethodDef irr_Sound[] =
 {
     {"fluidsynth",Python::PyIrr_FluidSynth,METH_VARARGS,"fluidsynth"},
@@ -18,7 +16,6 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
     // sound intensity for raycasted sound.  // surfaceRoughnessHardness/propigation factor, distance,handle
     switch (param){
     case 0:
-
 //        managerID = cAudio::createAudioManager(true);  // broken has to be done from main
        if( managerID)
         {
@@ -393,5 +390,3 @@ else if (typee == 5){
 #endif
 return Py_BuildValue("");
 }
-
-#endif

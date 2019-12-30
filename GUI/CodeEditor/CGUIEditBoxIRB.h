@@ -1,6 +1,6 @@
 #ifndef __C_GUI_EDIT_BOX_IRB_H_INCLUDED__
 #define __C_GUI_EDIT_BOX_IRB_H_INCLUDED__
-#ifdef CODEEDITOR
+
 #include "IrrCompileConfig.h"
 #include "IrrlichtDevice.h"
 #include "IGUIEditBox.h"
@@ -311,4 +311,3 @@ namespace irr
 } // end namespace irr
 
 #endif // __C_GUI_EDIT_BOX_IRB_H_INCLUDED__
-#endif

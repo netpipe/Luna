@@ -1,4 +1,4 @@
-#ifdef CHOPPER
+
     #include "chopper_control.h"
 
 
@@ -464,4 +464,4 @@
             driver->draw3DLine(core::vector3df(ix+r,iy,iz-r), core::vector3df(ix-r,iy,iz+r), color);
     }
 
-#endif
+

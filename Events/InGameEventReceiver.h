@@ -1,12 +1,9 @@
 #ifndef _IN_GAME_EVENTS_H
 #define _IN_GAME_EVENTS_H 1
-#include "../config.h"
-#ifdef EVENTS
+
 #include <irrlicht.h>
-#ifdef PHYSICS
 #include "../Physics/Physics.h"
 #include "../Physics/Vehicle.h"
-#endif
 
 using namespace irr;
 using namespace core;
@@ -48,5 +45,4 @@ private:
 //	SAppContext & Context;
 };
 
-#endif
 #endif

@@ -1,4 +1,3 @@
-#ifdef FPS
 #include "Obstacle.hpp"
 #include "../entities/player.h"
 Obstacle *Obstacle::m_obstacle = NULL;
@@ -36,6 +35,7 @@ void Obstacle::Clear(void)
 
 void Obstacle::CheckCollisionWithPlayer(void)
 {
+
 	ISceneNode *playerNode = Player::Instance()->getPlayerNode();
 
 	if(obstacleExists)
@@ -49,5 +49,5 @@ void Obstacle::CheckCollisionWithPlayer(void)
 				}
 		}
 	}
+
 }
-#endif

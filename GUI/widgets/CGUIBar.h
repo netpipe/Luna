@@ -28,7 +28,7 @@
 
 #ifndef CGUIBar_H
 #define CGUIBar_H
-#ifdef CHUD
+
 #include <irrlicht.h>
 using namespace irr;
 using namespace core;
@@ -53,5 +53,4 @@ public:
    ~CGUIBar();
 };
 
-#endif
 #endif

@@ -1,14 +1,6 @@
 #ifndef Luna_H
 #define Luna_H
 
-    #include <unistd.h>
-    #include <irrlicht.h>
-using namespace irr;
-using namespace core;
-using namespace scene;
-using namespace video;
-using namespace io;
-using namespace gui;
 #include <vector>
 #include <string>
 #include <sstream>
@@ -16,30 +8,23 @@ using namespace gui;
 #include "config.h"  // has the defines in it for compile
 //#include <pthread.h>
 
-#ifdef EVENTS
 #include "Events/Events.h"
 #include "Events/InGameEventReceiver.h"
-#endif
+#include "Scene/customNodes.h"
 
 #ifdef DSOUND
 #include <cAudio.h>
 #endif
 
-#ifdef FPS
-#include "entities/player.h"
-#endif
 
+#include "entities/player.h"
 //#include "Encryption/Blowfish.h"
 
 #ifdef PHYSICS
 #include "Physics/Physics.h"
 #include "Physics/Vehicle.h"
 #endif
-
-#ifdef SCENE
 #include "Scene/Scene.h"
-//#include "Scene/customNodes.h"
-#endif
 
 #ifdef DECALS
 #include "./Scene/decals/decalscenenode.h"
@@ -52,13 +37,12 @@ using namespace gui;
 #ifdef NETWORK
 #include <irrNet.h>
 //#include "Net/irrNetClient.h"
+#include <irrNet.h>
 #endif
 
 #ifdef __EMSCRIPTEN__
-//#include <emscripten.h>
-#ifdef PYTHON
+#include <emscripten.h>
 #include <libtar.h>
-#endif
 #endif
 
 //#include "TerrainFactory/GrassSceneNode/CGrassPatchSceneNode.h"
@@ -69,13 +53,11 @@ class Luna
 	public:
 		Luna ( int argc, char** argv );
 		~Luna(); // Cleans up the engine
-		int Run(IrrlichtDevice *device);
-//	int Run();
+		int Run();
 		IrrlichtDevice *device;
 		unsigned int resolution[2];
         IVideoDriver *driver;
 		ISceneManager *smgr;
-
 char * pyloader;
 
 		int init();
@@ -87,8 +69,7 @@ char * pyloader;
 		int handleMessages();
 		void rendermain();
 		void main_loop();
-		void main_loop2();
-		bool iinit=true;
+		bool iinit=false;
 		   u32 then ;
     int lastFPS;
     bool bshutdown=false;
@@ -100,11 +81,9 @@ char * pyloader;
 
 		IGUIEnvironment *guienv;
 
-
-		#ifdef EVENTS
 		EventRec events;
 		InGameEventReceiver m_cInGameEvents;
-		#endif
+
         // Factory threads
 		//pthread_t soundThread
 
@@ -123,10 +102,8 @@ char * pyloader;
 		std::wstring username;
 		std::wstring password;
 
-		#ifdef FPS
 		// Player Physics---------------
         Player *m_cPlayer;
-        #endif
         //  Scene *m_cScene;
         #ifdef PHYSICS
 		Physics *m_cPhysics;
@@ -152,20 +129,6 @@ struct SAppContext
 	IrrlichtDevice *device;
 	s32				counter;
 	IGUIListBox*	listbox;
-};
-
-    enum GUI_ELEMENTS
-{
-	MENU_QUIT = 200,
-	MENU_UNDO,
-	MENU_REDO,
-	MENU_CUT,
-	MENU_PASTE,
-	MENU_COPY,
-	MENU_DELETE,
-	MENU_LINECOUNT,
-	MENU_ENGLISH,
-	MENU_FRENCH,
 };
 
 	private:

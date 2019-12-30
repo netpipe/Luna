@@ -9,7 +9,7 @@
 
 #ifndef __C_GUI_CHAT_BOX_BAR_H_INCLUDED__
 #define __C_GUI_CHAT_BOX_BAR_H_INCLUDED__
-#ifdef EXTRAS
+
 #include <irrlicht.h>
 
 namespace irr
@@ -77,5 +77,4 @@ namespace irr
     } // end namespace gui
 } // end namespace irr
 
-#endif
 #endif

@@ -1,5 +1,3 @@
-#include "../config.h"
-#ifdef PYTHON
 ///SCENENODES and SCENESTUFF STUFF  -- included from pyfunctions
 ///TERRAIN
 
@@ -390,37 +388,29 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
     int bullet;
     PyArg_ParseTuple(args,"lifff",&node_id,&bullet,&x,&y,&z);
     if (bullet == 1){
-            #ifdef PHYSICS
             btRigidBody *test = (btRigidBody *)node_id;
             test->translate(btVector3 (x,y,z));
-    #endif
     }else if (bullet == 3){
-        #ifdef TERRAIN
             Terrain* mnode = (Terrain*)node_id;
             vector3df newpos;
             //ITerrainSceneNode* node=mnode->terrain;
             newpos = vector3df(x,y,z)-mnode->terrain->getPosition();
 
             mnode->terrain->setPosition(vector3df(x,y,z));
-            #ifdef PHYSICS
             mnode->mRigidBody->translate(btVector3 (newpos.X,newpos.Y,newpos.Z));
-            #endif
-        #endif
+
          //   btRigidBody *test = mnode->mRigidBody;
 
 
     }else if (bullet == 4){
-        #ifdef TERRAIN
             Terrain* mnode =(Terrain*)node_id;
             vector3df newpos;
             //ITerrainSceneNode* node=mnode->terrain;
             newpos = vector3df(x,y,z)-mnode->cubeSceneNode->getPosition();
 
             mnode->cubeSceneNode->setPosition(vector3df(x,y,z));
-            #ifdef PHYSICS
             mnode->mRigidBody->translate(btVector3 (newpos.X,newpos.Y,newpos.Z));
-            #endif
-        #endif
+
          //   btRigidBody *test = mnode->mRigidBody;
 
 }else if (bullet == 0){
@@ -458,14 +448,11 @@ PyObject * Python::PyIrr_setVelocity(PyObject * self,PyObject * args){
     long node;
     float x,y,z;
 	PyArg_ParseTuple(args,"lfff",&node,&x,&y,&z);
-	#ifdef PHYSICS
 	btRigidBody * test = (btRigidBody *)node;
 // if bullet or irrlicht scene node handle methods differently
 // inirtia calculation
 //	node->setPosition(vector3df(x,y,z));
-
     test->setAngularVelocity(btVector3(x,y,z));
-    #endif
     return Py_BuildValue("");
 }
 
@@ -512,9 +499,8 @@ PyObject * Python::PyIrr_addSphereNode(PyObject * self,PyObject * args){
     float radius, mass;
     char * texture;
 	PyArg_ParseTuple(args,"sfffff",&texture,&x,&y,&z,&radius,&mass);
-	#ifdef PHYSICS
 	btRigidBody *test;
-
+#ifdef PHYSICS
   //  scene::ISceneNode * node_id = smgr->addSphereSceneNode(20); //radius  polycount , parent , id , position,rotation, scale
     //IVideoDriver::createImageFromFile().  //textures and heightmap
        //if ( icount > 15){ //sphere limiter
@@ -527,7 +513,6 @@ PyObject * Python::PyIrr_addSphereNode(PyObject * self,PyObject * args){
           //  bingo=1;
         //    if (bingo) { // suposed to only create 1 sphere then transport you to it if its made already
              //   luna->m_cPhysics->createSphere( btVector3(pos.X, pos.Y, pos.Z),2,5);
-
             test = luna->m_cPhysics->createSphere( texture, btVector3(x, y, z),radius,mass);
 
 //                //ha2->setAngularVelocity(btVector3(400,400,400));
@@ -585,9 +570,7 @@ PyObject * Python::PyIrr_ExportScene(PyObject * self,PyObject * args){
 }
 
 PyObject * Python::PyIrr_LoadLevel(PyObject * self,PyObject * args){
-    #ifdef PHYSICS
 tr.setIdentity();
-#endif
     int param,state,ammount;
     char * path;
     std::string path2;
@@ -640,7 +623,7 @@ tr.setIdentity();
 	metaSelector->drop();
 #endif
 
-#ifdef PHYSICS
+#ifdef DPHYSICS
     tr.setOrigin(btVector3(trackPosition.X, trackPosition.Y, trackPosition.Z));
     btTriangleMesh *collisionMesh = new btTriangleMesh();
 
@@ -722,4 +705,3 @@ int setvideo (){// graphics combo
 // crouching
 // loc,rot or normal,look angle,head/camera normal(seperate from body
 // model, chat, decals, csgmodifier
-#endif

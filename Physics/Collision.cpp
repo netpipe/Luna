@@ -1,11 +1,8 @@
-#include "../config.h"
-#ifdef PHYSICS
 #include "Collision.hpp"
-#ifdef FPS
 #include "../entities/player.h"
 #include "../Scene/Obstacle.hpp"
 #include "../Scene/Elevator.hpp"
-#endif
+
 Collision *Collision::m_collision = NULL;
 Collision Collision::m_default_collision_buffer;
 
@@ -25,7 +22,7 @@ void Collision::createRootCollision(void)
 
 void Collision::createPlayerCollision(void)
 {
-#ifdef FPS
+
   aabbox3d<f32> box = Player::Instance()->getPlayerNode()->getBoundingBox();
   ellipsoidRadius = box.MaxEdge - box.getCenter();
 
@@ -39,7 +36,7 @@ void Collision::createPlayerCollision(void)
 
   Player::Instance()->getPlayerNode()->addAnimator(anim);
   anim->drop();
-#endif
+
 }
 
 vector3df Collision::getEllipsoidRadius(void)
@@ -57,7 +54,7 @@ void Collision::recursiveFillMetaSelector(ISceneNode* node, IMetaTriangleSelecto
 //  Output::Instance()->w("Node name is: %s \n",node->getName());
  // Output::Instance()->w("Node id is: %d \n",node->getID());
  // Output::Instance()->w("Node type: ");
-#ifdef FPS
+
   if(strcmp(node->getName(), "elevator") == 0)
   {
   	node->setMaterialType(EMT_LIGHTMAP_M4);
@@ -76,7 +73,6 @@ void Collision::recursiveFillMetaSelector(ISceneNode* node, IMetaTriangleSelecto
   {
 		Obstacle::Instance()->Add(node);
   }
-  #endif
   if(strcmp(node->getName(), "level") == 0)
   {
     //! Enable fog for all materials on the level node.
@@ -192,4 +188,3 @@ void Collision::recursiveFillMetaSelector(ISceneNode* node, IMetaTriangleSelecto
   for (; begin != end; ++begin)
     recursiveFillMetaSelector(*begin, meta);
 }
-#endif

@@ -1,4 +1,3 @@
-#ifdef PostProcess
 #include <irrlicht.h>
 #include "CRendererPostProc.h"
 
@@ -26,4 +25,3 @@ void CRendererPostProc::renderEffect( irr::video::ITexture* target ) {
 		smgr->drawAll( );
 	}
 }
-#endif

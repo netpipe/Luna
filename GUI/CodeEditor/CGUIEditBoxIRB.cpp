@@ -1,4 +1,3 @@
-#ifdef CODEEDITOR
 // Copyright (C) 2002-2011 Nikolaus Gebhardt
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in irrlicht.h
@@ -114,7 +113,7 @@ CGUIEditBoxIRB::CGUIEditBoxIRB(const wchar_t* text, bool border, bool lines,
 
 	if (skin)
 		SelectionTextColor=skin->getColor(EGDC_HIGH_LIGHT_TEXT);
-
+	
 	ScrollbarH = Environment->addScrollBar(true,this->myRect(2,FrameRect.getHeight()-20,FrameRect.getWidth()-18,20),this,-1);
 	Scrollbar = Environment->addScrollBar(false,this->myRect(FrameRect.getWidth()-15,2,20,FrameRect.getHeight()-22),this,-1);
 	LineToggle = Environment->addButton(this->myRect(FrameRect.getWidth()-15,FrameRect.getHeight()-20,20,20),this,-1,L"#",menustring[BT_LINECOUNT].c_str());
@@ -1039,12 +1038,12 @@ void CGUIEditBoxIRB::draw()
 				for (int chart=0; chart < (int)txt_main.size(); chart++)
 				{
 					if (txt_main[chart] == static_cast<char>( 9 ))
-					{
+					{	
 						core::stringw temp1=txt_main.subString(0,chart-1);
 						core::stringw temp2=txt_main.subString(chart+1,txt_main.size());
 						temp=temp1.append(" ");
 						temp.append(temp2);
-					}
+					} 
 				}
 				if (temp.size()>0)
 					txtLine = &temp;
@@ -2645,4 +2644,3 @@ void CGUIEditBoxIRB::deleteText() {
 
 } // end namespace gui
 } // end namespace irr
-#endif

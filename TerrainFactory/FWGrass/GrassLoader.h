@@ -1,4 +1,3 @@
-#ifdef FWGRASS
 #ifndef _GRASS_LOADER_H_
 #define _GRASS_LOADER_H_
 
@@ -161,5 +160,4 @@ void loadGrass(const io::path &filename, scene::ISceneManager* smgr,
 
 }
 
-#endif
 #endif

@@ -1,4 +1,3 @@
-#ifdef PostProcess
 #include <irrlicht.h>
 #include "CSplitPostProc.h"
 
@@ -113,4 +112,3 @@ void CSplitPostProc::renderEffect( irr::video::ITexture* target ) {
 			driver->drawMeshBuffer( m[ i ] );
 		}
 }
-#endif

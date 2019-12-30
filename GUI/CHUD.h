@@ -1,4 +1,3 @@
-#ifdef TTF
 #include <irrlicht.h>
 #include "Font/CGUITTFont.h"
 
@@ -143,5 +142,3 @@ void CHUD::RegisterDevice(IrrlichtDevice *device1){
     FileSystem = device->getFileSystem();
     gui = device->getGUIEnvironment();
 }
-
-#endif

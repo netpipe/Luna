@@ -1,8 +1,6 @@
-
 #ifndef TREESEED_H
 #define TREESEED_H
-#include "../config.h"
-#ifdef TREES
+
 #include <irrlicht.h>
 
 namespace irr
@@ -47,4 +45,3 @@ namespace irr
 }
 
 #endif // TREESEED_H
-#endif

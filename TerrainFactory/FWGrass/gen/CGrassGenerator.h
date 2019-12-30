@@ -1,4 +1,3 @@
-#ifdef FWGRASS
 #ifndef _C_GRASS_GENERATOR_H_
 #define _C_GRASS_GENERATOR_H_
 
@@ -88,5 +87,4 @@ class CGrassGenerator
 
 }
 
-#endif
 #endif

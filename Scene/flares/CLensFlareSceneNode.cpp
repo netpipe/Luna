@@ -1,4 +1,3 @@
-#ifdef FLARES
 #include "irrlicht.h"
 #include "CLensFlareSceneNode.h"
 #include <string>
@@ -178,4 +177,3 @@ void CLensFlareSceneNode::setposition(irr::core::vector3df pos) {
 
 }// end irr namespace
 }// end scene namespace
-#endif

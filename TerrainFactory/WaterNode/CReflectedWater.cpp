@@ -2,7 +2,7 @@
 // sio2 'at' users.sourceforge.net
 // Based on .NET code by DeusXL (Irrlicht forum)
 //
-#ifdef WATER
+
 #include "CReflectedWater.h"
 #include "CReflectedWater_ShaderCode.h"
 
@@ -161,4 +161,3 @@ void CReflectedWater::OnSetConstants(video::IMaterialRendererServices* services,
     float fUnderWater = (m_smgr->getActiveCamera()->getPosition().Y < m_waternode->getPosition().Y) ? 1.0f : 0.0f;
     services->setPixelShaderConstant("UnderWater", &fUnderWater, 1);
 }
-#endif

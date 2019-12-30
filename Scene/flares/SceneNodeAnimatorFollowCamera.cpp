@@ -1,7 +1,7 @@
 // Copyright (C) 2002-2009 Nikolaus Gebhardt
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in irrlicht.h
-#ifdef FLARES
+
 #include "SceneNodeAnimatorFollowCamera.h"
 
 namespace irr
@@ -47,16 +47,16 @@ void CSceneNodeAnimatorFollowCamera::deserializeAttributes(io::IAttributes* in, 
 }
 
 // Returns type of the scene node animator
-ESCENE_NODE_ANIMATOR_TYPE CSceneNodeAnimatorFollowCamera::getType() const
-{
+ESCENE_NODE_ANIMATOR_TYPE CSceneNodeAnimatorFollowCamera::getType() const 
+{ 
 	// return type of the scene node animator
 	// (important when using with a custom scene animator node factory)
-	return scene::ESNAT_UNKNOWN; //(ESCENE_NODE_ANIMATOR_TYPE) ECSNAT_FOLLOW_CAMERA;
+	return scene::ESNAT_UNKNOWN; //(ESCENE_NODE_ANIMATOR_TYPE) ECSNAT_FOLLOW_CAMERA; 
 }
 
 ISceneNodeAnimator* CSceneNodeAnimatorFollowCamera::createClone(ISceneNode* node, ISceneManager* newManager)
 {
-	CSceneNodeAnimatorFollowCamera * newAnimator =
+	CSceneNodeAnimatorFollowCamera * newAnimator = 
 		new CSceneNodeAnimatorFollowCamera(StartPosition);
 
 	return newAnimator;
@@ -64,4 +64,4 @@ ISceneNodeAnimator* CSceneNodeAnimatorFollowCamera::createClone(ISceneNode* node
 
 } // end namespace scene
 } // end namespace irr
-#endif
+

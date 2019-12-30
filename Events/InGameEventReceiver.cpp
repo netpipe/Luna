@@ -1,5 +1,3 @@
-#include "../config.h"
-#ifdef EVENTS
 #include "InGameEventReceiver.h"
 
 InGameEventReceiver::InGameEventReceiver()
@@ -75,4 +73,3 @@ bool InGameEventReceiver::getKeyState(EKEY_CODE key)
 //{
 //  return keys[key];
 //}
-#endif

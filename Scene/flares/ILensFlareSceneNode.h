@@ -1,6 +1,5 @@
 #ifndef _ILENSFLARESCENENODE_H_INCLUDED_
 #define _ILENSFLARESCENENODE_H_INCLUDED_
-#ifdef FLARES
 #include <irrlicht.h>
 
 namespace irr
@@ -40,5 +39,4 @@ class ILensFlareSceneNode : public ISceneNode {
 
 } // end namespace scene
 } // end namespace irr
-#endif
 #endif

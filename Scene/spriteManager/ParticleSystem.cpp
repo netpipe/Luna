@@ -1,4 +1,3 @@
-#ifdef SPRITEMAN
 #include "ParticleSystem.h"
 #include "SpriteManager.h"
 
@@ -470,5 +469,3 @@ void ParticleSystem::update(float dt)
         } // else
     } // while
 }
-
-#endif

@@ -6,16 +6,13 @@
     License: Same terms as irrlicht
     */
 
-
+    #include "IGraph2D.h"
+    #include "Range.h"
+    #include "IncrementorT.h"
 
     #ifndef __SIMPLEGRAPH2D_H__
     #define __SIMPLEGRAPH2D_H__
 
-        #include "IGraph2D.h"
-    #include "Range.h"
-    #include "IncrementorT.h"
-
-#ifdef SGRAPH2D
     namespace irr
     {
     namespace gui
@@ -291,4 +288,3 @@
     } // end namespace irr
 
     #endif // define __SIMPLEGRAPH2D_H__
-#endif

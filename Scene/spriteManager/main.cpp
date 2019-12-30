@@ -1,4 +1,3 @@
-#ifdef SPRITEMAN
 //
 //#include <irrlicht.h>
 //
@@ -88,4 +87,3 @@
 //    return 0;
 //}
 //
-#endif

@@ -1,4 +1,3 @@
-#ifdef SPRITEMAN
 #include "SpriteManager.h"
 
 using namespace irr;
@@ -163,4 +162,3 @@ void SpriteManager::clear()
     createCount = 0;
 }
 
-#endif

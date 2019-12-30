@@ -1,4 +1,3 @@
-#ifdef MATH
 #include "SCalcExpr.h"
 #include <assert.h>
 //! Declaration of all build in functions
@@ -1041,4 +1040,3 @@ stringc SCalcExpr::getFloatString(f32 f, s32 prec)
     getFloatString(f, tmp, 50, '0'+clamp(prec, 0, 9));
     return(tmp);
 }
-#endif

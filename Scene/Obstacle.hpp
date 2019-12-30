@@ -1,6 +1,5 @@
 #ifndef OBSTACLE_H
 #define OBSTACLE_H
-#ifdef FPS
 #include <irrlicht.h>
 using namespace irr;
 
@@ -29,5 +28,5 @@ class Obstacle
 		static Obstacle *m_obstacle;
 		static Obstacle m_default_obstacle_buffer;
 };
-#endif
+
 #endif // OBSTACLE_H

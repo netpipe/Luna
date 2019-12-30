@@ -5,7 +5,7 @@
 
 #ifndef __C_WATER_POST_PROC_H_INCLUDED__
 #define __C_WATER_POST_PROC_H_INCLUDED__
-#ifdef PostProcess
+
 #include "CRendererPostProc.h"
 
 class CWaterPostProc : public IPostProc {
@@ -85,5 +85,4 @@ public:
 	irr::f32 getDepth( ) { return ylevel; }
 };
 
-#endif
 #endif

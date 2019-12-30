@@ -1,6 +1,3 @@
-#include "../config.h"
-#ifdef TERRAIN
-
 /// todo make some random trees for terrain
 // patch grid for larger terrain or go procedural
 // impliment planet handler with sphere mapping.
@@ -14,15 +11,11 @@ using namespace scene;
 using namespace core;
 #include "open-simplex-noise.h"
 
-#ifdef TREES
-    #include "./ProceduralTrees/kornJungle/Jungle.h"
-#endif
+#include "./ProceduralTrees/kornJungle/Jungle.h"
 
 #define LEAF_TYPE 0
 #define NODE_TYPE 1
 #define TILETHRESHOLD 10.0f
-
-
 #include "Terrain.h"
 
 
@@ -169,7 +162,7 @@ ITerrainSceneNode* Terrain::Terrain2(vector3df t_position,vector3df t_scale,char
 
 	 terrain->getMeshBufferForLOD (*mesh ,2);
 
-#ifdef PHYSICS
+
    btVector3 vertices[3];
    s32 j,k;
    btTriangleMesh *  mTriMesh = new btTriangleMesh();
@@ -203,7 +196,6 @@ ITerrainSceneNode* Terrain::Terrain2(vector3df t_position,vector3df t_scale,char
    mRigidBody = new btRigidBody(0, state, mShape, btVector3(0, 0, 0));
    mRigidBody->setCollisionFlags(mRigidBody->getCollisionFlags() | btCollisionObject::CF_STATIC_OBJECT);
    m_cPhysics->getDynamicsWorld()->addRigidBody(mRigidBody);
-   #endif
 return terrain;
 }
 
@@ -253,7 +245,6 @@ void Terrain::Render( char *tex,vector3df terrainPosition,vector3df terrainRotat
 
 
 //not working because i split terrain from vehicle tr identity in relation to car ?
-#ifdef PHYSICS
     tr.setIdentity();
     tr.setOrigin(btVector3( terrainPosition.X,  terrainPosition.Y,  terrainPosition.Z));
 
@@ -270,7 +261,7 @@ void Terrain::Render( char *tex,vector3df terrainPosition,vector3df terrainRotat
     btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
 
     mRigidBody = localCreateRigidBody(0, tr, trackShape, cubeSceneNode);
-#endif
+
     //return cubeSceneNode;
    // return cubeSceneNode;
 }
@@ -662,7 +653,7 @@ unsigned int Terrain::CalcNodeNum(unsigned int max,unsigned int min){
     return ctr;
 }
 
-#ifdef PHYSICS
+
 btRigidBody*	Terrain::localCreateRigidBody(float mass, const btTransform& startTransform,btCollisionShape* shape, ISceneNode *node){
 
     bool isDynamic = (mass != 0.f);
@@ -687,14 +678,8 @@ btRigidBody*	Terrain::localCreateRigidBody(float mass, const btTransform& startT
     m_cPhysics->getDynamicsWorld()->addRigidBody(body);
     m_cPhysics->push_back(body);
     return body;
-
 }
 
-void Terrain::registerPhysics(Physics &physics){
-
-    m_cPhysics = &physics;
-}
-    #endif
 
 void Terrain::registerIrrDevice(IrrlichtDevice &device){
 
@@ -702,7 +687,10 @@ void Terrain::registerIrrDevice(IrrlichtDevice &device){
 }
 
 
+void Terrain::registerPhysics(Physics &physics){
 
+    m_cPhysics = &physics;
+}
 
 
 void Terrain::registerScene(Scene &scene){
@@ -788,7 +776,7 @@ void Terrain::tick(const float &CamX, const float &CamY, const float &CamZ)
 }
 */
 
-#ifdef TREES
+
 CTreeSceneNode* Terrain::MakeTrees(vector3df aha,int treetype,char * action){
     // type of tree
     //make the treestack more global ?
@@ -875,7 +863,7 @@ s32 seed = 0;
     //}
     //return pointer to treenode
     return (tree2);
-
+}
 
 
 
@@ -1260,8 +1248,7 @@ s32 seed = 0;
 
 
 }
-  #endif
-#endif
+
 
 
 

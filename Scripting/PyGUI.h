@@ -1,7 +1,6 @@
 #ifndef PYGUI_H_INCLUDED
 #define PYGUI_H_INCLUDED
-#include "../config.h"
-#ifdef PYTHON
+
 #include <iostream> // for strings
 using namespace std;
 
@@ -296,7 +295,6 @@ int ammount;
 PyArg_ParseTuple(args,"liffffi",&pwindow,&param,&x1,&y1,&x2,&y2,&ammount);
 //todo put guienv here so it can be placed in windows
 //  CGUIBar* healthBar[4];
-#ifdef CHUD
 CGUIBar* healthBar;
 //printf("param is %i",param);
 	if (param == 0) {
@@ -316,13 +314,13 @@ CGUIBar* healthBar;
 		return Py_BuildValue("");
 //		break;
 	}
-#endif
+
 		return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_sineGraph2d(PyObject * self,PyObject * args){
 
-#ifdef SGRAPH2D
+
 SGraph2D* graph = new SGraph2D(
 guienv, // GUI environment
 guienv->getRootGUIElement(), // parent
@@ -331,7 +329,6 @@ irr::core::recti(0,0,600,400), // GUI element boundaries
 irr::core::rectf( -10.0f, -10.0f, 20.0f, 10.0f ), // graph window
 true, // use marks or lines?
 true // use tick marks?
-
 );
 
 
@@ -356,11 +353,9 @@ graph->drawOnGraph( pt, video::SColor(255,255,0,0) );
 graph->drop();
 graph = 0;
 		return Py_BuildValue("l",graph);
-		#endif
 }
 
 PyObject * Python::PyIrr_GUITree(PyObject * self,PyObject * args){
-
 		return Py_BuildValue("");
 }
 
@@ -456,4 +451,3 @@ PyObject * Python::PyIrr_LoadShape(PyObject * self,PyObject * args){
 //	}
 
 #endif // PYGUI_H_INCLUDED
-#endif

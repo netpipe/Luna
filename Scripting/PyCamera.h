@@ -1,7 +1,6 @@
 #ifndef PYCAMERA_INCLUDED
 #define PYCAMERA_INCLUDED
-#include "../config.h"
-#ifdef PYTHON
+
 #include <irrlicht.h>
 PyMethodDef irr_Camera[] = {
     {"addCamera",Python::PyIrr_addCamera,METH_VARARGS,"sets camera vector"},
@@ -20,7 +19,7 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 
 
 
-    enum eaction{normal,FPS,bind,setViewPort,CameraManager};
+//    enum eaction{normal,FPS,bind,setViewPort,CameraManager};
 //std::map<std::string, eaction> nodeMap;
 //nodeMap[t];
 //std::map<std::string, X> xmap = boost::map_list_of("A", A)("B", B)("C",C);
@@ -51,9 +50,7 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 		keyMap[7].Action = EKA_STRAFE_RIGHT;    keyMap[7].KeyCode = KEY_KEY_D;
 
 		cam = smgr->addCameraSceneNodeFPS(0, 100, .1f, -1, keyMap, 8);
-#ifdef EVENTS
 		device->setEventReceiver ( &mEvent);
-		#endif
 		device->getCursorControl()->setVisible(false);
 		cam->setFarValue(10000.0f);
 		cam->setPosition(vector3df(x,y,z));
@@ -190,4 +187,3 @@ PyObject * Python::PyIrr_GetCamera(PyObject * self,PyObject * args){
 //sm->setActiveCamera(camera);
 
 #endif // PYCAMERA_INCLUDED
-#endif

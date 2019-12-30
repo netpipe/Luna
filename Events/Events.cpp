@@ -1,5 +1,3 @@
-#include "../config.h"
-#ifdef EVENTS
 #include "Events.h"
 
 bool EventRec::OnEvent ( const SEvent &event )
@@ -79,4 +77,3 @@ void EventRec::registerCamera ( CCameraSceneNode *cam )
 	camera = cam;
 }
 
-#endif

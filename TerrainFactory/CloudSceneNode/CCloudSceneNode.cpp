@@ -1,6 +1,5 @@
-#ifdef ATMOSPHERE
 // This file was part of the Irrlicht Engine's particle system, Copyright (C) 2002-2005 Nikolaus Gebhardt
-// Now it's a clouds scene node :)
+// Now it's a clouds scene node :) 
 // by G Davidson - gaz@bitplane.net
 
 //  Version 0.2
@@ -24,31 +23,31 @@ namespace scene
 //core::array<u16>				 CCloudSceneNode::Indices; // 6 indices per particle
 
 //! constructor
-CCloudSceneNode::CCloudSceneNode(ISceneNode* parent, ISceneManager* mgr, ITimer *devicetimer , s32 id,
-	 const core::vector3df& position = core::vector3d<f32>(0,0,0),
-	 const core::vector3df& rotation = core::vector3d<f32>(0,0,0),
+CCloudSceneNode::CCloudSceneNode(ISceneNode* parent, ISceneManager* mgr, ITimer *devicetimer , s32 id, 
+	 const core::vector3df& position = core::vector3d<f32>(0,0,0),  
+	 const core::vector3df& rotation = core::vector3d<f32>(0,0,0), 
 	 const core::vector3df& scale	= core::vector3d<f32>(1,1,1))
-	: ISceneNode(parent, mgr, id, position, rotation, scale),
+	: ISceneNode(parent, mgr, id, position, rotation, scale), 
 	ZOrdering(true), IgnoreChildColor(false), MaxDepth(2), LOD(10), timer(devicetimer), SkyMoveFactor(1.0f)
 {
-
+	
 	setAutomaticCulling(scene::EAC_OFF);
-
+	
 	// create static buffers if required
-	if (Particles.size() < CLOUD_PARTICLE_LIMIT)
+	if (Particles.size() < CLOUD_PARTICLE_LIMIT) 
 	{
 		Particles.set_used(CLOUD_PARTICLE_LIMIT);
 		ParticlesToDraw =  CLOUD_PARTICLE_LIMIT;
 		reallocateBuffers();
 		ParticlesToDraw =  0;
 	}
-
+	
 	// set the material parameter and transparrent alpha channel
 	Material.MaterialTypeParam = 0.01f;
 	Material.ZWriteEnable = false;
 	Material.Lighting = false;
-
-
+	
+	 
 	#ifdef _DEBUG
 	setDebugName("CCloudSceneNode");
 	#endif
@@ -98,35 +97,35 @@ u32 CCloudSceneNode::getMaterialCount() const
 }
 
 
-//! turns z sorting on or off.
+//! turns z sorting on or off. 
 //! speed increase for alpha blend clouds, or clouds that are one colour
-void CCloudSceneNode::setZOrdering(bool zo)
+void CCloudSceneNode::setZOrdering(bool zo) 
 {
 	ZOrdering = zo;
 }
 
-void CCloudSceneNode::setMaxTimePerFrame(u32 t)
+void CCloudSceneNode::setMaxTimePerFrame(u32 t) 
 {
 	MaxTimePerFrame = t;
 }
 
 //! decides whether child nodes are the same colour as their parents
-void CCloudSceneNode::setIgnoreChildColor(bool b)
+void CCloudSceneNode::setIgnoreChildColor(bool b) 
 {
 	IgnoreChildColor = b;
 }
 
 //! sets the maximum detail depth to draw
-void CCloudSceneNode::setMaxDepth(s16 maxdepth)
+void CCloudSceneNode::setMaxDepth(s16 maxdepth) 
 {
 	MaxDepth = maxdepth;
 }
 
 //! sets the level of detail ("distance/size" - scale of 1 to 10 works well)
-void CCloudSceneNode::setLOD(f32 levelofdetail)
+void CCloudSceneNode::setLOD(f32 levelofdetail) 
 {
 	LOD = levelofdetail;
-}
+} 
 
 void CCloudSceneNode::setSkyClouds(bool sky,f32 factor=0.0f)
 {
@@ -135,7 +134,7 @@ void CCloudSceneNode::setSkyClouds(bool sky,f32 factor=0.0f)
 }
 
 //! makes particle list for rendering/sorting
-void CCloudSceneNode::makeParticles()
+void CCloudSceneNode::makeParticles() 
 {
 	core::vector3df rot = getRotation();
 	core::vector3df pos;
@@ -155,7 +154,7 @@ void CCloudSceneNode::makeParticles()
 	m.setInverseRotationDegrees(rot);
 	m2.setInverseRotationDegrees(camrot);
 	core::vector3df t;
-
+	
 	// reset bounding box
 	Box.reset(getPosition());
 
@@ -167,52 +166,52 @@ void CCloudSceneNode::makeParticles()
 
 		// rotate
 		m.transformVect(tmppos);
-
+		
 		// move globally
 		tmppos += pos;
-
+	   
 		// set distance from camera
 		f32 td = (f32)campos.getDistanceFrom(tmppos);
 		u32 tmpdist = (u32)(10000.0f * (f32)td);
-
+		
 		// level of detail culled?
 		f32 lod = td / ParticleData[i].size.Width;
-
+ 
 		 // cull if it's behind the camera
 		bool cull=false;
-
+			
 		// far plane culled
 
-		if (farv < tmpdist)
+		if (farv < tmpdist) 
 			cull = true;
-
-
+	
+		
 		if (lod < LOD*5 && !cull)
 		{
-
+			
 			// copy particle (swap for mem copy?)
 			Particles[c] = ParticleData[i];
-
+			
 			// set it up
 			Particles[c].pos = tmppos;
 			Particles[c].distance = tmpdist;
-
+			
 			// expand the box
 			Box.addInternalPoint(Particles[c].pos);
-
-			if (lod < LOD && Particles[c].children > 0 && c < CLOUD_PARTICLE_LIMIT)
+			
+			if (lod < LOD && Particles[c].children > 0 && c < CLOUD_PARTICLE_LIMIT) 
 			{
 				// we add child nodes
 				depth = 0;
 				c+= makeChildClouds(Particles[c],c+1,m,campos);
 			}
-
+		   
 			if (Particles.size() < c+10)
 			{
 				// grow buffer
 				Particles.set_used(Particles.size()+50);
 			}
-
+	
 			// we added at least one
 			c+=1;
 		}
@@ -232,25 +231,25 @@ s16 CCloudSceneNode::getCurrentCloudCount()
 s16 CCloudSceneNode::makeChildClouds(SCloudParticle &parent,s16 start,core::matrix4 &m, core::vector3df &campos )
 {
 	depth+=1;
-
-	if (depth>MaxDepth)
+	
+	if (depth>MaxDepth)  
 	{
 		return (0);
 	}
-	if ((s32)Particles.size() < start+parent.children)
+	if ((s32)Particles.size() < start+parent.children) 
 	{
 		// grow buffer
 		Particles.set_used(Particles.size()+50);
-
+		
 		// buffer too big?
-		if (start+parent.children > CLOUD_PARTICLE_LIMIT)
+		if (start+parent.children > CLOUD_PARTICLE_LIMIT) 
 		{
 			return (0);
 		}
 	}
 	s16 count;
 	s16 c = start;
-
+	
 	for(count=0;count<parent.children;count++)
 	{
 		// copy
@@ -263,11 +262,11 @@ s16 CCloudSceneNode::makeChildClouds(SCloudParticle &parent,s16 start,core::matr
 		Particles[c].size.Width *= parent.childscale;
 		Particles[c].size.Height *= parent.childscale;
 		Particles[c].childscale *= parent.childscale;
-
+ 
 		// same colour?
-		if (IgnoreChildColor)
+		if (IgnoreChildColor) 
 			Particles[c].color = parent.color;
-
+		
 		// rotate
 		m.transformVect(Particles[c].pos);
 		// position
@@ -275,31 +274,31 @@ s16 CCloudSceneNode::makeChildClouds(SCloudParticle &parent,s16 start,core::matr
 
 		// expand the box
 		Box.addInternalPoint(Particles[c].pos);
-
+		
 		// set distance from camera
 		f32 td = (f32)campos.getDistanceFrom(Particles[c].pos);
 		Particles[c].distance = (td * 10000);
 
 		// level of detail
 		f32 lod = td / Particles[c].size.Width;
-		if (lod < LOD && Particles[c].children > 0)
+		if (lod < LOD && Particles[c].children > 0) 
 		{
 			// we add child nodes
 			c+= makeChildClouds(Particles[c],c+1,m,campos);
 			depth-=1;
 			// grow buffer?
-			if (Particles.size() < c+Particles[c].children)
+			if (Particles.size() < c+Particles[c].children)  
 			{
 				Particles.set_used(c+Particles[c].children);
 			}
-
-			if (c > CLOUD_PARTICLE_LIMIT)
+		
+			if (c > CLOUD_PARTICLE_LIMIT) 
 			{
 				return (0);
 			}
 		}
 		// we added at least one
-		c+=1;
+		c+=1; 
 	}
 	return (c-start);
 }
@@ -312,13 +311,13 @@ void CCloudSceneNode::OnRegisterSceneNode()
 		// make cloud particles
 
 		makeParticles();
-
+		
 		lastcount = ParticlesToDraw;
-
+		
 		// order them if needed
 		if (ZOrdering)
 			sortParticles();
-
+		
 		// call iscenenode's pre-render
 		ISceneNode::OnRegisterSceneNode();
 	}
@@ -330,7 +329,7 @@ void CCloudSceneNode::render()
 {
 	video::IVideoDriver* driver = SceneManager->getVideoDriver();
 	ICameraSceneNode* camera = SceneManager->getActiveCamera();
-
+ 
 	if (!camera || !driver)
 		return;
 
@@ -359,20 +358,20 @@ void CCloudSceneNode::render()
 	{
 		sp = ParticlesToDraw - CLOUD_PARTICLE_LIMIT;
 	}
-
+	
 	// lets not use niko's arrays, use a pointer instead
 	video::S3DVertex *p = Vertices.pointer();
-
+	
 	// create particle vertex data
 	for (u32 i=sp; i<ParticlesToDraw; i++)
 	{
 		SCloudParticle& particle = Particles[i];
 
 		core::vector3df h = horizontal * 0.5f * particle.size.Width;
-		core::vector3df v = vertical * 0.5f * particle.size.Height;
+		core::vector3df v = vertical * 0.5f * particle.size.Height;	
 
 		s32 idx = (i-sp)*4;
-
+		
 		//p[0+idx].Pos	= particle.pos + h + v;
 		p[0+idx].Pos.X	= particle.pos.X + h.X + v.X;
 		p[0+idx].Pos.Y	= particle.pos.Y + h.Y + v.Y;
@@ -416,7 +415,7 @@ void CCloudSceneNode::render()
 	core::matrix4 mat;
 	driver->setTransform(video::ETS_WORLD, mat);
 
-//	driver->draw3DBox( Box, video::SColor(0,255,255,255));
+//	driver->draw3DBox( Box, video::SColor(0,255,255,255));	
 
 	driver->setMaterial(Material);
 
@@ -427,10 +426,10 @@ void CCloudSceneNode::render()
 	driver->drawIndexedTriangleList(Vertices.pointer(), (ParticlesToDraw-sp)*4,
 		Indices.pointer(), (ParticlesToDraw-sp)*2);
 
-	// get the time taken, so we can cull far clouds next loop
+	// get the time taken, so we can cull far clouds next loop 
 	lasttime  = timer->getTime()-t;
 	lastcount = ParticlesToDraw;
-
+	
 	//printf("drew %d in %d\n", lastcount,lasttime);
 
 	// for debug purposes only:
@@ -482,21 +481,21 @@ void CCloudSceneNode::sortParticles()
 
 	// because copying particles around in the shell sort was showing up as 99% of
 	// all cpu time, we'll deal with a list of pointers instead.
-
+	
 	// init arrays
 	if (tmppointers.size() < ParticlesToDraw) tmppointers.set_used(ParticlesToDraw);
 	if (tmpclouds.size() < ParticlesToDraw) tmpclouds.set_used(ParticlesToDraw);
-
+	
 	SCloudParticle *temp = Particles.pointer();
-
+	
 	// copy pointers
-	for (i=0;i<ParticlesToDraw;i++)
+	for (i=0;i<ParticlesToDraw;i++) 
 		tmppointers[i] = temp +i;
-
+	
 	// sort the list (shell sort)
 
 	SCloudParticle **tp = tmppointers.pointer();
-
+	
 	increment = 3;
 	while (increment > 0)
 	{
@@ -522,7 +521,7 @@ void CCloudSceneNode::sortParticles()
 	// take list to temp buffer
 	for (i=0;i<ParticlesToDraw;i++)
 		tmpclouds[i] = tp[i][0];
-
+	
 	// memcopy back to particles
 	memcpy( Particles.pointer(),tmpclouds.const_pointer() , sizeof(SCloudParticle)*ParticlesToDraw);
 //	for (i=0;i<ParticlesToDraw;i++)
@@ -537,36 +536,36 @@ void CCloudSceneNode::makeRandomCloud(u32 count)
 	ParticleCount = count;
 	ParticleData.set_used(count);
 	Particles.set_used(count);
-
+		
 	u32 i;
 
 	// make particles
-	for (i=0; i<count; i+=1)
+	for (i=0; i<count; i+=1) 
 	{
-
+		
 		f32 a = rand() / 500 - (rand() / 500);
-		f32 c = rand() / 500 - (rand() / 500);
+		f32 c = rand() / 500 - (rand() / 500);			
 		f32 b = rand() / 100 - (rand() / 100);
 		b = 200-b;
 		if (b <0.0f) b*=-1.0f;
-		a = a*(b*0.01);
+		a = a*(b*0.01); 
 		c = c*(b*0.01);
 		ParticleData[i].pos = core::vector3d<f32>(a,b,c);
-		f32 f = b/4;
+		f32 f = b/4; 
 		ParticleData[i].size = core::dimension2d<f32>(f,f);
 		// distance to dark spot
 		int f2 = (1.0/rand())*255;
-		f2+=1;
+		f2+=1; 
 		ParticleData[i].color = video::SColor(255,100+(b/4),100+(b/4),100+(b/4));
 	}
-
+	
    // Particles[0].pos = getPosition() + core::vector3d<f32>(0,0,0);
    // Particles[0].size = core::dimension2d<f32>(10,10);
    // Particles[0].color = video::SColor(255,55,55,55);
-
-
+	
+	
 	//Vertices.set_used(count*4);
-
+	
 	reallocateBuffers();
 	/*
 	// fix textures
@@ -578,12 +577,12 @@ void CCloudSceneNode::makeRandomCloud(u32 count)
 		Vertices[2+i].TCoords.set(1.0f, 1.0f);
 		Vertices[3+i].TCoords.set(1.0f, 0.0f);
 	}
-
+	
 	Indices.set_used(ParticlesToDraw * 6);
 	/
-
+	
 	Box=core::aabbox3d<f32>(-1000,-1000,-1000,1000,1000,1000);
-
+	
 }
 */
 
@@ -593,34 +592,34 @@ void CCloudSceneNode::makeRandomCloud(s16 count)
 	ParticleCount = count;
 	// ParticleData[<ParticleCount] = top level cloud data
 	// ParticleData[>=ParticleCount] = child node data
-
+	
 	if ((s32)ParticleData.size() < count+50)
 		ParticleData.set_used(count+50);
-
+	
 	u32 i;
 
 	// make particles
-	for (i=1; i<count+25; i++)
+	for (i=1; i<count+25; i++) 
 	{
 		f32 a,b,c;
 		// random position
-		if (i < count)
+		if (i < count)  
 		{
 			a = rand() / 1.5 - (rand() / 1.5);
-			c = rand() / 1.5 - (rand() / 1.5);
+			c = rand() / 1.5 - (rand() / 1.5);			
 			b = rand() / 50.0 - (rand() / 50.0);
 		}
-		else
+		else 
 		{
 			a = rand() / 10.0 - (rand() / 10.0);
-			c = rand() / 10.0 - (rand() / 10.0);
+			c = rand() / 10.0 - (rand() / 10.0);			
 			b = rand() / 10.0 - (rand() / 10.0);
 		}
 		ParticleData[i].pos = core::vector3d<f32>(a,b,c);
 
-		f32 f = rand() / 50;
+		f32 f = rand() / 50; 
 		if (f < 0) f = -f;
-
+		
 		// set the size
 		ParticleData[i].size = core::dimension2d<f32>(2000+f,2000+f);
 		// distance to dark spot
@@ -648,7 +647,7 @@ void CCloudSceneNode::makeRandomCloud(s16 count)
 	ParticleData[i].pos = core::vector3d<f32>(d,0,e);
 	ParticleData[i].size = core::dimension2d<f32>(f,f);
 	i++;
-
+	
 	//2
 	ParticleData[i].color = video::SColor(255,0,0,0);
 	ParticleData[i].children = 0;
@@ -742,7 +741,7 @@ void CCloudSceneNode::reallocateBuffers()
 		s32 oldIdxSize = Indices.size();
 		s32 oldvertices = oldSize;
 		Indices.set_used(ParticlesToDraw * 6);
-
+		
 		for (i=oldIdxSize; i<Indices.size(); i+=6)
 		{
 			Indices[0+i] = 0+oldvertices;
@@ -759,4 +758,4 @@ void CCloudSceneNode::reallocateBuffers()
 
 } // end namespace scene
 } // end namespace irr
-#endif
+

@@ -1,6 +1,6 @@
 #ifndef SCALCEXPR_H
 #define SCALCEXPR_H
-#ifdef MATH
+
 #include <irrlicht.h>
 using namespace irr;
 using namespace core;
@@ -428,4 +428,3 @@ Of course you can also extend this class. See \ref SCalcExpr::buildInFunctions "
 */
 
 #endif // SCALCEXPR_H
-#endif

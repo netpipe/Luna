@@ -1,4 +1,3 @@
-#ifdef FPS
 #include "Rifle.h"
 
 Rifle::Rifle()
@@ -53,5 +52,3 @@ void Rifle::setScale(vector3df scale)
 	m_node->setScale(scale);
 	m_node->updateAbsolutePosition();
 }
-
-#endif

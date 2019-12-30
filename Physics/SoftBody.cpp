@@ -1,6 +1,5 @@
 // kudo's to go for this code http://sssiii.seesaa.net/article/109665032.html
-#include "../config.h"
-#ifdef PHYSICS
+
 #include <iostream>
 #include <map>
 #include <vector>
@@ -319,4 +318,3 @@ int tick (void)
     return 0;
 }
 */
-#endif

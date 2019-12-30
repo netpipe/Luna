@@ -1,4 +1,3 @@
-#ifdef WATER
 /*
  * Copyright (c) 2013, elvman
  * All rights reserved.
@@ -307,4 +306,3 @@ void RealisticWaterSceneNode::setColorBlendFactor(const f32 colorBlendFactor)
 {
 	_colorBlendFactor = colorBlendFactor;
 }
-#endif

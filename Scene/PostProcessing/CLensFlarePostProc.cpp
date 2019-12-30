@@ -1,4 +1,3 @@
-#ifdef PostProcess
 #include <irrlicht.h>
 #include "CLensFlarePostProc.h"
 
@@ -254,4 +253,3 @@ void CLensFlarePostProc::renderEffect( irr::video::ITexture* target ) {
 	driver->setMaterial( mf->Material );
 	driver->drawMeshBuffer( mf );
 }
-#endif

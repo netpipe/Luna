@@ -5,7 +5,7 @@
 
 #ifndef __C_LENS_FLARE_POST_PROC_H_INCLUDED__
 #define __C_LENS_FLARE_POST_PROC_H_INCLUDED__
-#ifdef PostProcess
+
 #include "IPostProc.h"
 
 class CLensFlarePostProc : public IPostProc {
@@ -36,5 +36,4 @@ public:
 	irr::f32 getRadius( ) { return rad; }
 };
 
-#endif
 #endif

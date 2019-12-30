@@ -1,6 +1,6 @@
 #ifndef _SPRITEMANAGER_H
 #define _SPRITEMANAGER_H
-#ifdef SPRITEMAN
+
 #include <irrlicht.h>
 
 #include "Sprite.h"
@@ -45,4 +45,3 @@ protected:
 };
 
 #endif // _SPRITEMANAGER_H
-#endif

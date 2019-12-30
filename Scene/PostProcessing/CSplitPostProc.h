@@ -5,7 +5,7 @@
 
 #ifndef __C_SPLIT_POST_PROC_H_INCLUDED__
 #define __C_SPLIT_POST_PROC_H_INCLUDED__
-#ifdef PostProcess
+
 #include "IPostProc.h"
 
 class CSplitPostProc : public IPostProc {
@@ -33,5 +33,4 @@ public:
 	irr::video::SColor getVoidColor( ) { return vspace; };
 };
 
-#endif
 #endif

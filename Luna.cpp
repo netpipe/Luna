@@ -8,7 +8,12 @@
 
 #include <vector>
 using namespace std;
-
+using namespace irr;
+using namespace core;
+using namespace scene;
+using namespace video;
+using namespace io;
+using namespace gui;
 
 #ifdef ATMOSPHERE
 #include "Scene/ATMOsphere.cpp"
@@ -16,10 +21,8 @@ using namespace std;
 //#include "Scene/flares/LensFlareSceneNode.h"
 #endif
 
-#ifdef EXTRAS
 #include "Scene/flares/SceneNodeAnimatorFollowCamera.h"
 #include "GUI/compass/Compass.h"
-#endif
 
 #ifdef BOIDS
 #include "Scene/boids/Flock.h"
@@ -40,19 +43,16 @@ using namespace std;
 #include "./Input/Model/blender/blenderUp.h"
 #endif
 
-#ifdef FPS
 #include "./Equipment/firstPersonWeapon.h"
-#endif
 
 #ifdef ATMOSPHERE
 #include "./TerrainFactory/CloudSceneNode/CCloudSceneNode.h"
 #endif
-#ifdef DECALS
+
 #include "./Scene/decalManager/DecalManager.h"
-#endif
 
 //#include "GUI/CodeEditor/CGUIEditBoxIRB.h"
-
+#include <fcntl.h> //needed for python
 
 //#define PostProcess
 
@@ -60,12 +60,9 @@ bool connected,doit,login=0;
 // vector3df tmpvect;
 
 
+//#define PYTHON
 //#include <boost/python.hpp>   #not used just for ideas maybe
-#ifdef PYTHON
 #include "Scripting/PythonManager.h"
-#include <fcntl.h> //needed for python
-#endif
-
 
 #ifdef NDEBUG
 #include <irrNet.h>
@@ -76,10 +73,9 @@ bool connected,doit,login=0;
 
 
 
-#ifdef RIBBONTRAIL
-#include "./Scene/RibbonTrailSceneNode/RibbonTrailSceneNode.h"
-       RibbonTrailSceneNode* rt;
-#endif
+
+//#include "./Scene/RibbonTrailSceneNode/RibbonTrailSceneNode.h"
+//       RibbonTrailSceneNode* rt;
 
 //#include "TerrainFactory/GrassSceneNode/CWindGenerator.h"
 //    scene::CGrassPatchSceneNode *grass[1000];
@@ -133,8 +129,6 @@ Luna::~Luna(){}
 //void main_loop();
 
 int Luna::devloop(){
-
-
     #include "./DevLoop.h" //! DevLoop Entry
  //   system("PAUSE");
     return 0;
@@ -200,46 +194,49 @@ return 0;
 }
 
 int Luna::shutdown(){
-	#ifdef HUD
-		//delete CHUD2;
-	#endif
 
-    #ifdef BOIDS
-     delete flock;
-    #endif
 
-    #ifdef PostProcess
-	 delete ppBlurDOF;
-	 delete ppBlur;
-	 delete ppRenderer;
-    #endif
 
-	#ifdef ATMOSPHERE
-    // delete atmo;
-    #endif
-
-	#ifdef ReflectiveWater
-	 delete water;
-	#endif
-
-	#ifdef RAG
-		for (std::vector<RagDoll*>::iterator it = v_RagDolls.begin(); it != v_RagDolls.end(); ++it)
-            (*it)->~RagDoll();
-	#endif
-
-	#ifdef COMPASS
-		delete Compass1;
-	#endif
-
-	#ifdef FLAG     // should be the flagmanager
-//	if (bflagnode)
-//		delete irrFlagNode;
-
-	#endif
-
-	#ifdef FLAG2     // should be the flagmanager
-		delete flag;
-	#endif
+//#ifdef HUD
+// //     delete vidmaster;
+//#endif
+//    #ifdef BOIDS
+//     delete flock;
+//    #endif
+//
+//    #ifdef PostProcess
+//	 delete ppBlurDOF;
+//	 delete ppBlur;
+//	 delete ppRenderer;
+//    #endif
+//
+//	#ifdef ATMOSPHERE
+//     delete atmo;
+//    #endif
+//
+//	#ifdef ReflectiveWater
+//	 delete water;
+//	#endif
+//
+//	#ifdef RAG
+//		for (std::vector<RagDoll*>::iterator it = v_RagDolls.begin(); it != v_RagDolls.end(); ++it)
+//            (*it)->~RagDoll();
+//	#endif
+//
+//	//delete CHUD2;
+//	//delete m_cVehicle;
+//
+//	#ifdef COMPASS
+//	 delete Compass1;
+//	#endif
+//
+//	#ifdef FLAG     // should be the flagmanager
+//	delete irrFlagNode;
+//	#endif
+//
+//	#ifdef FLAG2     // should be the flagmanager
+//	delete flag;
+//	#endif
 
 	#ifdef PYTHON
 		Py_Finalize();
@@ -250,38 +247,33 @@ int Luna::shutdown(){
 		manager->shutDown();
         cAudio::destroyAudioManager(manager);
     #endif
-
     #ifdef PHYSICS
-		//clearBodies();
-		//delete m_cVehicle;
+	//clearBodies();
 	#endif
+
+
 
 	#ifdef SPARKA
-		cout << "\nSPARK FACTORY BEFORE DESTRUCTION :" << endl;
-		SPKFactory::getInstance().traceAll();
-		SPKFactory::getInstance().destroyAll();
-		cout << "\nSPARK FACTORY AFTER DESTRUCTION :" << endl;
-		SPKFactory::getInstance().traceAll();
-		device->drop();
+	cout << "\nSPARK FACTORY BEFORE DESTRUCTION :" << endl;
+	SPKFactory::getInstance().traceAll();
+	SPKFactory::getInstance().destroyAll();
+	cout << "\nSPARK FACTORY AFTER DESTRUCTION :" << endl;
+	SPKFactory::getInstance().traceAll();
+	device->drop();
 	#endif
-#ifdef VIDEO
- //     delete vidmaster;
-	delete videoPlayer;
-#endif
+
+//	delete videoPlayer;
+
  #ifdef NDEBUG
     delete netManager;
     #endif
 //    delete ClientNetCallback;
 #ifdef PHYSICS
     delete m_cPhysics;
-//    delete m_cScene;
-//   delete m_cVehicle;
-
     #endif
-	#ifdef FPS
-		delete m_cPlayer;
-	#endif
-
+//    delete m_cScene;
+ //   delete m_cVehicle;
+  //  delete m_cPlayer;
     guienv->drop();
     smgr->drop();
     device->drop();
@@ -294,10 +286,8 @@ int Luna::shutdown(){
 int Luna::init(){
     bool FULLSCREEN=0;
     resolution[0]= 1024; resolution[1]= 768;
-   // resolution[0]= 800; resolution[1]= 600;
-    //    resolution[0]= 400; resolution[1]= 400;
    //   resolution[0]= 2024; resolution[1]= 2768;
-#ifdef TESTINGEMSCRIPTEN
+
    if (FULLSCREEN){
     IrrlichtDevice *nulldevice = createDevice(video::EDT_NULL);
     core::dimension2du res = nulldevice->getVideoModeList()->getDesktopResolution();
@@ -312,7 +302,7 @@ int Luna::init(){
 
       // device = createDevice ( EDT_OPENGL,dimension2du (res.Width,res.Height ),  32, true, true, false, 0 );
         #ifdef __EMSCRIPTEN__
-       device = createDevice(video::EDT_OGLES2,dimension2du (resolution[0],resolution[1]), 24, 0,1);
+        device = createDevice ( EDT_OGLES2,dimension2du (resolution[0],resolution[1]), 24, 0,1);
 #else
         device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 0,1);
 
@@ -321,7 +311,6 @@ int Luna::init(){
 // EDT_NULL       device = createDevice ( EDT_BURNINGSVIDEO,dimension2du (resolution[0],resolution[1]), 24, 0,1);
 
     };
-#endif //testingemscripten
     device->setWindowCaption ( L"Luna Engine v1-initial" );
     driver = device->getVideoDriver();
     smgr = device->getSceneManager();
@@ -332,37 +321,15 @@ int Luna::init(){
 //	context.counter = 0;
 ////	context.listbox = listbox;
 //
-    //		InGameEventReceiver m_cInGameEvents(context);
-
-	#ifdef EVENTS
-		device->setEventReceiver ( &m_cInGameEvents );
-    #endif
-//	smgr->addCameraSceneNode(0, vector3df(0,30,-40), vector3df(0,5,0));
+//    		InGameEventReceiver m_cInGameEvents(context);
 
 
-//	   	IAnimatedMesh* mesh = smgr->getMesh("./media/sydney.md2");
-//	if (!mesh)
-//	{
-//		device->drop();
-//		return 1;
-//	}
-//	IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
-//
-//		if (node)
-//	{
-//		node->setMaterialFlag(EMF_LIGHTING, false);
-//		node->setMD2Animation(scene::EMAT_STAND);
-//		node->setMaterialTexture( 0, driver->getTexture("./media/sydney.bmp") );
-//	}
-
-
-	device->getCursorControl()->setVisible(true);
-
+    device->setEventReceiver ( &m_cInGameEvents );
 //Physics init
-	#ifdef PHYSICS
-		m_cPhysics = new Physics();
-		m_cPhysics->registerIrrDevice(device);
-	#endif
+#ifdef PHYSICS
+    m_cPhysics = new Physics();
+    m_cPhysics->registerIrrDevice(device);
+#endif
 
 //networking
     #ifdef NDEBUG
@@ -373,37 +340,24 @@ int Luna::init(){
 	#endif
     #endif
 
-    iinit=0;
-    return 1;
+    return 0;
 }
 
-int Luna::Run(IrrlichtDevice *device2){
-//int Luna::Run(){
-	device=device2;
-//					if (iinit) {
-							  if ( init() < 0 ) return -1;
-		#ifdef EVENTS
-		events.devLogin=0;
-		#endif //events
+int Luna::Run(){
 
-		#ifndef NDEBUG
-			#ifdef EVENTS
-			events.devLogin=1;
-			#endif //events
-
-
+    events.devLogin=0;
+    #ifndef NDEBUG
+        events.devLogin=1;
+    #endif
  //   driver->setVSync(0);
-//        	if ( events.devLogin && !this->m_cInGameEvents.Quit )  {
-
+        	if ( events.devLogin && !this->m_cInGameEvents.Quit )  {
 					//countr=countr+1;
 					//printf("%i",countr);
-					#ifdef EVENTS
+					if (!iinit) {
+							  if ( init() < 0 ) return -1;
                     device->setEventReceiver ( &m_cInGameEvents );
-                    #endif
-
-                   // devloop();
-
-	#ifdef PYTHON
+                    devloop();
+		#ifdef PYTHON
 			#ifdef __EMSCRIPTEN__
 				TAR* tar;
 				if (tar_open(&tar, "./media/pydata.tar", NULL, O_RDONLY, 0, 0) != 0) {
@@ -420,9 +374,7 @@ int Luna::Run(IrrlichtDevice *device2){
 				setenv("PYTHONHOME", "/", 0);
 			#endif
     //Python
-            Python::registerIrrDevice(*device,m_cInGameEvents);
-
-      //  Python::registerIrrDevice(this,*device,m_cInGameEvents);
+        Python::registerIrrDevice(this,*device,m_cInGameEvents);
         Py_Initialize();            //Initialize Python
         //PythonMultithreading goes here when time comes
     //    PyEval_InitThreads() ; // nb: creates and locks the GIL
@@ -439,26 +391,24 @@ int Luna::Run(IrrlichtDevice *device2){
 				//Python::PyIrr_LoadVehicle(m_cVehicle);
 				//Python::PyIrr_addTerrain("1");
 				// pyloader = "./APP/cowsynth/main.pys";
-		//	pyloader = "./RACING/racer/main.pys";
-			pyloader = "../media/main.pys"; // run from emscripten dir for now
+			pyloader = "./RACING/racer/main.pys";
 		#endif
 
-		#ifdef CODEEDITOR
+		#ifdef EDITOR
 			Python::bCodeEditor=3; // initial closed state
 		#endif
-
-	#endif //python
-
-//                    } //init
-								// run main loop its called from main.cpp now instead
+		#endif //python
+                    } //init
+								// run main loop
 								#ifdef __EMSCRIPTEN__
-								//	main_loop();
+								iinit=true;
+								main_loop();
                                 #else
-								//	main_loop();
+                                iinit=true;
+                                main_loop();
                                 #endif
-            #else//       }else{
-//                	shutdown();
-//                	return 0;
+
+                }else{
 //                	if (iinit){ shutdown(); exit(1); } // for exiting dev loop tmpfix
                 printf ("now entering the lobby");
                    if ( lobby() == -1 ) {
@@ -470,46 +420,30 @@ int Luna::Run(IrrlichtDevice *device2){
                         device->setEventReceiver ( &m_cInGameEvents );
                         mainloop();
                         //devloop();
-                        return 0;
                     }
             }
-            #endif
+      //      getchar();
+//      if (bshutdown==true) {
+//		shutdown();
+		//}
 
-
-		//	if (bshutdown==true) {
-		//		shutdown();
-				//	getchar(); // trick to prevent window closing,
-		//	}
-
-//    return 1;
+    return 1;
 }
-
-void Luna::main_loop2(){
-		device->run();
-		driver->beginScene ( true, true, SColor ( 31, 200, 111, 0 ) );
-        smgr->drawAll();
-		//guienv->drawAll();
-        driver->endScene();
-//		device->sleep(15); // pythonize this
-		sleep(0.1);
-}
-
 
 void Luna::main_loop(){ //devloop actually
-#ifdef __EMSCRIPTEN__
-//			emscripten_run_script("alert('testing 123')"); // waited for user to press button before opening another.
-#endif
+//#ifdef __EMSCRIPTEN__
+    //while (
+//			emscripten_run_script("alert('hi')");
+
            device->run();
                 //&& !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
    // {
-
-
         const u32 now = device->getTimer()->getTime();
 		frameDeltaTime = (f32)(now - then) / 1000.f; // Time in seconds
 		then = now;
 
 		#ifdef PYTHON
-		Python::PreRender();
+        Python::PreRender();
         driver->beginScene ( true, true, SColor ( 0, 0, 0, 0 ) );
         Python::render();
 		#else
@@ -518,6 +452,7 @@ void Luna::main_loop(){ //devloop actually
 
         smgr->drawAll();
 		//	device->setEventReceiver(&receiver);
+//device->sleep(5);
 
 //        #ifdef PostProcess
 //			ppBlurDOF->render( NULL );
@@ -552,7 +487,7 @@ void Luna::main_loop(){ //devloop actually
 	#endif
 
 		#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
-          Python::preEnd();
+        Python::preEnd();
           Python::CheckKeyStates();
     //    obsolete:CheckKeyStates(); check onEvent for any need to check keys
     // loop for key checking and loop for game  only execute script if there was an event
@@ -577,19 +512,10 @@ void Luna::main_loop(){ //devloop actually
 			device->setWindowCaption(tmp.c_str());
 			lastFPS = fps;
 		}
-		//sleep(0.1);
-//       device->sleep(8); // pythonize this
-
-//	if ( this->m_cInGameEvents.Quit  ){ //Python::iexit==1
-//				shutdown();
-//				//return 0;
-//	}else{
-//    return 1;
-//	}
-
-}
+     //  device->sleep(5); // pythonize this
+  //  }
 //#endif
-
+}
 
 void Luna::CheckKeyStates(void){}
 
