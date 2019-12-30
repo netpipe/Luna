@@ -1,4 +1,5 @@
-
+#include "../config.h"
+#ifdef CHOPPER
     #include "chopper_control.h"
 
 
@@ -465,3 +466,4 @@
     }
 
 
+#endif

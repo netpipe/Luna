@@ -1,4 +1,7 @@
+#include "../config.h"
+#ifdef FPS
 #include "player.h"
+
 //void Camera::moveCameraControl()
 //{
 //  cursorPos = irrDevice->getCursorControl()->getRelativePosition();
@@ -236,3 +239,4 @@ void Player::setSpeed(float val)
 {
   moveSpeed = val;
 }
+#endif

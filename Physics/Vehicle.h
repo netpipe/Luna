@@ -77,13 +77,11 @@ class Vehicle{
 
         void setPosition( core::vector3df fun);
 
-    void registerIrrDevice(IrrlichtDevice &device);
-    void registerPhysics(Physics &physics);
+
     void registerScene(Scene &scene);
 
     vector3df getPosition(void);
 
-    btQuaternion getVehicleOrientation(void);
 
     void setState(EVEHICLE_STATE _state);
 
@@ -91,6 +89,11 @@ class Vehicle{
 
     // Irrlicht variables.
     IrrlichtDevice *m_irrDevice;
+    void registerIrrDevice(IrrlichtDevice &device);
+    #ifdef PHYSICS
+    void registerPhysics(Physics &physics);
+        btQuaternion getVehicleOrientation(void);
+
 
     //
     Physics *m_cPhysics;
@@ -223,6 +226,6 @@ class Vehicle{
     int rightIndex;
     int forwardIndex;
 };
-
+    #endif
 #endif
 

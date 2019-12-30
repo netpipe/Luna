@@ -1,6 +1,7 @@
     #ifndef _CHOPPER_CONTROL_H_
     #define _CHOPPER_CONTROL_H_
-
+    #include "../config.h"
+#ifdef CHOPPER
     #include <vector>
     #include <irrlicht.h>
 
@@ -157,7 +158,7 @@
 
 
 
-
+#endif
 
     #endif // _CHOPPER_CONTROL_H_
 

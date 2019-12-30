@@ -73,10 +73,13 @@
     #include "../Scene/Flag/SimpleFlag.h"
     #include "../Scene/Flag/CFlagSceneNode.h"
 #endif
-
+#ifdef SKELETON
 #include "../entities/skeleton/Skeleton.h"
+#endif
 
+#ifdef PHYSICS
 #include "../Physics/Vehicle.h"
+#endif
 
 #ifdef RECAST
 #include "../entities/AI/recast_util.h"
@@ -86,7 +89,7 @@
 #endif
 
 #include "../Scene/particles.h"
-#define SPARKA
+
     #ifdef SPARKA
         #include "../Scene/SPARK/SPK.h"
         #include "../Scene/SPARK/SPK_IRR.h"
@@ -99,16 +102,18 @@
 #include "../Input/Model/IrrAssimp/IrrAssimp.h"
 #endif
 
+#ifdef Image2D
 #include "../GUI/cImage2D.h"
+#endif
 
 #ifdef SPRITEMANAGER
-#include "../Scene/spriteManager/SpriteManager.h"
-#include "../Scene/spriteManager/BmFont.h"
-#include "../Scene/spriteManager/ParticleSystem.h"
+    #include "../Scene/spriteManager/SpriteManager.h"
+    #include "../Scene/spriteManager/BmFont.h"
+    #include "../Scene/spriteManager/ParticleSystem.h"
 #endif
 
 #ifdef SCALC
-#include "../GUI/Math/SCalcExpr.h"
+    #include "../GUI/Math/SCalcExpr.h"
 #endif
 
 #ifdef VEGETATION
@@ -192,8 +197,9 @@ char *zErrMsg;
   //  Vehicle *m_cVehicle2;
 
  //   static vector<Vehicle*> m_cVehicle;
-
+#ifdef SKELETON
     cSkeleton skeleton;
+    #endif
 //        cAudio::IAudioManager* managerID;
 //        cAudio::IAudioSource* mysound;
 

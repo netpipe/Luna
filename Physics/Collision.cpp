@@ -1,3 +1,5 @@
+#include "../config.h"
+#ifdef FPS
 #include "Collision.hpp"
 #include "../entities/player.h"
 #include "../Scene/Obstacle.hpp"
@@ -188,3 +190,4 @@ void Collision::recursiveFillMetaSelector(ISceneNode* node, IMetaTriangleSelecto
   for (; begin != end; ++begin)
     recursiveFillMetaSelector(*begin, meta);
 }
+#endif

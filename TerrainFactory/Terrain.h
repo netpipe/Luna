@@ -1,6 +1,7 @@
 #ifndef TERRAIN_H
 #define TERRAIN_H
-
+#include "../config.h"
+#ifdef TERRAIN
 #include <deque>
 
 //#include "../vector.h"
@@ -13,12 +14,17 @@ using namespace scene;
 using namespace video;
 using namespace io;
 using namespace gui;
+#ifdef PHYSICS
 #include "../Physics/Physics.h"
+#endif
 #include "../Scene/Scene.h"
 
+#ifdef TREES
 #include "ProceduralTrees/CTreeGenerator.h"
 #include "ProceduralTrees/CBillboardGroupSceneNode.h"
 #include "ProceduralTrees/CTreeSceneNode.h"
+#endif
+
 #include <vector>
 using namespace std;
 
@@ -117,4 +123,5 @@ class Terrain
 //		std::vector<std::vector<std::vector<NODE *> > > planets;
 };
 
+#endif
 #endif

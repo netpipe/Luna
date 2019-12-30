@@ -1,4 +1,7 @@
+#include "../config.h"
+#ifdef PHYSICS
 #include "Physics.h"
+
 /*testing
 #include "../FileSystem/BulletBlendReader.h"
 //#include "btBulletDynamicsCommon.h"
@@ -6,6 +9,7 @@
 #include "../FileSystem/readblend/blendtype.h"
 #include "../FileSystem/blenderUp.h"
 */
+
 using namespace irr;
 using namespace core;
 using namespace scene;
@@ -422,3 +426,4 @@ void Physics::registerIrrDevice(IrrlichtDevice *device) {
 	m_irrDevice = device;
 
 }
+#endif

@@ -88,14 +88,14 @@ void Elevator::UpdatePlayerPosition(void)
             elevatorNode[i]->setPosition(vector3df( elevatorNode[i]->getPosition().X,
                                                     elevatorNode[i]->getPosition().Y+1,
                                                     elevatorNode[i]->getPosition().Z));
-
+#ifdef FPS
             if (ridingElevator && Player::Instance()->isFalling){
              }else{
               playerNewPos = Player::Instance()->getPlayerNode()->getAbsolutePosition();
               playerNewPos.Y = elevatorNode[i]->getAbsolutePosition().Y;
               Player::Instance()->getPlayerNode()->setPosition(playerNewPos);
              }
-
+#endif
         }
 
       }}

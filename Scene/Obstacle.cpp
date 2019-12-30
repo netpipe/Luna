@@ -35,7 +35,7 @@ void Obstacle::Clear(void)
 
 void Obstacle::CheckCollisionWithPlayer(void)
 {
-
+#ifdef FPS
 	ISceneNode *playerNode = Player::Instance()->getPlayerNode();
 
 	if(obstacleExists)
@@ -49,5 +49,5 @@ void Obstacle::CheckCollisionWithPlayer(void)
 				}
 		}
 	}
-
+#endif
 }

@@ -1,6 +1,6 @@
 #ifndef _RIFLE_H
 #define _RIFLE_H 1
-
+#ifdef PHYSICS
 #include <irrlicht.h>
 #include "../Physics/Physics.h"
 
@@ -37,5 +37,5 @@ class Rifle
 		vector3df m_position, m_rotation, m_scale;
 		Physics *m_cPhysics;
 };
-
+#endif
 #endif

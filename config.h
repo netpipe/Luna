@@ -3,6 +3,8 @@
 
    // #define IRRCD   // irrlicht Collision Detection
     #define EVENTS
+    #define FPS
+    #define SGRAPH2D
    // #define SCENE
    // #define IRRc
  //   #define PostProcess
@@ -42,6 +44,7 @@
   //  #define DESTRUCTION
   //  #define FORMATIONDEMO
   //  #define HUD
+  //  #define CHUD
     #define Image2D // Just testing out
   //  #define CHOPPER
   //  #define  OPENSTEER
