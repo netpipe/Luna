@@ -245,7 +245,7 @@ void CTreeSceneNode::updateBillboard()
     core::vector3df yscale = core::vector3df( 0, 1, 0 );
     AbsoluteTransformation.rotateVect( yscale );    // Find the y scale and apply to the height
 
-    up *= extent.Y * yscale.getLength();;
+    up *= extent.Y * yscale.getLength();
 
     core::vector3df xz = core::vector3df( 1, 0, 1 );    // Find the xz scale and apply to the width
 

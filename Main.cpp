@@ -42,7 +42,7 @@ int main ( int argc, char** argv )
 		Luna game ( argc,argv );
 
 		game.Run();
-		while (1){
+		while (!game.m_cInGameEvents.Quit){
 			game.main_loop();
 		}
 		#endif // __EMSCRIPTEN__

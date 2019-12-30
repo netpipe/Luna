@@ -1,6 +1,7 @@
 #ifndef Luna_H
 #define Luna_H
 
+#include <unistd.h>
 #include <vector>
 #include <string>
 #include <sstream>

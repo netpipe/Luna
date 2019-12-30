@@ -58,7 +58,7 @@ SMaterial Mat;
 		irrFlagNode->setScale( vector3df(10) );
 		irrFlagNode->setPosition (vector3df (x,y,z));
 #endif
-     return Py_BuildValue("l",irrFlagNode);;
+     return Py_BuildValue("l",irrFlagNode);
 };
 
 PyObject * Python::PyIrr_Flag2(PyObject * self,PyObject * args) //more realistic with shader

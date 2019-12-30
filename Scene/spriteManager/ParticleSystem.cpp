@@ -88,7 +88,7 @@ void ParticleSystem::add()
     max = rotationMax;
     pLast->spinStart = calculate_variation(spinStart, spinEnd, spinVariation);
     pLast->spinEnd = calculate_variation(spinEnd, spinStart, spinVariation);
-    pLast->rotation = (rand() / (float(RAND_MAX)+1)) * (max - min) + min;;
+    pLast->rotation = (rand() / (float(RAND_MAX)+1)) * (max - min) + min;
 
     pLast->color[0] = (float)colorStart[0] / 255;
     pLast->color[1] = (float)colorStart[1] / 255;

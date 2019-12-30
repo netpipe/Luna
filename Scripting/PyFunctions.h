@@ -338,12 +338,14 @@ PyObject * Python::PyIrr_Delay(PyObject * self,PyObject * args){ //PyIrr_Delay
     float delay;
     PyArg_ParseTuple(args,"f",&delay);
  //   device->sleep(delay);
+ sleep(delay);
 return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_Sleep(PyObject * self,PyObject * args){
     int ammount;
     PyArg_ParseTuple(args,"i",&ammount);
+    sleep(ammount);
 //    device->sleep(ammount);
 return Py_BuildValue("");
 }

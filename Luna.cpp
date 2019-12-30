@@ -391,7 +391,8 @@ int Luna::Run(){
 				//Python::PyIrr_LoadVehicle(m_cVehicle);
 				//Python::PyIrr_addTerrain("1");
 				// pyloader = "./APP/cowsynth/main.pys";
-			pyloader = "./RACING/racer/main.pys";
+			//pyloader = "./RACING/racer/main.pys";
+			pyloader = "../media/main.pys";
 		#endif
 
 		#ifdef EDITOR
@@ -512,6 +513,7 @@ void Luna::main_loop(){ //devloop actually
 			device->setWindowCaption(tmp.c_str());
 			lastFPS = fps;
 		}
+		sleep(0.1);
      //  device->sleep(5); // pythonize this
   //  }
 //#endif

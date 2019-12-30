@@ -2713,7 +2713,7 @@ blend_block_get_entry_count(BlendFile* blend_file,
 							BlendBlock * block)
 {
 	const BlendBlock* bb = (const BlendBlock*)block;
-	return bb->m_array_entries_.size();//>array_entries_count;;
+	return bb->m_array_entries_.size();//>array_entries_count;
 }
 
 void
