@@ -1,7 +1,7 @@
 #!/bin/bash
 name=Luna
 directory=/home/netpipe/public_html/emtests/irrlicht/LUNAENGINE
-cd GAME
+#cd GAME
 cp $name.html $name.js $name.data $name.wasm $directory
 
 #cd $directory
