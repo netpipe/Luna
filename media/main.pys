@@ -115,13 +115,21 @@ physics.VehicleParams(car2,8,0,0,0,0)
 
 #physics.VehicleParams(car1,0,0,0,0,0)
 
+if input.getKey('KEY_KEY_D') :
+ physics.VehicleParams(car1,6,0,0,0,0)
+ rsteer=1
 
+
+
+#Reset Steering
+if not input.getKey('KEY_KEY_A') and not input.getKey('KEY_KEY_D') :
+ physics.VehicleParams(car1,9,0,0,0,0)
 
 
 
 #timer
 
-scene.using ('../media/keys.pys',"1");
+#scene.using ('../media/keys.pys',"1");
 
 #irr.update(); #could set timing here, maybe smgr gui  etc  todo
 

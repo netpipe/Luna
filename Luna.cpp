@@ -56,10 +56,10 @@ using namespace gui;
 
 #ifdef COMPRESS
 #include "./Input/Compress/Compress.h"
-
 //Compress *archiver;
-#endif // COMPRESS
 #include "./Input/Compress/zpipe.h"
+#endif // COMPRESS
+
 //#define PostProcess
 
 bool connected,doit,login=0;
@@ -79,9 +79,10 @@ bool connected,doit,login=0;
 
 
 
-
+#ifdef RIBBONTRAIL
 //#include "./Scene/RibbonTrailSceneNode/RibbonTrailSceneNode.h"
 //       RibbonTrailSceneNode* rt;
+#endif
 
 //#include "TerrainFactory/GrassSceneNode/CWindGenerator.h"
 //    scene::CGrassPatchSceneNode *grass[1000];
@@ -202,7 +203,7 @@ return 0;
 int Luna::shutdown(){
 
 	#ifdef HUD
-		//delete CHUD2;
+//	 delete CHUD2;
 	#endif
 
     #ifdef BOIDS
@@ -229,7 +230,7 @@ int Luna::shutdown(){
 	#endif
 
 	#ifdef COMPASS
-		delete Compass1;
+	 delete Compass1;
 	#endif
 
 	#ifdef FLAG     // should be the flagmanager
@@ -239,7 +240,7 @@ int Luna::shutdown(){
 	#endif
 
 	#ifdef FLAG2     // should be the flagmanager
-		delete flag;
+	 delete flag;
 	#endif
 
 	#ifdef PYTHON
@@ -265,18 +266,21 @@ int Luna::shutdown(){
 		SPKFactory::getInstance().traceAll();
 		device->drop();
 	#endif
-#ifdef VIDEO
+
+	#ifdef VIDEO
  //     delete vidmaster;
-	delete videoPlayer;
-#endif
- #ifdef NDEBUG
-    delete netManager;
+	 delete videoPlayer;
+	#endif
+
+	#ifdef NDEBUG
+	 delete netManager;
     #endif
-//    delete ClientNetCallback;
-#ifdef PHYSICS
-    delete m_cPhysics;
-//    delete m_cScene;
-//   delete m_cVehicle;
+
+	//    delete ClientNetCallback;
+	#ifdef PHYSICS
+		delete m_cPhysics;
+	// delete m_cScene;
+	//delete m_cVehicle;
 
     #endif
 	#ifdef FPS
@@ -368,7 +372,7 @@ int Luna::Run(){
                     device->setEventReceiver ( &m_cInGameEvents );
                     devloop();
 		#ifdef PYTHON
-			#ifdef __EMSCRIPTEN__2
+			#ifdef __EMSCRIPTEN__
 				TAR* tar;
 				if (tar_open(&tar, "./media/pydata.tar", NULL, O_RDONLY, 0, 0) != 0) {
 					fprintf(stderr, "Error: failed to open pydata.tar\n");
@@ -533,7 +537,7 @@ void Luna::main_loop(){ //devloop actually
 			device->setWindowCaption(tmp.c_str());
 			lastFPS = fps;
 		}
-		sleep(0.1);
+		sleep(0.2);
      //  device->sleep(5); // pythonize this
   //  }
 //#endif
