@@ -1,3 +1,4 @@
+#ifdef PYTHON
 ///PHYSICS
 
 PyMethodDef irr_Physics[] = {
@@ -749,3 +750,4 @@ void Python::rfm(ISceneNode* node )
 //Collision::Instance()->createRootCollision();
 
 //material system for friction / lusture / magnetic / density
+#endif

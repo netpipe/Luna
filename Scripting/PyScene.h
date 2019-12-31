@@ -1,3 +1,4 @@
+#ifdef PYTHON
 ///SCENENODES and SCENESTUFF STUFF  -- included from pyfunctions
 ///TERRAIN
 
@@ -54,7 +55,6 @@ reminder to actually check the names match with unstable ide's and whatnot
 
     //Physics
     {"setVelocity",Python::PyIrr_setVelocity,METH_VARARGS,"setVelocity"},
-    {"motionTrail",Python::PyIrr_motionTrail,METH_VARARGS,"motionTrail"},
 
     //Timers
 
@@ -716,3 +716,4 @@ int setvideo (){// graphics combo
 // crouching
 // loc,rot or normal,look angle,head/camera normal(seperate from body
 // model, chat, decals, csgmodifier
+#endif

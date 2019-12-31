@@ -7,6 +7,10 @@ import input
 import net
 import gui
 
+#import itertools
+#scene.using ('../media/libs/random.py');
+#import random
+
 #irr.checkKeyState(); # check event loop to see if any key was pressed
 #################################
 #INITIALIZE 
@@ -80,6 +84,17 @@ if (init) :
 #################################
  iaxe = image.iadd("./media/axe.jpg",10,10,500,500,10,10,800,800)
  i=0
+
+# make a deck of cards
+# deck = list(itertools.product(range(1,14),['Spade','Heart','Diamond','Club']))
+
+# shuffle the cards
+# random.shuffle(deck)
+
+# draw five cards
+# print("You got:")
+# for i in range(5):
+#   print(deck[i][0], "of", deck[i][1])
 
 
 #################################

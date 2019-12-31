@@ -1,3 +1,4 @@
+#ifdef PYTHON
 PyMethodDef irr_Sound[] =
 {
     {"fluidsynth",Python::PyIrr_FluidSynth,METH_VARARGS,"fluidsynth"},
@@ -390,3 +391,4 @@ else if (typee == 5){
 #endif
 return Py_BuildValue("");
 }
+#endif

@@ -274,7 +274,6 @@ PyMethodDef irr_function[] =
 
     {"wayman",Python::PyIrr_WayPoint,METH_VARARGS,"waypoint manager"},
 
-    {"formationdemo",Python::PyIrr_FormationDemo,METH_VARARGS,"Loads FormationDemo"},
     {"pauseGame",Python::PyIrr_pauseGame,METH_VARARGS,"pauseGame"},
     {"exit",Python::PyIrr_exit,METH_VARARGS,"exit"},
      {"exec",Python::PyIrr_exec,METH_VARARGS,"exec"},

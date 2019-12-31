@@ -1,3 +1,5 @@
+#include "../config.h"
+#ifdef EXTRAS
 #include "CBeamSceneNode.h"
 namespace irr
 {
@@ -154,3 +156,4 @@ namespace irr
         }
     }
 }
+#endif

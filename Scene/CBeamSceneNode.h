@@ -1,5 +1,7 @@
 #ifndef CBEAMSCENENODE_H
 #define CBEAMSCENENODE_H
+#include "../config.h"
+#ifdef EXTRAS
 #include <irrlicht.h>
 namespace irr
 {
@@ -42,4 +44,5 @@ namespace irr
         };
     }
 }
+#endif
 #endif

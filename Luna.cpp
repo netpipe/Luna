@@ -54,6 +54,12 @@ using namespace gui;
 //#include "GUI/CodeEditor/CGUIEditBoxIRB.h"
 #include <fcntl.h> //needed for python
 
+#ifdef COMPRESS
+#include "./Input/Compress/Compress.h"
+
+//Compress *archiver;
+#endif // COMPRESS
+#include "./Input/Compress/zpipe.h"
 //#define PostProcess
 
 bool connected,doit,login=0;
@@ -362,7 +368,7 @@ int Luna::Run(){
                     device->setEventReceiver ( &m_cInGameEvents );
                     devloop();
 		#ifdef PYTHON
-			#ifdef __EMSCRIPTEN__
+			#ifdef __EMSCRIPTEN__2
 				TAR* tar;
 				if (tar_open(&tar, "./media/pydata.tar", NULL, O_RDONLY, 0, 0) != 0) {
 					fprintf(stderr, "Error: failed to open pydata.tar\n");
@@ -375,8 +381,18 @@ int Luna::Run(){
 				tar_close(tar);
 
 				//Py_Initialize(); //Initialize Python
-				setenv("PYTHONHOME", "/", 0);
+			//	setenv("PYTHONHOME", "/media/", 0);
 			#endif
+
+#ifdef __EMSCRIPTEN__
+
+setenv("PYTHONHOME", "/", 0);
+//			zstrdeflate("./media.zip");
+    char *argv2[]={"appname", "media.zip" ,"testout","nulls"};
+    int argc2= sizeof(argv2) / sizeof(char*) - 1;
+//int test = zpipe(argc2,argv2);
+#endif
+
     //Python
         Python::registerIrrDevice(this,*device,m_cInGameEvents);
         Py_Initialize();            //Initialize Python

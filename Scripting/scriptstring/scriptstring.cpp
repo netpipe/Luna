@@ -1,3 +1,5 @@
+#include "../../config.h"
+#ifdef ANGELSCRIPT
 #include <assert.h>
 #include <string.h> // strstr
 #include "scriptstring.h"
@@ -676,3 +678,4 @@ void RegisterScriptString(asIScriptEngine *engine)
 END_AS_NAMESPACE
 
 
+#endif

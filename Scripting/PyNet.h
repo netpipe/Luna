@@ -1,4 +1,4 @@
-
+#ifdef PYTHON
 PyMethodDef irr_Network[] =
 {
     {"connect",Python::PyIrr_Connect,METH_VARARGS,"connect"},
@@ -354,3 +354,4 @@ PyObject * Python::PyIrr_RelayChat(PyObject * self,PyObject * args) {
 //    #endif
 return Py_BuildValue("");
 }
+#endif

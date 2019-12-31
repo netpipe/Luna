@@ -1134,6 +1134,8 @@
 		<Unit filename="GUI/widgets/CGUIBar.h" />
 		<Unit filename="Input/Compress/Compress.cpp" />
 		<Unit filename="Input/Compress/Compress.h" />
+		<Unit filename="Input/Compress/zpipe.h" />
+		<Unit filename="Input/Compress/zstr.h" />
 		<Unit filename="Input/Controllers/StringTools.cpp" />
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimp.cpp" />
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimp.h" />
@@ -1286,6 +1288,10 @@
 		<Unit filename="Scripting/PyScene.h" />
 		<Unit filename="Scripting/PySound.h" />
 		<Unit filename="Scripting/PythonManager.h" />
+		<Unit filename="Scripting/pyFileIO.h" />
+		<Unit filename="Scripting/scriptstring/scriptstring.cpp" />
+		<Unit filename="Scripting/scriptstring/scriptstring.h" />
+		<Unit filename="Scripting/scriptstring/scriptstring_utils.cpp" />
 		<Unit filename="TerrainFactory/CloudSceneNode/CCloudSceneNode.cpp" />
 		<Unit filename="TerrainFactory/CloudSceneNode/CCloudSceneNode.h" />
 		<Unit filename="TerrainFactory/FWGrass/GrassLoader.cpp" />

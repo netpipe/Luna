@@ -1,4 +1,4 @@
-//#ifdef EXTRAS
+
 /// extra stuff that should eventually find a new file to go into.
 
 //"s" (string) [char *]
@@ -49,7 +49,7 @@
 //    Convert a sequence of C values to a Python dictionary. Each pair of consecutive C values adds one item to the dictionary, serving as key and value, respectively.
 
 
-
+#ifdef EXTRAS
 PyMethodDef irr_Extras[] =
 {
         {"omaredemo",Python::PyIrr_omareDemo,METH_VARARGS,"loads omares plane demo or maybe clouds"},
@@ -62,6 +62,8 @@ PyMethodDef irr_Extras[] =
         {"occlusionTest",Python::PyIrr_Occlusion,METH_VARARGS,"occlusion"},
         {"compass",Python::PyIrr_Compass,METH_VARARGS,"PyIrr_Compas"},
         {"realCloud",Python::PyIrr_realCloud,METH_VARARGS,"PyIrr_realCloud"},
+    {"formationdemo",Python::PyIrr_FormationDemo,METH_VARARGS,"Loads FormationDemo"},
+    {"motionTrail",Python::PyIrr_motionTrail,METH_VARARGS,"motionTrail"},
 
 
         {NULL,NULL,0,NULL}
@@ -266,3 +268,4 @@ return Py_BuildValue("");
 }
 
 //#endif
+#endif

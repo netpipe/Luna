@@ -1,3 +1,5 @@
+#include "../../config.h"
+#ifdef ANGELSCRIPT
 //
 // CScriptString
 //
@@ -61,4 +63,5 @@ void RegisterScriptStringUtils(asIScriptEngine *engine);
 
 END_AS_NAMESPACE
 
+#endif
 #endif

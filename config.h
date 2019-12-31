@@ -1,6 +1,10 @@
-// #ifndef INCLUDES
-// #define INCLUDES
+ #ifndef INCLUDES
+ #define INCLUDES
+
  #define PYTHON
+ #define COMPRESS //needed for empython
+ #define EXTRAS
+
    // #define IRRCD   // irrlicht Collision Detection
     #define EVENTS
     #define FPS
@@ -59,4 +63,4 @@
 
 //    #define VIDEO
   //  #define PostProcess
-//  #endif
+  #endif

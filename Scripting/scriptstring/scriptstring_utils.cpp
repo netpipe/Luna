@@ -1,3 +1,5 @@
+#include "../../config.h"
+#ifdef ANGELSCRIPT
 #include <assert.h>
 #include "scriptstring.h"
 #include <string.h> // strstr
@@ -329,7 +331,7 @@ void StringJoin_Generic(asIScriptGeneric *gen)
 //       int64    parseInt(const string &in str, int &out bytesParsed);
 //       double   parseDouble(const string &in str, int &out bytesParsed);
 //       string @ formatString(int64, const string &in format);  // should use sprintf to format the string
-//       string @ formatDouble(double, const string &in format); 
+//       string @ formatDouble(double, const string &in format);
 //
 //       int16    byteStringToInt16(const string &in str, int start);
 //       int32    byteStringToInt32(const string &in str, int start);
@@ -367,3 +369,4 @@ void RegisterScriptStringUtils(asIScriptEngine *engine)
     r = engine->RegisterGlobalFunction("string@[]@ split(const string &in, const string &in)", asFUNCTION(StringSplit_Generic), asCALL_GENERIC); assert(r >= 0);
     r = engine->RegisterGlobalFunction("string@ join(const string@[] &in, const string &in)", asFUNCTION(StringJoin_Generic), asCALL_GENERIC); assert(r >= 0);
 }
+#endif

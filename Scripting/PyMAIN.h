@@ -67,7 +67,7 @@ namespace Python {
     #endif
 
     #ifdef FLAG
-    //	SimpleFlagNode	*irrFlagNode;
+    	SimpleFlagNode	*irrFlagNode;
     #endif
     #ifdef HUD
         CHUD* CHUD2 = new CHUD();
@@ -207,7 +207,8 @@ namespace Python {
 
     //media
     PyObject *PyIrr_FluidSynth(PyObject * self,PyObject * args);
-
+    PyObject * PyIrr_zistream(PyObject * self,PyObject * args);
+    PyObject * PyIrr_zostream(PyObject * self,PyObject * args);
     //Math
     PyObject * PyIrr_Rand(PyObject * self,PyObject * args);
 
