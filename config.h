@@ -25,8 +25,7 @@
 
    // #define DECALS2       // simple decals
     //#define DECALS       //decalmanager sortof working slow tho
-  //  #define TESSIMAGE
-  //#define TESSELATE
+  #define TESSELATE
 
   //  #define CODEEDITOR
   //  #define FLAG    //
@@ -46,8 +45,7 @@
    // #define EXTRAS
   //  #define DESTRUCTION
   //  #define FORMATIONDEMO
-   // #define HUD
-   // #define CHUD
+    #define HUD
     #define Image2D // Just testing out
   //  #define CHOPPER
   //  #define  OPENSTEER

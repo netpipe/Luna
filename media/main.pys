@@ -92,9 +92,9 @@ image.irotate(iaxe,i)
 i+=1
 image.idraw(iaxe)
 
-if input.getKey('KEY_ESCAPE') :
- paused=1
- irr.exit()
+#if input.getKey('KEY_ESCAPE') :
+# paused=1
+# irr.exit()
 physics.VehicleParams(car1,8,0,0,0,0)
 physics.VehicleParams(car2,8,0,0,0,0)
 
@@ -106,7 +106,7 @@ physics.VehicleParams(car2,8,0,0,0,0)
 
 #timer
 
-#scene.using ('../media/keys.pys',"1");
+scene.using ('../media/keys.pys',"1");
 
 #irr.update(); #could set timing here, maybe smgr gui  etc  todo
 

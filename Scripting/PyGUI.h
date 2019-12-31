@@ -210,7 +210,7 @@ PyObject * Python::PyIrr_tesselateImage(PyObject * self,PyObject * args){
 vector3df loc;
 char * path;
 PyArg_ParseTuple(args,"sfff",&path,&loc.X,&loc.Y,&loc.Z);
-	#ifdef TESSIMAGE
+	#ifdef TESSELATE
 		btesimage=1;
 		tesImage = new TesselatedImage(device, "media/fireball.bmp", vector3df(-600,0,500), vector3df(500, 550, 1000), vector3df(-130,50,100), 45, 1500, 10);
 		tesImage->startAnimation();

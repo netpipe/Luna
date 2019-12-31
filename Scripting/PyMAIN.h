@@ -78,7 +78,7 @@ namespace Python {
     #ifdef VIDEO
         CVideoMaster    *vidmaster;
     #endif
-    #ifdef TESSIMAGE
+    #ifdef TESSELATE
         TesselatedImage *tesImage;
         bool btesimage=0;
     #endif
@@ -309,7 +309,7 @@ namespace Python {
        ArmDecalSceneNode* decals[MAX_DECALS];
     #endif
 
-    #ifdef SPARKA
+    #ifdef SPARK
         Group* fireGroup = NULL;
         Group* smokeGroup = NULL;
         Emitter* smokeEmitter = NULL;
@@ -323,7 +323,7 @@ namespace Python {
 int Python::test(){};
 
 void Python::PreRender(){   // prerender
-        #ifdef SPARKA //rain
+        #ifdef SPARK //rain
         if (bSPARK){
 		// lightmap effect
         // if(deltaTime >= 0.05f)
@@ -377,7 +377,7 @@ void Python::render() {//active camera
 #ifdef BOIDS
          if (bBlindBoids){flock->update(selecta,deltaTime,0);};
 #endif
-        #ifdef TESSIMAGE
+        #ifdef TESSELATE
             if (btesimage){ tesImage->render(deltaTime); }
         #endif
 

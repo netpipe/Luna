@@ -251,7 +251,7 @@ int Luna::shutdown(){
 		//delete m_cVehicle;
 	#endif
 
-	#ifdef SPARKA
+	#ifdef SPARK
 		cout << "\nSPARK FACTORY BEFORE DESTRUCTION :" << endl;
 		SPKFactory::getInstance().traceAll();
 		SPKFactory::getInstance().destroyAll();

@@ -180,7 +180,7 @@ device->getCursorControl()->setVisible(true);
 
 
 
-	#ifdef SPARKA
+	#ifdef SPARK
 	cout << "\nSPARK FACTORY BEFORE DESTRUCTION :" << endl;
 	SPKFactory::getInstance().traceAll();
 	SPKFactory::getInstance().destroyAll();

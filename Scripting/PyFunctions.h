@@ -37,7 +37,7 @@
 #endif
 //#include "../GUI/CodeEditor/CGUIEditBoxIRB.h"
 //CGUIEditBoxIRB * codeEditor;
-#ifdef TESSIMAGE
+#ifdef TESSELATE
 #include "../Scene/tesselatedImage/tesselatedImage.h"
 #endif
 
@@ -95,7 +95,7 @@
 
 #include "../Scene/particles.h"
 
-    #ifdef SPARKA
+    #ifdef SPARK
         #include "../Scene/SPARK/SPK.h"
         #include "../Scene/SPARK/SPK_IRR.h"
         using namespace SPK;

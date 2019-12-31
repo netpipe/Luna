@@ -991,7 +991,7 @@ return Py_BuildValue("");
 PyObject * Python::PyIrr_SPARKA(PyObject * self,PyObject * args) //active camera
 {
 
-#ifdef SPARKA
+#ifdef SPARK
     bSPARK = 1;
     float angleY = 10.0f;
     float angleX = -45.0f;
