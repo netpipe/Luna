@@ -31,6 +31,7 @@ if (init) :
  physics.VehicleParams(car2,11,0,20,100,20) #position
  physics.VehicleParams(car1,8,0,0,0,0)
 
+
 # physics.addHelicopter("data/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
 
 
@@ -98,7 +99,7 @@ if (init) :
 
 
 #################################
- init = 0 #initialization finish- needs whitespace infront
+ init = 0 #initialization finish - needs whitespace infront
 #################################
 #MAIN LOOP
 
@@ -115,21 +116,17 @@ physics.VehicleParams(car2,8,0,0,0,0)
 
 #physics.VehicleParams(car1,0,0,0,0,0)
 
-if input.getKey('KEY_KEY_D') :
- physics.VehicleParams(car1,6,0,0,0,0)
- rsteer=1
 
-
-
-#Reset Steering
-if not input.getKey('KEY_KEY_A') and not input.getKey('KEY_KEY_D') :
- physics.VehicleParams(car1,9,0,0,0,0)
-
+if input.getKey('KEY_F2') : #could have a release action
+ print "setting cube position"
+ #scene.add_cube()
+ scene.addSphereNode("data/textures/material/marble1_256.png",0,20,5,5,500) #xyz radius mass
+ #scene.setPosition(cube_id,1,1,1)
 
 
 #timer
 
-#scene.using ('../media/keys.pys',"1");
+scene.using ('../media/keys.pys',"1");
 
 #irr.update(); #could set timing here, maybe smgr gui  etc  todo
 

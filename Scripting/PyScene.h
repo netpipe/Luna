@@ -492,7 +492,7 @@ PyObject * Python::PyIrr_AddCubeSceneNode(PyObject * self,PyObject * args){
 	}
 	else
 	{
-		return Py_BuildValue("0");
+		return Py_BuildValue("");
 	};
 
 

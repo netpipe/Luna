@@ -103,7 +103,7 @@ static PyMethodDef irr_funcs[] =
 {
 	{"set_texture",PyIrr_SetTexture,METH_VARARGS,"Adds a texture to a scene node"},
 	{"draw_text",PyIrr_DrawText,METH_VARARGS,"Renders text to the screen with default font"},
-	{"add_cube",PyIrr_AddCubeSceneNode,METH_VARARGS,"Adds a cube scene node"},
+//	{"add_cube",PyIrr_AddCubeSceneNode,METH_VARARGS,"Adds a cube scene node"},
 	{"load_texture",PyIrr_LoadTexture,METH_VARARGS,"Loads a texture"},
 	{NULL,NULL,0,NULL}
 };

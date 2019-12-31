@@ -388,6 +388,10 @@ int Luna::Run(){
 			//	setenv("PYTHONHOME", "/media/", 0);
 			#endif
 
+			#ifdef EVENTS
+		device->setEventReceiver ( &m_cInGameEvents );
+    #endif
+
 #ifdef __EMSCRIPTEN__
 
 setenv("PYTHONHOME", "/", 0);
