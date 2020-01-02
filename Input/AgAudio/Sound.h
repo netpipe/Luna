@@ -1,7 +1,7 @@
 #ifndef _Sound_HPP_
 #define _Sound_HPP_
 
-//#include "Globals.hpp"
+#include "../../Luna.h"
 #include "audio.h"
 
 class Sound

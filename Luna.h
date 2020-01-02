@@ -81,6 +81,10 @@ char * pyloader;
     bool bshutdown=false;
     int countr;
 
+
+//    		void sound_loop_then_quit();
+//		int SDLPlay();
+
 		int AddShader();
 
         void CheckKeyStates(void);
@@ -101,8 +105,12 @@ char * pyloader;
 		#endif
 
 		#ifdef AgAudio
-	Sound *m_sound;
-	#endif
+//		Sound *m_sound;
+		#endif
+
+		#include "./Input/SDLMixer.h"
+
+
 		// Encryption--------------------
             //Encryption::Blowfish enc;
 		// Network related

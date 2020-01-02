@@ -74,6 +74,7 @@ bool connected,doit,login=0;
 //#include <boost/python.hpp>   #not used just for ideas maybe
 #include "Scripting/PythonManager.h"
 
+
 #ifdef NDEBUG
 #include <irrNet.h>
 
@@ -468,12 +469,13 @@ setenv("PYTHONHOME", "/", 0);
 		//}
 
 #ifdef AgAudio
-//		    Sound::Instance()->Create();
-//    Sound::Instance()->PlayBackgroundMusic(1);
-
-
+		    Sound::Instance()->Create();
+    Sound::Instance()->PlayBackgroundMusic(1);
 //m_sound->Create();
 //m_sound->PlayBackgroundMusic(1);
+#endif
+#ifdef SDLMixer
+//SDLPlay();
 #endif
     return 1;
 }
@@ -482,9 +484,12 @@ void Luna::main_loop(){ //devloop actually
 //#ifdef __EMSCRIPTEN__
     //while (
 //			emscripten_run_script("alert('hi')");
+#ifdef SDLMixer
+//sound_loop_then_quit();
+#endif
 
 #ifdef AgAudio
-// Sound::Instance()->PlayAll();
+ Sound::Instance()->PlayAll();
 //  m_sound->Instance()->PlayAll();
 #endif
            device->run();

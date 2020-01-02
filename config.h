@@ -10,7 +10,12 @@
  //todo put in simple openal sound
  #endif
 
-//#define AgAudio - not currently working
+//#define _DEBUG_MODE_
+//#define _PLAY_SOUND_
+//#define AgAudio      //- not currently working
+#define SDLMixers
+//#define SDLsound
+
    // #define IRRCD   // irrlicht Collision Detection
     #define EVENTS
     #define FPS
