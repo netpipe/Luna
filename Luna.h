@@ -13,7 +13,7 @@
 #include "Events/InGameEventReceiver.h"
 #include "Scene/customNodes.h"
 
-#ifdef DSOUND
+#ifdef SOUND
 #include <cAudio.h>
 #endif
 
@@ -90,7 +90,7 @@ char * pyloader;
 		//pthread_t soundThread
 
         //AUDIO--------------------------
-        #ifdef DSOUND
+        #ifdef SOUND
 			cAudio::IAudioManager* manager;
 			cAudio::IAudioSource* mysound;
 		#endif

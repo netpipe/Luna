@@ -169,7 +169,7 @@ device->getCursorControl()->setVisible(true);
 		Py_Finalize();
     #endif
 
-    #ifdef DSOUND
+    #ifdef SOUND
 		manager->releaseAllSources();
 		manager->shutDown();
         cAudio::destroyAudioManager(manager);

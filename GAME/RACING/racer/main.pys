@@ -59,7 +59,7 @@ if (init) :
  #scene.exportScene("/home/clay/test/scene.irr")
  #stage = scene.loadTrack('./data/Stage3/Stage3.irr',20,0,0)
  #stage = scene.loadTrack('./StageData/irrb2/Hospital.irr',20,0,0)
- #table = scene.loadTrack('./FOOSEBALL/table_football.x',20,0,0)
+ table = scene.loadTrack('./FOOSEBALL/table_football.3ds',20,0,0)
  #scene.setPosition(table ,1, 10,-30,10)
 
  #sphere1 = scene.addSphereNode("data/textures/material/marble1_256.png",0,-1000,0, 5,5)

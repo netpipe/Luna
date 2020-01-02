@@ -4,6 +4,7 @@
  #define PYTHON
  #define COMPRESS //needed for empython
  #define EXTRAS
+ #define SOUND
 
    // #define IRRCD   // irrlicht Collision Detection
     #define EVENTS

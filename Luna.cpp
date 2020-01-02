@@ -247,7 +247,7 @@ int Luna::shutdown(){
 		Py_Finalize();
     #endif
 
-    #ifdef DSOUND
+    #ifdef SOUND
 		manager->releaseAllSources();
 		manager->shutDown();
         cAudio::destroyAudioManager(manager);
@@ -399,6 +399,13 @@ setenv("PYTHONHOME", "/", 0);
     char *argv2[]={"appname", "media.zip" ,"testout","nulls"};
     int argc2= sizeof(argv2) / sizeof(char*) - 1;
 //int test = zpipe(argc2,argv2);
+#else
+//stringw workingDirectory = device->getFileSystem()->getWorkingDirectory();
+////workingDirectory+="media/lib/";
+//const  char* test = (const char*) workingDirectory.c_str();
+//
+//printf ( "working directory is %s " , test );
+//setenv("PYTHONHOME", (const char*)workingDirectory.c_str() , 0);
 #endif
 
     //Python

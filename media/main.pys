@@ -3,12 +3,13 @@ import physics
 import extras
 import scene
 import input
+import sound
 #import luna
 import net
 import gui
 
 #import itertools
-#scene.using ('../media/libs/random.py');
+#scene.using ('../media/lib/random.py');
 #import random
 
 #irr.checkKeyState(); # check event loop to see if any key was pressed
@@ -17,7 +18,7 @@ import gui
 #called externally so it is set from functions.py or init.py
 if (init) :
 #################################
-
+# sound.soundman(1,0,1,1) 
  camera = scene.addCamera(3,0,20,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
  #physics.fpsweapon(camera)
  Light1 = scene.Light(10,100,150,1,"111111") # type , vector, color
@@ -64,8 +65,8 @@ if (init) :
  #scene.exportScene("/home/clay/test/scene.irr")
  #stage = scene.loadTrack('./data/Stage3/Stage3.irr',20,0,0)
  #stage = scene.loadTrack('./StageData/irrb2/Hospital.irr',20,0,0)
- #table = scene.loadTrack('./FOOSEBALL/table_football.x',20,0,0)
- #scene.setPosition(table ,1, 10,-30,10)
+ #table = scene.loadTrack('../media/table_football.3ds',20,0,0)
+ #scene.setPosition(table ,1, 10,-50,10)
 
  #sphere1 = scene.addSphereNode("data/textures/material/marble1_256.png",0,-1000,0, 5,5)
  #scene.setVelocity(sphere1,10,10,10)

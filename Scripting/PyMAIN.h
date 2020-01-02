@@ -24,7 +24,7 @@ namespace Python {
 
   //  cAudio::IAudioManager* manager;
   //  cAudio::IAudioSource* mysound;
-#ifdef DSOUND
+#ifdef SOUND
          cAudio::IAudioManager* managerID = cAudio::createAudioManager(true);  // broken has to be done from main
         cAudio::IAudioSource* mysound;
 #endif
@@ -127,7 +127,6 @@ namespace Python {
     PyObject * PyIrr_LoadVehicle(PyObject * self,PyObject * args);
     PyObject * PyIrr_setVelocity(PyObject * self,PyObject * args);
     PyObject * PyIrr_DecalManager(PyObject * self,PyObject * args);
-    PyObject * PyIrr_SoundMan(PyObject * self,PyObject * args);
     PyObject * PyIrr_addPlayer(PyObject * self,PyObject * args);
     PyObject * PyIrr_OpenSteer(PyObject * self,PyObject * args);
     PyObject * PyIrr_VehicleParams(PyObject * self,PyObject * args);
@@ -209,6 +208,9 @@ namespace Python {
     PyObject *PyIrr_FluidSynth(PyObject * self,PyObject * args);
     PyObject * PyIrr_zistream(PyObject * self,PyObject * args);
     PyObject * PyIrr_zostream(PyObject * self,PyObject * args);
+    //SOUND
+    PyObject * PyIrr_SoundMan(PyObject * self,PyObject * args);
+
     //Math
     PyObject * PyIrr_Rand(PyObject * self,PyObject * args);
 
@@ -437,7 +439,7 @@ void Python::render() {//active camera
       //    Elevator::Instance()->CheckCollisionWithPlayer();
       //    Elevator::Instance()->UpdatePlayerPosition();
 
-        #ifdef DSOUND // weird works without this
+        #ifdef SOUND // weird works without this
 //            if(managerID){
 //                if(mysound && !mysound->isPlaying())
 //                {

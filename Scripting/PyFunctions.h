@@ -2,7 +2,7 @@
 ///Stuff Relivent to Initialization and management of scene / sound and managers.
 // there are includes at bottom of file for scripting too.
 //#include "../config.h"
-//#define DSOUND
+//#define SOUND
 #include "../Luna.h"
 #include <cstdlib>
     #define MAX_DECALS 50

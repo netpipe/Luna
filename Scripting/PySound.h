@@ -1,3 +1,4 @@
+#include "../config.h"
 #ifdef PYTHON
 PyMethodDef irr_Sound[] =
 {
@@ -13,7 +14,7 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
     int param,state,sound,ammount;
     PyArg_ParseTuple(args,"liii",&sound,&param,&ammount,&state);
 
-    #ifdef DSOUND
+    #ifdef SOUND
     // sound intensity for raycasted sound.  // surfaceRoughnessHardness/propigation factor, distance,handle
     switch (param){
     case 0:
