@@ -8,9 +8,9 @@ using namespace video;
 #include "./CSG/primitives.h"
 #include "./CSG/CSG.h"
 
-meshMesh mesh;
-
-SMesh* m_pMesh = NULL;
+//meshMesh mesh;
+////
+//SMesh* m_pMesh = NULL;
 
 
 int initializeMesh(meshMesh& mesh){

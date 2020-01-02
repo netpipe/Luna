@@ -18,6 +18,7 @@ import gui
 #called externally so it is set from functions.py or init.py
 if (init) :
 #################################
+ scene.CSG("test.3ds")
 # sound.soundman(1,0,1,1) 
  camera = scene.addCamera(3,0,20,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
  #physics.fpsweapon(camera)

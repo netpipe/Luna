@@ -1,13 +1,7 @@
 #ifdef PYTHON
 
 #ifdef CSG
-//#include "../Scene/IrrCSG/CSG/primitives.h"
-//#include "../Scene/IrrCSG/CSG/CSG.h"
 #include "../Scene/IrrCSG/LunaCSG.h"
-//
-//meshMesh mesh;
-//
-//SMesh* m_pMesh = NULL;
 #endif
 
 ///SCENENODES and SCENESTUFF STUFF  -- included from pyfunctions
@@ -98,7 +92,8 @@ PyObject * Python::PyIrr_CSG(PyObject * self,PyObject * args){
 
 	IMeshSceneNode* meshnode = smgr -> addMeshSceneNode(pMesh);
 	meshnode->setMaterialFlag(video::EMF_BACK_FACE_CULLING, false);
-
+    meshnode->setScale(vector3df(10,10,10));
+ return Py_BuildValue("");
 }
 
 //
