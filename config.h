@@ -32,7 +32,7 @@
  // #define SKELETON
 
   //#define VEGETATION
-    #define TREES //very cpu intensive
+  //  #define TREES //very cpu intensive
   //  #define ATMOSPHERE  //  freezes when no video acceleration is used
                         //  or as a user without access to video rights is used
     //  #define FLARE

@@ -97,8 +97,9 @@ class Terrain
 		ITerrainSceneNode* terrain;
 
     void Render(char*,vector3df terrainPosition,vector3df terrainRotation,vector3df terrainScale,int LOD);
+    #ifdef TREES
     CTreeSceneNode* MakeTrees(vector3df aha,int treetype,char *);
-
+#endif
 
 
 

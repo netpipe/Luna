@@ -780,11 +780,11 @@ void Terrain::tick(const float &CamX, const float &CamY, const float &CamZ)
 }
 */
 
-
+#ifdef TREES
 CTreeSceneNode* Terrain::MakeTrees(vector3df aha,int treetype,char * action){
     // type of tree
     //make the treestack more global ?
-#ifdef TREES
+
 
 if (treetype == 1 ){
 //if (action == "Tree"){
@@ -1249,10 +1249,10 @@ s32 seed = 0;
 //			}
 //		}
 
-#endif
+
 
 }
-
+#endif
 
 
 
