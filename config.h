@@ -6,10 +6,11 @@
  #define EXTRAS
 
  #ifndef __EMSCRIPTEN__
- #define SOUND
+ //#define SOUND
  //todo put in simple openal sound
  #endif
 
+//#define AgAudio - not currently working
    // #define IRRCD   // irrlicht Collision Detection
     #define EVENTS
     #define FPS

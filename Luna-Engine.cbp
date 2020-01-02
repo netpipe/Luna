@@ -192,7 +192,6 @@
 					<Add library="ogg" />
 					<Add library="vorbis" />
 					<Add library="vorbisfile" />
-					<Add library="cAudio" />
 					<Add library="SPARK" />
 					<Add library="SPARK_IRR" />
 				</Linker>
@@ -1132,6 +1131,16 @@
 		<Unit filename="GUI/sineGraph2d/SGraph2D.h" />
 		<Unit filename="GUI/widgets/CGUIBar.cpp" />
 		<Unit filename="GUI/widgets/CGUIBar.h" />
+		<Unit filename="Input/AgAudio/Ogg/OggFile.cpp" />
+		<Unit filename="Input/AgAudio/Ogg/OggFile.h" />
+		<Unit filename="Input/AgAudio/Sound.cpp" />
+		<Unit filename="Input/AgAudio/Sound.h" />
+		<Unit filename="Input/AgAudio/SoundFactory.cpp" />
+		<Unit filename="Input/AgAudio/SoundFactory.h" />
+		<Unit filename="Input/AgAudio/SoundSource/SoundSource.cpp" />
+		<Unit filename="Input/AgAudio/SoundSource/SoundSource.h" />
+		<Unit filename="Input/AgAudio/audio.cpp" />
+		<Unit filename="Input/AgAudio/audio.h" />
 		<Unit filename="Input/Compress/Compress.cpp" />
 		<Unit filename="Input/Compress/Compress.h" />
 		<Unit filename="Input/Compress/zpipe.h" />

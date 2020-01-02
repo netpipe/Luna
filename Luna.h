@@ -46,6 +46,11 @@
 #include <libtar.h>
 #endif
 
+#ifdef AgAudio
+
+#include "./Input/AgAudio/Sound.h"
+
+#endif
 //#include "TerrainFactory/GrassSceneNode/CGrassPatchSceneNode.h"
 //#include "Input/Model/IrrAssimp/IrrAssimp.h"
 
@@ -94,6 +99,10 @@ char * pyloader;
 			cAudio::IAudioManager* manager;
 			cAudio::IAudioSource* mysound;
 		#endif
+
+		#ifdef AgAudio
+	Sound *m_sound;
+	#endif
 		// Encryption--------------------
             //Encryption::Blowfish enc;
 		// Network related
@@ -137,6 +146,11 @@ struct SAppContext
 
 	private:
 
+
+//  protected:
+//
+//    static Sound *m_sound;
+//    static Sound m_default_sound_buffer;
 };
 
 

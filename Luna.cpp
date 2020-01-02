@@ -3,8 +3,12 @@
 
 //!TODO wondering how to get eeg and ai library into game for pattern recognition
 // speech and directional forces
-
+#include "config.h"
 #include "Luna.h"
+//
+//Sound *Sound::m_sound = NULL;
+//Sound Sound::m_default_sound_buffer;
+
 
 #include <vector>
 using namespace std;
@@ -463,6 +467,14 @@ setenv("PYTHONHOME", "/", 0);
 //		shutdown();
 		//}
 
+#ifdef AgAudio
+//		    Sound::Instance()->Create();
+//    Sound::Instance()->PlayBackgroundMusic(1);
+
+
+//m_sound->Create();
+//m_sound->PlayBackgroundMusic(1);
+#endif
     return 1;
 }
 
@@ -471,6 +483,10 @@ void Luna::main_loop(){ //devloop actually
     //while (
 //			emscripten_run_script("alert('hi')");
 
+#ifdef AgAudio
+// Sound::Instance()->PlayAll();
+//  m_sound->Instance()->PlayAll();
+#endif
            device->run();
                 //&& !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
    // {
