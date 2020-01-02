@@ -1,3 +1,5 @@
+#include "../../../../../config.h"
+#ifdef CSG
 /**
  * Duo Tao
  * vector.c
@@ -28,8 +30,8 @@ GLdouble vecLength(GLuint dim, GLdouble v[]) {
 	return sqrt(sum);
 }
 
-/* Returns the length of the dim-dimensional vector v. If the length is 
-non-zero, then also places a scaled version of v into the dim-dimensional 
+/* Returns the length of the dim-dimensional vector v. If the length is
+non-zero, then also places a scaled version of v into the dim-dimensional
 vector unit, so that unit has length 1. */
 GLdouble vecUnit(GLuint dim, GLdouble v[], GLdouble unit[]) {
 	GLdouble len = vecLength(dim, v);
@@ -41,7 +43,7 @@ GLdouble vecUnit(GLuint dim, GLdouble v[], GLdouble unit[]) {
 	return len;
 }
 
-/* Computes the cross product of the 3-dimensional vectors v and w, and places 
+/* Computes the cross product of the 3-dimensional vectors v and w, and places
 it into vCrossW. */
 void vec3Cross(GLdouble v[3], GLdouble w[3], GLdouble vCrossW[3]) {
 	vCrossW[0] = v[1] * w[2] - v[2] * w[1];
@@ -49,8 +51,8 @@ void vec3Cross(GLdouble v[3], GLdouble w[3], GLdouble vCrossW[3]) {
 	vCrossW[2] = v[0] * w[1] - v[1] * w[0];
 }
 
-/* Computes the 3-dimensional vector v from its spherical coordinates. 
-rho >= 0.0 is the radius. 0 <= phi <= pi is the co-latitude. -pi <= theta <= pi 
+/* Computes the 3-dimensional vector v from its spherical coordinates.
+rho >= 0.0 is the radius. 0 <= phi <= pi is the co-latitude. -pi <= theta <= pi
 is the longitude or azimuth. */
 void vec3Spherical(GLdouble rho, GLdouble phi, GLdouble theta, GLdouble v[3]) {
 	// phi = phi / 180.0 * PI;
@@ -95,7 +97,7 @@ void printVector(GLuint dim, GLdouble w[]) {
 	printf("\n");
 }
 
-/* Assumes that there are dim + 2 arguments, the last dim of which are GLdoubles. 
+/* Assumes that there are dim + 2 arguments, the last dim of which are GLdoubles.
 Sets the dim-dimensional vector v to those GLdoubles. */
 void vecSet(GLuint dim, GLdouble v[], ...) {
 	va_list argumentPointer;
@@ -111,3 +113,4 @@ void vecLerp(GLuint dim, GLdouble v[], GLdouble w[], GLdouble lerp[], GLdouble t
 		lerp[i] = v[i] + (w[i] - v[i]) * t;
 	}
 }
+#endif

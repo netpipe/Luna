@@ -1,3 +1,5 @@
+#include "../../../../../config.h"
+#ifdef CSG
 /**
  * Duo Tao
  * CSGTriangleList.c
@@ -107,3 +109,6 @@ void CSGTriangleListDump(CSGTriangleList *list) {
     }
     fflush(stdout);
 }
+
+
+#endif

@@ -1,5 +1,7 @@
 #ifndef CSGTRIANGLELIST_H
 #define CSGTRIANGLELIST_H
+#include "../../../../../config.h"
+#ifdef CSG
 /**
  * Duo Tao
  * CSGTriangleList.h
@@ -40,4 +42,5 @@ CSGTriangleList *CSGTriangleListFromMesh(meshMesh *mesh);
 CSGTriangle *CSGTriangleListGetTriangle(CSGTriangleList *list, GLuint i);
 
 void CSGTriangleListDump(CSGTriangleList *list);
+#endif
 #endif

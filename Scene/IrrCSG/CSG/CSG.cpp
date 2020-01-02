@@ -1,3 +1,5 @@
+#include "../../../../../config.h"
+#ifdef CSG
 /**
  * Duo Tao
  * CSG.c
@@ -16,17 +18,17 @@ void CSGToMesh(CSGTriangleList *triangles, meshMesh *mesh) {
 
 		GLdouble vert[8];
 		CSGVertex *v = CSGTriangleGetVertex(tri, 0);
-		vecSet(8, vert, v->position[0], v->position[1], v->position[2], 0.0, 0.0, 
+		vecSet(8, vert, v->position[0], v->position[1], v->position[2], 0.0, 0.0,
 			v->normal[0], v->normal[1], v->normal[2]);
 		meshSetVertex(mesh, i * 3, vert);
 
 		v = CSGTriangleGetVertex(tri, 1);
-		vecSet(8, vert, v->position[0], v->position[1], v->position[2], 0.0, 0.0, 
+		vecSet(8, vert, v->position[0], v->position[1], v->position[2], 0.0, 0.0,
 			v->normal[0], v->normal[1], v->normal[2]);
 		meshSetVertex(mesh, i * 3 + 1, vert);
 
 		v = CSGTriangleGetVertex(tri, 2);
-		vecSet(8, vert, v->position[0], v->position[1], v->position[2], 0.0, 0.0, 
+		vecSet(8, vert, v->position[0], v->position[1], v->position[2], 0.0, 0.0,
 			v->normal[0], v->normal[1], v->normal[2]);
 		meshSetVertex(mesh, i * 3 + 2, vert);
 	}
@@ -84,3 +86,4 @@ void CSGSubtraction(meshMesh *meshA, meshMesh *meshB, meshMesh *meshSubtraction)
     CSGTriangleListDestroy(la);
     CSGTriangleListDestroy(lb);
 }
+#endif

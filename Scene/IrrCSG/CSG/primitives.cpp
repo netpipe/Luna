@@ -1,3 +1,5 @@
+#include "../../../../../config.h"
+#ifdef CSG
 /**
  * Duo Tao
  * primitives.c
@@ -9,17 +11,17 @@
 /*** Creating and destroying ***/
 void meshTranslate(meshMesh *mesh, GLdouble translation[3]) {
 	for (int i = 0; i < mesh->vertNum; i++) {
-		mesh->vert[i * mesh->attrDim] += translation[0]; 
-		mesh->vert[i * mesh->attrDim + 1] += translation[1]; 
-		mesh->vert[i * mesh->attrDim + 2] += translation[2]; 
+		mesh->vert[i * mesh->attrDim] += translation[0];
+		mesh->vert[i * mesh->attrDim + 1] += translation[1];
+		mesh->vert[i * mesh->attrDim + 2] += translation[2];
 	}
 }
 
-/* Initializes a mesh with enough memory to hold its triangles and vertices. 
-Does not actually fill in those triangles or vertices with useful data. When 
-you are finished with the mesh, you must call meshDestroy to deallocate its 
+/* Initializes a mesh with enough memory to hold its triangles and vertices.
+Does not actually fill in those triangles or vertices with useful data. When
+you are finished with the mesh, you must call meshDestroy to deallocate its
 backing resources. */
-int meshInitialize(meshMesh *mesh, GLuint triNum, GLuint vertNum, 
+int meshInitialize(meshMesh *mesh, GLuint triNum, GLuint vertNum,
 		GLuint attrDim) {
 	mesh->tri = (GLuint *)malloc(triNum * 3 * sizeof(GLuint) +
 		vertNum * attrDim * sizeof(GLdouble));
@@ -69,7 +71,7 @@ GLdouble *meshGetVertexPointer(meshMesh *mesh, GLuint vert) {
 		return NULL;
 }
 
-/* Deallocates the resources backing the mesh. This function must be called 
+/* Deallocates the resources backing the mesh. This function must be called
 when you are finished using a mesh. */
 void meshDestroy(meshMesh *mesh) {
 	free(mesh->tri);
@@ -95,11 +97,11 @@ void meshGLInitialize(meshGLMesh *meshGL, meshMesh *mesh) {
 
 #define BUFFER_OFFSET(bytes) ((GLubyte*) NULL + (bytes))
 
-/* Renders the already-initialized OpenGL mesh. attrDims is an array of length 
-attrNum. For each i, its ith entry is the dimension of the ith attribute 
-vector. Similarly, attrLocs is an array of length attrNum, giving the location 
+/* Renders the already-initialized OpenGL mesh. attrDims is an array of length
+attrNum. For each i, its ith entry is the dimension of the ith attribute
+vector. Similarly, attrLocs is an array of length attrNum, giving the location
 of the ith attribute in the active OpenGL shader program. */
-void meshGLRender(meshGLMesh *meshGL, GLuint attrNum, GLuint attrDims[], 
+void meshGLRender(meshGLMesh *meshGL, GLuint attrNum, GLuint attrDims[],
 		GLint attrLocs[]) {
 /*	// total dims
 	GLuint attrDim = 0;
@@ -113,7 +115,7 @@ void meshGLRender(meshGLMesh *meshGL, GLuint attrNum, GLuint attrDims[],
 	GLuint offset = 0;
 	for (int i = 0; i < attrNum; i++) {
 		glEnableVertexAttribArray(attrLocs[i]);
-		glVertexAttribPointer(attrLocs[i], attrDims[i], GL_DOUBLE, GL_FALSE, 
+		glVertexAttribPointer(attrLocs[i], attrDims[i], GL_DOUBLE, GL_FALSE,
 			attrDim * sizeof(GLdouble), BUFFER_OFFSET(offset * sizeof(GLdouble)));
 		offset += attrDims[i];
 	}
@@ -134,10 +136,10 @@ void meshGLDestroy(meshGLMesh *meshGL) {
 
 /*** Convenience initializers: 3D ***/
 
-/* Assumes that attributes 0, 1, 2 are XYZ. Assumes that the vertices of the 
-triangle are in counter-clockwise order when viewed from 'outside' the 
+/* Assumes that attributes 0, 1, 2 are XYZ. Assumes that the vertices of the
+triangle are in counter-clockwise order when viewed from 'outside' the
 triangle. Computes the outward-pointing unit normal vector for the triangle. */
-void meshTrueNormal(GLdouble a[], GLdouble b[], GLdouble c[], 
+void meshTrueNormal(GLdouble a[], GLdouble b[], GLdouble c[],
 		GLdouble normal[3]) {
 	GLdouble bMinusA[3], cMinusA[3];
 	vecSubtract(3, b, a, bMinusA);
@@ -146,8 +148,8 @@ void meshTrueNormal(GLdouble a[], GLdouble b[], GLdouble c[],
 	vecUnit(3, normal, normal);
 }
 
-/* Assumes that attributes 0, 1, 2 are XYZ. Sets attributes n, n + 1, n + 2 to 
-flat-shaded normals. If a vertex belongs to more than triangle, then some 
+/* Assumes that attributes 0, 1, 2 are XYZ. Sets attributes n, n + 1, n + 2 to
+flat-shaded normals. If a vertex belongs to more than triangle, then some
 unspecified triangle's normal wins. */
 void meshFlatNormals(meshMesh *mesh, GLuint n) {
 	GLuint i, *tri;
@@ -164,8 +166,8 @@ void meshFlatNormals(meshMesh *mesh, GLuint n) {
 	}
 }
 
-/* Assumes that attributes 0, 1, 2 are XYZ. Sets attributes n, n + 1, n + 2 to 
-smooth-shaded normals. Does not do anything special to handle multiple vertices 
+/* Assumes that attributes 0, 1, 2 are XYZ. Sets attributes n, n + 1, n + 2 to
+smooth-shaded normals. Does not do anything special to handle multiple vertices
 with the same coordinates. */
 void meshSmoothNormals(meshMesh *mesh, GLuint n) {
 	GLuint i, *tri;
@@ -193,12 +195,12 @@ void meshSmoothNormals(meshMesh *mesh, GLuint n) {
 	}
 }
 
-/* Builds a mesh for a parallelepiped (box) of the given size. The attributes 
-are XYZ position, ST texture, and NOP unit normal vector. The normals are 
-discontinuous at the edges (flat shading, not smooth). To facilitate this, some 
-vertices have equal XYZ but different NOP, for 24 vertices in all. Don't forget 
+/* Builds a mesh for a parallelepiped (box) of the given size. The attributes
+are XYZ position, ST texture, and NOP unit normal vector. The normals are
+discontinuous at the edges (flat shading, not smooth). To facilitate this, some
+vertices have equal XYZ but different NOP, for 24 vertices in all. Don't forget
 to meshDestroy when finished. */
-int meshInitializeBox(meshMesh *mesh, GLdouble left, GLdouble right, 
+int meshInitializeBox(meshMesh *mesh, GLdouble left, GLdouble right,
 		GLdouble bottom, GLdouble top, GLdouble base, GLdouble lid) {
 	GLuint error = meshInitialize(mesh, 12, 24, 3 + 2 + 3);
 	if (error == 0) {
@@ -269,7 +271,7 @@ int meshInitializeBox(meshMesh *mesh, GLdouble left, GLdouble right,
 	return error;
 }
 
-/* Rotates a 2-dimensional vector through an angle. The input can safely alias 
+/* Rotates a 2-dimensional vector through an angle. The input can safely alias
 the output. */
 void meshRotateVector(GLdouble theta, GLdouble v[2], GLdouble vRot[2]) {
 	GLdouble cosTheta = cos(theta);
@@ -279,18 +281,18 @@ void meshRotateVector(GLdouble theta, GLdouble v[2], GLdouble vRot[2]) {
 	vRot[0] = vRot0;
 }
 
-/* Rotate a curve about the Z-axis. Can be used to make a sphere, spheroid, 
-capsule, circular cone, circular cylinder, box, etc. The z-values should be in 
-ascending order --- or at least the first z should be less than the last. The 
-first and last r-values should be 0.0, and no others. Probably the t-values 
-should be in ascending or descending order. The sideNum parameter controls the 
-fineness of the mesh. The attributes are XYZ position, ST texture, and NOP unit 
-normal vector. The normals are smooth. Don't forget to meshDestroy when 
+/* Rotate a curve about the Z-axis. Can be used to make a sphere, spheroid,
+capsule, circular cone, circular cylinder, box, etc. The z-values should be in
+ascending order --- or at least the first z should be less than the last. The
+first and last r-values should be 0.0, and no others. Probably the t-values
+should be in ascending or descending order. The sideNum parameter controls the
+fineness of the mesh. The attributes are XYZ position, ST texture, and NOP unit
+normal vector. The normals are smooth. Don't forget to meshDestroy when
 finished. */
-int meshInitializeRevolution(meshMesh *mesh, GLuint zNum, GLdouble z[], 
+int meshInitializeRevolution(meshMesh *mesh, GLuint zNum, GLdouble z[],
 		GLdouble r[], GLdouble t[], GLuint sideNum) {
 	GLuint i, j, error;
-	error = meshInitialize(mesh, (zNum - 2) * sideNum * 2, 
+	error = meshInitialize(mesh, (zNum - 2) * sideNum * 2,
 		(zNum - 2) * (sideNum + 1) + 2, 3 + 2 + 3);
 	if (error == 0) {
 		/* Make the bottom triangles. */
@@ -298,19 +300,19 @@ int meshInitializeRevolution(meshMesh *mesh, GLuint zNum, GLdouble z[],
 			meshSetTriangle(mesh, i, 0, i + 2, i + 1);
 		/* Make the top triangles. */
 		for (i = 0; i < sideNum; i += 1)
-			meshSetTriangle(mesh, sideNum + i, mesh->vertNum - 1, 
-				mesh->vertNum - 1 - (sideNum + 1) + i, 
+			meshSetTriangle(mesh, sideNum + i, mesh->vertNum - 1,
+				mesh->vertNum - 1 - (sideNum + 1) + i,
 				mesh->vertNum - 1 - (sideNum + 1) + i + 1);
 		/* Make the middle triangles. */
 		for (j = 1; j <= zNum - 3; j += 1)
 			for (i = 0; i < sideNum; i += 1) {
 				meshSetTriangle(mesh, 2 * sideNum * j + 2 * i,
-					(j - 1) * (sideNum + 1) + 1 + i, 
-					j * (sideNum + 1) + 1 + i + 1, 
+					(j - 1) * (sideNum + 1) + 1 + i,
+					j * (sideNum + 1) + 1 + i + 1,
 					j * (sideNum + 1) + 1 + i);
 				meshSetTriangle(mesh, 2 * sideNum * j + 2 * i + 1,
-					(j - 1) * (sideNum + 1) + 1 + i, 
-					(j - 1) * (sideNum + 1) + 1 + i + 1, 
+					(j - 1) * (sideNum + 1) + 1 + i,
+					(j - 1) * (sideNum + 1) + 1 + i + 1,
 					j * (sideNum + 1) + 1 + i + 1);
 			}
 		/* Make the vertices, using vertex 0 as temporary storage. */
@@ -344,11 +346,11 @@ int meshInitializeRevolution(meshMesh *mesh, GLuint zNum, GLdouble z[],
 	return error;
 }
 
-/* Builds a mesh for a sphere, centered at the origin, of radius r. The sideNum 
-and layerNum parameters control the fineness of the mesh. The attributes are 
-XYZ position, ST texture, and NOP unit normal vector. The normals are smooth. 
+/* Builds a mesh for a sphere, centered at the origin, of radius r. The sideNum
+and layerNum parameters control the fineness of the mesh. The attributes are
+XYZ position, ST texture, and NOP unit normal vector. The normals are smooth.
 Don't forget to meshDestroy when finished. */
-int meshInitializeSphere(meshMesh *mesh, GLdouble r, GLuint layerNum, 
+int meshInitializeSphere(meshMesh *mesh, GLdouble r, GLuint layerNum,
 		GLuint sideNum) {
 	GLuint error, i;
 	GLdouble *ts = (GLdouble *)malloc((layerNum + 1) * 3 * sizeof(GLdouble));
@@ -362,19 +364,19 @@ int meshInitializeSphere(meshMesh *mesh, GLdouble r, GLuint layerNum,
 			zs[i] = -r * cos(ts[i] * M_PI);
 			rs[i] = r * sin(ts[i] * M_PI);
 		}
-		error = meshInitializeRevolution(mesh, layerNum + 1, zs, rs, ts, 
+		error = meshInitializeRevolution(mesh, layerNum + 1, zs, rs, ts,
 			sideNum);
 		free(ts);
 		return error;
 	}
 }
 
-/* Builds a mesh for a circular cylinder with spherical caps, centered at the 
-origin, of radius r and length l > 2 * r. The sideNum and layerNum parameters 
-control the fineness of the mesh. The attributes are XYZ position, ST texture, 
-and NOP unit normal vector. The normals are smooth. Don't forget to meshDestroy 
+/* Builds a mesh for a circular cylinder with spherical caps, centered at the
+origin, of radius r and length l > 2 * r. The sideNum and layerNum parameters
+control the fineness of the mesh. The attributes are XYZ position, ST texture,
+and NOP unit normal vector. The normals are smooth. Don't forget to meshDestroy
 when finished. */
-int meshInitializeCapsule(meshMesh *mesh, GLdouble r, GLdouble l, 
+int meshInitializeCapsule(meshMesh *mesh, GLdouble r, GLdouble l,
 		GLuint layerNum, GLuint sideNum) {
 	GLuint error, i;
 	GLdouble theta;
@@ -402,9 +404,10 @@ int meshInitializeCapsule(meshMesh *mesh, GLdouble r, GLdouble l,
 		zs[2 * layerNum + 1] = l / 2.0;
 		rs[2 * layerNum + 1] = 0.0;
 		ts[2 * layerNum + 1] = 1.0;
-		error = meshInitializeRevolution(mesh, 2 * layerNum + 2, zs, rs, ts, 
+		error = meshInitializeRevolution(mesh, 2 * layerNum + 2, zs, rs, ts,
 			sideNum);
 		free(ts);
 		return error;
 	}
 }
+#endif

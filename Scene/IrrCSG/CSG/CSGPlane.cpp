@@ -1,3 +1,5 @@
+#include "../../../../../config.h"
+#ifdef CSG
 /**
  * Duo Tao
  * CSGPlane.c
@@ -50,7 +52,7 @@ void CSGPlaneFlip(CSGPlane *plane) {
 	plane->w = -plane->w;
 }
 
-void CSGPlaneSplitTriangle(CSGPlane *plane, CSGTriangle *triangle, CSGTriangleList *coplanarFront, 
+void CSGPlaneSplitTriangle(CSGPlane *plane, CSGTriangle *triangle, CSGTriangleList *coplanarFront,
 	CSGTriangleList *coplanarBack, CSGTriangleList *front, CSGTriangleList *back) {
 	static const unsigned char COPLANAR = 0;
     static const unsigned char FRONT = 1;
@@ -160,3 +162,4 @@ void CSGPlaneDump(CSGPlane *plane) {
 }
 
 
+#endif

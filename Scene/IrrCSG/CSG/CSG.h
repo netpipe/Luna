@@ -1,6 +1,7 @@
 #ifndef CSG_H
 #define CSG_H
-
+#include "../../../../../config.h"
+#ifdef CSG
 #include "CSGTriangleList.h"
 #include "primitives.h"
 
@@ -12,4 +13,5 @@ void CSGIntersection(meshMesh *meshA, meshMesh *meshB, meshMesh *meshIntersectio
 
 void CSGSubtraction(meshMesh *meshA, meshMesh *meshB, meshMesh *meshSubtraction);
 
+#endif
 #endif

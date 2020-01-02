@@ -1,5 +1,7 @@
 #ifndef CSGNODE_H
 #define CSGNODE_H
+#include "../../../../../config.h"
+#ifdef CSG
 /**
  * Duo Tao
  * CSGNode.h
@@ -34,4 +36,5 @@ CSGTriangleList *CSGNodeAllTriangles(CSGNode *node);
 
 void CSGNodeBuild(CSGNode *node, CSGTriangleList *triangles);
 
+#endif
 #endif

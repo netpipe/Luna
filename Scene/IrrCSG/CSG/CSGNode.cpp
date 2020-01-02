@@ -1,3 +1,5 @@
+#include "../../../../../config.h"
+#ifdef CSG
 /**
  * Duo Tao
  * CSGNode.c
@@ -70,9 +72,9 @@ CSGTriangleList *CSGNodeClipTriangles(CSGNode *node, CSGTriangleList *triangles)
     if (node->front) {
     	front = CSGNodeClipTriangles(node->front, front);
     }
-    // This line is very profound! It eliminates all the triangles inside, 
-    // even for concave meshes. Here is how it works. Concave meshes can be 
-    // split into multiple convex meshes. Something inside a concave mesh must 
+    // This line is very profound! It eliminates all the triangles inside,
+    // even for concave meshes. Here is how it works. Concave meshes can be
+    // split into multiple convex meshes. Something inside a concave mesh must
     // be inside a convex mesh it splits into.
     if (node->back) {
     	back = CSGNodeClipTriangles(node->back, back);
@@ -130,3 +132,4 @@ void CSGNodeBuild(CSGNode *node, CSGTriangleList *triangles) {
 		}
     }
 }
+#endif

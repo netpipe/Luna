@@ -1,5 +1,7 @@
 #ifndef CSGPLANE_H
 #define CSGPLANE_H
+#include "../../../../../config.h"
+#ifdef CSG
 /**
  * Duo Tao
  * CSGPlane.h
@@ -42,4 +44,6 @@ void CSGPlaneSplitTriangle(CSGPlane *plane, CSGTriangle *triangle,
 	CSGTriangleList *coplanarFront, CSGTriangleList *coplanarBack, CSGTriangleList *front, CSGTriangleList *back);
 
 void CSGPlaneDump(CSGPlane *plane);
+#endif
+
 #endif

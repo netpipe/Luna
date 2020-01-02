@@ -1,5 +1,7 @@
 #ifndef CSGVERTEXLIST_H
 #define CSGVERTEXLIST_H
+#include "../../../../../config.h"
+#ifdef CSG
 /**
  * Duo Tao
  * CSGVertexList.h
@@ -30,4 +32,5 @@ void CSGVertexListSetVertex(CSGVertexList *list, GLuint i, CSGVertex *vertex);
 
 CSGVertex *CSGVertexListGetVertex(CSGVertexList *list, GLuint i);
 
+#endif
 #endif

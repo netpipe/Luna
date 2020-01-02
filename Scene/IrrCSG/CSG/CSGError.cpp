@@ -1,3 +1,5 @@
+#include "../../../../../config.h"
+#ifdef CSG
 /**
  * Duo Tao
  * CSGError.c
@@ -26,3 +28,4 @@ void triangleSplitError() {
 void debug(char msg[]) {
 	printf("### DEBUG:%s\n", msg);
 }
+#endif

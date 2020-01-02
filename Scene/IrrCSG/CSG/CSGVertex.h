@@ -1,5 +1,7 @@
 #ifndef CSGVERTEX_H
 #define CSGVERTEX_H
+#include "../../../../../config.h"
+#ifdef CSG
 /**
  * Duo Tao
  * CSGVertex.h
@@ -26,4 +28,5 @@ void CSGVertexFlip(CSGVertex *vertex);
 
 CSGVertex *CSGVertexLerp(CSGVertex *A, CSGVertex *B, GLdouble t);
 
+#endif
 #endif

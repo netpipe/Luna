@@ -1,5 +1,7 @@
 #ifndef VECTOR_H
 #define VECTOR_H
+#include "../../../../../config.h"
+#ifdef CSG
 /**
  * Duo Tao
  * vector.h
@@ -58,4 +60,5 @@ Sets the dim-dimensional vector v to those GLdoubles. */
 void vecSet(GLuint dim, GLdouble v[], ...);
 
 void vecLerp(GLuint dim, GLdouble v[], GLdouble w[], GLdouble lerp[], GLdouble t);
+#endif
 #endif

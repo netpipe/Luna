@@ -1,5 +1,7 @@
 #ifndef MATRIX_H
 #define MATRIX_H
+#include "../../../../../config.h"
+#ifdef CSG
 /**
  * Duo Tao
  * matrix.h
@@ -106,4 +108,5 @@ void mat44Perspective(GLdouble left, GLdouble right, GLdouble bottom, GLdouble t
 void mat33Identity(GLdouble m[3][3]);
 
 void mat44Identity(GLdouble m[4][4]);
+#endif
 #endif

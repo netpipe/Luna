@@ -1,3 +1,5 @@
+#include "../../../../../config.h"
+#ifdef CSG
 /**
  * Duo Tao
  * CSGVertex.c
@@ -41,3 +43,4 @@ CSGVertex *CSGVertexLerp(CSGVertex *A, CSGVertex *B, GLdouble t) {
 	vecLerp(3, A->normal, B->normal, res->normal, t);
 	return res;
 }
+#endif
