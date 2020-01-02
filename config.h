@@ -4,7 +4,11 @@
  #define PYTHON
  #define COMPRESS //needed for empython
  #define EXTRAS
+
+ #ifndef __EMSCRIPTEN__
  #define SOUND
+ //todo put in simple openal sound
+ #endif
 
    // #define IRRCD   // irrlicht Collision Detection
     #define EVENTS
