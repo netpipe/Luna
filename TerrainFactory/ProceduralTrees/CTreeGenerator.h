@@ -7,7 +7,7 @@
 
 #ifndef _C_TREE_GENERATOR_H_
 #define _C_TREE_GENERATOR_H_
-#include "../config.h"
+#include "../../config.h"
 #ifdef TREES
 #include <ISceneManager.h>
 #include <IXMLReader.h>

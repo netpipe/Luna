@@ -1,4 +1,4 @@
-#include "../config.h"
+#include "../../config.h"
 #ifdef TREES
 /*
     Written by Asger Feldthaus

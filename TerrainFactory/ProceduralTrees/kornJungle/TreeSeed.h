@@ -1,7 +1,7 @@
 
 #ifndef TREESEED_H
 #define TREESEED_H
-#include "../config.h"
+#include "../../../config.h"
 #ifdef TREES
 #include <irrlicht.h>
 

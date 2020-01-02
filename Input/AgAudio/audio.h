@@ -1,6 +1,7 @@
 #ifndef AUDIO_H
 #define AUDIO_H
-
+#include "../../config.h"
+#ifdef AgAudio
 #include <string>
 #include <map>
 #include <vector>
@@ -136,4 +137,5 @@ namespace agEngine
 	AudioDevice *createDevice(const bool &threaded);
 }
 
+#endif
 #endif

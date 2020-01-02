@@ -1,3 +1,9 @@
+#include "../config.h"
+#ifdef OPENAL
+#ifndef OPENALPLAYBACK_H
+#define OPENALPLAYBACK_H
+
+
 // Copyright 2013 The Emscripten Authors.  All rights reserved.
 // Emscripten is available under two separate licenses, the MIT license and the
 // University of Illinois/NCSA Open Source License.  Both these licenses can be
@@ -11,14 +17,16 @@
 #include <stdint.h>
 #include <unistd.h>
 #include <math.h>
-#ifdef __EMSCRIPTEN__
-#include <emscripten.h>
-#endif
+
+//#ifdef __EMSCRIPTEN__
+//#include <emscripten.h>
+//#endif
 
 #ifndef EMSCRIPTEN_KEEPALIVE
 #define EMSCRIPTEN_KEEPALIVE
 #endif
 
+//#include "oggdec.h"
 
 #if defined(TEST_ALC_SOFT_PAUSE_DEVICE)
   typedef void (*ALC_DEVICE_PAUSE_SOFT)(ALCdevice *);
@@ -27,9 +35,9 @@
   ALC_DEVICE_PAUSE_SOFT alcDevicePauseSOFT;
   ALC_DEVICE_RESUME_SOFT alcDeviceResumeSOFT;
 #endif
-}
 
-void playSource(void* arg)
+
+void playSources(void* arg)
 {
   ALuint source = static_cast<ALuint>(reinterpret_cast<intptr_t>(arg));
   ALint state;
@@ -46,16 +54,17 @@ void playSource(void* arg)
   alSourceStop(source);
   alGetSourcei(source, AL_SOURCE_STATE, &state);
   assert(state == AL_STOPPED);
-  test_finished();
+//  test_finished();
 #endif
 }
 
 
 
-void main_tick(void *arg)
+void main_ticks(void *arg)
 {
   ALuint source = static_cast<ALuint>(reinterpret_cast<intptr_t>(arg));
-  double t = emscripten_get_now() * 0.001;
+
+//  double t = emscripten_get_now() * 0.001;
 
 #if defined(TEST_LOOPED_SEEK_PLAYBACK)
   int offset = 0;
@@ -134,6 +143,8 @@ int alplay() {
   ALuint buffers[1];
 
   alGenBuffers(1, buffers);
+
+//  convert ("./media/bling.wav","./media/bling2.wav");
 
 #ifdef __EMSCRIPTEN__
  // FILE* source = fopen("media/bling.wav", "rb");
@@ -278,8 +289,10 @@ int alplay() {
 #endif
 #else
   usleep(700000);
-  playSource(reinterpret_cast<void*>(sources[0]));
+//  playSource(reinterpret_cast<void*>(sources[0]));
 #endif
 
   return 0;
 }
+#endif
+#endif

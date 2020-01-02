@@ -13,7 +13,9 @@ using namespace scene;
 using namespace core;
 #include "open-simplex-noise.h"
 
+#ifdef TREES
 #include "./ProceduralTrees/kornJungle/Jungle.h"
+#endif
 
 #define LEAF_TYPE 0
 #define NODE_TYPE 1
@@ -782,7 +784,7 @@ void Terrain::tick(const float &CamX, const float &CamY, const float &CamZ)
 CTreeSceneNode* Terrain::MakeTrees(vector3df aha,int treetype,char * action){
     // type of tree
     //make the treestack more global ?
-
+#ifdef TREES
 
 if (treetype == 1 ){
 //if (action == "Tree"){
@@ -1247,7 +1249,7 @@ s32 seed = 0;
 //			}
 //		}
 
-
+#endif
 
 }
 

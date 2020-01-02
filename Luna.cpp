@@ -3,7 +3,6 @@
 
 //!TODO wondering how to get eeg and ai library into game for pattern recognition
 // speech and directional forces
-#include "config.h"
 #include "Luna.h"
 //
 //Sound *Sound::m_sound = NULL;
@@ -476,6 +475,9 @@ setenv("PYTHONHOME", "/", 0);
 #endif
 #ifdef SDLMixer
 //SDLPlay();
+#endif
+#ifdef OPENAL
+alplay();
 #endif
     return 1;
 }

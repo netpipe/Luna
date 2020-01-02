@@ -47,9 +47,15 @@
 #endif
 
 #ifdef AgAudio
-
 #include "./Input/AgAudio/Sound.h"
+#endif
 
+#ifdef SDLMixer
+
+#endif
+
+#ifdef OPENAL
+	#include "./Input/openal_playback.h"
 #endif
 //#include "TerrainFactory/GrassSceneNode/CGrassPatchSceneNode.h"
 //#include "Input/Model/IrrAssimp/IrrAssimp.h"

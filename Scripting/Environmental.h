@@ -450,7 +450,7 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
 	int type;
 	//PyArg_ParseTuple(args,"fffi",&loc.X,&loc.Y,&loc.Z,&btree);
 	PyArg_ParseTuple(args,"silfff",&action,&type,&terr,&cx,&cy,&cz);
-#ifdef VEGETATION
+#ifdef TREES
 	//1 for klasger , KornJungle has both JTree and jungle
 
     // open terrain tree layout could probably even load grass sametime.

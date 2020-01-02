@@ -1,6 +1,7 @@
 #ifndef SOUNDFACTORY_H
 #define SOUNDFACTORY_H
-
+#include "../../config.h"
+#ifdef AgAudio
 #ifndef __APPLE__
     #include <AL/al.h>
     #include <AL/alc.h>
@@ -80,4 +81,5 @@ class SoundFactory
         void unloadOgg(const std::string &fileName);
 };
 
+#endif
 #endif

@@ -1,4 +1,4 @@
-#include "../config.h"
+#include "../../../config.h"
 #ifdef TREES
 #include "JungleChunk.h"
 #include "TreeSeed.h"

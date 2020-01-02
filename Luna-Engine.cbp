@@ -1182,11 +1182,11 @@
 		<Unit filename="Input/Model/blender/dna249-64bit.cpp" />
 		<Unit filename="Input/Model/blender/dna249.cpp" />
 		<Unit filename="Input/Model/blender/readblend.h" />
+		<Unit filename="Input/SDL/SDLsound.h" />
 		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/fluidsynthconfig.h" />
 		<Unit filename="Input/inputManager.cpp" />
 		<Unit filename="Input/inputManager.h" />
-		<Unit filename="Input/openal_playback.h" />
 		<Unit filename="Luna.cpp" />
 		<Unit filename="Luna.h" />
 		<Unit filename="LunaLobby.cpp" />

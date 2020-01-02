@@ -1,3 +1,5 @@
+#include "../../../config.h"
+#ifdef AgAudio
 #include "OggFile.h"
 #include <memory.h>
 // Make sure to fix this header link
@@ -207,3 +209,5 @@ void OggFile::close()
 	if (!loadedInMemory)
 		fclose(file);
 }
+
+#endif

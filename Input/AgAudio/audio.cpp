@@ -1,3 +1,5 @@
+#include "../../config.h"
+#ifdef AgAudio
 #include "audio.h"
 
 namespace agEngine
@@ -386,3 +388,5 @@ namespace agEngine
 			return AudioDevice::instance;
 	}
 }
+
+#endif

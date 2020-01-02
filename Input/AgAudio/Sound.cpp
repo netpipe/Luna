@@ -1,3 +1,5 @@
+#include "../../config.h"
+#ifdef AgAudio
 #include "Sound.h"
 
 #include <pthread.h>
@@ -198,3 +200,4 @@ void Sound::PlayAll(void)
 {
 	adevice->playAll();
 }
+#endif

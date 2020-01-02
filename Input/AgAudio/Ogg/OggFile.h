@@ -1,6 +1,7 @@
 #ifndef OGG_H
 #define OGG_H
-
+#include "../../../config.h"
+#ifdef AgAudio
 #ifdef __APPLE__
     #include <OpenAL/al.h>
 #else
@@ -42,10 +43,11 @@ class OggFile
 
 		ALuint buffers[2];
 		ALenum format;
-		
+
 		bool loadedInMemory;
 
 		unsigned int bufferSize;
 };
 
+#endif
 #endif

@@ -1,7 +1,8 @@
 #ifndef _Sound_HPP_
 #define _Sound_HPP_
-
-#include "../../Luna.h"
+#include "../../config.h"
+#ifdef AgAudio
+//#include "../../Luna.h"
 #include "audio.h"
 
 class Sound
@@ -65,4 +66,5 @@ class Sound
     static Sound m_default_sound_buffer;
 };
 
+#endif
 #endif

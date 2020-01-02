@@ -1,3 +1,5 @@
+#include "../../config.h"
+#ifdef AgAudio
 #include "SoundFactory.h"
 #include <unistd.h>
 SoundFactory* SoundFactory::instance = NULL;
@@ -274,3 +276,4 @@ void *startSoundFactoryThread ( void * ) {
 	SoundFactory::getInstance()->run();
 	return NULL;
 }
+#endif

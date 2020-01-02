@@ -71,8 +71,13 @@
     RibbonTrailSceneNode* rt;
 #endif
 
+#ifdef EVENTS
 #include "../Events/InGameEventReceiver.h"
+#endif
+
+#ifdef OCCLUSION
 #include "../Scene/occlusion/Renderer.h"
+#endif
 
 #ifdef FLAG
     #include "../Scene/Flag/SimpleFlag.h"
@@ -125,8 +130,11 @@
     #include "../TerrainFactory/FWGrass/GrassLoader.h"
     #include "../TerrainFactory/FWGrass/gen/CGrassGenerator.h"
     using namespace GrassGenerator;
-    #include "../TerrainFactory/ProceduralTrees/kornJungle/Jungle.h"
+
 #endif
+#ifdef TREES
+    #include "../TerrainFactory/ProceduralTrees/kornJungle/Jungle.h"
+#endif // TREES
 
 #ifdef SQLITE
 //#include "../Input/SQL/sqlCon.h"

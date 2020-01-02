@@ -1,6 +1,7 @@
 #ifndef SOUNDSOURCE_H
 #define SOUNDSOURCE_H
-
+#include "../../../config.h"
+#ifdef AgAudio
 #ifndef __APPLE__
     #include <AL/al.h>
 #else
@@ -37,4 +38,5 @@ class SoundSource
 		long oggPos;
 };
 
+#endif
 #endif

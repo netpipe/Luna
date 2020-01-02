@@ -13,7 +13,8 @@
 //#define _DEBUG_MODE_
 //#define _PLAY_SOUND_
 //#define AgAudio      //- not currently working
-#define SDLMixers
+//#define SDLMixers
+//#define OPENAL
 //#define SDLsound
 
    // #define IRRCD   // irrlicht Collision Detection

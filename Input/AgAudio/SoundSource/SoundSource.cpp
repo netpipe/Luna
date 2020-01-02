@@ -1,3 +1,5 @@
+#include "../../../config.h"
+#ifdef AgAudio
 #include "SoundSource.h"
 
 SoundSource::SoundSource()
@@ -185,3 +187,4 @@ void SoundSource::setPosition(const float &x, const float &y, const float &z)
 {
     alSource3f(source, AL_POSITION, x, y, z);
 }
+#endif
