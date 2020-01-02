@@ -1239,6 +1239,7 @@
 		<Unit filename="Scene/IrrCSG/CSG/primitives.h" />
 		<Unit filename="Scene/IrrCSG/CSG/vector.cpp" />
 		<Unit filename="Scene/IrrCSG/CSG/vector.h" />
+		<Unit filename="Scene/IrrCSG/LunaCSG.h" />
 		<Unit filename="Scene/Obstacle.cpp" />
 		<Unit filename="Scene/Obstacle.hpp" />
 		<Unit filename="Scene/PostProcessing/CEffectPostProc.cpp" />

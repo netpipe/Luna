@@ -1,6 +1,16 @@
 #ifndef PYMAIN_H_INCLUDED
 #define PYMAIN_H_INCLUDED
 #ifdef PYTHON
+
+////#include "CSG/primitives.h"
+//#include "../Scene/IrrCSG/CSG/CSG.h"
+//
+//meshMesh mesh;
+//
+//SMesh* m_pMesh = NULL;
+
+
+
 //device->sleep(5,0); python delay for mainloop possibly use timers
 
 #ifdef POLYVOX

@@ -1,4 +1,15 @@
 #ifdef PYTHON
+
+#ifdef CSG
+//#include "../Scene/IrrCSG/CSG/primitives.h"
+//#include "../Scene/IrrCSG/CSG/CSG.h"
+#include "../Scene/IrrCSG/LunaCSG.h"
+//
+//meshMesh mesh;
+//
+//SMesh* m_pMesh = NULL;
+#endif
+
 ///SCENENODES and SCENESTUFF STUFF  -- included from pyfunctions
 ///TERRAIN
 
@@ -51,7 +62,7 @@ reminder to actually check the names match with unstable ide's and whatnot
     {"SPARK",Python::PyIrr_SPARKA,METH_VARARGS,"SPARK MANAGER"},
     {"grass",Python::PyIrr_FWGrass,METH_VARARGS,"grass"},
     {"postprocess",Python::PyIrr_PostProcess,METH_VARARGS,"postProcess"},
-
+    {"CSG",Python::PyIrr_CSG,METH_VARARGS,"CSG"},
 
     //Physics
     {"setVelocity",Python::PyIrr_setVelocity,METH_VARARGS,"setVelocity"},
@@ -70,6 +81,25 @@ reminder to actually check the names match with unstable ide's and whatnot
 int btree=0;
 
 
+PyObject * Python::PyIrr_CSG(PyObject * self,PyObject * args){
+   // printf("loading animated mesh\n");
+
+    char *meshPath;
+	PyArg_ParseTuple(args,"s",&meshPath);
+
+	meshMesh mesh;
+	initializeMesh(mesh);
+	//meshInitializeBox(&mesh, -0.5, 50.5, -50.5, 50.5, -0.5, 0.5);
+	SMesh* pMesh = CreateIrrMesh(mesh);
+
+	meshMesh csgMesh = CreateCSGMesh(pMesh);
+
+	SMesh* pIrrMesg = CreateIrrMesh(csgMesh);
+
+	IMeshSceneNode* meshnode = smgr -> addMeshSceneNode(pMesh);
+	meshnode->setMaterialFlag(video::EMF_BACK_FACE_CULLING, false);
+
+}
 
 //
 //PyObject * Python::PyIrr_LoadAnimatedMesh(PyObject * self,PyObject * args){

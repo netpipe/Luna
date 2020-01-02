@@ -135,6 +135,8 @@ namespace Python {
 
     PyObject * PyIrr_voxelLoad(PyObject * self,PyObject * args);
 
+    PyObject * PyIrr_CSG(PyObject * self,PyObject * args);
+
 
 
     //GUI
