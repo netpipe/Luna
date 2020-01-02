@@ -12,7 +12,8 @@ also to the irc crew for being there for support.
 |--------------------|------------------------------------------|
 | various preplanning and networking wrapper| SupraDigital|
 | Game/Engine-Designer , Artist, Musician | Aren|
-| project organiser , Artist | Tecan/ Clay|  |
+| project organiser , Artist | Tecan/ Clay
+| family for support and free whisky
 | particle editor / FKEditor / various game mechanics,Artist | Deesine |
 | FKEditor | Christian Clavet| 
 |Code Editor | Christian Clavet, Andres Jesse Porfirio & Lonesome Ducky|
@@ -62,6 +63,11 @@ also to the irc crew for being there for support.
 |quadtree |  Raphael Finkel and J.L. Bentley,  Jonathan Ferraris|
 |open simplex | ken perlin , Kurt Spencer ,smcameron|
 |box2d 	/ irrBullet	| cobra171 ,http://box2d.org/contributors/|
+|irrcsg / bvh / , , anair - freelancer
+|htmlrenderer ,   ,fixes - sergio - freelancer
+|emscripten uploader , freelancer
+|various audio contributors SDLMixer / OpenAL / SDLsound / OGG / Theora / Vorbis
+|
 
 Shaders and things
 =================
