@@ -1088,6 +1088,7 @@
 			<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 			<Add directory="../LunaLibs/PolyVox/library/PolyVoxCore" />
 			<Add directory="../LunaLibs/media/fluidsynth-emscripten/src" />
+			<Add directory="../LunaLibs/bullet3-2.86.1/msvc/2008/lib/Debug" />
 		</Linker>
 		<Unit filename="DevLoop.h" />
 		<Unit filename="Equipment/Rifle.cpp" />
@@ -1449,6 +1450,8 @@
 				<doxyfile_dot />
 				<general />
 			</DoxyBlocks>
+			<code_completion />
+			<debugger />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

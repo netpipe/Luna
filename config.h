@@ -1,7 +1,7 @@
  #ifndef INCLUDES
  #define INCLUDES
+ //#define PYTHON  // defined in the codeblocks project option defines for target management and testing builds
 
- #define PYTHON
  #define COMPRESS //needed for empython
  #define EXTRAS
 
@@ -31,7 +31,7 @@
   //#define SPARK
   #define PHYSICS
  // #define SKELETON
-
+//#define PostProcess
   //#define VEGETATION
   //  #define TREES //very cpu intensive
   //  #define ATMOSPHERE  //  freezes when no video acceleration is used

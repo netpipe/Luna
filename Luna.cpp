@@ -141,23 +141,18 @@ Luna::~Luna(){}
 
 int Luna::devloop(){
     #include "./DevLoop.h" //! DevLoop Entry
- //   system("PAUSE");
     return 0;
 }
 
 int Luna::mainloop(){
-//        ClientNetCallback* clientCallback = new ClientNetCallback();
-//    net::INetManager* netManager =
-//    net::createIrrNetClient(clientCallback, "127.0.0.1");
-//
     #include "./MainLoop.h" //! MainLoop Entry
-//    system("PAUSE");
     return 0;
 }
 
 int Luna::doLogin ( const std::wstring &username, const std::wstring &password ){
     // 0 is ok, -1 logingood , 1 is no server connection
      #ifdef NDEBUG
+     #ifdef NETWORK
     std::string uname ( username.begin(), username.end() );
     std::string pword ( password.begin(), password.end() );
     int iReturn;
@@ -184,15 +179,17 @@ while (!login){
                 }
             }
 		        netManager->update(500);
-                    printf ("not connected-connecting \n");
+				printf ("not connected-connecting \n");
     }
 }
+#endif
 #endif
    return -1;//iReturn;//-1; //good for debugging
 }
 
 int Luna::handleMessages(){
 	#ifdef NDEBUG
+	#ifdef NETWORK
 //     set some variables
 		if (netManager->getConnectionStatus() != net::EICS_FAILED)
 		{
@@ -200,6 +197,7 @@ int Luna::handleMessages(){
 		//	 packet.compressPacket();
 		//	 packet.encryptPacket("hushthisissecret"); //16 char max
 		}
+		#endif
 		#endif
 return 0;
 }
@@ -214,7 +212,7 @@ int Luna::shutdown(){
      delete flock;
     #endif
 
-    #ifdef PostProcess
+    #ifdef PostProcess2
 	 delete ppBlurDOF;
 	 delete ppBlur;
 	 delete ppRenderer;
@@ -311,20 +309,18 @@ int Luna::init(){
     core::dimension2du res = nulldevice->getVideoModeList()->getDesktopResolution();
     nulldevice -> drop();
     #ifdef __EMSCRIPTEN__
-        device = createDevice ( EDT_OGLES2,dimension2du (resolution[0],resolution[1]), 24, 1,1);
+			device = createDevice ( EDT_OGLES2,dimension2du (resolution[0],resolution[1]), 24, 1,1);
     #else
             device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 1,1);
-
     #endif
    }else {
 
       // device = createDevice ( EDT_OPENGL,dimension2du (res.Width,res.Height ),  32, true, true, false, 0 );
         #ifdef __EMSCRIPTEN__
-        device = createDevice ( EDT_OGLES2,dimension2du (resolution[0],resolution[1]), 24, 0,1);
-#else
-        device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 0,1);
-
-#endif
+			device = createDevice ( EDT_OGLES2,dimension2du (resolution[0],resolution[1]), 24, 0,1);
+		#else
+			device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 0,1);
+		#endif
      //   device = createDevice ( EDT_SOFTWARE,dimension2du (resolution[0],resolution[1]), 24, 0,1);
 // EDT_NULL       device = createDevice ( EDT_BURNINGSVIDEO,dimension2du (resolution[0],resolution[1]), 24, 0,1);
 
@@ -361,7 +357,7 @@ int Luna::init(){
     return 0;
 }
 
-int Luna::Run(){
+int Luna::Run(){  // starts the game in dev mode or release mode some features are easier to impliment into the mainloop rather than scripting for testing //uses devloop or main_loop for emscripten
 
     events.devLogin=0;
     #ifndef NDEBUG
@@ -392,9 +388,9 @@ int Luna::Run(){
 			//	setenv("PYTHONHOME", "/media/", 0);
 			#endif
 
-			#ifdef EVENTS
-		device->setEventReceiver ( &m_cInGameEvents );
-    #endif
+		#ifdef EVENTS
+			device->setEventReceiver ( &m_cInGameEvents );
+		#endif
 
 #ifdef __EMSCRIPTEN__
 
@@ -404,56 +400,63 @@ setenv("PYTHONHOME", "/", 0);
     int argc2= sizeof(argv2) / sizeof(char*) - 1;
 //int test = zpipe(argc2,argv2);
 #else
-//stringw workingDirectory = device->getFileSystem()->getWorkingDirectory();
-////workingDirectory+="media/lib/";
-//const  char* test = (const char*) workingDirectory.c_str();
-//
-//printf ( "working directory is %s " , test );
-//setenv("PYTHONHOME", (const char*)workingDirectory.c_str() , 0);
+	//stringw workingDirectory = device->getFileSystem()->getWorkingDirectory();
+	////workingDirectory+="media/lib/";
+	//const  char* test = (const char*) workingDirectory.c_str();
+	//
+	//printf ( "working directory is %s " , test );
+	//setenv("PYTHONHOME", (const char*)workingDirectory.c_str() , 0);
 #endif
 
-    //Python
-        Python::registerIrrDevice(this,*device,m_cInGameEvents);
-        Py_Initialize();            //Initialize Python
-        //PythonMultithreading goes here when time comes
-    //    PyEval_InitThreads() ; // nb: creates and locks the GIL
-        Python::init_irr();         //Initialize our module
-        //Py_SetProgramName(), Py_SetPythonHome(), PyEval_InitThreads(), PyEval_ReleaseLock(), and PyEval_AcquireLock()
-        //https://docs.python.org/2/c-api/init.html
-        ///todo check for empty or missing files or impliment the using command
-       // Python::ExecuteScript("functions-list.pys"); // this is for testing
+		Python::registerIrrDevice(this,*device,m_cInGameEvents);
+		Py_Initialize();            //Initialize Python
+		//PythonMultithreading goes here when time comes
+		//    PyEval_InitThreads() ; // nb: creates and locks the GIL
+		Python::init_irr();         //Initialize our module
+		//Py_SetProgramName(), Py_SetPythonHome(), PyEval_InitThreads(), PyEval_ReleaseLock(), and PyEval_AcquireLock()
+		//https://docs.python.org/2/c-api/init.html
+		///todo check for empty or missing files or impliment the using command
+		// Python::ExecuteScript("functions-list.pys"); // this is for testing
+
 		#ifdef __EMSCRIPTEN__
-				Python::ExecuteScript("./media/functions-list.pys"); // this is for testing
-						   	pyloader = "./media/main.pys";
-		#else
-		   Python::ExecuteScript("./functions-list.pys"); // this is for testing
-				//Python::PyIrr_LoadVehicle(m_cVehicle);
-				//Python::PyIrr_addTerrain("1");
+					Python::ExecuteScript("./media/functions-list.pys"); // this is for testing
+								pyloader = "./media/main.pys";
+			#else
+				Python::ExecuteScript("./functions-list.pys"); // this is for testing
+			#ifdef APPS
 				// pyloader = "./APP/cowsynth/main.pys";
-			//pyloader = "./RACING/racer/main.pys";
-			pyloader = "../media/main.pys";
+			#else
+				//pyloader = "./RACING/racer/main.pys";
+				pyloader = "../media/main.pys";
+
+			#endif
+
+			//Python::PyIrr_LoadVehicle(m_cVehicle);
+			//Python::PyIrr_addTerrain("1");
 		#endif
 
 		#ifdef EDITOR
 			Python::bCodeEditor=3; // initial closed state
 		#endif
-		#endif //python
-                    } //init
-								// run main loop
-								#ifdef __EMSCRIPTEN__
-								iinit=true;
-								main_loop();
-                                #else
-                                iinit=true;
-                                main_loop();
-                                #endif
 
+	#endif //python
+	} //init
+
+				// run main devloop also EMSCRIPTEN loop
+				#ifdef __EMSCRIPTEN__
+					iinit=true;
+					main_loop();
+				#else
+                    iinit=true;
+                    main_loop();
+                #endif
                 }else{
+                	//log into lobby if not in dev or debug mode.
 //                	if (iinit){ shutdown(); exit(1); } // for exiting dev loop tmpfix
-                printf ("now entering the lobby");
-                   if ( lobby() == -1 ) {
+					printf ("now entering the lobby");
+					if ( lobby() == -1 ) {
                         shutdown(); //exit
-                  //  break;
+						//  break;
                         return 0;
                     } else {
                         printf("mainloop");
@@ -479,6 +482,7 @@ setenv("PYTHONHOME", "/", 0);
 #ifdef OPENAL
 alplay();
 #endif
+
     return 1;
 }
 
@@ -486,17 +490,19 @@ void Luna::main_loop(){ //devloop actually
 //#ifdef __EMSCRIPTEN__
     //while (
 //			emscripten_run_script("alert('hi')");
-#ifdef SDLMixer
-//sound_loop_then_quit();
-#endif
 
-#ifdef AgAudio
- Sound::Instance()->PlayAll();
-//  m_sound->Instance()->PlayAll();
-#endif
-           device->run();
-                //&& !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
-   // {
+	#ifdef SDLMixer
+	//sound_loop_then_quit();
+	#endif
+
+	#ifdef AgAudio
+	 Sound::Instance()->PlayAll();
+	//  m_sound->Instance()->PlayAll();
+	#endif
+
+	device->run();
+	//&& !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
+    // {
         const u32 now = device->getTimer()->getTime();
 		frameDeltaTime = (f32)(now - then) / 1000.f; // Time in seconds
 		then = now;
@@ -511,18 +517,17 @@ void Luna::main_loop(){ //devloop actually
 
         smgr->drawAll();
 		//	device->setEventReceiver(&receiver);
-//device->sleep(5);
+		//device->sleep(5);
 
-//        #ifdef PostProcess
-//			ppBlurDOF->render( NULL );
-//            ppBlur->render( NULL );
-//
-//        #endif
+        #ifdef PostProcess
+			ppBlurDOF->render( NULL );
+            ppBlur->render( NULL );
 
+        #endif
 
- //       rt->render();
- #ifdef PYTHON
- #ifdef CODEEDITOR
+	//       rt->render();
+	#ifdef PYTHON
+		#ifdef CODEEDITOR
 		if (Python::bCodeEditor==1	){
 			Python::bCodeEditor=0;
 			windows->setVisible(true);
@@ -543,21 +548,17 @@ void Luna::main_loop(){ //devloop actually
 			windows->setVisible(false);  //! not sure why but causes crashing on startup
 		}
 		#endif //code_editor
-	#endif
-
-		#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
-        Python::preEnd();
-          Python::CheckKeyStates();
-    //    obsolete:CheckKeyStates(); check onEvent for any need to check keys
-    // loop for key checking and loop for game  only execute script if there was an event
-	// pick a game directory and look for main.pys
+	//#endif
+			//#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
+			Python::preEnd();
+			Python::CheckKeyStates();
 			Python::ExecuteScript(irr::core::stringc(pyloader));
 			//Python::ExecuteScript("./RACING/racer/main.pys");
-		guienv->drawAll();
-        driver->endScene();
+			guienv->drawAll();
+			driver->endScene();
 		#else
-		guienv->drawAll();
-        driver->endScene();
+			guienv->drawAll();
+			driver->endScene();
 		#endif
 
         int fps = driver->getFPS();
@@ -567,7 +568,6 @@ void Luna::main_loop(){ //devloop actually
 			tmp += driver->getName();
 			tmp += L"] fps: ";
 			tmp += fps;
-
 			device->setWindowCaption(tmp.c_str());
 			lastFPS = fps;
 		}
@@ -577,7 +577,8 @@ void Luna::main_loop(){ //devloop actually
 //#endif
 }
 
-void Luna::CheckKeyStates(void){}
+void Luna::CheckKeyStates(void){  //    obsolete:CheckKeyStates(); check onEvent for any need to check keys , used to be where python one sits now
+}
 
 
 

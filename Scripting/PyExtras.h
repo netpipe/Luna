@@ -267,5 +267,35 @@ case 1:
 return Py_BuildValue("");
 }
 
+//glass demo
+/*
+//		// I'm just using a basic cube scene node for the glass pane, "scaled to flatness".
+//		ISceneNode* GlassPane = smgr->addCubeSceneNode();
+//		GlassPane->setScale(vector3df(100,150,1));
+//		GlassPane->setPosition(core::vector3df(0,0,0));
+//		GlassPane->setRotation(vector3df(0,60,0));
+//
+//		// Here I make a RTT for the refraction, you can use a higher res one if you want,
+//		// I chose 512^2 for compatibility. I also load the normalmap.
+//		ITexture* RTTTex = driver->addRenderTargetTexture(dimension2du(512,512));
+//		ITexture* NormMap = driver->getTexture("shaders/glass-bubble/media/NormalMap.png");
+//
+//		GlassPane->setMaterialTexture(0, RTTTex);
+//		GlassPane->setMaterialTexture(1, NormMap);
+//
+//		io::path vshader = "shaders/glass-bubble/GlassV.glsl";
+//        io::path pshader = "shaders/glass-bubble/GlassP.glsl";
+//
+//		video::IGPUProgrammingServices* gpu = driver->getGPUProgrammingServices();
+//
+//		// I create the shader material for the glass pane.
+//		s32 GlassMat = gpu->addHighLevelShaderMaterialFromFiles(vshader,"main",EVST_VS_2_0,pshader,"main",EPST_PS_2_0,0);
+//
+//		GlassPane->setMaterialType(E_MATERIAL_TYPE(GlassMat));
+*/
+
+
+
+
 //#endif
 #endif

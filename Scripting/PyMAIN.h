@@ -167,6 +167,7 @@ namespace Python {
     PyObject * PyIrr_LoadTrack(PyObject * self,PyObject * args);
     PyObject * PyIrr_LoadLevel(PyObject * self,PyObject * args);
     PyObject * PyIrr_Light(PyObject * self,PyObject * args);
+    PyObject * PyIrr_Flashlight(PyObject * self,PyObject * args);
     PyObject * PyIrr_ExportScene(PyObject * self,PyObject * args);
     PyObject * PyIrr_FWGrass(PyObject * self,PyObject * args);
     PyObject * PyIrr_PostProcess(PyObject * self,PyObject * args);

@@ -3,7 +3,7 @@ bool works;
 //bool login=0;
 //net::SOutPacket rotationPacket;
 //vector3df tmpvect;
-    bool connected,doit,login=0;
+//    bool connected,doit,login=0;
 
 enum E_PACKET_TYPE
 {

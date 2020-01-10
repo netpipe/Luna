@@ -29,6 +29,7 @@ reminder to actually check the names match with unstable ide's and whatnot
     {"loadTrack",Python::PyIrr_LoadTrack,METH_VARARGS,"loadTrack"},
     {"loadLevel",Python::PyIrr_LoadLevel,METH_VARARGS,"loadLevel"},
 	{"Light",Python::PyIrr_Light,METH_VARARGS,"Light"},
+	{"flashlight",Python::PyIrr_Flashlight,METH_VARARGS,"Light"},
 	//input
     {"using",Python::PyIrr_using,METH_VARARGS,"for opening scripts within scripts"},
     {"recast",Python::PyIrr_recast,METH_VARARGS,"recast navigation"},
@@ -75,6 +76,28 @@ reminder to actually check the names match with unstable ide's and whatnot
 int btree=0;
 
 
+PyObject * Python::PyIrr_Flashlight(PyObject * self,PyObject * args){  //might just put into lights call
+    long node_id;
+    float x,y,z;
+    PyArg_ParseTuple(args,"lfff",&node_id,&x,&y,&z);
+    ISceneNode *node = (ISceneNode*)node_id;
+    node->setRotation(vector3df(x,y,z));
+
+ILightSceneNode* flashlight = smgr->addLightSceneNode();
+                SLight flashlightData;
+               // flashlightData.Direction= smgr->getActiveCamera()->getRotation()  ; //  camera[0]->getRotation();
+                flashlightData.OuterCone= 20;
+                flashlightData.Position= vector3df(x,y,z);;
+                flashlightData.Falloff= 30;
+                flashlightData.Type= ELT_SPOT;
+                flashlight->setLightData(flashlightData);
+                flashlight->setRadius(100);
+
+               // flashlight->setParent(camera[0]); // bind with scripting instead
+
+ return Py_BuildValue("l",flashlight);
+}
+
 PyObject * Python::PyIrr_CSG(PyObject * self,PyObject * args){
    // printf("loading animated mesh\n");
 
@@ -93,7 +116,9 @@ PyObject * Python::PyIrr_CSG(PyObject * self,PyObject * args){
 	IMeshSceneNode* meshnode = smgr -> addMeshSceneNode(pMesh);
 	meshnode->setMaterialFlag(video::EMF_BACK_FACE_CULLING, false);
     meshnode->setScale(vector3df(10,10,10));
+
  return Py_BuildValue("");
+
 }
 
 //
@@ -604,9 +629,11 @@ PyObject * Python::PyIrr_ExportScene(PyObject * self,PyObject * args){
 }
 
 PyObject * Python::PyIrr_LoadLevel(PyObject * self,PyObject * args){
+
 #ifdef TERRAIN
 tr.setIdentity();
 #endif
+
     int param,state,ammount;
     char * path;
     std::string path2;
@@ -692,8 +719,13 @@ PyObject * Python::PyIrr_Light(PyObject * self,PyObject * args){ //active camera
 	PyArg_ParseTuple(args,"ifffs",&t,&x,&y,&z,&s);
  //cam->setActiveCamera(cam);
   //  node->setAutomaticCulling(EAC_FRUSTUM_BOX);
+
+//  switch(t){
+//      case 1:
 node = smgr->addLightSceneNode(0, core::vector3df(x,y,z),
 		video::SColorf(1.0f, 0.6f, 0.7f, 1.0f), 800.0f);
+//case 2:
+		//options for lights, random colors, on , off, strobe all
 
 //	video::SLight l;
 //			scene::ILightSceneNode *light = smgr->addLightSceneNode(0,core::vector3df(50,100,50),video::SColorf(1,1,1,1.f),100);
@@ -704,7 +736,7 @@ node = smgr->addLightSceneNode(0, core::vector3df(x,y,z),
 //	l.DiffuseColor = video::SColorf(1,1,1);
 //	l.CastShadows = true;
 //	light->setLightData( l );
-
+//  }
 return Py_BuildValue("l",node);
 }
 

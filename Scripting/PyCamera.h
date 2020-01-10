@@ -6,6 +6,7 @@ PyMethodDef irr_Camera[] = {
     {"addCamera",Python::PyIrr_addCamera,METH_VARARGS,"sets camera vector"},
     {"setCamera",Python::PyIrr_SetCamera,METH_VARARGS,"sets camera vector"},
 	{"getCamera",Python::PyIrr_GetCamera,METH_VARARGS,"getcamera vector"},
+
 	{NULL,NULL,0,NULL}
 };
 
@@ -110,6 +111,7 @@ PyObject * Python::PyIrr_SetCamera(PyObject * self,PyObject * args){ //active ca
 //	device->setActiveCamera(cam);
     cam->setPosition(vector3df(x,y,z));
 
+// add lookat parameter and add call to mainloop for updates
 
         if (bCarFollow) {
     // this is for putting the camera above the car
