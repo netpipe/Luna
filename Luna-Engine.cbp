@@ -625,7 +625,7 @@
 					<Add library="BulletDynamics" />
 					<Add library="BulletCollision" />
 					<Add library="LinearMath" />
-					<Add library="z" />
+					<Add library="zlib" />
 					<Add library="Irrlicht" />
 					<Add library="freetype" />
 					<Add library="SPARK" />
@@ -1440,6 +1440,8 @@
 		<Unit filename="entities/skeleton/BMaths.h" />
 		<Unit filename="entities/skeleton/Skeleton.cpp" />
 		<Unit filename="entities/skeleton/Skeleton.h" />
+		<Unit filename="media/keys.pys" />
+		<Unit filename="media/main.pys" />
 		<Extensions>
 			<DoxyBlocks>
 				<comment_style block="0" line="0" />
