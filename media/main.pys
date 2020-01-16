@@ -1,7 +1,7 @@
 import irr
 import physics
 #if (EXTRAS)
-# import extras
+import extras
 import scene
 import input
 #import sound

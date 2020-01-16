@@ -49,7 +49,7 @@
 //    Convert a sequence of C values to a Python dictionary. Each pair of consecutive C values adds one item to the dictionary, serving as key and value, respectively.
 
 
-#ifdef EXTRAS
+
 PyMethodDef irr_Extras[] =
 {
         {"omaredemo",Python::PyIrr_omareDemo,METH_VARARGS,"loads omares plane demo or maybe clouds"},
@@ -298,4 +298,3 @@ return Py_BuildValue("");
 
 
 //#endif
-#endif

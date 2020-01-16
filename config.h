@@ -19,8 +19,8 @@
 
    // #define IRRCD   // irrlicht Collision Detection
     #define EVENTS
-    #define FPS
-    #define CSG
+  //  #define FPS
+  //  #define CSG
    // #define SGRAPH2D
    // #define WIND
     #define SCENE

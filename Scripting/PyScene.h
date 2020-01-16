@@ -100,7 +100,7 @@ ILightSceneNode* flashlight = smgr->addLightSceneNode();
 
 PyObject * Python::PyIrr_CSG(PyObject * self,PyObject * args){
    // printf("loading animated mesh\n");
-
+#ifdef CSG
     char *meshPath;
 	PyArg_ParseTuple(args,"s",&meshPath);
 
@@ -116,7 +116,7 @@ PyObject * Python::PyIrr_CSG(PyObject * self,PyObject * args){
 	IMeshSceneNode* meshnode = smgr -> addMeshSceneNode(pMesh);
 	meshnode->setMaterialFlag(video::EMF_BACK_FACE_CULLING, false);
     meshnode->setScale(vector3df(10,10,10));
-
+#endif
  return Py_BuildValue("");
 
 }
@@ -498,6 +498,7 @@ PyObject * Python::PyIrr_getPosition(PyObject * self,PyObject * args){
 }
 
 
+
 PyObject * Python::PyIrr_setVelocity(PyObject * self,PyObject * args){
 
 //    ISceneNode *node;
@@ -511,6 +512,7 @@ PyObject * Python::PyIrr_setVelocity(PyObject * self,PyObject * args){
 //	node->setPosition(vector3df(x,y,z));
     test->setAngularVelocity(btVector3(x,y,z));
     #endif
+    //distance / time function for some kinda scaler input
     return Py_BuildValue("");
 }
 

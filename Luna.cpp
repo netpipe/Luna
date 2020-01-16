@@ -571,7 +571,7 @@ void Luna::main_loop(){ //devloop actually
 			device->setWindowCaption(tmp.c_str());
 			lastFPS = fps;
 		}
-		sleep(0.2);
+		sleep(0.101);
      //  device->sleep(5); // pythonize this
   //  }
 //#endif

@@ -21,7 +21,7 @@ using namespace io;
 #include "../Scene/Formation.h"
 #endif
 
-#define PYTHON_MINIMALTESTs
+//#define PYTHON_MINIMALTESTs
 #ifdef PYTHON_MINIMALTEST
 vector<ITexture *> texture_array;
 
@@ -171,9 +171,9 @@ PyMODINIT_FUNC Python::init_irr(void){
 	actually more of a macro than a datatype(I think). Anyway, its essential to
 	have this as the return type of a function that initializes a python module*/
 
-#ifdef EXTRAS
+//#ifdef EXTRAS
     Py_InitModule("extras",irr_Extras);
-#endif
+//#endif
 
 //    Py_InitModule("particles",irr_SPARKA);
 	Py_InitModule("physics",irr_Physics);
