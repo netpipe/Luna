@@ -2,7 +2,7 @@
 #include <irrlicht.h>
 #include "decalscenenode.h"
 #define MAX_DECALS 50
-DecalSceneNode* decals[MAX_DECALS];
+ArmDecalSceneNode* decals[MAX_DECALS];
 
 using namespace irr;
 
@@ -61,7 +61,7 @@ int main()
     driver->setTextureCreationFlag(video::ETCF_CREATE_MIP_MAPS, false);
     scene::ISceneNode*  q3node =0;
 
-    if(q3levelmesh) q3node = smgr->addOctTreeSceneNode(q3levelmesh->getMesh(0));
+    if(q3levelmesh) q3node = smgr->addOctreeSceneNode(q3levelmesh->getMesh(0));
     scene::ITriangleSelector* selector = 0;
     q3node->setMaterialFlag(video::EMF_LIGHTING, true);
     if(q3node)
@@ -78,7 +78,7 @@ int main()
     //  video::ITexture* image = driver->getTexture("media/bullet.png");
 
     for(int i=0; i<MAX_DECALS; i++){
-        decals[i] = new DecalSceneNode(smgr->getRootSceneNode(), smgr, image, 2.2f);
+        decals[i] = new ArmDecalSceneNode(smgr->getRootSceneNode(), smgr, image, 2.2f);
     //decals[i]->setMaterialType( video::EMT_TRANSPARENT_ALPHA_CHANNEL);
     //decals[i]->setMaterialType( video::EMT_TRANSPARENT_ALPHA_CHANNEL_REF );
     //decals->setMaterialFlag(video::EMF_LIGHTING, true);

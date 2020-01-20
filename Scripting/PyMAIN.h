@@ -132,6 +132,7 @@ namespace Python {
     PyObject * PyIrr_VehicleParams(PyObject * self,PyObject * args);
     PyObject * PyIrr_addCar(PyObject * self,PyObject * args);
 
+    PyObject * PyIrr_MeshManipulator(PyObject * self,PyObject * args);
 
     PyObject * PyIrr_voxelLoad(PyObject * self,PyObject * args);
 

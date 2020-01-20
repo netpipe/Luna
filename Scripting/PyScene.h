@@ -37,7 +37,7 @@ reminder to actually check the names match with unstable ide's and whatnot
     {"media",Python::PyIrr_media,METH_VARARGS,"media"},
     {"rotation",Python::PyIrr_setRotation,METH_VARARGS,"rotation"},
 	{"screen",Python::PyIrr_getScreen,METH_VARARGS,"screenwidth"},
-
+{"meshman",Python::PyIrr_MeshManipulator,METH_VARARGS,"meshmanipulator"},
 
 	//scene
     {"tesselate",Python::PyIrr_tesselateImage,METH_VARARGS,"PyIrr_tesselateImage"},
@@ -129,6 +129,16 @@ PyObject * Python::PyIrr_CSG(PyObject * self,PyObject * args){
 PyObject * Python::PyIrr_LoadMesh(PyObject * self,PyObject * args){
 	  return Py_BuildValue("");  }
 
+
+PyObject * Python::PyIrr_MeshManipulator(PyObject * self,PyObject * args){
+//add more features later like getmesh and setscale
+//   scene::IAnimatedMesh* aPinMesh = smgr->getMesh("./pin.x");
+	   scene::IMeshManipulator *man = smgr->getMeshManipulator();
+//   scene::IMesh* pm = aPinMesh->getMesh(0);
+//   man->scaleMesh(pm, core::vector3df(15, 15, 15));
+	  return Py_BuildValue("l",man);
+
+}
 
 //
 PyObject * Python::PyIrr_addAnimatedMesh(PyObject * self,PyObject * args){
