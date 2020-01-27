@@ -11,14 +11,51 @@ import gui
 
 #import itertools
 #not needed includes just for testing
-#scene.using ('../media/string.py',"1");
-scene.using ('../media/lib/python-skeletons/sys.py',"1");
-scene.using ('../media/lib/python-skeletons/math.py',"1");
+scene.using ('../media/string.py',"1");
+#scene.using ('../media/lib/python-skeletons/sys.py',"1");
+#scene.using ('../media/lib/python-skeletons/math.py',"1");
 #scene.using ('../media/lib/python2.7/os.py',"1");
-#scene.using ('../media/lib/python2.7/random.py',"1");
+
+import os
 import itertools
 import hashlib
 #import random
+import math
+import time
+#import shuffle
+
+#scene.using ('../media/lib/python2.7/random.py',"1"); #not working
+
+
+#https://stackoverflow.com/questions/10930386/alternative-for-random-module-in-python
+class myrandom:
+    kz=36969
+    kw=18000
+    k3=65535
+    maxz=kz*k3+(2<<16)
+    maxw=kw*k3+(2<<16)
+    max=(maxz<<16 )+maxw
+    # Optionally initiate with different seed. Two numbers below 2<<16
+    def __init__(self,z=123456789,w=98764321):
+        self.m_w = w
+        self.m_z = z
+    def step(self):
+        self.m_z = self.kz * (self.m_z & self.k3) + (self.m_z >> 16)
+        self.m_w = self.kw * (self.m_w & self.k3) + (self.m_w >> 16)
+    def get(self):
+        self.step()
+        return (self.m_z << 16) + self.m_w
+    def time_reseed(self):
+        # yes, sure, move out import if you like to
+        import time
+        t=int(time.time())
+        # completely made up way to got two new numbers below 2<<16
+        self.m_z = (self.m_z+(t*34567891011)) & ((2<<16)-1)
+        self.m_w = (self.m_w+(t*10987654321)) & ((2<<16)-1)
+        self.step()
+    def getuniform(self):
+        return self.get()*1.0/self.max
+
 
 #irr.checkKeyState(); # check event loop to see if any key was pressed
 #################################
@@ -131,14 +168,24 @@ physics.VehicleParams(car2,8,0,0,0,0)
 
 #physics.VehicleParams(car1,0,0,0,0,0)
 
+ticks = time.time()
+print "Number of ticks since 12:00am, January 1, 1970:", ticks
+
+myr=myrandom()
+#print [myr.getuniform() for x in range(20)]
+
+#print random variable
+t = time.time()
+print int(str(t-int(t))[2:])%100 #Keeping only the numbers after the decimal point, otherwise you would get the same "random" number each second
+
+
 
 if input.getKey('KEY_F2') : #could have a release action
  print "setting cube position"
  #scene.add_cube()
  scene.addSphereNode("data/textures/material/marble1_256.png",0,20,5,5,500) #xyz radius mass
  #scene.setPosition(cube_id,1,1,1)
-
-
+irr.delay(0.1);
 #timer
 
 scene.using ('../media/keys.pys',"1");
