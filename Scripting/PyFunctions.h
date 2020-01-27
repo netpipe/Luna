@@ -278,6 +278,8 @@ PyMethodDef irr_function[] =
     {"getTime",Python::PyIrr_getTime,METH_VARARGS,"getTime"},
     {"event",Python::PyIrr_Event,METH_VARARGS,"event"},
 
+    {"delete",Python::PyIrr_Delete,METH_VARARGS,"delete"},
+
 //        {"flare2",Python::PyIrr_Flare2,METH_VARARGS,"Loads Flare2"},
 
     {"wayman",Python::PyIrr_WayPoint,METH_VARARGS,"waypoint manager"},
@@ -544,7 +546,7 @@ PyObject * Python::PyIrr_Delete(PyObject * self,PyObject * args){ //active camer
 	long * node;
 	PyArg_ParseTuple(args,"l",&node);
 	delete node;
-
+return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_pauseGame(PyObject * self,PyObject * args){

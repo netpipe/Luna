@@ -265,7 +265,6 @@ namespace Python {
     PyObject * PyIrr_igetBounds(PyObject * self,PyObject * args);
     PyObject * PyIrr_LoadSpriteFont(PyObject * self,PyObject * args);
 
-
     PyMODINIT_FUNC init_irr(void);
 
     //subsystem

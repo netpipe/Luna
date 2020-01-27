@@ -10,7 +10,10 @@ import net
 import gui
 
 #import itertools
-#scene.using ('../media/lib/random.py');
+#not needed includes just for testing
+scene.using ('../media/string.py',"1");
+scene.using ('../media/lib/python-skeletons/sys.py',"1");
+scene.using ('../media/lib/python-skeletons/math.py',"1");
 #import random
 
 #irr.checkKeyState(); # check event loop to see if any key was pressed
@@ -89,8 +92,11 @@ if (init) :
  iaxe = image.iadd("../media/axe.jpg",10,10,500,500,10,10,800,800)
  i=0
 
+ #x1,y1,x2,y2,xx1,yy1,xx2,yy2;
+ iaxe2 = image.iadd("../media/axe.jpg",40,40,500,500,10,10,800,800)
+ i=0
 # make a deck of cards
-# deck = list(itertools.product(range(1,14),['Spade','Heart','Diamond','Club']))
+#deck = list(itertools.product(range(1,14),['Spade','Heart','Diamond','Club']))
 
 # shuffle the cards
 # random.shuffle(deck)
@@ -106,10 +112,12 @@ if (init) :
 #################################
 #MAIN LOOP
 
-
+#irr.delete(iaxe)
+#iaxe = image.iadd("../media/axe.jpg",10,10,500,500,10,10,800,800)
 image.irotate(iaxe,i)
 i+=1
 image.idraw(iaxe)
+image.idraw(iaxe2)
 
 #if input.getKey('KEY_ESCAPE') :
 # paused=1

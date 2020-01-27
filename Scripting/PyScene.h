@@ -65,8 +65,6 @@ reminder to actually check the names match with unstable ide's and whatnot
     //Timers
 
 
-    {"delete",Python::PyIrr_Delete,METH_VARARGS,"delete"},
-
 
 	{NULL,NULL,0,NULL}
 };
