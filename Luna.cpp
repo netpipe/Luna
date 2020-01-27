@@ -418,16 +418,18 @@ setenv("PYTHONHOME", "/", 0);
 		///todo check for empty or missing files or impliment the using command
 		// Python::ExecuteScript("functions-list.pys"); // this is for testing
 
+//    device->getFileSystem()->addFileArchive("./media/cards.zip");
+
 		#ifdef __EMSCRIPTEN__
 					Python::ExecuteScript("./media/functions-list.pys"); // this is for testing
 								pyloader = "./media/main.pys";
 			#else
-				Python::ExecuteScript("./functions-list.pys"); // this is for testing
+				Python::ExecuteScript("./media/functions-list.pys"); // this is for testing
 			#ifdef APPS
 				// pyloader = "./APP/cowsynth/main.pys";
 			#else
 				//pyloader = "./RACING/racer/main.pys";
-				pyloader = "../media/main.pys";
+				pyloader = "./media/main.pys";
 
 			#endif
 

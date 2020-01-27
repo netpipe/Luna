@@ -1,5 +1,7 @@
 ///Main Python Function Includes
 ///Stuff Relivent to Initialization and management of scene / sound and managers.
+
+// there are scripting includes at the bottom for scripting system to register in pythonManager.h
 // there are includes at bottom of file for scripting too.
 //#include "../config.h"
 //#define SOUND
@@ -564,10 +566,13 @@ PyObject * Python::PyIrr_exit(PyObject * self,PyObject * args){
 #include "../Scripting/PyExtras.h"
 #include "../Scripting/PY_Physics.h"
 #include "../Scripting/PyImage.h"
+#include "../Scripting/pyFileIO.h"
 #include "PyMath.h"
 #include "PySound.h"
 #include "PyCamera.h"
 #include "PyInput.h"
 #include "PyGUI.h"
+
+#include "../Scene/RainMan.h"
 
 #endif

@@ -154,7 +154,7 @@ namespace Python {
     PyObject * PyIrr_sineGraph2d(PyObject * self,PyObject * args);
     PyObject * PyIrr_GUIslider(PyObject * self,PyObject * args);
 
-
+    PyObject * PyIrr_FileArchive(PyObject * self,PyObject * args);
 
 
 

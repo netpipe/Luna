@@ -11,10 +11,11 @@ import gui
 
 #import itertools
 #not needed includes just for testing
-scene.using ('../media/string.py',"1");
+scene.using ('./media/string.py',"1");
 #scene.using ('../media/lib/python-skeletons/sys.py',"1");
 #scene.using ('../media/lib/python-skeletons/math.py',"1");
 #scene.using ('../media/lib/python2.7/os.py',"1");
+
 
 import os
 import itertools
@@ -26,7 +27,7 @@ import time
 
 #scene.using ('../media/lib/python2.7/random.py',"1"); #not working
 
-
+ticks = time.time()
 #https://stackoverflow.com/questions/10930386/alternative-for-random-module-in-python
 class myrandom:
     kz=36969
@@ -56,6 +57,26 @@ class myrandom:
     def getuniform(self):
         return self.get()*1.0/self.max
 
+myr=myrandom()
+
+def shuffle(x, random=None):
+        """x, random=random.random -> shuffle list x in place; return None.
+
+        Optional arg random is a 0-argument function returning a random
+        float in [0.0, 1.0); by default, the standard random.random.
+
+        """
+
+       # if random is None:
+       #     random = self.random
+        _int = int
+        for i in reversed(xrange(1, len(x))):
+            # pick an element in x[:i+1] with which to exchange x[i]
+            j = int(myr.getuniform() * (i+1))
+            x[i], x[j] = x[j], x[i]
+            print j
+
+
 
 #irr.checkKeyState(); # check event loop to see if any key was pressed
 #################################
@@ -77,7 +98,7 @@ if (init) :
  physics.VehicleParams(car2,0,0,0,0,0) #reset position
  physics.VehicleParams(car2,11,0,20,100,20) #position
  physics.VehicleParams(car1,8,0,0,0,0)
-
+ irr.files("media/cards.zip")
 
 # physics.addHelicopter("data/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
 
@@ -130,22 +151,30 @@ if (init) :
 #################################
 #INIT CODE
 #################################
- iaxe = image.iadd("../media/axe.jpg",10,10,500,500,10,10,800,800)
+ iaxe = image.iadd("./media/axe.jpg",10,10,500,500,10,10,800,800)
  i=0
 
  #x1,y1,x2,y2,xx1,yy1,xx2,yy2;
- iaxe2 = image.iadd("../media/axe.jpg",40,40,500,500,10,10,800,800)
+ iaxe2 = image.iadd("./media/axe.jpg",40,40,500,500,10,10,800,800)
  i=0
 # make a deck of cards
-#deck = list(itertools.product(range(1,14),['Spade','Heart','Diamond','Club']))
+ deck = list(itertools.product(range(1,14),['Spade','Heart','Diamond','Club']))
 
 # shuffle the cards
-# random.shuffle(deck)
+ shuffle(deck)
 
 # draw five cards
-# print("You got:")
-# for i in range(5):
-#   print(deck[i][0], "of", deck[i][1])
+ print("You got:")
+ for i in range(5):
+   print(deck[i][0], "of", deck[i][1])
+
+  # deck[i][0]deck[i][1]
+
+   #1Spade
+   #1Heart
+   #1Diamond
+   #1Clubs
+
 
 
 #################################
@@ -168,15 +197,15 @@ physics.VehicleParams(car2,8,0,0,0,0)
 
 #physics.VehicleParams(car1,0,0,0,0,0)
 
+#time
 ticks = time.time()
-print "Number of ticks since 12:00am, January 1, 1970:", ticks
+#print "Number of ticks since 12:00am, January 1, 1970:", ticks
 
-myr=myrandom()
+#myr=myrandom()
 #print [myr.getuniform() for x in range(20)]
 
-#print random variable
-t = time.time()
-print int(str(t-int(t))[2:])%100 #Keeping only the numbers after the decimal point, otherwise you would get the same "random" number each second
+#print random variable set to make 0 or 1's semi randomly  remove /80 to get larger randoms
+#print int(str(ticks-int(ticks))[2:])%100/80 #Keeping only the numbers after the decimal point, otherwise you would get the same "random" number each second
 
 
 
@@ -186,9 +215,9 @@ if input.getKey('KEY_F2') : #could have a release action
  scene.addSphereNode("data/textures/material/marble1_256.png",0,20,5,5,500) #xyz radius mass
  #scene.setPosition(cube_id,1,1,1)
 irr.delay(0.1);
-#timer
 
-scene.using ('../media/keys.pys',"1");
+
+scene.using ('./media/keys.pys',"1");
 
 #irr.update(); #could set timing here, maybe smgr gui  etc  todo
 

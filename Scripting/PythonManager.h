@@ -162,9 +162,10 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
 
 #else
 
-
+////////////////////////////////////
 #include "./PyFunctions.h"
-#include "../Scene/RainMan.h"
+////////////////////////////////////
+
 
 PyMODINIT_FUNC Python::init_irr(void){
 	/*Note the return type of the function, which is PyMODINIT_FUNC, its
@@ -187,6 +188,8 @@ PyMODINIT_FUNC Python::init_irr(void){
     Py_InitModule("scene",irr_FlagMan);
     Py_InitModule("input",irr_Input);
 	Py_InitModule("image",irr_Image);
+	Py_InitModule("irr",irr_FileIO);
+
 };
 #endif
 void Python::ExecuteScript(irr::core::string<char> scriptname){
