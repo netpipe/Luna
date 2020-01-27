@@ -11,9 +11,13 @@ import gui
 
 #import itertools
 #not needed includes just for testing
-scene.using ('../media/string.py',"1");
+#scene.using ('../media/string.py',"1");
 scene.using ('../media/lib/python-skeletons/sys.py',"1");
 scene.using ('../media/lib/python-skeletons/math.py',"1");
+#scene.using ('../media/lib/python2.7/os.py',"1");
+#scene.using ('../media/lib/python2.7/random.py',"1");
+import itertools
+import hashlib
 #import random
 
 #irr.checkKeyState(); # check event loop to see if any key was pressed
