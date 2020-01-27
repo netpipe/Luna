@@ -424,12 +424,14 @@ setenv("PYTHONHOME", "/", 0);
 					Python::ExecuteScript("./media/functions-list.pys"); // this is for testing
 								pyloader = "./media/main.pys";
 			#else
-				Python::ExecuteScript("./media/functions-list.pys"); // this is for testing
+				Python::ExecuteScript("../media/functions-list.pys"); // this is for testing
 			#ifdef APPS
-				// pyloader = "./APP/cowsynth/main.pys";
+
+				pyloader = "./APP/cowsynth/main.pys";
+				pyloader = "../media/main.pys";
 			#else
 				//pyloader = "./RACING/racer/main.pys";
-				pyloader = "./media/main.pys";
+				pyloader = "../media/main.pys";
 
 			#endif
 

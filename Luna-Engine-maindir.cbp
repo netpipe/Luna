@@ -10,7 +10,7 @@
 		<Build>
 			<Target title="Linux Debug">
 				<Option output="./GAME/Luna" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="GAME" />
+				<Option working_dir="./" />
 				<Option object_output=".dobjs" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -22,7 +22,7 @@
 			</Target>
 			<Target title="Linux Release">
 				<Option output="./GAME/dLuna" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="./GAME/" />
+				<Option working_dir="./" />
 				<Option object_output=".robjs" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -39,7 +39,7 @@
 			</Target>
 			<Target title="WinDebug">
 				<Option output="./GAME/Luna_win.exe" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="./GAME/" />
+				<Option working_dir="./" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option use_console_runner="0" />
@@ -94,7 +94,7 @@
 			</Target>
 			<Target title="WinRelease">
 				<Option output="./GAME/Azadi.exe" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="./GAME/" />
+				<Option working_dir="./" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option use_console_runner="0" />
@@ -143,7 +143,7 @@
 			</Target>
 			<Target title="mineDBG">
 				<Option output="./GAME/mdLuna" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="GAME" />
+				<Option working_dir="./" />
 				<Option object_output=".mdobjs" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -198,7 +198,7 @@
 			</Target>
 			<Target title="mineREL">
 				<Option output="./GAME/mLuna" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="GAME" />
+				<Option working_dir="./" />
 				<Option object_output=".mobjs" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -323,7 +323,7 @@
 			</Target>
 			<Target title="emscripten-debug">
 				<Option output="./GAME/Luna.html" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="GAME" />
+				<Option working_dir="./" />
 				<Option object_output=".emdobjs" />
 				<Option type="1" />
 				<Option compiler="emscripten" />
@@ -430,7 +430,7 @@
 			</Target>
 			<Target title="emscripten-projects">
 				<Option output="./GAME/Luna.html" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="GAME" />
+				<Option working_dir="./" />
 				<Option object_output=".emdobjs" />
 				<Option type="1" />
 				<Option compiler="emscripten" />
@@ -673,7 +673,7 @@
 			</Target>
 			<Target title="emscripten-projects-testing-nopy">
 				<Option output="./GAME/Luna.html" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="GAME" />
+				<Option working_dir="./" />
 				<Option object_output=".emtestobjsnopy" />
 				<Option type="1" />
 				<Option compiler="emscripten" />
@@ -789,7 +789,7 @@
 			</Target>
 			<Target title="emminimal">
 				<Option output="./GAME/Luna.html" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="GAME" />
+				<Option working_dir="./" />
 				<Option object_output=".emdobjsmin" />
 				<Option type="1" />
 				<Option compiler="emscripten" />
@@ -888,7 +888,7 @@
 			</Target>
 			<Target title="empythontest">
 				<Option output="./GAME/Luna.html" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="GAME" />
+				<Option working_dir="./" />
 				<Option object_output=".emdobjstest2" />
 				<Option type="1" />
 				<Option compiler="emscripten" />
