@@ -506,7 +506,6 @@
 					<Add library="BulletDynamics" />
 					<Add library="BulletCollision" />
 					<Add library="LinearMath" />
-					<Add library="z" />
 					<Add library="Irrlicht" />
 					<Add library="freetype" />
 					<Add library="fluidsynth" />
@@ -516,6 +515,7 @@
 					<Add library="vorbis" />
 					<Add library="vorbisfile" />
 					<Add library="tar" />
+					<Add library="z" />
 					<Add directory="../emscripten-projects/media/freetype2.8/build" />
 					<Add directory="../emscripten-projects/net/enet" />
 					<Add directory="../emscripten-projects/irrlicht-ogl-es-2019dec/lib/Linux" />
@@ -628,7 +628,6 @@
 					<Add library="BulletDynamics" />
 					<Add library="BulletCollision" />
 					<Add library="LinearMath" />
-					<Add library="z" />
 					<Add library="Irrlicht" />
 					<Add library="freetype" />
 					<Add library="SPARK" />
@@ -639,6 +638,7 @@
 					<Add library="vorbis" />
 					<Add library="vorbisfile" />
 					<Add library="tar" />
+					<Add library="z" />
 					<Add directory="../emscripten-projects/media/freetype2.8/build" />
 					<Add directory="../emscripten-projects/net/enet" />
 					<Add directory="../emscripten-projects/irrlicht-ogl-es-2019dec/lib/Linux" />
@@ -747,7 +747,6 @@
 					<Add library="BulletDynamics" />
 					<Add library="BulletCollision" />
 					<Add library="LinearMath" />
-					<Add library="z" />
 					<Add library="Irrlicht" />
 					<Add library="freetype" />
 					<Add library="SPARK" />
@@ -757,6 +756,7 @@
 					<Add library="ogg" />
 					<Add library="vorbis" />
 					<Add library="vorbisfile" />
+					<Add library="z" />
 					<Add directory="../emscripten-projects/media/freetype2.8/build" />
 					<Add directory="../emscripten-projects/net/enet" />
 					<Add directory="../emscripten-projects/irrlicht-ogl-es-2019dec/lib/Linux" />
