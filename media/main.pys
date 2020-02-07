@@ -25,7 +25,7 @@ if (init) :
 
  import os
  import itertools
- import hashlib
+#import hashlib #causes issues with emscripten
  #import random
  import math
  import time
@@ -49,7 +49,7 @@ if (init) :
 #irr.checkKeyState(); # obsolete check event loop to see if any key was pressed
 
 
- scene.CSG("test.3ds")
+# scene.CSG("test.3ds")
 # sound.soundman(1,0,1,1)
  camera = scene.addCamera(3,0,20,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
  #physics.fpsweapon(camera)
