@@ -476,6 +476,7 @@
 					<Add directory="../emscripten-projects/media/SparkEngine/include" />
 					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxCore/include" />
 					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxUtil/include" />
+					<Add directory="../emscripten-projects/compression/libtar/build/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s ALLOW_MEMORY_GROWTH=1" />
@@ -514,6 +515,7 @@
 					<Add library="ogg" />
 					<Add library="vorbis" />
 					<Add library="vorbisfile" />
+					<Add library="tar" />
 					<Add directory="../emscripten-projects/media/freetype2.8/build" />
 					<Add directory="../emscripten-projects/net/enet" />
 					<Add directory="../emscripten-projects/irrlicht-ogl-es-2019dec/lib/Linux" />
@@ -542,6 +544,7 @@
 					<Add directory="../emscripten-projects/compression/zlib-1.2.3" />
 					<Add directory="../emscripten-projects/scripting/sqplus/lib" />
 					<Add directory="../emscripten-projects/media/SparkEngine/lib/emscripten/static" />
+					<Add directory="../emscripten-projects/compression/libtar/build/include" />
 				</Linker>
 				<ExtraCommands>
 					<Add before="./emclean.sh emscripten" />
@@ -625,7 +628,7 @@
 					<Add library="BulletDynamics" />
 					<Add library="BulletCollision" />
 					<Add library="LinearMath" />
-					<Add library="zlib" />
+					<Add library="z" />
 					<Add library="Irrlicht" />
 					<Add library="freetype" />
 					<Add library="SPARK" />
@@ -718,6 +721,7 @@
 					<Add directory="../emscripten-projects/media/SparkEngine/include" />
 					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxCore/include" />
 					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxUtil/include" />
+					<Add directory="../emscripten-projects/compression/libtar/build/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s ALLOW_MEMORY_GROWTH=1" />
@@ -781,6 +785,7 @@
 					<Add directory="../emscripten-projects/compression/zlib-1.2.3" />
 					<Add directory="../emscripten-projects/scripting/sqplus/lib" />
 					<Add directory="../emscripten-projects/media/SparkEngine/lib/emscripten/static" />
+					<Add directory="../emscripten-projects/compression/libtar/build/include" />
 				</Linker>
 				<ExtraCommands>
 					<Add before="./emclean.sh emscripten" />

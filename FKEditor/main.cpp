@@ -98,6 +98,8 @@ files fileRequest; // use the filerequest class inside this program.
 
 #include "event_receiver.h"  // treatment of the events
 
+#include <unistd.h>
+
 void render(){
   //  while (Device->run() && driver)
   //  {
@@ -109,7 +111,8 @@ void render(){
                 if (viewp.currentview==1) viewp.drawViewPorts(viewp.viewscale2,viewp.viewscale3,viewp.viewscale4,0);
                 else viewp.drawSingle(viewp.currentview);
             }
-    Device->sleep(30,0);
+   // Device->sleep(30,0);
+
             if (refreshanimwin) refreshAnimWin();
             //printf ("Currentview: %i\n",currentview);
             core::stringw result="";
@@ -165,7 +168,9 @@ void render(){
             //fpstext->setText(s.c_str());
       //  }
       //  else
-            Device->sleep(10,0);
+            Device->sleep(50,0);
+        //    sleep(1.0);
+
     //}
 
     }

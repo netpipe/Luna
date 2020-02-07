@@ -1,89 +1,54 @@
-import irr
-import physics
-#if (EXTRAS)
-import extras
-import scene
-import input
-#import sound
-#import luna
-import net
-import gui
+#################################
+#INITIALIZE
+#called externally so it is set from functions.py or init.py
+
+#################################
+if (init) :
+ import irr
+ import physics
+ #if (EXTRAS)
+ import extras
+ import scene
+ import input
+ #import sound
+ #import luna
+ import net
+ import gui
 
 #import itertools
 #not needed includes just for testing
-scene.using ('../media/string.py',"1");
+ scene.using ('../media/string.py',"1");
 #scene.using ('../media/lib/python-skeletons/sys.py',"1");
 #scene.using ('../media/lib/python-skeletons/math.py',"1");
 #scene.using ('../media/lib/python2.7/os.py',"1");
 
 
-import os
-import itertools
-import hashlib
-#import random
-import math
-import time
-#import shuffle
+ import os
+ import itertools
+ import hashlib
+ #import random
+ import math
+ import time
+ #import shuffle
 
 #scene.using ('../media/lib/python2.7/random.py',"1"); #not working
+ scene.using ('../media/random.py',"1"); #not working
 
-ticks = time.time()
-#https://stackoverflow.com/questions/10930386/alternative-for-random-module-in-python
-class myrandom:
-    kz=36969
-    kw=18000
-    k3=65535
-    maxz=kz*k3+(2<<16)
-    maxw=kw*k3+(2<<16)
-    max=(maxz<<16 )+maxw
-    # Optionally initiate with different seed. Two numbers below 2<<16
-    def __init__(self,z=123456789,w=98764321):
-        self.m_w = w
-        self.m_z = z
-    def step(self):
-        self.m_z = self.kz * (self.m_z & self.k3) + (self.m_z >> 16)
-        self.m_w = self.kw * (self.m_w & self.k3) + (self.m_w >> 16)
-    def get(self):
-        self.step()
-        return (self.m_z << 16) + self.m_w
-    def time_reseed(self):
-        # yes, sure, move out import if you like to
-        import time
-        t=int(time.time())
-        # completely made up way to got two new numbers below 2<<16
-        self.m_z = (self.m_z+(t*34567891011)) & ((2<<16)-1)
-        self.m_w = (self.m_w+(t*10987654321)) & ((2<<16)-1)
-        self.step()
-    def getuniform(self):
-        return self.get()*1.0/self.max
+ ticks = time.time()
 
-myr=myrandom()
+ responses = ["Not so sure", "42", "Most likely", "Absolutely not", "Outlook is good", "I see good things happening", "Never",
+"Negative", "Could be", "Unclear, ask again", "Yes", "No", "Possible, but not probable"]
 
-def shuffle(x, random=None):
-        """x, random=random.random -> shuffle list x in place; return None.
+ #myr.time_reseed();
+ print randint(1,8);
+ print(choice(responses))
 
-        Optional arg random is a 0-argument function returning a random
-        float in [0.0, 1.0); by default, the standard random.random.
-
-        """
-
-       # if random is None:
-       #     random = self.random
-        _int = int
-        for i in reversed(xrange(1, len(x))):
-            # pick an element in x[:i+1] with which to exchange x[i]
-            j = int(myr.getuniform() * (i+1))
-            x[i], x[j] = x[j], x[i]
-            print j
+ myr.time_reseed();
 
 
+#irr.checkKeyState(); # obsolete check event loop to see if any key was pressed
 
-#irr.checkKeyState(); # check event loop to see if any key was pressed
-#################################
-#INITIALIZE
-#called externally so it is set from functions.py or init.py
-if (init) :
-#################################
+
  scene.CSG("test.3ds")
 # sound.soundman(1,0,1,1)
  camera = scene.addCamera(3,0,20,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
@@ -149,7 +114,7 @@ if (init) :
  # int type = rand()%8+1;
 #  int seed = rand();
 #################################
-#INIT CODE
+# TESTING INIT CODE
 #################################
  iaxe = image.iadd("./media/axe.jpg",10,10,500,500,10,10,800,800)
  i=0
@@ -165,8 +130,45 @@ if (init) :
 
 # draw five cards
  print("You got:")
+
  for i in range(5):
-   print(deck[i][0], "of", deck[i][1])
+  print("You got:")
+  if deck[i][1]=="Clubs":
+     print(deck[i][0], "of", deck[i][1])
+   #  cards = image.iadd("./media/axe.jpg",40,40,500,500,10,10,800,800)
+
+
+  teststring = "string"
+  teststring2 = list(teststring)
+  print teststring2
+  #0s.isupper()
+  test = [1,2,3]
+  #test.append(2)
+  #test.pop(1)
+
+   #  fout            =            open('/etc/passwd','w')
+
+   #  try:
+   #  fin            =            open('bad_file')
+   #  for line  in  fin:
+   #  print
+   #   linefin.close()
+   #  except:
+   #  print'Something            went            wrong.'
+
+
+ # test.pop(1)
+
+     #    distance            =            math.sqrt(blank.x**2            +            blank.y**2
+      # fp            =            os.popen(cmd)
+
+      #     os.path.exists('memo.txt')
+      #     os.listdir(cwd)
+      #     if            os.path.isfile(path):
+      # cwd            =            os.getcwd()
+  #sum(test)
+
+
 
   # deck[i][0]deck[i][1]
 
@@ -180,8 +182,10 @@ if (init) :
 #################################
  init = 0 #initialization finish - needs whitespace infront
 #################################
-#MAIN LOOP
 
+#MAIN LOOP gets ran everytime
+
+#################################
 #irr.delete(iaxe)
 #iaxe = image.iadd("../media/axe.jpg",10,10,500,500,10,10,800,800)
 image.irotate(iaxe,i)

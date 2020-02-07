@@ -58,6 +58,8 @@ reminder to actually check the names match with unstable ide's and whatnot
     {"grass",Python::PyIrr_FWGrass,METH_VARARGS,"grass"},
     {"postprocess",Python::PyIrr_PostProcess,METH_VARARGS,"postProcess"},
     {"CSG",Python::PyIrr_CSG,METH_VARARGS,"CSG"},
+    {"animator",Python::PyIrr_Animators,METH_VARARGS,"Animators"},
+
 
     //Physics
     {"setVelocity",Python::PyIrr_setVelocity,METH_VARARGS,"setVelocity"},
@@ -124,6 +126,23 @@ PyObject * Python::PyIrr_CSG(PyObject * self,PyObject * args){
 //	 return Py_BuildValue("");  }
 
 //
+
+PyObject * Python::PyIrr_Animators(PyObject * self,PyObject * args){  //might just put into lights call
+    long node_id;
+    float x,y,z;
+    PyArg_ParseTuple(args,"lfff",&node_id,&x,&y,&z);
+    ISceneNode *node = (ISceneNode*)node_id;
+    node->setRotation(vector3df(x,y,z));
+
+	scene::ISceneNodeAnimator* anim =
+		smgr->createFlyCircleAnimator (core::vector3df(50,300,0),190.0f, -0.003f);
+	//light1->addAnimator(anim);
+	//anim->drop();
+
+
+ return Py_BuildValue("l",anim);
+}
+
 PyObject * Python::PyIrr_LoadMesh(PyObject * self,PyObject * args){
 	  return Py_BuildValue("");  }
 

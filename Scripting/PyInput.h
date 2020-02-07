@@ -512,14 +512,22 @@ PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
 }
 
 PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
-int type;
-	PyArg_ParseTuple(args,"i",&type);
+	int type;
+	float x;
+	float y;
+	PyArg_ParseTuple(args,"ifff",&type,&x,&y);
 
 	//setcursor position
 	//get cursor position
 	//visible
-
-device->getCursorControl()->setVisible(type);
+	switch (type){
+		case 1:
+		//	irr::gui::ICursorControl::setPosition (x, y);
+		case 2:
+//		vector3df position = irr::gui::ICursorControl::getPosition();
+		case 3:
+			device->getCursorControl()->setVisible(1);
+	}
   return Py_BuildValue("");
 }
 
