@@ -119,7 +119,7 @@ if (init) :
  iaxe = image.iadd("./media/axe.jpg",10,10,500,500,10,10,800,800)
  i=0
 
- #x1,y1,x2,y2,xx1,yy1,xx2,yy2;
+ #x1,y1,x2,y2,xx1,yy1,xx2,yy2; dimensions then texture repeat ammount
  iaxe2 = image.iadd("./media/axe.jpg",40,40,500,500,10,10,800,800)
  i=0
 # make a deck of cards
@@ -140,7 +140,7 @@ if (init) :
 
 #   cards = image.iadd(card1,i*40,i*40,i*100,i*100,i*10,i*10,i*200,i*200)
    #cards = image.iadd("./media/cards/4CLUBS.jpg",i*40,i*40,i*100,i*100,i*10,i*10,i*200,i*200)
-   image.iadd("./media/4CLUBS.png",40,40,500,500,10,10,800,800)
+   club = image.iadd("./media/4CLUBS.png",0,0,55,84,0,0,55,84)
   if deck[i][1]=="Spade":
    print(deck[i][0], "of", deck[i][1])
    card1="./media/" + str(deck[i][0]) + "SPADES.jpg"
@@ -209,6 +209,7 @@ image.irotate(iaxe,i)
 i+=1
 image.idraw(iaxe)
 image.idraw(iaxe2)
+image.idraw(club)
 
 #if input.getKey('KEY_ESCAPE') :
 # paused=1
