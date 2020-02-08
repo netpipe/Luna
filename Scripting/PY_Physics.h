@@ -337,7 +337,7 @@ PyArg_ParseTuple(args,"ssfffffffffffifffifffffffffffff",&model,&texture,&scaleT,
 
 //str(model,model2);
 //str(texture,texture2);
-
+#ifdef PHYSICS
     #ifdef BULLETCAR
     bCar=1;
          Vehicle* m_cVehicle = new Vehicle;
@@ -382,6 +382,7 @@ PyArg_ParseTuple(args,"ssfffffffffffifffifffffffffffff",&model,&texture,&scaleT,
   //   Vehicles->push_back(m_cVehicle);
 return Py_BuildValue("l",m_cVehicle);
 #endif
+#endif
 return Py_BuildValue("");
 
 }
@@ -403,7 +404,9 @@ PyObject * Python::PyIrr_LoadVehicle(PyObject * self,PyObject * args){
 
 PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
 	#ifdef TERRAIN
+	#ifdef PHYSICS
 		tr.setIdentity();
+		#endif
 	#endif
     int param,state,ammount;
     char * path;
@@ -653,7 +656,9 @@ void Python::rfm(ISceneNode* node )
             //node->getMaterial(0).MaterialType = EMT_ONETEXTURE_BLEND;
             //node->setFlag(EMF_TRILINEAR_FILTER, true);
             #ifdef TERRAIN
+            #ifdef PHYSICS
 		tr.setOrigin(btVector3(0,0,0));
+		#endif
 		#endif
 
 		#ifdef PHYSICS

@@ -478,9 +478,9 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
             newpos = vector3df(x,y,z)-mnode->terrain->getPosition();
 
             mnode->terrain->setPosition(vector3df(x,y,z));
-
+ #ifdef PHYSICS
             mnode->mRigidBody->translate(btVector3 (newpos.X,newpos.Y,newpos.Z));
-
+ #endif
          //   btRigidBody *test = mnode->mRigidBody;
 
 #endif
@@ -492,8 +492,9 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
             newpos = vector3df(x,y,z)-mnode->cubeSceneNode->getPosition();
 
             mnode->cubeSceneNode->setPosition(vector3df(x,y,z));
+            #ifdef PHYSICS
             mnode->mRigidBody->translate(btVector3 (newpos.X,newpos.Y,newpos.Z));
-
+#endif
          //   btRigidBody *test = mnode->mRigidBody;
 #endif
 }else if (bullet == 0){
@@ -660,7 +661,9 @@ PyObject * Python::PyIrr_ExportScene(PyObject * self,PyObject * args){
 PyObject * Python::PyIrr_LoadLevel(PyObject * self,PyObject * args){
 
 #ifdef TERRAIN
+#ifdef PHYSICS
 tr.setIdentity();
+#endif
 #endif
 
     int param,state,ammount;

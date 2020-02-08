@@ -60,17 +60,21 @@ class Terrain
         // Irrlicht variables.
             IrrlichtDevice *m_irrDevice;
             Scene *m_cScene;
+            #ifdef PHYSICS
             Physics *m_cPhysics;
+			btTransform tr;
+			        btBvhTriangleMeshShape *trackShape;
+			    void registerPhysics(Physics &physics);
+			btRigidBody*	localCreateRigidBody(float mass, const btTransform& startTransform,btCollisionShape* shape, ISceneNode *node);
+            		btRigidBody* mRigidBody;
+            #endif
             scene::ISceneManager* smgr;
             video::IVideoDriver* driver;
 
 
-    btTransform tr;
-
-    btRigidBody*	localCreateRigidBody(float mass, const btTransform& startTransform,btCollisionShape* shape, ISceneNode *node);
 
     void registerIrrDevice(IrrlichtDevice &device);
-    void registerPhysics(Physics &physics);
+
     void registerScene(Scene &scene);
 
             //SMeshBuffer* pNode1 ;
@@ -79,7 +83,7 @@ class Terrain
         unsigned int *uiList;
         SMesh * cubeMesh;
         ISceneNode * cubeSceneNode;
-        btBvhTriangleMeshShape *trackShape;
+
 
 		unsigned int CalcNodeNum ( unsigned int max,unsigned int min );
 		void CreateGrid ( unsigned int w,unsigned int h );
@@ -93,7 +97,7 @@ class Terrain
 //		friend class Azadi;
 		static int setter;
 		ITerrainSceneNode* Terrain2(vector3df ,vector3df ,char *hmap,char *tex,char* dmap);
-		btRigidBody* mRigidBody;
+
 		ITerrainSceneNode* terrain;
 
     void Render(char*,vector3df terrainPosition,vector3df terrainRotation,vector3df terrainScale,int LOD);

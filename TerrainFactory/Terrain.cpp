@@ -166,18 +166,20 @@ ITerrainSceneNode* Terrain::Terrain2(vector3df t_position,vector3df t_scale,char
 
 	 terrain->getMeshBufferForLOD (*mesh ,2);
 
-
+#ifdef PHYSICS
    btVector3 vertices[3];
-   s32 j,k;
-   btTriangleMesh *  mTriMesh = new btTriangleMesh();
 
+
+   btTriangleMesh *  mTriMesh = new btTriangleMesh();
+   #endif
+      s32 j,k;
    const irr::u32 vertexCount = mesh->getVertexCount();
    const irr::u32 indexCount = mesh->getIndexCount();
 
             irr::video::S3DVertex2TCoords* mb_vertices = (irr::video::S3DVertex2TCoords*)mesh->getVertexBuffer().getData();
 
    u16* mb_indices = mesh->getIndices();
-
+#ifdef PHYSICS
    for(j=0;j<indexCount;j+=3)
    {
       for (k=0;k<3;k++)
@@ -200,6 +202,7 @@ ITerrainSceneNode* Terrain::Terrain2(vector3df t_position,vector3df t_scale,char
    mRigidBody = new btRigidBody(0, state, mShape, btVector3(0, 0, 0));
    mRigidBody->setCollisionFlags(mRigidBody->getCollisionFlags() | btCollisionObject::CF_STATIC_OBJECT);
    m_cPhysics->getDynamicsWorld()->addRigidBody(mRigidBody);
+   #endif
 return terrain;
 }
 
@@ -249,6 +252,7 @@ void Terrain::Render( char *tex,vector3df terrainPosition,vector3df terrainRotat
 
 
 //not working because i split terrain from vehicle tr identity in relation to car ?
+#ifdef PHYSICS
     tr.setIdentity();
     tr.setOrigin(btVector3( terrainPosition.X,  terrainPosition.Y,  terrainPosition.Z));
 
@@ -265,7 +269,7 @@ void Terrain::Render( char *tex,vector3df terrainPosition,vector3df terrainRotat
     btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
 
     mRigidBody = localCreateRigidBody(0, tr, trackShape, cubeSceneNode);
-
+#endif
     //return cubeSceneNode;
    // return cubeSceneNode;
 }
@@ -657,7 +661,7 @@ unsigned int Terrain::CalcNodeNum(unsigned int max,unsigned int min){
     return ctr;
 }
 
-
+#ifdef PHYSICS
 btRigidBody*	Terrain::localCreateRigidBody(float mass, const btTransform& startTransform,btCollisionShape* shape, ISceneNode *node){
 
     bool isDynamic = (mass != 0.f);
@@ -683,19 +687,19 @@ btRigidBody*	Terrain::localCreateRigidBody(float mass, const btTransform& startT
     m_cPhysics->push_back(body);
     return body;
 }
-
+#endif
 
 void Terrain::registerIrrDevice(IrrlichtDevice &device){
 
     m_irrDevice = &device;
 }
 
-
+#ifdef PHYSICS
 void Terrain::registerPhysics(Physics &physics){
 
     m_cPhysics = &physics;
 }
-
+#endif
 
 void Terrain::registerScene(Scene &scene){
 

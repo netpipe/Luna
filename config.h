@@ -29,7 +29,8 @@
   //  #define ReflectiveWater
   //  #define ReflectWater-Main
   //#define SPARK
-  #define PHYSICS
+  //#define PHYSICS
+  #define BOX2D
  // #define SKELETON
 //#define PostProcess
   //#define VEGETATION
