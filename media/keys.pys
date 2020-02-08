@@ -46,8 +46,9 @@ if input.getKey('KEY_KEY_D') :
 
 
 #Reset Steering
-if not input.getKey('KEY_KEY_A') and not input.getKey('KEY_KEY_D') :
- physics.VehicleParams(car1,9,0,0,0,0)
+#if not input.getKey('KEY_KEY_A') and not input.getKey('KEY_KEY_D') :
+ #physics.VehicleParams(car1,9,0,0,0,0)
+
 
 lsteer=0
 rsteer=0
@@ -56,10 +57,12 @@ rsteer=0
 if input.getKey('KEY_KEY_S') :#or  input.getKey('KEY_DOWN') :
  physics.VehicleParams(car1,2,0,0,0,0)
 #elif
+
+
 #wind resistance
-elif accelerating==0 and input.getKey('KEY_KEY_S')==0:
+#elif accelerating==0 and input.getKey('KEY_KEY_S')==0:
  #print "wind resistance"
- physics.VehicleParams(car1,4,0,0,0,0)
+# physics.VehicleParams(car1,4,0,0,0,0)
 
 if input.getKey('KEY_KEY_R') :
  physics.VehicleParams(car1,0,0,0,0,0)

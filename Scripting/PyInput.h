@@ -513,22 +513,26 @@ PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
 
 PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
 	int type;
+	int result;
 	float x;
 	float y;
-	PyArg_ParseTuple(args,"ifff",&type,&x,&y);
+	PyArg_ParseTuple(args,"iff",&type,&x,&y);
 
-	//setcursor position
-	//get cursor position
-	//visible
+	//core::vector2d<int> position;
+
 	switch (type){
-		case 1:
+		case 1: //set
 		//	irr::gui::ICursorControl::setPosition (x, y);
-		case 2:
-//		vector3df position = irr::gui::ICursorControl::getPosition();
-		case 3:
+		device->getCursorControl()->setPosition(x,y);
+		case 2:	//get X
+		result = device->getCursorControl()->getPosition().X;
+		case 3:	//get Y
+		result = device->getCursorControl()->getPosition().Y;
+
+		case 4:	//visible
 			device->getCursorControl()->setVisible(1);
 	}
-  return Py_BuildValue("");
+  return Py_BuildValue("i",result);
 }
 
 PyObject * Python::PyIrr_sqlconnect(PyObject * self,PyObject * args){

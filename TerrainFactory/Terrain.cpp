@@ -192,8 +192,10 @@ ITerrainSceneNode* Terrain::Terrain2(vector3df t_position,vector3df t_scale,char
       }
       mTriMesh->addTriangle(vertices[0], vertices[1], vertices[2]);
    }
-	mesh->drop();
+   #endif
 
+	mesh->drop();
+   #ifdef PHYSICS
    btCollisionShape* mShape = new btBvhTriangleMeshShape(mTriMesh, true);
 
    btDefaultMotionState* state =   new btDefaultMotionState(btTransform(btQuaternion(0,0,0,1),
