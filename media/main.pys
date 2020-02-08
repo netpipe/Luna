@@ -39,9 +39,9 @@ if (init) :
  responses = ["Not so sure", "42", "Most likely", "Absolutely not", "Outlook is good", "I see good things happening", "Never",
 "Negative", "Could be", "Unclear, ask again", "Yes", "No", "Possible, but not probable"]
 
- #myr.time_reseed();
-# print randint(1,8);
-# print(choice(responses))
+ myr.time_reseed();
+ print randint(1,8);
+ print(choice(responses))
 
 # myr.time_reseed();
 
@@ -131,6 +131,7 @@ if (init) :
 # draw five cards
 # print("You got:")
  hand1 = []
+ hand2 = []
 
  for i in range(5): #use range to place cards on screen
   print("You got:")
@@ -138,20 +139,47 @@ if (init) :
    print(deck[i][0], "of", deck[i][1])
    #card1="\"" + str(deck[i][0]) + "CLUBS.jpg"
    card1="./media/" + str(deck[i][0]) + "CLUBS.png"
-
+   del deck[i]
    hand1.append(image.iadd(card1,i*10,i*10,i*10+55,i*10+84,0,0,55,84))
   if deck[i][1]=="Spade":
    print(deck[i][0], "of", deck[i][1])
    card1="./media/" + str(deck[i][0]) + "SPADES.png"
+   del deck[i]
    hand1.append(image.iadd(card1,i*10,i*10,i*10+55,i*10+84,0,0,55,84))
   if deck[i][1]=="Diamond":
    print(deck[i][0], "of", deck[i][1])
    card1="./media/" + str(deck[i][0]) + "DIAMONDS.png"
+   del deck[i]
    hand1.append(image.iadd(card1,i*10,i*10,i*10+55,i*10+84,0,0,55,84))
   if deck[i][1]=="Heart":
    print(deck[i][0], "of", deck[i][1])
    card1="./media/" + str(deck[i][0]) + "HEARTS.png"
+   del deck[i]
    hand1.append(image.iadd(card1,i*10,i*10,i*10+55,i*10+84,0,0,55,84))
+
+ for i in range(5): #use range to place cards on screen
+  print("You got:")
+  if deck[i][1]=="Club":
+   print(deck[i][0], "of", deck[i][1])
+   #card1="\"" + str(deck[i][0]) + "CLUBS.jpg"
+   card1="./media/" + str(deck[i][0]) + "CLUBS.png"
+   del deck[i]
+   hand2.append(image.iadd(card1,(i*10)+100,i*10,(i*10)+100+55,i*10+84,0,0,55,84))
+  if deck[i][1]=="Spade":
+   print(deck[i][0], "of", deck[i][1])
+   card1="./media/" + str(deck[i][0]) + "SPADES.png"
+   del deck[i]
+   hand2.append(image.iadd(card1,(i*10)+100,i*10,(i*10)+100+55,i*10+84,0,0,55,84))
+  if deck[i][1]=="Diamond":
+   print(deck[i][0], "of", deck[i][1])
+   card1="./media/" + str(deck[i][0]) + "DIAMONDS.png"
+   del deck[i]
+   hand2.append(image.iadd(card1,(i*10)+100,i*10,(i*10)+100+55,i*10+84,0,0,55,84))
+  if deck[i][1]=="Heart":
+   print(deck[i][0], "of", deck[i][1])
+   card1="./media/" + str(deck[i][0]) + "HEARTS.png"
+   del deck[i]
+   hand2.append(image.iadd(card1,(i*10)+100,i*10,(i*10)+100+55,i*10+84,0,0,55,84))
 
 
  teststring = "string"
@@ -206,10 +234,12 @@ if (init) :
 #iaxe = image.iadd("../media/axe.jpg",10,10,500,500,10,10,800,800)
 image.irotate(iaxe,i)
 i+=1
-image.idraw(iaxe)
-image.idraw(iaxe2)
+#image.idraw(iaxe)
+#image.idraw(iaxe2)
 for i in hand1:
  image.idraw(i)
+
+
 
 #if input.getKey('KEY_ESCAPE') :
 # paused=1
@@ -236,8 +266,12 @@ if input.getKey('KEY_F2') : #could have a release action
  #scene.add_cube()
  scene.addSphereNode("data/textures/material/marble1_256.png",0,20,5,5,500) #xyz radius mass
  #scene.setPosition(cube_id,1,1,1)
-irr.delay(0.1);
+#irr.delay(0.1);
+#irr.delay(10000);
+irr.delay(1000);
 
+for t in hand2:
+ image.idraw(t)
 
 scene.using ('../media/keys.pys',"1");
 
