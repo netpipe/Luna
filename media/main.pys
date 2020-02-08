@@ -259,8 +259,12 @@ ticks = time.time()
 
 #print random variable set to make 0 or 1's semi randomly  remove /80 to get larger randoms
 #print int(str(ticks-int(ticks))[2:])%100/80 #Keeping only the numbers after the decimal point, otherwise you would get the same "random" number each second
-test=input.mouse(2,0,0)
-print (test)
+#test=input.mouse(2,0,0) #xcoord
+print (input.mouse(2,0,0))
+
+#=input.mouse(3,0,0) #3ycoord
+#print("testing 2 /n")
+print (input.mouse(3,0,0))
 
 
 if input.getKey('KEY_F2') : #could have a release action

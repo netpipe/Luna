@@ -517,7 +517,7 @@ PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
 	float x;
 	float y;
 	PyArg_ParseTuple(args,"iff",&type,&x,&y);
-
+//position2d<int> pos= device->getCursorControl()->getPosition();
 	//core::vector2d<int> position;
 
 	switch (type){
@@ -525,14 +525,27 @@ PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
 		//	irr::gui::ICursorControl::setPosition (x, y);
 		device->getCursorControl()->setPosition(x,y);
 		case 2:	//get X
-		result = device->getCursorControl()->getPosition().X;
+		//	printf("xcoord %i \n",pos.X);
+		//printf("xcoord %i",device->getCursorControl()->getPosition().X);
+		//result = pos.X;//device->getCursorControl()->getPosition().X;
+		return Py_BuildValue("i",device->getCursorControl()->getPosition().X);
 		case 3:	//get Y
-		result = device->getCursorControl()->getPosition().Y;
+				//pos = device->getCursorControl()->getPosition();
+		//printf("ycoord %i \n",device->getCursorControl()->getPosition().Y);
+		//result = device->getCursorControl()->getPosition().Y;
+		//result = pos.Y;//device->getCursorControl()->getPosition().Y;
+		return Py_BuildValue("i",device->getCursorControl()->getPosition().Y);
+//		return Py_BuildValue("i",luna->m_cInGameEvents.mouseY);
 
 		case 4:	//visible
 			device->getCursorControl()->setVisible(1);
+//		case 5://getmouse1press state
+
+//		case 6://getmouse2press state
+//		case 7://getmouse3press state
+//		case 7://getmousewheel state
 	}
-  return Py_BuildValue("i",result);
+  return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_sqlconnect(PyObject * self,PyObject * args){
