@@ -555,7 +555,7 @@ void Luna::main_loop(){ //devloop actually
 	//#endif
 			//#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
 			Python::preEnd();
-			Python::CheckKeyStates();
+			Python::CheckKeyStates(); //located in pyInput can probably be moved to preEnd as its not being used to check keystates
 			Python::ExecuteScript(irr::core::stringc(pyloader));
 			//Python::ExecuteScript("./RACING/racer/main.pys");
 			guienv->drawAll();

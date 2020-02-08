@@ -81,6 +81,7 @@ PyArg_ParseTuple(args,"s",&path);
 }
 
 PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
+#ifdef PHYSICS
     float state,ammount,y,z;
     int param;
     long mVehicle;
@@ -88,7 +89,7 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
     PyArg_ParseTuple(args,"liffff",&mVehicle,&param,&state,&ammount,&y,&z);
  //   vector3df* position = VehicleParam(mVehicle,param,state,ammount,y,z);
 enum eparam{reset,accelerate,reverse,ebrake,brake,lsteer,rsteer};
-#ifdef PHYSICS
+
 Vehicle *vehicle = (Vehicle *)mVehicle;
 //if param = "accelerate"
 //	action = 1

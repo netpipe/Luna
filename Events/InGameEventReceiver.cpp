@@ -1,5 +1,6 @@
 #include "InGameEventReceiver.h"
 
+
 InGameEventReceiver::InGameEventReceiver()
 {
   for(s32 i = 0; i < KEY_KEY_CODES_COUNT; i++)
@@ -52,6 +53,39 @@ bool InGameEventReceiver::OnEvent ( const SEvent &event )
   }
 		if ( event.EventType == EET_MOUSE_INPUT_EVENT )
 		{
+			switch(event.MouseInput.Event)
+            {
+		case EMIE_LMOUSE_PRESSED_DOWN:
+				printf("mousebutton left clicked");
+			lmouse=true;
+                mouseButtons[LEFT_MOUSE_BUTTON] = true;
+                return false;
+
+            case EMIE_RMOUSE_PRESSED_DOWN:
+                mouseButtons[RIGHT_MOUSE_BUTTON] = true;
+                return false;
+
+            case EMIE_MMOUSE_PRESSED_DOWN:
+                mouseButtons[MIDDLE_MOUSE_BUTTON] = true;
+                return false;
+
+            case EMIE_LMOUSE_LEFT_UP:
+                mouseButtons[LEFT_MOUSE_BUTTON] = false;
+              //  lmouse=false;
+                return false;
+
+            case EMIE_RMOUSE_LEFT_UP:
+                mouseButtons[RIGHT_MOUSE_BUTTON] = false;
+                return false;
+//			case EMIE_MIDDLE_MOUSE_UP:
+//                mouseButtons[RIGHT_MOUSE_BUTTON] = false;
+//                return false;
+//                MIDDLE_MOUSE_BUTTON
+
+			default:
+
+                break;
+            }
 //			if ( camera != NULL )
 //				camera->OnEvent ( event );
 			//printf("event on the mouse button");

@@ -15,6 +15,14 @@ using namespace video;
 using namespace io;
 using namespace gui;
 
+	    enum
+    {
+        LEFT_MOUSE_BUTTON,
+        MIDDLE_MOUSE_BUTTON,
+        RIGHT_MOUSE_BUTTON,
+        NUMBER_OF_MOUSE_BUTTONS
+    };
+
 class InGameEventReceiver : public IEventReceiver
 {
  	// Public variables.
@@ -27,6 +35,15 @@ class InGameEventReceiver : public IEventReceiver
 
 	// Public functions.
 	public:
+
+
+
+bool lmouse;
+
+     bool mouseButtons[NUMBER_OF_MOUSE_BUTTONS];
+
+
+
     InGameEventReceiver();
 
 	s32 mouseDeltaX;

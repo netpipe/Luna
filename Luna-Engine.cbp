@@ -1211,6 +1211,8 @@
 		<Unit filename="Physics/SoftBody.cpp" />
 		<Unit filename="Physics/Vehicle.cpp" />
 		<Unit filename="Physics/Vehicle.h" />
+		<Unit filename="Physics/box2D.cpp" />
+		<Unit filename="Physics/box2D.h" />
 		<Unit filename="Physics/missile.cpp" />
 		<Unit filename="Scene/ATMOsphere.cpp" />
 		<Unit filename="Scene/BoltSceneNode.cpp" />

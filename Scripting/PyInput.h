@@ -519,6 +519,13 @@ PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
 	PyArg_ParseTuple(args,"iff",&type,&x,&y);
 //position2d<int> pos= device->getCursorControl()->getPosition();
 	//core::vector2d<int> position;
+	    enum
+    {
+        LEFT_MOUSE_BUTTON,
+        MIDDLE_MOUSE_BUTTON,
+        RIGHT_MOUSE_BUTTON,
+        NUMBER_OF_MOUSE_BUTTONS
+    };
 
 	switch (type){
 		case 1: //set
@@ -539,7 +546,12 @@ PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
 
 		case 4:	//visible
 			device->getCursorControl()->setVisible(1);
-//		case 5://getmouse1press state
+		case 5://getmouse1press state
+			//printf("%i",luna->m_cInGameEvents.mouseButtons[0]);
+			//printf("%i",luna->m_cInGameEvents.lmouse);
+
+			//return Py_BuildValue("i",luna->m_cInGameEvents.mouseButtons[LEFT_MOUSE_BUTTON]);
+			return Py_BuildValue("i",luna->m_cInGameEvents.lmouse);
 
 //		case 6://getmouse2press state
 //		case 7://getmouse3press state

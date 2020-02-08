@@ -30,7 +30,7 @@
   //  #define ReflectWater-Main
   //#define SPARK
   //#define PHYSICS
-  #define BOX2D
+  //#define BOX2D
  // #define SKELETON
 //#define PostProcess
   //#define VEGETATION
