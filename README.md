@@ -10,9 +10,7 @@ You will need these. Most of it compiles with codeblocks, but the occasional pro
 
 ### SourceForge Version (VirtualBox, Wine, Linux) (Deprecated)
 
-The SourceForge version compiles in VirtualBox, Wine and Linux; however it is very outdated.
-
- - [Agnostic](http://sourceforge.net/projects/agnostic/)
+The [SourceForge version](http://sourceforge.net/projects/agnostic/) compiles in VirtualBox, Wine and Linux; however it is very outdated.
 
 ## TODO
 
