@@ -1,28 +1,26 @@
-Luna Irrlicht Game Engine
+# Luna
+The Luna Irrlicht Game Engine.
 
-mineDBG
-emscripten-project-testing 
+## Building
 
-are the 2 builds i've been working from sofar
+You will need these. Most of it compiles with codeblocks, but the occasional project may still use cmake.
 
+ - [LunaLibs](https://github.com/tecan/LunaLibs)
+ - [IrrlichtDemos](https://github.com/tecan/IrrlichtDemos)
 
+### SourceForge Version (VirtualBox, Wine, Linux) (Deprecated)
 
-ffmpeg and P5 glove driver are LGPL from the libs repo.
-engine is zlib other than sockets code being ported out for irc client and p5 glove controller/ awaiting email on that.
-have special permission to use cwiid code as zlib for engine and derivitaves but OIS looks like a better option.
+The SourceForge version compiles in VirtualBox, Wine and Linux; however it is very outdated.
 
+ - [Agnostic](http://sourceforge.net/projects/agnostic/)
 
-engine itself is zlib licence.
+## TODO
 
-you will need these aswell most of it compiles with codeblocks, the occasional project may still use cmake.
+ - Find emscripten SLOWDOWN in main loop. I've set minimal build options with no avail so far.
 
-https://github.com/tecan/LunaLibs
-https://github.com/tecan/IrrlichtDemos
-
-
-sourceforge version compiles in virtualbox and on wine itself aswell as linux, very outdated though.
-http://sourceforge.net/projects/agnostic/
-
-
-TODO
-find emscripten SLOWDOWN in main loop , i've set minimal build options with no avail sofar.
+## Notes
+ - *mineDBG* and *emscripten-project-testing* are the 2 builds I've been working from.
+ - ffmpeg and P5 glove driver are LGPL-licensed and from the libs repo.
+ - This engine is zlib-licensed other than sockets code being ported out for irc client and p5 glove controller. I am awaiting an email on that.
+ - I have special permission to use cwiid code as zlib-licensed for this engine and its derivitaves but the OIS License looks like a better option.
+ - The engine itself is zlib licenced.
