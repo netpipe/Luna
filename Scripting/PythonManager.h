@@ -53,7 +53,7 @@ PyMODINIT_FUNC Python::init_irr(void){
 	Py_InitModule("irr",irr_FileIO);
 
 };
-#endif
+
 void Python::ExecuteScript(irr::core::string<char> scriptname){
 	/*Using it this way
 	because the methods using the FILE * structure tend to go wonky
@@ -70,7 +70,7 @@ void Python::ExecuteScript(irr::core::string<char> scriptname){
 	with irr::core::string, but as you can see, I solved that problem by explicitly stating
 	the namespace in which the string class I wanted was to be found*/
 };
-
+//#endif
 
 #else // basically for minimal test of python for debugging.
 
@@ -209,4 +209,5 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
 //smgr->setShadowColor(video::SColor(150,0,0,0));
 //smgr->addLightSceneNode(0, core::vector3df(0,0,0),video::SColorf(1.0f, 0.6f, 0.7f, 1.0f), 600.0f);
 }
+#endif
 #endif

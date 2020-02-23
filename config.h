@@ -19,24 +19,24 @@
 
    // #define IRRCD   // irrlicht Collision Detection
     #define EVENTS
-    #define FPS
-    #define CSG // constructive solid geometry
-    #define SGRAPH2D // 2d plot graph
-    #define WIND
+  //  #define FPS
+   // #define CSG // constructive solid geometry
+   // #define SGRAPH2D // 2d plot graph
+    //#define WIND
     #define SCENE
    // #define IRRc
   //  #define PostProcess
- // #define WATER
+  #define WATER
   //  #define ReflectiveWater
   //  #define RealisticWater
 
- // #define SPARK
+  #define SPARK
   //#define BOX2D  // needs to be implimented properly still
  // #define SKELETON // needs to be updated
   //#define PostProcess
   //#define VEGETATION
  // #define TREES //very cpu intensive does not work with emscripten yet.
-  //#define ATMOSPHERE  //  freezes when no video acceleration is used
+  #define ATMOSPHERE  //  freezes when no video acceleration is used
                         //  or as a user without access to video rights is used
   //#define FLARE
   //#define FLARES
@@ -54,7 +54,7 @@
   #define TERRAIN
   //  #define occlusion.
 //#define OCCLUSION
-//  #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
+  //  #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
   #define PHYSICS
   //if bullet carnot enabled with physics and car calls it crashes FIXME
   #define BULLETCAR // if FPSWEAPON is enabled the car wont work. diff event rec
@@ -63,12 +63,12 @@
   //  #define RAG   //bulletRagdoll
   #define EXTRAS
   //  #define DESTRUCTION //not working
- // #define FORMATIONDEMO
+  #define FORMATIONDEMO
   #define HUD
   #define Image2D // Just testing out
-  //#define CHOPPER
-  //#define OPENSTEER
-  //  #define SQLITE
+  #define CHOPPER
+  #define OPENSTEER
+  #define SQLITE
 
 //  #define SCALC
 //#define FT2
