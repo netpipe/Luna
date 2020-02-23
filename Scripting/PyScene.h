@@ -645,6 +645,7 @@ ppMine->setTimer( device->getTimer( ) );
 
         bPProcess=1;
         return Py_BuildValue("l",ppRenderer);
+
 #endif
 return Py_BuildValue("");
 }

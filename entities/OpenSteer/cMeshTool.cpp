@@ -1,3 +1,4 @@
+#include "../../config.h"
 #ifdef OPENSTEER
 #include "cMeshTool.h"
 

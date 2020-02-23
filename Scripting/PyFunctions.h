@@ -48,7 +48,10 @@
 #endif
 
 #ifdef WATER
-    #include "../TerrainFactory/WaterNode/CReflectedWater.h"
+#ifdef ReflevtiveWater
+//    #include "../TerrainFactory/WaterNode/CReflectedWater.h"
+    #endif
+
     #include "../TerrainFactory/water/RealisticWater.h"
 #endif
 
@@ -100,14 +103,16 @@
     RecastUtil* recast = 0;
 #endif
 
-#include "../Scene/particles.h"
 
     #ifdef SPARK
+
         #include "../Scene/SPARK/SPK.h"
         #include "../Scene/SPARK/SPK_IRR.h"
         using namespace SPK;
         using namespace SPK::IRR;
+
 //      #include "../Scene/RainMan.h"
+  //  #include "../Scene/particles.h"
     #endif
 
 #ifdef ASSIMP
@@ -332,6 +337,34 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
  //   skelNode->addShadowVolumeSceneNode();
 //smgr->setShadowColor(video::SColor(150,0,0,0));
 //smgr->addLightSceneNode(0, core::vector3df(0,0,0),video::SColorf(1.0f, 0.6f, 0.7f, 1.0f), 600.0f);
+
+
+#ifdef PostProcess  // tried to put into scripting system but it needs to be worked on more still
+#define GL_OLDMONITOR "uniform float randNum,time,v0;uniform sampler2D texture1;float rand(in float s){return sin(gl_TexCoord[0].x*(1009.0+s*10.0)+tan(gl_TexCoord[0].y*(1090.0+s*100.0)+tan(gl_TexCoord[0].x*111.0+s*10000.0))+s*4.0+gl_TexCoord[0].y*10000.0)*0.5+0.5;}float tear(in float y){return (y-0.8)*0.01/(y*y*y*y+2.0);}void main(void){float c=dot(texture2D(texture1,vec2(floor(gl_TexCoord[0].x*500.0)*0.002+tear((gl_TexCoord[0].y-1.2+mod(time*0.1,1.4))*50.0)*rand(randNum)*5.0*v0,floor(gl_TexCoord[0].y*200.0)*0.005+floor(fract(time*0.1+randNum*0.1)*1.1)*0.03*v0)),vec4(0.2,0.5,0.3,0.0));gl_FragColor=(texture2D(texture1,vec2(gl_TexCoord[0].x+tear(tan(gl_TexCoord[0].y*10.0+time*2.0))*v0,gl_TexCoord[0].y))*(1.0-0.7*v0)+c*0.7*v0+vec4(rand(randNum))*0.1*v0)*(1.0-(sin(gl_TexCoord[0].y*400.0)*0.05+(pow(abs(gl_TexCoord[0].x*2.0-1.0),4.0)+pow(abs(gl_TexCoord[0].y*2.0-1.0),4.0))*0.5)*v0);}"
+#define DX_OLDMONITOR "sampler2D s;float randNum,time,v0;float rand(in float2 t,in float s){return frac(t.x*(1009.0+s*10.0)+tan(t.y*(1090.0+s*100.0)+t.x*111.0)+t.y*10000.0)-0.5;}float tear(in float y){return (y-0.8)*0.01/(y*y*y*y+2.0);}float4 main(float2 t:TEXCOORD0):COLOR{float c=dot(tex2D(s,float2(t.x+tear(frac(t.y-time*0.2)*70.0-35.0)*(rand(t,randNum)+0.5)*4.0,floor(t.y*200.0)*0.005)),float4(0.2,0.5,0.3,0.0));return tex2D(s,t)*(1.0-0.7*v0)+(c*0.7+float4(0.1,0.1,0.1,0.0)*rand(t,randNum))*(1.0-sin(t.y*400.0)*0.05-(pow(abs(t.x-0.5),4.0)+pow(abs(t.y-0.5),4.0))*8.0)*v0;}"
+
+// This monitor effect is NOT supported, and has been known to have problems. I encourage you to use the officially supported PP_MONITOR effect instead in your programs.
+
+// A much simpler shader; this will add a constant number (set by parameters) to the rgba channels
+#define GL_A_SIMPLER_SHADER "uniform float v0;uniform sampler2D texture1;void main(void){gl_FragColor=texture2D(texture1,gl_TexCoord[0].xy)+v0;}"
+#define DX_A_SIMPLER_SHADER "sampler2D s;float v0;float4 main(float2 t:TEXCOORD0):COLOR{return tex2D(s,t)+v0;}"
+
+	//PostProcessing
+        IPostProc* ppRenderer = new CRendererPostProc( smgr, dimension2du( 1024, 512 ),
+                                                    true, true, SColor( 255u, 100u, 101u, 140u ) );
+        ppBlurDOF   = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), PP_BLURDOF );
+         ppBlur          = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), PP_BLUR, 0.00081f );
+//		CEffectPostProc* ppInvert = new CEffectPostProc( ppRenderer, dimension2di( 1024, 512 ), PP_INVERT );
+//	CEffectPostProc* ppBlur = new CEffectPostProc( ppInvert, dimension2di( 1024, 512 ), PP_BLUR, 0.01f );
+	ppMine = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), GL_OLDMONITOR, DX_OLDMONITOR, EPST_PS_1_2, EPST_PS_2_0, EMT_SOLID, PPF_FROMCODE, 1.0f );
+
+        ppBlur->setQuality( PPQ_GOOD );
+        	ppMine->setRequiredVariables( 1, true, true ); // (number of input parameters, uses time?, uses randNum?)
+
+ppMine->setTimer( device->getTimer( ) );
+
+        bPProcess=1;
+#endif
 }
 
 #include "PyScene.h"

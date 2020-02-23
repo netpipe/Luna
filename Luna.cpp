@@ -209,13 +209,15 @@ int Luna::shutdown(){
 	#endif
 
     #ifdef BOIDS
-     delete flock;
+	 //delete flock;
     #endif
 
-    #ifdef PostProcess2
+    #ifdef PostProcess
+    //if (bpostprocess){
 	 delete ppBlurDOF;
 	 delete ppBlur;
-	 delete ppRenderer;
+	// delete ppRenderer;
+	// }
     #endif
 
 	#ifdef ATMOSPHERE
@@ -223,7 +225,7 @@ int Luna::shutdown(){
     #endif
 
 	#ifdef ReflectiveWater
-	 delete water;
+	/// delete water;
 	#endif
 
 	#ifdef RAG

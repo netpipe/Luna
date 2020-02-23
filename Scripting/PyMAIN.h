@@ -82,9 +82,12 @@ namespace Python {
         TesselatedImage *tesImage;
         bool btesimage=0;
     #endif
+
     #ifdef ReflectiveWater
+        #include "../TerrainFactory/WaterNode/CReflectedWater.h"
         CReflectedWater *water;
     #endif
+
     #ifdef occlusion
         Renderer22 *RenderMan;
     #endif
@@ -423,9 +426,7 @@ void Python::render() {//active camera
         #endif
 
         #ifdef ReflectiveWater
-            #ifdef ReflectWater-Main
             if (bWater){  water->updateRendertarget(smgr);  }
-            #endif
         #endif
 
         #ifdef COMPASS

@@ -338,33 +338,38 @@
 					<Add option="-D_IRR_EMSCRIPTEN_PLATFORM_" />
 					<Add option="-D__EMSCRIPTEN__" />
 					<Add option="-DPYTHON" />
-					<Add directory="../EMLibs/irrlicht-ogl-es/irrlicht/include" />
-					<Add directory="../EMLibs/net/irrNetLite22" />
-					<Add directory="../EMLibs/freetype2/include" />
-					<Add directory="../EMLibs/net/enet/include" />
+					<Add directory="../emscripten-projects/irrlicht-ogl-es-2019dec/include" />
+					<Add directory="../emscripten-projects/net/irrNetLite22" />
+					<Add directory="../emscripten-projects/media/freetype2.8/build" />
+					<Add directory="../emscripten-projects/net/enet/include" />
 					<Add directory="FileSystem/readblend" />
-					<Add directory="../EMLibs/media/Ogg/include" />
-					<Add directory="../EMLibs/media/Vorbis/include" />
-					<Add directory="../EMLibs/media/theora/include" />
-					<Add directory="../EMLibs/media/cAudio2/include" />
-					<Add directory="../EMLibs/media/libtheoraplayer/include" />
-					<Add directory="/home/netpipe/Desktop/EMScripten-AddonBundle/Libs/Scripting/EmCPython/Python-2.7/Include" />
+					<Add directory="../emscripten-projects/media/Ogg/include" />
+					<Add directory="../emscripten-projects/media/Vorbis/include" />
+					<Add directory="../emscripten-projects/media/theora/include" />
+					<Add directory="../emscripten-projects/media/cAudio2/include" />
+					<Add directory="../emscripten-projects/media/libtheoraplayer/include" />
+					<Add directory="../emscripten-projects/scripting/EmCPython/Python-2.7/Include" />
 					<Add directory="./entities/AI/recast/RecastDemo/Include" />
 					<Add directory="./entities/AI/recast/DebugUtils/Include" />
 					<Add directory="./entities/AI/recast/Recast/Include" />
 					<Add directory="./entities/AI/recast/Detour/Include" />
 					<Add directory="./entities/AI/recast/DetourCrowd/Include" />
 					<Add directory="./entities/AI/recast/DetourTileCache/Include" />
-					<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/include" />
-					<Add directory="../EMLibs/media/assimp/include" />
-					<Add directory="../EMLibs/media/portable-FluidLite/include" />
-					<Add directory="/home/netpipe/Desktop/EMScripten-AddonBundle/Libs/Scripting/EmCPython/Python-2.7" />
-					<Add directory="../EMLibs/sqlite-amalgamation-3300100" />
-					<Add directory="../EMLibs/Physics/Bullet/bullet/src" />
-					<Add directory="../EMLibs/media/openal-soft/include" />
-					<Add directory="../EMLibs/SparkEngine/include" />
-					<Add directory="/home/netpipe/Desktop/EMScripten-AddonBundle/Libs/physics/Bullet/bullet/src" />
-					<Add directory="../EMLibs/zlib-1.2.3" />
+					<Add directory="../emscripten-projects/AI/libIrrOpenSteer/include" />
+					<Add directory="../emscripten-projects/media/assimp/include" />
+					<Add directory="../emscripten-projects/media/fluidsynth-emscripten/include" />
+					<Add directory="../emscripten-projects/sqlite/sqlite-amalgamation-3300100" />
+					<Add directory="../emscripten-projects/physics/Bullet/bullet/src" />
+					<Add directory="../emscripten-projects/compression/zlib-1.2.3" />
+					<Add directory="../emscripten-projects/scripting/sqplus/sqplus" />
+					<Add directory="../emscripten-projects/media/freetype2.8/include" />
+					<Add directory="../emscripten-projects/scripting/EmCPython/Python-2.7/" />
+					<Add directory="../emscripten-projects/media/fluidsynth-emscripten/" />
+					<Add directory="../emscripten-projects/media/SparkEngine/include" />
+					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxCore/include" />
+					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxUtil/include" />
+					<Add directory="../emscripten-projects/compression/libtar/build/include" />
+					<Add directory="../emscripten-projects/media/SparkEngine/src" />
 				</Compiler>
 				<Linker>
 					<Add option="-s ALLOW_MEMORY_GROWTH=1" />
@@ -397,32 +402,35 @@
 					<Add library="vorbis" />
 					<Add library="vorbisfile" />
 					<Add library="cAudio" />
-					<Add directory="../EMLibs/freetype2/build" />
-					<Add directory="../EMLibs/net/enet" />
-					<Add directory="../EMLibs/irrlicht-ogl-es/irrlicht/lib/Linux" />
+					<Add directory="../emscripten-projects/media/freetype2.8/build" />
+					<Add directory="../emscripten-projects/net/enet" />
+					<Add directory="../emscripten-projects/irrlicht-ogl-es-2019dec/lib/Linux" />
 					<Add directory="../LunaLibs/Compiled/Linux" />
-					<Add directory="../EMLibs/theoraplayer/bin/Linux" />
-					<Add directory="../EMLibs/net/irrNetLite22" />
-					<Add directory="../EMLibs/libIrrOpenSteer_10-02-15/lib" />
+					<Add directory="../emscripten-projects/media/theoraplayer/bin/Linux" />
+					<Add directory="../emscripten-projects/net/irrNetLite22" />
+					<Add directory="../emscripten-projects/AI/libIrrOpenSteer/lib" />
 					<Add directory="./entities/AI/recast/DebugUtils/Include/" />
-					<Add directory="../EMLibs/media/assimp/lib" />
-					<Add directory="../EMLibs/media/cAudio2/bin/gcc" />
-					<Add directory="../EMLibs/media/libtheoraplayer/src/.libs" />
-					<Add directory="../EMLibs/media/portable-FluidLite" />
-					<Add directory="../EMLibs/sqlite-amalgamation-3300100" />
-					<Add directory="/home/netpipe/Desktop/EMScripten-AddonBundle/Libs/Scripting/EmCPython/Python-2.7" />
-					<Add directory="../EMLibs/Physics/Bullet/bullet/src/BulletDynamics" />
-					<Add directory="../EMLibs/Physics/Bullet/bullet/src/BulletSoftBody" />
-					<Add directory="../EMLibs/Physics/Bullet/bullet/src/BulletCollision" />
-					<Add directory="../EMLibs/Physics/Bullet/bullet/src/LinearMath" />
+					<Add directory="../emscripten-projects/media/assimp/lib" />
+					<Add directory="../emscripten-projects/media/cAudio2/bin/gcc" />
+					<Add directory="../emscripten-projects/media/libtheoraplayer/src/.libs" />
+					<Add directory="../emscripten-projects/media/fluidsynth-emscripten/src" />
+					<Add directory="../emscripten-projects/sqlite/sqlite-amalgamation-3300100" />
+					<Add directory="../emscripten-projects/scripting/EmCPython/Python-2.7/" />
+					<Add directory="../emscripten-projects/physics/Bullet/bullet/src/BulletDynamics" />
+					<Add directory="../emscripten-projects/physics/Bullet/bullet/src/BulletSoftBody" />
+					<Add directory="../emscripten-projects/physics/Bullet/bullet/src/BulletCollision" />
+					<Add directory="../emscripten-projects/physics/Bullet/bullet/src/LinearMath" />
 					<Add directory="../EMLibs/Compiled/emscripten" />
-					<Add directory="../EMLibs/media/Ogg" />
-					<Add directory="../EMLibs/media/Vorbis" />
-					<Add directory="../EMLibs/media/theora/" />
-					<Add directory="/home/netpipe/Desktop/EMScripten-AddonBundle/Libs/physics/Bullet/bullet/msvc/2008/lib/Release" />
-					<Add directory="../EMLibs/PolyVox/library/PolyVoxCore" />
-					<Add directory="../EMLibs/PolyVox/library/PolyVoxUtil" />
-					<Add directory="../EMLibs/zlib-1.2.3" />
+					<Add directory="../emscripten-projects/media/Ogg" />
+					<Add directory="../emscripten-projects/media/Vorbis" />
+					<Add directory="../emscripten-projects/media/theora/" />
+					<Add directory="../emscripten-projects/physics/Bullet/bullet/msvc/2008/lib/Release" />
+					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxCore" />
+					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxUtil" />
+					<Add directory="../emscripten-projects/compression/zlib-1.2.3" />
+					<Add directory="../emscripten-projects/scripting/sqplus/lib" />
+					<Add directory="../emscripten-projects/media/SparkEngine/lib/emscripten/static" />
+					<Add directory="../emscripten-projects/compression/libtar/build/include" />
 				</Linker>
 				<ExtraCommands>
 					<Add before="./emclean.sh emscripten" />
@@ -477,6 +485,7 @@
 					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxCore/include" />
 					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxUtil/include" />
 					<Add directory="../emscripten-projects/compression/libtar/build/include" />
+					<Add directory="../emscripten-projects/media/SparkEngine/src" />
 				</Compiler>
 				<Linker>
 					<Add option="-s ALLOW_MEMORY_GROWTH=1" />
@@ -490,6 +499,7 @@
 					<Add option="-s ASSERTIONS=2" />
 					<Add option="--memory-init-file 0" />
 					<Add option="-s EMULATE_FUNCTION_POINTER_CASTS=1" />
+					<Add option="--shared-memory" />
 					<Add library="GL" />
 					<Add library="openal" />
 					<Add library="dl" />
@@ -544,7 +554,7 @@
 					<Add directory="../emscripten-projects/compression/zlib-1.2.3" />
 					<Add directory="../emscripten-projects/scripting/sqplus/lib" />
 					<Add directory="../emscripten-projects/media/SparkEngine/lib/emscripten/static" />
-					<Add directory="../emscripten-projects/compression/libtar/build/include" />
+					<Add directory="../emscripten-projects/compression/libtar/build/lib" />
 				</Linker>
 				<ExtraCommands>
 					<Add before="./emclean.sh emscripten" />
@@ -599,6 +609,7 @@
 					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxCore/include" />
 					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxUtil/include" />
 					<Add directory="../emscripten-projects/compression/libtar/build/include" />
+					<Add directory="../emscripten-projects/media/SparkEngine/src" />
 				</Compiler>
 				<Linker>
 					<Add option="-s ALLOW_MEMORY_GROWTH=1" />
@@ -606,12 +617,12 @@
 					<Add option="-s FULL_ES2=1" />
 					<Add option="-s DISABLE_EXCEPTION_CATCHING=0" />
 					<Add option="-s NO_EXIT_RUNTIME=1" />
-					<Add option="--shared-memory" />
-					<Add option="-s ERROR_ON_UNDEFINED_SYMBOLS=0" />
-					<Add option="-s TOTAL_MEMORY=64Mb" />
 					<Add option="-s ASSERTIONS=2" />
+					<Add option="-s TOTAL_MEMORY=64Mb" />
 					<Add option="--memory-init-file 0" />
 					<Add option="-s EMULATE_FUNCTION_POINTER_CASTS=1" />
+					<Add option="-s ERROR_ON_UNDEFINED_SYMBOLS=0" />
+					<Add option="--shared-memory" />
 					<Add library="GL" />
 					<Add library="openal" />
 					<Add library="dl" />
@@ -657,7 +668,6 @@
 					<Add directory="../emscripten-projects/physics/Bullet/bullet/src/BulletSoftBody" />
 					<Add directory="../emscripten-projects/physics/Bullet/bullet/src/BulletCollision" />
 					<Add directory="../emscripten-projects/physics/Bullet/bullet/src/LinearMath" />
-					<Add directory="../EMLibs/Compiled/emscripten" />
 					<Add directory="../emscripten-projects/media/Ogg" />
 					<Add directory="../emscripten-projects/media/Vorbis" />
 					<Add directory="../emscripten-projects/media/theora/" />
@@ -667,7 +677,7 @@
 					<Add directory="../emscripten-projects/compression/zlib-1.2.3" />
 					<Add directory="../emscripten-projects/scripting/sqplus/lib" />
 					<Add directory="../emscripten-projects/media/SparkEngine/lib/emscripten/static" />
-					<Add directory="../emscripten-projects/compression/libtar/build/include" />
+					<Add directory="../emscripten-projects/compression/libtar/build/lib" />
 				</Linker>
 				<ExtraCommands>
 					<Add before="./emclean.sh emscripten" />
@@ -785,7 +795,7 @@
 					<Add directory="../emscripten-projects/compression/zlib-1.2.3" />
 					<Add directory="../emscripten-projects/scripting/sqplus/lib" />
 					<Add directory="../emscripten-projects/media/SparkEngine/lib/emscripten/static" />
-					<Add directory="../emscripten-projects/compression/libtar/build/include" />
+					<Add directory="../emscripten-projects/compression/libtar/build/lib" />
 				</Linker>
 				<ExtraCommands>
 					<Add before="./emclean.sh emscripten" />
@@ -949,11 +959,10 @@
 					<Add option="-s TOTAL_MEMORY=64Mb" />
 					<Add option="-s ASSERTIONS=2" />
 					<Add option="--memory-init-file 0" />
-					<Add option="-s EMULATE_FUNCTION_POINTER_CASTS=1" />
 					<Add option="-s ERROR_ON_UNDEFINED_SYMBOLS=0" />
+					<Add option="-s EMULATE_FUNCTION_POINTER_CASTS=1" />
 					<Add library="GLESv2" />
 					<Add library="GL" />
-					<Add library="openal" />
 					<Add library="python2.7" />
 					<Add library="pthread" />
 					<Add library="Irrlicht" />
@@ -986,7 +995,7 @@
 					<Add directory="../emscripten-projects/compression/zlib-1.2.3" />
 					<Add directory="../emscripten-projects/scripting/sqplus/lib" />
 					<Add directory="../emscripten-projects/media/SparkEngine/lib/emscripten/static" />
-					<Add directory="../emscripten-projects/compression/libtar/build/include" />
+					<Add directory="../emscripten-projects/compression/libtar/lib/.libs" />
 				</Linker>
 				<ExtraCommands>
 					<Add before="./emclean.sh emscripten" />
@@ -1094,6 +1103,7 @@
 			<Add directory="../LunaLibs/PolyVox/library/PolyVoxCore" />
 			<Add directory="../LunaLibs/media/fluidsynth-emscripten/src" />
 			<Add directory="../LunaLibs/bullet3-2.86.1/msvc/2008/lib/Debug" />
+			<Add directory="../LunaLibs/OpenSteer" />
 		</Linker>
 		<Unit filename="DevLoop.h" />
 		<Unit filename="Equipment/Rifle.cpp" />
@@ -1459,8 +1469,6 @@
 				<doxyfile_dot />
 				<general />
 			</DoxyBlocks>
-			<code_completion />
-			<debugger />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

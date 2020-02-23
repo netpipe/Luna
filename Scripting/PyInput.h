@@ -804,7 +804,9 @@ if (chopperEnabled){
 
 #ifdef DECALS
   if(bDecals){
+		#ifdef PHYSICS
         btVector3 Normal;
+		#endif
 //      vector3df pos = camera->getPosition();
         vector3df upvect = camera->getUpVector();
         vector3df target = camera->getTarget();

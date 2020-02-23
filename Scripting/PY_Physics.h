@@ -195,16 +195,19 @@ PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){
 
     // initialize OpenSteerDemo application
 
-    OpenSteer::OpenSteerDemo::initialize();
-//    OpenSteer::OpenSteerDemo::selectNextPlugIn();
-//   OpenSteer::OpenSteerDemo::selectNextPlugIn();
+       OpenSteer::OpenSteerDemo::initialize();
+
+    OpenSteer::OpenSteerDemo::selectNextPlugIn();
+ //  OpenSteer::OpenSteerDemo::selectNextPlugIn();
+
 //       OpenSteer::OpenSteerDemo::selectNextPlugIn();
 //       }else {// or restart
 //    OpenSteer::OpenSteerDemo::selectNextPlugIn();
 //    }
     // were going to need more to this function maybe some internal calls for things like individual paths
   #endif
-        Py_RETURN_NONE;
+//        Py_RETURN_NONE;
+        return Py_BuildValue("");
 
 }
 
@@ -226,6 +229,7 @@ PyArg_ParseTuple(args,"sfff",&path,&loc.X,&loc.Y,&loc.Z);
      //device->getSceneManager()->isCulled(node);
             return Py_BuildValue("l",chopperControl);
             #endif
+            return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_BulletBlend(PyObject * self,PyObject * args) {

@@ -1,5 +1,5 @@
 
-#ifdef SPARK
+#ifdef SPARK-particles
 
 
 

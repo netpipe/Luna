@@ -19,7 +19,7 @@ class Player
 		void initialize(void);
 		void registerIrrlichtDevice(f32 frameDeltaTime2,IrrlichtDevice &device);
 
-		void setParent(ISceneNode *parent);
+		void setParent(irr::scene::ISceneNode *parent);
 
 		std::string name;
 		std::string guildName;
@@ -61,12 +61,12 @@ void shoot(void);
     void setIsDead(bool val);
         void setSpeed(float val);
 
-    __inline void setPlayerNode(IAnimatedMeshSceneNode *node)
+    __inline void setPlayerNode(irr::scene::IAnimatedMeshSceneNode *node)
     {
       playerNode = node;
     }
 
-    __inline IAnimatedMeshSceneNode *getPlayerNode(void)
+    __inline irr::scene::IAnimatedMeshSceneNode *getPlayerNode(void)
     {
       return playerNode;
     }

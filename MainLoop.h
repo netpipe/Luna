@@ -79,10 +79,11 @@ device->getCursorControl()->setVisible(true);
 		//	device->setEventReceiver(&receiver);
 
 
-        #ifdef PostProcess2
-			ppBlurDOF->render( NULL );
-            ppBlur->render( NULL );
-
+        #ifdef PostProcess
+//        if (bPProcess){
+//			ppBlurDOF->render( NULL );
+//            ppBlur->render( NULL );
+//			}
         #endif
 
 

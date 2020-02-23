@@ -257,8 +257,9 @@ case 0:
 //    flock->update(selecta,1,0);
 //}
     break;
-case 1:
-    break;
+//case 1:
+//    printf("test");
+//    break;
 //case 2:
 //break;
 }
