@@ -16,7 +16,7 @@
 #define AgAudio // not working with emscripten
 //#define SDLMixer // wip
 //#define OPENAL // working with emscripten
-//#define SDLSound
+//#define SDLSound - seems to play and freeze needs threading
 
 
    // #define IRRCD   // irrlicht Collision Detection

@@ -194,8 +194,6 @@
 					<Add library="vorbisfile" />
 					<Add library="SPARK" />
 					<Add library="SPARK_IRR" />
-					<Add library="libSDL_sound2" />
-					<Add library="SDL2" />
 				</Linker>
 			</Target>
 			<Target title="mineREL">
