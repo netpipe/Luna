@@ -47,16 +47,9 @@
 #endif
 
 #ifdef AgAudio
-#include "./Input/AgAudio/Sound.h"
+	#include "./Input/AgAudio/Sound.h"
 #endif
 
-#ifdef SDLMixer
-
-#endif
-
-#ifdef OPENAL
-	#include "./Input/openal_playback.h"
-#endif
 //#include "TerrainFactory/GrassSceneNode/CGrassPatchSceneNode.h"
 //#include "Input/Model/IrrAssimp/IrrAssimp.h"
 
@@ -112,6 +105,8 @@ char * pyloader;
 
 		#ifdef AgAudio
 //		Sound *m_sound;
+    static Sound *m_sound;
+    static Sound m_default_sound_buffer;
 		#endif
 
 		#include "./Input/SDLMixer.h"
@@ -163,8 +158,7 @@ struct SAppContext
 
 //  protected:
 //
-//    static Sound *m_sound;
-//    static Sound m_default_sound_buffer;
+
 };
 
 

@@ -64,7 +64,7 @@ void SoundFactory::unloadOgg ( const std::string &soundName )
 //! Loads a sound and returns the SoundID
 unsigned long SoundFactory::loadSound ( const std::string &soundFile, const bool &intoMemory)
 {
-	std::string soundName = std::string ( "./" ) + workingDirectory + std::string ( "/Sounds/" ) + soundFile;
+	std::string soundName = std::string ( "../" ) + workingDirectory + std::string ( "media" ) + soundFile;
 	if ( sounds.find ( soundName ) != sounds.end() )
 	{
 		SoundSource *newSource = new SoundSource();

@@ -63,6 +63,33 @@ using namespace gui;
 #include "./Input/Compress/zpipe.h"
 #endif // COMPRESS
 
+
+
+//
+//		#ifdef AgAudio
+//		static Sound *m_sound;
+//		static Sound m_default_sound_buffer;
+//		#endif
+
+
+#ifdef SDLMixer
+		#include "./Input/SDLMixer.h"
+
+
+#endif
+
+#ifdef SDLSound
+		#include "./Input/SDL/SDLsound.h"
+#endif
+
+#ifdef OPENAL
+	#include "./Input/openal_playback.h"
+#endif
+
+
+
+
+
 //#define PostProcess
 
 bool connected,doit,login=0;
@@ -356,10 +383,35 @@ int Luna::init(){
 	#endif
     #endif
 
+
+#ifdef AgAudio
+		Sound::Instance()->Create();
+//	    Sound::Instance()->PlayBackgroundMusic(1);
+
+//	m_sound->Create();
+//	m_sound->PlayBackgroundMusic(m_sound->menuM);
+
+#endif
+
+#ifdef SDLMixer
+	SDLPlay();
+#endif
+
+#ifdef SDLSound
+	sdlsoundinit();
+#endif
+
+
+#ifdef OPENAL
+	alplay();
+#endif
     return 0;
 }
 
 int Luna::Run(){  // starts the game in dev mode or release mode some features are easier to impliment into the mainloop rather than scripting for testing //uses devloop or main_loop for emscripten
+
+
+
 
     events.devLogin=0;
     #ifndef NDEBUG
@@ -476,18 +528,7 @@ setenv("PYTHONHOME", "/", 0);
 //		shutdown();
 		//}
 
-#ifdef AgAudio
-		    Sound::Instance()->Create();
-    Sound::Instance()->PlayBackgroundMusic(1);
-//m_sound->Create();
-//m_sound->PlayBackgroundMusic(1);
-#endif
-#ifdef SDLMixer
-//SDLPlay();
-#endif
-#ifdef OPENAL
-alplay();
-#endif
+
 
     return 1;
 }
@@ -502,7 +543,7 @@ void Luna::main_loop(){ //devloop actually
 	#endif
 
 	#ifdef AgAudio
-	 Sound::Instance()->PlayAll();
+	// Sound::Instance()->PlayAll();
 	//  m_sound->Instance()->PlayAll();
 	#endif
 

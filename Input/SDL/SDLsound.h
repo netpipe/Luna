@@ -1,3 +1,4 @@
+#include "../../config.h"
 #ifdef SDLSound
 /**
  * SDL_sound; An abstract sound format decoding API.
@@ -159,7 +160,7 @@ static void playOneSoundFile(const char *fname)
 } /* playOneSoundFile */
 
 
-int main(int argc, char **argv)
+int sdlsoundinit()
 {
     int i;
 
@@ -170,12 +171,12 @@ int main(int argc, char **argv)
         return(42);
     } /* if */
 
-    for (i = 1; i < argc; i++)  /* each arg is an audio file to play. */
-        playOneSoundFile(argv[i]);
+//    for (i = 1; i < argc; i++)  /* each arg is an audio file to play. */
+        playOneSoundFile("../media/bling.wav");
 
     /* Shutdown the libraries... */
-    Sound_Quit();
-    SDL_Quit();
+    //Sound_Quit();
+   // SDL_Quit();
     return(0);
 } /* main */
 

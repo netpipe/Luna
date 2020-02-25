@@ -18,6 +18,9 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
     // sound intensity for raycasted sound.  // surfaceRoughnessHardness/propigation factor, distance,handle
     switch (param){
     case 0:
+      {
+
+
 //        managerID = cAudio::createAudioManager(true);  // broken has to be done from main
        if( managerID)
         {
@@ -29,15 +32,40 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
 
        return Py_BuildValue("l",managerID);
         //break;
+      }
     case 1:
-            mysound = managerID->create("bling","./media/bling.ogg",false);
+      {
 
+
+            mysound = managerID->create("bling","./media/bling.ogg",false);
+      }
        return Py_BuildValue("l",mysound);
         break;
     }
 
 return Py_BuildValue("l",managerID);
   #endif
+
+
+#ifdef OPENAL
+    //switch (param){
+    //case 0:
+
+
+#endif
+
+
+#ifdef SDLSOUND
+    //switch (param){
+    //case 0:
+
+
+#endif
+
+
+
+
+return Py_BuildValue("");
 }// make add sound method
 
 PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active camera

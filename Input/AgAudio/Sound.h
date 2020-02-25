@@ -5,25 +5,29 @@
 //#include "../../Luna.h"
 #include "audio.h"
 
+#define _DEBUG_MODE_
+#define _PLAY_SOUND_
+//#include "Sound.hpp"
+
 class Sound
 {
-  private:
 
-//    unsigned int
-//      *musicMenu,
-//      *musicStage1,
-//      *musicStage2,
-//      *musicStage3,
-//      *musicDead,
-//      *musicClear,
-//
-//      *sampleCellPickup;
+  public:
+    unsigned int
+      *musicMenu,
+      *musicStage1,
+      *musicStage2,
+      *musicStage3,
+      *musicDead,
+      *musicClear,
 
-//    float
-//      pos[3],
-//      samplePos[3],
-//      lastPos[3],
-//      vel[3];
+      *sampleCellPickup;
+
+    float
+      pos[3],
+      samplePos[3],
+      lastPos[3],
+      vel[3];
 
 //    vector3df rot;
 
@@ -46,7 +50,7 @@ class Sound
 	agEngine::AudioSource *channel1;
 	agEngine::AudioSource *channel2;
 
-  public:
+
 
     static Sound *Instance();
 

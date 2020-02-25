@@ -1,7 +1,8 @@
 #include "../../config.h"
 #ifdef AgAudio
-#include "Sound.h"
 
+#include "Sound.h"
+using namespace agEngine;
 #include <pthread.h>
 
 Sound *Sound::m_sound = NULL;
@@ -35,7 +36,8 @@ int Sound::Create(void)
 	//!Sound init
   adevice = agEngine::createDevice(true);
 
-  menuM = agEngine::SoundData::LoadAudio(std::string("../media/IrrlichtTheme.ogg"), false);
+ // menuM = agEngine::SoundData::LoadAudio(std::string("../media/IrrlichtTheme.ogg"), false);
+    menuM = agEngine::SoundData::LoadAudio(std::string("../media/bling.ogg"), false);
 //  stage1M = agEngine::SoundData::LoadAudio(std::string("media/Sounds/cell_stage01.ogg"), false);
 //  stage2M = agEngine::SoundData::LoadAudio(std::string("media/Sounds/cell_stage02.ogg"), false);
 //  stage3M = agEngine::SoundData::LoadAudio(std::string("media/Sounds/cell_stage03.ogg"), false);
@@ -111,49 +113,6 @@ void Sound::PlayBackgroundMusic(int music)
 //    } break;
 //  }
 }
-//
-//void Sound::PlayCellPickupSample(vector3df position)
-//{
-//  samplePos[0] = position.X;
-//  samplePos[1] = position.Y;
-//  samplePos[2] = position.Z;
-//
-//  // Fix Me! (put whatever the pickup sound is @_@
-//  agEngine::SoundData *pickupSound = footS;
-//
-//  // Check all the available channels for one that's free
-//  //if (channel1->isPlaying())
-//  //{
-//	  channel1->stop();
-//	  channel1->attachSound(pickupSound);
-//	  channel1->play();
-// // }
-//  //else if (channel2->isPlaying())
-//  //{
-//	//  channel2->stop();
-//	//  channel2->attachSound(pickupSound);
-//	//  channel2->play();
-//  //}
-//}
-//
-//void Sound::UpdateListener(vector3df position, vector3df rotation)
-//{
-//  pos[0] = position.X;
-//  pos[1] = position.Y;
-//  pos[2] = position.Z;
-//
-//  vel[0] = (pos[0] - lastPos[0]) * 1000;
-//  vel[1] = (pos[1] - lastPos[1]) * 1000;
-//  vel[2] = (pos[2] - lastPos[2]) * 1000;
-//
-//  lastPos[0] = pos[0];
-//  lastPos[1] = pos[1];
-//  lastPos[2] = pos[2];
-//
-//  adevice->setListenerPosition(pos[0], pos[1], pos[2]);
-////  Output::Instance()->w("\n%f %f %f\n%f %f %f\n\n", pos[0], pos[1], pos[2], vel[0], vel[1], vel[2]);
-//}
-//
 void Sound::Drop(void)
 {
 //	deadS->drop();
@@ -195,6 +154,47 @@ void Sound::Drop(void)
 //	}
 //    }
 }
+
+//void Sound::UpdateListener(vector3df position, vector3df rotation)
+//{
+////  pos[0] = position.X;
+////  pos[1] = position.Y;
+////  pos[2] = position.Z;
+////
+////  vel[0] = (pos[0] - lastPos[0]) * 1000;
+////  vel[1] = (pos[1] - lastPos[1]) * 1000;
+////  vel[2] = (pos[2] - lastPos[2]) * 1000;
+////
+////  lastPos[0] = pos[0];
+////  lastPos[1] = pos[1];
+////  lastPos[2] = pos[2];
+////
+////  adevice->setListenerPosition(pos[0], pos[1], pos[2]);
+////  Output::Instance()->w("\n%f %f %f\n%f %f %f\n\n", pos[0], pos[1], pos[2], vel[0], vel[1], vel[2]);
+//}
+
+//void Sound::PlayFootStepSound(bool play){
+//    if ( play ){
+//	// Fix Me! (put whatever the foot sound is =/
+//	agEngine::SoundData *footSound = footS;
+//
+//	  // Check all the available channels for one that's free
+//	if (!channel1->isPlaying())
+//	{
+//		channel1->stop();
+//		channel1->attachSound(footSound);
+//		channel1->setPosition(samplePos[0], samplePos[1], samplePos[2]);
+//		channel1->play();
+//	}
+//	else if (!channel2->isPlaying())
+//	{
+//		channel2->stop();
+//		channel2->attachSound(footSound);
+//		channel2->setPosition(samplePos[0], samplePos[1], samplePos[2]);
+//		channel2->play();
+//	}
+//    }
+//}
 
 void Sound::PlayAll(void)
 {

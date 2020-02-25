@@ -194,6 +194,8 @@
 					<Add library="vorbisfile" />
 					<Add library="SPARK" />
 					<Add library="SPARK_IRR" />
+					<Add library="libSDL_sound2" />
+					<Add library="SDL2" />
 				</Linker>
 			</Target>
 			<Target title="mineREL">
@@ -499,7 +501,6 @@
 					<Add option="-s ASSERTIONS=2" />
 					<Add option="--memory-init-file 0" />
 					<Add option="-s EMULATE_FUNCTION_POINTER_CASTS=1" />
-					<Add option="--shared-memory" />
 					<Add library="GL" />
 					<Add library="openal" />
 					<Add library="dl" />
@@ -653,7 +654,6 @@
 					<Add directory="../emscripten-projects/media/freetype2.8/build" />
 					<Add directory="../emscripten-projects/net/enet" />
 					<Add directory="../emscripten-projects/irrlicht-ogl-es-2019dec/lib/Linux" />
-					<Add directory="../LunaLibs/Compiled/Linux" />
 					<Add directory="../emscripten-projects/media/theoraplayer/bin/Linux" />
 					<Add directory="../emscripten-projects/net/irrNetLite22" />
 					<Add directory="../emscripten-projects/AI/libIrrOpenSteer/lib" />
@@ -685,7 +685,7 @@
 				</ExtraCommands>
 			</Target>
 			<Target title="emscripten-projects-testing-nopy">
-				<Option output="./GAME/Luna.html" prefix_auto="0" extension_auto="0" />
+				<Option output="./Luna.html" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".emtestobjsnopy" />
 				<Option type="1" />
@@ -902,7 +902,7 @@
 				</ExtraCommands>
 			</Target>
 			<Target title="empythontest">
-				<Option output="./GAME/Luna.html" prefix_auto="0" extension_auto="0" />
+				<Option output="./Luna.html" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".emdobjstest2" />
 				<Option type="1" />
@@ -1040,6 +1040,7 @@
 			<Add directory="../LunaLibs/SparkEngine/src" />
 			<Add directory="../LunaLibs/SparkEngine/include" />
 			<Add directory="../LunaLibs/PolyVox/library/PolyVoxCore/include" />
+			<Add directory="../emscripten-projects/SDL/SDL_sound/src" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />
@@ -1104,6 +1105,7 @@
 			<Add directory="../LunaLibs/media/fluidsynth-emscripten/src" />
 			<Add directory="../LunaLibs/bullet3-2.86.1/msvc/2008/lib/Debug" />
 			<Add directory="../LunaLibs/OpenSteer" />
+			<Add directory="../emscripten-projects/SDL/SDL_sound/src" />
 		</Linker>
 		<Unit filename="DevLoop.h" />
 		<Unit filename="Equipment/Rifle.cpp" />
@@ -1151,8 +1153,6 @@
 		<Unit filename="Input/AgAudio/Ogg/OggFile.h" />
 		<Unit filename="Input/AgAudio/Sound.cpp" />
 		<Unit filename="Input/AgAudio/Sound.h" />
-		<Unit filename="Input/AgAudio/SoundFactory.cpp" />
-		<Unit filename="Input/AgAudio/SoundFactory.h" />
 		<Unit filename="Input/AgAudio/SoundSource/SoundSource.cpp" />
 		<Unit filename="Input/AgAudio/SoundSource/SoundSource.h" />
 		<Unit filename="Input/AgAudio/audio.cpp" />
@@ -1203,6 +1203,7 @@
 		<Unit filename="Input/fluidsynthconfig.h" />
 		<Unit filename="Input/inputManager.cpp" />
 		<Unit filename="Input/inputManager.h" />
+		<Unit filename="Input/openal_playback.h" />
 		<Unit filename="Luna.cpp" />
 		<Unit filename="Luna.h" />
 		<Unit filename="LunaLobby.cpp" />

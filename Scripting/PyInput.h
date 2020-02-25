@@ -529,34 +529,62 @@ PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
 
 	switch (type){
 		case 1: //set
-		//	irr::gui::ICursorControl::setPosition (x, y);
-		device->getCursorControl()->setPosition(x,y);
+			//	irr::gui::ICursorControl::setPosition (x, y);
+			device->getCursorControl()->setPosition(x,y);
+			break;
 		case 2:	//get X
-		//	printf("xcoord %i \n",pos.X);
-		//printf("xcoord %i",device->getCursorControl()->getPosition().X);
-		//result = pos.X;//device->getCursorControl()->getPosition().X;
-		return Py_BuildValue("i",device->getCursorControl()->getPosition().X);
+			{
+				//	printf("xcoord %i \n",pos.X);
+				//printf("xcoord %i",device->getCursorControl()->getPosition().X);
+				//result = pos.X;//device->getCursorControl()->getPosition().X;
+				return Py_BuildValue("i",device->getCursorControl()->getPosition().X);
+			}break;
+
 		case 3:	//get Y
-				//pos = device->getCursorControl()->getPosition();
-		//printf("ycoord %i \n",device->getCursorControl()->getPosition().Y);
-		//result = device->getCursorControl()->getPosition().Y;
-		//result = pos.Y;//device->getCursorControl()->getPosition().Y;
-		return Py_BuildValue("i",device->getCursorControl()->getPosition().Y);
-//		return Py_BuildValue("i",luna->m_cInGameEvents.mouseY);
+			{
+			//pos = device->getCursorControl()->getPosition();
+			//printf("ycoord %i \n",device->getCursorControl()->getPosition().Y);
+			//result = device->getCursorControl()->getPosition().Y;
+			//result = pos.Y;//device->getCursorControl()->getPosition().Y;
+			return Py_BuildValue("i",device->getCursorControl()->getPosition().Y);
+			//		return Py_BuildValue("i",luna->m_cInGameEvents.mouseY);
+			}break;
 
 		case 4:	//visible
+			{
 			device->getCursorControl()->setVisible(1);
-		case 5://getmouse1press state
-			//printf("%i",luna->m_cInGameEvents.mouseButtons[0]);
-			//printf("%i",luna->m_cInGameEvents.lmouse);
+			}break;
 
-			//return Py_BuildValue("i",luna->m_cInGameEvents.mouseButtons[LEFT_MOUSE_BUTTON]);
-			return Py_BuildValue("i",luna->m_cInGameEvents.lmouse);
+		case 5:	//invisible
+			{
+			device->getCursorControl()->setVisible(0);
+			}break;
 
-//		case 6://getmouse2press state
-//		case 7://getmouse3press state
-//		case 7://getmousewheel state
+		case 6://getmouse1press state
+			{
+				printf("%i",luna->m_cInGameEvents.mouseButtons[0]);
+				//printf("%i",luna->m_cInGameEvents.lmouse);
+
+				//return Py_BuildValue("i",luna->m_cInGameEvents.mouseButtons[LEFT_MOUSE_BUTTON]);
+
+			}break;
+
+		case 7://getmouse2press state
+			{
+										printf("%i",luna->m_cInGameEvents.mouseButtons[1]);
+									//return Py_BuildValue("i",luna->m_cInGameEvents.mouseButtons[LEFT_MOUSE_BUTTON]);
+			}break;
+
+		case 8://getmouse3press state
+			{
+				printf("%i",luna->m_cInGameEvents.mouseButtons[2]);
+				//return Py_BuildValue("i",luna->m_cInGameEvents.mouseButtons[LEFT_MOUSE_BUTTON]);
+				//		case 9://getmousewheel state
+				return Py_BuildValue("i",luna->m_cInGameEvents.lmouse);
+			}break;
+
 	}
+
   return Py_BuildValue("");
 }
 
@@ -732,8 +760,8 @@ void Python::CheckKeyStates(){
             clouds->render();
             #endif
 
-#ifdef CHOPPER
-if (chopperEnabled){
+	#ifdef CHOPPER
+	if (chopperEnabled){
 
         //  printf("Jump position: %f %f %f \n", pos[0], pos[1], pos[2]);
      //   camera->setPosition(vector3df( ha.X, ha.Y+40, ha.Z));

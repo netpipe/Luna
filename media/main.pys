@@ -262,8 +262,8 @@ ticks = time.time()
 #print int(str(ticks-int(ticks))[2:])%100/80 #Keeping only the numbers after the decimal point, otherwise you would get the same "random" number each second
 
 print (input.mouse(5,0,0))
-#print (input.mouse(2,0,0))
-#print (input.mouse(3,0,0))
+#print (input.mouse(2,0,0))#xcoord
+#print (input.mouse(3,0,0))#ycoord
 
 
 if input.getKey('KEY_F2') : #could have a release action

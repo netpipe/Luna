@@ -148,9 +148,9 @@ int alplay() {
 
 #ifdef __EMSCRIPTEN__
  // FILE* source = fopen("media/bling.wav", "rb");
-  FILE* source = fopen("media/test.wav", "rb");
+  FILE* source = fopen("./media/bling.wav", "rb");
 #else
-  FILE* source = fopen("sounds/audio.wav", "rb");
+  FILE* source = fopen("../media/bling.wav", "rb");
 #endif
   fseek(source, 0, SEEK_END);
   int size = ftell(source);
@@ -281,15 +281,19 @@ int alplay() {
 #endif
 
 #ifdef __EMSCRIPTEN__
+//
+//#if defined(TEST_LOOPED_PLAYBACK)
+//  emscripten_set_main_loop_arg(main_tick, (void*)sources[0], 0, 0);
+//#else
+ // emscripten_async_call(playSources, reinterpret_cast<void*>(sources[0]), 700);
+//#endif
+#else
+  playSources(reinterpret_cast<void*>(sources[0]));
 
-#if defined(TEST_LOOPED_PLAYBACK)
-  emscripten_set_main_loop_arg(main_tick, (void*)sources[0], 0, 0);
-#else
-  emscripten_async_call(playSource, reinterpret_cast<void*>(sources[0]), 700);
-#endif
-#else
   usleep(700000);
-//  playSource(reinterpret_cast<void*>(sources[0]));
+
+//main_tick( (void*)sources[0], 0, 0);
+
 #endif
 
   return 0;
