@@ -50,20 +50,23 @@
 	#include "./Input/AgAudio/Sound.h"
 #endif
 
+
 //#include "TerrainFactory/GrassSceneNode/CGrassPatchSceneNode.h"
 //#include "Input/Model/IrrAssimp/IrrAssimp.h"
 
 class Luna
 {
 	public:
-		Luna ( int argc, char** argv );
-		~Luna(); // Cleans up the engine
+
+	Luna ( int argc, char** argv );
+	~Luna(); // Cleans up the engine
+
 		int Run();
 		IrrlichtDevice *device;
 		unsigned int resolution[2];
         IVideoDriver *driver;
 		ISceneManager *smgr;
-char * pyloader;
+		char * pyloader;
 
 		int init();
 		int shutdown();
@@ -76,10 +79,15 @@ char * pyloader;
 		void main_loop();
 		bool iinit=false;
 		   u32 then ;
-    int lastFPS;
-    bool bshutdown=false;
-    int countr;
+		int lastFPS;
+		bool bshutdown=false;
+		int countr;
 
+//					#ifdef AgAudio
+////		Sound *m_sound;
+//     Sound *m_sound;
+//     Sound m_default_sound_buffer;
+//		#endif
 
 //    		void sound_loop_then_quit();
 //		int SDLPlay();
@@ -103,11 +111,7 @@ char * pyloader;
 			cAudio::IAudioSource* mysound;
 		#endif
 
-		#ifdef AgAudio
-//		Sound *m_sound;
-    static Sound *m_sound;
-    static Sound m_default_sound_buffer;
-		#endif
+
 
 		#include "./Input/SDLMixer.h"
 

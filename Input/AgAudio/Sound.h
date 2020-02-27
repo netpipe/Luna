@@ -47,8 +47,8 @@ class Sound
 
 	agEngine::AudioSource *musicSource;
 	// Add more channels if you want
-	agEngine::AudioSource *channel1;
-	agEngine::AudioSource *channel2;
+//	agEngine::AudioSource *channel1;
+//	agEngine::AudioSource *channel2;
 
 
 
@@ -64,10 +64,10 @@ class Sound
     void PlayFootStepSound(bool);
     void PlayAll(void);
 
-  protected:
-
     static Sound *m_sound;
     static Sound m_default_sound_buffer;
+  protected:
+
 };
 
 #endif

@@ -135,7 +135,7 @@ static void playOneSoundFile(const char *fname)
 
     global_done_flag = 0;  /* the audio callback will flip this flag. */
     while (!global_done_flag)
-        SDL_Delay(10);  /* just wait for the audio callback to finish. */
+        SDL_Delay(1);  /* just wait for the audio callback to finish. */
 
     /* at this point, we've played the entire audio file. */
     SDL_PauseAudio(1);  /* so stop the device. */

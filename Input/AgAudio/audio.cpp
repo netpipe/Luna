@@ -1,7 +1,9 @@
 #include "../../config.h"
 #ifdef AgAudio
 #include "audio.h"
-
+#ifndef EMSCRIPTEN_KEEPALIVE
+#define EMSCRIPTEN_KEEPALIVE
+#endif
 namespace agEngine
 {
 	AudioDevice* AudioDevice::instance = NULL;
@@ -22,9 +24,15 @@ namespace agEngine
 		else
 		{
 			active = true;
+#if defined(TEST_ANIMATED_LOOPED_PANNED_PLAYBACK)
+			  ALCint attrs[] = {0x1992 /* ALC_HRTF_SOFT */, ALC_TRUE, 0x1996 /* ALC_HRTF_ID_SOFT */, 0, 0};
+ soundContext = alcCreateContext(soundDevice, attrs);
+#endif
 			soundContext = alcCreateContext ( soundDevice, NULL );
 			alcMakeContextCurrent ( soundContext );
 		}
+
+
 
 		ALfloat orient[] = { 0.0f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f };
 		alListener3f(AL_POSITION, 0.0f, 0.0f, 0.0f);

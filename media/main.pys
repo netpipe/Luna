@@ -49,9 +49,9 @@ if (init) :
 # irr.checkKeyState(); # obsolete check event loop to see if any key was pressed #existing functions should be moved to pre and post python functions
  #physics.opensteer(1) - wip
  #scene.postprocess()
- scene.SPARK()
- scene.CSG("test.3ds")
-# sound.soundman(1,0,1,1)
+ #scene.SPARK()
+ #scene.CSG("test.3ds")
+
  camera = scene.addCamera(3,0,20,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
  #physics.fpsweapon(camera)
  Light1 = scene.Light(10,100,150,1,"111111") # type , vector, color
@@ -114,6 +114,7 @@ if (init) :
 #  f32 cy = 100.0f + rand()%10040;
  # int type = rand()%8+1;
 #  int seed = rand();
+
 #################################
 # TESTING INIT CODE
 #################################
@@ -221,9 +222,11 @@ if (init) :
    #1Heart
    #1Diamond
    #1Clubs
-
-
-
+# scene.soundman(0,1,1)
+#  scene.soundman(1,1,1)
+# scene.soundman(1,1,1)
+# scene.soundman(1,1,1)
+ icount=0
 #################################
  init = 0 #initialization finish - needs whitespace infront
 #################################
@@ -231,6 +234,17 @@ if (init) :
 #MAIN LOOP gets ran everytime
 
 #################################
+#if sound done playing loop
+
+if (icount > 400):
+ scene.soundman(1,1,1)
+ icount=0
+else:
+ icount+=1
+
+
+irr.delay(4000);
+
 #irr.delete(iaxe)
 #iaxe = image.iadd("../media/axe.jpg",10,10,500,500,10,10,800,800)
 image.irotate(iaxe,i)

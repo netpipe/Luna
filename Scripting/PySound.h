@@ -9,10 +9,14 @@ PyMethodDef irr_Sound[] =
 	{NULL,NULL,0,NULL}
 };
 
+
+//    static Sound *m_sound2;
+  //  static Sound m_default_sound_buffer;
+
 PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active camera
 
     int param,state,sound,ammount;
-    PyArg_ParseTuple(args,"liii",&sound,&param,&ammount,&state);
+    PyArg_ParseTuple(args,"iii",&param,&ammount,&state);
 
     #ifdef SOUND
     // sound intensity for raycasted sound.  // surfaceRoughnessHardness/propigation factor, distance,handle
@@ -45,7 +49,24 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
 
 return Py_BuildValue("l",managerID);
   #endif
+    switch (param){
+          case 0:
+      {
+//          	luna->m_sound->Create();
+          	          	Sound::m_sound->Create();
+      }break;
+    case 1:
+      {
+//  	luna->m_sound->Create();
+//luna->m_sound->Instance()->PlayAll();
+//	luna->m_sound->PlayBackgroundMusic(1);
+Sound::m_sound->PlayBackgroundMusic(1);
 
+      }break;
+    }
+
+//m_sound2 = luna->m_sound;
+//luna->m_sound->PlayBackgroundMusic(1);
 
 #ifdef OPENAL
     //switch (param){

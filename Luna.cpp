@@ -63,8 +63,11 @@ using namespace gui;
 #include "./Input/Compress/zpipe.h"
 #endif // COMPRESS
 
-
-
+//#ifdef AgAudio
+//	#include "./Input/AgAudio/Sound.h"
+//#endif
+//
+//
 //
 //		#ifdef AgAudio
 //		static Sound *m_sound;
@@ -72,21 +75,17 @@ using namespace gui;
 //		#endif
 
 
-#ifdef SDLMixer
-		#include "./Input/SDLMixer.h"
-
-
-#endif
-
 #ifdef SDLSound
 		#include "./Input/SDL/SDLsound.h"
 #endif
 
-#ifdef OPENAL
+#ifdef OPENAL2
 	#include "./Input/openal_playback.h"
 #endif
 
-
+#ifdef SDLMixer // compile issues
+		#include "./Input/SDLMixer.h"
+#endif
 
 
 
@@ -314,6 +313,13 @@ int Luna::shutdown(){
 	//delete m_cVehicle;
 
     #endif
+
+    #ifdef AgAudio
+    Sound::Instance()->Drop();
+//        delete m_sound;
+
+    #endif // AgAudio
+
 	#ifdef FPS
 		delete m_cPlayer;
 	#endif
@@ -385,16 +391,16 @@ int Luna::init(){
 
 
 #ifdef AgAudio
-		Sound::Instance()->Create();
+//		Sound::Instance()->Create();
 //	    Sound::Instance()->PlayBackgroundMusic(1);
 
 //	m_sound->Create();
-//	m_sound->PlayBackgroundMusic(m_sound->menuM);
+//	luna->m_sound->PlayBackgroundMusic(1);
 
 #endif
 
 #ifdef SDLMixer
-	SDLPlay();
+//	SDLPlay();
 #endif
 
 #ifdef SDLSound
@@ -402,7 +408,7 @@ int Luna::init(){
 #endif
 
 
-#ifdef OPENAL
+#ifdef OPENAL2
 	alplay();
 #endif
     return 0;
@@ -543,8 +549,8 @@ void Luna::main_loop(){ //devloop actually
 	#endif
 
 	#ifdef AgAudio
-	// Sound::Instance()->PlayAll();
-	//  m_sound->Instance()->PlayAll();
+//	// Sound::Instance()->PlayAll();
+	 // m_sound->Instance()->PlayAll();
 	#endif
 
 	device->run();

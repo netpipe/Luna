@@ -5,7 +5,7 @@
 // there are includes at bottom of file for scripting too.
 //#include "../config.h"
 //#define SOUND
-#include "../Luna.h"
+//#include "../Luna.h"
 #include <cstdlib>
     #define MAX_DECALS 50
 
@@ -258,6 +258,15 @@ char *zErrMsg;
 #endif
 
 #endif //python
+
+
+//					#ifdef AgAudio
+////		Sound *m_sound;
+//     Sound *m_sound;
+//     Sound m_default_sound_buffer;
+//		#endif
+
+
 
 #ifndef WITH_MIDI
 #define WITH_MIDI 1
@@ -554,6 +563,7 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
     return Py_BuildValue("1");
     #endif
 	}
+//	luna->m_sound->PlayBackgroundMusic(1);
 return Py_BuildValue("0");
 }
 

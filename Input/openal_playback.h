@@ -1,5 +1,5 @@
 #include "../config.h"
-#ifdef OPENAL
+#ifdef OPENAL2
 #ifndef OPENALPLAYBACK_H
 #define OPENALPLAYBACK_H
 

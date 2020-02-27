@@ -1,7 +1,7 @@
 #include "../config.h"
 #ifdef SDLMixer
-#ifndef __sound
-#define __sound
+#ifndef SDLMixerH
+#define SDLMixerH
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
 

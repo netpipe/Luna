@@ -12,6 +12,7 @@
 //#ifdef __EMSCRIPTEN__
 //#include <emscripten.h>
 //#endif
+
 int argc1=0;
  char** argv1;
 bool init=1;

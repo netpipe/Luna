@@ -34,7 +34,7 @@ int Sound::Create(void)
 //  Output::Instance()->w("Loading samples.\n");
 
 	//!Sound init
-  adevice = agEngine::createDevice(true);
+  adevice = agEngine::createDevice(false);
 
  // menuM = agEngine::SoundData::LoadAudio(std::string("../media/IrrlichtTheme.ogg"), false);
     menuM = agEngine::SoundData::LoadAudio(std::string("../media/bling.ogg"), false);
@@ -47,22 +47,22 @@ int Sound::Create(void)
 //  footS = agEngine::SoundData::LoadAudio(std::string("media/Sounds/sound30m.ogg"), false);
 
   musicSource = adevice->createASource(NULL);
-  channel1 = adevice->createASource(NULL);
-  channel2 = adevice->createASource(NULL);
+//  channel1 = adevice->createASource(NULL);
+//  channel2 = adevice->createASource(NULL);
 
   musicSource->setVolume(0.3f);
   musicSource->setAttenuation(0.0f);
-  musicSource->setLoop(true);
+  musicSource->setLoop(false);
   musicSource->setPosition(0.0f, 0.0f, 0.0f);
   musicSource->setRelative(true);
 
-  channel1->setVolume(1.0f);
-  channel1->setLoop(false);
-  channel1->setRelative(true);
-
-  channel2->setVolume(1.0f);
-  channel2->setLoop(false);
-  channel2->setRelative(true);
+//  channel1->setVolume(1.0f);
+//  channel1->setLoop(false);
+//  channel1->setRelative(true);
+//
+//  channel2->setVolume(1.0f);
+//  channel2->setLoop(false);
+//  channel2->setRelative(true);
 }
 
 void Sound::PlayBackgroundMusic(int music)

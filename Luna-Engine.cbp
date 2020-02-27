@@ -1124,6 +1124,21 @@
 		<Unit filename="GAME/RPG-SIM/minigolf/keys.pys" />
 		<Unit filename="GAME/RPG-SIM/minigolf/main.pys" />
 		<Unit filename="GAME/functions-list.pys" />
+		<Unit filename="GUI/ASCIIText/crc.cpp" />
+		<Unit filename="GUI/ASCIIText/crc.h" />
+		<Unit filename="GUI/ASCIIText/figlet.h" />
+		<Unit filename="GUI/ASCIIText/getopt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="GUI/ASCIIText/getopt.cpp" />
+		<Unit filename="GUI/ASCIIText/inflate.cpp" />
+		<Unit filename="GUI/ASCIIText/inflate.h" />
+		<Unit filename="GUI/ASCIIText/utf8.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="GUI/ASCIIText/utf8.h" />
+		<Unit filename="GUI/ASCIIText/zipio.cpp" />
+		<Unit filename="GUI/ASCIIText/zipio.h" />
 		<Unit filename="GUI/CHUD.h" />
 		<Unit filename="GUI/ChatBox/CGUIChatBox.cpp" />
 		<Unit filename="GUI/ChatBox/CGUIChatBox.h" />

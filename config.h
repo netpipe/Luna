@@ -14,9 +14,9 @@
 #define _DEBUG_MODE_
 #define _PLAY_SOUND_
 #define AgAudio // not working with emscripten
-//#define SDLMixer // wip
-//#define OPENAL // working with emscripten
-//#define SDLSound - seems to play and freeze needs threading
+//#define SDLMixer // wip - might not be compatable with the engine
+//#define OPENAL2 // working with emscripten
+//#define SDLSound //- seems to play and freeze needs threading
 
 
    // #define IRRCD   // irrlicht Collision Detection
