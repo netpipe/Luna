@@ -66,8 +66,8 @@
   //if bullet carnot enabled with physics and car calls it crashes FIXME
   #define BULLETCAR // if FPSWEAPON is enabled the car wont work. diff event rec
   #define LOADLEVELS // dont use this without bullet or with occlusion its slow?
-  //  #define BULLETBLEND
-  //  #define RAG   //bulletRagdoll
+ // #define BULLETBLEND
+  #define RAGDOLL   //bulletRagdoll
   #define EXTRAS
   //  #define DESTRUCTION //not working
   #define FORMATIONDEMO

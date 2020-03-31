@@ -170,11 +170,12 @@ char *zErrMsg;
     using namespace std;
     using namespace irr;
 #ifdef PHYSICS
-#ifdef BULLETBLEND
-    btLogicManager* logicManager = new btLogicManager();
         #ifdef RAGDOLL
             static std::vector<RagDoll*> v_RagDolls;
         #endif
+#ifdef BULLETBLEND
+    btLogicManager* logicManager = new btLogicManager();
+
     static std::vector<btRigidBody*> v_Boxes;
     #endif
     #endif

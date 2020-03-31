@@ -254,7 +254,7 @@ int Luna::shutdown(){
 	/// delete water;
 	#endif
 
-	#ifdef RAG
+	#ifdef RAGDOLL
 		for (std::vector<RagDoll*>::iterator it = v_RagDolls.begin(); it != v_RagDolls.end(); ++it)
             (*it)->~RagDoll();
 	#endif

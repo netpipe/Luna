@@ -398,7 +398,7 @@ return Py_BuildValue("");
 
 PyObject * Python::PyIrr_RagMan(PyObject * self,PyObject * args){
 // params node id and mesh ?
-    #ifdef RAG
+    #ifdef RAGDOLL
     v_RagDolls.push_back(new RagDoll(luna->m_cPhysics->getDynamicsWorld(),smgr, btVector3(0,55,0), btScalar(5.0)));
     #endif
 return Py_BuildValue("");

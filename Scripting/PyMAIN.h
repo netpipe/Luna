@@ -414,7 +414,7 @@ void Python::render() {//active camera
         #ifdef BULLETBLEND
             logicManager->processLogicBricks(deltaTime);
         #endif
-        #ifdef RAG
+        #ifdef RAGDOLL
             for (std::vector<RagDoll*>::iterator it = v_RagDolls.begin(); it != v_RagDolls.end(); ++it)
             (*it)->Update();
         #endif
