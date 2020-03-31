@@ -42,7 +42,7 @@
  // #define SKELETON // needs to be updated
   //#define PostProcess
   //#define VEGETATION
- // #define TREES //very cpu intensive does not work with emscripten yet.
+  #define TREES //very cpu intensive does not work with emscripten yet.
   #define ATMOSPHERE  //  freezes when no video acceleration is used
                         //  or as a user without access to video rights is used
   #define FLARE
@@ -62,12 +62,17 @@
   //  #define occlusion.
 //#define OCCLUSION
   //  #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
+
   #define PHYSICS
+  #ifdef PHYSICS
   //if bullet carnot enabled with physics and car calls it crashes FIXME
   #define BULLETCAR // if FPSWEAPON is enabled the car wont work. diff event rec
-  #define LOADLEVELS // dont use this without bullet or with occlusion its slow?
+  #define LOADLEVELS // with occlusion its slow?
  // #define BULLETBLEND
   #define RAGDOLL   //bulletRagdoll
+  #endif
+
+
   #define EXTRAS
   //  #define DESTRUCTION //not working
   #define FORMATIONDEMO

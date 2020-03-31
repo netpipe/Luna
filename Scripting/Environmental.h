@@ -507,10 +507,10 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
 			const s32 NUM_TREE_DESIGNS = 4;
 
 		const STreeDesignFiles treeDesignFiles[NUM_TREE_DESIGNS] = {
-				{ "./data/trees/Oak.xml", "./data/textures/trees/OakBark.png", "./data/textures/trees/OakLeaf.png", "./data/textures/trees/OakBillboard.png" },
-				{ "./data/trees/Aspen.xml", "./data/textures/trees/AspenBark.png", "./data/textures/trees/AspenLeaf.png", "./data/textures/trees/AspenBillboard.png" },
-				{ "./data/trees/Pine.xml", "./data/textures/trees/PineBark.png", "./data/textures/trees/PineLeaf.png", "./data/textures/trees/PineBillboard.png" },
-				{ "./data/trees/Willow.xml", "./data/textures/trees/WillowBark.png", "./data/textures/trees/WillowLeaf.png", "./data/textures/trees/WillowBillboard.png" }
+				{ "../media/data/trees/Oak.xml", "../media/data/textures/trees/OakBark.png", "../media/data/textures/trees/OakLeaf.png", "../media/data/textures/trees/OakBillboard.png" },
+				{ "../media/data/trees/Aspen.xml", "../media/data/textures/trees/AspenBark.png", "../media/data/textures/trees/AspenLeaf.png", "../media/data/textures/trees/AspenBillboard.png" },
+				{ "../media/data/trees/Pine.xml", "../media/data/textures/trees/PineBark.png", "../media/data/textures/trees/PineLeaf.png", "../media/data/textures/trees/PineBillboard.png" },
+				{ "../media/data/trees/Willow.xml", "../media/data/textures/trees/WillowBark.png", "../media/data/textures/trees/WillowLeaf.png", "../media/data/textures/trees/WillowBillboard.png" }
 			};
 
 
@@ -600,13 +600,13 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
                 -1);
 
     smgr->getRootSceneNode()->addChild(jungle);
-    jungle->getMaterial(0).setTexture(0, driver->getTexture("data/textures/trees/kornJungle/bark.png"));
-    jungle->getMaterial(0).setTexture(1, driver->getTexture("data/textures/trees/kornJungle/bark_normal.png"));
+    jungle->getMaterial(0).setTexture(0, driver->getTexture("../media/data/textures/trees/kornJungle/bark.png"));
+    jungle->getMaterial(0).setTexture(1, driver->getTexture("../media/data/textures/trees/kornJungle/bark_normal.png"));
     jungle->getMaterial(0).MaterialType = EMT_NORMAL_MAP_SOLID;
     jungle->getMaterial(0).Shininess = 0.0f;
 
     jungle->getMaterial(1).setFlag(EMF_BACK_FACE_CULLING, false);
-    jungle->getMaterial(1).setTexture(0,driver->getTexture("data/textures/trees/kornJungle/leaf.png"));
+    jungle->getMaterial(1).setTexture(0,driver->getTexture("../media/data/textures/trees/kornJungle/leaf.png"));
     jungle->getMaterial(1).MaterialType = EMT_TRANSPARENT_ALPHA_CHANNEL_REF;
     // start growing trees
 

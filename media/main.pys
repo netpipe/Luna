@@ -96,7 +96,7 @@ if (init) :
 #gui.bar(healthbar,1,20,40,200,60) #does not draw onanimate it
 
  #jungle = scene.addJungle()
- #scene.addTree("jungle",1,terrain,1,1,1)
+ #scene.addTree("jungle",1,terrain,1,1,1)#not working yet
  #track1 = scene.loadTrack('./data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
  #track1 = scene.loadLevel('extra/maps/urban.bsp',0,0,0)  # trackname , timeofday , lighting , track slot/stages
 # scene.setPosition(terrain ,4, -100,-10,-100)
@@ -110,8 +110,8 @@ if (init) :
  #scene.setVelocity(sphere1,10,10,10)
  #scene.setPosition(sphere1 ,1, 10,100,10)
 #should be able to add trees without terrain/orientation
-#scene.trees(terr,bush)
-#scene.addTree2(bush)
+ #scene.trees(terr,bush)
+ #scene.addTree2(bush)
 
 #for(u32 i = 0 ; i < 1000 ; i++)
 # {
