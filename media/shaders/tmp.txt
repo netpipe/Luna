@@ -1,0 +1,112 @@
+//-----------------------------------------------------------------------------
+// Global variables
+//-----------------------------------------------------------------------------
+float4x4 mWorldViewProj;  // World * View * Projection transformation
+//float4x4 mInvWorld;       // Inverted world matrix
+//float4x4 mTransWorld;     // Transposed world matrix
+//float3 mLightPos;         // Light position
+//float4 mLightColor;       // Light color
+
+texture texture0;
+sampler2D tex0 = sampler_state
+{
+	texture			= <texture0>;
+	MinFilter		= Anisotropic;
+	MagFilter		= Linear;
+	MipFilter		= Linear;
+	MaxAnisotropy 		= 1;  
+	AddressU		= WRAP;
+	AddressV		= WRAP;
+};
+
+texture texture1;
+sampler2D tex1 = sampler_state
+{
+	texture			= <texture1>;
+	MinFilter		= Anisotropic;
+	MagFilter		= Linear;
+	MipFilter		= Linear;
+	MaxAnisotropy 		= 8;  
+	AddressU		= WRAP;
+	AddressV		= WRAP;
+};
+
+texture texture2;
+sampler2D tex2 = sampler_state
+{
+	texture			= <texture2>;
+	MinFilter		= Anisotropic;
+	MagFilter		= Linear;
+	MipFilter		= Linear;
+	MaxAnisotropy 		= 8;  
+	AddressU		= WRAP;
+	AddressV		= WRAP;
+};
+
+texture texture3;
+sampler2D tex3 = sampler_state
+{
+	texture			= <texture3>;
+	MinFilter		= Anisotropic;
+	MagFilter		= Linear;
+	MipFilter		= Linear;
+	MaxAnisotropy 		= 8;  
+	AddressU		= WRAP;
+	AddressV		= WRAP;
+};
+texture texture4;
+sampler2D tex4 = sampler_state
+{
+	texture			= <texture4>;
+	MinFilter		= Anisotropic;
+	MagFilter		= Linear;
+	MipFilter		= Linear;
+	MaxAnisotropy 		= 8;  
+	AddressU		= WRAP;
+	AddressV		= WRAP;
+};
+
+// Vertex shader output structure
+struct VS_OUTPUT
+{
+	float4 Position   : POSITION;   // vertex position 
+	float4 Diffuse    : COLOR0;     // vertex diffuse color
+	float2 TexCoord1   : TEXCOORD0;  // tex coords
+	float2 TexCoord2   : TEXCOORD1;  // tex coords
+};
+
+VS_OUTPUT vertexMain(	float4 vPosition	: POSITION,
+						float4 Color		: COLOR0,
+						float2 texCoord     : TEXCOORD0 )
+{
+	VS_OUTPUT Output;
+
+	Output.Position = mul(vPosition, mWorldViewProj);
+
+	Output.Diffuse = Color;
+
+	Output.TexCoord1 = texCoord * 32;
+	Output.TexCoord2 = texCoord;
+
+	float4 splat = tex2D(tex0, texCoord); // splat map
+
+	return Output;
+}
+
+float4 pixelMain( float4 TexCoord1 : TEXCOORD0, float4 TexCoord2 : TEXCOORD1, float4 Diffuse : COLOR0 ) : COLOR0
+{ 	
+	float3 outColor;
+	float3 baseColor = tex2D(tex1, TexCoord1).rgb;
+	
+	float4 splat = tex2D(tex0, TexCoord2); // splat map
+
+	if(splat.r > 0) { outColor = (baseColor * (1-splat.r)) + (tex2D(tex2, TexCoord2.xy*2).rgb * splat.r); }
+	else if(splat.g > 0) { outColor = (baseColor * (1-splat.g)) + (tex2D(tex3, TexCoord2.xy).rgb * splat.g); }
+	else if(splat.b > 0) { outColor = (baseColor * (1-splat.b)) + (tex2D(tex4, TexCoord2.xy).rgb * splat.b); }
+	else outColor = baseColor;
+
+    outColor.rgb *= clamp(1 - (splat.a * 0.255), 0, 1);
+
+	return float4((outColor * (Diffuse * 0.71)) * 1.0, 1);
+}
+

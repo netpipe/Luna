@@ -533,10 +533,10 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
 			}
 			video::E_MATERIAL_TYPE leafMaterialType = video::EMT_TRANSPARENT_ALPHA_CHANNEL;
 			leafMaterialType = (video::E_MATERIAL_TYPE) driver->getGPUProgrammingServices()->addHighLevelShaderMaterialFromFiles(
-				"shaders/trees/leaves.vert",
+				"../media/shaders/trees/leaves.vert",
 				"main",
 				EVST_VS_2_0,
-				"shaders/trees/leaves.frag",
+				"../media/shaders/trees/leaves.frag",
 				"main", EPST_PS_2_0 , 0 , EMT_TRANSPARENT_ALPHA_CHANNEL_REF , 0 );
 
 				//int treeType = treetype;
