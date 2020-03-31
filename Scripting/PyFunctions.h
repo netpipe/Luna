@@ -68,7 +68,7 @@
 
 #ifdef VIDEO
     #include "../GUI/Video/CVideoMaster.h"
-    //#include "GUI/Video/videoPlayer.h"
+   // #include "../GUI/Video/videoPlayer.h"
 #endif
 
 #ifdef RIBBONTRAIL
@@ -123,9 +123,12 @@
 #include "../GUI/cImage2D.h"
 #endif
 
-#ifdef SPRITEMANAGER
-    #include "../Scene/spriteManager/SpriteManager.h"
+#ifdef FT2
     #include "../Scene/spriteManager/BmFont.h"
+#endif // FT2
+
+#ifdef SPRITES
+    #include "../Scene/spriteManager/SpriteManager.h"
     #include "../Scene/spriteManager/ParticleSystem.h"
 #endif
 

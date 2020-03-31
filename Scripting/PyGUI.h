@@ -103,6 +103,7 @@ long font;
 	char * message;
 	s32 x,y,x1,y1;
 	PyArg_ParseTuple(args,"lsllll",&font,&message,&x,&y,&x1,&y1); //may only need x,y when using ft2
+
 IGUIFont * font2 = (IGUIFont *)font;
 
 				//if (font2)
@@ -146,7 +147,8 @@ IGUIFont * font2 = (IGUIFont *)font;
 //
 //        fonts->drawText("the quick brown fox\njumped over\n the lazy dog", 0, 0, w, h, BmFont::ALIGN_CENTER | BmFont::ALIGN_MIDDLE);
 //
-
+#ifdef FT2
+#endif
 
 	return Py_BuildValue("");
 };

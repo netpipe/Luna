@@ -7,6 +7,8 @@
 
  #ifndef __EMSCRIPTEN__
  #define SOUND
+ //#define VIDEO
+
  //todo put in simple openal sound
  #endif
 
@@ -41,7 +43,7 @@
   //#define BOX2D  // needs to be implimented properly still
  // #define SKELETON // needs to be updated
   //#define PostProcess
-  //#define VEGETATION
+  #define VEGETATION //grass,weeds, vines
   #define TREES //very cpu intensive does not work with emscripten yet.
   #define ATMOSPHERE  //  freezes when no video acceleration is used
                         //  or as a user without access to video rights is used
@@ -82,10 +84,11 @@
   #define OPENSTEER
   #define SQLITE
 
-//  #define SCALC
-//#define FT2
-//#define SPRITES
+  #define SCALC
+  #define FT2
+  #define SPRITES
+
+
 //#define PYTHON_MINIMALTEST
-//    #define VIDEO
 
   #endif
