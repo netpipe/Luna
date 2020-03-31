@@ -6,14 +6,19 @@
 
 
  #ifndef __EMSCRIPTEN__
- //#define SOUND
+ #define SOUND
  //todo put in simple openal sound
  #endif
 
 //for AgAudio
-#define _DEBUG_MODE_
-#define _PLAY_SOUND_
-#define AgAudio // not working with emscripten
+
+//#define AgAudio // not working with emscripten
+//#ifdef __EMSCRIPTEN__
+#ifdef AgAudio
+  #define _DEBUG_MODE_
+  #define _PLAY_SOUND_
+#endif
+
 //#define SDLMixer // wip - might not be compatable with the engine
 //#define OPENAL2 // working with emscripten
 //#define SDLSound //- seems to play and freeze needs threading

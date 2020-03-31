@@ -15,40 +15,64 @@ PyMethodDef irr_Sound[] =
 
 PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active camera
 
-    int param,state,sound,ammount;
-    PyArg_ParseTuple(args,"iii",&param,&ammount,&state);
+    int param,state;
+    char * sound;
+
+    PyArg_ParseTuple(args,"isi",&param,&sound,&state);
+
+
+
 
     #ifdef SOUND
     // sound intensity for raycasted sound.  // surfaceRoughnessHardness/propigation factor, distance,handle
     switch (param){
+
     case 0:
       {
-
-
-//        managerID = cAudio::createAudioManager(true);  // broken has to be done from main
-       if( managerID)
-        {
-         //   luna->manager->initialize(luna->manager->getAvailableDeviceName(0));
-           mysound = managerID->create("bling","./media/bling.ogg",false);
+       // mysound=stoi(sound);
+      //      mysound = managerID->create("bling","./media/bling.ogg",false);
+      //   luna->manager->initialize(luna->manager->getAvailableDeviceName(0));
+           mysound = managerID->create(sound,sound,false);
     //        return Py_BuildValue("l",manager
-            mysound->play2d(true);
+        //    mysound->play2d(true);
+          return Py_BuildValue("l",mysound);
+      }
+      break;
+    case 1:
+      {
+//        managerID = cAudio::createAudioManager(true);  // broken has to be done from main
+      if (state){ // play sound
+       long mysound2=std::atoi(sound);
+       mysound=mysound2;
+
+       if( managerID) // nonzero to show initialized
+        {
+          mysound->play2d(true);
         }
 
+      }else{ // stop sound
+            mysound->stop();
+      }
+
+     //        return Py_BuildValue("l",managerID);
        return Py_BuildValue("l",managerID);
         //break;
       }
-    case 1:
-      {
 
-
-            mysound = managerID->create("bling","./media/bling.ogg",false);
-      }
-       return Py_BuildValue("l",mysound);
         break;
+
+//    case 2: //
+//      {
+////            mysound->stop();
+//      }
+      break;
     }
 
-return Py_BuildValue("l",managerID);
+    return Py_BuildValue("l",managerID);
   #endif
+
+
+  #ifdef AgAudio
     switch (param){
           case 0:
       {
@@ -57,14 +81,14 @@ return Py_BuildValue("l",managerID);
       }break;
     case 1:
       {
-//  	luna->m_sound->Create();
-//luna->m_sound->Instance()->PlayAll();
-//	luna->m_sound->PlayBackgroundMusic(1);
-Sound::m_sound->PlayBackgroundMusic(1);
+      //  	luna->m_sound->Create();
+      //luna->m_sound->Instance()->PlayAll();
+      //	luna->m_sound->PlayBackgroundMusic(1);
+      Sound::m_sound->PlayBackgroundMusic(1);
 
       }break;
     }
-
+#endif
 //m_sound2 = luna->m_sound;
 //luna->m_sound->PlayBackgroundMusic(1);
 

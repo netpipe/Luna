@@ -222,10 +222,13 @@ if (init) :
    #1Heart
    #1Diamond
    #1Clubs
+
 # scene.soundman(0,1,1)
-#  scene.soundman(1,1,1)
 # scene.soundman(1,1,1)
-# scene.soundman(1,1,1)
+ sound2 = scene.soundman(0,"./media/bling.ogg",0)
+ scene.soundman(1,str(sound2),1)
+ scene.soundman(1,str(sound2),0)
+
  icount=0
 #################################
  init = 0 #initialization finish - needs whitespace infront
@@ -235,12 +238,12 @@ if (init) :
 
 #################################
 #if sound done playing loop
-
-if (icount > 400):
- scene.soundman(1,1,1)
- icount=0
-else:
- icount+=1
+#
+#if (icount > 400):
+# scene.soundman(1,1,1)
+# icount=0
+#else:
+# icount+=1
 
 
 irr.delay(4000);
@@ -275,9 +278,27 @@ ticks = time.time()
 #print random variable set to make 0 or 1's semi randomly  remove /80 to get larger randoms
 #print int(str(ticks-int(ticks))[2:])%100/80 #Keeping only the numbers after the decimal point, otherwise you would get the same "random" number each second
 
-print (input.mouse(5,0,0))
+#print (input.mouse(5,0,0))#mousebutton
 #print (input.mouse(2,0,0))#xcoord
 #print (input.mouse(3,0,0))#ycoord
+
+#get card from mouse coord
+
+#just need the top portion middle coords find center
+#check card number
+xcard=55 /2
+ycard=84 /2
+
+xcoord=input.mouse(2,0,0)
+ycoord=input.mouse(3,0,0)
+
+#for i in range(5):
+# if xcoord = xcard (i*10)+100
+#i*10,
+#
+#i*10)+100+55,
+#i*10+84
+
 
 
 if input.getKey('KEY_F2') : #could have a release action
