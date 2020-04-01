@@ -84,10 +84,10 @@ PyObject * Python::PyIrr_iGetOHeight(PyObject * self,PyObject * args){
 	#ifdef Image2D
 	cImage* node = (cImage*)node_id;
 
-	node->GetOrigHeight();
+	int ret =node->GetOrigHeight();
 	#endif
 
-return Py_BuildValue("");
+return Py_BuildValue("i",ret);
 
 }
 
@@ -100,10 +100,10 @@ PyObject * Python::PyIrr_iGetOWidth(PyObject * self,PyObject * args){
 	#ifdef Image2D
 	cImage* node = (cImage*)node_id;
 
-	node->GetOrigWidth();
+	int ret =node->GetOrigWidth();
 	#endif
 
-return Py_BuildValue("");
+return Py_BuildValue("i",ret);
 
 }
 
@@ -116,10 +116,10 @@ PyObject * Python::PyIrr_iGetHeight(PyObject * self,PyObject * args){
 	#ifdef Image2D
 	cImage* node = (cImage*)node_id;
 
-	node->GetHeight();
+	int ret = node->GetHeight();
 	#endif
 
-return Py_BuildValue("");
+return Py_BuildValue("i",ret);
 
 }
 
@@ -132,10 +132,10 @@ PyObject * Python::PyIrr_iGetWidth(PyObject * self,PyObject * args){
 	#ifdef Image2D
 	cImage* node = (cImage*)node_id;
 
-	node->GetWidth();
+	int ret =node->GetWidth();
 	#endif
 
-return Py_BuildValue("");
+return Py_BuildValue("i",ret);
 
 }
 

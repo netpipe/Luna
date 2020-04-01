@@ -57,9 +57,9 @@ if (init) :
  #physics.box2d("test.png",1)
 
 
- sound2 = scene.soundman(0,"./media/bling.ogg",0) #create sound device
- scene.soundman(1,str(sound2),1)#play sound
- scene.soundman(1,str(sound2),0)#stop sound
+ #sound2 = scene.soundman(0,"./media/bling.ogg",0) #create sound device
+ #scene.soundman(1,str(sound2),1)#play sound
+ #scene.soundman(1,str(sound2),0)#stop sound
  #scene.soundman(1,str(sound2),2)#unloadsound / clear sounds
 
  camera = scene.addCamera(3,0,20,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
