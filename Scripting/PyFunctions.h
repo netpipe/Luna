@@ -376,7 +376,7 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
 
 ppMine->setTimer( device->getTimer( ) );
 
-        bPProcess=1;
+      //  bPProcess=1;
 #endif
 }
 

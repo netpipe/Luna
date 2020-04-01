@@ -28,13 +28,13 @@
 
    // #define IRRCD   // irrlicht Collision Detection
     #define EVENTS
-  //  #define FPS
-   // #define CSG // constructive solid geometry
-   // #define SGRAPH2D // 2d plot graph
-    //#define WIND
+    #define FPS
+    #define CSG // constructive solid geometry
+    #define SGRAPH2D // 2d plot graph
+    #define WIND
     #define SCENE
    // #define IRRc
-  //  #define PostProcess
+
   #define WATER
   //  #define ReflectiveWater
   //  #define RealisticWater
@@ -42,7 +42,7 @@
   #define SPARK
   //#define BOX2D  // needs to be implimented properly still
  // #define SKELETON // needs to be updated
-  //#define PostProcess
+  #define PostProcess
   #define VEGETATION //grass,weeds, vines
   #define TREES //very cpu intensive does not work with emscripten yet.
   #define ATMOSPHERE  //  freezes when no video acceleration is used
@@ -57,12 +57,12 @@
 
   //  #define CODEEDITOR
   //#define FLAG    //
-  //  #define FLAG2   //FMX
-   // #define COMPASS
-  //#define BOIDS
+  //#define FLAG2   //FMX
+  //#define COMPASS
+  #define BOIDS
   #define TERRAIN
   //  #define occlusion.
-//#define OCCLUSION
+  #define OCCLUSION
   //  #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
 
   #define PHYSICS

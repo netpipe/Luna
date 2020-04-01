@@ -573,9 +573,10 @@ void Luna::main_loop(){ //devloop actually
 		//device->sleep(5);
 
         #ifdef PostProcess
+        if (Python::bPProcess ==1){
 			ppBlurDOF->render( NULL );
             ppBlur->render( NULL );
-
+        }
         #endif
 
 	//       rt->render();

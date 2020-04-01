@@ -48,7 +48,7 @@ if (init) :
 
 # irr.checkKeyState(); # obsolete check event loop to see if any key was pressed #existing functions should be moved to pre and post python functions
  #physics.opensteer(1) - wip
- #scene.postprocess()
+ scene.postprocess()
  #scene.SPARK()
  #scene.CSG("test.3ds")
 
