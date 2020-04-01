@@ -194,6 +194,7 @@
 					<Add library="vorbisfile" />
 					<Add library="SPARK" />
 					<Add library="SPARK_IRR" />
+					<Add library="cAudio" />
 				</Linker>
 			</Target>
 			<Target title="mineREL">

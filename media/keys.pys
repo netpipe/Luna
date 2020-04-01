@@ -46,8 +46,8 @@ if input.getKey('KEY_KEY_D') :
 
 
 #Reset Steering
-#if not input.getKey('KEY_KEY_A') and not input.getKey('KEY_KEY_D') :
- #physics.VehicleParams(car1,9,0,0,0,0)
+if not input.getKey('KEY_KEY_A') and not input.getKey('KEY_KEY_D') :
+ physics.VehicleParams(car1,9,0,0,0,0)
 
 
 lsteer=0
