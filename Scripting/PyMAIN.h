@@ -274,6 +274,11 @@ namespace Python {
     PyObject * PyIrr_iGetHeight(PyObject * self,PyObject * args);
     PyObject * PyIrr_iGetWidth(PyObject * self,PyObject * args);
 
+    PyObject * PyIrr_isetColor(PyObject * self,PyObject * args);
+    PyObject * PyIrr_igetColor(PyObject * self,PyObject * args);
+    PyObject * PyIrr_iTransparent(PyObject * self,PyObject * args);
+    PyObject * PyIrr_iFilter(PyObject * self,PyObject * args);
+
 
     PyMODINIT_FUNC init_irr(void);
 

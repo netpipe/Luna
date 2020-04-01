@@ -22,6 +22,11 @@ PyMethodDef irr_Image[] =
 	{"oheight",Python::PyIrr_iGetOHeight,METH_VARARGS,"PyIrr_iGetOHeight"},
 	{"owidth",Python::PyIrr_iGetOWidth,METH_VARARGS,"PyIrr_iGetOWidth"},
 
+	{"scolor",Python::PyIrr_isetColor,METH_VARARGS,"PyIrr_isetColor"},
+	{"gcolor",Python::PyIrr_igetColor,METH_VARARGS,"PyIrr_igetColor"},
+	{"transparency",Python::PyIrr_iTransparent,METH_VARARGS,"PyIrr_iTransparent"},
+	{"filter",Python::PyIrr_iFilter,METH_VARARGS,"PyIrr_iFilter"},
+
 	{NULL,NULL,0,NULL}
 };
 
@@ -75,68 +80,123 @@ node->SetPosition(newpos);
 return Py_BuildValue("");
 
 }
-PyObject * Python::PyIrr_iGetOHeight(PyObject * self,PyObject * args){
+
+
+PyObject * Python::PyIrr_isetColor(PyObject * self,PyObject * args){
    	long node_id;
+   	int r,g,b;
+	PyArg_ParseTuple(args,"liii",&node_id,&r,&g,&b);
+	#ifdef Image2D
+	cImage* node = (cImage*)node_id;
+	node->SetColor(irr::video::SColor(255,255,255,0));
+	#endif
+
+return Py_BuildValue("1");
+
+}
+PyObject * Python::PyIrr_igetColor(PyObject * self,PyObject * args){
+   	long node_id;
+	PyArg_ParseTuple(args,"liii",&node_id);
+	#ifdef Image2D
+	cImage* node = (cImage*)node_id;
+	irr::video::SColor ret =node->GetColor();
+	#endif
+
+return Py_BuildValue("l",ret);
+
+}
+PyObject * Python::PyIrr_iTransparent(PyObject * self,PyObject * args){
+   	long node_id;
+   	int param;
 //draw all in vector image stack
 //midpoint
 
-	PyArg_ParseTuple(args,"l",&node_id);
+	PyArg_ParseTuple(args,"li",&node_id,&param);
 	#ifdef Image2D
 	cImage* node = (cImage*)node_id;
 
-	int ret =node->GetOrigHeight();
+//	switch(param){
+//	case 0:
+//	//	node->SetTransparentColor(1);
+//	case 1:
+//	//	node->GetTransparentColor(1);
+//	case 2:
+//	//	node->GetTransparent(1);
+//	case 3:
+//	//	node->SetTransparent(1);
+//	}
 	#endif
 
-return Py_BuildValue("i",ret);
+return Py_BuildValue("");
 
+}
+
+PyObject * Python::PyIrr_iFilter(PyObject * self,PyObject * args){
+   	long node_id;
+   	int filter;
+   	int ret;
+	PyArg_ParseTuple(args,"li",&node_id,&filter);
+	// might use a string later for this
+	#ifdef Image2D
+	cImage* node = (cImage*)node_id;
+//	switch(filter){
+//	case 0:
+////		node->SetTrilinearFilter();
+//	case 1:
+////		node->SetAnisotropicFilter();
+//	case 2:
+//	//	int ret =node->GetAnisotropicFilter();
+//	case 3:
+//	//	node->SetBilinearFilter();
+//	case 4:
+//	//	int ret =node->GetBilinearFilter();
+//	case 5:
+//	//	int ret =node->GetTrilinearFilter();
+//	}
+return Py_BuildValue("i",ret);
+	#endif
+
+}
+
+PyObject * Python::PyIrr_iGetOHeight(PyObject * self,PyObject * args){
+   	long node_id;
+	PyArg_ParseTuple(args,"l",&node_id);
+	#ifdef Image2D
+	cImage* node = (cImage*)node_id;
+	int ret =node->GetOrigHeight();
+	#endif
+return Py_BuildValue("f",ret);
 }
 
 PyObject * Python::PyIrr_iGetOWidth(PyObject * self,PyObject * args){
    	long node_id;
-//draw all in vector image stack
-//midpoint
-
 	PyArg_ParseTuple(args,"l",&node_id);
 	#ifdef Image2D
 	cImage* node = (cImage*)node_id;
-
 	int ret =node->GetOrigWidth();
 	#endif
-
-return Py_BuildValue("i",ret);
-
+return Py_BuildValue("f",ret);
 }
 
 PyObject * Python::PyIrr_iGetHeight(PyObject * self,PyObject * args){
    	long node_id;
-//draw all in vector image stack
-//midpoint
-
 	PyArg_ParseTuple(args,"l",&node_id);
 	#ifdef Image2D
 	cImage* node = (cImage*)node_id;
-
 	int ret = node->GetHeight();
 	#endif
-
-return Py_BuildValue("i",ret);
+return Py_BuildValue("f",ret);
 
 }
 
 PyObject * Python::PyIrr_iGetWidth(PyObject * self,PyObject * args){
    	long node_id;
-//draw all in vector image stack
-//midpoint
-
 	PyArg_ParseTuple(args,"l",&node_id);
 	#ifdef Image2D
 	cImage* node = (cImage*)node_id;
-
 	int ret =node->GetWidth();
 	#endif
-
-return Py_BuildValue("i",ret);
-
+return Py_BuildValue("f",ret);
 }
 
 PyObject * Python::PyIrr_iDraw(PyObject * self,PyObject * args){
