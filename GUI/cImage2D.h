@@ -55,6 +55,7 @@ public:
                         break;
                 }
         }
+
         void Draw(irr::scene::ISceneManager* SceneManager) {
                 irr::u16 indices[] = {  0,1,2,  3,2,1};
                 irr::video::IVideoDriver* driver = SceneManager->getVideoDriver();
@@ -128,6 +129,7 @@ public:
                 driver->setTransform(irr::video::ETS_WORLD, mat);
                 driver->drawIndexedTriangleList(&Vertices[0], 4, &indices[0], 4);
         }
+
         void SetTransparent(bool trans) {
                 Transparent = trans;
                 if (Transparent)
@@ -135,11 +137,14 @@ public:
                 else
                         Material.MaterialType = irr::video::EMT_SOLID;
         };
+
         bool GetTransparent() { return Transparent; };
+
         void SetTransparentColor(irr::video::SColor trans, irr::video::IVideoDriver *driver) {
                 TransColor = trans;
                 driver->makeColorKeyTexture(Texture,TransColor);
         };
+
         void SetPosition(irr::core::position2di newpos) {
                 irr::f32 xd, yd;
                 xd = irr::f32(newpos.X - ImageRect.UpperLeftCorner.X);
@@ -147,36 +152,54 @@ public:
                 ImageRect = irr::core::recti(ImageRect.UpperLeftCorner.X+(irr::s32)xd,ImageRect.UpperLeftCorner.Y+(irr::s32)yd,ImageRect.LowerRightCorner.X+(irr::s32)xd,ImageRect.LowerRightCorner.Y+(irr::s32)yd);
                 OrigImageRect = irr::core::recti(OrigImageRect.UpperLeftCorner.X+(irr::s32)xd,OrigImageRect.UpperLeftCorner.Y+(irr::s32)yd,OrigImageRect.LowerRightCorner.X+(irr::s32)xd,OrigImageRect.LowerRightCorner.Y+(irr::s32)yd);
         }
+
         void SetColor(irr::video::SColor newc) {
                 Color = newc;
                 for (irr::u16 x = 0; x < 4; x++) {
                         Vertices[x].Color = Color;
                 }
         }
+
         irr::video::SColor GetColor() { return Color; };
+
         irr::video::SColor GetTransparentColor() { return TransColor; };
+
         void SetBilinearFilter(bool on) { Material.TextureLayer[0].BilinearFilter = on; };
+
         void SetTrilinearFilter(bool on) { Material.TextureLayer[0].TrilinearFilter = on; };
+
         void SetAnisotropicFilter(bool on) { Material.TextureLayer[0].AnisotropicFilter = on; };
+
         bool GetBilinearFilter() { return Material.TextureLayer[0].BilinearFilter; };
+
         bool GetTrilinearFilter() { return Material.TextureLayer[0].TrilinearFilter; };
+
         bool GetAnisotropicFilter() { return Material.TextureLayer[0].AnisotropicFilter > 0; };
+
         void SetRotation(irr::f32 newrot) { Rotation = newrot; };
+
         irr::f32 GetRotation() { return Rotation; };
+
         int GetWidth() {
                  return (ImageRect.UpperLeftCorner.X-ImageRect.LowerRightCorner.X);
                  };
+
         int GetHeight() {
                  return (ImageRect.UpperLeftCorner.Y-ImageRect.LowerRightCorner.Y);
                  };
+
         irr::s32 GetOrigWidth() {
                 return (OrigImageRect.UpperLeftCorner.X-ImageRect.LowerRightCorner.X);
                 };
+
         irr::s32 GetOrigHeight() {
                  return (OrigImageRect.UpperLeftCorner.Y-ImageRect.LowerRightCorner.Y);
                  };
+
         void SetTexture(irr::video::ITexture* tex) { Texture = tex; Material.TextureLayer[0].Texture = Texture; };
+
         irr::core::recti GetBoundRect() { return BoundRect; };
+
         void SetScale(irr::core::vector2df news) {
                 Scale = news;
                 ImageRect = irr::core::recti(OrigImageRect.UpperLeftCorner.X,
@@ -186,5 +209,7 @@ public:
                                               OrigImageRect.UpperLeftCorner.Y+(irr::s32)
                                              (this->GetOrigHeight()*news.Y));
         }
+
         irr::video::ITexture *GetTexture() { return Texture; };
+
 };

@@ -48,9 +48,14 @@ if (init) :
 
 # irr.checkKeyState(); # obsolete check event loop to see if any key was pressed #existing functions should be moved to pre and post python functions
  #physics.opensteer(1) - wip
-# scene.postprocess()
+# scene.postprocess() #toggles
  #scene.SPARK()
  #scene.CSG("test.3ds")
+
+
+ #box2d add body attach it to 2d graphic
+ #physics.box2d("test.png",1)
+
 
  sound2 = scene.soundman(0,"./media/bling.ogg",0) #create sound device
  scene.soundman(1,str(sound2),1)#play sound
@@ -188,6 +193,11 @@ if (init) :
    del deck[i]
    hand2.append(image.iadd(card1,(i*10)+100,i*10,(i*10)+100+55,i*10+84,0,0,55,84))
 
+   print image.height(hand2[1])
+   #image.oheight()
+   #image.width()
+  image.iposition(hand2[1], 50,100)
+
 
  teststring = "string"
  teststring2 = list(teststring)
@@ -301,6 +311,9 @@ ycoord=input.mouse(3,0,0)
 #
 #i*10)+100+55,
 #i*10+84
+
+#if input.getKey('KEY_KEY_F') :
+
 
 
 

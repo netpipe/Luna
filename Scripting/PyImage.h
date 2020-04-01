@@ -17,6 +17,11 @@ PyMethodDef irr_Image[] =
 	{"getbounds",Python::PyIrr_igetBounds,METH_VARARGS,"getbounds"},
 	{"loadfont",Python::PyIrr_LoadSpriteFont,METH_VARARGS,"loadfont"},
 
+	{"height",Python::PyIrr_iGetHeight,METH_VARARGS,"PyIrr_iGetHeight"},
+	{"width",Python::PyIrr_iGetWidth,METH_VARARGS,"PyIrr_iGetOHeight"},
+	{"oheight",Python::PyIrr_iGetOHeight,METH_VARARGS,"PyIrr_iGetOHeight"},
+	{"owidth",Python::PyIrr_iGetOWidth,METH_VARARGS,"PyIrr_iGetOWidth"},
+
 	{NULL,NULL,0,NULL}
 };
 
@@ -61,12 +66,75 @@ PyObject * Python::PyIrr_iPosition(PyObject * self,PyObject * args){
 	PyArg_ParseTuple(args,"lff",&node_id,&X,&Y);
 	#ifdef Image2D
 	cImage* node = (cImage*)node_id;
-
+//if its -1 for x val return center position or use getbounds
 irr::core::position2di newpos;
 newpos.X=X;
 newpos.Y=Y;
 node->SetPosition(newpos);
 #endif
+return Py_BuildValue("");
+
+}
+PyObject * Python::PyIrr_iGetOHeight(PyObject * self,PyObject * args){
+   	long node_id;
+//draw all in vector image stack
+//midpoint
+
+	PyArg_ParseTuple(args,"l",&node_id);
+	#ifdef Image2D
+	cImage* node = (cImage*)node_id;
+
+	node->GetOrigHeight();
+	#endif
+
+return Py_BuildValue("");
+
+}
+
+PyObject * Python::PyIrr_iGetOWidth(PyObject * self,PyObject * args){
+   	long node_id;
+//draw all in vector image stack
+//midpoint
+
+	PyArg_ParseTuple(args,"l",&node_id);
+	#ifdef Image2D
+	cImage* node = (cImage*)node_id;
+
+	node->GetOrigWidth();
+	#endif
+
+return Py_BuildValue("");
+
+}
+
+PyObject * Python::PyIrr_iGetHeight(PyObject * self,PyObject * args){
+   	long node_id;
+//draw all in vector image stack
+//midpoint
+
+	PyArg_ParseTuple(args,"l",&node_id);
+	#ifdef Image2D
+	cImage* node = (cImage*)node_id;
+
+	node->GetHeight();
+	#endif
+
+return Py_BuildValue("");
+
+}
+
+PyObject * Python::PyIrr_iGetWidth(PyObject * self,PyObject * args){
+   	long node_id;
+//draw all in vector image stack
+//midpoint
+
+	PyArg_ParseTuple(args,"l",&node_id);
+	#ifdef Image2D
+	cImage* node = (cImage*)node_id;
+
+	node->GetWidth();
+	#endif
+
 return Py_BuildValue("");
 
 }

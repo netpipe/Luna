@@ -269,6 +269,12 @@ namespace Python {
     PyObject * PyIrr_igetBounds(PyObject * self,PyObject * args);
     PyObject * PyIrr_LoadSpriteFont(PyObject * self,PyObject * args);
 
+    PyObject * PyIrr_iGetOHeight(PyObject * self,PyObject * args);
+    PyObject * PyIrr_iGetOWidth(PyObject * self,PyObject * args);
+    PyObject * PyIrr_iGetHeight(PyObject * self,PyObject * args);
+    PyObject * PyIrr_iGetWidth(PyObject * self,PyObject * args);
+
+
     PyMODINIT_FUNC init_irr(void);
 
     //subsystem
