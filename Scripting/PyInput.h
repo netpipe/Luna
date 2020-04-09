@@ -851,7 +851,7 @@ void Python::CheckKeyStates(){
         printf("hit normal vector: %f %f %f \n", Normal[0], Normal[1], Normal[2]);
 #endif
 
-#ifdef DECALS2
+//#ifdef DECALS2
 
 ///just testing
 //        if (yesim)
@@ -881,10 +881,10 @@ void Python::CheckKeyStates(){
             if (nextDecal >= MAX_DECALS)
                nextDecal = 0;
          }
-#endif
+//#endif
 
 //!Decal Manager
-#ifdef DECALS2s
+#ifdef DECALS2
                  // Create a decal
         irr::core::vector3df position = irr::core::vector3df(80, 80, 80);
         irr::core::vector3df dimension = irr::core::vector3df(10, 10, 10);

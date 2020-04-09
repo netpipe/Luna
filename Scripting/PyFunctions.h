@@ -501,39 +501,6 @@ PyObject * Python::PyIrr_addPlayer(PyObject * self,PyObject * args) {//active ca
 return Py_BuildValue("");
 }
 
-PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active camera
-    long * node;
-    int type;
-	PyArg_ParseTuple(args,"i",&type);
-
-	if (type){
-    bDecals=1; // should fix this to be inside the defines
-
-//    #ifdef DECALS
-//        //! Create decal manager
-//        decalManager = new DecalManager(smgr);
-//        //device->getSceneManager()->createMetaTriangleSelector();
-//    return Py_BuildValue("l",decalManager);
-//    #endif
-
-	}else{
-    #ifdef DECALS2
-    bDecals=2;
-        video::ITexture* image = driver->getTexture("./data/textures/bullet.png");
-        for(int i=0; i<MAX_DECALS; i++){
-            decals[i] = new ArmDecalSceneNode(smgr->getRootSceneNode(), smgr, image, 15.2f);
-        //decals[i]->setMaterialType( video::EMT_TRANSPARENT_ALPHA_CHANNEL);
-        //decals[i]->setMaterialType( video::EMT_TRANSPARENT_ALPHA_CHANNEL_REF );
-        //decals->setMaterialFlag(video::EMF_LIGHTING, true);
-        //decals[i]->getMaterial(0)->setFlag();
-        }
-        int nextDecal=0;
-    return Py_BuildValue("1");
-    #endif
-	}
-//	luna->m_sound->PlayBackgroundMusic(1);
-return Py_BuildValue("0");
-}
 
 PyObject * Python::PyIrr_Event(PyObject * self,PyObject * args){
 	//long * event;
