@@ -3,7 +3,7 @@
 
 // there are scripting includes at the bottom for scripting system to register in pythonManager.h
 // there are includes at bottom of file for scripting too.
-//#include "../config.h"
+#include "../config.h"
 //#define SOUND
 //#include "../Luna.h"
 #include <cstdlib>
@@ -481,44 +481,6 @@ irr::core::array<ISceneNode*> waypoints;
     return Py_BuildValue("");
 }
 
-PyObject * Python::PyIrr_fpsWeapon(PyObject * self,PyObject * args){
-// need to attach to bones and/or nodes here
-#ifdef FPS
-bFPS = 1;
-    long pcam;
-    PyArg_ParseTuple(args,"l",&pcam);
-    ICameraSceneNode* camera = (ICameraSceneNode*)pcam;
-    device->getGUIEnvironment()->addImage( driver->getTexture("data/textures/crosshairs/crosshair1.png"),
-                                            core::position2d<s32>((luna->resolution[0]/2)-64,(luna->resolution[1]/2)-64));
-    #ifdef FPS
-          IAnimatedMesh*   gunmesh = smgr->getMesh("data/models/weapons/M4/3d_person/M4A1d.3ds");
-          scene::IAnimatedMeshSceneNode* agun;
-          agun = smgr->addAnimatedMeshSceneNode(gunmesh);
-          if (agun)
-          {
-            agun->setMaterialTexture(0, driver->getTexture("data/models/weapons/M4/1st_person/M4A1.jpg"));
-            agun->setScale(core::vector3df(1.2f, 1.2f, 1.2f));
-            agun->setPosition(core::vector3df(180.f,1.5f,0.f));
-            agun->setRotation(core::vector3df(0.f,0.f,90.f));
-            //agun->apply_light2node(agun);
-        	agun->addShadowVolumeSceneNode();
-          }
-          gunmesh->drop();
-       // scene::ICameraSceneNode* cam = smgr->addCameraSceneNodeFPS(0, 100.0f, .5f,-1,keyMap,8);
-                                  // cam->setPosition(core::vector3df(-200,100,200));
-                                 //  cam->setTarget(core::vector3df(0,0,0));
-        camera->setFOV(PI/2);
-        camera->setFarValue(7000);
-
-
-        M4 = new firstPersonWeapon(device, camera);
-        //  apply_light2node(M4->getNode());
-        device->setEventReceiver(M4);
-      //  return Py_BuildValue("l",agun);
-    #endif
-    #endif // FPS
-return Py_BuildValue("");
-}
 
 PyObject * Python::PyIrr_addPlayer(PyObject * self,PyObject * args) {//active camera
    #ifdef PLAYER
@@ -546,12 +508,14 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
 
 	if (type){
     bDecals=1; // should fix this to be inside the defines
-    #ifdef DECALS
-        //! Create decal manager
-        decalManager = new DecalManager(smgr);
-        //device->getSceneManager()->createMetaTriangleSelector();
-    return Py_BuildValue("l",decalManager);
-    #endif
+
+//    #ifdef DECALS
+//        //! Create decal manager
+//        decalManager = new DecalManager(smgr);
+//        //device->getSceneManager()->createMetaTriangleSelector();
+//    return Py_BuildValue("l",decalManager);
+//    #endif
+
 	}else{
     #ifdef DECALS2
     bDecals=2;

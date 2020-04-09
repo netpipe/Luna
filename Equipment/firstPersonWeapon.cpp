@@ -212,6 +212,40 @@ bool firstPersonWeapon::shoot()
     }
     node->setLoopMode(false);
     node->setAnimationEndCallback(this);
+ //   #define FPSShoot
+#ifdef FPSShoot
+///start of bullet stuff
+
+//   if(q3levelmesh) q3node = smgr->addOctreeSceneNode(q3levelmesh->getMesh(0));
+//    scene::ITriangleSelector* selector = 0;
+//    q3node->setMaterialFlag(video::EMF_LIGHTING, true);
+//    if(q3node)
+//    {
+//        q3node->setScale(core::vector3df(1.0, 1.0, 1.0));
+//        selector = smgr->createOctTreeTriangleSelector(q3levelmesh->getMesh(0), q3node, 128);
+//        q3node->setTriangleSelector(selector);
+//        selector->drop();
+//    }
+
+        // shootTime = device->getTimer()->getTime() + 100;
+         //Find intersection point
+         ISceneNode* outNode;
+         core::line3d<f32> line;
+         core::vector3df intersection;
+         core::triangle3df tri;
+         line.start = camera->getPosition();
+         line.end = line.start + (camera->getTarget() - line.start).normalize() * 1000.0f;
+
+         if (smgr->getSceneCollisionManager()->getCollisionPoint(line, selector, intersection, tri,outNode))
+         {
+            //Setup decal sprite
+            decals[nextDecal]->Setup(tri,intersection);
+            nextDecal++;
+            if (nextDecal >= MAX_DECALS)
+               nextDecal = 0;
+         }
+/// end
+#endif
 
     // playSound("sound/M4/shoot.wav");
 
@@ -254,7 +288,7 @@ bool firstPersonWeapon::shoot()
 
     // spawn one empty shell
 
-    printf("%d\n", ammoLeftInMagazine);
+ //   printf("%d\n", ammoLeftInMagazine);
     return true;
   }
   // no ammo left in magazine!

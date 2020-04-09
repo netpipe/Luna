@@ -40,13 +40,14 @@ PyMethodDef irr_Input[] =
 
 
 bool Python::CheckKeyState(int key){
-//EKEY_CODE akey;
-//printf("checking key state \n");
-//printf("value is %i \n",key);
-bool keystate = mEvent.getKeyState( irr::EKEY_CODE(key) );
-//if ( keystate == true  ){printf("pyKeyE pressed")};
-//irr::EKEY_CODE(KEY_KEY_P)
-//return irr::EKEY_CODE( keyValue );
+
+bool keystate=0;
+if (bFPS){
+keystate = M4->isKeyDown( irr::EKEY_CODE(key) );
+}else{
+keystate = mEvent.getKeyState( irr::EKEY_CODE(key) );
+}
+
 return (keystate);
 //return 1;
 }
@@ -850,7 +851,7 @@ void Python::CheckKeyStates(){
         printf("hit normal vector: %f %f %f \n", Normal[0], Normal[1], Normal[2]);
 #endif
 
-#ifdef DECALS2s
+#ifdef DECALS2
 
 ///just testing
 //        if (yesim)
@@ -883,7 +884,7 @@ void Python::CheckKeyStates(){
 #endif
 
 //!Decal Manager
-#ifdef DECALSs
+#ifdef DECALS2s
                  // Create a decal
         irr::core::vector3df position = irr::core::vector3df(80, 80, 80);
         irr::core::vector3df dimension = irr::core::vector3df(10, 10, 10);

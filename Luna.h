@@ -27,7 +27,7 @@
 #endif
 #include "Scene/Scene.h"
 
-#ifdef DECALS
+#ifdef DECALS2
 #include "./Scene/decals/decalscenenode.h"
 #endif
 

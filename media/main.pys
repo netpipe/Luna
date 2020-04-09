@@ -63,7 +63,8 @@ if (init) :
  #scene.soundman(1,str(sound2),2)#unloadsound / clear sounds
 
  camera = scene.addCamera(3,0,20,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
- #physics.fpsweapon(camera)
+ physics.fpsweapon(camera)
+
  Light1 = scene.Light(10,100,150,1,"111111") # type , vector, color
  model = "media/models/vehicles/oldChevy-Truck.3ds"
  texture = "media/models/vehicles/oldChevy.bmp"
@@ -196,7 +197,7 @@ if (init) :
    print image.height(hand2[1])
    #image.oheight()
    #image.width()
-  image.iposition(hand2[1], 50,100)
+ # image.iposition(hand2[1], 50,100)
 
 
  teststring = "string"

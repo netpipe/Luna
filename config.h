@@ -51,8 +51,8 @@
   //#define FLARES
   //#define FLARE2  // more realistic and working
 
-  #define DECALS       //decalmanager sortof working slow tho
-  //#define DECALS2       // simple decals
+  //#define DECALS       //decalmanager sortof working slow tho
+  #define DECALS2       // simple decals
   #define TESSELATE
 
   //  #define CODEEDITOR
