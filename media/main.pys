@@ -32,7 +32,7 @@ if (init) :
  #import shuffle
 
 #scene.using ('../media/lib/python2.7/random.py',"1"); #not working
- scene.using ('../media/random.py',"1"); #not working
+ scene.using ('../media/random.py',"1");
 
  ticks = time.time()
 
@@ -64,7 +64,10 @@ if (init) :
 
  camera = scene.addCamera(3,0,20,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
  physics.fpsweapon(camera)
- #scene.decals(1)
+ scene.decals(1,camera)
+
+ #shoot decals from camera
+
  Light1 = scene.Light(10,100,150,1,"111111") # type , vector, color
  model = "media/models/vehicles/oldChevy-Truck.3ds"
  texture = "media/models/vehicles/oldChevy.bmp"
@@ -103,7 +106,7 @@ if (init) :
 
  #jungle = scene.addJungle()
  #scene.addTree("jungle",1,terrain,1,1,1)#not working yet
- #track1 = scene.loadTrack('./data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
+ track1 = physics.loadTrack('./data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
  #track1 = scene.loadLevel('extra/maps/urban.bsp',0,0,0)  # trackname , timeofday , lighting , track slot/stages
 # scene.setPosition(terrain ,4, -100,-10,-100)
  #scene.exportScene("/home/clay/test/scene.irr")
@@ -259,7 +262,7 @@ if (init) :
 #else:
 # icount+=1
 
-
+scene.decals(0,camera)
 irr.delay(4000);
 
 #irr.delete(iaxe)

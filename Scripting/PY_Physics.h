@@ -521,6 +521,7 @@ mesh, 0.004f);
      //   m_cVehicle->loadLevel(track.c_str());
         device->getFileSystem()->changeWorkingDirectoryTo(rootdir.c_str());
 
+       #ifndef PHYSICS
 #ifdef IRRCD
     metaSelector = device->getSceneManager()->createMetaTriangleSelector();
     selector = device->getSceneManager()->createOctTreeTriangleSelector(mesh,node,128);
@@ -542,6 +543,7 @@ mesh, 0.004f);
    // m_cInGameEvents.chopperControl->onCollision(anim);
     anim->drop();
 	metaSelector->drop();
+#endif
 #endif
 
 #ifdef PHYSICS

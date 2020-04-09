@@ -26,7 +26,7 @@ reminder to actually check the names match with unstable ide's and whatnot
 	{"addAMesh",Python::PyIrr_addAnimatedMesh,METH_VARARGS,"PyIrr_addAnimatedMesh"},
 	{"addMesh",Python::PyIrr_LoadMesh,METH_VARARGS,"PyIrr_addMesh"},
     {"addModel",Python::PyIrr_loadModel,METH_VARARGS,"load model"},
-    {"loadTrack",Python::PyIrr_LoadTrack,METH_VARARGS,"loadTrack"},
+   // {"loadTrack",Python::PyIrr_LoadTrack,METH_VARARGS,"loadTrack"},
     {"loadLevel",Python::PyIrr_LoadLevel,METH_VARARGS,"loadLevel"},
 	{"Light",Python::PyIrr_Light,METH_VARARGS,"Light"},
 	{"flashlight",Python::PyIrr_Flashlight,METH_VARARGS,"Light"},
@@ -78,10 +78,66 @@ int btree=0;
 PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active camera
     long * node;
     int type;
-	PyArg_ParseTuple(args,"i",&type);
+    long cam2;
+	PyArg_ParseTuple(args,"il",&type,&cam2);
 
-	if (type){
+	ICameraSceneNode *cam = (ICameraSceneNode *)cam2;
+	switch (type){
+	case 0:
+
+//	if (type){
     bDecals=1; // should fix this to be inside the defines
+#ifdef DECALS2
+
+  if(bDecals){
+		#ifdef PHYSICS
+        btVector3 Normal;
+
+//      vector3df pos = camera->getPosition();
+        vector3df upvect = cam->getUpVector();
+        vector3df target = cam->getTarget();
+
+        core::line3d<f32> line;
+		line.start = cam->getPosition();
+		line.end = line.start + (cam->getTarget() - line.start).normalize() * 1000.0f;
+
+        btVector3 rayHit = luna->m_cPhysics->RaycastWorld(btVector3(line.start.X, line.start.Y, line.start.Z),btVector3(line.end.X, line.end.Y, line.end.Z),Normal);
+   //     printf("ray position position: %f %f %f \n", rayHit[0], rayHit[1], rayHit[2]);
+   //     printf("hit normal vector: %f %f %f \n", Normal[0], Normal[1], Normal[2]);
+
+//#ifdef DECALS2
+
+///just testing
+//        if (yesim)
+//        {
+//             bill = smgr->addBillboardSceneNode();
+//             yesim = false;
+//        }
+//        bill->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR );
+//        bill->setMaterialTexture(0, driver->getTexture("./media/particle.bmp"));
+//        bill->setMaterialFlag(video::EMF_LIGHTING, false);
+//        bill->setMaterialFlag(video::EMF_ZBUFFER, false);
+//        bill->setSize(core::dimension2d<f32>(20.0f, 20.0f));
+////        bill->setID(ID_IsNotPickable); // This ensures that we don't accidentally ray-pick it
+//        bill->setPosition(vector3df(rayHit[0], rayHit[1], rayHit[2]));
+//         if (smgr->getSceneCollisionManager()->getCollisionPoint(line, selector, intersection, tri,outNode))
+//         {
+            //Setup decal sprite
+
+         if ( rayHit[0] != 0)
+         {
+            vector3df hitsend = vector3df(rayHit[0], rayHit[1], rayHit[2]);
+            // vector3df hitsend = vector3df(1, 1,1);
+             vector3df norm = vector3df(Normal[0], Normal[1], Normal[2]);
+
+            decals[nextDecal]->VNSetup(norm,hitsend);
+            nextDecal++;
+            if (nextDecal >= MAX_DECALS)
+               nextDecal = 0;
+         }
+}
+                 #endif
+#endif
 
 //    #ifdef DECALS
 //        //! Create decal manager
@@ -90,7 +146,8 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
 //    return Py_BuildValue("l",decalManager);
 //    #endif
 
-	}else{
+	break;
+	case 1:
     #ifdef DECALS2
     bDecals=2;
         video::ITexture* image = driver->getTexture("./data/textures/bullet.png");
@@ -102,7 +159,9 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
         //decals[i]->getMaterial(0)->setFlag();
         }
         int nextDecal=0;
-    return Py_BuildValue("1");
+
+    return Py_BuildValue("");
+    break;
     #endif
 	}
 return Py_BuildValue("");

@@ -289,6 +289,7 @@ char *zErrMsg;
   fluid_audio_driver_t* adriver = NULL;
   fluid_synth_t* synth = NULL;
 #endif
+
 #ifdef PYTHON
 PyMethodDef irr_function[] =
 {
@@ -299,9 +300,7 @@ PyMethodDef irr_function[] =
     {"event",Python::PyIrr_Event,METH_VARARGS,"event"},
 
     {"delete",Python::PyIrr_Delete,METH_VARARGS,"delete"},
-
-//        {"flare2",Python::PyIrr_Flare2,METH_VARARGS,"Loads Flare2"},
-
+//{"flare2",Python::PyIrr_Flare2,METH_VARARGS,"Loads Flare2"},
     {"wayman",Python::PyIrr_WayPoint,METH_VARARGS,"waypoint manager"},
 
     {"pauseGame",Python::PyIrr_pauseGame,METH_VARARGS,"pauseGame"},

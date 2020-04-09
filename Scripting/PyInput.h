@@ -831,11 +831,11 @@ void Python::CheckKeyStates(){
 //    }
 
 
-#ifdef DECALS
+#ifdef DECALS2s
   if(bDecals){
 		#ifdef PHYSICS
         btVector3 Normal;
-		#endif
+
 //      vector3df pos = camera->getPosition();
         vector3df upvect = camera->getUpVector();
         vector3df target = camera->getTarget();
@@ -844,12 +844,9 @@ void Python::CheckKeyStates(){
 		line.start = camera->getPosition();
 		line.end = line.start + (camera->getTarget() - line.start).normalize() * 1000.0f;
 
-
-#ifdef PHYSICS
         btVector3 rayHit = luna->m_cPhysics->RaycastWorld(btVector3(line.start.X, line.start.Y, line.start.Z),btVector3(line.end.X, line.end.Y, line.end.Z),Normal);
         printf("ray position position: %f %f %f \n", rayHit[0], rayHit[1], rayHit[2]);
         printf("hit normal vector: %f %f %f \n", Normal[0], Normal[1], Normal[2]);
-#endif
 
 //#ifdef DECALS2
 
@@ -866,25 +863,46 @@ void Python::CheckKeyStates(){
 //        bill->setSize(core::dimension2d<f32>(20.0f, 20.0f));
 ////        bill->setID(ID_IsNotPickable); // This ensures that we don't accidentally ray-pick it
 //        bill->setPosition(vector3df(rayHit[0], rayHit[1], rayHit[2]));
-     //    if (smgr->getSceneCollisionManager()->getCollisionPoint(line, selector, intersection, tri,outNode))
-     //    {
+//         if (smgr->getSceneCollisionManager()->getCollisionPoint(line, selector, intersection, tri,outNode))
+//         {
             //Setup decal sprite
-
 
          if ( rayHit[0] != 0)
          {
-             vector3df hitsend = vector3df(rayHit[0], rayHit[1], rayHit[2]);
+//             vector3df hitsend = vector3df(rayHit[0], rayHit[1], rayHit[2]);
+             vector3df hitsend = vector3df(1, 1,1);
              vector3df norm = vector3df(Normal[0], Normal[1], Normal[2]);
 
             decals[nextDecal]->VNSetup(norm,hitsend);
             nextDecal++;
             if (nextDecal >= MAX_DECALS)
                nextDecal = 0;
+               #endif
          }
-//#endif
 
+#ifdef IRRCDs
+    int nextDecal=0;
+
+ISceneNode* outNode;
+         core::line3d<f32> line;
+         core::vector3df intersection;
+         core::triangle3df tri;
+         line.start = camera->getPosition();
+         line.end = line.start + (camera->getTarget() - line.start).normalize() * 1000.0f;
+
+         if (smgr->getSceneCollisionManager()->getCollisionPoint(line, selector, intersection, tri,outNode))
+         {
+            //Setup decal sprite
+            decals[nextDecal]->Setup(tri,intersection);
+            nextDecal++;
+            if (nextDecal >= MAX_DECALS)
+               nextDecal = 0;
+         }
+         #endif
+//#endif
+#
 //!Decal Manager
-#ifdef DECALS2
+#ifdef DECALS2s
                  // Create a decal
         irr::core::vector3df position = irr::core::vector3df(80, 80, 80);
         irr::core::vector3df dimension = irr::core::vector3df(10, 10, 10);

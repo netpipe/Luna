@@ -26,7 +26,7 @@
 //#define SDLSound //- seems to play and freeze needs threading
 
 
-   // #define IRRCD   // irrlicht Collision Detection
+  //  #define IRRCD   // irrlicht Collision Detection
     #define EVENTS
     #define FPS
     #define CSG // constructive solid geometry
