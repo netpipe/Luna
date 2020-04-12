@@ -422,17 +422,17 @@ PyObject * Python::PyIrr_FWGrass(PyObject * self,PyObject * args){
 
     GrassGenerator::CGrassGenerator* grassGenInstance = new CGrassGenerator(device);
 
-	grassGenInstance->load("./data/vegData/input.xml");
+	grassGenInstance->load("../media/data/vegData/input.xml");
     grassGenInstance->process();
     std::cout << "PROCESSED" << std::endl;
 
-    grassGenInstance->writeOut("./data/vegData/output.grs");
+    grassGenInstance->writeOut("../media/data/vegData/output.grs");
     std::cout << "DONE" << std::endl;
     delete grassGenInstance;
 
 
 
-	device->getFileSystem()->addFolderFileArchive("./data/vegData/");
+	device->getFileSystem()->addFolderFileArchive("../media/data/vegData/");
 	GrassLoader::loadGrass(dmap,smgr,
 							16.f,8.f,36.f,
 							40.f,43.f,46.f);

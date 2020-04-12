@@ -1,0 +1,1452 @@
+irrb log 0.3
+
+[options]
+   Create Scene: True
+ Base Directory: /home/tecan/Desktop/1/
+Scene Directory: /home/tecan/Desktop/1/
+ Mesh Directory: /home/tecan/Desktop/1/
+  Tex Directory: /home/tecan/Desktop/1/
+         Binary: False
+ Export Cameras: True
+  Export Lights: True
+  Copy Textures: True
+  Tex Extension: Original
+  Selected Only: False
+   Irrlicht Ver: 15
+
+[blender info]
+.blend File: /home/tecan/Desktop/AIQuake/huge.blend
+.blend Root: /home/tecan/Desktop/AIQuake
+
+[object info]
+Object (0): Name=ShapeIndexedFaceS.101, Type=Mesh
+Object (1): Name=Viewpoint.011, Type=Camera
+Object (2): Name=Viewpoint.010, Type=Camera
+Object (3): Name=Viewpoint.009, Type=Camera
+Object (4): Name=Viewpoint.008, Type=Camera
+Object (5): Name=Viewpoint.007, Type=Camera
+Object (6): Name=Viewpoint.006, Type=Camera
+Object (7): Name=Viewpoint.005, Type=Camera
+Object (8): Name=Viewpoint.004, Type=Camera
+Object (9): Name=Viewpoint.003, Type=Camera
+Object (10): Name=Viewpoint.002, Type=Camera
+Object (11): Name=Viewpoint.001, Type=Camera
+Object (12): Name=Viewpoint, Type=Camera
+Object (13): Name=Lamp, Type=Lamp
+Object (14): Name=Camera, Type=Camera
+
+[animation info]
+fpsbase: 1.0000
+    fps: 25
+ sFrame: 1
+ eFrame: 250
+
+[ipo info]
+IPO's: []
+Key's: []
+
+[action info]
+
+[Mesh - ob:ShapeIndexedFaceS.101, me:ShapeIndexedFaceS.101]
+UV Layers (1): UVTex
+Primary UV Layer: None
+Double Sided: True
+Mesh VertexColors: False
+Mesh Key: None
+Mesh ipo: None
+Modifiers: None
+Armatures: None
+
+[Image]
+imageName: water2dc2.tga
+org fullFileName: /home/tecan/cc/canyon/water2dc2.tga
+fullFileName: /home/tecan/cc/canyon/water2dc2.tga
+dirname: /home/tecan/cc/canyon
+fileName: water2dc2.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: water2dc2.tga
+result1: /home/tecan/Desktop/1/water2dc2.tga
+
+[Image]
+imageName: v_glass.tga
+org fullFileName: /home/tecan/cc/makro/v_glass.tga
+fullFileName: /home/tecan/cc/makro/v_glass.tga
+dirname: /home/tecan/cc/makro
+fileName: v_glass.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: v_glass.tga
+result1: /home/tecan/Desktop/1/v_glass.tga
+
+[Image]
+imageName: tlava1_3.tga
+org fullFileName: /home/tecan/cc/e2u3/tlava1_3.tga
+fullFileName: /home/tecan/cc/e2u3/tlava1_3.tga
+dirname: /home/tecan/cc/e2u3
+fileName: tlava1_3.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: tlava1_3.tga
+result1: /home/tecan/Desktop/1/tlava1_3.tga
+
+[Image]
+imageName: a_mall11.tga
+org fullFileName: /home/tecan/cc/tome/a_mall11.tga
+fullFileName: /home/tecan/cc/tome/a_mall11.tga
+dirname: /home/tecan/cc/tome
+fileName: a_mall11.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: a_mall11.tga
+result1: /home/tecan/Desktop/1/a_mall11.tga
+
+[Image]
+imageName: a_cons04.tga
+org fullFileName: /home/tecan/cc/tome/a_cons04.tga
+fullFileName: /home/tecan/cc/tome/a_cons04.tga
+dirname: /home/tecan/cc/tome
+fileName: a_cons04.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: a_cons04.tga
+result1: /home/tecan/Desktop/1/a_cons04.tga
+
+[Image]
+imageName: iwakabe.tga
+org fullFileName: /home/tecan/cc/temple2/iwakabe.tga
+fullFileName: /home/tecan/cc/temple2/iwakabe.tga
+dirname: /home/tecan/cc/temple2
+fileName: iwakabe.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: iwakabe.tga
+result1: /home/tecan/Desktop/1/iwakabe.tga
+
+[Image]
+imageName: sdragon2.tga
+org fullFileName: /home/tecan/cc/skie/sdragon2.tga
+fullFileName: /home/tecan/cc/skie/sdragon2.tga
+dirname: /home/tecan/cc/skie
+fileName: sdragon2.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: sdragon2.tga
+result1: /home/tecan/Desktop/1/sdragon2.tga
+
+[Image]
+imageName: s_woodol.tga
+org fullFileName: /home/tecan/cc/shadowfire/s_woodol.tga
+fullFileName: /home/tecan/cc/shadowfire/s_woodol.tga
+dirname: /home/tecan/cc/shadowfire
+fileName: s_woodol.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: s_woodol.tga
+result1: /home/tecan/Desktop/1/s_woodol.tga
+
+[Image]
+imageName: s_wood7.tga
+org fullFileName: /home/tecan/cc/shadowfire/s_wood7.tga
+fullFileName: /home/tecan/cc/shadowfire/s_wood7.tga
+dirname: /home/tecan/cc/shadowfire
+fileName: s_wood7.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: s_wood7.tga
+result1: /home/tecan/Desktop/1/s_wood7.tga
+
+[Image]
+imageName: s_wood3.tga
+org fullFileName: /home/tecan/cc/shadowfire/s_wood3.tga
+fullFileName: /home/tecan/cc/shadowfire/s_wood3.tga
+dirname: /home/tecan/cc/shadowfire
+fileName: s_wood3.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: s_wood3.tga
+result1: /home/tecan/Desktop/1/s_wood3.tga
+
+[Image]
+imageName: s_sanct.tga
+org fullFileName: /home/tecan/cc/shadowfire/s_sanct.tga
+fullFileName: /home/tecan/cc/shadowfire/s_sanct.tga
+dirname: /home/tecan/cc/shadowfire
+fileName: s_sanct.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: s_sanct.tga
+result1: /home/tecan/Desktop/1/s_sanct.tga
+
+[Image]
+imageName: s_rip.tga
+org fullFileName: /home/tecan/cc/shadowfire/s_rip.tga
+fullFileName: /home/tecan/cc/shadowfire/s_rip.tga
+dirname: /home/tecan/cc/shadowfire
+fileName: s_rip.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: s_rip.tga
+result1: /home/tecan/Desktop/1/s_rip.tga
+
+[Image]
+imageName: s_death.tga
+org fullFileName: /home/tecan/cc/shadowfire/s_death.tga
+fullFileName: /home/tecan/cc/shadowfire/s_death.tga
+dirname: /home/tecan/cc/shadowfire
+fileName: s_death.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: s_death.tga
+result1: /home/tecan/Desktop/1/s_death.tga
+
+[Image]
+imageName: s_bluel.tga
+org fullFileName: /home/tecan/cc/shadowfire/s_bluel.tga
+fullFileName: /home/tecan/cc/shadowfire/s_bluel.tga
+dirname: /home/tecan/cc/shadowfire
+fileName: s_bluel.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: s_bluel.tga
+result1: /home/tecan/Desktop/1/s_bluel.tga
+
+[Image]
+imageName: s_black.tga
+org fullFileName: /home/tecan/cc/shadowfire/s_black.tga
+fullFileName: /home/tecan/cc/shadowfire/s_black.tga
+dirname: /home/tecan/cc/shadowfire
+fileName: s_black.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: s_black.tga
+result1: /home/tecan/Desktop/1/s_black.tga
+
+[Image]
+imageName: jeep2.tga
+org fullFileName: /home/tecan/cc/scuzzy/jeep2.tga
+fullFileName: /home/tecan/cc/scuzzy/jeep2.tga
+dirname: /home/tecan/cc/scuzzy
+fileName: jeep2.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: jeep2.tga
+result1: /home/tecan/Desktop/1/jeep2.tga
+
+[Image]
+imageName: jeep1.tga
+org fullFileName: /home/tecan/cc/scuzzy/jeep1.tga
+fullFileName: /home/tecan/cc/scuzzy/jeep1.tga
+dirname: /home/tecan/cc/scuzzy
+fileName: jeep1.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: jeep1.tga
+result1: /home/tecan/Desktop/1/jeep1.tga
+
+[Image]
+imageName: jeep0.tga
+org fullFileName: /home/tecan/cc/scuzzy/jeep0.tga
+fullFileName: /home/tecan/cc/scuzzy/jeep0.tga
+dirname: /home/tecan/cc/scuzzy
+fileName: jeep0.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: jeep0.tga
+result1: /home/tecan/Desktop/1/jeep0.tga
+
+[Image]
+imageName: action.tga
+org fullFileName: /home/tecan/cc/scuzzy/action.tga
+fullFileName: /home/tecan/cc/scuzzy/action.tga
+dirname: /home/tecan/cc/scuzzy
+fileName: action.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: action.tga
+result1: /home/tecan/Desktop/1/action.tga
+
+[Image]
+imageName: comp3.tga
+org fullFileName: /home/tecan/cc/ppp/comp3.tga
+fullFileName: /home/tecan/cc/ppp/comp3.tga
+dirname: /home/tecan/cc/ppp
+fileName: comp3.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: comp3.tga
+result1: /home/tecan/Desktop/1/comp3.tga
+
+[Image]
+imageName: comp2.tga
+org fullFileName: /home/tecan/cc/ppp/comp2.tga
+fullFileName: /home/tecan/cc/ppp/comp2.tga
+dirname: /home/tecan/cc/ppp
+fileName: comp2.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: comp2.tga
+result1: /home/tecan/Desktop/1/comp2.tga
+
+[Image]
+imageName: comp1.tga
+org fullFileName: /home/tecan/cc/ppp/comp1.tga
+fullFileName: /home/tecan/cc/ppp/comp1.tga
+dirname: /home/tecan/cc/ppp
+fileName: comp1.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: comp1.tga
+result1: /home/tecan/Desktop/1/comp1.tga
+
+[Image]
+imageName: dude.tga
+org fullFileName: /home/tecan/cc/passin/dude.tga
+fullFileName: /home/tecan/cc/passin/dude.tga
+dirname: /home/tecan/cc/passin
+fileName: dude.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: dude.tga
+result1: /home/tecan/Desktop/1/dude.tga
+
+[Image]
+imageName: movie1.tga
+org fullFileName: /home/tecan/cc/paradise/movie1.tga
+fullFileName: /home/tecan/cc/paradise/movie1.tga
+dirname: /home/tecan/cc/paradise
+fileName: movie1.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: movie1.tga
+result1: /home/tecan/Desktop/1/movie1.tga
+
+[Image]
+imageName: box1.tga
+org fullFileName: /home/tecan/cc/paradise/box1.tga
+fullFileName: /home/tecan/cc/paradise/box1.tga
+dirname: /home/tecan/cc/paradise
+fileName: box1.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: box1.tga
+result1: /home/tecan/Desktop/1/box1.tga
+
+[Image]
+imageName: wood002.tga
+org fullFileName: /home/tecan/cc/nemesis/wood002.tga
+fullFileName: /home/tecan/cc/nemesis/wood002.tga
+dirname: /home/tecan/cc/nemesis
+fileName: wood002.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: wood002.tga
+result1: /home/tecan/Desktop/1/wood002.tga
+
+[Image]
+imageName: jacka1.tga
+org fullFileName: /home/tecan/cc/morwell/jacka1.tga
+fullFileName: /home/tecan/cc/morwell/jacka1.tga
+dirname: /home/tecan/cc/morwell
+fileName: jacka1.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: jacka1.tga
+result1: /home/tecan/Desktop/1/jacka1.tga
+
+[Image]
+imageName: crate31.tga
+org fullFileName: /home/tecan/cc/mia/crate31.tga
+fullFileName: /home/tecan/cc/mia/crate31.tga
+dirname: /home/tecan/cc/mia
+fileName: crate31.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: crate31.tga
+result1: /home/tecan/Desktop/1/crate31.tga
+
+[Image]
+imageName: crate12.tga
+org fullFileName: /home/tecan/cc/mia/crate12.tga
+fullFileName: /home/tecan/cc/mia/crate12.tga
+dirname: /home/tecan/cc/mia
+fileName: crate12.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: crate12.tga
+result1: /home/tecan/Desktop/1/crate12.tga
+
+[Image]
+imageName: cover11.tga
+org fullFileName: /home/tecan/cc/mia/cover11.tga
+fullFileName: /home/tecan/cc/mia/cover11.tga
+dirname: /home/tecan/cc/mia
+fileName: cover11.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: cover11.tga
+result1: /home/tecan/Desktop/1/cover11.tga
+
+[Image]
+imageName: xsign10.tga
+org fullFileName: /home/tecan/cc/karr/xsign10.tga
+fullFileName: /home/tecan/cc/karr/xsign10.tga
+dirname: /home/tecan/cc/karr
+fileName: xsign10.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: xsign10.tga
+result1: /home/tecan/Desktop/1/xsign10.tga
+
+[Image]
+imageName: wood13.tga
+org fullFileName: /home/tecan/cc/jestest3/wood13.tga
+fullFileName: /home/tecan/cc/jestest3/wood13.tga
+dirname: /home/tecan/cc/jestest3
+fileName: wood13.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: wood13.tga
+result1: /home/tecan/Desktop/1/wood13.tga
+
+[Image]
+imageName: demonc.tga
+org fullFileName: /home/tecan/cc/jestest3/demonc.tga
+fullFileName: /home/tecan/cc/jestest3/demonc.tga
+dirname: /home/tecan/cc/jestest3
+fileName: demonc.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: demonc.tga
+result1: /home/tecan/Desktop/1/demonc.tga
+
+[Image]
+imageName: woodk3.tga
+org fullFileName: /home/tecan/cc/g4meah0lic/woodk3.tga
+fullFileName: /home/tecan/cc/g4meah0lic/woodk3.tga
+dirname: /home/tecan/cc/g4meah0lic
+fileName: woodk3.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: woodk3.tga
+result1: /home/tecan/Desktop/1/woodk3.tga
+
+[Image]
+imageName: color1_8.tga
+org fullFileName: /home/tecan/cc/e3u3/color1_8.tga
+fullFileName: /home/tecan/cc/e3u3/color1_8.tga
+dirname: /home/tecan/cc/e3u3
+fileName: color1_8.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: color1_8.tga
+result1: /home/tecan/Desktop/1/color1_8.tga
+
+[Image]
+imageName: color1_7.tga
+org fullFileName: /home/tecan/cc/e3u3/color1_7.tga
+fullFileName: /home/tecan/cc/e3u3/color1_7.tga
+dirname: /home/tecan/cc/e3u3
+fileName: color1_7.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: color1_7.tga
+result1: /home/tecan/Desktop/1/color1_7.tga
+
+[Image]
+imageName: color1_5.tga
+org fullFileName: /home/tecan/cc/e3u3/color1_5.tga
+fullFileName: /home/tecan/cc/e3u3/color1_5.tga
+dirname: /home/tecan/cc/e3u3
+fileName: color1_5.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: color1_5.tga
+result1: /home/tecan/Desktop/1/color1_5.tga
+
+[Image]
+imageName: color1_2.tga
+org fullFileName: /home/tecan/cc/e3u3/color1_2.tga
+fullFileName: /home/tecan/cc/e3u3/color1_2.tga
+dirname: /home/tecan/cc/e3u3
+fileName: color1_2.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: color1_2.tga
+result1: /home/tecan/Desktop/1/color1_2.tga
+
+[Image]
+imageName: xpaint6.tga
+org fullFileName: /home/tecan/cc/community/xpaint6.tga
+fullFileName: /home/tecan/cc/community/xpaint6.tga
+dirname: /home/tecan/cc/community
+fileName: xpaint6.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: xpaint6.tga
+result1: /home/tecan/Desktop/1/xpaint6.tga
+
+[Image]
+imageName: xpaint2.tga
+org fullFileName: /home/tecan/cc/community/xpaint2.tga
+fullFileName: /home/tecan/cc/community/xpaint2.tga
+dirname: /home/tecan/cc/community
+fileName: xpaint2.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: xpaint2.tga
+result1: /home/tecan/Desktop/1/xpaint2.tga
+
+[Image]
+imageName: xpaint1.tga
+org fullFileName: /home/tecan/cc/community/xpaint1.tga
+fullFileName: /home/tecan/cc/community/xpaint1.tga
+dirname: /home/tecan/cc/community
+fileName: xpaint1.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: xpaint1.tga
+result1: /home/tecan/Desktop/1/xpaint1.tga
+
+[Image]
+imageName: wood002_ladder.tga
+org fullFileName: /home/tecan/cc/bobert/wood002_ladder.tga
+fullFileName: /home/tecan/cc/bobert/wood002_ladder.tga
+dirname: /home/tecan/cc/bobert
+fileName: wood002_ladder.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: wood002_ladder.tga
+result1: /home/tecan/Desktop/1/wood002_ladder.tga
+
+[Image]
+imageName: weave.tga
+org fullFileName: /home/tecan/cc/bobert/weave.tga
+fullFileName: /home/tecan/cc/bobert/weave.tga
+dirname: /home/tecan/cc/bobert
+fileName: weave.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: weave.tga
+result1: /home/tecan/Desktop/1/weave.tga
+
+[Image]
+imageName: wall.tga
+org fullFileName: /home/tecan/cc/bobert/wall.tga
+fullFileName: /home/tecan/cc/bobert/wall.tga
+dirname: /home/tecan/cc/bobert
+fileName: wall.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: wall.tga
+result1: /home/tecan/Desktop/1/wall.tga
+
+[Image]
+imageName: vent.tga
+org fullFileName: /home/tecan/cc/bobert/vent.tga
+fullFileName: /home/tecan/cc/bobert/vent.tga
+dirname: /home/tecan/cc/bobert
+fileName: vent.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: vent.tga
+result1: /home/tecan/Desktop/1/vent.tga
+
+[Image]
+imageName: tv.tga
+org fullFileName: /home/tecan/cc/bobert/tv.tga
+fullFileName: /home/tecan/cc/bobert/tv.tga
+dirname: /home/tecan/cc/bobert
+fileName: tv.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: tv.tga
+result1: /home/tecan/Desktop/1/tv.tga
+
+[Image]
+imageName: rivit2.tga
+org fullFileName: /home/tecan/cc/bobert/rivit2.tga
+fullFileName: /home/tecan/cc/bobert/rivit2.tga
+dirname: /home/tecan/cc/bobert
+fileName: rivit2.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: rivit2.tga
+result1: /home/tecan/Desktop/1/rivit2.tga
+
+[Image]
+imageName: rivit.tga
+org fullFileName: /home/tecan/cc/bobert/rivit.tga
+fullFileName: /home/tecan/cc/bobert/rivit.tga
+dirname: /home/tecan/cc/bobert
+fileName: rivit.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: rivit.tga
+result1: /home/tecan/Desktop/1/rivit.tga
+
+[Image]
+imageName: radio3.tga
+org fullFileName: /home/tecan/cc/bobert/radio3.tga
+fullFileName: /home/tecan/cc/bobert/radio3.tga
+dirname: /home/tecan/cc/bobert
+fileName: radio3.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: radio3.tga
+result1: /home/tecan/Desktop/1/radio3.tga
+
+[Image]
+imageName: radio1.tga
+org fullFileName: /home/tecan/cc/bobert/radio1.tga
+fullFileName: /home/tecan/cc/bobert/radio1.tga
+dirname: /home/tecan/cc/bobert
+fileName: radio1.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: radio1.tga
+result1: /home/tecan/Desktop/1/radio1.tga
+
+[Image]
+imageName: photo.tga
+org fullFileName: /home/tecan/cc/bobert/photo.tga
+fullFileName: /home/tecan/cc/bobert/photo.tga
+dirname: /home/tecan/cc/bobert
+fileName: photo.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: photo.tga
+result1: /home/tecan/Desktop/1/photo.tga
+
+[Image]
+imageName: panel.tga
+org fullFileName: /home/tecan/cc/bobert/panel.tga
+fullFileName: /home/tecan/cc/bobert/panel.tga
+dirname: /home/tecan/cc/bobert
+fileName: panel.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: panel.tga
+result1: /home/tecan/Desktop/1/panel.tga
+
+[Image]
+imageName: mattress_bot.tga
+org fullFileName: /home/tecan/cc/bobert/mattress_bot.tga
+fullFileName: /home/tecan/cc/bobert/mattress_bot.tga
+dirname: /home/tecan/cc/bobert
+fileName: mattress_bot.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: mattress_bot.tga
+result1: /home/tecan/Desktop/1/mattress_bot.tga
+
+[Image]
+imageName: mattress.tga
+org fullFileName: /home/tecan/cc/bobert/mattress.tga
+fullFileName: /home/tecan/cc/bobert/mattress.tga
+dirname: /home/tecan/cc/bobert
+fileName: mattress.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: mattress.tga
+result1: /home/tecan/Desktop/1/mattress.tga
+
+[Image]
+imageName: drywall.tga
+org fullFileName: /home/tecan/cc/bobert/drywall.tga
+fullFileName: /home/tecan/cc/bobert/drywall.tga
+dirname: /home/tecan/cc/bobert
+fileName: drywall.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: drywall.tga
+result1: /home/tecan/Desktop/1/drywall.tga
+
+[Image]
+imageName: drawer2.tga
+org fullFileName: /home/tecan/cc/bobert/drawer2.tga
+fullFileName: /home/tecan/cc/bobert/drawer2.tga
+dirname: /home/tecan/cc/bobert
+fileName: drawer2.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: drawer2.tga
+result1: /home/tecan/Desktop/1/drawer2.tga
+
+[Image]
+imageName: drawer.tga
+org fullFileName: /home/tecan/cc/bobert/drawer.tga
+fullFileName: /home/tecan/cc/bobert/drawer.tga
+dirname: /home/tecan/cc/bobert
+fileName: drawer.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: drawer.tga
+result1: /home/tecan/Desktop/1/drawer.tga
+
+[Image]
+imageName: comp_side.tga
+org fullFileName: /home/tecan/cc/bobert/comp_side.tga
+fullFileName: /home/tecan/cc/bobert/comp_side.tga
+dirname: /home/tecan/cc/bobert
+fileName: comp_side.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: comp_side.tga
+result1: /home/tecan/Desktop/1/comp_side.tga
+
+[Image]
+imageName: comp_grill.tga
+org fullFileName: /home/tecan/cc/bobert/comp_grill.tga
+fullFileName: /home/tecan/cc/bobert/comp_grill.tga
+dirname: /home/tecan/cc/bobert
+fileName: comp_grill.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: comp_grill.tga
+result1: /home/tecan/Desktop/1/comp_grill.tga
+
+[Image]
+imageName: cd.tga
+org fullFileName: /home/tecan/cc/bobert/cd.tga
+fullFileName: /home/tecan/cc/bobert/cd.tga
+dirname: /home/tecan/cc/bobert
+fileName: cd.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: cd.tga
+result1: /home/tecan/Desktop/1/cd.tga
+
+[Image]
+imageName: carpet.tga
+org fullFileName: /home/tecan/cc/bobert/carpet.tga
+fullFileName: /home/tecan/cc/bobert/carpet.tga
+dirname: /home/tecan/cc/bobert
+fileName: carpet.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: carpet.tga
+result1: /home/tecan/Desktop/1/carpet.tga
+
+[Image]
+imageName: card.tga
+org fullFileName: /home/tecan/cc/bobert/card.tga
+fullFileName: /home/tecan/cc/bobert/card.tga
+dirname: /home/tecan/cc/bobert
+fileName: card.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: card.tga
+result1: /home/tecan/Desktop/1/card.tga
+
+[Image]
+imageName: butts.tga
+org fullFileName: /home/tecan/cc/bobert/butts.tga
+fullFileName: /home/tecan/cc/bobert/butts.tga
+dirname: /home/tecan/cc/bobert
+fileName: butts.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: butts.tga
+result1: /home/tecan/Desktop/1/butts.tga
+
+[Image]
+imageName: bookend.tga
+org fullFileName: /home/tecan/cc/bobert/bookend.tga
+fullFileName: /home/tecan/cc/bobert/bookend.tga
+dirname: /home/tecan/cc/bobert
+fileName: bookend.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: bookend.tga
+result1: /home/tecan/Desktop/1/bookend.tga
+
+[Image]
+imageName: blockw.tga
+org fullFileName: /home/tecan/cc/bobert/blockw.tga
+fullFileName: /home/tecan/cc/bobert/blockw.tga
+dirname: /home/tecan/cc/bobert
+fileName: blockw.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: blockw.tga
+result1: /home/tecan/Desktop/1/blockw.tga
+
+[Image]
+imageName: blockt.tga
+org fullFileName: /home/tecan/cc/bobert/blockt.tga
+fullFileName: /home/tecan/cc/bobert/blockt.tga
+dirname: /home/tecan/cc/bobert
+fileName: blockt.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: blockt.tga
+result1: /home/tecan/Desktop/1/blockt.tga
+
+[Image]
+imageName: blocks.tga
+org fullFileName: /home/tecan/cc/bobert/blocks.tga
+fullFileName: /home/tecan/cc/bobert/blocks.tga
+dirname: /home/tecan/cc/bobert
+fileName: blocks.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: blocks.tga
+result1: /home/tecan/Desktop/1/blocks.tga
+
+[Image]
+imageName: blockr.tga
+org fullFileName: /home/tecan/cc/bobert/blockr.tga
+fullFileName: /home/tecan/cc/bobert/blockr.tga
+dirname: /home/tecan/cc/bobert
+fileName: blockr.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: blockr.tga
+result1: /home/tecan/Desktop/1/blockr.tga
+
+[Image]
+imageName: blocko.tga
+org fullFileName: /home/tecan/cc/bobert/blocko.tga
+fullFileName: /home/tecan/cc/bobert/blocko.tga
+dirname: /home/tecan/cc/bobert
+fileName: blocko.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: blocko.tga
+result1: /home/tecan/Desktop/1/blocko.tga
+
+[Image]
+imageName: blockh.tga
+org fullFileName: /home/tecan/cc/bobert/blockh.tga
+fullFileName: /home/tecan/cc/bobert/blockh.tga
+dirname: /home/tecan/cc/bobert
+fileName: blockh.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: blockh.tga
+result1: /home/tecan/Desktop/1/blockh.tga
+
+[Image]
+imageName: blocke.tga
+org fullFileName: /home/tecan/cc/bobert/blocke.tga
+fullFileName: /home/tecan/cc/bobert/blocke.tga
+dirname: /home/tecan/cc/bobert
+fileName: blocke.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: blocke.tga
+result1: /home/tecan/Desktop/1/blocke.tga
+
+[Image]
+imageName: blockb.tga
+org fullFileName: /home/tecan/cc/bobert/blockb.tga
+fullFileName: /home/tecan/cc/bobert/blockb.tga
+dirname: /home/tecan/cc/bobert
+fileName: blockb.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: blockb.tga
+result1: /home/tecan/Desktop/1/blockb.tga
+
+[Image]
+imageName: blocka.tga
+org fullFileName: /home/tecan/cc/bobert/blocka.tga
+fullFileName: /home/tecan/cc/bobert/blocka.tga
+dirname: /home/tecan/cc/bobert
+fileName: blocka.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: blocka.tga
+result1: /home/tecan/Desktop/1/blocka.tga
+
+[Image]
+imageName: austinwall2.tga
+org fullFileName: /home/tecan/cc/apbase/austinwall2.tga
+fullFileName: /home/tecan/cc/apbase/austinwall2.tga
+dirname: /home/tecan/cc/apbase
+fileName: austinwall2.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: austinwall2.tga
+result1: /home/tecan/Desktop/1/austinwall2.tga
+
+[Image]
+imageName: poptop.tga
+org fullFileName: /home/tecan/cc/bobert/poptop.tga
+fullFileName: /home/tecan/cc/bobert/poptop.tga
+dirname: /home/tecan/cc/bobert
+fileName: poptop.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: poptop.tga
+result1: /home/tecan/Desktop/1/poptop.tga
+
+[Image]
+imageName: bud.tga
+org fullFileName: /home/tecan/cc/bobert/bud.tga
+fullFileName: /home/tecan/cc/bobert/bud.tga
+dirname: /home/tecan/cc/bobert
+fileName: bud.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: bud.tga
+result1: /home/tecan/Desktop/1/bud.tga
+
+[Image]
+imageName: woood.tga
+org fullFileName: /home/tecan/cc/bobert/woood.tga
+fullFileName: /home/tecan/cc/bobert/woood.tga
+dirname: /home/tecan/cc/bobert
+fileName: woood.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: woood.tga
+result1: /home/tecan/Desktop/1/woood.tga
+
+[Image]
+imageName: color1_4.tga
+org fullFileName: /home/tecan/cc/e3u3/color1_4.tga
+fullFileName: /home/tecan/cc/e3u3/color1_4.tga
+dirname: /home/tecan/cc/e3u3
+fileName: color1_4.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: color1_4.tga
+result1: /home/tecan/Desktop/1/color1_4.tga
+
+[Image]
+imageName: tank3.tga
+org fullFileName: /home/tecan/cc/bobert/tank3.tga
+fullFileName: /home/tecan/cc/bobert/tank3.tga
+dirname: /home/tecan/cc/bobert
+fileName: tank3.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: tank3.tga
+result1: /home/tecan/Desktop/1/tank3.tga
+
+[Image]
+imageName: tank1.tga
+org fullFileName: /home/tecan/cc/bobert/tank1.tga
+fullFileName: /home/tecan/cc/bobert/tank1.tga
+dirname: /home/tecan/cc/bobert
+fileName: tank1.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: tank1.tga
+result1: /home/tecan/Desktop/1/tank1.tga
+
+[Image]
+imageName: rimz1.tga
+org fullFileName: /home/tecan/cc/scuzzy/rimz1.tga
+fullFileName: /home/tecan/cc/scuzzy/rimz1.tga
+dirname: /home/tecan/cc/scuzzy
+fileName: rimz1.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: rimz1.tga
+result1: /home/tecan/Desktop/1/rimz1.tga
+
+[Image]
+imageName: treads.tga
+org fullFileName: /home/tecan/cc/bobert/treads.tga
+fullFileName: /home/tecan/cc/bobert/treads.tga
+dirname: /home/tecan/cc/bobert
+fileName: treads.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: treads.tga
+result1: /home/tecan/Desktop/1/treads.tga
+
+[Image]
+imageName: fish.tga
+org fullFileName: /home/tecan/cc/bobert/fish.tga
+fullFileName: /home/tecan/cc/bobert/fish.tga
+dirname: /home/tecan/cc/bobert
+fileName: fish.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: fish.tga
+result1: /home/tecan/Desktop/1/fish.tga
+
+[Image]
+imageName: comp_cdwal.tga
+org fullFileName: /home/tecan/cc/bobert/comp_cdwal.tga
+fullFileName: /home/tecan/cc/bobert/comp_cdwal.tga
+dirname: /home/tecan/cc/bobert
+fileName: comp_cdwal.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: comp_cdwal.tga
+result1: /home/tecan/Desktop/1/comp_cdwal.tga
+
+[Image]
+imageName: tank2.tga
+org fullFileName: /home/tecan/cc/bobert/tank2.tga
+fullFileName: /home/tecan/cc/bobert/tank2.tga
+dirname: /home/tecan/cc/bobert
+fileName: tank2.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: tank2.tga
+result1: /home/tecan/Desktop/1/tank2.tga
+
+[Image]
+imageName: comp_mouse.tga
+org fullFileName: /home/tecan/cc/bobert/comp_mouse.tga
+fullFileName: /home/tecan/cc/bobert/comp_mouse.tga
+dirname: /home/tecan/cc/bobert
+fileName: comp_mouse.tga
+fileExt: 
+bImage.depth: 24
+bImage.source: 1-still
+bImage.packed: 1
+bImage.lib: None
+exists on disk: 1
+result0: comp_mouse.tga
+result1: /home/tecan/Desktop/1/comp_mouse.tga
+
+[Buffers]
+Count: 93
+   uvmat:photo.tga:00100 : UVMaterial
+   uvmat:tlava1_3.tga:03100 : UVMaterial
+   uvmat:bookend.tga:00100 : UVMaterial
+   uvmat:v_glass.tga:02100 : UVMaterial
+   uvmat:blocko.tga:00100 : UVMaterial
+   uvmat:dude.tga:00100 : UVMaterial
+   uvmat:s_wood7.tga:00100 : UVMaterial
+   uvmat:blockt.tga:00100 : UVMaterial
+   uvmat:poptop.tga:00100 : UVMaterial
+   uvmat:radio1.tga:00100 : UVMaterial
+   uvmat:mattress_bot.tga:00100 : UVMaterial
+   uvmat:comp2.tga:00100 : UVMaterial
+   uvmat:s_death.tga:00100 : UVMaterial
+   uvmat:comp_side.tga:00100 : UVMaterial
+   blender:Material.178:08 : BlenderMaterial
+   uvmat:bud.tga:00100 : UVMaterial
+   uvmat:comp_grill.tga:00100 : UVMaterial
+   uvmat:blockr.tga:00100 : UVMaterial
+   uvmat:tank3.tga:00100 : UVMaterial
+   uvmat:color1_2.tga:00100 : UVMaterial
+   uvmat:xpaint1.tga:00100 : UVMaterial
+   uvmat:jacka1.tga:00100 : UVMaterial
+   uvmat:comp_mouse.tga:00100 : UVMaterial
+   uvmat:a_cons04.tga:05100 : UVMaterial
+   uvmat:fish.tga:00100 : UVMaterial
+   uvmat:s_woodol.tga:10100 : UVMaterial
+   uvmat:color1_7.tga:00100 : UVMaterial
+   uvmat:carpet.tga:00100 : UVMaterial
+   uvmat:action.tga:00100 : UVMaterial
+   uvmat:wood002_ladder.tga:00100 : UVMaterial
+   uvmat:comp3.tga:00100 : UVMaterial
+   uvmat:treads.tga:00100 : UVMaterial
+   uvmat:s_sanct.tga:13100 : UVMaterial
+   uvmat:jeep2.tga:00100 : UVMaterial
+   uvmat:movie1.tga:00100 : UVMaterial
+   uvmat:tank1.tga:00100 : UVMaterial
+   uvmat:drawer.tga:00100 : UVMaterial
+   uvmat:s_wood3.tga:12100 : UVMaterial
+   uvmat:blockb.tga:00100 : UVMaterial
+   uvmat:blockh.tga:00100 : UVMaterial
+   uvmat:rivit.tga:00100 : UVMaterial
+   uvmat:mattress.tga:00100 : UVMaterial
+   uvmat:woodk3.tga:00100 : UVMaterial
+   uvmat:s_black.tga:00100 : UVMaterial
+   uvmat:a_mall11.tga:04100 : UVMaterial
+   uvmat:crate12.tga:00100 : UVMaterial
+   uvmat:blocka.tga:00100 : UVMaterial
+   uvmat:rimz1.tga:00100 : UVMaterial
+   uvmat:blocke.tga:00100 : UVMaterial
+   uvmat:rivit2.tga:00100 : UVMaterial
+   uvmat:water2dc2.tga:01100 : UVMaterial
+   uvmat:xpaint2.tga:00100 : UVMaterial
+   uvmat:xsign10.tga:00100 : UVMaterial
+   uvmat:s_bluel.tga:00100 : UVMaterial
+   uvmat:jeep0.tga:00100 : UVMaterial
+   uvmat:iwakabe.tga:06100 : UVMaterial
+   uvmat:vent.tga:00100 : UVMaterial
+   uvmat:woood.tga:00100 : UVMaterial
+   uvmat:butts.tga:00100 : UVMaterial
+   uvmat:comp_cdwal.tga:00100 : UVMaterial
+   uvmat:blocks.tga:00100 : UVMaterial
+   uvmat:color1_8.tga:00100 : UVMaterial
+   uvmat:jeep1.tga:00100 : UVMaterial
+   uvmat:wall.tga:00100 : UVMaterial
+   uvmat:radio3.tga:00100 : UVMaterial
+   blender:Material.103:00 : BlenderMaterial
+   uvmat:box1.tga:00100 : UVMaterial
+   uvmat:panel.tga:00100 : UVMaterial
+   uvmat:austinwall2.tga:00100 : UVMaterial
+   uvmat:s_sanct.tga:00100 : UVMaterial
+   uvmat:s_rip.tga:14100 : UVMaterial
+   blender:Material.177:09 : BlenderMaterial
+   uvmat:color1_4.tga:00100 : UVMaterial
+   uvmat:tv.tga:00100 : UVMaterial
+   uvmat:comp1.tga:00100 : UVMaterial
+   uvmat:xpaint6.tga:00100 : UVMaterial
+   uvmat:sdragon2.tga:07100 : UVMaterial
+   uvmat:demonc.tga:00100 : UVMaterial
+   uvmat:cd.tga:00100 : UVMaterial
+   uvmat:crate31.tga:00100 : UVMaterial
+   uvmat:drywall.tga:00100 : UVMaterial
+   uvmat:wood13.tga:00100 : UVMaterial
+   uvmat:weave.tga:00100 : UVMaterial
+   uvmat:cover11.tga:00100 : UVMaterial
+   uvmat:blockw.tga:00100 : UVMaterial
+   uvmat:s_wood7.tga:11100 : UVMaterial
+   uvmat:wood002.tga:00100 : UVMaterial
+   uvmat:drawer2.tga:00100 : UVMaterial
+   uvmat:s_wood3.tga:00100 : UVMaterial
+   uvmat:tank2.tga:00100 : UVMaterial
+   uvmat:color1_5.tga:00100 : UVMaterial
+   uvmat:iwakabe.tga:00100 : UVMaterial
+   uvmat:card.tga:00100 : UVMaterial
+
+[stats]
+Export Complete - 3.32 seconds - 19:04:27 06/21/09
+1 Object(s)
+1 Mesh
+1 Light(s)
+86 Image(s)
+21782/10124 Verts/Tris

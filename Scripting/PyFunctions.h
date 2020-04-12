@@ -140,8 +140,8 @@
     #include "../TerrainFactory/FWGrass/GrassLoader.h"
     #include "../TerrainFactory/FWGrass/gen/CGrassGenerator.h"
     using namespace GrassGenerator;
-
 #endif
+
 #ifdef TREES
     #include "../TerrainFactory/ProceduralTrees/kornJungle/Jungle.h"
 #endif // TREES

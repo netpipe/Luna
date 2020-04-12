@@ -1,6 +1,9 @@
+//todo add bullet mesh for collisions
+
 #include "../config.h"
 #ifdef CHOPPER
     #include "chopper_control.h"
+
 
 
     using namespace irr;
