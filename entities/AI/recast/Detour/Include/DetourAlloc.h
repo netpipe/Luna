@@ -18,6 +18,7 @@
 
 #ifndef DETOURALLOCATOR_H
 #define DETOURALLOCATOR_H
+#include "../../../../../config.h"
 #ifdef RECAST
 /// Provides hint values to the memory allocator on how long the
 /// memory is expected to be used.

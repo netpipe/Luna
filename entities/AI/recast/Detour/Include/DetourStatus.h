@@ -1,3 +1,4 @@
+#include "../../../../../config.h"
 #ifdef RECAST
 //
 // Copyright (c) 2009-2010 Mikko Mononen memon@inside.org

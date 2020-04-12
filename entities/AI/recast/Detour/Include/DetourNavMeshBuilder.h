@@ -18,6 +18,7 @@
 
 #ifndef DETOURNAVMESHBUILDER_H
 #define DETOURNAVMESHBUILDER_H
+#include "../../../../../config.h"
 #ifdef RECAST
 #include "DetourAlloc.h"
 

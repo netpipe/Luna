@@ -102,7 +102,7 @@ PyObject * Python::PyIrr_igetColor(PyObject * self,PyObject * args){
 	irr::video::SColor ret =node->GetColor();
 	#endif
 
-return Py_BuildValue("l",ret);
+return Py_BuildValue("l",&ret);
 
 }
 PyObject * Python::PyIrr_iTransparent(PyObject * self,PyObject * args){

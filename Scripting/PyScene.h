@@ -150,7 +150,7 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
 	case 1:
     #ifdef DECALS2
     bDecals=2;
-        video::ITexture* image = driver->getTexture("./data/textures/bullet.png");
+        video::ITexture* image = driver->getTexture("../media/data/textures/bullet.png");
         for(int i=0; i<MAX_DECALS; i++){
             decals[i] = new ArmDecalSceneNode(smgr->getRootSceneNode(), smgr, image, 15.2f);
         //decals[i]->setMaterialType( video::EMT_TRANSPARENT_ALPHA_CHANNEL);
@@ -168,25 +168,52 @@ return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_Flashlight(PyObject * self,PyObject * args){  //might just put into lights call
-    long node_id;
+    long light;
     float x,y,z;
-    PyArg_ParseTuple(args,"lfff",&node_id,&x,&y,&z);
-    ISceneNode *node = (ISceneNode*)node_id;
-    node->setRotation(vector3df(x,y,z));
+    int type;
+    PyArg_ParseTuple(args,"il",&type,&light);
+//    PyArg_ParseTuple(args,"lfff",&node_id,&x,&y,&z);
+//    ISceneNode *node = (ISceneNode*)node_id;
+ILightSceneNode *flashlight;
+if (light){
+ flashlight = (ILightSceneNode*)light;
+ }
 
-ILightSceneNode* flashlight = smgr->addLightSceneNode();
-                SLight flashlightData;
-               // flashlightData.Direction= smgr->getActiveCamera()->getRotation()  ; //  camera[0]->getRotation();
-                flashlightData.OuterCone= 20;
-                flashlightData.Position= vector3df(x,y,z);;
+ SLight flashlightData;
+
+     switch (type){
+    case 0:
+
+//        ILightSceneNode*
+         flashlight = smgr->addLightSceneNode();
+             //   SLight flashlightData;
+                flashlightData.Direction= smgr->getActiveCamera()->getRotation()  ; //  camera[0]->getRotation();
+                flashlightData.OuterCone= 500;
+                flashlightData.Position= smgr->getActiveCamera()->getPosition();//vector3df(x,y,z);;
                 flashlightData.Falloff= 30;
                 flashlightData.Type= ELT_SPOT;
                 flashlight->setLightData(flashlightData);
                 flashlight->setRadius(100);
+                 return Py_BuildValue("l",flashlight);
+                break;
+case 1:
+           //     SLight flashlightData;
+             //   flashlightData.Direction= smgr->getActiveCamera()->getRotation()  ; //  camera[0]->getRotation();
+                flashlightData.OuterCone= 500;
+             //   flashlightData.Position= smgr->getActiveCamera()->getPosition();//vector3df(x,y,z);;
+                flashlightData.Falloff= 30;
+                flashlightData.Type= ELT_SPOT;
+            //    flashlight->setLightData(flashlightData);
+                flashlight->setRadius(100);
+                flashlightData.Direction= smgr->getActiveCamera()->getRotation()  ; //  camera[0]->getRotation();
+               // flashlightData.OuterCone= 20;
+                flashlightData.Position= smgr->getActiveCamera()->getPosition();//vector3df(x,y,z);;
+    // flashlight->setParent(camera); // bind with scripting instead
+    flashlight->setLightData(flashlightData);
+        break;
 
-               // flashlight->setParent(camera[0]); // bind with scripting instead
-
- return Py_BuildValue("l",flashlight);
+     }
+ return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_CSG(PyObject * self,PyObject * args){

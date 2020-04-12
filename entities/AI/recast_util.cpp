@@ -1,3 +1,4 @@
+#include "../../config.h"
 #ifdef RECAST
 #include "recast_util.h"
 

@@ -40,7 +40,7 @@ PyMethodDef irr_Input[] =
 
 
 bool Python::CheckKeyState(int key){
-
+//might want to add some kind of key limiter to prevent several keypresses in a row
 bool keystate=0;
 if (bFPS){
 keystate = M4->isKeyDown( irr::EKEY_CODE(key) );

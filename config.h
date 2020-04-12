@@ -34,6 +34,7 @@
     #define WIND
     #define SCENE
    // #define IRRc
+    #define RECAST
 
   #define WATER
   //  #define ReflectiveWater

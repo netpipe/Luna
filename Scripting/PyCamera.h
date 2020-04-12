@@ -104,23 +104,37 @@ PyObject * Python::PyIrr_SetCamera(PyObject * self,PyObject * args){ //active ca
 	//s32
 	int x,y,z;
 	long cam2;
+	int type;
 	//int
 
-	PyArg_ParseTuple(args,"lfff",&cam2,&x,&y,&z);
+	PyArg_ParseTuple(args,"ilfff",&type,&cam2,&x,&y,&z);
+
+	ICameraSceneNode *cam ;
+	if (type == 3){
+
+	}else{
 	ICameraSceneNode *cam = (ICameraSceneNode *)cam2;
+}
 //	device->setActiveCamera(cam);
+switch (type){
+	case 0:
     cam->setPosition(vector3df(x,y,z));
-
-// add lookat parameter and add call to mainloop for updates
-
-        if (bCarFollow) {
+break;
+	case 1:
+		cam->setRotation(vector3df(x,y,z));
+		break;
+	case 2:
+		       // if (bCarFollow) {
     // this is for putting the camera above the car
-//        btVector3 point = m_cVehicle->getVehiclePosition();
+      //  btVector3 point = m_cVehicle->getVehiclePosition();
 //        camera->setPosition(vector3df(
 //          (f32)point[0],
 //          (f32)point[1]+10,
 //          (f32)point[2]-50));
-    }
+  //  }
+    break;
+}
+// add lookat parameter and add call to mainloop for updates
 
 
 return Py_BuildValue("z",cam);
@@ -132,9 +146,10 @@ PyObject * Python::PyIrr_GetCamera(PyObject * self,PyObject * args){
 	s32 x,y,z,t;
 	vector3df v;
 	int param;
-			    ICameraSceneNode *cam;
-	PyArg_ParseTuple(args,"li",cam,param);
+	long cam2;
 
+	PyArg_ParseTuple(args,"li",&cam2,&param);
+ICameraSceneNode *cam = (ICameraSceneNode*)cam2;
 	//v = vector3df(x,y,z);
 
 

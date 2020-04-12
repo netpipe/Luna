@@ -68,7 +68,7 @@ if (init) :
 
  #shoot decals from camera
 
- Light1 = scene.Light(10,100,150,1,"111111") # type , vector, color
+ #Light1 = scene.Light(10,100,150,1,"111111") # type , vector, color
  model = "media/models/vehicles/oldChevy-Truck.3ds"
  texture = "media/models/vehicles/oldChevy.bmp"
  terrain = scene.addTerrain(1,-100,-103,-100,5,1,5,"media/terrain-heightmap.bmp","media/terrain.jpg","media/detailmap.bmp") # needs to be bmp to work with emscripten
@@ -79,7 +79,7 @@ if (init) :
 # physics.VehicleParams(car2,11,0,20,100,20) #position
 # physics.VehicleParams(car1,8,0,0,0,0)
  irr.files("../media/cards.zip")
-
+ flashlight=scene.flashlight(0,0)
 # physics.addHelicopter("data/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
 
 
@@ -261,7 +261,7 @@ if (init) :
 # icount=0
 #else:
 # icount+=1
-
+scene.flashlight(1,flashlight)
 scene.decals(0,camera)
 irr.delay(4000);
 
@@ -326,6 +326,16 @@ if input.getKey('KEY_F2') : #could have a release action
  #scene.add_cube()
  scene.addSphereNode("data/textures/material/marble1_256.png",0,20,5,5,500) #xyz radius mass
  #scene.setPosition(cube_id,1,1,1)
+
+if input.getKey('KEY_F3') : #could have a release action
+ #if lasttime > 10:
+ image.iposition(hand2[1], randint(1,200),100)
+  #lasttime = 0
+ irr.delay(111000);
+
+#if lasttime < 10:
+# lasttime = lasttime+1
+
 #irr.delay(0.1);
 #irr.delay(10000);
 irr.delay(1000);

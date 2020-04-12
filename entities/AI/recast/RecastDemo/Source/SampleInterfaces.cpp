@@ -1,3 +1,4 @@
+#include "../../../../../config.h"
 #ifdef RECAST
 #define _USE_MATH_DEFINES
 #include <math.h>

@@ -19,6 +19,7 @@
 
 #ifndef DETOURNAVMESH_H
 #define DETOURNAVMESH_H
+#include "../../../../../config.h"
 #ifdef RECAST
 #include "DetourAlloc.h"
 #include "DetourStatus.h"

@@ -19,6 +19,7 @@
 
 #ifndef DETOURCOMMON_H
 #define DETOURCOMMON_H
+#include "../../../../../config.h"
 #ifdef RECAST
 /**
 @defgroup detour Detour
