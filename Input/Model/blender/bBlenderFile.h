@@ -1,3 +1,4 @@
+#include "../../../config.h"
 #ifdef BULLETBLEND
 #ifndef B_BLENDER_FILE_H
 #define B_BLENDER_FILE_H

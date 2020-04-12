@@ -90,7 +90,7 @@ if (init) :
 # extras.blindboids(1,0,1,1)
 # gui.sgraph()
 # healthbar=gui.bar(0,0,20,40,100,60)
-
+# physics.bulletBlend()
 # if (0) : # can only be client or server
 #  if (1) :
 #   netman = net.connect()
@@ -100,9 +100,7 @@ if (init) :
 #  else :
 #   netserver = net.server()
 #   net.update(netserver)
- #physics.addHelicopter("data/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
   # scene.sleep(1000)
-#gui.bar(healthbar,1,20,40,200,60) #does not draw onanimate it
 
  #jungle = scene.addJungle()
  #scene.addTree("jungle",1,terrain,1,1,1)#not working yet
@@ -197,7 +195,7 @@ if (init) :
    del deck[i]
    hand2.append(image.iadd(card1,(i*10)+100,i*10,(i*10)+100+55,i*10+84,0,0,55,84))
 
-   print image.height(hand2[1])
+ #  print image.height(hand2[1])
    #image.oheight()
    #image.width()
  # image.iposition(hand2[1], 50,100)
@@ -261,6 +259,9 @@ if (init) :
 # icount=0
 #else:
 # icount+=1
+
+#gui.bar(healthbar,1,20,40,200,60) #does not draw onanimate it
+
 scene.flashlight(1,flashlight)
 scene.decals(0,camera)
 irr.delay(4000);

@@ -1,3 +1,4 @@
+#include "../../../config.h"
 #ifdef BULLETBLEND
 /*
  * stdio/physfs abstraction layer 2004-02-06

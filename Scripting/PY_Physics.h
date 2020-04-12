@@ -275,11 +275,13 @@ PyObject * Python::PyIrr_BulletBlend(PyObject * self,PyObject * args) {
 vector3df loc;
 int thing;
 //place open file dialogue here and get rid of this list to clean up the source
+//PyArg_ParseTuple(args,"fffi",&loc.X,&loc.Y,&loc.Z,thing);
 PyArg_ParseTuple(args,"fffi",&loc.X,&loc.Y,&loc.Z,thing);
+
     #ifdef BULLETBLEND
     	int verboseDumpAllTypes = 0;
         int verboseDumpAllBlocks = 0;
-        const char* fileName = "./data/clubsilo_packed.blend";
+        const char* fileName = "../media/data/clubsilo_packed.blend";
      //  const char* fileName = "./data/0_FPS_Template.blend";
        	//const char* fileName = "slideshow.blend";// 32 bit, 2.48
 	//const char* fileName = "./irrkit/cube_tex_250_64bit.blend";// 64 bit, 2.48

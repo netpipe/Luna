@@ -1,4 +1,4 @@
-
+#include "../../../config.h"
 #ifdef BULLETBLEND
 /*
 GameKit

@@ -1,3 +1,4 @@
+#include "../../../config.h"
 #ifdef BULLETBLEND
 
 #ifndef BULLET_IRRLICHT_UTILS_H

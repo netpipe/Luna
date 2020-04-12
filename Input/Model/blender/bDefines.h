@@ -1,3 +1,4 @@
+#include "../../../config.h"
 #ifdef BULLETBLEND
 /* Copyright (C) 2006 Charlie C
 *
