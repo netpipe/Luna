@@ -5,7 +5,7 @@ miNav - Mindinsomnia AI Pathfinding Navigation
 
 #ifndef MINAV_H_
 #define MINAV_H_
-
+#include "../../../config.h"
 #include <math.h>
 #include <stdio.h>
 #ifdef MINAV

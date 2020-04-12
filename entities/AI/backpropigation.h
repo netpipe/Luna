@@ -2,6 +2,7 @@
 // blindside's neuralnetworking example demo.
 #ifndef ANN_INCLUDE_H
 #define ANN_INCLUDE_H
+#include "../../config.h"
 #ifdef AI-BP
 #include <vector>
 #include <math.h>

@@ -34,7 +34,10 @@
     #define WIND
     #define SCENE
    // #define IRRc
+   //PathFinding
     #define RECAST
+    #define MINAV
+    #define OPENSTEER
 
   #define WATER
   //  #define ReflectiveWater
@@ -82,7 +85,7 @@
   #define HUD
   #define Image2D // Just testing out
   #define CHOPPER
-  #define OPENSTEER
+
   #define SQLITE
 
   #define SCALC

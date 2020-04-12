@@ -1,3 +1,4 @@
+#include "../../../config.h"
 #ifdef MINAV
 /*
 miNav - Mindinsomnia AI Pathfinding Navigation
