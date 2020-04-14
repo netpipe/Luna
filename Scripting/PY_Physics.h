@@ -219,15 +219,15 @@ bFPS = 1;
     long pcam;
     PyArg_ParseTuple(args,"l",&pcam);
     ICameraSceneNode* camera = (ICameraSceneNode*)pcam;
-    device->getGUIEnvironment()->addImage( driver->getTexture("data/textures/crosshairs/crosshair1.png"),
+    device->getGUIEnvironment()->addImage( driver->getTexture("../media/data/textures/crosshairs/crosshair1.png"),
                                             core::position2d<s32>((luna->resolution[0]/2)-64,(luna->resolution[1]/2)-64));
     #ifdef FPS
-          IAnimatedMesh*   gunmesh = smgr->getMesh("data/models/weapons/M4/3d_person/M4A1d.3ds");
+          IAnimatedMesh*   gunmesh = smgr->getMesh("../media/data/models/weapons/M4/3d_person/M4A1d.3ds");
           scene::IAnimatedMeshSceneNode* agun;
           agun = smgr->addAnimatedMeshSceneNode(gunmesh);
           if (agun)
           {
-            agun->setMaterialTexture(0, driver->getTexture("data/models/weapons/M4/1st_person/M4A1.jpg"));
+            agun->setMaterialTexture(0, driver->getTexture("../media/data/models/weapons/M4/1st_person/M4A1.jpg"));
             agun->setScale(core::vector3df(1.2f, 1.2f, 1.2f));
             agun->setPosition(core::vector3df(180.f,1.5f,0.f));
             agun->setRotation(core::vector3df(0.f,0.f,90.f));

@@ -23,7 +23,7 @@ firstPersonWeapon::firstPersonWeapon(IrrlichtDevice* device, ICameraSceneNode* c
   camera = cam;
   device2 = device;
    smgr = device->getSceneManager();
-  IAnimatedMesh* mesh = smgr->getMesh("./data/models/weapons/M4/1st_person/fpw_M4.b3d");
+  IAnimatedMesh* mesh = smgr->getMesh("../media/data/models/weapons/M4/1st_person/fpw_M4.b3d");
   node = smgr->addAnimatedMeshSceneNode(mesh);
   if (node)
   {
