@@ -2,13 +2,13 @@
 #ifdef PHYSICS
 #include "Physics.h"
 
-/*testing
-#include "../FileSystem/BulletBlendReader.h"
-//#include "btBulletDynamicsCommon.h"
-#include "../FileSystem/readblend/readblend.h"
-#include "../FileSystem/readblend/blendtype.h"
-#include "../FileSystem/blenderUp.h"
-*/
+//#ifdef BULLETBLEND2
+//#include "../FileSystem/BulletBlendReader.h"
+////#include "btBulletDynamicsCommon.h"
+//#include "../FileSystem/readblend/readblend.h"
+//#include "../FileSystem/readblend/blendtype.h"
+//#include "../FileSystem/blenderUp.h"
+//#endif
 
 using namespace irr;
 using namespace core;

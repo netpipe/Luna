@@ -186,9 +186,10 @@ void	BulletBlendReaderNew::convertAllObjects(int verboseDumpAllBlocks)
 		}
 	}
 
-	createParentChildHierarchy();
-
-	convertConstraints();
+	//tempfix
+//	createParentChildHierarchy();
+//
+//	convertConstraints();
 
 	if (verboseDumpAllBlocks)
 	{

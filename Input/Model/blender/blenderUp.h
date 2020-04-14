@@ -1,5 +1,5 @@
 #include "../../../config.h"
-#ifdef BULLETBLEND
+#ifdef BULLETBLENDs
 /*
 GameKit
 Copyright (c) 2009 Erwin Coumans  http://gamekit.googlecode.com

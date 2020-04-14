@@ -41,9 +41,12 @@ using namespace gui;
 #endif
 
 #ifdef PHYSICS
+#ifdef BULLETBLEND
 #include "./Input/Model/blender/IrrBlend.h"
 #include "./Input/Model/blender/BulletBlendReader.h"
 #include "./Input/Model/blender/blenderUp.h"
+#include "./Input/Model/blender/IrrBlendNew.h" //testing
+#endif
 #endif
 
 #include "./Equipment/firstPersonWeapon.h"

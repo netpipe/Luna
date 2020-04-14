@@ -304,10 +304,10 @@ PyArg_ParseTuple(args,"");
 	//const char* fileName = "./irrkit/game_250_zipped.blend";
 	//const char* fileName = "./irrkit/1.blend";
 
-
-
      //   const char* fileName = "./game.blend";
         FILE* file = fopen(fileName,"rb");
+#define TEST_ECHO_BLEND_READER
+#ifdef TEST_ECHO_BLEND_READER
     	int fileLen;
         char*memoryBuffer =  btReadBuffer(file,&fileLen);
 
@@ -320,6 +320,19 @@ PyArg_ParseTuple(args,"");
 		bulletBlendReaderNew.convertAllObjects(verboseDumpAllBlocks);
 		fseek(file, 0, SEEK_SET); /* seek to start */
 		//		m_cPhysics->dynamicsWorld->setGravity(btVector3(0,-60,0));
+#else
+	IrrlichtBulletBlendReader	bulletBlendReader(device,smgr,luna->m_cPhysics->getDynamicsWorld(),logicManager);
+	if (!bulletBlendReader.readFile(file,verboseDumpAllTypes))
+	{
+//		printf("cannot read Blender file %s.\n",argv[1]);
+		fclose(file);
+		exit(0);
+	} else
+	{
+		bulletBlendReader.convertAllObjects(verboseDumpAllBlocks);
+	}
+#endif
+
     #endif
      Py_RETURN_NONE;
 }

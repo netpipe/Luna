@@ -63,7 +63,7 @@ if (init) :
  #scene.soundman(1,str(sound2),2)#unloadsound / clear sounds
 
  camera = scene.addCamera(3,0,20,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
-# physics.fpsweapon(camera)
+ physics.fpsweapon(camera)
  scene.decals(1,camera)
 
  #shoot decals from camera
@@ -90,7 +90,7 @@ if (init) :
 # extras.blindboids(1,0,1,1)
 # gui.sgraph()
 # healthbar=gui.bar(0,0,20,40,100,60)
-# physics.bulletBlend()
+ physics.bulletBlend()
 # if (0) : # can only be client or server
 #  if (1) :
 #   netman = net.connect()
