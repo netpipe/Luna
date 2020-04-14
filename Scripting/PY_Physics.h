@@ -1,3 +1,4 @@
+#include "../config.h"
 #ifdef PYTHON
 ///PHYSICS
 
@@ -276,7 +277,7 @@ vector3df loc;
 int thing;
 //place open file dialogue here and get rid of this list to clean up the source
 //PyArg_ParseTuple(args,"fffi",&loc.X,&loc.Y,&loc.Z,thing);
-PyArg_ParseTuple(args,"fffi",&loc.X,&loc.Y,&loc.Z,thing);
+PyArg_ParseTuple(args,"");
 
     #ifdef BULLETBLEND
     	int verboseDumpAllTypes = 0;
