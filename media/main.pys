@@ -90,7 +90,7 @@ if (init) :
 # extras.blindboids(1,0,1,1)
 # gui.sgraph()
 # healthbar=gui.bar(0,0,20,40,100,60)
- physics.bulletBlend()
+# physics.bulletBlend()
 # if (0) : # can only be client or server
 #  if (1) :
 #   netman = net.connect()
