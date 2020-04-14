@@ -136,6 +136,7 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
                nextDecal = 0;
          }
 }
+    break;
                  #endif
 #endif
 
@@ -146,9 +147,10 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
 //    return Py_BuildValue("l",decalManager);
 //    #endif
 
-	break;
-	case 1:
+
     #ifdef DECALS2
+    	break;
+	case 1:
     bDecals=2;
         video::ITexture* image = driver->getTexture("../media/data/textures/bullet.png");
         for(int i=0; i<MAX_DECALS; i++){
