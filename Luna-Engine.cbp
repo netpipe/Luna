@@ -1009,6 +1009,7 @@
 			<Add option="-I/usr/include/atk-1.0 -I/usr/include/pango-1.0" />
 			<Add option="-I/usr/include/pixman-1" />
 			<Add option="`pkg-config gtk+-2.0 --cflags`" />
+			<Add option="-Wno-narrowing" />
 			<Add option="-DPARTICLES" />
 			<Add directory="../LunaLibs/irrlicht-1.8.4/source/Irrlicht" />
 			<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
