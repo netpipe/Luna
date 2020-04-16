@@ -7,7 +7,7 @@ PyMethodDef irr_Physics[] = {
 	{"LoadShape",Python::PyIrr_LoadShape,METH_VARARGS,"Loads a texture"}, //notsure what this was
 	{"ragman",Python::PyIrr_RagMan,METH_VARARGS,"PyIrr_RagMan"},
     {"load_vehicle",Python::PyIrr_LoadVehicle,METH_VARARGS,"Loads a vehicle"},
-    {"addHelicopter",Python::PyIrr_addHelicopter ,METH_VARARGS,"PyIrr_addHelicopter"},
+    {"chopper",Python::PyIrr_addHelicopter ,METH_VARARGS,"PyIrr_addHelicopter"},
     {"addCar",Python::PyIrr_addCar ,METH_VARARGS,"PyIrr_addCar"},
     {"bulletBlend",Python::PyIrr_BulletBlend,METH_VARARGS,"PyIrr_BulletBlend"},
     {"addHUD",Python::PyIrr_addHUD,METH_VARARGS,"PyIrr_addHUD"},
@@ -257,6 +257,7 @@ vector3df loc;
 char * path;
 PyArg_ParseTuple(args,"sfff",&path,&loc.X,&loc.Y,&loc.Z);
 #ifdef CHOPPER
+
 //active camera
   //  #ifdef CHOPPER
     IAnimatedMesh* mesh = smgr->getMesh(path);

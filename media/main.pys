@@ -81,7 +81,8 @@ if (init) :
 # physics.VehicleParams(car1,8,0,0,0,0)
  irr.files("../media/cards.zip")
  flashlight=scene.flashlight(0,0)
- physics.addHelicopter("../media/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
+ chopper=physics.chopper("../media/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
+ scene.setPosition(chopper,5,20,200,20)
 # scene.recast("../media/dungeon.obj")
 # scene.grass("../media/data/vegData/output.grs")
  #scene.addwater("none",1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
@@ -99,7 +100,12 @@ if (init) :
 # posz=scene.getCamera(camera,3)
 # print posz
  #scene.setCamera(0,camera,posx,posy,posz)
- scene.setCamera(0,camera,0,200,0)
+# scene.setCamera(0,camera,0,200,0)
+
+ #posy=scene.getPosition(helicopter,1)
+ #print posy
+ #posz=scene.getPosition(helicopter,2)
+ #print posz
 # if (0) : # can only be client or server
 #  if (1) :
 #   netman = net.connect()
@@ -270,6 +276,8 @@ if (init) :
 # icount+=1
 
 #gui.bar(healthbar,1,20,40,200,60) #does not draw onanimate it
+#posx=scene.getPosition(helicopter,0)
+#print posx
 
 scene.flashlight(1,flashlight)
 scene.decals(0,camera)

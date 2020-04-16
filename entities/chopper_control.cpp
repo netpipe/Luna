@@ -256,6 +256,10 @@
 
     }
 
+    void ChopperControl::setPosition(float x ,float y , float z)
+    {
+    RootEmpty->setPosition(vector3df(x,y,z));
+    }
 
     void ChopperControl::ChopperControl::moveInLocalZDir(f32 distance)
     {

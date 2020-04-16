@@ -617,6 +617,11 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
 #endif
          //   btRigidBody *test = mnode->mRigidBody;
 #endif
+} else if (bullet == 5 ){
+    #ifdef CHOPPER
+    ChopperControl *chopper = (ChopperControl*)node_id;
+    chopper->setPosition(x,y,z);
+#endif
 }else if (bullet == 0){
     ISceneNode * node = (ISceneNode *)node_id;// could also get from name smgr->getSceneNodeFromId(node_id);
     	if(node != NULL)
@@ -637,12 +642,26 @@ return Py_BuildValue("");
 
 PyObject * Python::PyIrr_getPosition(PyObject * self,PyObject * args){
     //not teste
-    s32 node_id;
+    long node_id;
+    int param;
 
-    PyArg_ParseTuple(args,"llll",&node_id);
-    ISceneNode *node = smgr->getSceneNodeFromId(node_id);
+    PyArg_ParseTuple(args,"li",&node_id,&param);
+
+    ISceneNode *node = node_id;
+
+//    ChopperControl *node = node_id;//smgr->getSceneNodeFromId(node_id);
     vector3df position = node->getPosition();
-///return Py_BuildValue("l",position);
+
+
+  if (param==0){
+    	return Py_BuildValue("f", position.X);
+    }else if (param==1){
+    	return Py_BuildValue("f",position.Y);
+    }else if (param==2){
+    	return Py_BuildValue("f", position.Z);
+    }
+
+    return Py_BuildValue("");
 }
 
 

@@ -60,7 +60,7 @@
             void showDebugInfo();
             void update();
 
-
+            void setPosition(float x ,float y , float z);
             // movement:
             void moveInLocalXDir(f32 distance);
             void moveInLocalZDir(f32 distance);
