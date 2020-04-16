@@ -49,8 +49,8 @@ if (init) :
 # irr.checkKeyState(); # obsolete check event loop to see if any key was pressed #existing functions should be moved to pre and post python functions
  #physics.opensteer(1) - wip
 # scene.postprocess() #toggles
- #scene.SPARK()
- #scene.CSG("test.3ds")
+# scene.SPARK()
+# scene.CSG("test.3ds")
 
 
  #box2d add body attach it to 2d graphic
@@ -62,9 +62,10 @@ if (init) :
  #scene.soundman(1,str(sound2),0)#stop sound
  #scene.soundman(1,str(sound2),2)#unloadsound / clear sounds
 
- camera = scene.addCamera(3,0,20,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
- physics.fpsweapon(camera)
+ camera = scene.addCamera(3,0,200,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
+# physics.fpsweapon(camera)
  scene.decals(1,camera)
+
 
  #shoot decals from camera
 
@@ -80,7 +81,7 @@ if (init) :
 # physics.VehicleParams(car1,8,0,0,0,0)
  irr.files("../media/cards.zip")
  flashlight=scene.flashlight(0,0)
-# physics.addHelicopter("../media/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
+ physics.addHelicopter("../media/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
 # scene.recast("../media/dungeon.obj")
 # scene.grass("../media/data/vegData/output.grs")
  #scene.addwater("none",1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
@@ -90,7 +91,15 @@ if (init) :
 # extras.blindboids(1,0,1,1)
 # gui.sgraph()
 # healthbar=gui.bar(0,0,20,40,100,60)
- physics.bulletBlend()
+ physics.bulletBlend("../media/data/clubsilo_packed.blend")
+# posx=scene.getCamera(camera,1)
+# print posx
+# posy=scene.getCamera(camera,2)
+# print posy
+# posz=scene.getCamera(camera,3)
+# print posz
+ #scene.setCamera(0,camera,posx,posy,posz)
+ scene.setCamera(0,camera,0,200,0)
 # if (0) : # can only be client or server
 #  if (1) :
 #   netman = net.connect()

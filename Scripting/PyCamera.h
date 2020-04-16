@@ -102,24 +102,27 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 
 PyObject * Python::PyIrr_SetCamera(PyObject * self,PyObject * args){ //active camera // parameters for fov possibly shaders aswell
 	//s32
-	int x,y,z;
+	float x,y,z;
 	long cam2;
 	int type;
 	//int
 
 	PyArg_ParseTuple(args,"ilfff",&type,&cam2,&x,&y,&z);
 
-	ICameraSceneNode *cam ;
+	//ICameraSceneNode *cam ;
+	ICameraSceneNode *cam = (ICameraSceneNode *)cam2;
+	//	ICameraSceneNode *cam = cam2;
 	if (type == 3){
 
 	}else{
-	ICameraSceneNode *cam = (ICameraSceneNode *)cam2;
-}
+	//ICameraSceneNode *cam = (ICameraSceneNode *)cam2;
+	}
 //	device->setActiveCamera(cam);
 switch (type){
 	case 0:
-    cam->setPosition(vector3df(x,y,z));
-break;
+		cam->setPosition(vector3df(x,y,z));
+	//	cam->setPosition(vector3df(0,20,0));
+		break;
 	case 1:
 		cam->setRotation(vector3df(x,y,z));
 		break;
@@ -137,7 +140,7 @@ break;
 // add lookat parameter and add call to mainloop for updates
 
 
-return Py_BuildValue("z",cam);
+return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_GetCamera(PyObject * self,PyObject * args){
@@ -149,7 +152,7 @@ PyObject * Python::PyIrr_GetCamera(PyObject * self,PyObject * args){
 	long cam2;
 
 	PyArg_ParseTuple(args,"li",&cam2,&param);
-ICameraSceneNode *cam = (ICameraSceneNode*)cam2;
+	ICameraSceneNode *cam = (ICameraSceneNode*)cam2;
 	//v = vector3df(x,y,z);
 
 

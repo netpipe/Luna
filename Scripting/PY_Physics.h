@@ -275,16 +275,18 @@ PyArg_ParseTuple(args,"sfff",&path,&loc.X,&loc.Y,&loc.Z);
 PyObject * Python::PyIrr_BulletBlend(PyObject * self,PyObject * args) {
 vector3df loc;
 int thing;
+char *file2;
 //place open file dialogue here and get rid of this list to clean up the source
 //PyArg_ParseTuple(args,"fffi",&loc.X,&loc.Y,&loc.Z,thing);
-PyArg_ParseTuple(args,"");
+PyArg_ParseTuple(args,"s",&file2);
 
     #ifdef BULLETBLEND
     	int verboseDumpAllTypes = 0;
         int verboseDumpAllBlocks = 0;
-        const char* fileName = "../media/data/clubsilo_packed.blend";
-     //  const char* fileName = "./data/0_FPS_Template.blend";
-       	//const char* fileName = "slideshow.blend";// 32 bit, 2.48
+//        const char* fileName = "../media/data/clubsilo_packed.blend";
+        const char* fileName = file2;
+   //    const char* fileName = "../media/data/0_FPS_Template.blend";
+     //  	const char* fileName = "../media/data/PhysicsAnimationBakingDemo.blend";// 32 bit, 2.48
 	//const char* fileName = "./irrkit/cube_tex_250_64bit.blend";// 64 bit, 2.48
 	//const char* fileName = "./irrkit/slideshow_249.blend"; //blender 2.49b -> no conversion if using bParse
 	//const char* fileName = "./irrkit/start_menu.blend"; //blender 2.49b -> no conversion if using bParse
@@ -293,15 +295,15 @@ PyArg_ParseTuple(args,"");
 	//const char* fileName = "./irrkit/land_rover_92_249.blend";
 	//const char* fileName = "./irrkit/BigEndian.blend";
 	//const char* fileName = "./irrkit/BigEndian_250.blend"; //forward compatibility
-	//const char* fileName = "./irrkit/hinge.blend";
+	//const char* fileName = "../media/data/hinge.blend";
 	//const char* fileName = "./irrkit/PhysicsAnimationBakingDemo_250.blend";
 	//const char* fileName = "./irrkit/test32bit.blend";
-	//const char* fileName = "./irrkit/1_water_mill.blend";//testing hierarchy (child-parent)
+	//const char* fileName = "../media/data/1_water_mill.blend";//testing hierarchy (child-parent)
 	//const char* fileName = "./irrkit/cube_ipo_180.blend";
 	//const char* fileName = "./irrkit/cube_ipo_249b.blend";
 	//const char* fileName = "./irrkit/land_rover_92_.blend";
 	//const char* fileName = "./irrkit/cube_tex_204.blend"; //test exported from an old Blender 2.04 version
-	//const char* fileName = "./irrkit/game_250_zipped.blend";
+	//const char* fileName = "../media/data/game_250_zipped.blend";
 	//const char* fileName = "./irrkit/1.blend";
 
      //   const char* fileName = "./game.blend";
