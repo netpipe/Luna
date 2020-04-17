@@ -10,6 +10,7 @@ if (init) :
  import extras
  import scene
  import input
+ import image
  #import sound
  #import luna
  import net

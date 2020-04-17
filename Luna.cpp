@@ -488,19 +488,10 @@ setenv("PYTHONHOME", "/", 0);
 								pyloader = "./media/main.pys";
 			#else
 				Python::ExecuteScript("../media/functions-list.pys"); // this is for testing
-			#ifdef APPS
-
-				pyloader = "./APP/cowsynth/main.pys";
-				pyloader = "../media/main.pys";
-			#else
-				//pyloader = "./RACING/racer/main.pys";
-				pyloader = "../media/main.pys";
-
 			#endif
 
 			//Python::PyIrr_LoadVehicle(m_cVehicle);
 			//Python::PyIrr_addTerrain("1");
-		#endif
 
 		#ifdef EDITOR
 			Python::bCodeEditor=3; // initial closed state
@@ -609,7 +600,8 @@ void Luna::main_loop(){ //devloop actually
 			//#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
 			Python::preEnd();
 			Python::CheckKeyStates(); //located in pyInput can probably be moved to preEnd as its not being used to check keystates
-			Python::ExecuteScript(irr::core::stringc(pyloader));
+			Python::ExecuteScript(irr::core::stringc(Python::returnString));
+
 			//Python::ExecuteScript("./RACING/racer/main.pys");
 			guienv->drawAll();
 			driver->endScene();

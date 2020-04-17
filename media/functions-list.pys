@@ -9,17 +9,21 @@
 
 
 import irr
-import physics
-import extras
-import scene
-import input
-import image
-import net
-import gui
+#import physics
+#import extras
+#import scene
+#import input
+#import image
+#import net
+#import gui
 
 init = 1  #start as true so that this loop is only ran once
-
+test=irr.getstring="../media/main.pys"
+print test
 #launcher GUI
+
+#scene.using ('../media/gameloader.pys',"1");
+#init = 1
 
  #iaxe = image.iadd("./APP/cowsynth/logo.png",0,0,scene.screen(0),scene.screen(1),0,0,960,540)
  #image.idraw(iaxe)
@@ -149,12 +153,12 @@ init = 1  #start as true so that this loop is only ran once
 #scene.setPosition(video1,0,11,100,22)
 
 #irr.draw_text("Gavin Robinson",20,40,150,70)   #known to cause crashing
-cube_id = scene.add_cube(0,12.0,0.0,0.0,25.0,0.0,    0.0,0.0,1.0,1.0,1.0)
-tex_id = image.load_texture("media/crate.png")
+#cube_id = scene.add_cube(0,12.0,0.0,0.0,25.0,0.0,    0.0,0.0,1.0,1.0,1.0)
+#tex_id = image.load_texture("media/crate.png")
 #print tex_id #print cube_id #texture cube with video todo
-image.set_texture(cube_id,tex_id)
+#image.set_texture(cube_id,tex_id)
 #scene.setPosition(cube_id,50,355,350)
-scene.setPosition(cube_id,0,101,10,22)
+#scene.setPosition(cube_id,0,101,10,22)
 #irr.set_texture( irr.add_cube(1,12.0,0.0,0.0,25.0,0.0,    0.0,0.0,1.0,1.0,1.0),irr.load_texture("media/crate.png"))
 
 
@@ -179,8 +183,8 @@ scene.setPosition(cube_id,0,101,10,22)
 
 #31 variables so far
 #scene.drawtext("cool bean tree",1,1,1,1)
-model = "data/models/vehicles/oldChevy-Truck.3ds"
-texture = "data/models/vehicles/oldChevy.bmp"
+#model = "data/models/vehicles/oldChevy-Truck.3ds"
+#texture = "data/models/vehicles/oldChevy.bmp"
 
 #car1 = physics.addCar(model,texture,1.0,1.0,1.0,1.0,1.0,  1.5,1.5,2.0, 1.3,0.4,2.0,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
 #car2 = irr.addCar( 1.0,1.0, 1.0,1.0,1.0,  1.5,1.5,2.0, 1.3,0.4,2.0,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)

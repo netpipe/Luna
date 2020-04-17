@@ -42,17 +42,13 @@ enum FPW_ACTION
 
 class firstPersonWeapon : private IAnimationEndCallBack, public IEventReceiver
 {
-
-
-
-
 public:
   IAnimatedMeshSceneNode *node;
   virtual void OnAnimationEnd(IAnimatedMeshSceneNode* node);
 
   ICameraSceneNode* camera;
-IrrlichtDevice* device2;
-ISceneManager* smgr;
+  IrrlichtDevice* device2;
+  ISceneManager* smgr;
 
   bool wasAiming;
   u8 ammoLeftInMagazine;

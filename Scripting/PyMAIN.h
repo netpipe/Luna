@@ -91,8 +91,11 @@ namespace Python {
     #ifdef occlusion
         Renderer22 *RenderMan;
     #endif
+    char * returnString="../media/main.pys";
+  //      char * returnString="";
     //Scene
     // would be sweet to have this done automatically somehow lol pita making 2 tables and a function
+    PyObject * PyIrr_GetString(PyObject * self,PyObject * args);
 
     PyObject * PyIrr_addCamera(PyObject * self,PyObject * args);
     PyObject * PyIrr_LoadTexture(PyObject * self,PyObject * args);

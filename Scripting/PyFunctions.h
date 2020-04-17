@@ -293,6 +293,7 @@ char *zErrMsg;
 #ifdef PYTHON
 PyMethodDef irr_function[] =
 {
+    {"getstring",Python::PyIrr_GetString,METH_VARARGS,"getstring"},
     {"delay",Python::PyIrr_Delay,METH_VARARGS,"delay"},
     {"sleep",Python::PyIrr_Sleep,METH_VARARGS,"sleep"},
     {"setTime",Python::PyIrr_setTime,METH_VARARGS,"setTime"},
@@ -387,6 +388,18 @@ char * arg;
     PyArg_ParseTuple(args,"ss",&script,&arg);
 //sts = system(command);s
 //popen("wget http://google.com", "w");
+}
+
+PyObject * Python::PyIrr_GetString(PyObject * self,PyObject * args){ //active camera
+    char * arg;
+    PyArg_ParseTuple(args,"s",&arg);
+    returnString=arg;
+    printf(returnString);
+
+    std::cout <<"test";
+    printf("%s",returnString);
+    printf("test");
+    return Py_BuildValue("s",arg);
 }
 
 PyObject * Python::PyIrr_using(PyObject * self,PyObject * args){
