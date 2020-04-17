@@ -1,0 +1,121 @@
+# GameLoader Script - GUI to choose what game to load
+
+import irr
+import scene
+import input
+import image
+import gui
+
+#scene.using ('../media/string.py',"1");
+
+
+import os
+import itertools
+import hashlib
+#import random
+import math
+import time
+#import shuffle
+
+#scene.using ('../media/lib/python2.7/random.py',"1"); #not working
+
+
+#################################
+#INITIALIZE
+#called externally so it is set from functions.py or init.py
+if (init) :
+#################################
+# scene.CSG("test.3ds")
+ irr.getstring="../media/main.pys"
+# physics.addHelicopter("data/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
+
+
+ #scene.addwater("none",1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
+ #gui.codeeditor(1) #shader editor #cpu limiter incase of bad code
+# extras.lensflare(1,10,100,10)
+# scene.flag1("media/Flags/agnostechdemo1200912132.png",10,100,10)
+# extras.blindboids(1,0,1,1)
+# gui.sgraph()
+# healthbar=gui.bar(0,0,20,40,100,60)
+
+# if (0) : # can only be client or server
+#  if (1) :
+#   netman = net.connect()
+#   net.update(netman)
+#   net.send(netman,"shit yeah")
+#   net.update(netman)
+#  else :
+#   netserver = net.server()
+#   net.update(netserver)
+ #physics.addHelicopter("data/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
+  # scene.sleep(1000)
+#gui.bar(healthbar,1,20,40,200,60) #does not draw onanimate it
+
+ #jungle = scene.addJungle()
+ #scene.addTree("jungle",1,terrain,1,1,1)
+ #track1 = scene.loadTrack('./data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
+ #track1 = scene.loadLevel('extra/maps/urban.bsp',0,0,0)  # trackname , timeofday , lighting , track slot/stages
+# scene.setPosition(terrain ,4, -100,-10,-100)
+ #scene.exportScene("/home/clay/test/scene.irr")
+ #stage = scene.loadTrack('./data/Stage3/Stage3.irr',20,0,0)
+ #stage = scene.loadTrack('./StageData/irrb2/Hospital.irr',20,0,0)
+# table = scene.loadTrack('../media/table_football.3ds',20,0,0)
+# scene.setPosition(table ,1, 10,-50,10)
+
+ #sphere1 = scene.addSphereNode("data/textures/material/marble1_256.png",0,-1000,0, 5,5)
+ #scene.setVelocity(sphere1,10,10,10)
+ #scene.setPosition(sphere1 ,1, 10,100,10)
+#should be able to add trees without terrain/orientation
+#scene.trees(terr,bush)
+#scene.addTree2(bush)
+
+#for(u32 i = 0 ; i < 1000 ; i++)
+# {
+ # f32 cx = 100.0f + rand()%10040;
+#  f32 cy = 100.0f + rand()%10040;
+ # int type = rand()%8+1;
+#  int seed = rand();
+#################################
+#INIT CODE
+#################################
+# iaxe = image.iadd("../media/axe.jpg",10,10,500,500,10,10,800,800)
+# i=0
+#
+# #x1,y1,x2,y2,xx1,yy1,xx2,yy2;
+# iaxe2 = image.iadd("../media/axe.jpg",40,40,500,500,10,10,800,800)
+# i=0
+# make a deck of cards
+#deck = list(itertools.product(range(1,14),['Spade','Heart','Diamond','Club']))
+
+# shuffle the cards
+# random.shuffle(deck)
+
+# draw five cards
+# print("You got:")
+# for i in range(5):
+#   print(deck[i][0], "of", deck[i][1])
+
+
+#################################
+ init = 0 #initialization finish - needs whitespace infront
+#################################
+#MAIN LOOP
+
+#irr.delete(iaxe)
+#iaxe = image.iadd("../media/axe.jpg",10,10,500,500,10,10,800,800)
+#image.irotate(iaxe,i)
+#i+=1
+#image.idraw(iaxe)
+#image.idraw(iaxe2)
+
+
+
+#if input.getKey('KEY_F2') : #could have a release action
+# print "setting cube position"
+ #scene.add_cube()
+# scene.addSphereNode("data/textures/material/marble1_256.png",0,20,5,5,500) #xyz radius mass
+ #scene.setPosition(cube_id,1,1,1)
+
+
+ #set init back to 1 for next script after setting game var
+#init = 1
