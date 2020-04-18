@@ -1,6 +1,4 @@
-
 /// extra stuff that should eventually find a new file to go into.
-
 //"s" (string) [char *]
 //    Convert a null-terminated C string to a Python object. If the C string pointer is NULL, None is used.
 //"s#" (string) [char *, int]
@@ -52,21 +50,19 @@
 
 PyMethodDef irr_Extras[] =
 {
-        {"omaredemo",Python::PyIrr_omareDemo,METH_VARARGS,"loads omares plane demo or maybe clouds"},
-        {"bitcloud",Python::PyIrr_bitCloud,METH_VARARGS,"Soft Fluffy clouds / not working atm"},
-        {"lightning",Python::PyIrr_lightning,METH_VARARGS,"lightning scene node pretty neat takes 2 points"},
-        {"beam",Python::PyIrr_beam,METH_VARARGS,"its a fricken laser beam"},
-        {"skydome",Python::PyIrr_skyDome,METH_VARARGS,"skydome"},
-        {"lensflare",Python::PyIrr_lensFlare,METH_VARARGS,"lensFlare"},
-        {"blindboids",Python::PyIrr_BlindBoids,METH_VARARGS,"blindside boids demo"},
-        {"occlusionTest",Python::PyIrr_Occlusion,METH_VARARGS,"occlusion"},
-        {"compass",Python::PyIrr_Compass,METH_VARARGS,"PyIrr_Compas"},
-        {"realCloud",Python::PyIrr_realCloud,METH_VARARGS,"PyIrr_realCloud"},
+    {"omaredemo",Python::PyIrr_omareDemo,METH_VARARGS,"loads omares plane demo or maybe clouds"},
+    {"bitcloud",Python::PyIrr_bitCloud,METH_VARARGS,"Soft Fluffy clouds / not working atm"},
+    {"lightning",Python::PyIrr_lightning,METH_VARARGS,"lightning scene node pretty neat takes 2 points"},
+    {"beam",Python::PyIrr_beam,METH_VARARGS,"its a fricken laser beam"},
+    {"skydome",Python::PyIrr_skyDome,METH_VARARGS,"skydome"},
+    {"lensflare",Python::PyIrr_lensFlare,METH_VARARGS,"lensFlare"},
+    {"blindboids",Python::PyIrr_BlindBoids,METH_VARARGS,"blindside boids demo"},
+    {"occlusionTest",Python::PyIrr_Occlusion,METH_VARARGS,"occlusion"},
+    {"compass",Python::PyIrr_Compass,METH_VARARGS,"PyIrr_Compas"},
+    {"realCloud",Python::PyIrr_realCloud,METH_VARARGS,"PyIrr_realCloud"},
     {"formationdemo",Python::PyIrr_FormationDemo,METH_VARARGS,"Loads FormationDemo"},
     {"motionTrail",Python::PyIrr_motionTrail,METH_VARARGS,"motionTrail"},
-
-
-        {NULL,NULL,0,NULL}
+    {NULL,NULL,0,NULL}
 };
 
 PyObject * Python::PyIrr_FormationDemo(PyObject * self,PyObject * args){
@@ -74,9 +70,8 @@ PyObject * Python::PyIrr_FormationDemo(PyObject * self,PyObject * args){
     // FORMATION DEMO
     //WrapperClass::Formation *
     formationDemo=1;
-     formation =
-        new WrapperClass::Formation(vector3df(0,0,0), 100.f, 5, 30, 100.f, 100.f, smgr);
-    	///const irr::core::aabbox3df& tb = terrain->getBoundingBox();
+    formation = new WrapperClass::Formation(vector3df(0,0,0), 100.f, 5, 30, 100.f, 100.f, smgr);
+    ///const irr::core::aabbox3df& tb = terrain->getBoundingBox();
     #endif
 //formation->process(deltaTime);
 Py_RETURN_NONE;
@@ -126,8 +121,7 @@ Py_RETURN_NONE;
 
 
 PyObject * Python::PyIrr_motionTrail(PyObject * self,PyObject * args) {
-
-        s32 node_id;
+    s32 node_id;
     int x,y,z;
     PyArg_ParseTuple(args,"llll",&node_id,&x,&y,&z);
     #ifdef RIBBONTRAIL
@@ -139,7 +133,7 @@ PyObject * Python::PyIrr_motionTrail(PyObject * self,PyObject * args) {
     rt = new RibbonTrailSceneNode( device, camera, -1 );
 //	rt->setPosition( core::vector3df( 0, -10, 300 ) );
     rt->setMaterialTexture( 0, tex );
-   rt->setPoint1( core::vector3df(  50, 0, 0 ) );
+    rt->setPoint1( core::vector3df(  50, 0, 0 ) );
     rt->setPoint2( core::vector3df( -50, 0, 0 ) );
     rt->setMaxDistance( 10 );
 	rt->setMaxQuads( 5000 );
@@ -153,7 +147,7 @@ return Py_BuildValue("l",rt);
 
 
 PyObject * Python::PyIrr_beam(PyObject * self,PyObject * args){
-        int param,state,Vehicle,ammount;
+    int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
     #ifdef EXTRAS
 	scene::CBeamNode* beam = new scene::CBeamNode(smgr->getRootSceneNode(), smgr, -1, "./data/textures/sceneNodes/laserlf6.png" , "data/textures/sceneNodes/beam.png" );
@@ -165,43 +159,43 @@ PyObject * Python::PyIrr_beam(PyObject * self,PyObject * args){
 
 
 PyObject * Python::PyIrr_Occlusion(PyObject * self,PyObject * args) {//active camera
-        int param,state,Vehicle,ammount;
+    int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
 #ifdef occlusion
-        bOcclusion = 1;
-        Renderer22 RenderMan(device, SColor(0, 10,10,10));
-        // RenderMan.addSky("data/models/occlusion/gradient3.bmp");
-        // RenderMan.addLight();
+    bOcclusion = 1;
+    Renderer22 RenderMan(device, SColor(0, 10,10,10));
+    // RenderMan.addSky("data/models/occlusion/gradient3.bmp");
+    // RenderMan.addLight();
 
-        RenderMan.loadModel("data/models/occlusion/etage.b3d", vector3df(0,0,0));
-        // RenderMan.addCam(.1f, vector3df(40,70,40), vector3df(0,0,1000), true);
-        RenderMan.addCam(camera);
-        // RenderMan.addMy3DScene("models/bedroom1/bedroom.my3d", 0,0,0);
-        RenderMan.initGUI();
+    RenderMan.loadModel("data/models/occlusion/etage.b3d", vector3df(0,0,0));
+    // RenderMan.addCam(.1f, vector3df(40,70,40), vector3df(0,0,1000), true);
+    RenderMan.addCam(camera);
+    // RenderMan.addMy3DScene("models/bedroom1/bedroom.my3d", 0,0,0);
+    RenderMan.initGUI();
 #endif
 return Py_BuildValue("");
 }
 
 
 PyObject * Python::PyIrr_Compass(PyObject * self,PyObject * args) {
-        int param,state,Vehicle,ammount;
+    int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
     #ifdef COMPASS
-    bCompass=true;
+        bCompass=true;
         ///Compass
-           core::rect<s32> CompassRect;
-            CompassRect.UpperLeftCorner.X = 50;
-            CompassRect.UpperLeftCorner.Y = 50;
-            CompassRect.LowerRightCorner.X = 150;
-            CompassRect.LowerRightCorner.Y = 150;
+        core::rect<s32> CompassRect;
+        CompassRect.UpperLeftCorner.X = 50;
+        CompassRect.UpperLeftCorner.Y = 50;
+        CompassRect.LowerRightCorner.X = 150;
+        CompassRect.LowerRightCorner.Y = 150;
 
-            gui::IGUIElement* pgRootGuiElement = guienv->getRootGUIElement();
+        gui::IGUIElement* pgRootGuiElement = guienv->getRootGUIElement();
 
-            Compass1 = new Compass( CompassRect, guienv, pgRootGuiElement );
-            video::ITexture * CompassBodyTexture =   driver->getTexture("media/compass/compass_body.png");
-            video::ITexture * CompassNeedleTexture =   driver->getTexture("media/compass/compass_needle.png");
-            Compass1->SetCompassBodyTexture( CompassBodyTexture );
-            Compass1->SetCompassNeedleTexture( CompassNeedleTexture );
+        Compass1 = new Compass( CompassRect, guienv, pgRootGuiElement );
+        video::ITexture * CompassBodyTexture =   driver->getTexture("media/compass/compass_body.png");
+        video::ITexture * CompassNeedleTexture =   driver->getTexture("media/compass/compass_needle.png");
+        Compass1->SetCompassBodyTexture( CompassBodyTexture );
+        Compass1->SetCompassNeedleTexture( CompassNeedleTexture );
     #endif
 return Py_BuildValue("");
   }
@@ -214,9 +208,9 @@ PyObject * Python::PyIrr_BlindBoids(PyObject * self,PyObject * args) {//active c
 //        const f32 frameDeltaTime = (f32)(now - then) / 1000.0f; // Time in seconds
 //        then = now;
 #ifdef BOIDS
-switch (param){
-// if  (bBlindBoids = true){
-case 0:
+    switch (param){
+    // if  (bBlindBoids = true){
+    case 0:
          bBlindBoids = true;
         const irr::f32 borders[4] = { 1.0f, 222, 1.0f, 222}; //Xmin, Xmax, Zmin, Zmax
        // Flock* flock;

@@ -102,7 +102,6 @@ bool connected,doit,login=0;
 //#include <boost/python.hpp>   #not used just for ideas maybe
 #include "Scripting/PythonManager.h"
 
-
 #ifdef NDEBUG
 #include <irrNet.h>
 
@@ -489,9 +488,11 @@ setenv("PYTHONHOME", "/", 0);
 			#else
 				Python::ExecuteScript("../media/functions-list.pys"); // this is for testing
 			#endif
-
+			Python::ExecuteScript("../media/gameloader.pys");
 			//Python::PyIrr_LoadVehicle(m_cVehicle);
 			//Python::PyIrr_addTerrain("1");
+
+	//	Luna::returnString="../media/gameloader.pys";
 
 		#ifdef EDITOR
 			Python::bCodeEditor=3; // initial closed state
@@ -519,7 +520,8 @@ setenv("PYTHONHOME", "/", 0);
                     } else {
                         printf("mainloop");
                         device->setEventReceiver ( &m_cInGameEvents );
-                        mainloop();
+                      //  mainloop();
+                        main_loop();
                         //devloop();
                     }
             }
@@ -601,8 +603,12 @@ void Luna::main_loop(){ //devloop actually
 			Python::preEnd();
 			Python::CheckKeyStates(); //located in pyInput can probably be moved to preEnd as its not being used to check keystates
 			Python::ExecuteScript(irr::core::stringc(Python::returnString));
+			//Python::ExecuteScript(Python::returnString);
+		//	Python::ExecuteScript(irr::core::stringc(pyloader));
+			printf(Python::returnString.c_str());
+			printf("\n");
+			printf(pyloader);
 
-			//Python::ExecuteScript("./RACING/racer/main.pys");
 			guienv->drawAll();
 			driver->endScene();
 		#else

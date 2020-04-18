@@ -71,11 +71,11 @@ PyObject * Python::PyIrr_iPosition(PyObject * self,PyObject * args){
 	PyArg_ParseTuple(args,"lff",&node_id,&X,&Y);
 	#ifdef Image2D
 	cImage* node = (cImage*)node_id;
-//if its -1 for x val return center position or use getbounds
-irr::core::position2di newpos;
-newpos.X=X;
-newpos.Y=Y;
-node->SetPosition(newpos);
+	//if its -1 for x val return center position or use getbounds
+	irr::core::position2di newpos;
+	newpos.X=X;
+	newpos.Y=Y;
+	node->SetPosition(newpos);
 #endif
 return Py_BuildValue("");
 

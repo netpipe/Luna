@@ -2,31 +2,32 @@
 
 import irr
 import scene
-import input
-import image
-import gui
+#import input
+#import image
+#import gui
 
 #scene.using ('../media/string.py',"1");
 
 
-import os
-import itertools
-import hashlib
-#import random
-import math
-import time
+#import os
+#import itertools
+#import hashlib
+##import random
+#import math
+#import time
 #import shuffle
 
 #scene.using ('../media/lib/python2.7/random.py',"1"); #not working
-
-
+test=irr.getstring="../media/main.pys"
 #################################
 #INITIALIZE
 #called externally so it is set from functions.py or init.py
-if (init) :
+#if (init) :
 #################################
 # scene.CSG("test.3ds")
- irr.getstring="../media/main.pys"
+# test=irr.getstring="../media/main.pys"
+# print test
+
 # physics.addHelicopter("data/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
 
 
@@ -97,7 +98,7 @@ if (init) :
 
 
 #################################
- init = 0 #initialization finish - needs whitespace infront
+# init = 0 #initialization finish - needs whitespace infront
 #################################
 #MAIN LOOP
 

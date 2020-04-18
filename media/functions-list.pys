@@ -18,8 +18,8 @@ import irr
 #import gui
 
 init = 1  #start as true so that this loop is only ran once
-test=irr.getstring="../media/main.pys"
-print test
+#test=irr.getstring="../media/main.pys"
+#print test
 #launcher GUI
 
 #scene.using ('../media/gameloader.pys',"1");

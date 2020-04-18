@@ -6,7 +6,6 @@ PyMethodDef irr_Camera[] = {
     {"addCamera",Python::PyIrr_addCamera,METH_VARARGS,"sets camera vector"},
     {"setCamera",Python::PyIrr_SetCamera,METH_VARARGS,"sets camera vector"},
 	{"getCamera",Python::PyIrr_GetCamera,METH_VARARGS,"getcamera vector"},
-
 	{NULL,NULL,0,NULL}
 };
 
@@ -14,16 +13,13 @@ PyMethodDef irr_Camera[] = {
 PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 	float x,y,z;
 	int t;
-//	char * t;
+	//	char * t;
 	PyArg_ParseTuple(args,"ifff",&t,&x,&y,&z);
-	    ICameraSceneNode *cam;
-
-
-
-//    enum eaction{normal,FPS,bind,setViewPort,CameraManager};
-//std::map<std::string, eaction> nodeMap;
-//nodeMap[t];
-//std::map<std::string, X> xmap = boost::map_list_of("A", A)("B", B)("C",C);
+	ICameraSceneNode *cam;
+	//    enum eaction{normal,FPS,bind,setViewPort,CameraManager};
+	//std::map<std::string, eaction> nodeMap;
+	//nodeMap[t];
+	//std::map<std::string, X> xmap = boost::map_list_of("A", A)("B", B)("C",C);
     switch(t){
     case 1:
         cam = smgr->addCameraSceneNode();
@@ -62,14 +58,13 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 		//	cam->setPosition(vector3df(150,0,0));
 			cam->setTarget(vector3df(0,0,0));
 
-   // case CameraManager:
+	// case CameraManager:
         //if active camera not = new camera push to camera manager
     // some kind of vector stack for camera management
-//     ICameraSceneNode *gcamera[3] = {0,0,0};
+	//     ICameraSceneNode *gcamera[3] = {0,0,0};
         break;
-
-//    case bind:
-//          camera[2]->bindTargetAndRotation(true);
+	//    case bind:
+	//          camera[2]->bindTargetAndRotation(true);
 
 ///eaction(setViewPort):
 //    case setViewPort:
@@ -106,20 +101,17 @@ PyObject * Python::PyIrr_SetCamera(PyObject * self,PyObject * args){ //active ca
 	long cam2;
 	int type;
 	//int
-
 	PyArg_ParseTuple(args,"ilfff",&type,&cam2,&x,&y,&z);
-
-	//ICameraSceneNode *cam ;
-	ICameraSceneNode *cam = (ICameraSceneNode *)cam2;
+	ICameraSceneNode *cam ;
+	//ICameraSceneNode *cam = (ICameraSceneNode *)cam2;
 	//	ICameraSceneNode *cam = cam2;
 	if (type == 3){
-
 	}else{
-	//ICameraSceneNode *cam = (ICameraSceneNode *)cam2;
+	ICameraSceneNode *cam = (ICameraSceneNode *)cam2;
 	}
 //	device->setActiveCamera(cam);
-switch (type){
-	case 0:
+	switch (type){
+		case 0:
 		cam->setPosition(vector3df(x,y,z));
 	//	cam->setPosition(vector3df(0,20,0));
 		break;
@@ -176,7 +168,6 @@ PyObject * Python::PyIrr_GetCamera(PyObject * self,PyObject * args){
 
 //PyObject * Python::PyIrr_setEvent(PyObject * self,PyObject * args){
 //}
-
 
 //PyObject * Python::PyIrr_Camera(PyObject * self,PyObject * args)
 //{

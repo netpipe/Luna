@@ -1116,16 +1116,6 @@
 		<Unit filename="Events/Events.h" />
 		<Unit filename="Events/InGameEventReceiver.cpp" />
 		<Unit filename="Events/InGameEventReceiver.h" />
-		<Unit filename="GAME/APP/cowsynth/functions.pys" />
-		<Unit filename="GAME/APP/cowsynth/keys.pys" />
-		<Unit filename="GAME/APP/cowsynth/main.pys" />
-		<Unit filename="GAME/APP/cowsynth/net.pys" />
-		<Unit filename="GAME/APP/cowsynth/string.pys" />
-		<Unit filename="GAME/RACING/racer/keys.pys" />
-		<Unit filename="GAME/RACING/racer/main.pys" />
-		<Unit filename="GAME/RPG-SIM/minigolf/keys.pys" />
-		<Unit filename="GAME/RPG-SIM/minigolf/main.pys" />
-		<Unit filename="GAME/functions-list.pys" />
 		<Unit filename="GUI/ASCIIText/crc.cpp" />
 		<Unit filename="GUI/ASCIIText/crc.h" />
 		<Unit filename="GUI/ASCIIText/figlet.h" />
@@ -1473,6 +1463,8 @@
 		<Unit filename="entities/skeleton/BMaths.h" />
 		<Unit filename="entities/skeleton/Skeleton.cpp" />
 		<Unit filename="entities/skeleton/Skeleton.h" />
+		<Unit filename="media/functions-list.pys" />
+		<Unit filename="media/gameloader.pys" />
 		<Unit filename="media/keys.pys" />
 		<Unit filename="media/main.pys" />
 		<Extensions>

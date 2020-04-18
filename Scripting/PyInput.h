@@ -40,13 +40,13 @@ PyMethodDef irr_Input[] =
 
 
 bool Python::CheckKeyState(int key){
-//might want to add some kind of key limiter to prevent several keypresses in a row
-bool keystate=0;
-if (bFPS){
-keystate = M4->isKeyDown( irr::EKEY_CODE(key) );
-}else{
-keystate = mEvent.getKeyState( irr::EKEY_CODE(key) );
-}
+	//might want to add some kind of key limiter to prevent several keypresses in a row
+	bool keystate=0;
+	if (bFPS){
+	keystate = M4->isKeyDown( irr::EKEY_CODE(key) );
+	}else{
+	keystate = mEvent.getKeyState( irr::EKEY_CODE(key) );
+	}
 
 return (keystate);
 //return 1;
@@ -314,14 +314,12 @@ PyObject * Python::PyIrr_voxelLoad(PyObject * self,PyObject * args){
 	int type;
 //	char * gui,*driver,*smgr;
 	char * device;
-		char * path;
+	char * path;
 	PyArg_ParseTuple(args,"ss",&device,&path);
 #ifdef POLYVOX
    wchar_t cBuffer[100];
     int move;
-
 //    gui::IGUIEnvironment* device = device->getGUIEnvironment();
-
 //    gui::IGUIEnvironment* gui = device->getGUIEnvironment();
 //    video::IVideoDriver* driver = device->getVideoDriver();
 //    irr::scene::ISceneManager* smgr = device->getSceneManager();
@@ -360,10 +358,6 @@ PyObject * Python::PyIrr_voxelLoad(PyObject * self,PyObject * args){
 //
 //    gui::IGUIFont* font =
 //        device->getGUIEnvironment()->getFont("arialbold.bmp");
-
-
-
-
 
 
 //irr::scene::IMeshBuffer* ConvertMesh(const PolyVox::SurfaceMesh<PolyVox::PositionMaterialNormal>& mesh) {
@@ -590,17 +584,17 @@ PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
 }
 
 PyObject * Python::PyIrr_sqlconnect(PyObject * self,PyObject * args){
-int type;
-char * cstring;
+	int type;
+	char * cstring;
 	PyArg_ParseTuple(args,"is",&type,&cstring);
-#ifdef SQLITE
-	  sqlite3 *db;
-   fprintf(stderr, "Opening DB \n");
-    rc = sqlite3_open( cstring, &db);
+	#ifdef SQLITE
+		sqlite3 *db;
+		fprintf(stderr, "Opening DB \n");
+		rc = sqlite3_open( cstring, &db);
     if( rc ){
         fprintf(stderr,"Can't open database: %s\n", sqlite3_errmsg(db));
-  }
-     fprintf(stderr, "DB READY \n");
+	}
+	fprintf(stderr, "DB READY \n");
 
 //	    sqlCon *sq =new sqlCon(cstring);
 //    //  sq->execute(".dump");
@@ -619,17 +613,17 @@ return Py_BuildValue("l",db);
 }
 
 PyObject * Python::PyIrr_sqlcommand(PyObject * self,PyObject * args){
-int type;
-char * command;
-long sqlconn2;
+	int type;
+	char * command;
+	long sqlconn2;
 	PyArg_ParseTuple(args,"lis",&sqlconn2,&type,&command);
 	#ifdef SQLITE
 //	sqlCon *sq=sqlconn2;
 //	sq->execute(cstring);
-sqlite3 *db=(sqlite3 *)sqlconn2;
-  int nrow;
-  int ncol;
-   fprintf(stderr, "Executing Command \n");
+	sqlite3 *db=(sqlite3 *)sqlconn2;
+	int nrow;
+	int ncol;
+	fprintf(stderr, "Executing Command \n");
 
     rc = sqlite3_prepare(db, "PRAGMA table_info(learnss)", strlen(command), &stmt, 0);
     int col_cnt = sqlite3_column_count(stmt);
@@ -649,11 +643,8 @@ sqlite3 *db=(sqlite3 *)sqlconn2;
             printf("   =-=");
        //     sqlite3_finalize(stmt);
 
-
-   rc = sqlite3_prepare(db, command, strlen(command), &stmt, 0); // -1 for the string length seems to work too.
+	rc = sqlite3_prepare(db, command, strlen(command), &stmt, 0); // -1 for the string length seems to work too.
     //  rc = sqlite3_exec(db, command, sqlCon::callback, 0, &zErrMsg);
-
-
 
 /*  <<they should make coment folding into CB for certain things
       rc = sqlite3_get_table(
@@ -676,18 +667,18 @@ sqlite3 *db=(sqlite3 *)sqlconn2;
         }
 */
 
-printf("   =-=");
-  if( rc!=SQLITE_OK ){
-    fprintf(stderr, "SQL error: %s\n", zErrMsg);
-    sqlite3_free(zErrMsg);
-  }
+	printf("   =-=");
+	if( rc!=SQLITE_OK ){
+		fprintf(stderr, "SQL error: %s\n", zErrMsg);
+		sqlite3_free(zErrMsg);
+	}
 
     int rowcount;
-   col_cnt = sqlite3_column_count(stmt);
-printf("there is #%i columns \n",col_cnt);
-bool  finished = false;
+	col_cnt = sqlite3_column_count(stmt);
+	printf("there is #%i columns \n",col_cnt);
+	bool  finished = false;
   while (!finished) {
-      if(col_cnt !=0){
+	if(col_cnt !=0){
     rc = sqlite3_step(stmt);
     switch (rc) {
       case SQLITE_DONE:     //Execution finished.
@@ -735,8 +726,8 @@ bool  finished = false;
              }
           }  //switch
         }    //for
- printf( "\n");
-       rowcount++;
+	printf( "\n");
+	rowcount++;
         break;
              default:
              {

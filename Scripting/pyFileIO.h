@@ -8,7 +8,6 @@ PyMethodDef irr_FileIO[] = {
 PyObject * Python::PyIrr_FileArchive(PyObject * self,PyObject * args){
 	char * t;
 	PyArg_ParseTuple(args,"s",&t);
-
 	device->getFileSystem()->addFileArchive( t );
 	printf ("archive %s added to archive \n",t);
 return Py_BuildValue("");
@@ -17,7 +16,6 @@ return Py_BuildValue("");
 PyObject * Python::PyIrr_zistream(PyObject * self,PyObject * args){
 	float x,y,z;
 	int t;
-//	char * t;
 	PyArg_ParseTuple(args,"s",&t,&x,&y,&z);
 	#ifdef COMPRESS
 	//def(stdin, stdout, Z_DEFAULT_COMPRESSION); //for compression
@@ -30,7 +28,6 @@ PyObject * Python::PyIrr_zistream(PyObject * self,PyObject * args){
 PyObject * Python::PyIrr_zostream(PyObject * self,PyObject * args){
 	float x,y,z;
 	int t;
-//	char * t;
 	PyArg_ParseTuple(args,"ifff",&t,&x,&y,&z);
 return Py_BuildValue("");
 }

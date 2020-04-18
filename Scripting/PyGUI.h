@@ -6,13 +6,10 @@ using namespace std;
 
 PyMethodDef irr_gui[] =
 {
-	    //gui
-
     {"chatbox",Python::PyIrr_ChatBox,METH_VARARGS,"chatbox for chatting in/with/alone"},
 //  {"render",Python::PyIrr_Render,METH_VARARGS,"PyIrr_Render"}
 //  {"chatbox",Python::PyIrr_Terrain,METH_VARARGS,"pyterrain"},
 	{"codeeditor",Python::PyIrr_CodeEditor,METH_VARARGS,"PyIrr_CodeEditor"}, //gui
-
     {"window",Python::PyIrr_GUIWindow,METH_VARARGS,"window"},
     {"panel",Python::PyIrr_GUIPanel,METH_VARARGS,"panel"},
     {"tabs",Python::PyIrr_GUITabs,METH_VARARGS,"tabs"},
@@ -30,12 +27,9 @@ PyMethodDef irr_gui[] =
 
 PyObject * Python::PyIrr_CodeEditor(PyObject * self,PyObject * args) {//active camera
 #ifdef EDITOR
-bCodeEditor=1;
-device->getCursorControl()->setVisible(true);
-
-
-
-//return Py_BuildValue("l",luna->receiver);
+	bCodeEditor=1;
+	device->getCursorControl()->setVisible(true);
+	//return Py_BuildValue("l",luna->receiver);
 #endif
 return Py_BuildValue("");
 }
@@ -51,32 +45,25 @@ const wchar_t* char2wchar(const char* indata)
 }
 
 PyObject * Python::PyIrr_ChatBox(PyObject * self,PyObject * args){
-
-            enum evars{create=0,add};
-            char * tex_name;
-            char * message;
-            int action;
-      	PyArg_ParseTuple(args,"si",&message,&action);
+	enum evars{create=0,add};
+	char * tex_name;
+	char * message;
+	int action;
+	PyArg_ParseTuple(args,"si",&message,&action);
 #ifdef EXTRAS
     switch(action){
         case 0:
-
         //vectorChat.pushback =new gui::CGUIChatBox(  guienv, guienv->getRootGUIElement(),
-          //                                              230, core::rect<int>(20,40,300,500));
-
-      chat = new gui::CGUIChatBox(  guienv, guienv->getRootGUIElement(),
+		//                                              230, core::rect<int>(20,40,300,500));
+		chat = new gui::CGUIChatBox(  guienv, guienv->getRootGUIElement(),
                                                         230, core::rect<int>(20,40,300,500));
         break;
-
-        case 1:
-//        string messagestr = message;
+		case 1:
+//  string messagestr = message;
 //	char message2[300];
-//
 //	mbstowcs(message,message2,300);
-	//mbtowc(message,message2,300);
-
-	///wchar_t* message2 = char2wchar(message);
-
+//  mbtowc(message,message2,300);
+///wchar_t* message2 = char2wchar(message);
       //  chat->addItem(message);
              //   for (int i=0;i < 100;i++){
  //                   chat->addItem(L"tex_name");
@@ -85,7 +72,6 @@ PyObject * Python::PyIrr_ChatBox(PyObject * self,PyObject * args){
         break;
                 case 2:
 				chat->clear();
-
                 break;
     }
     #endif
@@ -104,26 +90,23 @@ long font;
 	s32 x,y,x1,y1;
 	PyArg_ParseTuple(args,"lsllll",&font,&message,&x,&y,&x1,&y1); //may only need x,y when using ft2
 
-IGUIFont * font2 = (IGUIFont *)font;
+	IGUIFont * font2 = (IGUIFont *)font;
 
-				//if (font2)
-				font2->draw(message,
-					core::rect<s32>(x,y,x1,y1),
-					video::SColor(255, 255, 255,255));
+	//if (font2)
+	font2->draw(message,
+	core::rect<s32>(x,y,x1,y1),
+	video::SColor(255, 255, 255,255));
 
 	//The next three lines more or less give the procedure from converting a string of
 	//type char* to wchar_t*...generally this is pretty useful in Irrlicht,so note well
-//	int len = strlen(message) + 1;
-//	wchar_t * conv_message = new wchar_t[len];
-//	mbstowcs(0,conv_message,len,message,_TRUNCATE);
-//printf("%s\n", mess0age);
-//wprintf("%s\n", model);
-//	guienv->addStaticText(conv_message,rect<s32>(x,y,x1,y1),SColor(255,255,255,255));
-//
-//	delete [] conv_message;
-
+	//	int len = strlen(message) + 1;
+	//	wchar_t * conv_message = new wchar_t[len];
+	//	mbstowcs(0,conv_message,len,message,_TRUNCATE);
+	//  printf("%s\n", mess0age);
+	//  wprintf("%s\n", model);
+	//	guienv->addStaticText(conv_message,rect<s32>(x,y,x1,y1),SColor(255,255,255,255));
+	//	delete [] conv_message;
 	guienv->addStaticText(L"sample text here!",rect<s32>(10,10,260,22), true);
-
 	 //   CGUITTFont *font2;
 //    CGUITTFace face;
 //        font2 = new CGUITTFont(gui);
@@ -171,7 +154,6 @@ PyObject * Python::PyIrr_addHUD(PyObject * self,PyObject * args){
         break;
         case 1:
                     break;
-
 	//hud visible layer attach nodes to it
 //        case 2:
 }
@@ -181,10 +163,9 @@ return Py_BuildValue("");
  }
 
 PyObject * Python::PyIrr_addVideo(PyObject * self,PyObject * args){
-
-vector3df loc;
-char * videoFile;
-PyArg_ParseTuple(args,"sfff",&videoFile,&loc.X,&loc.Y,&loc.Z);
+	vector3df loc;
+	char * videoFile;
+	PyArg_ParseTuple(args,"sfff",&videoFile,&loc.X,&loc.Y,&loc.Z);
         #ifdef VIDEO
         vidmaster = new CVideoMaster(device, true, 1);
         ITexture* cubeDiffuse = vidmaster->addVideoClip(videoFile, "TV", ESM_NONE, true);
@@ -208,10 +189,10 @@ return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_tesselateImage(PyObject * self,PyObject * args){
-// maybe try to stick this into a vector renderstack for main loop to allow more than one instance
-vector3df loc;
-char * path;
-PyArg_ParseTuple(args,"sfff",&path,&loc.X,&loc.Y,&loc.Z);
+	// maybe try to stick this into a vector renderstack for main loop to allow more than one instance
+	vector3df loc;
+	char * path;
+	PyArg_ParseTuple(args,"sfff",&path,&loc.X,&loc.Y,&loc.Z);
 	#ifdef TESSELATE
 		btesimage=1;
 		tesImage = new TesselatedImage(device, "media/fireball.bmp", vector3df(-600,0,500), vector3df(500, 550, 1000), vector3df(-130,50,100), 45, 1500, 10);
@@ -236,36 +217,28 @@ PyObject * Python::PyIrr_GUITabs(PyObject * self,PyObject * args){
 }
 
 PyObject * Python::PyIrr_GUIPanel(PyObject * self,PyObject * args){
-
 //	CGUIPanel* panel = new CGUIPanel(guienv, tab3, -1, tab3rect);
-
 //	environment->addStaticText(L"ID", textrect + position2d<s32>(0, 0), false, true, panel);
 //	environment->addEditBox(L"", textrect + position2d<s32>(0, 30), true, panel, 10301);
-//
-
-	return Py_BuildValue("");
-
+return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_GUIWindow(PyObject * self,PyObject * args){
-float x1,y1,x2,y2;
-long guienv2;
-char * stra;
-
-PyArg_ParseTuple(args,"sffff",&stra,&x1,&y1,&x2,&y2);
-
-stringw ha=stra;
-
+	float x1,y1,x2,y2;
+	long guienv2;
+	char * stra;
+	PyArg_ParseTuple(args,"sffff",&stra,&x1,&y1,&x2,&y2);
+	stringw ha=stra;
 	IGUIWindow* window = guienv->addWindow(
-		rect<s32>(x1 , y1 ,x2 , y2 ),
-		false, // modal?
-		ha.c_str());
+	rect<s32>(x1 , y1 ,x2 , y2 ),
+	false, // modal?
+	ha.c_str());
 
 	guienv->addStaticText(L"Please close me",
-		rect<s32>(35,35,140,50),
-		true, // border?
-		false, // wordwrap?
-		window);
+	rect<s32>(35,35,140,50),
+	true, // border?
+	false, // wordwrap?
+	window);
 
 	return Py_BuildValue("l",window);
 }
@@ -275,33 +248,30 @@ PyObject * Python::PyIrr_GUIButton(PyObject * self,PyObject * args){
 	long guienv2,window2;
 	char * stra;
 	PyArg_ParseTuple(args,"lsffff",&window2,&stra,&x1,&y1,&x2,&y2);
-//	wchar_t *text = stra;
+	//	wchar_t *text = stra;
 	stringw ha=stra;
-IGUIWindow* window=(IGUIWindow*)window2;
-IGUIButton *button =	guienv->addButton (
+	IGUIWindow* window = (IGUIWindow*)window2;
+	IGUIButton *button = guienv->addButton (
 											rect<s32> ( x1,y1,x2,y2  ),
 											window, 105, ha.c_str());
 		//window->setEnabled(1);
-
-		return Py_BuildValue("l",button);
+	return Py_BuildValue("l",button);
 }
 
 PyObject * Python::PyIrr_GUIBar(PyObject * self,PyObject * args){
-float x1,y1,x2,y2;
-long pwindow;
-int param;
-int ammount;
-
-// todo clickable set option for controlling sliders and things
-
-PyArg_ParseTuple(args,"liffffi",&pwindow,&param,&x1,&y1,&x2,&y2,&ammount);
-//todo put guienv here so it can be placed in windows
-//  CGUIBar* healthBar[4];
-CGUIBar* healthBar;
-//printf("param is %i",param);
+	float x1,y1,x2,y2;
+	long pwindow;
+	int param;
+	int ammount;
+	// todo clickable set option for controlling sliders and things
+	PyArg_ParseTuple(args,"liffffi",&pwindow,&param,&x1,&y1,&x2,&y2,&ammount);
+	//todo put guienv here so it can be placed in windows
+	//  CGUIBar* healthBar[4];
+	CGUIBar* healthBar;
+	//printf("param is %i",param);
 	if (param == 0) {
-//	CGUIBar* healthBar;
-  // the 1st bar will go from 0 to 255
+	//	CGUIBar* healthBar;
+	// the 1st bar will go from 0 to 255
 		printf("creating bar \n");
 		u8 a=20;
 		healthBar = new CGUIBar(x1,y1, x2,y2, a, driver);
@@ -316,46 +286,45 @@ CGUIBar* healthBar;
 		return Py_BuildValue("");
 //		break;
 	}
-
-		return Py_BuildValue("");
+	return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_sineGraph2d(PyObject * self,PyObject * args){
 #ifdef SGRAPH2D
 
-SGraph2D* graph = new SGraph2D(
-guienv, // GUI environment
-guienv->getRootGUIElement(), // parent
-0, // id
-irr::core::recti(0,0,600,400), // GUI element boundaries
-irr::core::rectf( -10.0f, -10.0f, 20.0f, 10.0f ), // graph window
-true, // use marks or lines?
-true // use tick marks?
-);
+	SGraph2D* graph = new SGraph2D(
+	guienv, // GUI environment
+	guienv->getRootGUIElement(), // parent
+	0, // id
+	irr::core::recti(0,0,600,400), // GUI element boundaries
+	irr::core::rectf( -10.0f, -10.0f, 20.0f, 10.0f ), // graph window
+	true, // use marks or lines?
+	true // use tick marks?
+	);
 
 
-graph->setBackgroundColor( video::SColor(255,150,150,150) );
+	graph->setBackgroundColor( video::SColor(255,150,150,150) );
 
 
-Inc<f32> dis;
-core::vector2df pt;
+	Inc<f32> dis;
+	core::vector2df pt;
 
-//dis.copy( win->getIterableXRange() );
-dis.setStep( 1.0f/1000.0f );
+	//dis.copy( win->getIterableXRange() );
+	dis.setStep( 1.0f/1000.0f );
 
-do {
-pt.X = dis.Val()*10;
-pt.Y = 10 * sin( dis.Val() );
+	do {
+	pt.X = dis.Val()*10;
+	pt.Y = 10 * sin( dis.Val() );
 
-graph->drawOnGraph( pt, video::SColor(255,255,0,0) );
-} while ( !++dis );
-//plotsine( graph );
+	graph->drawOnGraph( pt, video::SColor(255,255,0,0) );
+	} while ( !++dis );
+	//plotsine( graph );
 
 
-graph->drop();
-graph = 0;
-		return Py_BuildValue("l",graph);
-		#endif
+	graph->drop();
+	graph = 0;
+	return Py_BuildValue("l",graph);
+	#endif
 }
 
 PyObject * Python::PyIrr_GUITree(PyObject * self,PyObject * args){
@@ -370,7 +339,6 @@ PyObject * Python::PyIrr_GUIslider(PyObject * self,PyObject * args){
 float x1,y1,x2,y2;
 int ammount;
 long pwindow;
-
 // you can use 0 as pwindow to place without a window
 PyArg_ParseTuple(args,"lffffi",&pwindow,&x1,&y1,&x2,&y2,&ammount);
 
@@ -389,18 +357,18 @@ IGUIWindow* window=(IGUIWindow*)pwindow;
 }
 
 PyObject * Python::PyIrr_GUIEditBox(PyObject * self,PyObject * args){
-//vector3df loc;
-float x1,y1,x2,y2;
-long pwindow;
-PyArg_ParseTuple(args,"lffff",&pwindow,&x1,&y1,&x2,&y2);
-IGUIWindow* window = (IGUIWindow*)pwindow;
+	//vector3df loc;
+	float x1,y1,x2,y2;
+	long pwindow;
+	PyArg_ParseTuple(args,"lffff",&pwindow,&x1,&y1,&x2,&y2);
+	IGUIWindow* window = (IGUIWindow*)pwindow;
 
-   IGUIEditBox *textData = guienv->addEditBox(L"",rect<s32>(x1,y1,x2,y2),true,window,803);
-   textData->setMax(5000);
-   textData->setAutoScroll(true);
-   textData->setMultiLine(true);
-   textData->setWordWrap(true);
-   		return Py_BuildValue("l",textData);
+	IGUIEditBox *textData = guienv->addEditBox(L"",rect<s32>(x1,y1,x2,y2),true,window,803);
+	textData->setMax(5000);
+	textData->setAutoScroll(true);
+	textData->setMultiLine(true);
+	textData->setWordWrap(true);
+	return Py_BuildValue("l",textData);
 }
 
 PyObject * Python::PyIrr_LoadShape(PyObject * self,PyObject * args){

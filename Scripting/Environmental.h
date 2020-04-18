@@ -1,9 +1,6 @@
 #include "../config.h"
 #ifdef PYTHON
-//lacking the manager part but still good in theroy
 // impliment vector stashing of multiple flags and culling when not visible to save resources
-
-
 
 PyMethodDef irr_FlagMan[] =
 {
@@ -15,21 +12,19 @@ PyMethodDef irr_FlagMan[] =
 
 PyObject * Python::PyIrr_Flag1(PyObject * self,PyObject * args) //flag one better for speed less realistic
 {
-		float x,y,z;
-		char * texture;
+	float x,y,z;
+	char * texture;
     PyArg_ParseTuple(args,"sfff",&texture,&x,&y,&z);
-#ifdef FLAG
-flag1 = true;
-// flag scene node
-
-
-// demo veriables
+	#ifdef FLAG
+	flag1 = true;
+	// flag scene node
+	// demo veriables
 	vector3df	GravityVec(0, -9.8f, 0);
 	bool	doWind 			= true;
 	bool	showWire		= false;
 	bool	pausePhysics	= false;
 
-SMaterial Mat;
+	SMaterial Mat;
 		Mat.Lighting		= false;
 		Mat.BackfaceCulling = false;
 
@@ -38,10 +33,8 @@ SMaterial Mat;
 		(
 			10, 20,		// flag dimensions (change to whatever size required, or scale the node later)
 			10, 20,		// flag tesselation (good default value)
-
 			Mat,		// initial material properties
 			GravityVec,	// gravity (depends on the scale of the scene and the tesselation)
-
 			2,			// iterations (change at your own peril)
 			1.99f,		// spring-stiffness (change at your own peril)
 
@@ -49,34 +42,30 @@ SMaterial Mat;
 		);
 
 		if( !irrFlagNode ) return 0; // unknown error
-
 	// assign a texture and enable alpha transparency (id is always 0)
 		irrFlagNode->getMaterial(0).setTexture( 0, driver->getTexture(texture ) );
 		irrFlagNode->getMaterial(0).MaterialType = EMT_TRANSPARENT_ALPHA_CHANNEL;
-
-
 	// node can be manipulated like any other irrlicht node
 		irrFlagNode->setScale( vector3df(10) );
 		irrFlagNode->setPosition (vector3df (x,y,z));
-
-     return Py_BuildValue("l",irrFlagNode);
+	return Py_BuildValue("l",irrFlagNode);
     #endif
 };
 
 PyObject * Python::PyIrr_Flag2(PyObject * self,PyObject * args) //more realistic with shader
 {
 	float x,y,z;
-		char * texture;
+	char * texture;
     PyArg_ParseTuple(args,"sfff",&texture,&x,&y,&z);
 
-#ifdef FLAG2
-flag2 = true;
+	#ifdef FLAG2
+	flag2 = true;
 
-using namespace core;
-using namespace scene;
-using namespace video;
-using namespace io;
-using namespace gui;
+	using namespace core;
+	using namespace scene;
+	using namespace video;
+	using namespace io;
+	using namespace gui;
 
 	ILogger* output = device->getLogger();
 
@@ -149,22 +138,18 @@ using namespace gui;
 };
 
 PyObject * Python::PyIrr_skyDome(PyObject * self,PyObject * args){
-     char * path;
-   //  std::string p;
+	char * path;
     PyArg_ParseTuple(args,"s",&path);
-   // p = path;
-
-        smgr->addSkyDomeSceneNode(driver->getTexture( path ), 60,60,1,2);
-
-return Py_BuildValue("");
+	smgr->addSkyDomeSceneNode(driver->getTexture( path ), 60,60,1,2);
+	return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_lightning(PyObject * self,PyObject * args){
-        int param,state,Vehicle,ammount;
+	int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
     #ifdef EXTRAS
-switch(param){
-    case 0:
+	switch(param){
+		case 0:
         ISceneNode* sphere = smgr->addSphereSceneNode(10);
         sphere->setPosition(vector3df(50,50,50));
         sphere->setMaterialFlag(EMF_LIGHTING,false);
@@ -176,43 +161,44 @@ switch(param){
     }
     #endif
 //return Py_BuildValue("l",lightning);
+Py_RETURN_NONE;
 }
 
 PyObject * Python::PyIrr_omareDemo(PyObject * self,PyObject * args){
-        int param,state,Vehicle,ammount;
+	int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
         //Omare's CloudGen
-        int nClouds =0;
-        int max =10;
-        while (nClouds<max)
-            {
-                int	cloud_x=rand()%2000;
-                int cloud_y=rand()%2000;
-                int cloud_z=rand()%2000;
-                IBillboardSceneNode* cloudgen = smgr->addBillboardSceneNode(0,core::dimension2d<f32>(200, 100));
-                cloudgen->setPosition(core::vector3df(cloud_x,cloud_y,cloud_z));
-                cloudgen->setMaterialFlag(video::EMF_LIGHTING, false);
-                cloudgen->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
-                 cloudgen->setMaterialTexture(0,	driver->getTexture("./media/cloudgen/cloud.jpg"));
-                 printf("cloud generated");
-                nClouds=nClouds+1;
-            };
-                       Py_RETURN_NONE;
+	int nClouds =0;
+	int max =10;
+	while (nClouds<max)
+		{
+			int	cloud_x=rand()%2000;
+			int cloud_y=rand()%2000;
+			int cloud_z=rand()%2000;
+			IBillboardSceneNode* cloudgen = smgr->addBillboardSceneNode(0,core::dimension2d<f32>(200, 100));
+			cloudgen->setPosition(core::vector3df(cloud_x,cloud_y,cloud_z));
+			cloudgen->setMaterialFlag(video::EMF_LIGHTING, false);
+			cloudgen->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
+			cloudgen->setMaterialTexture(0,	driver->getTexture("./media/cloudgen/cloud.jpg"));
+			printf("cloud generated");
+			nClouds=nClouds+1;
+		};
+	Py_RETURN_NONE;
 };
 
 PyObject * Python::PyIrr_bitCloud(PyObject * self,PyObject * args){
-        int param,state,Vehicle,ammount;
+	int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
 #ifdef Bitcloud
-        clouds = new scene::CCloudSceneNode(
-                smgr->getRootSceneNode(), smgr,
-                    device->getTimer(), 666, core::vector3df(0,0,0), core::vector3df(0,0,0), core::vector3df(1,1,1));
+	clouds = new scene::CCloudSceneNode(
+			smgr->getRootSceneNode(), smgr,
+            device->getTimer(), 666, core::vector3df(0,0,0), core::vector3df(0,0,0), core::vector3df(1,1,1));
 
         video::ITexture * txture = driver->getTexture("./media/cloudgen/cloud.tga");
         srand(time(NULL));
         clouds->setLOD(1);
         clouds->setMaxDepth(1);
-            clouds->setMaterialFlag(video::EMF_LIGHTING, false);
+		clouds->setMaterialFlag(video::EMF_LIGHTING, false);
         clouds->setMaterialFlag(video::EMF_FOG_ENABLE, true);
     //    clouds->setMaterialType(video::EMT_TRANSPARENT_ALPHA_CHANNEL);
         srand(rand());
@@ -221,8 +207,8 @@ PyObject * Python::PyIrr_bitCloud(PyObject * self,PyObject * args){
         clouds->setPosition(core::vector3df(0,1000,0));
         camera->setFarValue (20000.0f);
         scene::ISceneNodeAnimator* cloudsCycle = smgr->createFlyCircleAnimator(core::vector3df(100.0f,0.0f,100.0f), 15000.0f, 0.000006f, core::vector3df(0.f, 1.f, 1.f), 0.4f);
-            clouds->addAnimator(cloudsCycle);
-            cloudsCycle->drop();
+		clouds->addAnimator(cloudsCycle);
+		cloudsCycle->drop();
         return Py_BuildValue("l",clouds);
 #endif
            Py_RETURN_NONE;
@@ -230,7 +216,7 @@ PyObject * Python::PyIrr_bitCloud(PyObject * self,PyObject * args){
 
 PyObject * Python::PyIrr_realCloud(PyObject * self,PyObject * args){
     // possibly set weather from here
-        int param,state,Vehicle,ammount;
+	int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
 	// add 1st cloud layer
 	#ifdef CLOUDS
@@ -254,14 +240,13 @@ PyObject * Python::PyIrr_realCloud(PyObject * self,PyObject * args){
 };
 
 PyObject * Python::PyIrr_addTerrain(PyObject * self,PyObject * args) {//active camera
-
-//vector3df loc;
-char * tex;
-char * hmap;
-char * dmap;
-float sx,sy,sz,cx,cy,cz;
-int type;
-PyArg_ParseTuple(args,"iffffffsss",&type,&cx,&cy,&cz,&sx,&sy,&sz,&hmap,&tex,&dmap);
+	//vector3df loc;
+	char * tex;
+	char * hmap;
+	char * dmap;
+	float sx,sy,sz,cx,cy,cz;
+	int type;
+	PyArg_ParseTuple(args,"iffffffsss",&type,&cx,&cy,&cz,&sx,&sy,&sz,&hmap,&tex,&dmap);
 #ifdef TERRAIN
     vector3df t_position = vector3df(cx,cy,cz);
     vector3df t_rotation = vector3df(0,0,0);
@@ -274,7 +259,7 @@ PyArg_ParseTuple(args,"iffffffsss",&type,&cx,&cy,&cz,&sx,&sy,&sz,&hmap,&tex,&dma
 			#endif
 			terr->Init();
 
-if ( type == 1 ){
+	if ( type == 1 ){
 	//#ifdef TERRAIN
 //		 terr = new Terrain;
 //			terr->registerIrrDevice(*device);
@@ -289,7 +274,7 @@ if ( type == 1 ){
 	//#else
 	//return Py_BuildValue("0");
 	//#endif
-}else if ( type == 2 ) {
+	}else if ( type == 2 ) {
 		terr->Terrain2(t_position,t_scale,hmap,tex,dmap);
 //		scene::ITerrainSceneNode* terrain = smgr->addTerrainSceneNode(
 //		hmap,
@@ -352,9 +337,9 @@ if ( type == 1 ){
 //   mRigidBody->setCollisionFlags(mRigidBody->getCollisionFlags() | btCollisionObject::CF_STATIC_OBJECT);
 //   luna->m_cPhysics->getDynamicsWorld()->addRigidBody(mRigidBody);
 
-return Py_BuildValue("l",terr);
+	return Py_BuildValue("l",terr);
 
-}
+	}
 #endif
 }
 
@@ -375,19 +360,16 @@ return Py_BuildValue("0");
 
 PyObject * Python::PyIrr_WaterPlane(PyObject * self,PyObject * args){
 	#ifdef RealisticWater
-int waterType=2;
-            char * script;
+	int waterType=2;
+    char * script;
+    float scaleX,scaleY,scaleZ,locX,locY,locZ;
+    float wavespeed,refractionfactor,waveheight,wavedisplacement;
+    float x,y,z,bigness;
 
-            float scaleX,scaleY,scaleZ,locX,locY,locZ;
-            float wavespeed,refractionfactor,waveheight,wavedisplacement;
-            float x,y,z,bigness;
-
-            PyArg_ParseTuple(args,"sffff",&script,&wavespeed,&refractionfactor,&waveheight,&wavedisplacement);
+    PyArg_ParseTuple(args,"sffff",&script,&wavespeed,&refractionfactor,&waveheight,&wavedisplacement);
 
 	if (waterType==1){
     #ifdef ReflectiveWater
-
-
             bWater=1;
             water = new CReflectedWater("ReflectedWater", device, smgr, -1, 10, 100,
             dimension2du(512,512));
@@ -401,7 +383,7 @@ int waterType=2;
             water->m_RefractionFactor = 0.51f;
             return Py_BuildValue("l",water);
     #endif
-}else{
+	}else{
     const f32 width = 512.0f;
 	const f32 height = 512.0f;
 	stringc resourcePath="./";

@@ -14,42 +14,39 @@
 #include "Scene/customNodes.h"
 
 #ifdef SOUND
-#include <cAudio.h>
+	#include <cAudio.h>
 #endif
-
 
 #include "entities/player.h"
 //#include "Encryption/Blowfish.h"
 
 #ifdef PHYSICS
-#include "Physics/Physics.h"
-#include "Physics/Vehicle.h"
+	#include "Physics/Physics.h"
+	#include "Physics/Vehicle.h"
 #endif
-#include "Scene/Scene.h"
+	#include "Scene/Scene.h"
 
 #ifdef DECALS2
-#include "./Scene/decals/decalscenenode.h"
+	#include "./Scene/decals/decalscenenode.h"
 #endif
 
 #ifdef TERRAIN
-#include "TerrainFactory/Terrain.h"
+	#include "TerrainFactory/Terrain.h"
 #endif
 
 #ifdef NETWORK
-#include <irrNet.h>
-//#include "Net/irrNetClient.h"
-#include <irrNet.h>
+	#include <irrNet.h>
+	//#include "Net/irrNetClient.h"
 #endif
 
 #ifdef __EMSCRIPTEN__
-#include <emscripten.h>
-#include <libtar.h>
+	#include <emscripten.h>
+	#include <libtar.h>
 #endif
 
 #ifdef AgAudio
 	#include "./Input/AgAudio/Sound.h"
 #endif
-
 
 //#include "TerrainFactory/GrassSceneNode/CGrassPatchSceneNode.h"
 //#include "Input/Model/IrrAssimp/IrrAssimp.h"
@@ -66,7 +63,7 @@ class Luna
 		unsigned int resolution[2];
         IVideoDriver *driver;
 		ISceneManager *smgr;
-		char * pyloader;
+		char * pyloader="../media/gameloader.pys";
 
 		int init();
 		int shutdown();
@@ -82,11 +79,12 @@ class Luna
 		int lastFPS;
 		bool bshutdown=false;
 		int countr;
+		//char * returnString="../media/gameloader.pys";
 
-//					#ifdef AgAudio
+//		#ifdef AgAudio
 ////		Sound *m_sound;
-//     Sound *m_sound;
-//     Sound m_default_sound_buffer;
+//     		Sound *m_sound;
+//     		Sound m_default_sound_buffer;
 //		#endif
 
 //    		void sound_loop_then_quit();
@@ -111,20 +109,17 @@ class Luna
 			cAudio::IAudioSource* mysound;
 		#endif
 
-
-
 		#include "./Input/SDLMixer.h"
 
-
 		// Encryption--------------------
-            //Encryption::Blowfish enc;
+		//Encryption::Blowfish enc;
 		// Network related
-
        // net::SOutPacket packet;
 
         // Character related
 		std::wstring username;
 		std::wstring password;
+
 		#ifdef FPS
 		// Player Physics---------------
 			Player *m_cPlayer;
@@ -148,21 +143,19 @@ class Luna
     void recursiveFillMetaSelector(scene::ISceneNode* node, scene::IMetaTriangleSelector* meta );
 
     scene::IMetaTriangleSelector* metaSelector;
-        scene::ISceneNodeAnimatorCollisionResponse* anim;
+	scene::ISceneNodeAnimatorCollisionResponse* anim;
   //      ICameraSceneNode* camera;
-struct SAppContext
-{
-	IrrlichtDevice *device;
-	s32				counter;
-	IGUIListBox*	listbox;
-};
+
+	struct SAppContext
+	{
+		IrrlichtDevice *device;
+		s32				counter;
+		IGUIListBox*	listbox;
+	};
 
 	private:
 
-
-//  protected:
-//
-
+	protected:
 };
 
 

@@ -72,6 +72,14 @@ void Python::ExecuteScript(irr::core::string<char> scriptname){
 };
 //#endif
 
+
+
+
+
+
+
+
+
 #else // basically for minimal test of python for debugging.
 
 vector<ITexture *> texture_array;

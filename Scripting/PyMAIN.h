@@ -1,7 +1,6 @@
 #ifndef PYSCENE_H_INCLUDED
 #define PYSCENE_H_INCLUDED
-/// we will also want a main loop python event manager that runs every loop something like pyKeyCheck.
-/// IF getting errors about missing python stuff make sure its in 3 places the function too
+
 #include "../config.h"
 #ifdef PYTHON
 namespace Python {
@@ -91,8 +90,11 @@ namespace Python {
     #ifdef occlusion
         Renderer22 *RenderMan;
     #endif
-    char * returnString="../media/main.pys";
-  //      char * returnString="";
+
+    //todo bugfix need a way to get set the string in either luna.h or here
+    irr::core::stringc returnString="../media/gameloader.pys";
+//       char * returnString="";
+
     //Scene
     // would be sweet to have this done automatically somehow lol pita making 2 tables and a function
     PyObject * PyIrr_GetString(PyObject * self,PyObject * args);
@@ -216,7 +218,7 @@ namespace Python {
 
 
     //media
-    PyObject *PyIrr_FluidSynth(PyObject * self,PyObject * args);
+    PyObject * PyIrr_FluidSynth(PyObject * self,PyObject * args);
     PyObject * PyIrr_zistream(PyObject * self,PyObject * args);
     PyObject * PyIrr_zostream(PyObject * self,PyObject * args);
     //SOUND

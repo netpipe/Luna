@@ -16,18 +16,15 @@ PyMethodDef irr_Physics[] = {
     {"addPlayer",Python::PyIrr_addPlayer,METH_VARARGS,"PyIrr_addPlayer"},
     {"bullet",Python::PyIrr_Bullet,METH_VARARGS,"PyIrr_Bullet"},
     {"VehicleParams",Python::PyIrr_VehicleParams,METH_VARARGS,"VehicleParams"},
-
 	{NULL,NULL,0,NULL}
 	};
 
 PyObject * Python::PyIrr_recast(PyObject * self,PyObject * args){
-
 //io::IFileSystem* fs = device->getFileSystem();
-
 	//fs->addFileArchive(IRRLICHT_DIR);
 	//#define IRRLICHT_DIR "media"
-char * path;
-PyArg_ParseTuple(args,"s",&path);
+	char * path;
+	PyArg_ParseTuple(args,"s",&path);
 #ifdef RECAST
 	char * MODEL_FILE = path;//"./media/dungeon.obj"
 	node = smgr->addOctreeSceneNode(smgr->getMesh(MODEL_FILE));
@@ -78,7 +75,7 @@ PyArg_ParseTuple(args,"s",&path);
 //m_detailSampleDist = 6.0f;
 //m_detailSampleMaxError = 1.0f;
 //}
-  return Py_BuildValue("");
+	return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
@@ -89,22 +86,20 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
    // char * param;
     PyArg_ParseTuple(args,"liffff",&mVehicle,&param,&state,&ammount,&y,&z);
  //   vector3df* position = VehicleParam(mVehicle,param,state,ammount,y,z);
-enum eparam{reset,accelerate,reverse,ebrake,brake,lsteer,rsteer};
+	enum eparam{reset,accelerate,reverse,ebrake,brake,lsteer,rsteer};
 
-Vehicle *vehicle = (Vehicle *)mVehicle;
-//if param = "accelerate"
-//	action = 1
+	Vehicle *vehicle = (Vehicle *)mVehicle;
+	//if param = "accelerate"
+	//	action = 1
 
-//std::map<std::string, eparam> nodeMap;
-//int Iparam = nodeMap[param];
-//nodeMap["Cone"] = NODES::Cone;
-//nodeMap["Cone"] = ;
+	//std::map<std::string, eparam> nodeMap;
+	//int Iparam = nodeMap[param];
+	//nodeMap["Cone"] = NODES::Cone;
+	//nodeMap["Cone"] = ;
 
 //prob need one map for state too
-
-int Iparam=param;
-
-if ( state==0 ){  // use state for get and set var
+	int Iparam=param;
+	if ( state==0 ){  // use state for get and set var
        switch (Iparam){
 
             case eparam(reset):
@@ -164,17 +159,16 @@ if ( state==0 ){  // use state for get and set var
                 break;
        }
 
-    } else if (state==1)
-    {   //get vars
-//int returnvar;
+    } else if (state==1) {   //get vars
+	//int returnvar;
 		switch (param){
 			case 0:
-//				returnvar = m_cVehicle->getState();
+	//				returnvar = m_cVehicle->getState();
 					return Py_BuildValue("i",m_cVehicle->getState());
 				break;
 			case 1:
 				vector3df position = vehicle->getPosition();
-///				return Py_BuildValue("l",position);
+	///				return Py_BuildValue("l",position);
 			break;
 		}
     }
@@ -186,21 +180,18 @@ if ( state==0 ){  // use state for get and set var
 int osteerinit =0;
 PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){
 	#ifdef OPENSTEER
-//vector3df loc;
-//char * path;
-//PyArg_ParseTuple(args,"sfff",&loc.X,&loc.Y,&loc.Z);
+	//vector3df loc;
+	//char * path;
+	//PyArg_ParseTuple(args,"sfff",&loc.X,&loc.Y,&loc.Z);
+	PyArg_ParseTuple(args,"");
     opensteer = 1;
     // initialize graphics first !!!
 //         if( osteerinit ) {
     OpenSteer::initializeGraphics(device);
-
     // initialize OpenSteerDemo application
-
-       OpenSteer::OpenSteerDemo::initialize();
-
+	OpenSteer::OpenSteerDemo::initialize();
     OpenSteer::OpenSteerDemo::selectNextPlugIn();
  //  OpenSteer::OpenSteerDemo::selectNextPlugIn();
-
 //       OpenSteer::OpenSteerDemo::selectNextPlugIn();
 //       }else {// or restart
 //    OpenSteer::OpenSteerDemo::selectNextPlugIn();
@@ -208,14 +199,13 @@ PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){
     // were going to need more to this function maybe some internal calls for things like individual paths
   #endif
 //        Py_RETURN_NONE;
-        return Py_BuildValue("");
-
+	return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_fpsWeapon(PyObject * self,PyObject * args){
 // need to attach to bones and/or nodes here
 #ifdef FPS
-bFPS = 1;
+	bFPS = 1;
     long pcam;
     PyArg_ParseTuple(args,"l",&pcam);
     ICameraSceneNode* camera = (ICameraSceneNode*)pcam;
@@ -252,12 +242,11 @@ return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_addHelicopter(PyObject * self,PyObject * args) {
-// return scene node and assign camera vector or parrent camera to scene.
-vector3df loc;
-char * path;
-PyArg_ParseTuple(args,"sfff",&path,&loc.X,&loc.Y,&loc.Z);
+	// return scene node and assign camera vector or parrent camera to scene.
+	vector3df loc;
+	char * path;
+	PyArg_ParseTuple(args,"sfff",&path,&loc.X,&loc.Y,&loc.Z);
 #ifdef CHOPPER
-
 //active camera
   //  #ifdef CHOPPER
     IAnimatedMesh* mesh = smgr->getMesh(path);
@@ -268,18 +257,18 @@ PyArg_ParseTuple(args,"sfff",&path,&loc.X,&loc.Y,&loc.Z);
  //   camera->bindTargetAndRotation(node);
  //   #endif
      //device->getSceneManager()->isCulled(node);
-            return Py_BuildValue("l",chopperControl);
-            #endif
-            return Py_BuildValue("");
+	return Py_BuildValue("l",chopperControl);
+#endif
+	return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_BulletBlend(PyObject * self,PyObject * args) {
-vector3df loc;
-int thing;
-char *file2;
-//place open file dialogue here and get rid of this list to clean up the source
-//PyArg_ParseTuple(args,"fffi",&loc.X,&loc.Y,&loc.Z,thing);
-PyArg_ParseTuple(args,"s",&file2);
+	vector3df loc;
+	int thing;
+	char *file2;
+	//place open file dialogue here and get rid of this list to clean up the source
+	//PyArg_ParseTuple(args,"fffi",&loc.X,&loc.Y,&loc.Z,thing);
+	PyArg_ParseTuple(args,"s",&file2);
 
     #ifdef BULLETBLEND
     	int verboseDumpAllTypes = 0;
@@ -342,64 +331,64 @@ PyArg_ParseTuple(args,"s",&file2);
 
 PyObject * Python::PyIrr_addCar(PyObject * self,PyObject * args){
 	//vehicle manager
-vector3df loc; //drop point
+	vector3df loc; //drop point
 
-float scaleT,scaleE;
-vector3df btCarScale, btModelscale,m_vehiclePosition;
+	float scaleT,scaleE;
+	vector3df btCarScale, btModelscale,m_vehiclePosition;
 
-int vehicleWeight;
-float maxBreakingForce, maxEngineForce,SpeedINC;
-int Ctype=1;
-float connectionHeight,suspensionStiffness,suspensionDamping,
-suspensionCompression,rollInfluence,wheelFriction,wheelRadius,
-wheelWidth,steeringIncrement, steeringClamp, CUBE_HALF_EXTENTS ,
-wheelSpacingX,wheelScaleFactor;
+	int vehicleWeight;
+	float maxBreakingForce, maxEngineForce,SpeedINC;
+	int Ctype=1;
+	float connectionHeight,suspensionStiffness,suspensionDamping,
+	suspensionCompression,rollInfluence,wheelFriction,wheelRadius,
+	wheelWidth,steeringIncrement, steeringClamp, CUBE_HALF_EXTENTS ,
+	wheelSpacingX,wheelScaleFactor;
 
-char * model,*texture;
-stringc model2,texture2;
-//std::string model3,texture3;
+	char * model,*texture;
+	stringc model2,texture2;
+	//std::string model3,texture3;
 
-//model2 =  stringc("data/models/vehicles/oldChevy-Truck.3ds";
-//texture2 = "data/models/vehicles/oldChevy.bmp";
-//float suspensionRestLength2,
-//float wheelSpacingZ2,
-//float wheelSpacingZ22,
+	//model2 =  stringc("data/models/vehicles/oldChevy-Truck.3ds";
+	//texture2 = "data/models/vehicles/oldChevy.bmp";
+	//float suspensionRestLength2,
+	//float wheelSpacingZ2,
+	//float wheelSpacingZ22,
 
 
-// 31 variables
-PyArg_ParseTuple(args,"ssfffffffffffifffifffffffffffff",&model,&texture,&scaleT,&scaleE,
-&btCarScale.X,&btCarScale.Y,&btCarScale.Z,
-&btModelscale.X,&btModelscale.Y,&btModelscale.Z,
-&m_vehiclePosition.X,&m_vehiclePosition.Y,&m_vehiclePosition.Z,
+	// 31 variables
+	PyArg_ParseTuple(args,"ssfffffffffffifffifffffffffffff",&model,&texture,&scaleT,&scaleE,
+	&btCarScale.X,&btCarScale.Y,&btCarScale.Z,
+	&btModelscale.X,&btModelscale.Y,&btModelscale.Z,
+	&m_vehiclePosition.X,&m_vehiclePosition.Y,&m_vehiclePosition.Z,
 
-&vehicleWeight,&maxBreakingForce, &maxEngineForce,&SpeedINC, &Ctype, &connectionHeight,&suspensionStiffness,&suspensionDamping,
-&suspensionCompression,&rollInfluence,&wheelFriction,&wheelRadius,&wheelWidth,&steeringIncrement, &steeringClamp, &CUBE_HALF_EXTENTS,
-&wheelSpacingX,&wheelScaleFactor);
+	&vehicleWeight,&maxBreakingForce, &maxEngineForce,&SpeedINC, &Ctype, &connectionHeight,&suspensionStiffness,&suspensionDamping,
+	&suspensionCompression,&rollInfluence,&wheelFriction,&wheelRadius,&wheelWidth,&steeringIncrement, &steeringClamp, &CUBE_HALF_EXTENTS,
+	&wheelSpacingX,&wheelScaleFactor);
 
-//std::string   model3(model); //new stringc(model);
-//std::string texture3(texture); //new stringc(model);
+	//std::string   model3(model); //new stringc(model);
+	//std::string texture3(texture); //new stringc(model);
 
-//printf (model2.c_str());
-//printf (texture2.c_str());
+	//printf (model2.c_str());
+	//printf (texture2.c_str());
 
-//wprintf (conv_message);
+	//wprintf (conv_message);
 
-//model2 		= "data/models/vehicles/oldChevy-Truck.3ds";
-//texture2 	= "data/models/vehicles/oldChevy.bmp";
-//printf ("collision scale checker %f%f%f \n",btCarScaleX,btCarScaleY,btCarScaleZ);
-//printf ("car model scale checker %f%f%f \n",btModelscaleX,btModelscaleY,btModelscaleZ);
-//printf ("car model scale checker %f%f%f \n",m_vehiclePositionX,m_vehiclePositionY,m_vehiclePositionZ);
-//printf ("wheelSpacingX %f wheelScaleFactor %f \n",wheelSpacingX,wheelScaleFactor);
-//model3 		 = model;
-//texture3	 = texture;
+	//model2 		= "data/models/vehicles/oldChevy-Truck.3ds";
+	//texture2 	= "data/models/vehicles/oldChevy.bmp";
+	//printf ("collision scale checker %f%f%f \n",btCarScaleX,btCarScaleY,btCarScaleZ);
+	//printf ("car model scale checker %f%f%f \n",btModelscaleX,btModelscaleY,btModelscaleZ);
+	//printf ("car model scale checker %f%f%f \n",m_vehiclePositionX,m_vehiclePositionY,m_vehiclePositionZ);
+	//printf ("wheelSpacingX %f wheelScaleFactor %f \n",wheelSpacingX,wheelScaleFactor);
+	//model3 		 = model;
+	//texture3	 = texture;
 
-//todo figure out stringc copy to string
+	//todo figure out stringc copy to string
 
-//strcpy(model,model2); // possibly a 20 char limitation
-//strcpy(texture,texture2);
+	//strcpy(model,model2); // possibly a 20 char limitation
+	//strcpy(texture,texture2);
 
-//str(model,model2);
-//str(texture,texture2);
+	//str(model,model2);
+	//str(texture,texture2);
 #ifdef PHYSICS
     #ifdef BULLETCAR
     bCar=1;
@@ -441,7 +430,6 @@ PyArg_ParseTuple(args,"ssfffffffffffifffifffffffffffff",&model,&texture,&scaleT,
 //        node->setScale(vector3df(btCarScale[0],btCarScale[1],btCarScale[2]));
 //        node->setMaterialFlag(video::EMF_LIGHTING, false);
 
-
   //   Vehicles->push_back(m_cVehicle);
 return Py_BuildValue("l",m_cVehicle);
 #endif
@@ -463,7 +451,8 @@ return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_LoadVehicle(PyObject * self,PyObject * args){
-	 return Py_BuildValue("");  }
+	 return Py_BuildValue("");
+	}
 
 PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
 	#ifdef TERRAIN
@@ -479,69 +468,54 @@ PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
     path2 = path;
 
     #ifdef LOADLEVELS
-        stringc rootdir = "./";
+	stringc rootdir = "./";
 
-//path* rootdir = device->getFileSystem()->getAbsolutePath(path)
-stringc filedir = device->getFileSystem()->getFileDir (path);
-stringc file = device->getFileSystem()->getFileBasename (path);
-//rootdir = device->getFileSystem()->getWorkingDirectory();
-rootdir = device->getFileSystem()->getAbsolutePath(rootdir);
-stringc absFile = device->getFileSystem()->getAbsolutePath(path);
+	//path* rootdir = device->getFileSystem()->getAbsolutePath(path)
+	stringc filedir = device->getFileSystem()->getFileDir (path);
+	stringc file = device->getFileSystem()->getFileBasename (path);
+	//rootdir = device->getFileSystem()->getWorkingDirectory();
+	rootdir = device->getFileSystem()->getAbsolutePath(rootdir);
+	stringc absFile = device->getFileSystem()->getAbsolutePath(path);
      // for security specify the data/levels folder.
      // make the levels in pathname dynamic.
 
-         irr::core::stringc extension;
+	irr::core::stringc extension;
 
-		irr::core::getFileNameExtension(extension, path);
-		printf ("extenstion is %s", extension.c_str());
+	irr::core::getFileNameExtension(extension, path);
+	printf ("extenstion is %s", extension.c_str());
 
 	int tscale=param ;
     vector3df trackScale = vector3df(tscale,tscale,tscale); //50
     vector3df trackPosition = vector3df(0,0.0f,0);
-IAnimatedMeshSceneNode *node;
-IAnimatedMesh *mesh;
+	IAnimatedMeshSceneNode *node;
+	IAnimatedMesh *mesh;
 	if ( extension == ".irr"){
-
-	   device->getFileSystem()->changeWorkingDirectoryTo(filedir.c_str());
+		device->getFileSystem()->changeWorkingDirectoryTo(filedir.c_str());
 		device->getSceneManager()->loadScene(absFile);  // LOADSCENE not LOADTRACK
 		rfm(smgr->getRootSceneNode());
-
-    device->getFileSystem()->changeWorkingDirectoryTo(rootdir.c_str());
-return Py_BuildValue("");
-
+		device->getFileSystem()->changeWorkingDirectoryTo(rootdir.c_str());
+		return Py_BuildValue("");
 	}else{
-
      //   device->getFileSystem()->changeWorkingDirectoryTo("../../");
         device->getFileSystem()->changeWorkingDirectoryTo(filedir.c_str());
-
-
         mesh = device->getSceneManager()->getMesh(absFile); //.c_str()+file.c_str()
   //  IAnimatedMesh *mesh = device->getSceneManager()->getMesh(path2.c_str());
 
-
-
-
-    device->getSceneManager()->getMeshManipulator()->scaleMesh(mesh,trackScale);
-    node = device->getSceneManager()->addAnimatedMeshSceneNode(mesh);
+		device->getSceneManager()->getMeshManipulator()->scaleMesh(mesh,trackScale);
+		node = device->getSceneManager()->addAnimatedMeshSceneNode(mesh);
 //         if(!m_irrDevice) return;
-smgr->getMeshManipulator()->makePlanarTextureMapping(
-mesh, 0.004f);
+		smgr->getMeshManipulator()->makePlanarTextureMapping(
+		mesh, 0.004f);
    // if(!mesh || !node) return;
     node->setAutomaticCulling(EAC_OFF);
      node->setMaterialFlag(EMF_LIGHTING, true);
     // node->setScale(trackScale);
     // node->setRotation(vector3df(45,90.f,110));
     node->setPosition(trackPosition);
-
-
-
-
-
      //   m_cVehicle->loadLevel(track.c_str());
-        device->getFileSystem()->changeWorkingDirectoryTo(rootdir.c_str());
-
-       #ifndef PHYSICS
-#ifdef IRRCD
+		device->getFileSystem()->changeWorkingDirectoryTo(rootdir.c_str());
+	#ifndef PHYSICS
+	#ifdef IRRCD
     metaSelector = device->getSceneManager()->createMetaTriangleSelector();
     selector = device->getSceneManager()->createOctTreeTriangleSelector(mesh,node,128);
     node->setTriangleSelector(selector);
@@ -628,7 +602,7 @@ return Py_BuildValue("l",test);
       return Py_BuildValue("");
 }
 
-void Python::rfm(ISceneNode* node )
+void Python::rfm(ISceneNode* node ) //level loader
 {
   //
   // the following if is basically the same as ISceneNode_assignTriangleSelector
@@ -668,9 +642,9 @@ void Python::rfm(ISceneNode* node )
 //    node->setMaterialFlag(EMF_FOG_ENABLE, true);
 //    node->setMaterialType(EMT_LIGHTMAP_M4);
 //    node->setMaterialFlag(EMF_LIGHTING, false);
-  }
-  if(strcmp(node->getName(), "glass") == 0)
-  {
+	}
+	if(strcmp(node->getName(), "glass") == 0)
+	{
 //    node->setMaterialTexture(1,	irrDevice->getVideoDriver()->getTexture("StageData/glass.tga"));
 //    node->setMaterialFlag(EMF_LIGHTING, false);
 //    node->setMaterialFlag(EMF_FOG_ENABLE, false);
@@ -686,13 +660,13 @@ void Python::rfm(ISceneNode* node )
 //			node->getMaterial(i).SpecularColor = col;
 //			node->getMaterial(i).MaterialTypeParam = 0.01;
 //    }
-  }
+	}
 
-  if (node->getType() ==   ESNT_UNKNOWN)
-  {
-  }
-  if (node->getType() ==   ESNT_MESH)
-  {
+	if (node->getType() ==   ESNT_UNKNOWN)
+	{
+	}
+	if (node->getType() ==   ESNT_MESH)
+	{
       io::IAttributes* attribs = device->getFileSystem()->createEmptyAttributes();
       if (attribs)
         {// get the mesh name out
@@ -722,33 +696,33 @@ void Python::rfm(ISceneNode* node )
             //node->setFlag(EMF_TRILINEAR_FILTER, true);
             #ifdef TERRAIN
             #ifdef PHYSICS
-		tr.setOrigin(btVector3(0,0,0));
+			tr.setOrigin(btVector3(0,0,0));
 		#endif
 		#endif
 
 		#ifdef PHYSICS
-         btTriangleMesh *collisionMesh = new btTriangleMesh();
+			btTriangleMesh *collisionMesh = new btTriangleMesh();
 		#endif
 //#define PYTHON
   //  m_cScene->setGenericMaterial(node, 0);
 
     int meshCount = mesh->getMeshBufferCount();
-        printf("MESHBUFFER COUNT %d /n",meshCount);
+	printf("MESHBUFFER COUNT %d /n",meshCount);
 
-        for (int i=0; i < meshCount ; i++)//!load all meshes for CD
-        {
+	for (int i=0; i < meshCount ; i++)//!load all meshes for CD
+	{
             //  meshBuffer2->append( mesh->getMeshBuffer(i) );
           //  m_cScene->setGenericMaterial(node, i); //outdoor sun lumenation
           #ifdef PHYSICS
             luna->m_cPhysics->convertIrrMeshBufferBtTriangleMesh(mesh->getMeshBuffer(i), collisionMesh, vector3df(1,1,1));
             //decalManager->addMesh(mesh->getMeshBuffer(i));
             #endif
-        }
+	}
  #ifdef PHYSICS
-    btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
+	btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
     btRigidBody *test = luna->m_cPhysics->localCreateRigidBody(0, tr, trackShape, node);
  #endif
-         }
+		}
 	}
   }
   if (node->getType() ==   ESNT_ANIMATED_MESH)
