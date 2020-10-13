@@ -1058,8 +1058,6 @@
 			<Add library="theoraplayer" />
 			<Add library="assimp" />
 			<Add library="usb" />
-			<Add library="boost_thread" />
-			<Add library="boost_system" />
 			<Add library="sqlite3" />
 			<Add library="asound" />
 			<Add library="jack" />
