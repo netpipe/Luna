@@ -608,9 +608,9 @@ void Luna::main_loop(){ //devloop actually
 			Python::ExecuteScript(irr::core::stringc(Python::returnString));
 			//Python::ExecuteScript(Python::returnString);
 		//	Python::ExecuteScript(irr::core::stringc(pyloader));
-			printf(Python::returnString.c_str());
-			printf("\n");
-			printf(pyloader);
+		//	printf(Python::returnString.c_str());
+		//	printf("\n");
+//			printf(pyloader);
 
 			guienv->drawAll();
 			driver->endScene();
