@@ -2,6 +2,12 @@
 #ifdef PYTHON
 ///PHYSICS
 
+//fix infinite falling if over level ground checks - maybe put back to point of falling off and turn down gravity untill back on solid ground. use a fall point for each player . maybe optional game exit if looping.
+
+//PyObject * Python::PyFALLCALL(PyObject * self,PyObject * args){
+// might be for futuristic vr setup if you get stuck in a game after you get out of a vehicle or something.
+//}
+
 PyMethodDef irr_Physics[] = {
     {"loadTrack",Python::PyIrr_LoadTrack,METH_VARARGS,"Load Track"},
 	{"LoadShape",Python::PyIrr_LoadShape,METH_VARARGS,"Loads a texture"}, //notsure what this was

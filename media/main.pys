@@ -16,7 +16,7 @@ if (init) :
  import net
  import gui
 
-# irr.getstring="../media/cards.pys"
+ irr.getstring = "../media/cards.pys"
 #import itertools
 #not needed includes just for testing
  scene.using ('../media/string.py',"1");

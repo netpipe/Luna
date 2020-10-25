@@ -58,7 +58,7 @@ device->getCursorControl()->setVisible(true);
 //				strcat(dir, dir2);
 //				strcat(dir, "main.pys");
 //				puts (dir);
-  char * loader = "./RACING/racer/main.pys";
+ // char * loader = "./RACING/racer/main.pys";
 //   loader = "./APP/cowsynth/main.pys";
 
     while ( device->run() && !this->m_cInGameEvents.Quit ) //&& !this->m_cInGameEvents.Quit
