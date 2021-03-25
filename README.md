@@ -1,5 +1,6 @@
 Luna Irrlicht Game Engine
 
+Linux Debug works / Release uses different loop
 mineDBG
 emscripten-project-testing 
 
