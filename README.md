@@ -4,7 +4,9 @@ Linux Debug works / Release uses different loop
 mineDBG
 emscripten-project-testing 
 
-if you want to compile for windows remove the fluidsynth and then it wont need pulse jack asound gnome-libs. libusb is probably not needed either and a few others. the defines make it easy to exclude alot of the fat.
+if you want to compile for windows remove the fluidsynth and then it wont need pulse jack asound gnome-libs. libusb is probably not needed either and a few others. the defines make it easy to exclude alot of the fat. config.h can help with that
+
+in codeblocls the proper way to see the source and header files is to uncheck the display by type toggle when right clicking on workspace.
 
 
 
