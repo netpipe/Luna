@@ -4,7 +4,9 @@ Linux Debug works / Release uses different loop
 mineDBG
 emscripten-project-testing 
 
-are the 2 builds i've been working from sofar
+if you want to compile for windows remove the fluidsynth and then it wont need pulse jack asound gnome-libs. libusb is probably not needed either and a few others. the defines make it easy to exclude alot of the fat.
+
+
 
 
 
