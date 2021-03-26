@@ -1,4 +1,4 @@
-Luna Irrlicht Game Engine
+Luna Irrlicht Game Engine - fastest portable python enabled and most complete game engine around.
 
 Linux Debug works / Release uses different loop
 mineDBG
