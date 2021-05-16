@@ -16,7 +16,7 @@ if (init) :
  import net
  import gui
 
- irr.getstring="../media/cards.pys"
+ irr.getstring = "../media/cards.pys"
 #import itertools
 #not needed includes just for testing
  scene.using ('../media/string.py',"1");
@@ -83,8 +83,10 @@ if (init) :
 # physics.VehicleParams(car1,8,0,0,0,0)
  irr.files("../media/cards.zip")
  flashlight=scene.flashlight(0,0)
- chopper=physics.chopper("../media/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
- scene.setPosition(chopper,5,20,200,20)
+
+ #chopper=physics.chopper("../media/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
+ #scene.setPosition(chopper,5,20,200,20)
+
 # scene.recast("../media/dungeon.obj")
 # scene.grass("../media/data/vegData/output.grs")
  #scene.addwater("none",1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
@@ -344,7 +346,7 @@ ycoord=input.mouse(3,0,0)
 if input.getKey('KEY_F2') : #could have a release action
  print "setting cube position"
  #scene.add_cube()
- scene.addSphereNode("data/textures/material/marble1_256.png",0,20,5,5,500) #xyz radius mass
+ scene.addSphereNode("../media/data/textures/material/marble1_256.png",0,20,5,5,500) #xyz radius mass
  #scene.setPosition(cube_id,1,1,1)
 
 if input.getKey('KEY_F3') : #could have a release action
@@ -358,7 +360,7 @@ if input.getKey('KEY_F3') : #could have a release action
 
 #irr.delay(0.1);
 #irr.delay(10000);
-irr.delay(1000);
+#irr.delay(1000);
 
 
 scene.using ('../media/keys.pys',"1");

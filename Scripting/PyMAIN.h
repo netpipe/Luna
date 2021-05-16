@@ -92,7 +92,8 @@ namespace Python {
     #endif
 
     //todo bugfix need a way to get set the string in either luna.h or here
-    irr::core::stringc returnString="../media/gameloader.pys";
+   // irr::core::stringc returnString="../media/gameloader.pys";
+    irr::core::stringc returnString="../media/main.pys";
 //       char * returnString="";
 
     //Scene

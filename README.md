@@ -1,9 +1,15 @@
-Luna Irrlicht Game Engine
+Luna Irrlicht Game Engine - fastest portable python enabled and most complete game engine around.
 
+Linux Debug works / Release uses different loop
 mineDBG
 emscripten-project-testing 
 
-are the 2 builds i've been working from sofar
+if you want to compile for windows remove the fluidsynth and then it wont need pulse jack asound gnome-libs. libusb is probably not needed either and a few others. the defines make it easy to exclude alot of the fat. config.h can help with that
+
+in codeblocks the proper way to see the source and header files is to uncheck the display by type toggle when right clicking on workspace.
+
+when using bulletblend or gamekit to design levels youll need to use b\older blender 249 also need to save on 32 bit to avoid big endian issues. i might have a converter somewhere for it too.
+
 
 
 
@@ -23,6 +29,3 @@ https://github.com/tecan/IrrlichtDemos
 sourceforge version compiles in virtualbox and on wine itself aswell as linux, very outdated though.
 http://sourceforge.net/projects/agnostic/
 
-
-TODO
-find emscripten SLOWDOWN in main loop , i've set minimal build options with no avail sofar.

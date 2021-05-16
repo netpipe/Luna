@@ -1037,12 +1037,14 @@
 			<Add directory="../LunaLibs/cAudio23/include" />
 			<Add directory="Scene/SPARK" />
 			<Add directory="../LunaLibs/bullet3-2.86.1/src" />
-			<Add directory="../LunaLibs/media/fluidsynth-emscripten/include" />
-			<Add directory="../LunaLibs/media/fluidsynth-emscripten/" />
+			<Add directory="../LunaLibs/media/fluidsynth-emscripten/include2" />
+			<Add directory="../LunaLibs/media/fluidsynth-emscripten/2" />
 			<Add directory="../LunaLibs/SparkEngine/src" />
 			<Add directory="../LunaLibs/SparkEngine/include" />
 			<Add directory="../LunaLibs/PolyVox/library/PolyVoxCore/include" />
 			<Add directory="../emscripten-projects/SDL/SDL_sound/src" />
+			<Add directory="../LunaLibs/zlib-1.2.3" />
+			<Add directory="/usr/include/python2.7" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />
@@ -1060,8 +1062,6 @@
 			<Add library="theoraplayer" />
 			<Add library="assimp" />
 			<Add library="usb" />
-			<Add library="boost_thread" />
-			<Add library="boost_system" />
 			<Add library="sqlite3" />
 			<Add library="asound" />
 			<Add library="jack" />
@@ -1086,6 +1086,8 @@
 			<Add library="dl" />
 			<Add library="SPARK" />
 			<Add library="SPARK_IRR" />
+			<Add library="X11" />
+			<Add library="Xxf86vm" />
 			<Add directory="../LunaLibs/freetype-2.3.9/objs/.libs" />
 			<Add directory="../LunaLibs/net/enet-1.2.1" />
 			<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Linux" />
@@ -1095,7 +1097,7 @@
 			<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/lib" />
 			<Add directory="./entities/AI/recast/DebugUtils/Include/" />
 			<Add directory="../LunaLibs/assimp-3.3.1/lib" />
-			<Add directory="../LunaLibs/zlib-1.2.3" />
+			<Add directory="../LunaLibs/zlib-1.2.32" />
 			<Add directory="../LunaLibs/libtheoraplayer/" />
 			<Add directory="../LunaLibs/cAudio23/cAudio/bin/gcc" />
 			<Add directory="../LunaLibs/bullet3-2.86.1/src/BulletDynamics" />
@@ -1104,10 +1106,12 @@
 			<Add directory="../LunaLibs/bullet3-2.86.1/src/LinearMath" />
 			<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 			<Add directory="../LunaLibs/PolyVox/library/PolyVoxCore" />
-			<Add directory="../LunaLibs/media/fluidsynth-emscripten/src" />
+			<Add directory="../LunaLibs/media/fluidsynth-emscripten/src3" />
 			<Add directory="../LunaLibs/bullet3-2.86.1/msvc/2008/lib/Debug" />
 			<Add directory="../LunaLibs/OpenSteer" />
 			<Add directory="../emscripten-projects/SDL/SDL_sound/src" />
+			<Add directory="../LunaLibs/libtheora-1.1.1" />
+			<Add directory="../LunaLibs/freetype-2.3.9" />
 		</Linker>
 		<Unit filename="DevLoop.h" />
 		<Unit filename="Equipment/Rifle.cpp" />

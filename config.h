@@ -6,7 +6,7 @@
 
 
  #ifndef __EMSCRIPTEN__
- #define SOUND
+ //#define SOUND
  //#define VIDEO
 
  //todo put in simple openal sound

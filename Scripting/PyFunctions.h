@@ -384,11 +384,18 @@ char * arg;
 PyObject * Python::PyIrr_GetString(PyObject * self,PyObject * args){ //active camera
     char * arg;
     PyArg_ParseTuple(args,"s",&arg);
+<<<<<<< HEAD
   //  returnString=arg;
      returnString="../media/frogger.pys";
  //    string tester = "../media/" + arg + "frogger.pys";
      luna->pyloader="../media/frogger.pys";
     //      luna->pyloader="../media/" + tester + "frogger.pys";
+=======
+    //returnString=arg;
+    Python::returnString=arg;
+  //   returnString="../media/main.pys";
+  //   luna->pyloader="../media/main.pys";
+>>>>>>> a78f815ccb2c22b35b21845766b98a261bfa8ef5
     //returnString=arg;
 //    printf(returnString);
 
