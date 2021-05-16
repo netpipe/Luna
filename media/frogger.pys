@@ -249,7 +249,7 @@ if (init) :
 
 
 #game loops uncontrollably fast so this is necessary for debugging, otherwise vm nearly freezes
-irr.delay(4000)
+irr.delay(20000)
 ############# MENU ################
 #if menu:
  
