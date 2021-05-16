@@ -34,9 +34,10 @@ public:
     core::array<core::stringw > texts;
     core::array<core::rect<s32> > imageRects;
     core::array<video::ITexture*> images;
-
+#ifdef FT2
     CGUITTFont *font2;
     CGUITTFace face;
+    #endif
 };
 
 CHUD::CHUD (){};
@@ -46,7 +47,7 @@ CHUD::~CHUD (){
 };
 
 void CHUD::LoadHUD(char* filename){
-
+#ifdef FT2
     font = device->getGUIEnvironment()->getBuiltInFont();
 
     face.load("./data/fonts/coolvetica.ttf");
@@ -121,10 +122,11 @@ void CHUD::LoadHUD(char* filename){
 
     }
   //      driver->draw2DImage(images[i], stuff[i]);
+  #endif
 }
 
 void CHUD::DisplayHUD(){
-
+#ifdef FT2
     for (int i=0;  i < textAttributes ; i++)
     {
         font2->draw(texts[i].c_str(),textRects[i],SColor(255,255,64,64),true);
@@ -134,7 +136,7 @@ void CHUD::DisplayHUD(){
 				//font->draw(texts[i].c_str(),
 				//	textRects[i], video::SColor(255,255,255,255));
     }
-
+#endif
 }
 
 void CHUD::RegisterDevice(IrrlichtDevice *device1){

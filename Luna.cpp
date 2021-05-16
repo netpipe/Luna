@@ -490,7 +490,7 @@ setenv("PYTHONHOME", "/", 0);
 			pyloader = "../media/main.pys";
 			//	pyloader = "../media/gameloader.pys";
 			#endif
-
+pyloader = "../media/gameloader.pys";
 			Python::ExecuteScript(pyloader);
 			//Python::PyIrr_LoadVehicle(m_cVehicle);
 			//Python::PyIrr_addTerrain("1");
