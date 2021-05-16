@@ -484,7 +484,7 @@ setenv("PYTHONHOME", "/", 0);
 
 		#ifdef __EMSCRIPTEN__
 					Python::ExecuteScript("./media/functions-list.pys"); // this is for testing
-								pyloader = "./media/main.pys";
+								pyloader = "./media/gameloader.pys";
 			#else
 				Python::ExecuteScript("../media/functions-list.pys"); // this is for testing
 			#endif
@@ -602,12 +602,12 @@ void Luna::main_loop(){ //devloop actually
 			//#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
 			Python::preEnd();
 			Python::CheckKeyStates(); //located in pyInput can probably be moved to preEnd as its not being used to check keystates
-			Python::ExecuteScript(irr::core::stringc(Python::returnString));
+			//Python::ExecuteScript(irr::core::stringc(Python::returnString));
 			//Python::ExecuteScript(Python::returnString);
-		//	Python::ExecuteScript(irr::core::stringc(pyloader));
-			printf(Python::returnString.c_str());
-			printf("\n");
-			printf(pyloader);
+			Python::ExecuteScript(irr::core::stringc(pyloader));
+		//	printf(Python::returnString.c_str());
+		//	printf("\n");
+		//	printf(pyloader);
 
 			guienv->drawAll();
 			driver->endScene();

@@ -385,8 +385,10 @@ PyObject * Python::PyIrr_GetString(PyObject * self,PyObject * args){ //active ca
     char * arg;
     PyArg_ParseTuple(args,"s",&arg);
   //  returnString=arg;
-     returnString="../media/main.pys";
-     luna->pyloader="../media/main.pys";
+     returnString="../media/frogger.pys";
+ //    string tester = "../media/" + arg + "frogger.pys";
+     luna->pyloader="../media/frogger.pys";
+    //      luna->pyloader="../media/" + tester + "frogger.pys";
     //returnString=arg;
 //    printf(returnString);
 

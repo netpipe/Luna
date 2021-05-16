@@ -610,6 +610,7 @@
 					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxUtil/include" />
 					<Add directory="../emscripten-projects/compression/libtar/build/include" />
 					<Add directory="../emscripten-projects/media/SparkEngine/src" />
+					<Add directory="../EMLibs" />
 				</Compiler>
 				<Linker>
 					<Add option="-s ALLOW_MEMORY_GROWTH=1" />
@@ -677,6 +678,7 @@
 					<Add directory="../emscripten-projects/scripting/sqplus/lib" />
 					<Add directory="../emscripten-projects/media/SparkEngine/lib/emscripten/static" />
 					<Add directory="../emscripten-projects/compression/libtar/build/lib" />
+					<Add directory="../EMLibs" />
 				</Linker>
 				<ExtraCommands>
 					<Add before="./emclean.sh emscripten" />

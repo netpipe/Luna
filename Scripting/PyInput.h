@@ -1117,21 +1117,15 @@ ISceneNode* outNode;
 
 #endif //skeleton
 
-
-
 //        if (mEvent.getKeyState(KEY_ESCAPE )) {
 //		luna->m_cInGameEvents.Quit=true;
 //		return;
 //		}
 
-
-
 //vector3df ha = camera->getAbsolutePosition();
  //   camera->setPosition(vector3df( ha.X, ha.Y-11, ha.Z));
 //device->sleep(5,0);
 }
-
-
 
 #endif // PYMAIN_H_INCLUDED
 #endif

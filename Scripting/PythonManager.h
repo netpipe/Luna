@@ -177,21 +177,19 @@ Py_InitModule("irr",irr_funcs);
 
 };
 
-void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventReceiver event){
-    luna = luna1;
+void Python::registerIrrDevice(Luna *luna2,IrrlichtDevice &Device,InGameEventReceiver event){
+    luna = luna2;
     device = &Device;
     driver = device->getVideoDriver();
     smgr   = device->getSceneManager();
     guienv = device->getGUIEnvironment();
     mEvent = event;
 
+	// camera = smgr->addCameraSceneNodeFPS(0, 100, .050f, -1, luna->keyMap, 8);
+	//camera = smgr->addCameraSceneNode();
 
-  //  camera = smgr->addCameraSceneNodeFPS(0, 100, .050f, -1, luna->keyMap, 8);
-//camera = smgr->addCameraSceneNode();
-
-
- //   camera->setFarValue(10000);
-    //camera = smgr->addCameraSceneNodeFPS();
+	//  camera->setFarValue(10000);
+    // 	camera = smgr->addCameraSceneNodeFPS();
     //  camera->setFOV(PI/2);
 
     m_cScene = new Scene();

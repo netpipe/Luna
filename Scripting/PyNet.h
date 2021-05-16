@@ -103,19 +103,19 @@ public:
 }
 
 PyObject * Python::PyIrr_Disconnect(PyObject * self,PyObject * args){
-#ifdef NETWORK
+	#ifdef NETWORK
 	return Py_BuildValue("");
 	#endif
 }
 
 PyObject * Python::PyIrr_Ping(PyObject * self,PyObject * args){
-#ifdef NETWORK
+		#ifdef NETWORK
 	return Py_BuildValue("");
 	#endif
 }
 
 PyObject * Python::PyIrr_sendFile(PyObject * self,PyObject * args){
-#ifdef NETWORK
+	#ifdef NETWORK
 	return Py_BuildValue("");
 		#endif
 }
@@ -305,7 +305,7 @@ public:
 
 PyObject * Python::PyIrr_restartServer(PyObject * self,PyObject * args){
 
-#ifdef NETWORK
+	#ifdef NETWORK
 	return Py_BuildValue("");
 	#endif
 }

@@ -14,7 +14,7 @@ namespace Python {
             SKeyMap keyMap[8]; // KEYMAP
 
     vector<ITexture *> texture_array; //Our array of textures
-    void registerIrrDevice(Luna *luna, IrrlichtDevice &device,InGameEventReceiver event);
+    void registerIrrDevice(Luna *luna2, IrrlichtDevice &device,InGameEventReceiver event);
 
     #ifdef CHOPPER
     ChopperControl *chopperControl;

@@ -1,0 +1,608 @@
+if (init) :
+ import irr
+ import physics
+ import extras
+ import scene
+ import input
+ import image
+ import time
+ 
+ #addcube requires us to give it an id hoping 100 and higher is available
+ id=100
+ eot=2.666666667
+ PI= 3.141592654
+ DEG= PI/180
+ scene.using ('../media/random.py',"1");
+ 
+ def addImage(loc,width,height):
+  return image.iadd(loc,0,0,width,height,0,0,width,height)
+
+ def newId():
+  global id
+  id+=1
+  return id
+
+ def smallest(args):
+  val=0
+  flag=True
+  for i in args:
+   if flag:
+    val = i
+   else:
+    if val>i:
+     val=i
+  return val
+   
+ def biggest(args):
+  val=0
+  flag=True
+  for i in args:
+   if flag:
+    val = i
+   else:
+    if val<i:
+     val=i
+  return val
+
+
+ camera = scene.addCamera(1, 0,0,0)
+ #core dump
+ #scene.setCamera(0,camera,0,20,0)
+ scene.decals(1,camera)
+ Light1 = scene.Light(10,0,100,0,"111111")
+ 
+ ###################### LOADING TEXTURES ########################
+ base="../media/Frogger/"
+ frog=[]
+ ladyFrog=[]
+ log=[]
+ snake=[]
+ croc=[]
+ for i in range(3):
+  loc= base+"ladyFrog"+str(i)+".png"
+  ladyFrog.append(image.load_texture(loc))
+  loc= base+"frog"+str(i)+".png"
+  frog.append(image.load_texture(loc))
+  loc=base+"log"+str(i)+".png"
+  log.append(image.load_texture(loc))
+
+ for i in range(3):
+  loc=base+"snakeR"+str(i+1)+".png"
+  snake.append(image.load_texture(loc))
+
+ for i in range(3):
+  loc=base+"snakeL"+str(i+1)+".png"
+  snake.append(image.load_texture(loc))
+
+ crocHead= [image.load_texture(base+"crocHead0.png"),image.load_texture(base+"crocHead1.png")]
+ otter= [image.load_texture(base+"otter0.png"),image.load_texture(base+"otter1.png")]
+  
+ turtle=[]
+ for i in range(5):
+  loc=base+"turtle"+str(i)+".png"
+  turtle.append(image.load_texture(loc))
+
+ death=[]
+ cars=[]
+ for i in range(4):
+  loc=base+"death"+str(i)+".png"
+  death.append(image.load_texture(loc))
+  loc=base+"car"+str(i)+".png"
+  cars.append(image.load_texture(loc))
+  loc=base+"croc"+str(i)+".png"
+  croc.append(image.load_texture(loc))
+
+ truck=[image.load_texture(base+"truck0.png"),image.load_texture(base+"truck1.png")]
+ grass=image.load_texture(base+"grass.png")
+ grassPurple=image.load_texture(base+"grassPurple.png")
+ road=image.load_texture(base+"road.png")
+ water=image.load_texture(base+"water.png")
+ bug=image.load_texture(base+"bug.png")
+ frogStanding= image.load_texture(base+"frogStanding.png")
+ #unfortunately couldnt find the text functions in engine
+ #1-10 numbers, 11-36 alphabet, 37-39 other
+ font=[]
+ for i in range(40):
+  if not i==0:
+   font.append(image.load_texture(base+"/font/font"+str(i)+".png"))
+
+########################## TEXTURES LOADED ############################
+ 
+########################### CREATING GAME OBJECTS IN INITIALIZATION TO PREVENT INGAME LAG ########################
+ waterObj= scene.add_cube(newId(),128,0,64,97, 0,0,0, 1,1,1/128)
+ image.set_texture(waterObj,water)
+
+ roadObj= scene.add_cube(newId(),128,0,-64,97, 0,0,0, 1,1,1/128)
+ image.set_texture(roadObj,road)
+
+ frogObj= scene.add_cube(newId(),8, 0,-48,96, 0,0,0, 1,1,1/8)
+ image.set_texture(frogObj,frog[0])
+ 
+ grassObj= scene.add_cube(newId(),128, 0,52,96, 0,0,0, 1,0.125,1/128)
+ image.set_texture(grassObj, grass)
+
+ grassPurpleObj=[]
+ for i in range(16):
+  grassPurpleObj.append(scene.add_cube(newId(),8, -60+i*8,0,96, 0,0,0, 1,1,1/8))
+  image.set_texture(grassPurpleObj[i],grassPurple)
+
+ for i in range(16):
+  grassPurpleObj.append(scene.add_cube(newId(),8, -60+i*8,-48,96, 0,0,0, 1,1,1/8))
+  image.set_texture(grassPurpleObj[i+16],grassPurple)
+
+ carObjs=[[],[],[],[],[[],[]]]
+ carsX=[[],[],[],[],[[],[]]]
+ #having 6 of each car should be more than enough
+ for i in range(6):
+  for j in range(4):
+   carObjs[j].append(scene.add_cube(newId(),8, 48*i+j*8,-40+j*8,96, 0,0,0, 1,1,1/8))
+   carsX[j].append(48*i+j*8)
+   image.set_texture(carObjs[j][i],cars[j])
+  for l in range(2):
+   carObjs[4][l].append(scene.add_cube(newId(),8, 64*i+8*l,-8,96, 0,0,0, 1,1,1/8))
+   carsX[4][l].append(64*i+8*l)
+   image.set_texture(carObjs[4][l][i],truck[l])
+  
+ tripleTurtlesX=[]
+ tripleTurtles=[]
+ offset=0
+ for i in range(4):
+  for j in range(3):
+   tripleTurtles.append(scene.add_cube(newId(),8, -32+offset+j*8,8,96, 0,0,0, 1,1,1/8))
+   image.set_texture(tripleTurtles[i*3+j],turtle[0])
+   tripleTurtlesX.append(-32+offset+j*8)
+  offset+=32
+ 
+ LogsSmall=[]
+ LogsSmallX=[]
+ for i in range(4):
+  LogsSmall.append([])
+  for j in range(3):
+   LogsSmall[i].append(scene.add_cube(newId(),8, -64+j*8 + i*96,16,96, 0,0,0, 1,1,1/8))
+   LogsSmallX.append(-64+j*8+i*32 )
+   image.set_texture(LogsSmall[i][j],log[j])
+
+ LogsMed=[]
+ LogsMedX=[]
+ for i in range(4):
+  LogsMed.append([])
+  for j in range(4):
+   LogsMed[i].append(scene.add_cube(newId(),8, -96+j*8+i*96,40,96, 0,0,0, 1,1,1/8))
+   LogsMedX.append(-96+j*8+i*40)
+   index=0
+   if j==0:
+    index=0
+   elif j==3:
+    index=2
+   else:
+    index=1
+   image.set_texture(LogsMed[i][j],log[index])
+
+ LogsBig=[]
+ LogsBigX=[]
+ for i in range(3):
+  LogsBig.append([])
+  for j in range(6):
+   LogsBig[i].append(scene.add_cube(newId(),8, -96+j*8+i*128,24,96, 0,0,0, 1,1,1/8))
+   LogsBigX.append(-96+j*8+i*56)
+   index=0
+   if j==0:
+    index=0
+   elif j==5:
+    index=2
+   else:
+    index=1
+   image.set_texture(LogsBig[i][j],log[index])
+ 
+
+ doubleTurtles=[]
+ doubleTurtlesX=[]
+ for i in range(5):
+  for j in range(2):
+   doubleTurtles.append(scene.add_cube(newId(),8, -64+j*8+i*24,32,96, 0,0,0, 1,1,1/8))
+   doubleTurtlesX.append(-64+j*8+i*24)
+   image.set_texture(doubleTurtles[i*2+j],turtle[0])
+ 
+ snakeObj= scene.add_cube(newId(),16, 0,0,95.99, 0,0,0, 1,0.5,0.0625)
+ image.set_texture(snakeObj, snake[0])
+
+ otterObj= scene.add_cube(newId(),8, 0,16,95.99, 0,0,0, 1,1,0.125)
+ image.set_texture(otterObj, otter[0])
+ 
+ crocObj=[]
+ for i in range(3):
+  crocObj.append(scene.add_cube(newId(),8, i*8,40,95.99, 0,0,0, 1,1,0.125))
+  image.set_texture(crocObj[i], croc[i])
+ 
+ standingObj=[]
+ for i in range(5):
+  standingObj.append(scene.add_cube(newId(),8, 200+i*8,200,95.99, 0,0,0, 1,1,0.125))
+  image.set_texture(standingObj[i], frogStanding)
+
+ menuBg= scene.add_cube(newId(),8, 0,0,128, 0,0,0, 1,1,0.125)
+ image.set_texture(menuBg, water)
+#####TODO: add otters, snakes done, crocodiles and croc mouths
+############################# GAME OBJECTS CREATED ###################################
+ myr.time_reseed()
+
+ frogState={"x":0,"y":-56,"anim":0,"dead":False,"moving":-1,"dir":0,"mDisabled":[False,False,False,False],"force":0}
+ ladyFrogState={"x":0,"y":0,"anim":2,"state":"alive","cMoving":0}
+ bugLocation=[0,0]
+ laneSpeeds=[-1,1,-1,1,-1]
+ laneOffsets=[16,16,16,16,16]
+ currentSpeeds=[-1,1,1,-1,1]
+ currentOffsets=[16,16,16,16,16]
+ tripleTurtleState=0
+ doubleTurtlesState=0
+ homeState=[0,0,0,0,0]
+ snakeState={"x":0,"y":0,"speed":1,"dir":1,"anim":0,"force":0}
+ otterState={"x":0, "y":16, "onScreen":True}
+ crocState={"x":0,"y":40,"anim":0}
+ #                    lanes         river: triple, small, big, double, medium
+ StationaryYs=[[-40,-32,-24,-16,-8],[8,16,24,32,40]]
+
+ init =0
+# menu=1
+####################### END OF INITIALIZATION #########################
+
+############### MAIN LOOP ############################
+
+
+#game loops uncontrollably fast so this is necessary for debugging, otherwise vm nearly freezes
+irr.delay(4000)
+############# MENU ################
+#if menu:
+ 
+
+############# FROG STUFF ##################
+
+frogState["x"]+=frogState["force"]
+scene.setPosition(frogObj,0, frogState["x"],frogState["y"],95.99)
+scene.rotation(frogObj, 0,0, -frogState["dir"]*90)
+image.set_texture(frogObj,frog[frogState["anim"]])
+
+if frogState["moving"]==-1:
+ if input.getKey("KEY_LEFT"):
+  frogState['moving']=3
+  frogState["dir"]=3
+ if input.getKey("KEY_RIGHT"):
+  frogState['moving']=1
+  frogState['dir']=1
+ if input.getKey("KEY_UP"):
+  frogState['moving']=0
+  frogState['dir']=0
+ if input.getKey("KEY_DOWN"):
+  frogState['moving']=2
+  frogState['dir']=2
+else:
+ if frogState["anim"]==3:
+  frogState["anim"]=0
+  frogState["moving"]=-1
+ else:
+  if frogState["moving"]==0 and not frogState["mDisabled"][0]:
+   frogState['y']+=eot
+  elif frogState["moving"]==1 and not frogState["mDisabled"][1]:
+   frogState["x"]+=eot
+  elif frogState["moving"]==2 and not frogState["mDisabled"][2]:
+   frogState["y"]-=eot
+  elif frogState["moving"]==3 and not frogState["mDisabled"][3]:
+   frogState["x"]-=eot
+  frogState["anim"]+=1
+ if frogState["anim"]==3:
+  frogState["anim"]=0
+  frogState["moving"]=-1
+  
+
+if frogState["dead"]:
+ scene.setPosition(frogObj,0, 0,-56,96)
+ frogState["x"]=0
+ frogState["y"]=-56
+
+
+###### TURTLE STUFF ######
+tripleTurtleState+=1
+tripleTurtleState%=5
+for i in range(3):
+ image.set_texture(tripleTurtles[i],turtle[tripleTurtleState])
+doubleTurtlesState+=1
+doubleTurtlesState%=5
+for i in range(2):
+ image.set_texture(doubleTurtles[i], turtle[doubleTurtlesState])
+
+####### SNAKE STUFF #########
+if snakeState["y"]==0:
+ if snakeState["x"]>72 or snakeState["x"]<-72:
+  snakeState["dir"]*=-1
+ snakeState["x"]+=snakeState["force"]+snakeState["speed"]*snakeState["dir"]
+elif snakeState["y"]==24:
+ blocked=True
+ for log in range(4):
+  for part in range(6):
+   if blocked:
+    sx=snakeState["x"]+snakeState["dir"]*snakeState["speed"]
+    blocked= not (sx>LogsBigX[log*6+part]-4 and sx>LogsBigX[log*6+part]+4)
+ if blocked:
+  snakeState["dir"]*=-1
+
+scene.setPosition(snakeObj,0, snakeState["x"],snakeState["y"],95)
+if snakeState["dir"]==1:
+ image.set_texture(snakeObj, snake[snakeState["anim"]])
+else:
+ image.set_texture(snakeObj, snake[3+snakeState["anim"]])
+snakeState["anim"]+=1
+snakeState["anim"]%=3
+#collision with snake head
+frogState["dead"]= frogState["x"]>snakeState["x"]+4*snakeState["dir"]-4 and frogState["x"]<snakeState["x"]+4*snakeState["dir"]+4 and frogState["y"]>snakeState["y"]-4 and frogState["y"]<snakeState["y"]+4
+
+
+##### OTTER STUFF #####
+
+if otterState["y"]==16 and otterState["onScreen"]:
+ for log in range(4):
+  for part in range(3):
+   if otterState["x"]>LogsSmallX[log*3+part]-4 and otterState["x"]<LogsSmallX[log*3+part]+4:
+    otterState["x"]=300
+    otterState["y"]=300
+    otterState["onScreen"]=False
+ otterState["x"]+=currentSpeeds[1]*1.2
+elif otterState["y"]==24 and otterState["onScreen"]:
+ for log in range(3):
+   for part in range(6):
+    if otterState["x"]>LogsSmallX[log*3+part]-4 and otterState["x"]<LogsSmallX[log*3+part]+4:
+     otterState["x"]=300
+     otterState["y"]=300
+     otterState["onScreen"]=False
+ otterState["x"]+=currentSpeeds[2]*1.2
+scene.setPosition(otterObj,0, otterState["x"],otterState["y"],95.99)
+##### CROCODILE STUFF ########
+
+if crocState["y"]==40:
+ for i in range(4):
+  for j in range(4):
+   if crocState["x"]>LogsMedX[i*4+j]-4 and crocState["x"]<LogsMedX[i*4+j]+4:
+    crocState["x"]=400
+    crocState["y"]=400
+ crocState["x"]+=currentSpeeds[4]
+
+for i in range(3):
+ scene.setPosition(crocObj[i],0, crocState["x"]+i*8,crocState["y"],95.99)
+
+crocState["anim"]+=1
+crocState["anim"]%=2
+
+image.set_texture(crocObj[2], croc[2+crocState["anim"]])
+
+ 
+
+
+##### COLLISION #####
+## It is a mess already lol 
+## Frog vs Objects ##
+
+#Lanes and river levels
+
+# in lanes, frog can collide with cars; while in the river, the frog can collide only with water and dangerous creatures
+
+for i in range(5):
+ if frogState["y"]>i*8+4 and frogState["y"]<i*8+12:
+  frogState["force"]=currentSpeeds[i]
+ else:
+  frogState["force"]=0
+
+for i in range(2):
+ if i==1:
+  #river - a collision engine would be really helpful for this - frog needs to prevented from moving to awkward positions, causes the frog to lock up
+  #frog on purple grass
+  if frogState["y"]>-4+eot and frogState["y"]<8+eot:
+   frogState["mDisabled"][0]=True
+   for turtle in tripleTurtlesX:
+    if frogState["mDisabled"][0]:
+     frogState["mDisabled"][0] = not (frogState['x'] > (turtle-4) and frogState['x']<turtle+4)
+
+
+  #frog on triple turtles
+  elif frogState["y"]>8+eot and frogState["y"]<14:
+   if not frogState["dead"]:
+    for t in range(3):
+     frogState["dead"]= tripleTurtleState==4 and frogState["x"]>tripleTurtlesX[t]-4 and frogState["x"]<tripleTurtlesX[t]+4
+   frogState["mDisabled"][0]=True
+   frogState["mDisabled"][1]=True
+   frogState["mDisabled"][3]=True
+   for turtle in tripleTurtlesX:
+    if frogState["mDisabled"][1]:
+     frogState["mDisabled"][1]= not (frogState["x"]+eot>turtle-4 and frogState["x"]+eot<turtle+4)
+    if frogState["mDisabled"][3]:
+     frogState["mDisabled"][3]= not (frogState["x"]-eot>turtle-4 and frogState["x"]-eot<turtle+4)
+  
+   for log in LogsSmallX:
+    if frogState["mDisabled"][0]:
+     frogState["mDisabled"][0]= not (frogState["x"]>log-4 and frogState["x"]<log+4)
+
+  #frog on small logs
+  elif frogState["y"]>14+eot  and frogState["y"]<22+eot :
+   frogState["mDisabled"][0]=True
+   frogState["mDisabled"][1]=True
+   frogState["mDisabled"][2]=True
+   frogState["mDisabled"][3]=True
+  
+   for smallLog in LogsSmallX:
+    if frogState["mDisabled"][1]:
+     frogState["mDisabled"][1]= not (frogState["x"]+eot>smallLog-4 and frogState["x"]+eot<smallLog+4)
+    if frogState["mDisabled"][3]:
+         frogState["mDisabled"][3]= not (frogState["x"]-eot>smallLog-4 and frogState["x"]-eot<smallLog+4)
+   
+   for bigLogs in LogsBigX:
+    if frogState["mDisabled"][0]:
+     frogState["mDisabled"][0]= not(frogState["x"]>bigLogs-4 and frogState["x"]<bigLogs+4)
+   
+   for turtle in tripleTurtlesX:
+    if frogState["mDisabled"][2]:
+     frogState["mDisabled"][2]= not(frogState["x"]>turtle-4 and frogState["x"]<turtle+4)
+
+  #frog on big logs
+  elif frogState["y"]>22+eot  and frogState["y"]<30+eot :
+   frogState["mDisabled"][0]=True
+   frogState["mDisabled"][1]=True
+   frogState["mDisabled"][2]=True
+   frogState["mDisabled"][3]=True
+
+   for bigLog in LogsBigX:
+    if frogState["mDisabled"][1]:
+     frogState["mDisabled"][1]= not (frogState["x"]+eot>bigLog-4 and frogState["x"]+eot<bigLog+4)
+    if frogState["mDisabled"][3]:
+         frogState["mDisabled"][3]= not (frogState["x"]-eot>bigLog-4 and frogState["x"]-eot<bigLog+4)
+
+   for smallLog in LogsSmallX:
+    if frogState["mDisabled"][2]:
+     frogState["mDisabled"][2]= not(frogState["x"]>smallLog-4 and frogState["x"]<smallLog+4)
+
+   for turtle in doubleTurtlesX:
+    if frogState["mDisabled"][0]:
+     frogState["mDisabled"][0]= not(frogState["x"]>turtle-4 and frogState["x"]<turtle+4)
+
+  #frog on double turtles
+  elif frogState["y"]>30+eot  and frogState["y"]<38+eot :
+   frogState["mDisabled"][0]=True
+   frogState["mDisabled"][1]=True
+   frogState["mDisabled"][2]=True
+   frogState["mDisabled"][3]=True
+
+   if not frogState["dead"]:
+    if doubleTurtlesState==4:
+     for t in range(2):
+      frogState["dead"]= frogState["x"]>doubleTurtlesX[t]-4 and frogState["x"]<doubleTurtlesX[t]+4
+     
+   for turtle in doubleTurtlesX:
+    if frogState["mDisabled"][1]:
+     frogState["mDisabled"][1]= not (frogState["x"]+eot>turtle-4 and frogState["x"]+eot<turtle+4)
+    if frogState["mDisabled"][3]:
+     frogState["mDisabled"][3]= not (frogState["x"]-eot>turtle-4 and frogState["x"]-eot<turtle+4)
+   
+   for log in LogsMedX:
+    if frogState["mDisabled"][0]:
+     frogState["mDisabled"][0]= not(frogState["x"]>log-4 and frogState["x"]<log+4)
+
+   for log in LogsBigX:
+    if frogState["mDisabled"][2]:
+     frogState["mDisabled"][2]= not(frogState["x"]>log-4 and frogState["x"]<log+4)
+
+  #frog on medium logs
+  elif frogState["y"]>38+eot  and frogState["y"]<46+eot :
+   frogState["mDisabled"][0]=True
+   frogState["mDisabled"][1]=True
+   frogState["mDisabled"][2]=True
+   frogState["mDisabled"][3]=True
+
+   for log in LogsMedX:
+    if frogState["mDisabled"][1]:
+     frogState["mDisabled"][1]= not (frogState["x"]+eot>log-4 and frogState["x"]+eot<log+4)
+    if frogState["mDisabled"][3]:
+     frogState["mDisabled"][3]= not (frogState["x"]-eot>log-4 and frogState["x"]-eot<log+4)
+
+   for turtle in doubleTurtlesX:
+    if frogState["mDisabled"][2]:
+     frogState["mDisabled"][2]= not(frogState["x"]>turtle-4 and frogState["x"]<turtle+4)
+
+   for home in range(5):
+    if frogState["mDisabled"][0]:
+     #will probably need tweaking
+     frogState["mDisabled"][0]= homeState[int(frogState["x"]/(128/5))]==0 and not ( frogState["x"]>4+ 20*home and frogState["x"]<8+ 20*home)
+
+  elif frogState["y"]>46+eot  and frogState["y"]<54+eot :
+   ####Spawn a standing frog
+   num= int(frogState["x"]/(128/5))
+   if homeState[num]==-1:
+    frogState["dead"]=True
+   else:
+    homeState[num]=1
+    scene.setPosition(standingObj[num],0, 11+num*16,49,95.99)
+ else:
+  #lanes - done
+  for j in range(5):
+   for l in range(6):
+    if not frogState["dead"]:
+     if j==4:
+      for p in range(2):
+       frogState["dead"] = (frogState["y"]>StationaryYs[i][j]-4 and  frogState["y"]<StationaryYs[i][j]+4) and (frogState["x"]>carsX[j][p][l]-4 and frogState["x"]<carsX[j][p][l]+4)
+     else:
+      frogState["dead"] = (frogState["y"]>StationaryYs[i][j]-4 and  frogState["y"]<StationaryYs[i][j]+4) and (frogState["x"]>carsX[j][l]-4 and frogState["x"]<carsX[j][l]+4)
+
+
+############# LANES ###################
+#todo: use laneOffsets
+for i in range(5):
+ if i == 4:
+  for j in range(6):
+   for l in range(2):
+    carsX[i][l][j]+=laneSpeeds[i]
+    if carsX[i][l][j]<=-72:
+     carsX[i][l][j]= 72
+    scene.setPosition(carObjs[i][l][j],0,carsX[i][l][j], -8,96 )
+   
+ else:
+  for j in range(6):
+   carsX[i][j]+=laneSpeeds[i]
+   if laneSpeeds[i]>0:
+    if carsX[i][j]>=72:
+     carsX[i][j]=-72
+   else:
+    if carsX[i][j]<=-72:
+     carsX[i][j]=72
+   scene.setPosition(carObjs[i][j],0,carsX[i][j],-40+i*8,96)
+
+
+########### RIVER ###################
+#todo: use currentOffsets 
+
+biggestX=96
+leastX=-96
+for i in range(4):
+ for j in range(3):
+  scene.setPosition(tripleTurtles[i*3+j],0, tripleTurtlesX[i*3+j]+currentSpeeds[0],8,96)
+  tripleTurtlesX[i*3+j]+=currentSpeeds[0]
+  if tripleTurtlesX[i*3+j]<=-64:
+   global biggestX
+   tripleTurtlesX[i*3+j]=biggestX+currentOffsets[0]
+
+
+for i in range(4):
+ for j in range(3):
+  global leastX
+  scene.setPosition(LogsSmall[i][j],0, LogsSmallX[i*3+j]+currentSpeeds[1],16,96)
+  LogsSmallX[i*3+j]+=currentSpeeds[1]
+  if LogsSmallX[i*3+j]>=64:
+   global leastX
+   LogsSmallX[i*3+j]=-64-currentOffsets[1]-8
+
+for i in range(3):
+ for j in range(6):
+  scene.setPosition(LogsBig[i][j],0, LogsBigX[i*6+j]+currentSpeeds[1],24,96)
+  LogsBigX[i*6+j]+=currentSpeeds[2]
+  if LogsBigX[i*6+j]>=96:
+   LogsBigX[i*6+j]=-96-currentOffsets[2]
+
+#for i in range(3):
+# for j in range(6):
+#  LogsBigX[i*6+j]+=currentSpeeds[2]
+#  if LogsBigX[i*6+j]>=144:
+#   LogsBigX[i*6+j]=-144
+# scene.setPosition(LogsBig[i][j],0, LogsBigX[i*6+j],24,96)
+
+
+for i in range(5):
+ for j in range(2):
+  global biggestX
+  scene.setPosition(doubleTurtles[i*2+j],0, doubleTurtlesX[i*2+j]+currentSpeeds[3],32,96)
+  doubleTurtlesX[i*2+j]+=currentSpeeds[3]
+  if doubleTurtlesX[i*2+j]<=-64:
+   global biggestX
+   doubleTurtlesX[i*2+j]=biggestX+currentOffsets[3]
+  
+for i in range(4):
+ for j in range(4):
+  global leastX
+  scene.setPosition(LogsMed[i][j],0, LogsMedX[i*4+j]+currentSpeeds[4],40,96)
+  LogsMedX[i*4+j]+=currentSpeeds[4]
+  if LogsMedX[i*4+j]>=64:
+   global leastX
+   LogsMedX[i*4+j]=leastX-8-currentOffsets[4]

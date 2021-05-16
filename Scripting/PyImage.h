@@ -216,24 +216,19 @@ return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_iAdd(PyObject * self,PyObject * args){
-   //	s32 node_id;
-//	float size;
-//bImage2d =1;
+    //	s32 node_id;
+	//	float size;
+	//bImage2d =1;
 	char * texture;
    	float x1,y1,x2,y2,xx1,yy1,xx2,yy2;
 	//Damn...thats a lot of parameters :)
 	PyArg_ParseTuple(args,"sffffffff",&texture,&x1,&y1,&x2,&y2,&xx1,&yy1,&xx2,&yy2);
 #ifdef Image2D
-core::recti nsize(x1,y1,x2,y2);
-core::recti textpos(xx1,yy1,xx2,yy2);
-
-video::ITexture* images = driver->getTexture(texture);
-	//driver->makeColorKeyTexture(images, core::position2d<s32>(0,0));
-
-
-cImage* aImage = new cImage(images, nsize, textpos);
-
-
+	core::recti nsize(x1,y1,x2,y2);
+	core::recti textpos(xx1,yy1,xx2,yy2);
+	video::ITexture* images = driver->getTexture(texture);
+		//driver->makeColorKeyTexture(images, core::position2d<s32>(0,0));
+	cImage* aImage = new cImage(images, nsize, textpos);
 return Py_BuildValue("l",aImage);
 #endif
 return Py_BuildValue("");
@@ -243,15 +238,11 @@ PyObject * Python::PyIrr_iTexture(PyObject * self,PyObject * args){
    	long node_id;
    	char *texture;
    	int type;
-
 	PyArg_ParseTuple(args,"lsi",&node_id,&texture,&type);
 	#ifdef Image2D
-	cImage* node = (cImage*)node_id;
-	video::ITexture* images = driver->getTexture(texture);
-
-//return Py_BuildValue("l",images);
-
-	node->SetTexture(images);
+		cImage* node = (cImage*)node_id;
+		video::ITexture* images = driver->getTexture(texture);
+		node->SetTexture(images);
 	return Py_BuildValue("l",images);
 	#endif
 	return Py_BuildValue("");
@@ -259,7 +250,7 @@ PyObject * Python::PyIrr_iTexture(PyObject * self,PyObject * args){
 
 PyObject * Python::PyIrr_iAlpha(PyObject * self,PyObject * args){
    	long node_id;
-//draw all in vector image stack
+	//draw all in vector image stack
 
 	//Damn...thats a lot of parameters :)
 	PyArg_ParseTuple(args,"l",&node_id);
@@ -303,12 +294,9 @@ PyObject * Python::PyIrr_2Dimage(PyObject * self,PyObject * args) {//active came
 }
 
 PyObject * Python::PyIrr_aBillBoard(PyObject * self,PyObject * args) {
-
 	char * tex_name;
 	PyArg_ParseTuple(args,"s",&tex_name);
-
-   scene::ISceneManager* smgr = device->getSceneManager();
-
+	scene::ISceneManager* smgr = device->getSceneManager();
     scene::IBillboardSceneNode * bill = smgr->addBillboardSceneNode();
     bill->setPosition(core::vector3df(0, 0, 3));
     bill->setMaterialTexture(0, driver->getTexture(tex_name));
@@ -316,7 +304,6 @@ PyObject * Python::PyIrr_aBillBoard(PyObject * self,PyObject * args) {
     bill->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
     bill->setSize(core::dimension2d<f32>(250.0f, 250.0f));
     bill->setScale(core::vector3df(1, 1, 1));
-
 }
 
 PyObject * Python::PyIrr_LoadTexture(PyObject * self,PyObject * args){
@@ -328,7 +315,6 @@ PyObject * Python::PyIrr_LoadTexture(PyObject * self,PyObject * args){
 	//from the array though,so watch your step, kid. I'll leave it to you to come up with
 	//a more intuitive method of storing the textures
 	return Py_BuildValue("l",texture_array.size() - 1);
-
 	// need a texture free function
 };
 
@@ -370,8 +356,7 @@ PyObject * Python::PyIrr_icheckBounds(PyObject * self,PyObject * args){
 	PyArg_ParseTuple(args,"l",&node_id);
 	#ifdef Image2D
 	cImage* node = (cImage*)node_id;
-rect = node->GetBoundRect();
-
+	rect = node->GetBoundRect();
 
 	return Py_BuildValue("l",&rect);
 	#endif
@@ -384,9 +369,10 @@ PyObject * Python::PyIrr_LoadSpriteFont(PyObject * self,PyObject * args){
 	//irr::core::recti rect;
 	PyArg_ParseTuple(args,"s",&stringy);
 	gui::IGUIFont* font2 =
-		device->getGUIEnvironment()->getFont(stringy);
+	device->getGUIEnvironment()->getFont(stringy);
 	return Py_BuildValue("l",font2);
 }
+
 //PyObject * Python::PyIrr_Draw(PyObject * self,PyObject * args){
 //			if (font2)
 //				font2->draw(L"Also mixing with 3d graphics is possible.",

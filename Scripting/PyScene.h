@@ -647,18 +647,18 @@ PyObject * Python::PyIrr_getPosition(PyObject * self,PyObject * args){
 
     PyArg_ParseTuple(args,"li",&node_id,&param);
 
-    ISceneNode *node = node_id;
+    //ISceneNode *node = node_id;
 
 //    ChopperControl *node = node_id;//smgr->getSceneNodeFromId(node_id);
-    vector3df position = node->getPosition();
+  //  vector3df position = node->getPosition();
 
 
   if (param==0){
-    	return Py_BuildValue("f", position.X);
+  //  	return Py_BuildValue("f", position.X);
     }else if (param==1){
-    	return Py_BuildValue("f",position.Y);
+   // 	return Py_BuildValue("f",position.Y);
     }else if (param==2){
-    	return Py_BuildValue("f", position.Z);
+   // 	return Py_BuildValue("f", position.Z);
     }
 
     return Py_BuildValue("");
