@@ -1,6 +1,6 @@
 Luna Irrlicht Game Engine - fastest portable python enabled and most complete game engine around.
 
-Linux Debug works / Release uses different loop
+Linux Debug works / Release uses different loop   /  also the -maindir.cbp is for running the game in  GAME directory instead of media but its not uptodate yet.
 mineDBG
 emscripten-project-testing 
 
