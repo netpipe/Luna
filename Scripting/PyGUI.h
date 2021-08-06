@@ -109,11 +109,13 @@ PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args){
 
 	stringw ha=message;
 	guienv->getSkin()->setFont(guienv->getFont("./media/fontlucida.png"));
+    gui::IGUIFont* font2 = guienv->getSkin()->getFont();
+
+     //   font2 = guienv->getFont("./media/fontlucida.png");
+        font2->draw(L"fontlucidaaaaaaaaaaaaaaaaaaaaaaaaaa", core::recti(10 + (150 * 0), y, 100 + (150 * 0), y + 20), video::SColor(255, 255, 255, 255));
 
 	//guienv->addStaticText(L"sample text here!",rect<s32>(x,y,x1,y1), true);
-	guienv->addStaticText(
-		ha.c_str(),
-		core::rect<s32>(x,y,x1,y1), true, true, 0, -1, true);
+	//guienv->addStaticText(		ha.c_str(),		core::rect<s32>(x,y,x1,y1), true, true, 0, -1, true);
 
 	//guienv->addStaticText(L"sample tex",		rect<s32>(x,y,x1,y1), true, true, 0, -1, true);
 

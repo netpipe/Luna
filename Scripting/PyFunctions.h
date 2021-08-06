@@ -283,9 +283,10 @@
     fluid_synth_t* synth = NULL;
 #endif
 
+#ifdef FT2
     CGUITTFont *fonts[6],*font,*font2;
-CGUITTFace face,face2,face3;
-
+    CGUITTFace face,face2,face3;
+#endif
 
 #ifdef PYTHON
 PyMethodDef irr_function[] =
@@ -374,7 +375,7 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
     //  bPProcess=1;
 #endif
 
-//CGUITTFont *
+//	skin = guienv->getSkin();
 
 }
 
