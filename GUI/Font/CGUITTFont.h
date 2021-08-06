@@ -1,7 +1,6 @@
 #ifndef __C_GUI_TTFONT_H_INCLUDED__
 #define __C_GUI_TTFONT_H_INCLUDED__
-#include "../../config.h"
-#ifdef FT2
+
 #include <irrlicht.h>
 #include <ft2build.h>
 #include FT_FREETYPE_H
@@ -19,8 +18,9 @@ namespace gui
 
 			//! Loads a font face.
 			//! \param filename Path to the font face.
+			//! \param filesystem The Irrlicht filesystem to use.  If 0, fonts will be loaded into memory by FreeType instead of by Irrlicht.
 			//! \return Returns true if the font face loaded, false if it failed to load.
-			bool load(const io::path& filename);
+			bool load(const io::path& filename, io::IFileSystem* filesystem = 0);
 
 			//! The font face.
 			FT_Face face;
@@ -29,6 +29,8 @@ namespace gui
 			//! Flag to load the library.
 			static bool libraryLoaded;
 			bool faceLoaded;
+			FT_Byte* font_buffer;
+			FT_Long font_size;
 	};
 
 	//! Represents a glyph's bitmap info.
@@ -41,7 +43,7 @@ namespace gui
 	};
 
 	//! Class representing a single glyph.
-	class CGUITTGlyph : public virtual IReferenceCounted
+	class CGUITTGlyph
 	{
 		public:
 			CGUITTGlyph();
@@ -164,5 +166,4 @@ namespace gui
 } // end namespace gui
 } // end namespace irr
 
-#endif
 #endif

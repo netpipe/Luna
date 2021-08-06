@@ -3,5 +3,6 @@
 	<Workspace title="Workspace">
 		<Project filename="Luna-Engine.cbp" />
 		<Project filename="FKEditor/FKEditor.cbp" />
+		<Project filename="../IrrlichtDemos-git/GUIs/IrrFreeType/example.cbp" />
 	</Workspace>
 </CodeBlocks_workspace_file>

@@ -78,7 +78,7 @@ void Python::ExecuteScript(irr::core::string<char> scriptname){
 
 
 
-
+// see pyfunctions.h for the rest of the initialization code
 
 #else // basically for minimal test of python for debugging.
 
@@ -151,7 +151,7 @@ static PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args)
 	//int len = strlen(message) + 1;
 	//wchar_t * conv_message = new wchar_t[len];
 	//!mbstowcs(0,conv_message,len,message,_TRUNCATE);
-	//default_font->draw(conv_message,rect<s32>(x,y,x1,y1),SColor(255,255,255,255));
+	default_font->draw(conv_message,rect<s32>(x,y,x1,y1),SColor(255,255,255,255));
 	//delete [] conv_message;
 	return Py_BuildValue("");
 

@@ -84,34 +84,54 @@ PyObject * Python::PyIrr_ChatBox(PyObject * self,PyObject * args){
 
 PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args){
 
-long font;
+    long font4;
 	//Must make this useful someday, not today
 	char * message;
 	s32 x,y,x1,y1;
-	PyArg_ParseTuple(args,"lsllll",&font,&message,&x,&y,&x1,&y1); //may only need x,y when using ft2
+	PyArg_ParseTuple(args,"ssiiii",&font4,&message,&x,&y,&x1,&y1); //may only need x,y when using ft2
 
-	IGUIFont * font2 = (IGUIFont *)font;
+	//IGUIFont * font2 = (IGUIFont *)font;
 
 	//if (font2)
-	font2->draw(message,
-	core::rect<s32>(x,y,x1,y1),
-	video::SColor(255, 255, 255,255));
+	//font2->draw(message,	core::rect<s32>(x,y,x1,y1),	video::SColor(255, 255, 255,255));
+
+	//fonts->setFontSource("data/pixel1.fnt", 256, 128);
 
 	//The next three lines more or less give the procedure from converting a string of
 	//type char* to wchar_t*...generally this is pretty useful in Irrlicht,so note well
-	//	int len = strlen(message) + 1;
-	//	wchar_t * conv_message = new wchar_t[len];
-	//	mbstowcs(0,conv_message,len,message,_TRUNCATE);
+//		int len = strlen(message) + 1;
+//		wchar_t * conv_message = new wchar_t[len];
+//		mbstowcs(0,conv_message,len,message,_TRUNCATE);
 	//  printf("%s\n", mess0age);
 	//  wprintf("%s\n", model);
 	//	guienv->addStaticText(conv_message,rect<s32>(x,y,x1,y1),SColor(255,255,255,255));
 	//	delete [] conv_message;
-	guienv->addStaticText(L"sample text here!",rect<s32>(10,10,260,22), true);
-	 //   CGUITTFont *font2;
-//    CGUITTFace face;
-//        font2 = new CGUITTFont(gui);
-//    font2->attach(&face,24); // scale this number with the screen
-//    font2->AntiAlias=1;
+
+	stringw ha=message;
+	guienv->getSkin()->setFont(guienv->getFont("./media/fontlucida.png"));
+
+	//guienv->addStaticText(L"sample text here!",rect<s32>(x,y,x1,y1), true);
+	guienv->addStaticText(
+		ha.c_str(),
+		core::rect<s32>(x,y,x1,y1), true, true, 0, -1, true);
+
+	//guienv->addStaticText(L"sample tex",		rect<s32>(x,y,x1,y1), true, true, 0, -1, true);
+
+	/*
+	 *	Create CGUITTFont and Bind with CGUITTFace
+	 */
+//	for (int i = 0;i < 6;i++){
+//		fonts[i] = new CGUITTFont(guienv);
+//	}
+//	fonts[0]->attach(&face2,12);
+//	fonts[1]->attach(&face2,24);
+//	fonts[2]->attach(&face3,12);
+//	fonts[3]->attach(&face3,24);
+//	fonts[4]->attach(&face,12);
+//	fonts[5]->attach(&face,24);
+//	font = fonts[0];
+//	font2 = fonts[1];
+
 //
 //    SpriteManager *sprites = new SpriteManager;
 //    sprites->setup(driver, driver->getTexture("./data/texture.png"));
@@ -119,8 +139,8 @@ long font;
 //    int w = 400;
 //    int h = 400;
 //
-//        fonts->setFontSource("data/pixel1.fnt", 256, 128);
-//        fonts->setup(device, sprites);
+     //   fonts->setFontSource("media/pixel1.fnt", 256, 128);
+     //   fonts->setup(device, sprites);
 //        sprites->clear();
 //
 //        // add sprite from tile (0,0) size(8,8)
@@ -130,7 +150,14 @@ long font;
 //
 //        fonts->drawText("the quick brown fox\njumped over\n the lazy dog", 0, 0, w, h, BmFont::ALIGN_CENTER | BmFont::ALIGN_MIDDLE);
 //
-#ifdef FT2
+#ifdef FT23
+face.load("./media/kochi-gothic-subst.ttf");
+	face2.load("./media/kochi-gothic-subst.ttf");
+	face3.load("./media/kochi-gothic-subst.ttf");
+
+    font2->attach(&face,24); // scale this number with the screen
+    font2->AntiAlias=1;
+    font2->draw(L"Hello TrueType",rect<s32>(0,240,640,240),SColor(255,255,64,64),false);
 #endif
 
 	return Py_BuildValue("");

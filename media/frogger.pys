@@ -6,14 +6,14 @@ if (init) :
  import input
  import image
  import time
- 
+ scene.drawtext("test","cool bean tree",5,250,235,320)
  #addcube requires us to give it an id hoping 100 and higher is available
  id=100
  eot=2.666666667
  PI= 3.141592654
  DEG= PI/180
  scene.using ('../media/random.py',"1");
- 
+
  def addImage(loc,width,height):
   return image.iadd(loc,0,0,width,height,0,0,width,height)
 
@@ -32,7 +32,7 @@ if (init) :
     if val>i:
      val=i
   return val
-   
+
  def biggest(args):
   val=0
   flag=True
@@ -50,7 +50,7 @@ if (init) :
  #scene.setCamera(0,camera,0,20,0)
  scene.decals(1,camera)
  Light1 = scene.Light(10,0,100,0,"111111")
- 
+
  ###################### LOADING TEXTURES ########################
  base="../media/Frogger/"
  frog=[]
@@ -76,7 +76,7 @@ if (init) :
 
  crocHead= [image.load_texture(base+"crocHead0.png"),image.load_texture(base+"crocHead1.png")]
  otter= [image.load_texture(base+"otter0.png"),image.load_texture(base+"otter1.png")]
-  
+
  turtle=[]
  for i in range(5):
   loc=base+"turtle"+str(i)+".png"
@@ -107,7 +107,7 @@ if (init) :
    font.append(image.load_texture(base+"/font/font"+str(i)+".png"))
 
 ########################## TEXTURES LOADED ############################
- 
+
 ########################### CREATING GAME OBJECTS IN INITIALIZATION TO PREVENT INGAME LAG ########################
  waterObj= scene.add_cube(newId(),128,0,64,97, 0,0,0, 1,1,1/128)
  image.set_texture(waterObj,water)
@@ -117,7 +117,7 @@ if (init) :
 
  frogObj= scene.add_cube(newId(),8, 0,-48,96, 0,0,0, 1,1,1/8)
  image.set_texture(frogObj,frog[0])
- 
+
  grassObj= scene.add_cube(newId(),128, 0,52,96, 0,0,0, 1,0.125,1/128)
  image.set_texture(grassObj, grass)
 
@@ -142,7 +142,7 @@ if (init) :
    carObjs[4][l].append(scene.add_cube(newId(),8, 64*i+8*l,-8,96, 0,0,0, 1,1,1/8))
    carsX[4][l].append(64*i+8*l)
    image.set_texture(carObjs[4][l][i],truck[l])
-  
+
  tripleTurtlesX=[]
  tripleTurtles=[]
  offset=0
@@ -152,7 +152,7 @@ if (init) :
    image.set_texture(tripleTurtles[i*3+j],turtle[0])
    tripleTurtlesX.append(-32+offset+j*8)
   offset+=32
- 
+
  LogsSmall=[]
  LogsSmallX=[]
  for i in range(4):
@@ -193,7 +193,7 @@ if (init) :
    else:
     index=1
    image.set_texture(LogsBig[i][j],log[index])
- 
+
 
  doubleTurtles=[]
  doubleTurtlesX=[]
@@ -202,18 +202,18 @@ if (init) :
    doubleTurtles.append(scene.add_cube(newId(),8, -64+j*8+i*24,32,96, 0,0,0, 1,1,1/8))
    doubleTurtlesX.append(-64+j*8+i*24)
    image.set_texture(doubleTurtles[i*2+j],turtle[0])
- 
+
  snakeObj= scene.add_cube(newId(),16, 0,0,95.99, 0,0,0, 1,0.5,0.0625)
  image.set_texture(snakeObj, snake[0])
 
  otterObj= scene.add_cube(newId(),8, 0,16,95.99, 0,0,0, 1,1,0.125)
  image.set_texture(otterObj, otter[0])
- 
+
  crocObj=[]
  for i in range(3):
   crocObj.append(scene.add_cube(newId(),8, i*8,40,95.99, 0,0,0, 1,1,0.125))
   image.set_texture(crocObj[i], croc[i])
- 
+
  standingObj=[]
  for i in range(5):
   standingObj.append(scene.add_cube(newId(),8, 200+i*8,200,95.99, 0,0,0, 1,1,0.125))
@@ -252,7 +252,7 @@ if (init) :
 irr.delay(20000)
 ############# MENU ################
 #if menu:
- 
+
 
 ############# FROG STUFF ##################
 
@@ -291,7 +291,7 @@ else:
  if frogState["anim"]==3:
   frogState["anim"]=0
   frogState["moving"]=-1
-  
+
 
 if frogState["dead"]:
  scene.setPosition(frogObj,0, 0,-56,96)
@@ -372,11 +372,11 @@ crocState["anim"]%=2
 
 image.set_texture(crocObj[2], croc[2+crocState["anim"]])
 
- 
+
 
 
 ##### COLLISION #####
-## It is a mess already lol 
+## It is a mess already lol
 ## Frog vs Objects ##
 
 #Lanes and river levels
@@ -413,7 +413,7 @@ for i in range(2):
      frogState["mDisabled"][1]= not (frogState["x"]+eot>turtle-4 and frogState["x"]+eot<turtle+4)
     if frogState["mDisabled"][3]:
      frogState["mDisabled"][3]= not (frogState["x"]-eot>turtle-4 and frogState["x"]-eot<turtle+4)
-  
+
    for log in LogsSmallX:
     if frogState["mDisabled"][0]:
      frogState["mDisabled"][0]= not (frogState["x"]>log-4 and frogState["x"]<log+4)
@@ -424,17 +424,17 @@ for i in range(2):
    frogState["mDisabled"][1]=True
    frogState["mDisabled"][2]=True
    frogState["mDisabled"][3]=True
-  
+
    for smallLog in LogsSmallX:
     if frogState["mDisabled"][1]:
      frogState["mDisabled"][1]= not (frogState["x"]+eot>smallLog-4 and frogState["x"]+eot<smallLog+4)
     if frogState["mDisabled"][3]:
          frogState["mDisabled"][3]= not (frogState["x"]-eot>smallLog-4 and frogState["x"]-eot<smallLog+4)
-   
+
    for bigLogs in LogsBigX:
     if frogState["mDisabled"][0]:
      frogState["mDisabled"][0]= not(frogState["x"]>bigLogs-4 and frogState["x"]<bigLogs+4)
-   
+
    for turtle in tripleTurtlesX:
     if frogState["mDisabled"][2]:
      frogState["mDisabled"][2]= not(frogState["x"]>turtle-4 and frogState["x"]<turtle+4)
@@ -471,13 +471,13 @@ for i in range(2):
     if doubleTurtlesState==4:
      for t in range(2):
       frogState["dead"]= frogState["x"]>doubleTurtlesX[t]-4 and frogState["x"]<doubleTurtlesX[t]+4
-     
+
    for turtle in doubleTurtlesX:
     if frogState["mDisabled"][1]:
      frogState["mDisabled"][1]= not (frogState["x"]+eot>turtle-4 and frogState["x"]+eot<turtle+4)
     if frogState["mDisabled"][3]:
      frogState["mDisabled"][3]= not (frogState["x"]-eot>turtle-4 and frogState["x"]-eot<turtle+4)
-   
+
    for log in LogsMedX:
     if frogState["mDisabled"][0]:
      frogState["mDisabled"][0]= not(frogState["x"]>log-4 and frogState["x"]<log+4)
@@ -538,7 +538,7 @@ for i in range(5):
     if carsX[i][l][j]<=-72:
      carsX[i][l][j]= 72
     scene.setPosition(carObjs[i][l][j],0,carsX[i][l][j], -8,96 )
-   
+
  else:
   for j in range(6):
    carsX[i][j]+=laneSpeeds[i]
@@ -552,7 +552,7 @@ for i in range(5):
 
 
 ########### RIVER ###################
-#todo: use currentOffsets 
+#todo: use currentOffsets
 
 biggestX=96
 leastX=-96
@@ -597,7 +597,7 @@ for i in range(5):
   if doubleTurtlesX[i*2+j]<=-64:
    global biggestX
    doubleTurtlesX[i*2+j]=biggestX+currentOffsets[3]
-  
+
 for i in range(4):
  for j in range(4):
   global leastX

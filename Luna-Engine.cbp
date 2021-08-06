@@ -1063,7 +1063,6 @@
 			<Add library="assimp" />
 			<Add library="usb" />
 			<Add library="sqlite3" />
-			<Add library="asound" />
 			<Add library="jack" />
 			<Add library="ogg" />
 			<Add library="vorbis" />
@@ -1086,8 +1085,6 @@
 			<Add library="dl" />
 			<Add library="SPARK" />
 			<Add library="SPARK_IRR" />
-			<Add library="X11" />
-			<Add library="Xxf86vm" />
 			<Add directory="../LunaLibs/freetype-2.3.9/objs/.libs" />
 			<Add directory="../LunaLibs/net/enet-1.2.1" />
 			<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Linux" />
@@ -1469,6 +1466,7 @@
 		<Unit filename="entities/skeleton/BMaths.h" />
 		<Unit filename="entities/skeleton/Skeleton.cpp" />
 		<Unit filename="entities/skeleton/Skeleton.h" />
+		<Unit filename="media/frogger.pys" />
 		<Unit filename="media/functions-list.pys" />
 		<Unit filename="media/gameloader.pys" />
 		<Unit filename="media/keys.pys" />

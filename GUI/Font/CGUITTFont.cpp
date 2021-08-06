@@ -1,5 +1,3 @@
-#include "../../config.h"
-#ifdef FT2
 #include <irrlicht.h>
 using namespace irr;
 #include "CGUITTFont.h"
@@ -16,7 +14,7 @@ s32 facesCount = 0;
 //////////////////////
 
 CGUITTFace::CGUITTFace()
-: faceLoaded(false)
+: faceLoaded(false), font_buffer(0), font_size(0)
 {
 }
 
@@ -25,12 +23,20 @@ CGUITTFace::~CGUITTFace()
 	if (faceLoaded)
 	{
 		FT_Done_Face(face);
+		if (font_buffer)
+		{
+			delete[] font_buffer;
+			font_buffer = 0;
+		}
 		if (--facesCount == 0)
+		{
 			FT_Done_FreeType(library);
+			CGUITTFace::libraryLoaded = false;
+		}
 	}
 }
 
-bool CGUITTFace::load(const io::path& filename)
+bool CGUITTFace::load(const io::path& filename, io::IFileSystem* filesystem)
 {
 	if (!libraryLoaded)
 	{
@@ -39,8 +45,28 @@ bool CGUITTFace::load(const io::path& filename)
 		CGUITTFace::libraryLoaded = true;
 	}
 
-	if (FT_New_Face(library, core::stringc(filename).c_str(), 0, &face))
-		return false;
+	if (filesystem)
+	{
+		// Read in the file data.
+		io::IReadFile* file = filesystem->createAndOpenFile(filename);
+		font_buffer = new FT_Byte[file->getSize()];
+		file->read(font_buffer, file->getSize());
+		font_size = file->getSize();
+		file->drop();
+
+		// Create the face.
+		if (FT_New_Memory_Face(library, font_buffer, font_size,  0, &face))
+		{
+			delete[] font_buffer;
+			font_buffer = 0;
+			return false;
+		}
+	}
+	else
+	{
+		if (FT_New_Face(library, core::stringc(filename).c_str(), 0, &face))
+			return false;
+	}
 
 	++facesCount;
 	faceLoaded = true;
@@ -50,7 +76,7 @@ bool CGUITTFace::load(const io::path& filename)
 //////////////////////
 
 CGUITTGlyph::CGUITTGlyph()
-: IReferenceCounted(), cached(false), face(0), image(0), texture(0), texture_mono(0),
+: cached(false), face(0), image(0), texture(0), texture_mono(0),
 size(0), size_is_pixels(false), hasDefault(false), hasMonochrome(false)
 {
 }
@@ -115,7 +141,7 @@ void CGUITTGlyph::cache(u32 idx, bool fontHinting, bool autoHinting)
 			u32 *texture_data = new u32[texture_size.Width * texture_size.Height];
 			memset(texture_data, 0, texture_size.Width * texture_size.Height * sizeof(u32));
 			u32 *texp = texture_data;
-			bool cflag = (Driver->getDriverType() == video::EDT_OPENGL);
+			bool cflag = (Driver->getDriverType() == video::EDT_DIRECT3D8);
 			for (int i = 0; i < bits.rows; i++)
 			{
 				u32 *rowp = texp;
@@ -258,6 +284,9 @@ Environment(env), Driver(0), tt_face(0), GlobalKerningWidth(0), GlobalKerningHei
 		Driver->grab();
 
 	setInvisibleCharacters ( L" " );
+
+	// Glyphs isn't reference counted, so don't try to delete when we free the array.
+	Glyphs.set_free_when_destroyed(false);
 }
 
 //! destructor
@@ -311,7 +340,7 @@ void CGUITTFont::draw(const core::stringw& text, const core::rect<s32>& position
 	}
 
 	u32 n;
-
+	
 	wchar_t previousChar = 0;
 	const wchar_t* ptext = text.c_str();
 	while (*ptext)
@@ -343,6 +372,7 @@ void CGUITTFont::draw(const core::stringw& text, const core::rect<s32>& position
 					core::dimension2d<u32> lineDim = getDimension(text.c_str());
 					offset.X += (position.getWidth() - lineDim.Width) >> 1;
 				}
+				++ptext;
 				continue;
 			}
 
@@ -358,8 +388,8 @@ void CGUITTFont::draw(const core::stringw& text, const core::rect<s32>& position
 
 				// Apply kerning.
 				core::vector2di k = getKerning(currentChar, previousChar);
-				offx += k.X;
-				offy += k.Y;
+				offset.X += k.X;
+				offset.Y += k.Y;
 
 				if (Driver->getDriverType() != video::EDT_SOFTWARE)
 				{
@@ -401,8 +431,8 @@ void CGUITTFont::draw(const core::stringw& text, const core::rect<s32>& position
 
 				// Apply kerning.
 				core::vector2di k = getKerning(currentChar, previousChar);
-				offx += k.X;
-				offy += k.Y;
+				offset.X += k.X;
+				offset.Y += k.Y;
 
 				if (!Transparency) color.color |= 0xff000000;
 				Driver->draw2DImage(Glyphs[n-1].texture_mono, core::position2d<s32>(offset.X + offx, offset.Y + offy), core::rect<s32>(0, 0, texw - 1, texh - 1), clip, color, true);
@@ -418,9 +448,22 @@ void CGUITTFont::draw(const core::stringw& text, const core::rect<s32>& position
 
 core::dimension2d<u32> CGUITTFont::getDimension(const wchar_t* text) const
 {
-	core::dimension2d<u32> dim(0, Glyphs[0].size);
-	core::dimension2d<u32> thisLine(0, Glyphs[0].size);
+	// Get the maximum font height.  Unfortunately, we have to do this hack as
+	// Irrlicht will draw things wrong.  In FreeType, the font size is the
+	// maximum size for a single glyph, but that glyph may hang "under" the
+	// draw line, increasing the total font height to beyond the set size.
+	// Irrlicht does not understand this concept when drawing fonts.  Also, I
+	// add +1 to give it a 1 pixel blank border.  This makes things like
+	// tooltips look nicer.
+	s32 test1 = getHeightFromCharacter(L'g') + 1;
+	s32 test2 = getHeightFromCharacter(L'j') + 1;
+	s32 test3 = getHeightFromCharacter(L'_') + 1;
+	s32 max_font_height = core::max_(test1, core::max_(test2, test3));
 
+	core::dimension2d<u32> dim(0, max_font_height);
+	core::dimension2d<u32> thisLine(0, max_font_height);
+
+	wchar_t previousChar = 0;
 	for (const wchar_t* p = text; *p; ++p)
 	{
 		bool lineBreak=false;
@@ -434,25 +477,27 @@ core::dimension2d<u32> CGUITTFont::getDimension(const wchar_t* text) const
 		{
 			lineBreak = true;
 		}
+
+		// Kerning.
+		core::vector2di k = getKerning(*p, previousChar);
+		thisLine.Width += k.X;
+		previousChar = *p;
+
+		// Check for linebreak.
 		if (lineBreak)
 		{
+			previousChar = 0;
 			dim.Height += thisLine.Height;
 			if (dim.Width < thisLine.Width)
 				dim.Width = thisLine.Width;
 			thisLine.Width = 0;
-			thisLine.Height = Glyphs[0].size;
+			thisLine.Height = max_font_height;
 			continue;
 		}
 		thisLine.Width += getWidthFromCharacter(*p);
-		//u32 h = getHeightFromCharacter(*p);
-		//if (h > thisLine.Height)
-		//	thisLine.Height = h;
 	}
 	if (dim.Width < thisLine.Width)
 		dim.Width = thisLine.Width;
-
-	// Add a small amount of blank space between the lines.
-	dim.Height += (Glyphs[0].size / 4);
 
 	return dim;
 }
@@ -476,8 +521,9 @@ inline u32 CGUITTFont::getHeightFromCharacter(wchar_t c) const
 	u32 n = getGlyphByChar(c);
 	if (n > 0)
 	{
-		s32 top = Glyphs[n - 1].bitmap.top;
-		return top;
+		// Grab the true height of the character, taking into account underhanging glyphs.
+		s32 height = Glyphs[n-1].size - Glyphs[n-1].bitmap.top + Glyphs[n-1].bitmap.height;
+		return height;
 	}
 	if (c >= 0x2000)
 		return Glyphs[0].size;
@@ -542,9 +588,10 @@ s32 CGUITTFont::getKerningHeight() const
 
 core::vector2di CGUITTFont::getKerning(const wchar_t thisLetter, const wchar_t previousLetter) const
 {
+	if (tt_face == 0 || thisLetter == 0 || previousLetter == 0)
+		return core::vector2di();
+		
 	core::vector2di ret(GlobalKerningWidth, GlobalKerningHeight);
-	if (tt_face == 0)
-		return ret;
 
 	// Grab the face's flags to determine if the font is scalable or not.
 	FT_Long flags = tt_face->face->face_flags;
@@ -577,4 +624,3 @@ void CGUITTFont::setInvisibleCharacters( const wchar_t *s )
 
 } // end namespace gui
 } // end namespace irr
-#endif
