@@ -112,7 +112,7 @@ PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args){
     gui::IGUIFont* font2 = guienv->getSkin()->getFont();
 
      //   font2 = guienv->getFont("./media/fontlucida.png");
-        font2->draw(L"fontlucidaaaaaaaaaaaaaaaaaaaaaaaaaa", core::recti(10 + (150 * 0), y, 100 + (150 * 0), y + 20), video::SColor(255, 255, 255, 255));
+        font2->draw(ha.c_str(), core::recti(10 + (150 * 0), y, 100 + (150 * 0), y + 20), video::SColor(255, 255, 255, 255));
 
 	//guienv->addStaticText(L"sample text here!",rect<s32>(x,y,x1,y1), true);
 	//guienv->addStaticText(		ha.c_str(),		core::rect<s32>(x,y,x1,y1), true, true, 0, -1, true);
