@@ -84,11 +84,11 @@ PyObject * Python::PyIrr_ChatBox(PyObject * self,PyObject * args){
 
 PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args){
 
-    long font4;
+    char *  font4;
 	//Must make this useful someday, not today
 	char * message;
 	s32 x,y,x1,y1;
-	PyArg_ParseTuple(args,"ssiiii",&font4,&message,&x,&y,&x1,&y1); //may only need x,y when using ft2
+	PyArg_ParseTuple(args,"ssiiii",&message,&font4,&x,&y,&x1,&y1); //may only need x,y when using ft2
 
 	//IGUIFont * font2 = (IGUIFont *)font;
 
@@ -106,13 +106,22 @@ PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args){
 	//  wprintf("%s\n", model);
 	//	guienv->addStaticText(conv_message,rect<s32>(x,y,x1,y1),SColor(255,255,255,255));
 	//	delete [] conv_message;
+#ifdef FT22
+    face.load("./media/kochi-gothic-subst.ttf");
+	face2.load("./media/kochi-gothic-subst.ttf");
+	face3.load("./media/kochi-gothic-subst.ttf");
 
+    font2->attach(&face,24); // scale this number with the screen
+    font2->AntiAlias=1;
+    font2->draw(L"Hello TrueType",rect<s32>(0,240,640,240),SColor(255,255,64,64),false);
+#else
 	stringw ha=message;
-	guienv->getSkin()->setFont(guienv->getFont("./media/fontlucida.png"));
+	stringw font4w=font4;
+	guienv->getSkin()->setFont(guienv->getFont(font4w.c_str()));
     gui::IGUIFont* font2 = guienv->getSkin()->getFont();
 
      //   font2 = guienv->getFont("./media/fontlucida.png");
-        font2->draw(ha.c_str(), core::recti(10 + (150 * 0), y, 100 + (150 * 0), y + 20), video::SColor(255, 255, 255, 255));
+        font2->draw(ha.c_str(), core::recti(x + (150 * 0), y, x1 + (150 * 0), y1 + 20), video::SColor(255, 255, 255, 255));
 
 	//guienv->addStaticText(L"sample text here!",rect<s32>(x,y,x1,y1), true);
 	//guienv->addStaticText(		ha.c_str(),		core::rect<s32>(x,y,x1,y1), true, true, 0, -1, true);
@@ -152,16 +161,7 @@ PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args){
 //
 //        fonts->drawText("the quick brown fox\njumped over\n the lazy dog", 0, 0, w, h, BmFont::ALIGN_CENTER | BmFont::ALIGN_MIDDLE);
 //
-#ifdef FT23
-face.load("./media/kochi-gothic-subst.ttf");
-	face2.load("./media/kochi-gothic-subst.ttf");
-	face3.load("./media/kochi-gothic-subst.ttf");
-
-    font2->attach(&face,24); // scale this number with the screen
-    font2->AntiAlias=1;
-    font2->draw(L"Hello TrueType",rect<s32>(0,240,640,240),SColor(255,255,64,64),false);
 #endif
-
 	return Py_BuildValue("");
 };
 
