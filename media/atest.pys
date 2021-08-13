@@ -8,5 +8,16 @@ if(init):
  import image
  import time
 
+
+ camera = scene.addCamera(1, 0,0,0)
+ #core dump
+ #scene.setCamera(0,camera,0,20,0)
+ scene.decals(1,camera)
+ Light1 = scene.Light(10,0,100,0,"111111")
+
+ iaxe = image.iadd("../media/terrain-heightmap.bmp",10,10,500,500,10,10,800,800)
+
+image.idraw(iaxe)
+
 scene.drawtext("cool bean tree","./media/fontlucida.png",5,250,235,320)
 scene.drawtext("cool bean tree","./media/fontlucida.png",50,250,235,320)

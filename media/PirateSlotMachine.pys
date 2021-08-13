@@ -28,9 +28,9 @@ if(init):
 
 
 
- camera = scene.addCamera(1, 0,0,0)
- scene.decals(1,camera)
- Light1 = scene.Light(10,0,100,0,"111111")
+# camera = scene.addCamera(1, 0,0,0)
+# scene.decals(1,camera)
+# Light1 = scene.Light(10,0,100,0,"111111")
 
  ###################load textures
  textures=[]

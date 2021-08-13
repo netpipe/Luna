@@ -28,7 +28,7 @@ if initloader:
 
     camera = scene.addCamera(1, 0,0,0)
     scene.decals(1,camera)
-    Light1 = scene.Light(10,0,100,0,"111111")
+    Light = scene.Light(10,0,100,0,"111111")
     print("camera added")
 
 
@@ -49,6 +49,7 @@ if initloader:
         image.set_texture(buttons[i],colors[0])
     print("objects added")
     initloader=0
+    scene.using('../media/atest.pys',"1");
 
 #######Loop
 
