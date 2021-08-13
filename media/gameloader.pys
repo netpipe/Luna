@@ -10,7 +10,7 @@ import os
 
 loaderStatus=1
 locBase="../media/"
-loaderResult=""
+
 
 #scene.using('../media/frogger.pys',"1");  # load manually for now if needed.
 

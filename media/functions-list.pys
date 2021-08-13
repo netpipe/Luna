@@ -12,7 +12,7 @@
 
 init = 1  #start as true so that this loop is only ran once
 initloader = 1
-
+loaderResult=""
 
 #Functions List
 ##############################################################################
