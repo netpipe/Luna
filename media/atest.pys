@@ -93,17 +93,25 @@ if(init):
    del deck[i]
    hand2.append(image.iadd(card1,(i*10)+100,i*10,(i*10)+100+55,i*10+84,0,0,55,84))
 
+ init=0
 
 
 image.idraw(iaxe)
-
-scene.drawtext("cool bean tree","./media/fontlucida.png",5,250,235,320)
-scene.drawtext("cool bean tree","./media/fontlucida.png",50,250,235,320)
-
-
+scene.drawtext("cool bean tree","../media/fontlucida.png",5,250,235,320)
+scene.drawtext("cool bean tree","../media/fontlucida.png",50,250,235,320)
 for i in hand1:
  image.idraw(i)
-
 for i in hand2:
  image.idraw(i)
+print('test')
+
+while 0:
+ image.idraw(iaxe)
+ scene.drawtext("cool bean tree","../media/fontlucida.png",5,250,235,320)
+ scene.drawtext("cool bean tree","../media/fontlucida.png",50,250,235,320)
+ for i in hand1:
+  image.idraw(i)
+ for i in hand2:
+  image.idraw(i)
+ print('testing')
 

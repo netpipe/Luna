@@ -13,12 +13,13 @@ locBase="../media/"
 loaderResult=""
 
 #scene.using('../media/frogger.pys',"1");  # load manually for now if needed.
-scene.using('../media/LoaderGUI.pys',"1"); #work in progress
 
 # seems to be a bug in adding multiple cameras currently
 
 if loaderResult.endswith(".pys"):
     scene.using(locBase+loaderResult,"1");
+else:
+    scene.using('../media/LoaderGUI.pys',"1"); #work in progress
 #
 
 

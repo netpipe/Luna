@@ -74,4 +74,5 @@ scene.drawtext(str(currentButton), font, 0,0,128,128)
 
 if input.getKey('KEY_SPACE'):
     loaderResult=pysList[currentButton]
+    initloader=1
 

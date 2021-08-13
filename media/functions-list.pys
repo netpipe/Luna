@@ -10,33 +10,8 @@
 
 #INIT VARS HERE
 
-
-
-import irr
-
-import scene
-import input
-import image
-import os
-
-loaderStatus=1
-locBase="../media/"
-loaderResult=""
-
-
 init = 1  #start as true so that this loop is only ran once
 initloader = 1
-
-#scene.using('../media/frogger.pys',"1");
-scene.using('../media/LoaderGUI.pys',"1");
-
-if loaderResult.endswith(".pys"):
-    scene.using(locBase+loaderResult,"1");
-
-
-
-
-
 
 
 #Functions List
