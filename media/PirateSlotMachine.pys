@@ -20,7 +20,7 @@ if(init):
  iconChoice=[]
  iconOrder=0
  recovered=1
- font="./media/fontlucida.png"
+ font="../media/fontlucida.png"
  location= "../media/PirateSlotMachine/"
 
  def newId():
@@ -55,8 +55,8 @@ if(init):
   image.set_texture(icons[i],textures[i])
  print("icons")
 
- white= scene.add_cube(newId(),256, 0,0,95, 0,0,0, 1,0.75,0.00001)
- print("white")
+ #white= scene.add_cube(newId(),256, 0,0,95, 0,0,0, 1,0.75,0.00001)
+ #print("white")
  dot=scene.add_cube(newId(),2, -2400,-8,97.5, 0,0,0, 1,1,0.01)
  image.set_texture(dot,dotTexture)
  print("dot")
@@ -72,7 +72,7 @@ if(uiTimer>20) and uiState==0:
  #scene.drawtext("Pirate slot machine",font,384,8,512,64)
  for i in range(5):
   scene.setPosition(icons[i],0, 32*(i+1),200,96.5)
- scene.setPosition(white,0, 0,0,100)
+ #scene.setPosition(white,0, 0,0,100)
  print("before text")
  scene.drawtext("press up and down to change\nmenu option",font,384,96,512,104)
  scene.drawtext("play",font,448,416,464,424)
