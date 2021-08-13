@@ -33,20 +33,20 @@ if initloader:
 
 
     colors=[]
-    for i in range(3):
-        colors.append(image.load_texture(location+"color"+str(i)+".png"))
+  #  for i in range(3):
+      #  colors.append(image.load_texture(location+"color"+str(i)+".png"))
     print("colors added")
 
 
-    background= scene.add_cube(newId(),256, 0,0,96, 0,0,0, 1,1,0.01)
-    image.set_texture(background,colors[2])
+ #   background= scene.add_cube(newId(),256, 0,0,96, 0,0,0, 1,1,0.01)
+  #  image.set_texture(background,colors[2])
 
     print("before buttons")
     buttons=[]
     currentButton=0
-    for i in range(len(pysList)):
-        buttons.append(scene.add_cube(newId(),1, -84+(4+len(pysList[i])*0.5) +128*(i//15) ,56-(i*8),90, 0,0,0, 8+len(pysList[i]),6,0.01))
-        image.set_texture(buttons[i],colors[0])
+ #   for i in range(len(pysList)):
+  #      buttons.append(scene.add_cube(newId(),1, -84+(4+len(pysList[i])*0.5) +128*(i//15) ,56-(i*8),90, 0,0,0, 8+len(pysList[i]),6,0.01))
+   #     image.set_texture(buttons[i],colors[0])
     print("objects added")
     initloader=0
 
@@ -66,10 +66,10 @@ currentButton %= len(pysList)
 
 for i in range(len(pysList)):
     scene.drawtext(pysList[i],font, 32,46+i*47,128,160+i*47)
-    if i == currentButton:
-        image.set_texture(buttons[currentButton],colors[1])
-    else:
-        image.set_texture(buttons[i],colors[0])
+  #  if i == currentButton:
+   #     image.set_texture(buttons[currentButton],colors[1])
+  #  else:
+   #     image.set_texture(buttons[i],colors[0])
 scene.drawtext(str(currentButton), font, 0,0,128,128)
 
 if input.getKey('KEY_SPACE'):

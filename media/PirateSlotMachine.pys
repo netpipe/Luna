@@ -8,6 +8,8 @@ if(init):
  import input
  import image
  import time
+
+
  scene.using ('../media/random.py',"1");
  id =100
  uiTimer=0
@@ -18,8 +20,8 @@ if(init):
  iconChoice=[]
  iconOrder=0
  recovered=1
- font='./media/fontlucida.png'
- location= '../media/PirateSlotMachine/'
+ font="./media/fontlucida.png"
+ location= "../media/PirateSlotMachine/"
 
  def newId():
   global id
@@ -28,9 +30,10 @@ if(init):
 
 
 
-# camera = scene.addCamera(1, 0,0,0)
-# scene.decals(1,camera)
-# Light1 = scene.Light(10,0,100,0,"111111")
+ camera = scene.addCamera(1, 0,0,0)
+ scene.decals(1,camera)
+ Light1 = scene.Light(10,0,100,0,"111111")
+
 
  ###################load textures
  textures=[]

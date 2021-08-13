@@ -1,6 +1,10 @@
 #test script for bug hunting
 #seems to be an issue with adding multiple cameras
 
+def addImage(loc,width,height):
+   return image.iadd(loc,0,0,width,height,0,0,width,height)
+
+
 if(init):
  import irr
  import scene
@@ -13,6 +17,9 @@ if(init):
  import math
  scene.using ('../media/random.py',"1");
  #scene.using ('../media/string.py',"1");
+
+
+
 
  responses = ["Not so sure", "42", "Most likely", "Absolutely not", "Outlook is good", "I see good things happening", "Never",
 "Negative", "Could be", "Unclear, ask again", "Yes", "No", "Possible, but not probable"]
@@ -27,10 +34,10 @@ if(init):
 
 
  camera = scene.addCamera(1, 0,0,0)
- #core dump
- #scene.setCamera(0,camera,0,20,0)
  scene.decals(1,camera)
  Light1 = scene.Light(10,0,100,0,"111111")
+
+
 
  iaxe = image.iadd("../media/terrain-heightmap.bmp",10,10,500,500,10,10,800,800)
  i=0
@@ -95,6 +102,7 @@ if(init):
 
  init=0
 
+irr.delay(200000)
 
 image.idraw(iaxe)
 scene.drawtext("cool bean tree","../media/fontlucida.png",5,250,235,320)
@@ -104,6 +112,12 @@ for i in hand1:
 for i in hand2:
  image.idraw(i)
 print('test')
+
+cube_id = scene.add_cube(newId(),128,0,64,97, 0,0,0, 1,1,1/128)
+tex_id = image.load_texture("../media/crate.png")
+#print tex_id #print cube_id #texture cube with video todo
+image.set_texture(cube_id,tex_id)
+#scene.setPosition(cube_id,50,355,350)
 
 while 0:
  image.idraw(iaxe)
