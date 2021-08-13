@@ -8,6 +8,23 @@ if(init):
  import image
  import time
 
+ import os
+ import itertools
+ import math
+ scene.using ('../media/random.py',"1");
+ #scene.using ('../media/string.py',"1");
+
+ responses = ["Not so sure", "42", "Most likely", "Absolutely not", "Outlook is good", "I see good things happening", "Never",
+"Negative", "Could be", "Unclear, ask again", "Yes", "No", "Possible, but not probable"]
+
+
+ irr.files("../media/cards.zip")
+
+ #import shuffle
+ myr.time_reseed();
+ print randint(1,8);
+ print(choice(responses))
+
 
  camera = scene.addCamera(1, 0,0,0)
  #core dump
@@ -16,8 +33,77 @@ if(init):
  Light1 = scene.Light(10,0,100,0,"111111")
 
  iaxe = image.iadd("../media/terrain-heightmap.bmp",10,10,500,500,10,10,800,800)
+ i=0
+# make a deck of cards
+ deck = list(itertools.product(range(1,14),['Spade','Heart','Diamond','Club']))
+
+# shuffle the cards
+ shuffle(deck)
+
+# draw five cards
+# print("You got:")
+ hand1 = []
+ hand2 = []
+
+ for i in range(5): #use range to place cards on screen
+  print("You got:")
+  if deck[i][1]=="Club":
+   print(deck[i][0], "of", deck[i][1])
+   #card1="\"" + str(deck[i][0]) + "CLUBS.jpg"
+   card1="./media/" + str(deck[i][0]) + "CLUBS.png"
+   del deck[i]
+   hand1.append(image.iadd(card1,i*10,i*10,i*10+55,i*10+84,0,0,55,84))
+  if deck[i][1]=="Spade":
+   print(deck[i][0], "of", deck[i][1])
+   card1="./media/" + str(deck[i][0]) + "SPADES.png"
+   del deck[i]
+   hand1.append(image.iadd(card1,i*10,i*10,i*10+55,i*10+84,0,0,55,84))
+  if deck[i][1]=="Diamond":
+   print(deck[i][0], "of", deck[i][1])
+   card1="./media/" + str(deck[i][0]) + "DIAMONDS.png"
+   del deck[i]
+   hand1.append(image.iadd(card1,i*10,i*10,i*10+55,i*10+84,0,0,55,84))
+  if deck[i][1]=="Heart":
+   print(deck[i][0], "of", deck[i][1])
+   card1="./media/" + str(deck[i][0]) + "HEARTS.png"
+   del deck[i]
+   hand1.append(image.iadd(card1,i*10,i*10,i*10+55,i*10+84,0,0,55,84))
+
+ for i in range(5): #use range to place cards on screen
+  print("You got:")
+  if deck[i][1]=="Club":
+   print(deck[i][0], "of", deck[i][1])
+   #card1="\"" + str(deck[i][0]) + "CLUBS.jpg"
+   card1="./media/" + str(deck[i][0]) + "CLUBS.png"
+   del deck[i]
+   hand2.append(image.iadd(card1,(i*10)+100,i*10,(i*10)+100+55,i*10+84,0,0,55,84))
+  if deck[i][1]=="Spade":
+   print(deck[i][0], "of", deck[i][1])
+   card1="./media/" + str(deck[i][0]) + "SPADES.png"
+   del deck[i]
+   hand2.append(image.iadd(card1,(i*10)+100,i*10,(i*10)+100+55,i*10+84,0,0,55,84))
+  if deck[i][1]=="Diamond":
+   print(deck[i][0], "of", deck[i][1])
+   card1="./media/" + str(deck[i][0]) + "DIAMONDS.png"
+   del deck[i]
+   hand2.append(image.iadd(card1,(i*10)+100,i*10,(i*10)+100+55,i*10+84,0,0,55,84))
+  if deck[i][1]=="Heart":
+   print(deck[i][0], "of", deck[i][1])
+   card1="./media/" + str(deck[i][0]) + "HEARTS.png"
+   del deck[i]
+   hand2.append(image.iadd(card1,(i*10)+100,i*10,(i*10)+100+55,i*10+84,0,0,55,84))
+
+
 
 image.idraw(iaxe)
 
 scene.drawtext("cool bean tree","./media/fontlucida.png",5,250,235,320)
 scene.drawtext("cool bean tree","./media/fontlucida.png",50,250,235,320)
+
+
+for i in hand1:
+ image.idraw(i)
+
+for i in hand2:
+ image.idraw(i)
+

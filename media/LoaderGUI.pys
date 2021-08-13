@@ -49,7 +49,6 @@ if initloader:
         image.set_texture(buttons[i],colors[0])
     print("objects added")
     initloader=0
-    scene.using('../media/atest.pys',"1");
 
 #######Loop
 
