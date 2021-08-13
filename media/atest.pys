@@ -1,0 +1,9 @@
+if(init):
+ import irr
+ import scene
+ import input
+ import image
+ import time
+
+scene.drawtext("cool bean tree","./media/fontlucida.png",5,250,235,320)
+scene.drawtext("cool bean tree","./media/fontlucida.png",50,250,235,320)

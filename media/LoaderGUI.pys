@@ -70,6 +70,7 @@ for i in range(len(pysList)):
         image.set_texture(buttons[currentButton],colors[1])
     else:
         image.set_texture(buttons[i],colors[0])
+
 scene.drawtext(str(currentButton), font, 0,0,128,128)
 
 if input.getKey('KEY_SPACE'):
