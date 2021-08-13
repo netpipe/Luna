@@ -1,3 +1,6 @@
+#test script for bug hunting
+#seems to be an issue with adding multiple cameras
+
 if(init):
  import irr
  import scene
