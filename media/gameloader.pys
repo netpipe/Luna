@@ -1,24 +1,17 @@
 # GameLoader Script - GUI to choose what game to load
-
+#put your init vars into functions-list.pys
 import irr
 import scene
-#import input
-#import image
-#import gui
+import input
+import image
+import os
 
-#scene.using ('../media/string.py',"1");
+loaderStatus=1
+locBase="../media/"
+loaderResult=""
 
+scene.using('../media/LoaderGUI.pys',"1");
 
-#import os
-#import itertools
-#import hashlib
-##import random
-#import math
-#import time
-#import shuffle
-
-#scene.using ('../media/lib/python2.7/random.py',"1"); #not working
-
-#test=irr.getstring="../media/frogger.pys"
-scene.using ('../media/frogger.pys',"1");
-#scene.using ('../media/main.pys',"1");
+if loaderResult.endswith(".pys"):
+    scene.using(locBase+loaderResult,"1");
+#

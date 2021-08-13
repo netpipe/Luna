@@ -1466,6 +1466,8 @@
 		<Unit filename="entities/skeleton/BMaths.h" />
 		<Unit filename="entities/skeleton/Skeleton.cpp" />
 		<Unit filename="entities/skeleton/Skeleton.h" />
+		<Unit filename="media/LoaderGUI.pys" />
+		<Unit filename="media/PirateSlotMachine.pys" />
 		<Unit filename="media/frogger.pys" />
 		<Unit filename="media/functions-list.pys" />
 		<Unit filename="media/gameloader.pys" />

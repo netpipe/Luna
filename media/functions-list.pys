@@ -8,16 +8,22 @@
 #//! typedef btHashKey<int> btHashInt;  #put here temporarly was from recent bullet upgrade
 
 
+#INIT VARS HERE
+
+
+
 import irr
-#import physics
-#import extras
-#import scene
-#import input
-#import image
-#import net
-#import gui
 
 init = 1  #start as true so that this loop is only ran once
+initloader = 1
+
+
+
+
+
+
+#Functions List
+##############################################################################
 #test=irr.getstring="../media/main.pys"
 #print test
 #launcher GUI
