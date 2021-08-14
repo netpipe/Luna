@@ -23,7 +23,6 @@
 					<Add option="-DMINIMAL" />
 					<Add option="-DEVENTS" />
 					<Add option="-DFPS" />
-					<Add option="-DPHYSICS" />
 				</Compiler>
 				<Linker>
 					<Add library="GL" />
