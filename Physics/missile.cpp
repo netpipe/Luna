@@ -1,5 +1,5 @@
 //#include "stdafx.h"
-
+#ifdef PHYSICS
 #include <iostream>
 #include <map>
 #include <vector>
@@ -479,3 +479,4 @@ ISceneManager *smgr = device->getSceneManager();
 
     return 0;
 }
+#endif

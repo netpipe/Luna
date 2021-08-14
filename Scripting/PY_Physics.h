@@ -18,7 +18,6 @@ PyMethodDef irr_Physics[] = {
     {"bulletBlend",Python::PyIrr_BulletBlend,METH_VARARGS,"PyIrr_BulletBlend"},
     {"addHUD",Python::PyIrr_addHUD,METH_VARARGS,"PyIrr_addHUD"},
     {"opensteer",Python::PyIrr_OpenSteer,METH_VARARGS,"PyIrr_OpenSteer"},
-    {"fpsweapon",Python::PyIrr_fpsWeapon,METH_VARARGS,"PyIrr_fpsWeapon"},
     {"addPlayer",Python::PyIrr_addPlayer,METH_VARARGS,"PyIrr_addPlayer"},
     {"bullet",Python::PyIrr_Bullet,METH_VARARGS,"PyIrr_Bullet"},
     {"VehicleParams",Python::PyIrr_VehicleParams,METH_VARARGS,"VehicleParams"},
@@ -206,45 +205,6 @@ PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){
   #endif
 //        Py_RETURN_NONE;
 	return Py_BuildValue("");
-}
-
-PyObject * Python::PyIrr_fpsWeapon(PyObject * self,PyObject * args){
-// need to attach to bones and/or nodes here
-#ifdef FPS
-	bFPS = 1;
-    long pcam;
-    PyArg_ParseTuple(args,"l",&pcam);
-    ICameraSceneNode* camera = (ICameraSceneNode*)pcam;
-    device->getGUIEnvironment()->addImage( driver->getTexture("../media/data/textures/crosshairs/crosshair1.png"),
-                                            core::position2d<s32>((luna->resolution[0]/2)-64,(luna->resolution[1]/2)-64));
-    #ifdef FPS
-          IAnimatedMesh*   gunmesh = smgr->getMesh("../media/data/models/weapons/M4/3d_person/M4A1d.3ds");
-          scene::IAnimatedMeshSceneNode* agun;
-          agun = smgr->addAnimatedMeshSceneNode(gunmesh);
-          if (agun)
-          {
-            agun->setMaterialTexture(0, driver->getTexture("../media/data/models/weapons/M4/1st_person/M4A1.jpg"));
-            agun->setScale(core::vector3df(1.2f, 1.2f, 1.2f));
-            agun->setPosition(core::vector3df(180.f,1.5f,0.f));
-            agun->setRotation(core::vector3df(0.f,0.f,90.f));
-            //agun->apply_light2node(agun);
-        	agun->addShadowVolumeSceneNode();
-          }
-          gunmesh->drop();
-       // scene::ICameraSceneNode* cam = smgr->addCameraSceneNodeFPS(0, 100.0f, .5f,-1,keyMap,8);
-                                  // cam->setPosition(core::vector3df(-200,100,200));
-                                 //  cam->setTarget(core::vector3df(0,0,0));
-        camera->setFOV(PI/2);
-        camera->setFarValue(7000);
-
-
-        M4 = new firstPersonWeapon(device, camera);
-        //  apply_light2node(M4->getNode());
-        device->setEventReceiver(M4);
-      //  return Py_BuildValue("l",agun);
-    #endif
-    #endif // FPS
-return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_addHelicopter(PyObject * self,PyObject * args) {

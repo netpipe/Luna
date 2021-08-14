@@ -1,7 +1,7 @@
 #ifndef _RIFLE_H
 #define _RIFLE_H 1
 #include "../config.h"
-#ifdef PHYSICS
+#ifdef FPS
 #include <irrlicht.h>
 #include "../Physics/Physics.h"
 
@@ -36,7 +36,9 @@ class Rifle
 		IAnimatedMeshSceneNode *m_node;
 
 		vector3df m_position, m_rotation, m_scale;
-		Physics *m_cPhysics;
+		#ifdef PHYSICS
+///		Physics *m_cPhysics;
+#endif // PHYSICS
 };
 #endif
 #endif

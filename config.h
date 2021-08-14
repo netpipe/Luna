@@ -102,7 +102,7 @@
     #define SGRAPH2D // 2d plot graph
     #define WIND
     #define SCENE
-    #define PHYSICS
+   // #define PHYSICS
     #define FPS
     #define PYTHON
     #define Image2D
