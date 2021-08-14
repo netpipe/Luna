@@ -1,6 +1,6 @@
 // AzadiArchive.cpp : Defines the entry point for the console application.
 //
-#include "../config.h"
+#include "../../config.h"
 #ifdef COMPRESS
 #include "Compress.h"
 #include <string.h>

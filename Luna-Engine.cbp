@@ -1095,6 +1095,7 @@
 			<Add directory="../emscripten-projects/SDL/SDL_sound/src" />
 			<Add directory="../LunaLibs/zlib-1.2.3" />
 			<Add directory="/usr/include/python2.7" />
+			<Add directory="../irrlicht-1.8.4/include" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />
@@ -1159,6 +1160,7 @@
 			<Add directory="../emscripten-projects/SDL/SDL_sound/src" />
 			<Add directory="../LunaLibs/libtheora-1.1.1" />
 			<Add directory="../LunaLibs/freetype-2.3.9" />
+			<Add directory="../irrlicht-1.8.4/lib/Linux" />
 		</Linker>
 		<Unit filename="DevLoop.h" />
 		<Unit filename="Equipment/Rifle.cpp" />
