@@ -104,6 +104,7 @@
     #define SCENE
     #define PHYSICS
     #define FPS
+    #define PYTHON
 #endif
 
 //#define PYTHON_MINIMALTEST

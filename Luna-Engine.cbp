@@ -14,6 +14,7 @@
 				<Option object_output=".dmobjs" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option projectCompilerOptionsRelation="0" />
 				<Option projectLinkerOptionsRelation="0" />
 				<Option projectResourceIncludeDirsRelation="1" />
 				<Compiler>
