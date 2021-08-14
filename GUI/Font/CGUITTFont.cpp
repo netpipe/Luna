@@ -1,3 +1,5 @@
+#include "../../config.h"
+#ifdef FT2
 #include <irrlicht.h>
 using namespace irr;
 #include "CGUITTFont.h"
@@ -340,7 +342,7 @@ void CGUITTFont::draw(const core::stringw& text, const core::rect<s32>& position
 	}
 
 	u32 n;
-	
+
 	wchar_t previousChar = 0;
 	const wchar_t* ptext = text.c_str();
 	while (*ptext)
@@ -590,7 +592,7 @@ core::vector2di CGUITTFont::getKerning(const wchar_t thisLetter, const wchar_t p
 {
 	if (tt_face == 0 || thisLetter == 0 || previousLetter == 0)
 		return core::vector2di();
-		
+
 	core::vector2di ret(GlobalKerningWidth, GlobalKerningHeight);
 
 	// Grab the face's flags to determine if the font is scalable or not.
@@ -624,3 +626,5 @@ void CGUITTFont::setInvisibleCharacters( const wchar_t *s )
 
 } // end namespace gui
 } // end namespace irr
+
+#endif

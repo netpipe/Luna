@@ -1,6 +1,7 @@
 #ifndef __C_GUI_TTFONT_H_INCLUDED__
 #define __C_GUI_TTFONT_H_INCLUDED__
-
+#include "../config.h"
+#ifdef FT2
 #include <irrlicht.h>
 #include <ft2build.h>
 #include FT_FREETYPE_H
