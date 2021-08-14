@@ -31,3 +31,5 @@ https://github.com/tecan/IrrlichtDemos
 sourceforge version compiles in virtualbox and on wine itself aswell as linux, very outdated though.
 http://sourceforge.net/projects/agnostic/
 
+https://irrlicht.sourceforge.io/forum/viewtopic.php?f=6&t=35293&p=306116#p306116 more files if you need vm's screenshots or to chat about it.
+
