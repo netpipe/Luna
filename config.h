@@ -105,6 +105,7 @@
     #define PHYSICS
     #define FPS
     #define PYTHON
+    #define Image2D
 #endif
 
 //#define PYTHON_MINIMALTEST
