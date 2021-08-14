@@ -100,10 +100,13 @@ PyObject * Python::PyIrr_igetColor(PyObject * self,PyObject * args){
 	#ifdef Image2D
 	cImage* node = (cImage*)node_id;
 	irr::video::SColor ret =node->GetColor();
-	#endif
+
 
 return Py_BuildValue("l",&ret);
 
+	#else
+return Py_BuildValue("");
+	#endif
 }
 PyObject * Python::PyIrr_iTransparent(PyObject * self,PyObject * args){
    	long node_id;
@@ -164,8 +167,11 @@ PyObject * Python::PyIrr_iGetOHeight(PyObject * self,PyObject * args){
 	#ifdef Image2D
 	cImage* node = (cImage*)node_id;
 	int ret =node->GetOrigHeight();
-	#endif
-return Py_BuildValue("f",ret);
+	#else
+
+return Py_BuildValue("");
+#endif
+
 }
 
 PyObject * Python::PyIrr_iGetOWidth(PyObject * self,PyObject * args){
@@ -174,8 +180,11 @@ PyObject * Python::PyIrr_iGetOWidth(PyObject * self,PyObject * args){
 	#ifdef Image2D
 	cImage* node = (cImage*)node_id;
 	int ret =node->GetOrigWidth();
-	#endif
 return Py_BuildValue("f",ret);
+#else
+return Py_BuildValue("");
+	#endif
+
 }
 
 PyObject * Python::PyIrr_iGetHeight(PyObject * self,PyObject * args){
@@ -184,8 +193,11 @@ PyObject * Python::PyIrr_iGetHeight(PyObject * self,PyObject * args){
 	#ifdef Image2D
 	cImage* node = (cImage*)node_id;
 	int ret = node->GetHeight();
-	#endif
+
 return Py_BuildValue("f",ret);
+	#else
+return Py_BuildValue("");
+#endif
 
 }
 
@@ -195,8 +207,12 @@ PyObject * Python::PyIrr_iGetWidth(PyObject * self,PyObject * args){
 	#ifdef Image2D
 	cImage* node = (cImage*)node_id;
 	int ret =node->GetWidth();
-	#endif
+
 return Py_BuildValue("f",ret);
+#else
+return Py_BuildValue("");
+#endif
+
 }
 
 PyObject * Python::PyIrr_iDraw(PyObject * self,PyObject * args){

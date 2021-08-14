@@ -1003,6 +1003,34 @@
 					<Add after="./copyandrun.sh" />
 				</ExtraCommands>
 			</Target>
+			<Target title="Linux Debug MINIMAL">
+				<Option output="./GAME/mLuna" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="GAME" />
+				<Option object_output=".dmobjs" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="0" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Compiler>
+					<Add option="-fpermissive" />
+					<Add option="-DPYTHON" />
+					<Add option="-DMINIMAL" />
+					<Add option="-DEVENTS" />
+					<Add option="-DFPS" />
+					<Add option="-DPHYSICS" />
+				</Compiler>
+				<Linker>
+					<Add library="GL" />
+					<Add library="openal" />
+					<Add library="Xxf86vm" />
+					<Add library="X11" />
+					<Add library="python2.7" />
+					<Add library="pthread" />
+					<Add library="Irrlicht" />
+					<Add library="z" />
+					<Add library="dl" />
+				</Linker>
+			</Target>
 		</Build>
 		<VirtualTargets>
 			<Add alias="All" targets="Linux Debug;Linux Release;" />
@@ -1484,6 +1512,8 @@
 				<doxyfile_dot />
 				<general />
 			</DoxyBlocks>
+			<code_completion />
+			<debugger />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
