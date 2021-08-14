@@ -1,5 +1,6 @@
 #ifndef _RIFLE_H
 #define _RIFLE_H 1
+#include "../config.h"
 #ifdef PHYSICS
 #include <irrlicht.h>
 #include "../Physics/Physics.h"

@@ -1,6 +1,6 @@
  #ifndef INCLUDES
  #define INCLUDES
-
+#define MINIMAL
  #ifndef MINIMAL
 
  //#define PYTHON  // defined in the codeblocks project option defines for target management and testing builds
@@ -102,6 +102,8 @@
     #define SGRAPH2D // 2d plot graph
     #define WIND
     #define SCENE
+    #define PHYSICS
+    #define FPS
 #endif
 
 //#define PYTHON_MINIMALTEST
