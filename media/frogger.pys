@@ -249,7 +249,7 @@ scene.drawtext("cool bean tree","../media/fontlucida.png",5,250,235,320)
 scene.drawtext("cool bean tree","../media/fontlucida.png",50,250,235,320)
 #scene.addHUD("media/HUD.xml")
 #game loops uncontrollably fast so this is necessary for debugging, otherwise vm nearly freezes
-irr.delay(20000)
+irr.delay(50000)
 ############# MENU ################
 #if menu:
 

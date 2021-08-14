@@ -28,7 +28,7 @@ if(init):
   id+=1
   return id
 
-
+ myr.time_reseed();
 
  camera = scene.addCamera(1, 0,0,0)
  scene.decals(1,camera)
