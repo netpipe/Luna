@@ -109,6 +109,12 @@
     #define FPS
     #define PYTHON
     #define Image2D
+   // #define BOX2D
+    #define SOUND
+    //#define SDLMixer // wip - might not be compatable with the engine
+    //#define OPENAL2 // working with emscripten
+    //#define SDLSound //- seems to play and freeze needs threading
+
 #endif
 
 
