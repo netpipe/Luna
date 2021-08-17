@@ -1,7 +1,7 @@
- #ifndef INCLUDES
- #define INCLUDES
-#define MINIMAL
- #ifndef MINIMAL
+// #ifndef INCLUDES
+ //#define INCLUDES
+//#define MINIMAL
+#ifndef MINIMAL
 
  //#define PYTHON  // defined in the codeblocks project option defines for target management and testing builds
 
@@ -95,6 +95,9 @@
   #define SCALC
   #define FT2
   #define SPRITES
+
+  //#define PYTHON_MINIMALTEST
+
 #else // MINIMAL defines
     #define EVENTS
     #define FPS
@@ -108,6 +111,6 @@
     #define Image2D
 #endif
 
-//#define PYTHON_MINIMALTEST
 
-  #endif
+
+ // #endif
