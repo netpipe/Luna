@@ -45,9 +45,9 @@ class Sound
 //	agEngine::SoundData *clearM;
 //	agEngine::SoundData *footS;
 
-	std::vector sounds<agEngine::AudioSource>;
+//	std::vector sounds<agEngine::AudioSource>;
 
-//	agEngine::AudioSource *musicSource;
+	agEngine::AudioSource *musicSource;
 	// Add more channels if you want
 //	agEngine::AudioSource *channel1;
 //	agEngine::AudioSource *channel2;
