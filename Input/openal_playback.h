@@ -1,4 +1,4 @@
-#include "../config.h"
+#include "../../config.h"
 #ifdef OPENAL2
 #ifndef OPENALPLAYBACK_H
 #define OPENALPLAYBACK_H
@@ -144,11 +144,11 @@ int alplay() {
 
   alGenBuffers(1, buffers);
 
-//  convert ("./media/bling.wav","./media/bling2.wav");
+//  convert ("./media/bling.wav","../media/bling2.wav");
 
 #ifdef __EMSCRIPTEN__
  // FILE* source = fopen("media/bling.wav", "rb");
-  FILE* source = fopen("./media/bling.wav", "rb");
+  FILE* source = fopen("../media/bling.wav", "rb");
 #else
   FILE* source = fopen("../media/bling.wav", "rb");
 #endif

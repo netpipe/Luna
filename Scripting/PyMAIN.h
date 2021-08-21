@@ -61,7 +61,7 @@ namespace Python {
         bool bFPS;
     #endif
 
-    #ifdef EDITOR
+    #ifdef CODEEDITOR
         int bCodeEditor;
     #endif
 

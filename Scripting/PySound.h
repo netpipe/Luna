@@ -4,8 +4,6 @@ PyMethodDef irr_Sound[] =
 {
     {"fluidsynth",Python::PyIrr_FluidSynth,METH_VARARGS,"fluidsynth"},
     {"soundman",Python::PyIrr_SoundMan,METH_VARARGS,"PyIrr_SoundMan"},
-
-
 	{NULL,NULL,0,NULL}
 };
 
@@ -19,9 +17,6 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
     char * sound;
 
     PyArg_ParseTuple(args,"isi",&param,&sound,&state);
-
-
-
 
     #ifdef SOUND
     // sound intensity for raycasted sound.  // surfaceRoughnessHardness/propigation factor, distance,handle
@@ -65,9 +60,8 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
 //      {
 ////            mysound->stop();
 //      }
-      break;
+    //  break;
     }
-
     return Py_BuildValue("l",managerID);
   #endif
 
@@ -76,8 +70,8 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
     switch (param){
           case 0:
       {
-//          	luna->m_sound->Create();
-          	          	Sound::m_sound->Create();
+//        luna->m_sound->Create();
+          Sound::m_sound->Create();
       }break;
     case 1:
       {
@@ -95,23 +89,15 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
 #ifdef OPENAL
     //switch (param){
     //case 0:
-
-
 #endif
-
 
 #ifdef SDLSOUND
     //switch (param){
     //case 0:
-
-
 #endif
 
-
-
-
 return Py_BuildValue("");
-}// make add sound method
+}
 
 PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active camera
 #ifdef FLUIDSYNTH
@@ -123,22 +109,19 @@ PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active c
 #define NETWORK_SUPPORT
 
 	//char *psoundfont ="soundfonts/VintageDreamsWaves-v2.sf2";
-		char *psoundfont =sound;
+    char *psoundfont =sound;
 	//char *psong = "BLUES.MID";
-     char *psong = param;
+    char *psong = param;
 
 
 if( typee==0 ){
-
-
-
      //   int param,state,sound,ammount;
    // PyArg_ParseTuple(args,"liii",&sound,&param,&ammount,&state);
    //load unload
      fluid_settings_t* settings;
-//  int arg1 = 1;
+    //  int arg1 = 1;
   char buf[512];
-//  int c, i;
+    //  int c, i;
   int interactive = 1;
   int midi_in = 1;
 

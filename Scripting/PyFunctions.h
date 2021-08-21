@@ -37,7 +37,12 @@
 #ifdef HUD
 #include "../GUI/CHUD.h"
 #endif
-//#include "../GUI/CodeEditor/CGUIEditBoxIRB.h"
+
+#ifdef CODEEDITOR2
+#include "../GUI/CodeEditor/CGUIEditBoxIRB.h"
+#endif // CODEEDITOR
+
+
 //CGUIEditBoxIRB * codeEditor;
 #ifdef TESSELATE
 #include "../Scene/tesselatedImage/tesselatedImage.h"

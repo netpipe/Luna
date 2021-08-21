@@ -7,7 +7,7 @@
 //
 //Sound *Sound::m_sound = NULL;
 //Sound Sound::m_default_sound_buffer;
-
+#include "config.h"
 
 #include <vector>
 using namespace std;
@@ -19,64 +19,56 @@ using namespace io;
 using namespace gui;
 
 #ifdef ATMOSPHERE
-#include "Scene/ATMOsphere.cpp"
-#include "Scene/flares/CLensFlareSceneNode.h"
-//#include "Scene/flares/LensFlareSceneNode.h"
+    #include "Scene/ATMOsphere.cpp"
+    #include "Scene/flares/CLensFlareSceneNode.h"
+    //#include "Scene/flares/LensFlareSceneNode.h"
 #endif
 
 #include "Scene/flares/SceneNodeAnimatorFollowCamera.h"
 #include "GUI/compass/Compass.h"
 
 #ifdef BOIDS
-#include "Scene/boids/Flock.h"
+    #include "Scene/boids/Flock.h"
 #endif
 
 #ifdef IRRc
-#include "Net/IRRc/Application.h"
+    #include "Net/IRRc/Application.h"
 #endif
 
 //#include "GUI/cImage2D.h"
 #ifdef XEFFECTS
-#include "Scene/XEffects/effectWrapper.h"
+    #include "Scene/XEffects/effectWrapper.h"
 #endif
 
 #ifdef PHYSICS
-#ifdef BULLETBLEND
-#include "./Input/Model/blender/IrrBlend.h"
-#include "./Input/Model/blender/BulletBlendReader.h"
-#include "./Input/Model/blender/blenderUp.h"
-#include "./Input/Model/blender/IrrBlendNew.h" //testing
-#endif
+    #ifdef BULLETBLEND
+        #include "./Input/Model/blender/IrrBlend.h"
+        #include "./Input/Model/blender/BulletBlendReader.h"
+        #include "./Input/Model/blender/blenderUp.h"
+        #include "./Input/Model/blender/IrrBlendNew.h" //testing
+    #endif
 #endif
 
 #include "./Equipment/firstPersonWeapon.h"
 
 #ifdef ATMOSPHERE
-#include "./TerrainFactory/CloudSceneNode/CCloudSceneNode.h"
+    #include "./TerrainFactory/CloudSceneNode/CCloudSceneNode.h"
 #endif
 
-#include "./Scene/decalManager/DecalManager.h"
+    #include "./Scene/decalManager/DecalManager.h"
 
-//#include "GUI/CodeEditor/CGUIEditBoxIRB.h"
+#ifdef CODEEDITOR
+    #include "GUI/CodeEditor/CGUIEditBoxIRB.h"
+#endif // CODEEDITOR
+
+
 #include <fcntl.h> //needed for python
 
 #ifdef COMPRESS
-#include "./Input/Compress/Compress.h"
-//Compress *archiver;
-#include "./Input/Compress/zpipe.h"
+    #include "./Input/Compress/Compress.h"
+    //Compress *archiver;
+    #include "./Input/Compress/zpipe.h"
 #endif // COMPRESS
-
-//#ifdef AgAudio
-//	#include "./Input/AgAudio/Sound.h"
-//#endif
-//
-//
-//
-//		#ifdef AgAudio
-//		static Sound *m_sound;
-//		static Sound m_default_sound_buffer;
-//		#endif
-
 
 #ifdef SDLSound
 		#include "./Input/SDL/SDLsound.h"
@@ -89,8 +81,6 @@ using namespace gui;
 #ifdef SDLMixer // compile issues
 		#include "./Input/SDLMixer.h"
 #endif
-
-
 
 //#define PostProcess
 
@@ -342,9 +332,9 @@ int Luna::init(){
    //   resolution[0]= 2024; resolution[1]= 2768;
 
    if (FULLSCREEN){
-    IrrlichtDevice *nulldevice = createDevice(video::EDT_NULL);
-    core::dimension2du res = nulldevice->getVideoModeList()->getDesktopResolution();
-    nulldevice -> drop();
+        IrrlichtDevice *nulldevice = createDevice(video::EDT_NULL);
+        core::dimension2du res = nulldevice->getVideoModeList()->getDesktopResolution();
+        nulldevice -> drop();
     #ifdef __EMSCRIPTEN__
 			device = createDevice ( EDT_OGLES2,dimension2du (resolution[0],resolution[1]), 24, 1,1);
     #else
@@ -362,6 +352,7 @@ int Luna::init(){
 // EDT_NULL       device = createDevice ( EDT_BURNINGSVIDEO,dimension2du (resolution[0],resolution[1]), 24, 0,1);
 
     };
+
     device->setWindowCaption ( L"Luna Engine v1-initial" );
     driver = device->getVideoDriver();
     smgr = device->getSceneManager();
@@ -393,12 +384,8 @@ int Luna::init(){
 
 
 #ifdef AgAudio
-//		Sound::Instance()->Create();
-//	    Sound::Instance()->PlayBackgroundMusic(1);
-
-//	m_sound->Create();
-//	luna->m_sound->PlayBackgroundMusic(1);
-
+		Sound::Instance()->Create();
+	    Sound::Instance()->PlayBackgroundMusic(1);
 #endif
 
 #ifdef SDLMixer
@@ -409,17 +396,25 @@ int Luna::init(){
 	sdlsoundinit();
 #endif
 
-
 #ifdef OPENAL2
 	alplay();
 #endif
+
+#ifdef CODEEDITOR
+    windows = guienv->addWindow(
+            rect<s32>(100 , 100 , 800 , 800 ),
+            false, // modal?
+            L"Test window");
+#endif
+
     return 0;
 }
 
+
+
+//#######################################################################################
+
 int Luna::Run(){  // starts the game in dev mode or release mode some features are easier to impliment into the mainloop rather than scripting for testing //uses devloop or main_loop for emscripten
-
-
-
 
     events.devLogin=0;
     #ifndef NDEBUG
@@ -454,21 +449,20 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
 			device->setEventReceiver ( &m_cInGameEvents );
 		#endif
 
-#ifdef __EMSCRIPTEN__
-
-setenv("PYTHONHOME", "/", 0);
-//			zstrdeflate("./media.zip");
-    char *argv2[]={"appname", "media.zip" ,"testout","nulls"};
-    int argc2= sizeof(argv2) / sizeof(char*) - 1;
-//int test = zpipe(argc2,argv2);
-#else
-	//stringw workingDirectory = device->getFileSystem()->getWorkingDirectory();
-	////workingDirectory+="media/lib/";
-	//const  char* test = (const char*) workingDirectory.c_str();
-	//
-	//printf ( "working directory is %s " , test );
-	//setenv("PYTHONHOME", (const char*)workingDirectory.c_str() , 0);
-#endif
+        #ifdef __EMSCRIPTEN__
+            setenv("PYTHONHOME", "/", 0);
+            //			zstrdeflate("./media.zip");
+            char *argv2[]={"appname", "media.zip" ,"testout","nulls"};
+            int argc2= sizeof(argv2) / sizeof(char*) - 1;
+            //int test = zpipe(argc2,argv2);
+        #else
+            //stringw workingDirectory = device->getFileSystem()->getWorkingDirectory();
+            ////workingDirectory+="media/lib/";
+            //const  char* test = (const char*) workingDirectory.c_str();
+            //
+            //printf ( "working directory is %s " , test );
+            //setenv("PYTHONHOME", (const char*)workingDirectory.c_str() , 0);
+        #endif
 
 		Python::registerIrrDevice(this,*device,m_cInGameEvents);
 		Py_Initialize();            //Initialize Python
@@ -480,32 +474,29 @@ setenv("PYTHONHOME", "/", 0);
 		///todo check for empty or missing files or impliment the using command
 		// Python::ExecuteScript("functions-list.pys"); // this is for testing
 
-//    device->getFileSystem()->addFileArchive("./media/cards.zip");
+        //    device->getFileSystem()->addFileArchive("./media/cards.zip");
 
-		#ifdef __EMSCRIPTEN__
-					Python::ExecuteScript("./media/functions-list.pys"); // this is for testing
-								pyloader = "./media/gameloader.pys";
+            #ifdef __EMSCRIPTEN__
+				Python::ExecuteScript("./media/functions-list.pys"); // this is for testing
+				pyloader = "./media/gameloader.pys";
 			#else
 				Python::ExecuteScript("../media/functions-list.pys"); // this is for testing
-			pyloader = "../media/main.pys";
-			//	pyloader = "../media/gameloader.pys";
+                pyloader = "../media/main.pys";
 			#endif
-pyloader = "../media/gameloader.pys";
-pyloader = "../media/gameloader.pys";
-			Python::ExecuteScript(pyloader);
-			//Python::PyIrr_LoadVehicle(m_cVehicle);
-			//Python::PyIrr_addTerrain("1");
-
-	//	Luna::returnString="../media/gameloader.pys";
-
-		#ifdef EDITOR
+                pyloader = "../media/gameloader.pys";
+                Python::ExecuteScript(pyloader);
+                //Python::PyIrr_LoadVehicle(m_cVehicle);
+                //Python::PyIrr_addTerrain("1");
+                //	Luna::returnString="../media/gameloader.pys";
+		#ifdef CODEEDITOR
 			Python::bCodeEditor=3; // initial closed state
 		#endif
-
 	#endif //python
 	} //init
 
-				// run main devloop also EMSCRIPTEN loop
+
+	//#########################################################################################
+	// run main devloop also EMSCRIPTEN loop
 				#ifdef __EMSCRIPTEN__
 					iinit=true;
 					main_loop();
@@ -540,17 +531,12 @@ pyloader = "../media/gameloader.pys";
 }
 
 void Luna::main_loop(){ //devloop actually
-//#ifdef __EMSCRIPTEN__
+    //#ifdef __EMSCRIPTEN__
     //while (
-//			emscripten_run_script("alert('hi')");
+    //			emscripten_run_script("alert('hi')");
 
 	#ifdef SDLMixer
 	//sound_loop_then_quit();
-	#endif
-
-	#ifdef AgAudio
-//	// Sound::Instance()->PlayAll();
-	 // m_sound->Instance()->PlayAll();
 	#endif
 
 	device->run();
@@ -575,14 +561,14 @@ void Luna::main_loop(){ //devloop actually
         #ifdef PostProcess
         if (Python::bPProcess ==1){
 			ppBlurDOF->render( NULL );
-            ppBlur->render( NULL );
-        }
+            ppBlur->render( NULL ); }
         #endif
 
 	//       rt->render();
+
 	#ifdef PYTHON
-		#ifdef CODEEDITOR
-		if (Python::bCodeEditor==1	){
+		#ifdef CODEEDITORs
+		if ( Python::bCodeEditor==1	){
 			Python::bCodeEditor=0;
 			windows->setVisible(true);
 			codeEditor->setEnabled(true);
@@ -593,7 +579,7 @@ void Luna::main_loop(){ //devloop actually
 			device->setEventReceiver(&receiver);
 			device->getCursorControl()->setVisible(true);
 			    device->setResizable(true);
-		}else if (Python::bCodeEditor == 3	){
+		}else if ( Python::bCodeEditor == 3	){
 			Python::bCodeEditor = 0;
 			codeEditor->setEnabled(0);
 			codeEditor->setVisible(false);
@@ -603,6 +589,7 @@ void Luna::main_loop(){ //devloop actually
 		}
 		#endif //code_editor
 	//#endif
+
 			//#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
 			Python::preEnd();
 			Python::CheckKeyStates(); //located in pyInput can probably be moved to preEnd as its not being used to check keystates
@@ -618,7 +605,7 @@ void Luna::main_loop(){ //devloop actually
 		#else
 			guienv->drawAll();
 			driver->endScene();
-		#endif
+		#endif //PYTHON
 
         int fps = driver->getFPS();
 		if (lastFPS != fps)
@@ -632,12 +619,15 @@ void Luna::main_loop(){ //devloop actually
 		}
 		//sleep(0.101);
 		usleep(100);
-     //  device->sleep(5); // pythonize this
-  //  }
-//#endif
+        //  device->sleep(5); // pythonize this
+        //  }
+        //#endif
 }
 
-void Luna::CheckKeyStates(void){  //    obsolete:CheckKeyStates(); check onEvent for any need to check keys , used to be where python one sits now
+void Luna::CheckKeyStates(void){
+ //    obsolete:CheckKeyStates();
+ //check onEvent for any need to check keys ,
+ // used to be where python one sits now
 }
 
 

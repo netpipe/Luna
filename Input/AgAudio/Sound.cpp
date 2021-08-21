@@ -34,7 +34,7 @@ int Sound::Create(void)
 //  Output::Instance()->w("Loading samples.\n");
 
 	//!Sound init
-  adevice = agEngine::createDevice(false);
+    adevice = agEngine::createDevice(false);
 
  // menuM = agEngine::SoundData::LoadAudio(std::string("../media/IrrlichtTheme.ogg"), false);
     menuM = agEngine::SoundData::LoadAudio(std::string("../media/bling.ogg"), false);
@@ -199,5 +199,27 @@ void Sound::Drop(void)
 void Sound::PlayAll(void)
 {
 	adevice->playAll();
+}
+
+
+void Sound::LoadSound(string soundfile){
+
+
+
+    menuM = agEngine::SoundData::LoadAudio(soundfile.c_str(), false);
+
+sounds.push_back(menuM);
+
+  musicSource = adevice->createASource(NULL);
+//  channel1 = adevice->createASource(NULL);
+//  channel2 = adevice->createASource(NULL);
+
+  musicSource->setVolume(0.3f);
+  musicSource->setAttenuation(0.0f);
+  musicSource->setLoop(false);
+  musicSource->setPosition(0.0f, 0.0f, 0.0f);
+  musicSource->setRelative(true);
+
+
 }
 #endif

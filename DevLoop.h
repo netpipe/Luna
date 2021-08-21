@@ -1,7 +1,7 @@
 #ifndef NDEBUG // if debug build then do this one
 
 //#include "Luna.h"
-
+#include "config.h"
 //todo fix GUI button render needs its own receiver
 //todo fix GUI instances into vector
 
@@ -22,12 +22,14 @@
 
 // Declare a structure to hold some context for the event receiver so that it
 // has it available inside its OnEvent() method.
-//struct SAppContext
-//{
-//	IrrlichtDevice *device;
-//	CGUIEditBoxIRB * codeEditor;
-//	IGUIContextMenu * menu;
-//};
+#ifdef CODEEDITOR
+struct SAppContext
+{
+	IrrlichtDevice *device;
+	CGUIEditBoxIRB * codeEditor;
+	IGUIContextMenu * menu;
+};
+#endif
 //
 //class MyEventReceiver : public IEventReceiver
 //{
@@ -234,24 +236,25 @@
 //		rect<s32>(100 , 100 , 800 , 800 ),
 //		false, // modal?
 //		L"Test window");
-//
-//
-//	guienv->createSkin(EGST_WINDOWS_METALLIC);
-//	IGUISkin*  skin = guienv->getSkin();
-//	skin->setColor(EGDC_HIGH_LIGHT ,video::SColor(192,222,237,243));
-//	skin->setColor(EGDC_BUTTON_TEXT  ,video::SColor(255,30,30,30));
-//	skin->setColor(EGDC_HIGH_LIGHT_TEXT ,video::SColor(255,30,30,30));
-//	skin->setColor(EGDC_3D_DARK_SHADOW  ,video::SColor(255,56,56,56));
-//	skin->setColor(EGDC_3D_SHADOW  ,video::SColor(255,85,85,85));
-//	skin->setColor(EGDC_3D_FACE  ,video::SColor(255,170,170,170));
-//	IGUIFont*  font = guienv->getFont("media/editor/fonts/arial10.xml");
-//	if (font)
-//      skin->setFont(font);
-
-//	windows->setVisible(true);
-     // #define CODEEDITOR
 
 #ifdef CODEEDITOR
+
+
+	guienv->createSkin(EGST_WINDOWS_METALLIC);
+	IGUISkin*  skin = guienv->getSkin();
+	skin->setColor(EGDC_HIGH_LIGHT ,video::SColor(192,222,237,243));
+	skin->setColor(EGDC_BUTTON_TEXT  ,video::SColor(255,30,30,30));
+	skin->setColor(EGDC_HIGH_LIGHT_TEXT ,video::SColor(255,30,30,30));
+	skin->setColor(EGDC_3D_DARK_SHADOW  ,video::SColor(255,56,56,56));
+	skin->setColor(EGDC_3D_SHADOW  ,video::SColor(255,85,85,85));
+	skin->setColor(EGDC_3D_FACE  ,video::SColor(255,170,170,170));
+	IGUIFont*  font = guienv->getFont("media/editor/fonts/arial10.xml");
+	if (font)
+      skin->setFont(font);
+
+	windows->setVisible(true);
+
+
 	device->setWindowCaption(L"Code editor example, using IRRlicht 1.7.2");
 
 	// Create the menus for the example with it default language (English)
@@ -331,7 +334,7 @@
 	context.menu = menu;
 
 	// Then create the event receiver, giving it that context structure.
-	MyEventReceiver receiver(context);
+//	MyEventReceiver receiver(context);
 
 	// And tell the device to use our custom event receiver.
 //	device->setEventReceiver(&receiver);
@@ -346,6 +349,17 @@
 //		rect<s32>(1 , 1 ,222 , 222 ),
 //		false, // modal?
 //		L"mhm");
+
+			Python::bCodeEditor=0;
+			windows->setVisible(true);
+			codeEditor->setEnabled(true);
+			codeEditor->setVisible(true);
+			menu->setVisible(true);
+			menu->setEnabled(true);
+			windows->setVisible(true);
+			//device->setEventReceiver(&receiver);
+			device->getCursorControl()->setVisible(true);
+			    device->setResizable(true);
 #endif
 
 device->getCursorControl()->setVisible(true);

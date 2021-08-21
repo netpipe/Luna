@@ -153,6 +153,7 @@ class Luna
 		IGUIListBox*	listbox;
 	};
 
+		IGUIWindow* windows;
 	private:
 
 	protected:
