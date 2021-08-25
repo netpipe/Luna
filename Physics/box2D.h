@@ -19,7 +19,7 @@ class cbox2d
 box2d();
 ~box2d();
 public:
-void init();
+void init(IrrlichtDevice *device);
 void box2dMain();
 
 IrrlichtDevice *device;
@@ -33,7 +33,6 @@ b2Vec2 position;
 	float32 timeStep ;
 	int32 velocityIterations ;
 	int32 positionIterations ;
-
 	// Define the gravity vector.
 	b2Vec2 gravity(0.0f, 40.0f);
 
@@ -46,6 +45,7 @@ b2Vec2 position;
 	gui::IGUIFont* font2;
 
 }
+
 /*
 That's all. I hope it was not too difficult.
 **/

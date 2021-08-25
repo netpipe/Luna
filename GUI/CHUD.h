@@ -34,7 +34,8 @@ public:
     core::array<core::stringw > texts;
     core::array<core::rect<s32> > imageRects;
     core::array<video::ITexture*> images;
-#ifdef FT2
+
+    #ifdef FT2
     CGUITTFont *font2;
     CGUITTFace face;
     #endif

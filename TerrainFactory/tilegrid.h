@@ -6,6 +6,10 @@
 #include <vector>
 
 
+// TileGrid - Designed by Clay and coded by Aron for a terrain system that loads terrain based on a startrek holodeck kinda approach
+// surprisingly it looks harder than i ever thought
+
+
 template <class T>
 class tilegrid
 {

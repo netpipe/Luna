@@ -166,6 +166,7 @@
     CEffectPostProc* ppBlurDOF ;
     CEffectPostProc* ppBlur ;
     CEffectPostProc* ppMine;
+    CEffectPostProc* ppInvert;
 #endif
 
 #ifdef FT2
@@ -345,9 +346,9 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
 #endif
 //    scene::IAnimatedMesh *mesh = (IAnimatedMesh*) smgr->getMesh("media/player/player.x");
 //	scene::IAnimatedMeshSceneNode *skelNode = (IAnimatedMeshSceneNode*) smgr->addAnimatedMeshSceneNode(mesh);
-	//cSkeleton skeleton; // moved externally
+//cSkeleton skeleton; // moved externally
 //	skeleton.Initialize(skelNode, 8);
-	//core::vector3df pos = skeleton.getSkeletonSceneNode()->getPosition();
+//core::vector3df pos = skeleton.getSkeletonSceneNode()->getPosition();
  //   skelNode->addShadowVolumeSceneNode();
 //smgr->setShadowColor(video::SColor(150,0,0,0));
 //smgr->addLightSceneNode(0, core::vector3df(0,0,0),video::SColorf(1.0f, 0.6f, 0.7f, 1.0f), 600.0f);
@@ -364,12 +365,12 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
 #define DX_A_SIMPLER_SHADER "sampler2D s;float v0;float4 main(float2 t:TEXCOORD0):COLOR{return tex2D(s,t)+v0;}"
 
 	//PostProcessing
-        IPostProc* ppRenderer = new CRendererPostProc( smgr, dimension2du( 1024, 512 ),
+    IPostProc* ppRenderer = new CRendererPostProc( smgr, dimension2du( 1024, 512 ),
                                                     true, true, SColor( 255u, 100u, 101u, 140u ) );
-        ppBlurDOF   = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), PP_BLURDOF );
-         ppBlur          = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), PP_BLUR, 0.00081f );
-//	CEffectPostProc* ppInvert = new CEffectPostProc( ppRenderer, dimension2di( 1024, 512 ), PP_INVERT );
-//	CEffectPostProc* ppBlur = new CEffectPostProc( ppInvert, dimension2di( 1024, 512 ), PP_BLUR, 0.01f );
+    ppBlurDOF   = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), PP_BLURDOF );
+    ppBlur          = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), PP_BLUR, 0.00081f );
+	CEffectPostProc* ppInvert = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), PP_INVERT );
+	CEffectPostProc* ppBlur = new CEffectPostProc( ppInvert, dimension2du( 1024, 512 ), PP_BLUR, 0.01f );
 	ppMine = new CEffectPostProc( ppRenderer, dimension2du( 1024, 512 ), GL_OLDMONITOR, DX_OLDMONITOR, EPST_PS_1_2, EPST_PS_2_0, EMT_SOLID, PPF_FROMCODE, 1.0f );
 
     ppBlur->setQuality( PPQ_GOOD );
@@ -381,7 +382,6 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
 #endif
 
 //	skin = guienv->getSkin();
-
 }
 
 #include "PyScene.h"

@@ -1,3 +1,4 @@
+#ifdef forest
 #include "Forest.h"
 
 
@@ -151,3 +152,4 @@ const irr::core::vector3df Forest::makeRandomPos(const E_TREE_TYPE& type) const
 
 	return pos;
 }
+#endif

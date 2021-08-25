@@ -87,7 +87,7 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
 
 //	if (type){
     bDecals=1; // should fix this to be inside the defines
-#ifdef DECALS2
+#ifdef DECALS26
 
   if(bDecals){
 		#ifdef PHYSICS
@@ -137,7 +137,8 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
          }
 }
     break;
-                 #endif
+
+ #endif
 #endif
 
 //    #ifdef DECALS
@@ -148,7 +149,7 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
 //    #endif
 
 
-    #ifdef DECALS2
+    #ifdef DECALS23
     	break;
 	case 1:
     bDecals=2;
@@ -569,6 +570,7 @@ PyObject * Python::PyIrr_Reset(PyObject * self,PyObject * args){
     //shutdown/restart python and load a noscript loaded screen.
 return Py_BuildValue("0");
 }
+
 PyObject * Python::PyIrr_setRotation(PyObject * self,PyObject * args){
     long node_id;
     float x,y,z;
@@ -775,9 +777,9 @@ PyObject * Python::PyIrr_ExportScene(PyObject * self,PyObject * args){
 PyObject * Python::PyIrr_LoadLevel(PyObject * self,PyObject * args){
 
 #ifdef TERRAIN
-#ifdef PHYSICS
-tr.setIdentity();
-#endif
+    #ifdef PHYSICS
+        tr.setIdentity();
+    #endif
 #endif
 
     int param,state,ammount;
@@ -901,6 +903,7 @@ PyObject * Python::PyIrr_getScreen(PyObject * self,PyObject * args) {
 //irr::core::vector2df screenSize(driver.getViewPort().getWidth(), driver.getViewPort().getHeight());
 
 }
+
 /*
 int setvideo (){// graphics combo
     gui::IGUIComboBox* box = guienv->addComboBox(

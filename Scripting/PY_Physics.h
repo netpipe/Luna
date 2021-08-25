@@ -21,8 +21,17 @@ PyMethodDef irr_Physics[] = {
     {"addPlayer",Python::PyIrr_addPlayer,METH_VARARGS,"PyIrr_addPlayer"},
     {"bullet",Python::PyIrr_Bullet,METH_VARARGS,"PyIrr_Bullet"},
     {"VehicleParams",Python::PyIrr_VehicleParams,METH_VARARGS,"VehicleParams"},
+    {"b2d",Python::PyIrr_b2Dphysics,METH_VARARGS,"box2d"},
 	{NULL,NULL,0,NULL}
 	};
+
+
+PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
+
+
+
+}
+
 
 PyObject * Python::PyIrr_recast(PyObject * self,PyObject * args){
 //io::IFileSystem* fs = device->getFileSystem();

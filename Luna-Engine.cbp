@@ -9,7 +9,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Linux Debug 2D">
-				<Option output="./GAME/mLuna" prefix_auto="0" extension_auto="0" />
+				<Option output="./GAME/mLuna2d" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".d2dmobjs" />
 				<Option type="1" />
@@ -25,6 +25,8 @@
 					<Add option="-DFPS" />
 					<Add option="-DMINIMAL2" />
 					<Add option="-DCODEEDITOR" />
+					<Add directory="../Box2D/Box2D/Box2D" />
+					<Add directory="../Box2D/Box2D/" />
 				</Compiler>
 				<Linker>
 					<Add library="GL" />
@@ -36,9 +38,10 @@
 					<Add library="Irrlicht" />
 					<Add library="SDL_sound" />
 					<Add library="ogg" />
-					<Add library="openal" />
 					<Add library="vorbis" />
 					<Add library="vorbisfile" />
+					<Add library="Box2D" />
+					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
 				</Linker>
 			</Target>
 			<Target title="Linux Debug MINIMAL">
@@ -1306,6 +1309,18 @@
 		<Unit filename="Net/irrNetClient.h" />
 		<Unit filename="Net/irrNetServer.cpp" />
 		<Unit filename="Net/irrNetServer.h" />
+		<Unit filename="Physics/Box2D_Lite/Arbiter.cpp" />
+		<Unit filename="Physics/Box2D_Lite/Arbiter.h" />
+		<Unit filename="Physics/Box2D_Lite/Body.cpp" />
+		<Unit filename="Physics/Box2D_Lite/Body.h" />
+		<Unit filename="Physics/Box2D_Lite/Collide.cpp" />
+		<Unit filename="Physics/Box2D_Lite/Joint.cpp" />
+		<Unit filename="Physics/Box2D_Lite/Joint.h" />
+		<Unit filename="Physics/Box2D_Lite/MathUtils.h" />
+		<Unit filename="Physics/Box2D_Lite/World.cpp" />
+		<Unit filename="Physics/Box2D_Lite/World.h" />
+		<Unit filename="Physics/Box2D_Lite/glut.h" />
+		<Unit filename="Physics/Box2D_Lite/main.cpp" />
 		<Unit filename="Physics/Collision.cpp" />
 		<Unit filename="Physics/Collision.hpp" />
 		<Unit filename="Physics/Physics.cpp" />
@@ -1382,6 +1397,8 @@
 		<Unit filename="Scene/Scene.h" />
 		<Unit filename="Scene/ShaderFactory.cpp" />
 		<Unit filename="Scene/ShaderFactory.h" />
+		<Unit filename="Scene/WhirlSceneNode.cpp" />
+		<Unit filename="Scene/WhirlSceneNode.h" />
 		<Unit filename="Scene/boids/BoidSceneNode.cpp" />
 		<Unit filename="Scene/boids/BoidSceneNode.h" />
 		<Unit filename="Scene/boids/Flock.cpp" />
@@ -1444,6 +1461,8 @@
 		<Unit filename="TerrainFactory/FWGrass/GrassLoader.h" />
 		<Unit filename="TerrainFactory/FWGrass/gen/CGrassGenerator.cpp" />
 		<Unit filename="TerrainFactory/FWGrass/gen/CGrassGenerator.h" />
+		<Unit filename="TerrainFactory/Forest.cpp" />
+		<Unit filename="TerrainFactory/Forest.h" />
 		<Unit filename="TerrainFactory/ProceduralTrees/CBillboardGroupSceneNode.cpp" />
 		<Unit filename="TerrainFactory/ProceduralTrees/CBillboardGroupSceneNode.h" />
 		<Unit filename="TerrainFactory/ProceduralTrees/CTreeGenerator.cpp" />
@@ -1465,8 +1484,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="TerrainFactory/open-simplex-noise.h" />
+		<Unit filename="TerrainFactory/paulo.cpp" />
 		<Unit filename="TerrainFactory/realCloud/CloudSceneNode.cpp" />
 		<Unit filename="TerrainFactory/realCloud/CloudSceneNode.h" />
+		<Unit filename="TerrainFactory/tilegrid.h" />
 		<Unit filename="TerrainFactory/water/RealisticWater.cpp" />
 		<Unit filename="TerrainFactory/water/RealisticWater.h" />
 		<Unit filename="TidBits.cpp" />

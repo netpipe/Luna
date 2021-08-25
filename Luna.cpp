@@ -82,11 +82,8 @@ using namespace gui;
 		#include "./Input/SDLMixer.h"
 #endif
 
-//#define PostProcess
-
 bool connected,doit,login=0;
 // vector3df tmpvect;
-
 
 //#define PYTHON
 //#include <boost/python.hpp>   #not used just for ideas maybe
@@ -252,7 +249,7 @@ int Luna::shutdown(){
 	#endif
 
 	#ifdef COMPASS
-	 delete Compass1;
+//	 delete Compass1;
 	#endif
 
 	#ifdef FLAG     // should be the flagmanager
@@ -559,9 +556,9 @@ void Luna::main_loop(){ //devloop actually
 		//device->sleep(5);
 
         #ifdef PostProcess
-        if (Python::bPProcess ==1){
-			ppBlurDOF->render( NULL );
-            ppBlur->render( NULL ); }
+       // if (Python::bPProcess ==1){
+		//	ppBlurDOF->render( NULL );
+       //     ppBlur->render( NULL ); }
         #endif
 
 	//       rt->render();

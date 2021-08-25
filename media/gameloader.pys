@@ -11,7 +11,6 @@ import os
 loaderStatus=1
 locBase="../media/"
 
-
 #scene.using('../media/frogger.pys',"1");  # load manually for now if needed.
 #scene.using('../media/PirateSlotMachine.pys',"1");  # load manually for now if needed.
 

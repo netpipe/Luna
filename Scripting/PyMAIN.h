@@ -92,6 +92,10 @@ namespace Python {
     #endif
 
 
+    #ifdef BOX2D
+
+  //  #include "../Physics/box2D.h"
+    #endif
 
 
     //todo bugfix need a way to get set the string in either luna.h or here
@@ -131,7 +135,7 @@ namespace Python {
     PyObject * PyIrr_WayPoint(PyObject * self,PyObject * args);
     PyObject * PyIrr_exec(PyObject * self,PyObject * args);
 
-    //Physics
+    ///Physics
     PyObject * PyIrr_Bullet(PyObject * self,PyObject * args); // try to seperate
     PyObject * PyIrr_RagMan(PyObject * self,PyObject * args);
     PyObject * PyIrr_LoadTrack(PyObject * self,PyObject * args);
@@ -143,6 +147,7 @@ namespace Python {
     PyObject * PyIrr_OpenSteer(PyObject * self,PyObject * args);
     PyObject * PyIrr_VehicleParams(PyObject * self,PyObject * args);
     PyObject * PyIrr_addCar(PyObject * self,PyObject * args);
+    PyObject * PyIrr_b2Dphysics(PyObject * self,PyObject * args);
 
     PyObject * PyIrr_MeshManipulator(PyObject * self,PyObject * args);
 
@@ -392,9 +397,11 @@ void Python::preEnd(){                                                 //used to
 
         #ifdef PostProcess
         if ( bPProcess ){
-            ppBlurDOF->render( NULL );
-            ppBlur->render( NULL );
+          //  ppBlurDOF->render( NULL );
+          //  ppBlur->render( NULL );
             ppMine->render( NULL );
+        //     ppDOF->render( NULL );
+      //      ppInvert->render( NULL );
         }
         #endif
 

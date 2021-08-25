@@ -1,5 +1,5 @@
 #include "irrlicht.h"
-
+#ifdef pauloterrain
 #pragma comment(lib, "D:\\irrlicht-1.4.2\\lib\\Win32-visualstudio\\Irrlicht.lib")
 
 #include <math.h>
@@ -478,3 +478,4 @@ int main()
 	delete ct;
 }
 
+#endif

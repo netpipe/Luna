@@ -79,9 +79,9 @@ void cbox2d::box2dMain(){
 			using a color or an alpha channel). Since we slightly scale
 			the image we use the prepared filter mode.
 			*/
+
 			driver->enableMaterial2D();
-			driver->draw2DImage(images, core::rect<s32>(10,10,108,48),
-				core::rect<s32>(354,87,442,118));
+			driver->draw2DImage(images, core::rect<s32>(10,10,108,48),core::rect<s32>(354,87,442,118));
 			driver->enableMaterial2D(false);
 
 			/*
@@ -105,7 +105,7 @@ void cbox2d::box2dMain(){
 //
 //}
 
-int cbox2d::init()
+int cbox2d::init(IrrlichtDevice *device)
 {
 	driver = device->getVideoDriver();
 

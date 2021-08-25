@@ -2,6 +2,8 @@
 #define _Sound_HPP_
 #include "../../config.h"
 #ifdef AgAudio
+#include <string.h>
+
 //#include "../../Luna.h"
 #include "audio.h"
 
@@ -45,14 +47,14 @@ class Sound
 //	agEngine::SoundData *clearM;
 //	agEngine::SoundData *footS;
 
-//	std::vector sounds<agEngine::AudioSource>;
+	std::vector <agEngine::AudioSource> *sounds;
 
 	agEngine::AudioSource *musicSource;
 	// Add more channels if you want
 //	agEngine::AudioSource *channel1;
 //	agEngine::AudioSource *channel2;
 
-
+    agEngine::SoundData *LoadSound(std::string soundfile);
 
     static Sound *Instance();
 

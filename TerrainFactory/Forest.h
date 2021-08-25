@@ -1,6 +1,6 @@
 #ifndef FOREST_H_
 #define FOREST_H_
-
+#ifdef forest
 #include <irrlicht.h>
 
 enum E_TREE_TYPE
@@ -61,3 +61,4 @@ private:
 };
 
 #endif /* FOREST_H_ */
+#endif

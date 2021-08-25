@@ -37,7 +37,7 @@ int Sound::Create(void)
     adevice = agEngine::createDevice(false);
 
  // menuM = agEngine::SoundData::LoadAudio(std::string("../media/IrrlichtTheme.ogg"), false);
-    menuM = agEngine::SoundData::LoadAudio(std::string("../media/bling.ogg"), false);
+    menuM = agEngine::SoundData::LoadAudio(std::string("../media/robocrep.ogg"), false);
 //  stage1M = agEngine::SoundData::LoadAudio(std::string("media/Sounds/cell_stage01.ogg"), false);
 //  stage2M = agEngine::SoundData::LoadAudio(std::string("media/Sounds/cell_stage02.ogg"), false);
 //  stage3M = agEngine::SoundData::LoadAudio(std::string("media/Sounds/cell_stage03.ogg"), false);
@@ -81,38 +81,10 @@ void Sound::PlayBackgroundMusic(int music)
 //		musicSource->attachSound(stage1M);
 //		musicSource->play();
 //    } break;
-//    case MUSIC_STAGE2:
-//    {
-//		musicSource->stop();
-//		musicSource->attachSound(stage2M);
-//		musicSource->play();
-//    } break;
-//    case MUSIC_STAGE3:
-//    {
-//		musicSource->stop();
-//		musicSource->attachSound(stage3M);
-//		musicSource->play();
-//    } break;
-//        case MUSIC_STAGE4:
-//    {
-//		musicSource->stop();
-//		musicSource->attachSound(stage4M);
-//		musicSource->play();
-//    } break;
-//    case MUSIC_CLEAR:
-//    {
-//		musicSource->stop();
-//		musicSource->attachSound(clearM);
-//		musicSource->play();
-//    } break;
-//    case MUSIC_DEAD:
-//    {
-//		musicSource->stop();
-//		musicSource->attachSound(deadM);
-//		musicSource->play();
-//    } break;
+
 //  }
 }
+
 void Sound::Drop(void)
 {
 //	deadS->drop();
@@ -130,8 +102,8 @@ void Sound::Drop(void)
 //	channel2->drop();
 //
 //	adevice->drop();
-//}
-//
+}
+
 //void Sound::PlayFootStepSound(bool play){
 //    if ( play ){
 //	// Fix Me! (put whatever the foot sound is =/
@@ -153,7 +125,7 @@ void Sound::Drop(void)
 //		channel2->play();
 //	}
 //    }
-}
+//}
 
 //void Sound::UpdateListener(vector3df position, vector3df rotation)
 //{
@@ -173,6 +145,25 @@ void Sound::Drop(void)
 ////  Output::Instance()->w("\n%f %f %f\n%f %f %f\n\n", pos[0], pos[1], pos[2], vel[0], vel[1], vel[2]);
 //}
 
+
+
+void Sound::PlayAll(void)
+{
+	adevice->playAll();
+}
+
+
+agEngine::SoundData *Sound::LoadSound(std::string soundfile){
+
+    menuM = agEngine::SoundData::LoadAudio(soundfile.c_str(), false);
+  //  sounds.push_back(agEngine::SoundData::LoadAudio(soundfile.c_str(), false));
+
+  //  sounds->push_back( menuM );
+
+  return menuM;
+}
+
+
 //void Sound::PlayFootStepSound(bool play){
 //    if ( play ){
 //	// Fix Me! (put whatever the foot sound is =/
@@ -194,32 +185,5 @@ void Sound::Drop(void)
 //		channel2->play();
 //	}
 //    }
-//}
-
-void Sound::PlayAll(void)
-{
-	adevice->playAll();
-}
-
-//
-//void Sound::LoadSound(string soundfile){
-//
-//
-//
-//    menuM = agEngine::SoundData::LoadAudio(soundfile.c_str(), false);
-//
-//sounds.push_back(menuM);
-//
-//  musicSource = adevice->createASource(NULL);
-////  channel1 = adevice->createASource(NULL);
-////  channel2 = adevice->createASource(NULL);
-//
-//  musicSource->setVolume(0.3f);
-//  musicSource->setAttenuation(0.0f);
-//  musicSource->setLoop(false);
-//  musicSource->setPosition(0.0f, 0.0f, 0.0f);
-//  musicSource->setRelative(true);
-//
-//
 //}
 #endif
