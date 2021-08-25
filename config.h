@@ -29,6 +29,8 @@
 //#define SDLSound //- seems to play and freeze needs threading
 
 
+
+
   //  #define IRRCD   // irrlicht Collision Detection
     #define EVENTS
     #define FPS
@@ -140,6 +142,8 @@
         //#define SDLMixer // wip - might not be compatable with the engine
         //#define OPENAL2 // working with emscripten
         //#define SDLSound //- seems to play and freeze needs threading
+          #define SQLITE
+
         #define AgAudio
             #ifdef AgAudio
                 #define _DEBUG_MODE_

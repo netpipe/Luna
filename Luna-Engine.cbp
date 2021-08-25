@@ -40,7 +40,7 @@
 					<Add library="ogg" />
 					<Add library="vorbis" />
 					<Add library="vorbisfile" />
-					<Add library="Box2D" />
+					<Add library="dl" />
 					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
 				</Linker>
 			</Target>
@@ -1300,6 +1300,11 @@
 		<Unit filename="Input/inputManager.cpp" />
 		<Unit filename="Input/inputManager.h" />
 		<Unit filename="Input/openal_playback.h" />
+		<Unit filename="Input/sqlite/sqlite3.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/sqlite/sqlite3.h" />
+		<Unit filename="Input/sqlite/sqlite3ext.h" />
 		<Unit filename="Luna.cpp" />
 		<Unit filename="Luna.h" />
 		<Unit filename="LunaLobby.cpp" />

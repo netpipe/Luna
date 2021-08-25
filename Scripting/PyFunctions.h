@@ -152,8 +152,8 @@
 #endif // TREES
 
 #ifdef SQLITE
-//#include "../Input/SQL/sqlCon.h"
-    #include <sqlite3.h>
+    //#include "../Input/SQL/sqlCon.h"
+    #include "../Input/sqlite/sqlite3.h"
     sqlite3_stmt* stmt;
     char *zErrMsg;
     int rc;
