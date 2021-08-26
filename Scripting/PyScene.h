@@ -1,7 +1,7 @@
 #ifdef PYTHON
 
 #ifdef CSG
-#include "../Scene/IrrCSG/LunaCSG.h"
+    #include "../Scene/IrrCSG/LunaCSG.h"
 #endif
 
 ///SCENENODES and SCENESTUFF STUFF  -- included from pyfunctions

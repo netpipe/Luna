@@ -29,7 +29,15 @@ PyMethodDef irr_Physics[] = {
 PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
 
 //add and get physics positions for objects
+//	InitDemo(0);
 
+	char * path;
+	PyArg_ParseTuple(args,"s",&path);
+
+
+	SimulationLoop();
+
+	return Py_BuildValue("");
 }
 
 

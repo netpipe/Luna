@@ -501,7 +501,8 @@ char* demoStrings[] = {
 	"Demo 6: A Teeter",
 	"Demo 7: A Suspension Bridge",
 	"Demo 8: Dominos",
-	"Demo 9: Multi-pendulum"};
+	"Demo 9: Multi-pendulum"
+	};
 
 void InitDemo(int index)
 {

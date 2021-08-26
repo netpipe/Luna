@@ -19,12 +19,8 @@
 				<Option projectResourceIncludeDirsRelation="1" />
 				<Compiler>
 					<Add option="-fpermissive" />
-					<Add option="-DPYTHON" />
 					<Add option="-DMINIMAL" />
-					<Add option="-DEVENTS" />
-					<Add option="-DFPS" />
 					<Add option="-DMINIMAL2" />
-					<Add option="-DCODEEDITOR" />
 					<Add directory="../Box2D/Box2D/Box2D" />
 					<Add directory="../Box2D/Box2D/" />
 				</Compiler>

@@ -18,6 +18,7 @@
 #include "../Scene/PostProcessing/CLensFlarePostProc.h"
 #include "../Scene/PostProcessing/CWaterPostProc.h"
 #endif
+
 #ifdef EXTRAS
 #include "../Scene/CBeamSceneNode.h"
 #include "../Scene/BoltSceneNode.h"
@@ -229,11 +230,16 @@
   //  Vehicle *m_cVehicle2;
 
  //   static vector<Vehicle*> m_cVehicle;
-#ifdef SKELETON
+    #ifdef SKELETON
     cSkeleton skeleton;
     #endif
 //        cAudio::IAudioManager* managerID;
 //        cAudio::IAudioSource* mysound;
+
+
+    #ifdef BOX2DLITE
+        #include "../Physics/box2D.h"
+    #endif
 
 #ifdef PYTHON
 #include "PyMAIN.h"

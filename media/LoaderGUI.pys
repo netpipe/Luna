@@ -5,6 +5,7 @@ if initloader:
     import image
     import time
     import os
+    import physics
 
     id=100
     def newId():
@@ -52,7 +53,6 @@ if initloader:
 
 #######Loop
 
-
 if input.getKey('KEY_UP'):
     currentButton-=1
 elif input.getKey('KEY_DOWN'):
@@ -66,11 +66,11 @@ currentButton %= len(pysList)
 
 for i in range(len(pysList)):
     scene.drawtext(pysList[i],font, 32,46+i*47,128,160+i*47)
-  #  if i == currentButton:
-   #     image.set_texture(buttons[currentButton],colors[1])
-  #  else:
-   #     image.set_texture(buttons[i],colors[0])
-scene.drawtext(str(currentButton), font, 0,0,128,128)
+   #if i == currentButton:
+   #image.set_texture(buttons[currentButton],colors[1])
+   #else:
+   #image.set_texture(buttons[i],colors[0])
+    scene.drawtext(str(currentButton), font, 0,0,128,128)
 
 if input.getKey('KEY_SPACE'):
     loaderResult=pysList[currentButton]

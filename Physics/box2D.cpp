@@ -1,4 +1,91 @@
-#ifdef BOX2D
+#ifdef BOX2DLITE
+#include <string.h>
+#include "glut.h"
+#include <stdio.h>
+
+#include "World.h"
+#include "Body.h"
+#include "Joint.h"
+
+namespace
+{
+	Body bodies[200];
+	Joint joints[100];
+
+	Body* bomb = NULL;
+
+	float timeStep = 1.0f / 60.0f;
+	int iterations = 10;
+	Vec2 gravity(0.0f, -10.0f);
+
+	int numBodies = 0;
+	int numJoints = 0;
+
+	int demoIndex = 0;
+
+	World world(gravity, iterations);
+}
+
+void Demo1(Body* b, Joint* j)
+{
+	b->Set(Vec2(100.0f, 20.0f), FLT_MAX);
+	b->position.Set(0.0f, -0.5f * b->width.y);
+	world.Add(b);
+	++b; ++numBodies;
+
+	b->Set(Vec2(1.0f, 1.0f), 200.0f);
+	b->position.Set(0.0f, 4.0f);
+	world.Add(b);
+	++b; ++numBodies;
+}
+
+// A simple pendulum
+void Demo2(Body* b, Joint* j)
+{
+	Body* b1 = b + 0;
+	b1->Set(Vec2(100.0f, 20.0f), FLT_MAX);
+	b1->friction = 0.2f;
+	b1->position.Set(0.0f, -0.5f * b1->width.y);
+	b1->rotation = 0.0f;
+	world.Add(b1);
+
+	Body* b2 = b + 1;
+	b2->Set(Vec2(1.0f, 1.0f), 100.0f);
+	b2->friction = 0.2f;
+	b2->position.Set(9.0f, 11.0f);
+	b2->rotation = 0.0f;
+	world.Add(b2);
+
+	numBodies += 2;
+
+	j->Set(b1, b2, Vec2(0.0f, 11.0f));
+	world.Add(j);
+
+	numJoints += 1;
+}
+
+void InitDemo(int index)
+{
+	world.Clear();
+	numBodies = 0;
+	numJoints = 0;
+	bomb = NULL;
+
+
+}
+
+void SimulationLoop()
+{
+
+
+    world.Step(timeStep);
+  //  printf("");
+}
+
+
+#endif
+
+#ifdef BOX2D2
 #include "box2D.h"
 
 //cbox2d test;
@@ -145,7 +232,7 @@ int cbox2d::init(IrrlichtDevice *device)
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
 	bodyDef.position.Set(0.0f, 4.0f);
-	 body = world.CreateBody(&bodyDef);
+    body = world.CreateBody(&bodyDef);
 
 	// Define another box shape for our dynamic body.
 	b2PolygonShape dynamicBox;

@@ -1,3 +1,4 @@
+#include "../../config.h"
 #ifdef BOX2DLITE
 #ifndef __glut_h__
 #define __glut_h__

@@ -18,15 +18,16 @@ namespace Python {
 
     #ifdef CHOPPER
     ChopperControl *chopperControl;
-#endif
+    #endif
+
     Luna *luna;
 
   //  cAudio::IAudioManager* manager;
   //  cAudio::IAudioSource* mysound;
-#ifdef SOUND
-         cAudio::IAudioManager* managerID = cAudio::createAudioManager(true);  // broken has to be done from main
+    #ifdef SOUND
+        cAudio::IAudioManager* managerID = cAudio::createAudioManager(true);  // broken has to be done from main
         cAudio::IAudioSource* mysound;
-#endif
+    #endif
 
     ICameraSceneNode* camera;  //maybe put in vector for a cameraManager or do it in python
 
@@ -40,10 +41,10 @@ namespace Python {
 
 
     #ifdef PHYSICS
-    int VehicleParam(Vehicle *vehicle,int param,float state,float ammount,float y,float z);
-     Vehicle   *m_cVehicle;
-    btRigidBody *ha;
-  #endif
+        int VehicleParam(Vehicle *vehicle,int param,float state,float ammount,float y,float z);
+        Vehicle   *m_cVehicle;
+        btRigidBody *ha;
+    #endif
     bool CheckKeyState(int key);
 
 //IrrAssimp assimp(ISceneManager* );
@@ -92,10 +93,7 @@ namespace Python {
     #endif
 
 
-    #ifdef BOX2D
 
-  //  #include "../Physics/box2D.h"
-    #endif
 
 
     //todo bugfix need a way to get set the string in either luna.h or here
@@ -106,7 +104,6 @@ namespace Python {
     //Scene
     // would be sweet to have this done automatically somehow lol pita making 2 tables and a function
     PyObject * PyIrr_GetString(PyObject * self,PyObject * args);
-
     PyObject * PyIrr_addCamera(PyObject * self,PyObject * args);
     PyObject * PyIrr_LoadTexture(PyObject * self,PyObject * args);
     PyObject * PyIrr_SetTexture(PyObject * self,PyObject * args);
@@ -148,16 +145,11 @@ namespace Python {
     PyObject * PyIrr_VehicleParams(PyObject * self,PyObject * args);
     PyObject * PyIrr_addCar(PyObject * self,PyObject * args);
     PyObject * PyIrr_b2Dphysics(PyObject * self,PyObject * args);
-
     PyObject * PyIrr_MeshManipulator(PyObject * self,PyObject * args);
-
     PyObject * PyIrr_voxelLoad(PyObject * self,PyObject * args);
-
     PyObject * PyIrr_CSG(PyObject * self,PyObject * args);
-
     PyObject * PyIrr_FileArchive(PyObject * self,PyObject * args);
     PyObject * PyIrr_Animators(PyObject * self,PyObject * args);
-
 
     //GUI
     PyObject * PyIrr_addHUD(PyObject * self,PyObject * args);
@@ -172,9 +164,6 @@ namespace Python {
     PyObject * PyIrr_GUIBar(PyObject * self,PyObject * args);
     PyObject * PyIrr_sineGraph2d(PyObject * self,PyObject * args);
     PyObject * PyIrr_GUIslider(PyObject * self,PyObject * args);
-
-
-
 
     //Terrain
     PyObject * PyIrr_Trees(PyObject * self,PyObject * args);
@@ -216,8 +205,8 @@ namespace Python {
     PyObject * PyIrr_Flag2(PyObject * self,PyObject * args);
     PyObject * PyIrr_Flare2(PyObject * self,PyObject * args);
     PyObject * PyIrr_lensFlare(PyObject * self,PyObject * args);
-
     PyObject * PyIrr_SPARKA(PyObject * self,PyObject * args);
+
     //input
     PyObject * PyIrr_getKey(PyObject * self,PyObject * args);
     PyObject * PyIrr_wii(PyObject * self,PyObject * args);
@@ -230,6 +219,7 @@ namespace Python {
     PyObject * PyIrr_FluidSynth(PyObject * self,PyObject * args);
     PyObject * PyIrr_zistream(PyObject * self,PyObject * args);
     PyObject * PyIrr_zostream(PyObject * self,PyObject * args);
+
     //SOUND
     PyObject * PyIrr_SoundMan(PyObject * self,PyObject * args);
 
@@ -287,12 +277,10 @@ namespace Python {
     PyObject * PyIrr_iGetOWidth(PyObject * self,PyObject * args);
     PyObject * PyIrr_iGetHeight(PyObject * self,PyObject * args);
     PyObject * PyIrr_iGetWidth(PyObject * self,PyObject * args);
-
     PyObject * PyIrr_isetColor(PyObject * self,PyObject * args);
     PyObject * PyIrr_igetColor(PyObject * self,PyObject * args);
     PyObject * PyIrr_iTransparent(PyObject * self,PyObject * args);
     PyObject * PyIrr_iFilter(PyObject * self,PyObject * args);
-
 
     PyMODINIT_FUNC init_irr(void);
 
@@ -321,8 +309,10 @@ namespace Python {
 #ifdef IRRc
     Application *app;
 #endif
+
     bool flag1,flag2,bImage2d,bCompass,formationDemo,bAtmosphere,bWater,blensFlare,bBlindBoids=0;
     bool bOcclusion,bCar,bCarFollow,bSPARK,bDecals;
+
 #ifdef FORMATION
     WrapperClass::Formation * formation;
     f32 SpeedMultiplier;// = 1.1f;
@@ -529,11 +519,10 @@ void Python::render() {//active camera
 
         #ifdef PostProcess
         if ( bPProcess ){
-        ppMine->setParameters( min_( 1.0f, device->getTimer( )->getTime( ) * 0.0002f ) );
+            ppMine->setParameters( min_( 1.0f, device->getTimer( )->getTime( ) * 0.0002f ) );
 
-        f32 p = sinf( device->getTimer( )->getTime( ) * 0.0005f ) * 0.5f - 0.2f;
-        ppBlurDOF->setParameters( p * 100.0f + 80.0f, p * 100.0f + 110.0f, p * 100.0f + 160.0f, p * 100.0f + 240.0f, 0.01f );
-
+            f32 p = sinf( device->getTimer( )->getTime( ) * 0.0005f ) * 0.5f - 0.2f;
+            ppBlurDOF->setParameters( p * 100.0f + 80.0f, p * 100.0f + 110.0f, p * 100.0f + 160.0f, p * 100.0f + 240.0f, 0.01f );
         }
         #endif
 

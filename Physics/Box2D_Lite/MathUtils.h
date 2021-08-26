@@ -8,6 +8,7 @@
 * of this software for any purpose.
 * It is provided "as is" without express or implied warranty.
 */
+#include "../../config.h"
 #ifdef BOX2DLITE
 #ifndef MATHUTILS_H
 #define MATHUTILS_H
