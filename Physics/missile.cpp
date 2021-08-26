@@ -1,4 +1,5 @@
 //#include "stdafx.h"
+#include "../config.h"
 #ifdef PHYSICS
 #include <iostream>
 #include <map>

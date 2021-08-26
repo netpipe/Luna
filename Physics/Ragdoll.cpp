@@ -1,3 +1,4 @@
+#include "../config.h"
 #ifdef PHYSICS
 /*
 Bullet Continuous Collision Detection and Physics Library

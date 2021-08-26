@@ -1,6 +1,7 @@
 #ifndef _GRASS_LOADER_H_
 #define _GRASS_LOADER_H_
-
+#include "../../config.h"
+#ifdef VEGETATION
 #include <irrlicht.h>
 
 using namespace irr;
@@ -160,4 +161,5 @@ void loadGrass(const io::path &filename, scene::ISceneManager* smgr,
 
 }
 
+#endif
 #endif

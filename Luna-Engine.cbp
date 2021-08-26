@@ -51,10 +51,7 @@
 				<Option projectResourceIncludeDirsRelation="1" />
 				<Compiler>
 					<Add option="-fpermissive" />
-					<Add option="-DPYTHON" />
 					<Add option="-DMINIMAL" />
-					<Add option="-DEVENTS" />
-					<Add option="-DFPS" />
 				</Compiler>
 				<Linker>
 					<Add library="GL" />

@@ -107,15 +107,15 @@
     #define SGRAPH2D // 2d plot graph
     #define WIND
     #define SCENE
-   // #define PHYSICS
+  //  #define PHYSICS
     #define FPS
     #define PYTHON
     #define Image2D
     #define IRRCD
     #define OCCLUSION
-      #define WATER
-          //  #define ReflectiveWater
-          //  #define RealisticWater
+        #define WATER
+        //#define ReflectiveWater
+        //#define RealisticWater
         #define EXTRAS
         #define CHOPPER
         #define BOIDS
@@ -128,8 +128,8 @@
         #define SPRITES
       //#define SKELETON // needs to be updated
         #define PostProcess
-      //#define VEGETATION //grass,weeds, vines
-     // #define TREES //very cpu intensive does not work with emscripten yet.
+    //  #define VEGETATION //grass,weeds, vines
+      #define TREES //very cpu intensive does not work with emscripten yet.
         #define ATMOSPHERE  //  freezes when no video acceleration is used
                             //  or as a user without access to video rights is used
         #define BOX2DLITE

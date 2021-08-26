@@ -52,6 +52,7 @@ if initloader:
     initloader=0
 
 #######Loop
+#physics.b2d("")
 
 if input.getKey('KEY_UP'):
     currentButton-=1
