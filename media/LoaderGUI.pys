@@ -50,9 +50,16 @@ if initloader:
    #     image.set_texture(buttons[i],colors[0])
     print("objects added")
     initloader=0
+    box2dbody=physics.b2d(1,0,1)
 
 #######Loop
-#physics.b2d("")
+#print ( box2dbody )
+physics.b2d(box2dbody,1,1) #step
+physics.b2d(box2dbody,2,1)
+physics.b2d(box2dbody,3,1)
+#print("testew")
+
+#print (physics.b2d(box2dbody,4,1))
 
 if input.getKey('KEY_UP'):
     currentButton-=1
@@ -62,7 +69,7 @@ elif input.getKey('KEY_LEFT'):
     currentButton-=15
 elif input.getKey('KEY_RIGHT'):
     currentButton+=15
-irr.delay(200000)
+irr.delay(20000)
 currentButton %= len(pysList)
 
 for i in range(len(pysList)):
@@ -76,4 +83,5 @@ for i in range(len(pysList)):
 if input.getKey('KEY_SPACE'):
     loaderResult=pysList[currentButton]
     initloader=1
+
 

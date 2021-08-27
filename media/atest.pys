@@ -111,7 +111,7 @@ for i in hand1:
  image.idraw(i)
 for i in hand2:
  image.idraw(i)
-print('test')
+#print('test')
 
 cube_id = scene.add_cube(newId(),128,0,64,97, 0,0,0, 1,1,1/128)
 tex_id = image.load_texture("../media/crate.png")

@@ -388,6 +388,9 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
 #endif
 
 //	skin = guienv->getSkin();
+
+InitDemo(0);
+
 }
 
 #include "PyScene.h"
