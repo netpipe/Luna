@@ -57,8 +57,7 @@
 
     #else
 
- //#define PYTHON  // defined in the codeblocks project option defines for target management and testing builds
-
+ #define PYTHON  // defined in the codeblocks project option defines for target management and testing builds
  #define COMPRESS //needed for empython
 
 
@@ -71,7 +70,7 @@
 
 //for AgAudio
 
-//#define AgAudio // not working with emscripten
+#define AgAudio // not working with emscripten
 //#ifdef __EMSCRIPTEN__
 #ifdef AgAudio
   #define _DEBUG_MODE_

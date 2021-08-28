@@ -72,18 +72,19 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
 //                break;
 //            }
 
-    if( param==0 ){
+        if( param==0 ){
                 Body* b2 =new Body;
 //                b2->Set(Vec2(100.0f, 20.0f), FLT_MAX);
 //                b2->position.Set(0.0f, -0.5f * b2->width.y);
 //                world.Add(b2);
-//               //   ++b;
+//                //   ++b;
 //                ++numBodies;
               //  printf("case0\n");
 
               	b2->Set(Vec2(1.0f, 1.0f), 200.0f);
                 b2->position.Set(0.0f, 4.0f);
                 world.Add(b2);
+                b2->friction = 0.1f;
               //  ++b;
                  ++numBodies;
 
@@ -108,6 +109,22 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
               //  printf("case4\n");
             	return Py_BuildValue("f", b3->position.y);
             }
+
+     if( param==4 ){
+                b3=(Body*)bptr;
+                //	j->Set(b1, b2, Vec2(0.0f, 11.0f));
+                //	world.Add(j);
+                //	numJoints += 1;
+            	return Py_BuildValue("f", b3->position.y);
+        }
+
+       if( param==5 ){
+                b3=(Body*)bptr;
+                b3->rotation = 0.0f;
+
+            	return Py_BuildValue("f", b3->rotation);
+        }
+
 
 	return Py_BuildValue("");
 }
