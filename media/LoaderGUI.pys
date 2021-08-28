@@ -52,24 +52,46 @@ if initloader:
     initloader=0
     box2dbody=physics.b2d(1,0,1)
 
+    base="../media/Frogger/"
+
+    def addImage(loc,width,height):
+      return image.iadd(loc,0,0,width,height,0,0,width,height)
+
+    #frogStanding= image.load_texture(base+"frogStanding.png")
+    iaxe=addImage("../media/axe.jpg",500,500)
+#image.irotate(iaxe,i)
+
 #######Loop
 #print ( box2dbody )
 physics.b2d(box2dbody,1,1) #step
 physics.b2d(box2dbody,2,1)
 physics.b2d(box2dbody,3,1)
+#image.iposition(iaxe, physics.b2d(box2dbody,2,1),physics.b2d(box2dbody,3,1))
+image.idraw(iaxe)
+
 #print("testew")
+#scene.drawtext("cool bean tree","../media/fontlucida.png",5,250,235,320)
+
+
+#standingObj=[]
+#standingObj.append(scene.add_cube(newId(),8, 200*8,200,95.99, 0,0,0, 1,1,0.125))
+#image.set_texture(standingObj[0], frogStanding)
 
 #print (physics.b2d(box2dbody,4,1))
 
 if input.getKey('KEY_UP'):
     currentButton-=1
+    irr.delay(100000)
 elif input.getKey('KEY_DOWN'):
     currentButton+=1
+    irr.delay(100000)
 elif input.getKey('KEY_LEFT'):
     currentButton-=15
+    irr.delay(100000)
 elif input.getKey('KEY_RIGHT'):
     currentButton+=15
-irr.delay(20000)
+    irr.delay(100000)
+irr.delay(50000)
 currentButton %= len(pysList)
 
 for i in range(len(pysList)):

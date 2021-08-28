@@ -1,4 +1,6 @@
 /* Culling with Portals by Burt McCauley */
+#include "../../config.h"
+#ifdef  OCCLUSION
 
 #include "OcclusionCulling.h"
 
@@ -326,3 +328,5 @@ OcclusionCulling::~OcclusionCulling()
   }
  }
 }
+
+#endif

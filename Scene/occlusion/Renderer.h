@@ -1,6 +1,7 @@
 #ifndef BXWRAPPERH
 #define BXWRAPPERH
-
+#include "../../config.h"
+#ifdef  OCCLUSION
 #include "irrlicht.h"
 using namespace irr;
 using namespace core;
@@ -42,4 +43,5 @@ public:
  ~Renderer22();
 };
 
+#endif
 #endif

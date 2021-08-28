@@ -64,6 +64,7 @@
 				</Linker>
 			</Target>
 			<Target title="Linux Debug">
+				<Option platforms="Unix;Mac;" />
 				<Option output="./GAME/Luna" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".dobjs" />
@@ -76,6 +77,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Linux Release">
+				<Option platforms="Unix;Mac;" />
 				<Option output="./GAME/dLuna" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="./GAME/" />
 				<Option object_output=".robjs" />
@@ -93,6 +95,7 @@
 				</Linker>
 			</Target>
 			<Target title="windows MINIMAL">
+				<Option platforms="Windows;" />
 				<Option output="./GAME/mLuna" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".dmobjs" />
@@ -117,6 +120,7 @@
 				</Linker>
 			</Target>
 			<Target title="WinDebug">
+				<Option platforms="Windows;" />
 				<Option output="./GAME/Luna_win.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="./GAME/" />
 				<Option type="1" />
@@ -172,6 +176,7 @@
 				</Linker>
 			</Target>
 			<Target title="WinRelease">
+				<Option platforms="Windows;" />
 				<Option output="./GAME/Azadi.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="./GAME/" />
 				<Option type="1" />

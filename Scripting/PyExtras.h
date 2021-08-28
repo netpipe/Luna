@@ -161,7 +161,7 @@ PyObject * Python::PyIrr_beam(PyObject * self,PyObject * args){
 PyObject * Python::PyIrr_Occlusion(PyObject * self,PyObject * args) {//active camera
     int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
-#ifdef occlusion
+#ifdef OCCLUSION
     bOcclusion = 1;
     Renderer22 RenderMan(device, SColor(0, 10,10,10));
     // RenderMan.addSky("data/models/occlusion/gradient3.bmp");

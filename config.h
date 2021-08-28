@@ -1,7 +1,61 @@
-// #ifndef INCLUDES
- //#define INCLUDES
-//#define MINIMAL
-#ifndef MINIMAL
+#ifdef MINIMAL
+ // MINIMAL defines
+    #define EVENTS
+    #define FPS
+    #define CSG // constructive solid geometry
+    #define SGRAPH2D // 2d plot graph
+    #define WIND
+    #define SCENE
+  //  #define PHYSICS
+    #define FPS
+    #define PYTHON
+    #define Image2D
+    #define IRRCD
+    #define OCCLUSION
+        #define WATER
+        //#define ReflectiveWater
+        //#define RealisticWater
+        #define EXTRAS
+        #define CHOPPER
+        #define BOIDS
+        #define TERRAIN
+        #define FLAG
+      //#define FLAG2   //FMX
+        #define COMPASS
+        #define TESSELATE
+        #define SCALC
+        #define SPRITES
+      //#define SKELETON // needs to be updated
+        #define PostProcess
+    //  #define VEGETATION //grass,weeds, vines
+      #define TREES //very cpu intensive does not work with emscripten yet.
+        #define ATMOSPHERE  //  freezes when no video acceleration is used
+                            //  or as a user without access to video rights is used
+        #define RIBBONTRAIL
+        #define BOX2DLITE
+      //#define FLARE
+      //#define DECALS2 //replace needing physics to get working
+     // #define SQLITE
+
+    #ifdef MINIMAL2
+        //#define BOX2D // engine uses box2dlite already this is for testing
+        //#define SOUND
+        //#define SDLMixer // wip - might not be compatable with the engine
+        //#define OPENAL2 // working with emscripten
+        //#define SDLSound //- seems to play and freeze needs threading
+        //#define SQLITE
+
+        #define AgAudio
+            #ifdef AgAudio
+                #define _DEBUG_MODE_
+                #define _PLAY_SOUND_
+            #endif
+        //#define CODEEDITOR
+        //#define OPENAL2
+        #endif
+
+
+    #else
 
  //#define PYTHON  // defined in the codeblocks project option defines for target management and testing builds
 
@@ -86,6 +140,7 @@
 
 
   #define EXTRAS
+      #define RIBBONTRAIL
   //  #define DESTRUCTION //not working
   #define FORMATIONDEMO
   #define HUD
@@ -93,68 +148,11 @@
   #define CHOPPER
 
   #define SQLITE
-
   #define SCALC
   #define FT2
   #define SPRITES
 
   //#define PYTHON_MINIMALTEST
 
-#else // MINIMAL defines
-    #define EVENTS
-    #define FPS
-    #define CSG // constructive solid geometry
-    #define SGRAPH2D // 2d plot graph
-    #define WIND
-    #define SCENE
-  //  #define PHYSICS
-    #define FPS
-    #define PYTHON
-    #define Image2D
-    #define IRRCD
-    #define OCCLUSION
-        #define WATER
-        //#define ReflectiveWater
-        //#define RealisticWater
-        #define EXTRAS
-        #define CHOPPER
-        #define BOIDS
-        #define TERRAIN
-        #define FLAG
-      //#define FLAG2   //FMX
-        #define COMPASS
-        #define TESSELATE
-        #define SCALC
-        #define SPRITES
-      //#define SKELETON // needs to be updated
-        #define PostProcess
-    //  #define VEGETATION //grass,weeds, vines
-      #define TREES //very cpu intensive does not work with emscripten yet.
-        #define ATMOSPHERE  //  freezes when no video acceleration is used
-                            //  or as a user without access to video rights is used
-        #define BOX2DLITE
-      //#define FLARE
-      //#define DECALS2 //replace needing physics to get working
-     // #define SQLITE
-
-    #ifdef MINIMAL2
-        //#define BOX2D // engine uses box2dlite already this is for testing
-        //#define SOUND
-        //#define SDLMixer // wip - might not be compatable with the engine
-        //#define OPENAL2 // working with emscripten
-        //#define SDLSound //- seems to play and freeze needs threading
-        //#define SQLITE
-
-        #define AgAudio
-            #ifdef AgAudio
-                #define _DEBUG_MODE_
-                #define _PLAY_SOUND_
-            #endif
-        //#define CODEEDITOR
-        //#define OPENAL2
-        #endif
 #endif
 
-
-
- // #endif
