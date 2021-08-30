@@ -557,25 +557,35 @@ PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
 
 		case 6://getmouse1press state
 			{
-				printf("%i",luna->m_cInGameEvents.mouseButtons[0]);
-				//printf("%i",luna->m_cInGameEvents.lmouse);
+		//	printf("testinguuu\n");
+		if( luna->m_cInGameEvents.lmouse == true){
+			printf("foisfoij");
+			}
 
-				//return Py_BuildValue("i",luna->m_cInGameEvents.mouseButtons[LEFT_MOUSE_BUTTON]);
+			bool mbutton=luna->m_cInGameEvents.lmouse;
+			if ( mbutton ){
+			//	printf("%i",luna->m_cInGameEvents.mouseButtons[LEFT_MOUSE_BUTTON]);
+				printf("%i",luna->m_cInGameEvents.lmouse);
+				printf("testinguuu\n");
+                luna->m_cInGameEvents.lmouse=false;
+             }
+
+				return Py_BuildValue("b",mbutton);
 
 			}break;
 
 		case 7://getmouse2press state
 			{
-										printf("%i",luna->m_cInGameEvents.mouseButtons[1]);
-									//return Py_BuildValue("i",luna->m_cInGameEvents.mouseButtons[LEFT_MOUSE_BUTTON]);
+				printf("%i sfsdf\n",luna->m_cInGameEvents.mouseButtons[MIDDLE_MOUSE_BUTTON]);
+                return Py_BuildValue("b",luna->m_cInGameEvents.mouseButtons[MIDDLE_MOUSE_BUTTON]);
 			}break;
 
 		case 8://getmouse3press state
 			{
-				printf("%i",luna->m_cInGameEvents.mouseButtons[2]);
+				printf("%i sfsdf\n",luna->m_cInGameEvents.mouseButtons[RIGHT_MOUSE_BUTTON]);
 				//return Py_BuildValue("i",luna->m_cInGameEvents.mouseButtons[LEFT_MOUSE_BUTTON]);
 				//		case 9://getmousewheel state
-				return Py_BuildValue("i",luna->m_cInGameEvents.lmouse);
+				return Py_BuildValue("b",luna->m_cInGameEvents.mouseButtons[RIGHT_MOUSE_BUTTON]);
 			}break;
 
 	}

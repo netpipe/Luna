@@ -57,15 +57,18 @@ bool InGameEventReceiver::OnEvent ( const SEvent &event )
             {
 		case EMIE_LMOUSE_PRESSED_DOWN:
 				printf("mousebutton left clicked");
-			lmouse=true;
+                lmouse=true;
                 mouseButtons[LEFT_MOUSE_BUTTON] = true;
-                return false;
+                return true;
 
             case EMIE_RMOUSE_PRESSED_DOWN:
+            printf("mousebutton rmouse clicked");
+//            rmouse=true
                 mouseButtons[RIGHT_MOUSE_BUTTON] = true;
-                return false;
+                return true;
 
             case EMIE_MMOUSE_PRESSED_DOWN:
+            printf("mousebutton mmouse clicked"); //use delay for python input system
                 mouseButtons[MIDDLE_MOUSE_BUTTON] = true;
                 return false;
 

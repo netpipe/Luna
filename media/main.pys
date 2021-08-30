@@ -37,13 +37,6 @@ if (init) :
 
  ticks = time.time()
 
- responses = ["Not so sure", "42", "Most likely", "Absolutely not", "Outlook is good", "I see good things happening", "Never",
-"Negative", "Could be", "Unclear, ask again", "Yes", "No", "Possible, but not probable"]
-
- myr.time_reseed();
- print randint(1,8);
- print(choice(responses))
-
 # myr.time_reseed();
 
 
@@ -286,6 +279,10 @@ if input.getKey('KEY_F3') : #could have a release action
  image.iposition(hand2[1], randint(1,200),100)
   #lasttime = 0
  irr.delay(111000);
+
+if input.getKey('KEY_ESCAPE') :
+ irr.exit()
+
 
 #if lasttime < 10:
 # lasttime = lasttime+1

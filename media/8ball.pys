@@ -34,15 +34,15 @@ if (init) :
 
 #scene.using ('../media/lib/python2.7/random.py',"1"); #not working
  scene.using ('../media/random.py',"1");
-
+ irr.delay(100000)
  ticks = time.time()
 
  responses = ["Not so sure", "42","41", "Most likely", "Absolutely not", "Outlook is good", "I see good things happening", "Never",
 "Negative", "Could be", "Unclear, ask again", "Yes", "No", "Possible, but not probable","get extra","clean","wait for it"]
 
  myr.time_reseed();
- print randint(1,8);
-
+ #print randint(1,8);
+ irr.delay(100000)
  result=choice(responses)
 
  print(choice(responses))
@@ -51,14 +51,41 @@ if (init) :
  irrlichtlogo=addImage("../media/irrlichtlogo.jpg",88,31)
  a8ball=addImage("../media/8ball2.png",480,480)
  init=0
+ input.mouse(4,0,0)
+
+image.iposition(irrlichtlogo, input.mouse(2,0,0),input.mouse(3,0,0))
 
 image.iposition(a8ball, 44,66)
 image.idraw(a8ball)
-image.iposition(irrlichtlogo, 44,66)
 image.idraw(irrlichtlogo)
 scene.drawtext(result,"../media/fontlucida.png",200,250,235,320)
 
-irr.delay(80000)
+
+
+print (input.mouse(5,0,0))
+print (input.mouse(6,0,0))
+print (input.mouse(7,0,0))
+
+if input.mouse(6,0,0): #mousebutton
+ xcoord=input.mouse(2,0,0)
+ ycoord=input.mouse(3,0,0)
+
+ if ycoord > 300 and xcoord > 300 :
+   print ("bingo")
+
+
+
+
+#print (input.mouse(2,0,0))#xcoord
+#print (input.mouse(3,0,0))#ycoord
+
+
+
+irr.delay(100000)
+
 if input.getKey('KEY_SPACE'):
      result=choice(responses)
-     irr.delay(80000)
+     irr.delay(50000)
+
+if input.getKey('KEY_ESCAPE') :
+ irr.exit()

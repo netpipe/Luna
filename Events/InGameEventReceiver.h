@@ -38,7 +38,7 @@ class InGameEventReceiver : public IEventReceiver
 
 
 
-bool lmouse;
+bool lmouse=0;
 
      bool mouseButtons[NUMBER_OF_MOUSE_BUTTONS];
 

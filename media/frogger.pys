@@ -607,3 +607,7 @@ for i in range(4):
   if LogsMedX[i*4+j]>=64:
    global leastX
    LogsMedX[i*4+j]=leastX-8-currentOffsets[4]
+
+
+if input.getKey('KEY_ESCAPE') :
+ irr.exit()
