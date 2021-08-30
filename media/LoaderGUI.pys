@@ -1,6 +1,6 @@
 ###priority todo mouse clicks
 
- initloader:
+if initloader:
     import irr
     import scene
     import input
