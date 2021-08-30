@@ -55,7 +55,7 @@
         #endif
 
 
-    #else
+#else
 
  #define PYTHON  // defined in the codeblocks project option defines for target management and testing builds
  #define COMPRESS //needed for empython

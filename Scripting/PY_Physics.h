@@ -35,7 +35,7 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
 
 	PyArg_ParseTuple(args,"lii",&bptr,&param,&state);
 
-    Body* b3;
+
 
 	int Iparam=param;
 
@@ -82,7 +82,7 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
               //  printf("case0\n");
 
               	b2->Set(Vec2(1.0f, 1.0f), 200.0f);
-                b2->position.Set(0.0f, 4.0f);
+                b2->position.Set(0.0f, 43.0f);
                 world.Add(b2);
                 b2->friction = 0.1f;
               //  ++b;
@@ -91,27 +91,28 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
                 return Py_BuildValue("l", b2);
     };
     if( param==1 ){
-                printf("boxrun\n");
+              //  printf("boxrun\n");
                 world.Step(timeStep);
               //  SimulationLoop();
     };
     if( param==2 ){
+      Body* b3;
                 b3=(Body*)bptr;
-             //   printf("%i bptr\n",bptr);
-             //   printf("%i bn",b3);
-           //     printf("case2\n");
-                  printf( "%f\n", b3->position.x );
+                //  printf( "%f\n", b3->position.x );
             	return Py_BuildValue("f", b3->position.x);
     };
     if( param==3 ){
+      Body* b3;
                 b3=(Body*)bptr;
-                printf( "%f\n", b3->position.y );
+               // printf( "%f\n", b3->position.y );
               //  printf("case4\n");
             	return Py_BuildValue("f", b3->position.y);
             }
 
      if( param==4 ){
+       Body* b3;
                 b3=(Body*)bptr;
+                //Joint* j;
                 //	j->Set(b1, b2, Vec2(0.0f, 11.0f));
                 //	world.Add(j);
                 //	numJoints += 1;
@@ -119,6 +120,7 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
         }
 
        if( param==5 ){
+         Body* b3;
                 b3=(Body*)bptr;
                 b3->rotation = 0.0f;
 

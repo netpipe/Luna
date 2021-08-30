@@ -250,10 +250,10 @@ scene.drawtext("cool bean tree","../media/fontlucida.png",50,250,235,320)
 #scene.addHUD("media/HUD.xml")
 #game loops uncontrollably fast so this is necessary for debugging, otherwise vm nearly freezes
 #irr.delay(50000)
-irr.delay(10000)
+irr.delay(30000)
 ############# MENU ################
 #if menu:
-#scene.postprocess()
+#scene.postprocess() # postprocess every so many loops to stop flicker
 
 ############# FROG STUFF ##################
 

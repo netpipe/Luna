@@ -16,7 +16,7 @@ namespace
 	float timeStep = 1.0f / 60.0f;
 	int iterations = 10;
 
-	Vec2 gravity(0.0f, -6.0f);
+	Vec2 gravity(0.0f, 1000.0f);
 
 	int numBodies = 0;
 	int numJoints = 0;
@@ -33,13 +33,6 @@ void InitDemo(int index)
 	numBodies = 0;
 	numJoints = 0;
 printf("box2ddemo initializer\n");
-}
-
-void SimulationLoop()
-{
-    world.Step(timeStep);
-//    printf( "%f", b1->position.x );
-//    printf( "%f", b1->position.y );
 }
 
 #endif

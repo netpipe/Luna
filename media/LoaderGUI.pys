@@ -26,6 +26,9 @@ if initloader:
 
     pysList.remove("LoaderGUI.pys")
     pysList.remove("gameloader.pys")
+    pysList.remove("keys.pys")
+    pysList.remove("net.pys")
+    pysList.remove("functions-list.pys")
 
     camera = scene.addCamera(1, 0,0,0)
     scene.decals(1,camera)
@@ -50,8 +53,8 @@ if initloader:
    #     image.set_texture(buttons[i],colors[0])
     print("objects added")
     initloader=0
-    box2dbody=physics.b2d(1,0,1)
 
+    box2dbody=physics.b2d(1,0,1)
     base="../media/Frogger/"
 
     def addImage(loc,width,height):
@@ -59,19 +62,26 @@ if initloader:
 
     #frogStanding= image.load_texture(base+"frogStanding.png")
     iaxe=addImage("../media/axe.jpg",500,500)
-#image.irotate(iaxe,i)
+    box2di=addImage("../media/box2d.png",60,60)
+    irrlichtlogo=addImage("../media/irrlichtlogo.jpg",88,33)
+    #image.irotate(iaxe,i)
+    box2dbox=physics.b2d(1,0,1)
+
+
+image.iposition(irrlichtlogo, 44,66)
+
+image.idraw(irrlichtlogo)
 
 #######Loop
 #print ( box2dbody )
-physics.b2d(box2dbody,1,1) #step
-physics.b2d(box2dbody,2,1)
-physics.b2d(box2dbody,3,1)
-#image.iposition(iaxe, physics.b2d(box2dbody,2,1),physics.b2d(box2dbody,3,1))
+physics.b2d(1,1,1) #step
+image.iposition(iaxe, physics.b2d(box2dbody,2,1),physics.b2d(box2dbody,3,1))
+image.iposition(box2di, 4,physics.b2d(box2dbox,3,1))  #crashes if booth positions are used forsome reason
+#image.iposition(iaxe, physics.b2d(box2dbody,3,1),physics.b2d(box2dbody,2,1))
 image.idraw(iaxe)
+image.idraw(box2di)
 
-#print("testew")
 #scene.drawtext("cool bean tree","../media/fontlucida.png",5,250,235,320)
-
 
 #standingObj=[]
 #standingObj.append(scene.add_cube(newId(),8, 200*8,200,95.99, 0,0,0, 1,1,0.125))
@@ -106,4 +116,6 @@ if input.getKey('KEY_SPACE'):
     loaderResult=pysList[currentButton]
     initloader=1
 
-
+if input.getKey('KEY_ESCAPE') :
+ paused=1
+ irr.exit()

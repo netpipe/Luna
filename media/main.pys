@@ -1,7 +1,6 @@
 #################################
 #INITIALIZE
 #called externally so it is set from functions.py or init.py
-
 #################################
 if (init) :
  import irr
@@ -84,7 +83,7 @@ if (init) :
 # irr.files("../media/cards.zip")
  flashlight=scene.flashlight(0,0)
 
- #chopper=physics.chopper("../media/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
+ chopper=physics.chopper("../media/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
  #scene.setPosition(chopper,5,20,200,20)
 
 # scene.recast("../media/dungeon.obj")
@@ -92,8 +91,8 @@ if (init) :
  #scene.addwater("none",1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
  #gui.codeeditor(1) #shader editor #cpu limiter incase of bad code
 # extras.lensflare(1,10,100,10)
-# scene.flag1("media/Flags/agnostechdemo1200912132.png",10,10000,10)
-# extras.blindboids(1,0,1,1)
+ scene.flag1("../media/irrlichtlogo.jpg",10,10000,10)
+ #extras.blindboids(1,0,1,1)
 # gui.sgraph()
 # healthbar=gui.bar(0,0,20,40,100,60)
  physics.bulletBlend("../media/data/clubsilo_packed.blend")
