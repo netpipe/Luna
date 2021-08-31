@@ -70,9 +70,9 @@ if input.mouse(6,0,0): #mousebutton
  xcoord=input.mouse(2,0,0)
  ycoord=input.mouse(3,0,0)
 
- if ycoord > 300 and xcoord > 300 :
-   print ("bingo")
-
+ if ycoord > 200 and ycoord < 400 and xcoord > 200 and xcoord < 400:
+   result=choice(responses)
+   irr.delay(5000)
 
 
 

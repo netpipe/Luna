@@ -1,5 +1,10 @@
 
 // blindside's neuralnetworking example demo.
+// its a bit dangerous to not know what your doing with this so use caution also sandbox like virtualmachine or a leadbox
+
+//remember gods watching / possibly waiting for you to consider what you have is ready before risking all humanity
+
+
 #ifndef ANN_INCLUDE_H
 #define ANN_INCLUDE_H
 #include "../../config.h"

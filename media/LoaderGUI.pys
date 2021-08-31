@@ -85,13 +85,8 @@ image.idraw(iaxe)
 image.idraw(box2di)
 
 print ( input.mouse(6,0,0) )#mousebutton
-#print ( input.mouse(7,0,0) )#mousebutton
+print ( input.mouse(7,0,0) )#mousebutton
 print ( input.mouse(8,0,0) )#mousebutton
-
-#print (input.mouse(2,0,0))#xcoord
-#print (input.mouse(3,0,0))#ycoord
-
-#scene.drawtext("cool bean tree","../media/fontlucida.png",5,250,235,320)
 
 #standingObj=[]
 #standingObj.append(scene.add_cube(newId(),8, 200*8,200,95.99, 0,0,0, 1,1,0.125))
@@ -116,6 +111,13 @@ currentButton %= len(pysList)
 
 for i in range(len(pysList)):
     scene.drawtext(pysList[i],font, 32,46+i*47,128,160+i*47)
+    if input.mouse(6,0,0): #mousebutton
+      xcoord=input.mouse(2,0,0)
+      ycoord=input.mouse(3,0,0)
+
+      if ycoord > 46+i*47 and ycoord < 46+i*47+100 and xcoord > 5 and xcoord < 200: # buggy still need proper measures
+        loaderResult=pysList[i]
+        print("button pushed")
    #if i == currentButton:
    #image.set_texture(buttons[currentButton],colors[1])
    #else:
