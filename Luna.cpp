@@ -556,9 +556,9 @@ void Luna::main_loop(){ //devloop actually
 		//device->sleep(5);
 
         #ifdef PostProcess
-       // if (Python::bPProcess ==1){
-		//	ppBlurDOF->render( NULL );
-       //     ppBlur->render( NULL ); }
+            //if (Python::bPProcess ==1){
+            //ppBlurDOF->render( NULL );
+            //ppBlur->render( NULL ); }
         #endif
 
 	//       rt->render();
@@ -585,11 +585,10 @@ void Luna::main_loop(){ //devloop actually
 			windows->setVisible(false);  //! not sure why but causes crashing on startup
 		}
 		#endif //code_editor
-	//#endif
 
-			//#ifdef PYTHON  //need this so endscene can be done before checkkeystates.
 			Python::preEnd();
 			Python::CheckKeyStates(); //located in pyInput can probably be moved to preEnd as its not being used to check keystates
+//CheckKeyStates();
 			//Python::ExecuteScript(irr::core::stringc(Python::returnString));
 			//Python::ExecuteScript(Python::returnString);
 			Python::ExecuteScript(irr::core::stringc(pyloader));
@@ -625,6 +624,21 @@ void Luna::CheckKeyStates(void){
  //    obsolete:CheckKeyStates();
  //check onEvent for any need to check keys ,
  // used to be where python one sits now
+printf("check keys\n");
+
+bool tester=true;
+printf("%i booltest",tester);
+
+                //Python::bPProcess=1;
+                 printf("%i cks", m_cInGameEvents.mouseButtons[LEFT_MOUSE_BUTTON]);
+                 printf("%i cks", m_cInGameEvents.lmouse);
+
+                if (m_cInGameEvents.rmouse){
+                 printf("123mouse clicked");
+                 Python::rmouse1=m_cInGameEvents.rmouse;
+                }
+                 Python::lmouse1=m_cInGameEvents.lmouse;
+                 Python::mmouse1=m_cInGameEvents.mmouse;
 }
 
 

@@ -359,7 +359,7 @@ struct SAppContext
 			windows->setVisible(true);
 			//device->setEventReceiver(&receiver);
 			device->getCursorControl()->setVisible(true);
-			    device->setResizable(true);
+            device->setResizable(true);
 #endif
 
 device->getCursorControl()->setVisible(true);

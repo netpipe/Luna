@@ -11,8 +11,6 @@ InGameEventReceiver::InGameEventReceiver()
 
 bool InGameEventReceiver::OnEvent ( const SEvent &event )
 {
-
-
 		//let devloop know somehow to know when to run Lmain.py at all
 
   	if ( event.EventType == EET_GUI_EVENT )
@@ -47,43 +45,46 @@ bool InGameEventReceiver::OnEvent ( const SEvent &event )
 				}
 		}
 	}
+
 	  if(event.EventType == EET_KEY_INPUT_EVENT)
-  {
-    keys[event.KeyInput.Key] = event.KeyInput.PressedDown;
-  }
+      {
+        keys[event.KeyInput.Key] = event.KeyInput.PressedDown;
+      }
 		if ( event.EventType == EET_MOUSE_INPUT_EVENT )
 		{
 			switch(event.MouseInput.Event)
             {
-		case EMIE_LMOUSE_PRESSED_DOWN:
-				printf("mousebutton left clicked");
+            case EMIE_LMOUSE_PRESSED_DOWN:
+			//	printf("left clicked");
                 lmouse=true;
                 mouseButtons[LEFT_MOUSE_BUTTON] = true;
-                return true;
+                return false;
 
             case EMIE_RMOUSE_PRESSED_DOWN:
-            printf("mousebutton rmouse clicked");
-//            rmouse=true
+                printf("rmouse clicked");
+                rmouse=true;
                 mouseButtons[RIGHT_MOUSE_BUTTON] = true;
-                return true;
+                return false;
 
             case EMIE_MMOUSE_PRESSED_DOWN:
-            printf("mousebutton mmouse clicked"); //use delay for python input system
+                mmouse=true;
+                printf("mmouse clicked"); //use delay for python input system
                 mouseButtons[MIDDLE_MOUSE_BUTTON] = true;
                 return false;
 
             case EMIE_LMOUSE_LEFT_UP:
                 mouseButtons[LEFT_MOUSE_BUTTON] = false;
-              //  lmouse=false;
+                lmouse=false;
                 return false;
 
             case EMIE_RMOUSE_LEFT_UP:
+                rmouse=false;
                 mouseButtons[RIGHT_MOUSE_BUTTON] = false;
                 return false;
+
 //			case EMIE_MIDDLE_MOUSE_UP:
 //                mouseButtons[RIGHT_MOUSE_BUTTON] = false;
 //                return false;
-//                MIDDLE_MOUSE_BUTTON
 
 			default:
 

@@ -84,10 +84,12 @@ image.iposition(box2di, input.mouse(2,0,0),input.mouse(3,0,0))  #crashes if boot
 image.idraw(iaxe)
 image.idraw(box2di)
 
+print ( input.mouse(6,0,0) )#mousebutton
+#print ( input.mouse(7,0,0) )#mousebutton
+print ( input.mouse(8,0,0) )#mousebutton
 
-print (input.mouse(5,0,0))#mousebutton
-print (input.mouse(2,0,0))#xcoord
-print (input.mouse(3,0,0))#ycoord
+#print (input.mouse(2,0,0))#xcoord
+#print (input.mouse(3,0,0))#ycoord
 
 #scene.drawtext("cool bean tree","../media/fontlucida.png",5,250,235,320)
 

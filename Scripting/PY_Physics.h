@@ -32,47 +32,15 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
 	long bptr;
 	int param;
 	int state;
-
 	PyArg_ParseTuple(args,"lii",&bptr,&param,&state);
 
-
-
+    enum eparam{init,run,getx,gety,rotation,joint};
 	int Iparam=param;
+//	if ( state==0 ){  // use state for get and set var
 
-	//if ( state==0 ){  // use state for get and set var
-//       switch (param){
-//            case eparam(init):
-//                Body* b2 =new Body;
-//                b2->Set(Vec2(100.0f, 20.0f), FLT_MAX);
-//                b2->position.Set(0.0f, -0.5f * b2->width.y);
-//                world.Add(b2);
-//                //  ++b;
-//                ++numBodies;
-//                printf("case1\n");
-//                return Py_BuildValue("l", b2);
-//               break;
-//            case eparam(run): //run step
-//                printf("case2\n");
-//                world.Step(timeStep);
-//                //SimulationLoop();
-//                break;
-//            case getx:
-//                b3=(Body*)bptr;
-//                printf("%i bptr\n",bptr);
-//                printf("%i bn",b3);
-//                printf("case3\n");
-//                //  printf( "%f", b3->position.x );
-//            	return Py_BuildValue("f", b3->position.x);
-//                break;
-//            case gety:
-//                b3=(Body*)bptr;
-//                printf( "%f", b3->position.y );
-//                printf("case4\n");
-//            	return Py_BuildValue("f", b3->position.y);
-//                break;
-//            }
-
-        if( param==0 ){
+       switch (param){
+            case eparam(init):
+            {
                 Body* b2 =new Body;
 //                b2->Set(Vec2(100.0f, 20.0f), FLT_MAX);
 //                b2->position.Set(0.0f, -0.5f * b2->width.y);
@@ -88,45 +56,53 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
               //  ++b;
                  ++numBodies;
 
-                return Py_BuildValue("l", b2);
-    };
-    if( param==1 ){
-              //  printf("boxrun\n");
+                    return Py_BuildValue("l", b2);
+            }break;
+
+            case eparam(run): //run step
+            {
+             //   printf("run\n");
                 world.Step(timeStep);
-              //  SimulationLoop();
-    };
-    if( param==2 ){
-      Body* b3;
+            }break;
+
+            case getx:
+            {
+                Body* b3;
                 b3=(Body*)bptr;
                 //  printf( "%f\n", b3->position.x );
+
             	return Py_BuildValue("f", b3->position.x);
-    };
-    if( param==3 ){
-      Body* b3;
+            }break;
+
+            case gety:
+            {
+                Body* b3;
                 b3=(Body*)bptr;
                // printf( "%f\n", b3->position.y );
               //  printf("case4\n");
             	return Py_BuildValue("f", b3->position.y);
-            }
+            }break;
 
-     if( param==4 ){
-       Body* b3;
+            case joint:
+            {
+                Body* b3;
                 b3=(Body*)bptr;
                 //Joint* j;
                 //	j->Set(b1, b2, Vec2(0.0f, 11.0f));
                 //	world.Add(j);
                 //	numJoints += 1;
-            	return Py_BuildValue("f", b3->position.y);
-        }
 
-       if( param==5 ){
-         Body* b3;
+            	return Py_BuildValue("f", b3->position.y);
+            }break;
+
+            case rotation:{
+                Body* b3;
                 b3=(Body*)bptr;
                 b3->rotation = 0.0f;
 
-            	return Py_BuildValue("f", b3->rotation);
-        }
-
+                return Py_BuildValue("f", b3->rotation);
+            }break;
+}
 
 	return Py_BuildValue("");
 }

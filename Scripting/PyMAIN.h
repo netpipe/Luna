@@ -55,7 +55,9 @@ namespace Python {
     #ifdef EXTRAS
         gui::CGUIChatBox* chat;
     #endif
-    bool bPProcess,opensteer,chopperEnabled,HUDENABLED=0;
+
+    bool bPProcess, opensteer, chopperEnabled, HUDENABLED=0;
+    bool rmouse1,lmouse1,mmouse1;
 
     #ifdef FPS
         firstPersonWeapon* M4;
@@ -69,15 +71,19 @@ namespace Python {
     #ifdef FLAG
     	SimpleFlagNode	*irrFlagNode;
     #endif
+
     #ifdef HUD
         CHUD* CHUD2 = new CHUD();
     #endif
+
     #ifdef ATMOSPHERE
         ATMOsphere *atmo;
     #endif
+
     #ifdef VIDEO
         CVideoMaster    *vidmaster;
     #endif
+
     #ifdef TESSELATE
         TesselatedImage *tesImage;
         bool btesimage=0;
@@ -91,9 +97,6 @@ namespace Python {
     #ifdef occlusion
         Renderer22 *RenderMan;
     #endif
-
-
-
 
 
     //todo bugfix need a way to get set the string in either luna.h or here
@@ -299,16 +302,19 @@ namespace Python {
     void PreRender();
     scene::IMeshBuffer* buff;
     Scene *m_cScene;
+
     #ifdef PHYSICS
         btRigidBody* ha2;
     #endif
+
     bool bingo = true;
     bool yesim = true;
     scene::IBillboardSceneNode * bill;
     int nextDecal = 0;
-#ifdef IRRc
-    Application *app;
-#endif
+
+    #ifdef IRRc
+        Application *app;
+    #endif
 
     bool flag1,flag2,bImage2d,bCompass,formationDemo,bAtmosphere,bWater,blensFlare,bBlindBoids=0;
     bool bOcclusion,bCar,bCarFollow,bSPARK,bDecals;

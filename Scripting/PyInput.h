@@ -4,12 +4,9 @@
 
 ////#include "CSG/primitives.h"
 //#include "../Scene/IrrCSG/CSG/CSG.h"
-//
+
 //meshMesh mesh;
-//
 //SMesh* m_pMesh = NULL;
-
-
 
 //device->sleep(5,0); python delay for mainloop possibly use timers
 
@@ -19,11 +16,8 @@
 	#include <PolyVoxCore/CubicSurfaceExtractorWithNormals.h>
 	#include <PolyVoxCore/SurfaceMesh.h>
 	#include <PolyVoxCore/SimpleVolume.h>
-
 //#include "..//include/MaterialDensityPair.h"
-
 //#include "../Input/Model/PolyVox/PolyVoxCore/include/MaterialDensityPair.h"
-
 #endif
 
 PyMethodDef irr_Input[] =
@@ -43,9 +37,9 @@ bool Python::CheckKeyState(int key){
 	//might want to add some kind of key limiter to prevent several keypresses in a row
 	bool keystate=0;
 	if (bFPS){
-	keystate = M4->isKeyDown( irr::EKEY_CODE(key) );
+        keystate = M4->isKeyDown( irr::EKEY_CODE(key) );
 	}else{
-	keystate = mEvent.getKeyState( irr::EKEY_CODE(key) );
+        keystate = mEvent.getKeyState( irr::EKEY_CODE(key) );
 	}
 
 return (keystate);
@@ -93,8 +87,6 @@ PyObject * Python::PyIrr_getKey(PyObject * self,PyObject * args){
 //		if (event.JoystickEvent.IsButtonPressed(0)){
 //                         std::cout << "B0" << std::endl;
 //		}
-
-
 
 
     bool keystate ;
@@ -288,15 +280,15 @@ PyObject * Python::PyIrr_getKey(PyObject * self,PyObject * args){
 //    else if( tempString == " KEY_OEM_CLEAR" )    {        keyValue = 0xFE;}
 //    else if( tempString == "KEY_KEY_CODES_COUNT" )    {        keyValue = 0xFF;}
     //extras
-
     else
     {
           return Py_BuildValue("b",0);
     // No keycode match for string.
     }
-//keyValue=0;
+
+    //keyValue=0;
 	if (keyValue >= -1){
-   keystate = CheckKeyState( keyValue );
+        keystate = CheckKeyState( keyValue );
 	}
 }
 
@@ -429,7 +421,8 @@ irr::scene::SMesh* convertPolyMesh(const PolyVox::SurfaceMesh<PolyVox::PositionM
 //        const PolyVox::Vector3DFloat& normal = vertices[i].getNormal();
 //        buffer->Vertices.push_back(irr::video::S3DVertex(position.getX(),position.getY(),position.getZ(),normal.getX(),normal.getY(),normal.getZ(), clr, 0, 0));
 //    }
-   buffer->getVertexBuffer().set_used(vertices.size());
+    buffer->getVertexBuffer().set_used(vertices.size());
+
    for (size_t i = 0; i < vertices.size(); ++i) {
        const PolyVox::Vector3DFloat& position = vertices[i].getPosition();
        const PolyVox::Vector3DFloat& normal = vertices[i].getNormal();
@@ -442,20 +435,21 @@ irr::scene::SMesh* convertPolyMesh(const PolyVox::SurfaceMesh<PolyVox::PositionM
        buffer->getVertexBuffer()[i].Color = irr::video::SColor(255,255,255,255);
    }
 
-   // Recalculate bounding box
-   buffer->recalculateBoundingBox();
+    // Recalculate bounding box
+    buffer->recalculateBoundingBox();
 //    buffer->BoundingBox.reset(0,0,0);
 //    for (u32 i=0; i<vertices.size(); ++i) {
 //        buffer->BoundingBox.addInternalPoint(buffer->Vertices[i].Pos);
 //    }
+
    //Create mesh
    irr::scene::SMesh* mesh =new irr::scene::SMesh;
    //irr::video::SMaterial mat;
    //buffer->Material=mat;
    mesh->addMeshBuffer(buffer);
    buffer->drop();
-
    mesh->recalculateBoundingBox();
+
    return mesh;
 }
 
@@ -488,8 +482,6 @@ PyObject * Python::PyIrr_wii(PyObject * self,PyObject * args){
 ////		();
 //	}
 
-
-
 	return Py_BuildValue("");
 }
 
@@ -501,8 +493,6 @@ PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
 	//	EKEY_CODE ekey;
 	PyArg_ParseTuple(args,"ss",&type,&udev);
 
-
-
 	return Py_BuildValue("");
 }
 
@@ -512,9 +502,10 @@ PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
 	float x;
 	float y;
 	PyArg_ParseTuple(args,"iff",&type,&x,&y);
-//position2d<int> pos= device->getCursorControl()->getPosition();
+    //position2d<int> pos= device->getCursorControl()->getPosition();
 	//core::vector2d<int> position;
-	    enum
+
+	enum
     {
         LEFT_MOUSE_BUTTON,
         MIDDLE_MOUSE_BUTTON,
@@ -547,50 +538,49 @@ PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
 
 		case 4:	//visible
 			{
-			device->getCursorControl()->setVisible(1);
+                device->getCursorControl()->setVisible(1);
 			}break;
 
 		case 5:	//invisible
 			{
-			device->getCursorControl()->setVisible(0);
+                device->getCursorControl()->setVisible(0);
 			}break;
 
-		case 6://getmouse1press state
+		case 6: //getmouse1press state
 			{
-		//	printf("testinguuu\n");
-		if( luna->m_cInGameEvents.lmouse == true){
-			printf("foisfoij");
-			}
+//                bool mbutton=mEvent.lmouse;
+//
+//                if ( mbutton ){
+//                    mEvent.lmouse=false;
+//                 }
 
-			bool mbutton=luna->m_cInGameEvents.lmouse;
-			if ( mbutton ){
-			//	printf("%i",luna->m_cInGameEvents.mouseButtons[LEFT_MOUSE_BUTTON]);
-				printf("%i",luna->m_cInGameEvents.lmouse);
-				printf("testinguuu\n");
-                luna->m_cInGameEvents.lmouse=false;
-             }
-
-				return Py_BuildValue("b",mbutton);
-
+                return Py_BuildValue("i",mEvent.lmouse);
 			}break;
 
 		case 7://getmouse2press state
 			{
-				printf("%i sfsdf\n",luna->m_cInGameEvents.mouseButtons[MIDDLE_MOUSE_BUTTON]);
-                return Py_BuildValue("b",luna->m_cInGameEvents.mouseButtons[MIDDLE_MOUSE_BUTTON]);
+//                bool mbutton=mEvent.rmouse;
+//
+//                if ( mbutton ){
+//                    mEvent.rmouse=false;
+//                 }
+
+                return Py_BuildValue("i",mEvent.rmouse);
 			}break;
 
 		case 8://getmouse3press state
 			{
-				printf("%i sfsdf\n",luna->m_cInGameEvents.mouseButtons[RIGHT_MOUSE_BUTTON]);
-				//return Py_BuildValue("i",luna->m_cInGameEvents.mouseButtons[LEFT_MOUSE_BUTTON]);
-				//		case 9://getmousewheel state
-				return Py_BuildValue("b",luna->m_cInGameEvents.mouseButtons[RIGHT_MOUSE_BUTTON]);
+                bool mbutton=mEvent.mmouse;
+
+                if ( mbutton ){
+                    mEvent.mmouse=false;
+                    return Py_BuildValue("i",1);
+                 }
+
+                return Py_BuildValue("i",mEvent.mmouse);
 			}break;
-
-	}
-
-  return Py_BuildValue("");
+        }
+    return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_sqlconnect(PyObject * self,PyObject * args){
@@ -1127,7 +1117,7 @@ ISceneNode* outNode;
 
 #endif //skeleton
 
-//        if (mEvent.getKeyState(KEY_ESCAPE )) {
+//      if (mEvent.getKeyState(KEY_ESCAPE )) {
 //		luna->m_cInGameEvents.Quit=true;
 //		return;
 //		}

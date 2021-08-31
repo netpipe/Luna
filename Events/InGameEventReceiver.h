@@ -25,24 +25,16 @@ using namespace gui;
 
 class InGameEventReceiver : public IEventReceiver
 {
- 	// Public variables.
-	public:
-		bool Quit;
-
-	// Private Variables
-	private:
-    bool keys[KEY_KEY_CODES_COUNT];
 
 	// Public functions.
 	public:
 
+    bool Quit;
+    bool mmouse;
+    bool rmouse;
+    bool lmouse;
 
-
-bool lmouse=0;
-
-     bool mouseButtons[NUMBER_OF_MOUSE_BUTTONS];
-
-
+    bool mouseButtons[NUMBER_OF_MOUSE_BUTTONS];
 
     InGameEventReceiver();
 
@@ -55,13 +47,15 @@ bool lmouse=0;
 
     void Init(void);
 
-		virtual bool OnEvent ( const SEvent &event );
+    virtual bool OnEvent ( const SEvent &event );
 
-		bool getKeyState(EKEY_CODE key);
+    bool getKeyState(EKEY_CODE key);
 
+	// Private Variables
+	private:
+    bool keys[KEY_KEY_CODES_COUNT];
 
 	// Private functions.
-private:
 //	SAppContext & Context;
 };
 

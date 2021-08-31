@@ -97,8 +97,8 @@ class Luna
 		IGUIEnvironment *guienv;
 
 		#ifdef EVENTS
-		EventRec events;
-		InGameEventReceiver m_cInGameEvents;
+            EventRec events;
+            InGameEventReceiver m_cInGameEvents;
 		#endif
         // Factory threads
 		//pthread_t soundThread

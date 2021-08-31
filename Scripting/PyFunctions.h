@@ -9,6 +9,9 @@
 #include <cstdlib>
     #define MAX_DECALS 50
 
+    using namespace std;
+    using namespace irr;
+
 #ifdef PostProcess
 // Include the headers for post processing
 #include "../Scene/PostProcessing/CRendererPostProc.h"
@@ -42,9 +45,8 @@
 #ifdef CODEEDITOR2
 #include "../GUI/CodeEditor/CGUIEditBoxIRB.h"
 #endif // CODEEDITOR
-
-
 //CGUIEditBoxIRB * codeEditor;
+
 #ifdef TESSELATE
 #include "../Scene/tesselatedImage/tesselatedImage.h"
 #endif
@@ -54,8 +56,8 @@
 #endif
 
 #ifdef WATER
-#ifdef ReflevtiveWater
-//    #include "../TerrainFactory/WaterNode/CReflectedWater.h"
+    #ifdef ReflevtiveWater
+        //#include "../TerrainFactory/WaterNode/CReflectedWater.h"
     #endif
 
     #include "../TerrainFactory/water/RealisticWater.h"
@@ -65,7 +67,7 @@
     //#include "../entities/player.h"
     #include "../entities/OpenSteer/cOpenSteerDemo.h"
     #undef useIrrExtensions13
-    #define HUD
+    #define HUD //not sure if this is needed ?
 #endif
 
 #ifdef ATMOSPHERE
@@ -74,7 +76,7 @@
 
 #ifdef VIDEO
     #include "../GUI/Video/CVideoMaster.h"
-   // #include "../GUI/Video/videoPlayer.h"
+   //#include "../GUI/Video/videoPlayer.h"
 #endif
 
 #ifdef RIBBONTRAIL
@@ -83,11 +85,11 @@
 #endif
 
 #ifdef EVENTS
-#include "../Events/InGameEventReceiver.h"
+    #include "../Events/InGameEventReceiver.h"
 #endif
 
 #ifdef OCCLUSION
-#include "../Scene/occlusion/Renderer.h"
+    #include "../Scene/occlusion/Renderer.h"
 #endif
 
 #ifdef FLAG
@@ -95,11 +97,11 @@
     #include "../Scene/Flag/CFlagSceneNode.h"
 #endif
 #ifdef SKELETON
-#include "../entities/skeleton/Skeleton.h"
+    #include "../entities/skeleton/Skeleton.h"
 #endif
 
 #ifdef PHYSICS
-#include "../Physics/Vehicle.h"
+    #include "../Physics/Vehicle.h"
 #endif
 
 #ifdef RECAST
@@ -110,23 +112,21 @@
 #endif
 
 
-    #ifdef SPARK
-
-        #include "../Scene/SPARK/SPK.h"
-        #include "../Scene/SPARK/SPK_IRR.h"
-        using namespace SPK;
-        using namespace SPK::IRR;
-
-//      #include "../Scene/RainMan.h"
-  //  #include "../Scene/particles.h"
-    #endif
+#ifdef SPARK
+    #include "../Scene/SPARK/SPK.h"
+    #include "../Scene/SPARK/SPK_IRR.h"
+    using namespace SPK;
+    using namespace SPK::IRR;
+    //#include "../Scene/RainMan.h"
+    //#include "../Scene/particles.h"
+#endif
 
 #ifdef ASSIMP
-#include "../Input/Model/IrrAssimp/IrrAssimp.h"
+    #include "../Input/Model/IrrAssimp/IrrAssimp.h"
 #endif
 
 #ifdef Image2D
-#include "../GUI/cImage2D.h"
+    #include "../GUI/cImage2D.h"
 #endif
 
 #ifdef FT2
@@ -174,29 +174,29 @@
     BmFont *bmfonts = new BmFont;
 #endif
 
-    #ifdef SPRITES
+#ifdef SPRITES
     SpriteManager *sprites = new SpriteManager;
 #endif
-    using namespace std;
-    using namespace irr;
+
 #ifdef PHYSICS
-        #ifdef RAGDOLL
-            static std::vector<RagDoll*> v_RagDolls;
-        #endif
+    #ifdef RAGDOLL
+        static std::vector<RagDoll*> v_RagDolls;
+    #endif
+
     #ifdef BULLETBLEND
         btLogicManager* logicManager = new btLogicManager();
         static std::vector<btRigidBody*> v_Boxes;
     #endif
-    #endif
+
+     btTransform tr;
+#endif
 
     irr::scene::ITriangleSelector* selecta = 0;
 
     scene::IMetaTriangleSelector* metaSelector;
   //  ICameraSceneNode* camera;
     scene::ITriangleSelector* selector;
-    #ifdef PHYSICS
-    btTransform tr;
-    #endif
+
 
 #ifdef CLOUDS
     scene::CCloudSceneNode* clouds;  ///bitplane clouds
@@ -226,65 +226,63 @@
 
 #include "../GUI/widgets/CGUIBar.h"
 
-  //  Vehicle *m_cVehicle;
-  //  Vehicle *m_cVehicle2;
+//Vehicle *m_cVehicle;
+//Vehicle *m_cVehicle2;
+//static vector<Vehicle*> m_cVehicle;
 
- //   static vector<Vehicle*> m_cVehicle;
-    #ifdef SKELETON
+#ifdef SKELETON
     cSkeleton skeleton;
-    #endif
-//        cAudio::IAudioManager* managerID;
-//        cAudio::IAudioSource* mysound;
-
-
-    #ifdef BOX2DLITE
-        #include "../Physics/box2D.h"
-    #endif
-
-#ifdef PYTHON
-#include "PyMAIN.h"
-#include "PyNet.h"
-#define _GNU_SOURCE
-//    #undef __cplusplus
-
-#if defined(HAVE_GETOPT_H)
-    #include <getopt.h>
-    #define GETOPT_SUPPORT 1
 #endif
 
-#ifdef __EMSCRIPTEN__
-////#include "fluidlite.h"
+//cAudio::IAudioManager* managerID;
+//cAudio::IAudioSource* mysound;
 
-    #ifdef FLUIDSYNTH
-        #include "../Input/fluidsynthconfig.h"
-        #include "src/utils/fluidsynth_priv.h"
-        #include "fluidsynth.h"
-        //
-        #include "src/bindings/fluid_lash.h"
+
+#ifdef BOX2DLITE
+    #include "../Physics/box2D.h"
+#endif
+
+#ifdef PYTHON
+    #include "PyMAIN.h"
+    #include "PyNet.h"
+    #define _GNU_SOURCE
+    //    #undef __cplusplus
+
+    #if defined(HAVE_GETOPT_H)
+        #include <getopt.h>
+        #define GETOPT_SUPPORT 1
     #endif
-#else
-    #ifdef FLUIDSYNTH
-        #include "../Input/fluidsynthconfig.h"
-        #include "src/utils/fluidsynth_priv.h"
-        #include "fluidsynth.h"
 
-        #include "src/bindings/fluid_lash.h"
+    #ifdef __EMSCRIPTEN__
+    ////#include "fluidlite.h"
+        #ifdef FLUIDSYNTH
+            #include "../Input/fluidsynthconfig.h"
+            #include "src/utils/fluidsynth_priv.h"
+            #include "fluidsynth.h"
+                //
+            #include "src/bindings/fluid_lash.h"
+        #endif
+    #else
+    #ifdef FLUIDSYNTH
+            #include "../Input/fluidsynthconfig.h"
+            #include "src/utils/fluidsynth_priv.h"
+            #include "fluidsynth.h"
+            #include "src/bindings/fluid_lash.h"
     #endif //fluidsynth
-#endif //emscripten
+    #endif //emscripten
 
 #endif //python
 
-//					#ifdef AgAudio
-////		Sound *m_sound;
-//     Sound *m_sound;
-//     Sound m_default_sound_buffer;
-//		#endif
+//#ifdef AgAudio
+////Sound *m_sound;
+//Sound *m_sound;
+//Sound m_default_sound_buffer;
+//#endif
 
 #ifdef FLUIDSYNTH
-
-#ifndef WITH_MIDI
-    #define WITH_MIDI 1
-#endif
+    #ifndef WITH_MIDI
+        #define WITH_MIDI 1
+    #endif
     fluid_cmd_handler_t* cmd_handler = NULL;
     fluid_settings_t* settings;
     fluid_player_t* player = NULL;
@@ -309,11 +307,9 @@ PyMethodDef irr_function[] =
     {"setTime",Python::PyIrr_setTime,METH_VARARGS,"setTime"},
     {"getTime",Python::PyIrr_getTime,METH_VARARGS,"getTime"},
     {"event",Python::PyIrr_Event,METH_VARARGS,"event"},
-
     {"delete",Python::PyIrr_Delete,METH_VARARGS,"delete"},
 //{"flare2",Python::PyIrr_Flare2,METH_VARARGS,"Loads Flare2"},
     {"wayman",Python::PyIrr_WayPoint,METH_VARARGS,"waypoint manager"},
-
     {"pauseGame",Python::PyIrr_pauseGame,METH_VARARGS,"pauseGame"},
     {"exit",Python::PyIrr_exit,METH_VARARGS,"exit"},
     {"exec",Python::PyIrr_exec,METH_VARARGS,"exec"},
@@ -329,12 +325,12 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
     guienv = device->getGUIEnvironment();
     mEvent = event;
 
-  //  camera = smgr->addCameraSceneNodeFPS(0, 100, .050f, -1, luna->keyMap, 8);
-//camera = smgr->addCameraSceneNode();
+    //camera = smgr->addCameraSceneNodeFPS(0, 100, .050f, -1, luna->keyMap, 8);
+    //camera = smgr->addCameraSceneNode();
 
- //   camera->setFarValue(10000);
+    //camera->setFarValue(10000);
     //camera = smgr->addCameraSceneNodeFPS();
-    //  camera->setFOV(PI/2);
+    //camera->setFOV(PI/2);
 
     m_cScene = new Scene();
     m_cScene->registerIrrDevice(*device);
@@ -350,12 +346,12 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
     ///Player::Instance()->setDevice(device); //obsolete
     //   Collision::Instance()->setDevice(device);
 #endif
-//    scene::IAnimatedMesh *mesh = (IAnimatedMesh*) smgr->getMesh("media/player/player.x");
-//	scene::IAnimatedMeshSceneNode *skelNode = (IAnimatedMeshSceneNode*) smgr->addAnimatedMeshSceneNode(mesh);
+//scene::IAnimatedMesh *mesh = (IAnimatedMesh*) smgr->getMesh("media/player/player.x");
+//scene::IAnimatedMeshSceneNode *skelNode = (IAnimatedMeshSceneNode*) smgr->addAnimatedMeshSceneNode(mesh);
 //cSkeleton skeleton; // moved externally
-//	skeleton.Initialize(skelNode, 8);
+//skeleton.Initialize(skelNode, 8);
 //core::vector3df pos = skeleton.getSkeletonSceneNode()->getPosition();
- //   skelNode->addShadowVolumeSceneNode();
+//skelNode->addShadowVolumeSceneNode();
 //smgr->setShadowColor(video::SColor(150,0,0,0));
 //smgr->addLightSceneNode(0, core::vector3df(0,0,0),video::SColorf(1.0f, 0.6f, 0.7f, 1.0f), 600.0f);
 
@@ -384,13 +380,13 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
 
     ppMine->setTimer( device->getTimer( ) );
 
-    //  bPProcess=1;
+    //bPProcess=1;
 #endif
 
-//	skin = guienv->getSkin();
-
-InitDemo(0);
-
+    //skin = guienv->getSkin();
+#ifdef BOX2DLITE
+    InitDemo(0); //
+#endif
 }
 
 #include "PyScene.h"
@@ -407,31 +403,30 @@ PyObject * Python::PyIrr_GetString(PyObject * self,PyObject * args){ //active ca
     char * arg;
     PyArg_ParseTuple(args,"s",&arg);
 
-
-  //  returnString=arg;
-     returnString="../media/frogger.pys";
- //    string tester = "../media/" + arg + "frogger.pys";
-     luna->pyloader="../media/frogger.pys";
-    //      luna->pyloader="../media/" + tester + "frogger.pys";
+    //returnString=arg;
+    returnString="../media/frogger.pys";
+    //string tester = "../media/" + arg + "frogger.pys";
+    luna->pyloader="../media/frogger.pys";
+    //luna->pyloader="../media/" + tester + "frogger.pys";
     Python::returnString=arg;
 
     //returnString=arg;
-//    printf(returnString);
-
+    //printf(returnString);
     //std::cout <<"setting game loader";
-   // printf("%s",returnString);
+    //printf("%s",returnString);
     //printf("setting game loader");
+
     return Py_BuildValue("s",arg);
 }
 
 PyObject * Python::PyIrr_using(PyObject * self,PyObject * args){
-//ExecuteScript(irr::core::string<char> scriptname){
+    //ExecuteScript(irr::core::string<char> scriptname){
     char * script;
     char * arg;
     PyArg_ParseTuple(args,"ss",&script,&arg);
-
     ExecuteScript(script);
-return Py_BuildValue("");
+
+    return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_Delay(PyObject * self,PyObject * args){ //PyIrr_Delay
@@ -440,15 +435,15 @@ PyObject * Python::PyIrr_Delay(PyObject * self,PyObject * args){ //PyIrr_Delay
     PyArg_ParseTuple(args,"f",&delay);
  //   device->sleep(delay);
     usleep(delay);
-return Py_BuildValue("");
+    return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_Sleep(PyObject * self,PyObject * args){
     int ammount;
     PyArg_ParseTuple(args,"i",&ammount);
     usleep(ammount);
-//    device->sleep(ammount);
-return Py_BuildValue("");
+    //device->sleep(ammount);
+    return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_setTime(PyObject * self,PyObject * args){
@@ -457,7 +452,7 @@ PyObject * Python::PyIrr_setTime(PyObject * self,PyObject * args){
     //convert time here maybe provide a clock gui to use
     u32 timer=ammount;
     //device->sleep(ammount);
-return Py_BuildValue("i",timer);
+    return Py_BuildValue("i",timer);
 }
 
 PyObject * Python::PyIrr_getTime(PyObject * self,PyObject * args){ //active camera
@@ -465,7 +460,7 @@ PyObject * Python::PyIrr_getTime(PyObject * self,PyObject * args){ //active came
     PyArg_ParseTuple(args,"i",&type);
     u32 tm = device->getTimer()->getRealTime();
     //device->sleep(ammount);
-return Py_BuildValue("i",tm);
+    return Py_BuildValue("i",tm);
 }
 
 
@@ -475,15 +470,15 @@ PyObject * Python::PyIrr_WayPoint(PyObject * self,PyObject * args){
  // could have python scripted waypoint manager too
 irr::core::array<ISceneNode*> waypoints;
 
-//   if(waypoints.size() > 0)
-//  {
+//if(waypoints.size() > 0)
+//{
 //    for(u32 i = 0; i < waypoints.size()-1; i++)
 //    {
 //      waypoints[i]->remove();
 //      waypoints.erase(i);
 //    }
 //    waypoints.clear();
-//  }
+//}
 
  //checking distance from node to waypoints
  // playerPos = cam->getPosition(); or node position
@@ -526,7 +521,8 @@ PyObject * Python::PyIrr_addPlayer(PyObject * self,PyObject * args) {//active ca
 
     return Py_BuildValue("l",m_cPlayer);  //return the handle
     #endif
-return Py_BuildValue("");
+
+    return Py_BuildValue("");
 }
 
 
@@ -543,26 +539,29 @@ PyObject * Python::PyIrr_Event(PyObject * self,PyObject * args){
     if  (id == 0){
         return Py_BuildValue("s",mEvent.levent);
     }
-		return Py_BuildValue("");
 
+    return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_Delete(PyObject * self,PyObject * args){ //active camera
 	long * node;
 	PyArg_ParseTuple(args,"l",&node);
 	delete node;
-return Py_BuildValue("");
+
+    return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_pauseGame(PyObject * self,PyObject * args){
     luna->m_cInGameEvents.Quit=true;
-return Py_BuildValue("");
+
+    return Py_BuildValue("");
 }
 
 
 PyObject * Python::PyIrr_exit(PyObject * self,PyObject * args){
     luna->m_cInGameEvents.Quit=true;
-return Py_BuildValue("");
+
+    return Py_BuildValue("");
 }
 
 #include "../Scripting/Environmental.h"
