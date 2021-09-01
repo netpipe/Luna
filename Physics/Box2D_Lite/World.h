@@ -10,7 +10,6 @@
 */
 #include "../../config.h"
 #ifdef BOX2DLITE
-
 #ifndef WORLD_H
 #define WORLD_H
 

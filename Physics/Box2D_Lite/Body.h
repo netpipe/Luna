@@ -10,7 +10,6 @@
 */
 #include "../../config.h"
 #ifdef BOX2DLITE
-
 #ifndef BODY_H
 #define BODY_H
 
@@ -43,5 +42,4 @@ struct Body
 };
 
 #endif
-
 #endif

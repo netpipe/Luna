@@ -10,7 +10,6 @@
 */
 #include "../../config.h"
 #ifdef BOX2DLITE
-
 #ifndef JOINT_H
 #define JOINT_H
 

@@ -108,4 +108,5 @@ void Joint::ApplyImpulse()
 
 	P += impulse;
 }
+
 #endif

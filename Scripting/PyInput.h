@@ -48,6 +48,8 @@ return (keystate);
 
 PyObject * Python::PyIrr_getKey(PyObject * self,PyObject * args){
 //irr::EKEY_CODE StringToEKey_Code( std::string tempString )
+
+//needs case implimented use ascii numbering system for thecase number rather than enum all the keys ?
 	s32 key;
 	 int keyValue,secondary;
     std::string tempString;
@@ -58,17 +60,27 @@ PyObject * Python::PyIrr_getKey(PyObject * self,PyObject * args){
 //  parse key_key from tempString  // use primary and secondary key checking for common keys
 
 /// tip from bobbo
+  //  key=EKEY_CODE( tempString ); //EKEY_CODE( keyValue);
+
+/// tip from bobbo
 //Wouldn't it be quicker/better/easier to just use std::map<std::string, EKEY_CODE> or similar container?
 //Bobbo You'd basically have to setup your container, and then just do like `return keyMap.find(stringCode)->second;`
 
-//switch ( EKEY_CODE(tempString)){//    case  KEY_KEY_P: 'KEY_KEY_E'
+//switch ( key ){//    case  KEY_KEY_P: 'KEY_KEY_E'
 //    //mouse
 //    case KEY_KEY_E://
 //          keyValue = 0x45;
 //          break;
 //    case KEY_LBUTTON:
+//    {
 //         keyValue = 0x01;
-//        break;
+//       } break;
+//
+//    case  KEY_SPACE:
+//    {
+//
+//         keyValue = 0x20;
+//         }break;
 //}
 
 // if joystick event may aswell check hat positions aswell
@@ -94,6 +106,7 @@ PyObject * Python::PyIrr_getKey(PyObject * self,PyObject * args){
 	if (tempString2 > ""){   //not sure why but it seemed to speed things up a bit
 
 	keyValue=-1;
+
     if          ( tempString == "KEY_LBUTTON" )    {  keyValue = 0x01; }
 //    else if( tempString == "KEY_RBUTTON" )    {        keyValue = 0x02;}
 //    else if( tempString == "KEY_CANCEL" )    {        keyValue = 0x03;}
@@ -874,7 +887,7 @@ void Python::CheckKeyStates(){
 #ifdef IRRCDs
     int nextDecal=0;
 
-ISceneNode* outNode;
+        ISceneNode* outNode;
          core::line3d<f32> line;
          core::vector3df intersection;
          core::triangle3df tri;

@@ -194,4 +194,5 @@ inline float Random(float lo, float hi)
 }
 
 #endif
+
 #endif

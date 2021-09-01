@@ -9,6 +9,7 @@
   //  #define PHYSICS
     #define FPS
     #define PYTHON
+   // #define ANGELSCRIPT
     #define Image2D
     #define IRRCD
     #define OCCLUSION
@@ -58,6 +59,7 @@
 #else
 
  #define PYTHON  // defined in the codeblocks project option defines for target management and testing builds
+ // #define ANGELSCRIPT
  #define COMPRESS //needed for empython
 
 
