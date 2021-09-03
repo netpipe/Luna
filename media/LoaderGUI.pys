@@ -14,17 +14,19 @@ if initloader:
       global id
       id+=1
       return id
-
+    from datetime import datetime
 
     font="fontlucida.png"
     location= "../media/LoaderGUI/"
 
-
+#scan for zip files
     cwd=os.getcwd()
     os.chdir("../media/")
     cwd=os.getcwd()
     flist= os.listdir(cwd)
     pysList=[x for x in flist if x.endswith(".pys")]
+
+    zipFiles=[x for x in flist if x.endswith(".zip")]
 
     pysList.remove("LoaderGUI.pys")
     pysList.remove("gameloader.pys")
@@ -68,7 +70,7 @@ if initloader:
     irrlichtlogo=addImage("../media/irrlichtlogo.jpg",88,33)
     #image.irotate(iaxe,i)
    # box2dbox=physics.b2d(1,0,1)
-
+   # os.system("aplay ../media/frogger.wav")
 
 image.iposition(irrlichtlogo, 44,66)
 
@@ -109,6 +111,23 @@ elif input.getKey('KEY_RIGHT'):
 irr.delay(50000)
 currentButton %= len(pysList)
 
+#currentButton1 %= len(zipFiles)
+
+#for i in range(len(zipFiles)):
+  #  scene.drawtext(zipFiles[i],font, 232,46+i*47,128,160+i*47)
+   # scene.drawtext(str(currentButton1), font, 0,0,128,128)
+
+
+myHour = 15
+myMin = 33
+
+now = datetime.now()
+currentHour = now.hour
+currentMin = now.minute
+
+scene.drawtext(str(now), font, 0,0,128,128)
+
+
 for i in range(len(pysList)):
     scene.drawtext(pysList[i],font, 32,46+i*47,128,160+i*47)
     if input.mouse(6,0,0): #mousebutton
@@ -125,6 +144,7 @@ for i in range(len(pysList)):
     scene.drawtext(str(currentButton), font, 0,0,128,128)
 
 if input.getKey('KEY_SPACE'):
+    #irr.files("../media/cards.zip")
     loaderResult=pysList[currentButton]
     initloader=1
 

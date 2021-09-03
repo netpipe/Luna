@@ -46,6 +46,23 @@ return (keystate);
 //return 1;
 }
 
+
+
+//namespace SEKEY {
+//    typedef std::string Type;
+//    Type KEY_LBUTTON = "KEY_LBUTTON";
+//    Type KEY_RBUTTON = "KEY_RBUTTON";
+//}
+//SEKEY::KEY_LBUTTON
+
+//EKEY_CODE convert(cont std::string& str)
+//{
+//https://www.cplusplus.com/forum/beginner/174993/
+//    if(str == "APPLE") return APPLE;
+//    else if(str == "PEAR") return PE
+//
+//}
+
 PyObject * Python::PyIrr_getKey(PyObject * self,PyObject * args){
 //irr::EKEY_CODE StringToEKey_Code( std::string tempString )
 
@@ -66,19 +83,21 @@ PyObject * Python::PyIrr_getKey(PyObject * self,PyObject * args){
 //Wouldn't it be quicker/better/easier to just use std::map<std::string, EKEY_CODE> or similar container?
 //Bobbo You'd basically have to setup your container, and then just do like `return keyMap.find(stringCode)->second;`
 
-//switch ( key ){//    case  KEY_KEY_P: 'KEY_KEY_E'
+//EKEY_CODE ekeycode = convert(tempString);
+
+//switch ( ekeycode ){//    case  KEY_KEY_P: 'KEY_KEY_E'
 //    //mouse
 //    case KEY_KEY_E://
 //          keyValue = 0x45;
 //          break;
+
 //    case KEY_LBUTTON:
 //    {
 //         keyValue = 0x01;
 //       } break;
-//
+
 //    case  KEY_SPACE:
 //    {
-//
 //         keyValue = 0x20;
 //         }break;
 //}
@@ -107,7 +126,7 @@ PyObject * Python::PyIrr_getKey(PyObject * self,PyObject * args){
 
 	keyValue=-1;
 
-    if          ( tempString == "KEY_LBUTTON" )    {  keyValue = 0x01; }
+      if ( tempString == "KEY_LBUTTON" )    {  keyValue = 0x01; }
 //    else if( tempString == "KEY_RBUTTON" )    {        keyValue = 0x02;}
 //    else if( tempString == "KEY_CANCEL" )    {        keyValue = 0x03;}
 //    else if( tempString == "KEY_MBUTTON" )    {        keyValue = 0x04;}
