@@ -16,6 +16,8 @@ namespace Python {
     vector<ITexture *> texture_array; //Our array of textures
     void registerIrrDevice(Luna *luna2, IrrlichtDevice &device,InGameEventReceiver event);
 
+    void initkeys();
+
     #ifdef CHOPPER
     ChopperControl *chopperControl;
     #endif
