@@ -11,7 +11,7 @@
     #define PYTHON
    // #define ANGELSCRIPT
     #define Image2D
-    #define IRRCD
+  //  #define IRRCD
     #define OCCLUSION
         #define WATER
         //#define ReflectiveWater
@@ -37,7 +37,7 @@
       //#define FLARE
       //#define DECALS2 //replace needing physics to get working
      // #define SQLITE
-
+#define LOADLEVELS
     #ifdef MINIMAL2
         //#define BOX2D // engine uses box2dlite already this is for testing
         //#define SOUND

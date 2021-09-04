@@ -36,11 +36,15 @@ PyMethodDef irr_Input[] =
 bool Python::CheckKeyState(int key){
 	//might want to add some kind of key limiter to prevent several keypresses in a row
 	bool keystate=0;
+	#ifdef FPS
 	if (bFPS){
         keystate = M4->isKeyDown( irr::EKEY_CODE(key) );
 	}else{
         keystate = mEvent.getKeyState( irr::EKEY_CODE(key) );
 	}
+	#else
+        keystate = mEvent.getKeyState( irr::EKEY_CODE(key) );
+	#endif
 
 return (keystate);
 //return 1;
