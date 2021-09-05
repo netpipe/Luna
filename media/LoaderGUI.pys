@@ -34,7 +34,7 @@ if initloader:
     pysList.remove("net.pys")
     pysList.remove("functions-list.pys")
 
-    camera = scene.addCamera(1, 0,0,0)
+    camera = scene.addCamera(3, 0,0,-10)
     scene.decals(1,camera)
     Light = scene.Light(10,0,100,0,"111111")
     print("camera added")
@@ -72,9 +72,10 @@ if initloader:
     #image.irotate(iaxe,i)
    # box2dbox=physics.b2d(1,0,1)
    # os.system("aplay ../media/frogger.wav")
-
+   # scene.flag1("../media/irrlichtlogo.jpg",0,0,20)
+input.mouse(4,0,0)
 image.iposition(irrlichtlogo, 44,66)
-image.idraw(irrlichtlogo)
+
 
 #######Loop
 #print ( box2dbody )
@@ -86,7 +87,7 @@ image.iposition(box2di, input.mouse(2,0,0),input.mouse(3,0,0))  #crashes if boot
 image.idraw(lunaengine)
 image.idraw(iaxe)
 image.idraw(box2di)
-
+image.idraw(irrlichtlogo)
 
 
 print ( input.mouse(6,0,0) )#mousebutton

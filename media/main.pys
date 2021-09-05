@@ -57,7 +57,7 @@ if (init) :
  #scene.soundman(1,str(sound2),2)#unloadsound / clear sounds
 
  camera = scene.addCamera(3,0,200,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
-# physics.fpsweapon(camera)
+ scene.fpsweapon(camera,0)
  scene.decals(1,camera)
 
 
@@ -208,6 +208,10 @@ if (init) :
 # icount=0
 #else:
 # icount+=1
+
+scene.fpsweapon(camera,1)
+
+
 
 #gui.bar(healthbar,1,20,40,200,60) #does not draw onanimate it
 #posx=scene.getPosition(helicopter,0)

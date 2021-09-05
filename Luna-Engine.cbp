@@ -7,6 +7,7 @@
 		<Option pch_mode="0" />
 		<Option default_target="Linux Debug" />
 		<Option compiler="gcc" />
+		<Option virtualFolders="media/" />
 		<Build>
 			<Target title="Linux Debug 2D">
 				<Option output="./GAME/mLuna2d" prefix_auto="0" extension_auto="0" />

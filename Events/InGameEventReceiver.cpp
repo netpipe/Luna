@@ -107,6 +107,7 @@ bool InGameEventReceiver::getKeyState(EKEY_CODE key)
 {
   return keys[key];
 }
+
 //bool InGameEventReceiver::getKeyState(EKEY_CODE key)
 //{
 //  return keys[key];

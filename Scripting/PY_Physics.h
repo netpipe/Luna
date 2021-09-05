@@ -369,8 +369,7 @@ PyObject * Python::PyIrr_BulletBlend(PyObject * self,PyObject * args) {
 //		printf("cannot read Blender file %s.\n",argv[1]);
 		fclose(file);
 		exit(0);
-	} else
-	{
+	} else {
 		bulletBlendReader.convertAllObjects(verboseDumpAllBlocks);
 	}
 #endif
@@ -441,7 +440,7 @@ PyObject * Python::PyIrr_addCar(PyObject * self,PyObject * args){
 	//str(texture,texture2);
 #ifdef PHYSICS
     #ifdef BULLETCAR
-    bCar=1;
+        bCar=1;
          Vehicle* m_cVehicle = new Vehicle;
          m_cVehicle->registerIrrDevice(*device);
          #ifdef PHYSICS
@@ -489,15 +488,15 @@ return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_Bullet(PyObject * self,PyObject * args){
-return Py_BuildValue("");
+    return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_RagMan(PyObject * self,PyObject * args){
-// params node id and mesh ?
+    // params node id and mesh ?
     #ifdef RAGDOLL
-    v_RagDolls.push_back(new RagDoll(luna->m_cPhysics->getDynamicsWorld(),smgr, btVector3(0,55,0), btScalar(5.0)));
+        v_RagDolls.push_back(new RagDoll(luna->m_cPhysics->getDynamicsWorld(),smgr, btVector3(0,55,0), btScalar(5.0)));
     #endif
-return Py_BuildValue("");
+    return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_LoadVehicle(PyObject * self,PyObject * args){
@@ -505,6 +504,7 @@ PyObject * Python::PyIrr_LoadVehicle(PyObject * self,PyObject * args){
 	}
 
 PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
+//add camera parameter for cd
 	#ifdef TERRAIN
 	#ifdef PHYSICS
 		tr.setIdentity();
@@ -557,39 +557,39 @@ PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
 		smgr->getMeshManipulator()->makePlanarTextureMapping(
 		mesh, 0.004f);
    // if(!mesh || !node) return;
-    node->setAutomaticCulling(EAC_OFF);
-     node->setMaterialFlag(EMF_LIGHTING, true);
+        node->setAutomaticCulling(EAC_OFF);
+        node->setMaterialFlag(EMF_LIGHTING, true);
     // node->setScale(trackScale);
     // node->setRotation(vector3df(45,90.f,110));
-    node->setPosition(trackPosition);
+        node->setPosition(trackPosition);
      //   m_cVehicle->loadLevel(track.c_str());
 		device->getFileSystem()->changeWorkingDirectoryTo(rootdir.c_str());
 	#ifndef PHYSICS
-	#ifdef IRRCD
-    metaSelector = device->getSceneManager()->createMetaTriangleSelector();
-    selector = device->getSceneManager()->createOctTreeTriangleSelector(mesh,node,128);
-    node->setTriangleSelector(selector);
-    metaSelector->addTriangleSelector(selector);
-    selector->drop();
+        #ifdef IRRCD
+        metaSelector = device->getSceneManager()->createMetaTriangleSelector();
+        selector = device->getSceneManager()->createOctTreeTriangleSelector(mesh,node,128);
+        node->setTriangleSelector(selector);
+        metaSelector->addTriangleSelector(selector);
+        selector->drop();
 
-    //meshbuffer converter to IMesh
-    // scene::SMesh* mesh2 = new SMesh; // dont really need this
-    // mesh2->addMeshBuffer (meshBuffer2);
-    // mesh2->drop();
+        //meshbuffer converter to IMesh
+        // scene::SMesh* mesh2 = new SMesh; // dont really need this
+        // mesh2->addMeshBuffer (meshBuffer2);
+        // mesh2->drop();
 
-    scene::ISceneNodeAnimator* anim;
-	anim = device->getSceneManager()->createCollisionResponseAnimator(
-		metaSelector, camera, core::vector3df(30,60,30),
-		core::vector3df(0,0,0),   /// MAIN irrGRAVITY
-		core::vector3df(0,10,0));
-    camera->addAnimator(anim);
-   // m_cInGameEvents.chopperControl->onCollision(anim);
-    anim->drop();
-	metaSelector->drop();
-#endif
-#endif
+        scene::ISceneNodeAnimator* anim;
+        anim = device->getSceneManager()->createCollisionResponseAnimator(
+            metaSelector, camera, core::vector3df(30,60,30),
+            core::vector3df(0,0,0),   /// MAIN irrGRAVITY
+            core::vector3df(0,10,0));
+        //  camera->addAnimator(anim); // bug use python to pass camera arrgss
+       // m_cInGameEvents.chopperControl->onCollision(anim);
+        anim->drop();
+        metaSelector->drop();
+    #endif
+#else //physics
 
-#ifdef PHYSICS
+
     tr.setOrigin(btVector3(trackPosition.X, trackPosition.Y, trackPosition.Z));
     btTriangleMesh *collisionMesh = new btTriangleMesh();
 

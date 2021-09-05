@@ -814,7 +814,7 @@ PyObject * Python::PyIrr_LoadLevel(PyObject * self,PyObject * args){
 #ifdef IRRCDs
     metaSelector = device->getSceneManager()->createMetaTriangleSelector();
     selector = device->getSceneManager()->createOctTreeTriangleSelector(mesh,node,128);
-    node->setTriangleSelector(selector);
+    node->setTriangleSelector( selector );
     metaSelector->addTriangleSelector(selector);
     selector->drop();
 
@@ -828,7 +828,7 @@ PyObject * Python::PyIrr_LoadLevel(PyObject * self,PyObject * args){
 		metaSelector, camera, core::vector3df(30,60,30),
 		core::vector3df(0,0,0),   /// MAIN irrGRAVITY
 		core::vector3df(0,10,0));
-    camera->addAnimator(anim);
+   // camera->addAnimator(anim);
    // m_cInGameEvents.chopperControl->onCollision(anim);
     anim->drop();
 	metaSelector->drop();
@@ -857,6 +857,7 @@ PyObject * Python::PyIrr_LoadLevel(PyObject * self,PyObject * args){
 
 return Py_BuildValue("");
 }
+
 PyObject * Python::PyIrr_Light(PyObject * self,PyObject * args){ //active camera // parameters for fov possibly shaders aswell
 	//s32
 	float x,y,z;

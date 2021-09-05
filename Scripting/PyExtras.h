@@ -100,7 +100,7 @@ PyObject * Python::PyIrr_lensFlare(PyObject * self,PyObject * args){
     if (param){
     #ifdef FLARE
     lensFlareNode = new LensFlareSceneNode(sunMeshNode, smgr,1);
-    lensFlareNode->setMaterialTexture(0, driver->getTexture("media/flare.png"));
+    lensFlareNode->setMaterialTexture(0, driver->getTexture("../media/flare.png"));
         driver->addOcclusionQuery(sunMeshNode, sunMeshNode->getMesh());
           //  blensFlare=1;
             bFlare2=1;
@@ -108,7 +108,7 @@ PyObject * Python::PyIrr_lensFlare(PyObject * self,PyObject * args){
     }else{
     #ifdef FLARE2
     lensFlareNode2 = new CLensFlareSceneNode(sunMeshNode, smgr,123,core::vector3d<f32>(x,y,z));
-        lensFlareNode2->getMaterial(0).setTexture(0, driver->getTexture("media/flares.jpg"));
+        lensFlareNode2->getMaterial(0).setTexture(0, driver->getTexture("../media/flares.jpg"));
          blensFlare=1;
     #endif
 
@@ -129,7 +129,7 @@ PyObject * Python::PyIrr_motionTrail(PyObject * self,PyObject * args) {
        //     rt->
   //  }
 //    btrailNode=1
-	video::ITexture* tex = driver->getTexture( "media/portal7.bmp" );
+	video::ITexture* tex = driver->getTexture( "../media/portal7.bmp" );
     rt = new RibbonTrailSceneNode( device, camera, -1 );
 //	rt->setPosition( core::vector3df( 0, -10, 300 ) );
     rt->setMaterialTexture( 0, tex );
@@ -150,7 +150,7 @@ PyObject * Python::PyIrr_beam(PyObject * self,PyObject * args){
     int param,state,Vehicle,ammount;
     PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
     #ifdef EXTRAS
-	scene::CBeamNode* beam = new scene::CBeamNode(smgr->getRootSceneNode(), smgr, -1, "./data/textures/sceneNodes/laserlf6.png" , "data/textures/sceneNodes/beam.png" );
+	scene::CBeamNode* beam = new scene::CBeamNode(smgr->getRootSceneNode(), smgr, -1, "../media/data/textures/sceneNodes/laserlf6.png" , "data/textures/sceneNodes/beam.png" );
 	beam->setLine(core::vector3df(0,0,0), core::vector3df(100,100,100), 5.0f);
 	beam->drop();
     return Py_BuildValue("l",beam);
@@ -167,7 +167,7 @@ PyObject * Python::PyIrr_Occlusion(PyObject * self,PyObject * args) {//active ca
     // RenderMan.addSky("data/models/occlusion/gradient3.bmp");
     // RenderMan.addLight();
 
-    RenderMan.loadModel("data/models/occlusion/etage.b3d", vector3df(0,0,0));
+    RenderMan.loadModel("../media/data/models/occlusion/etage.b3d", vector3df(0,0,0));
     // RenderMan.addCam(.1f, vector3df(40,70,40), vector3df(0,0,1000), true);
     RenderMan.addCam(camera);
     // RenderMan.addMy3DScene("models/bedroom1/bedroom.my3d", 0,0,0);
@@ -192,8 +192,8 @@ PyObject * Python::PyIrr_Compass(PyObject * self,PyObject * args) {
         gui::IGUIElement* pgRootGuiElement = guienv->getRootGUIElement();
 
         Compass1 = new Compass( CompassRect, guienv, pgRootGuiElement );
-        video::ITexture * CompassBodyTexture =   driver->getTexture("media/compass/compass_body.png");
-        video::ITexture * CompassNeedleTexture =   driver->getTexture("media/compass/compass_needle.png");
+        video::ITexture * CompassBodyTexture =   driver->getTexture("../media/compass/compass_body.png");
+        video::ITexture * CompassNeedleTexture =   driver->getTexture("../media/compass/compass_needle.png");
         Compass1->SetCompassBodyTexture( CompassBodyTexture );
         Compass1->SetCompassNeedleTexture( CompassNeedleTexture );
     #endif
@@ -203,7 +203,7 @@ return Py_BuildValue("");
 
 PyObject * Python::PyIrr_BlindBoids(PyObject * self,PyObject * args) {//active camera
         int param,state,Vehicle,ammount;
-    PyArg_ParseTuple(args,"iiii",&Vehicle,&param,&ammount,&state);
+        PyArg_ParseTuple(args,"iiii",&Vehicle,&param,&ammount,&state);
 //        const u32 now = device->getTimer()->getTime();
 //        const f32 frameDeltaTime = (f32)(now - then) / 1000.0f; // Time in seconds
 //        then = now;
@@ -219,13 +219,13 @@ PyObject * Python::PyIrr_BlindBoids(PyObject * self,PyObject * args) {//active c
         flock->registerScene(*smgr);
         	//create flock
 //        	flock->boidSelector = smgr->createMetaTriangleSelector();
-        irr::scene::IMesh* meshy = smgr->getMesh("./media/dwarf.x");
+        irr::scene::IMesh* meshy = smgr->getMesh("../media/dwarf.x");
         //add boids to flock
         for (irr::u32 i = 0; i < 10; ++i)
 		flock->addBoid(meshy);
 
         irr::video::SMaterial mat;
-        mat.TextureLayer[0].Texture = driver->getTexture("media/boids/star.bmp");
+        mat.TextureLayer[0].Texture = driver->getTexture("../media/boids/star.bmp");
         mat.EmissiveColor = irr::video::SColor(255, 255, 0, 0);
         mat.SpecularColor = irr::video::SColor(0, 0, 0, 0);
         mat.DiffuseColor =  irr::video::SColor(0, 0, 0, 0);

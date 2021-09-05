@@ -37,7 +37,7 @@ if(init):
  scene.decals(1,camera)
  Light1 = scene.Light(10,0,100,0,"111111")
 
-
+ input.mouse(4,0,0)
 
  iaxe = image.iadd("../media/terrain-heightmap.bmp",10,10,500,500,10,10,800,800)
  i=0

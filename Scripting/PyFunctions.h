@@ -574,9 +574,9 @@ PyObject * Python::PyIrr_GetString(PyObject * self,PyObject * args){ //active ca
     PyArg_ParseTuple(args,"s",&arg);
 
     //returnString=arg;
-    returnString="../media/frogger.pys";
+   // returnString="../media/frogger.pys";
     //string tester = "../media/" + arg + "frogger.pys";
-    luna->pyloader="../media/frogger.pys";
+   // luna->pyloader="../media/frogger.pys";
     //luna->pyloader="../media/" + tester + "frogger.pys";
     Python::returnString=arg;
 
@@ -634,31 +634,44 @@ PyObject * Python::PyIrr_getTime(PyObject * self,PyObject * args){ //active came
 }
 
 
+irr::core::array<ISceneNode*> waypoints;
 
 PyObject * Python::PyIrr_WayPoint(PyObject * self,PyObject * args){
  //add //remove // check // load // clear
  // could have python scripted waypoint manager too
-irr::core::array<ISceneNode*> waypoints;
+int param;
+float x,y,z;
+    PyArg_ParseTuple(args,"ifff",&param,&x,&y,&z);
 
-//if(waypoints.size() > 0)
-//{
-//    for(u32 i = 0; i < waypoints.size()-1; i++)
-//    {
-//      waypoints[i]->remove();
-//      waypoints.erase(i);
-//    }
-//    waypoints.clear();
-//}
+switch(param){
+case 0: {
+// checking distance from node to waypoints
+//  playerPos = cam->getPosition(); or node position
+      for(u32 i = 0; i < waypoints.size(); i++)
+      {
+        if(waypoints[i]->getPosition().getDistanceFrom(vector3df(x,y,z)) < 50.0f)
+        {
 
- //checking distance from node to waypoints
- // playerPos = cam->getPosition(); or node position
-//  for(u32 i = 0; i < waypoints.size(); i++)
-//  {
-//    if(waypoints[i]->getPosition().getDistanceFrom(playerPos) < 50.0f)
-//    {
-//
-//
-//    }
+
+        }
+        }
+        }break;
+
+    case 1: {
+        if(waypoints.size() > 0)
+    {
+        for(u32 i = 0; i < waypoints.size()-1; i++)
+        {
+          waypoints[i]->remove();
+          waypoints.erase(i);
+        }
+        waypoints.clear();
+    }
+
+}break;
+
+}
+
 
 //      if(particleNodeArray.size() > 0)
 //  {

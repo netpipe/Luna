@@ -153,7 +153,7 @@ bool Event_Receiver::OnEvent(const SEvent &evt)
         m_irrDevice->getCursorControl()->getPosition(),
         camera);
 
-		const ISceneNode *hitNode = 0;
+        ISceneNode *hitNode = 0;
     m_irrDevice->getSceneManager()->getSceneCollisionManager()->getCollisionPoint(
       line, getTriangleSelector(), intersection, tri, hitNode);
 

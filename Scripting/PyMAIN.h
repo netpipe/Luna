@@ -117,6 +117,7 @@ namespace Python {
     PyObject * PyIrr_FormationDemo(PyObject * self,PyObject * args);
     PyObject * PyIrr_SetCamera(PyObject * self,PyObject * args);
     PyObject * PyIrr_GetCamera(PyObject * self,PyObject * args);
+    PyObject * PyIrr_BindCamera(PyObject * self,PyObject * args);
     PyObject * PyIrr_Reset(PyObject * self,PyObject * args);
 
     PyObject * PyIrr_fpsWeapon(PyObject * self,PyObject * args);

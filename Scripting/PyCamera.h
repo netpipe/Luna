@@ -1,5 +1,6 @@
 #ifndef PYCAMERA_INCLUDED
 #define PYCAMERA_INCLUDED
+#include "../config.h"
 #ifdef PYTHON
 //#include <irrlicht.h>
 PyMethodDef irr_Camera[] = {
@@ -7,6 +8,9 @@ PyMethodDef irr_Camera[] = {
     {"setCamera",Python::PyIrr_SetCamera,METH_VARARGS,"sets camera vector"},
 	{"getCamera",Python::PyIrr_GetCamera,METH_VARARGS,"getcamera vector"},
     {"fpsweapon",Python::PyIrr_fpsWeapon,METH_VARARGS,"PyIrr_fpsWeapon"},
+    {"bindCamera",Python::PyIrr_BindCamera,METH_VARARGS,"PyIrr_BindCamera"},
+
+
 	{NULL,NULL,0,NULL}
 };
 
@@ -99,40 +103,53 @@ PyObject * Python::PyIrr_addCamera(PyObject * self,PyObject * args){
 
 PyObject * Python::PyIrr_fpsWeapon(PyObject * self,PyObject * args){
 // need to attach to bones and/or nodes here
-#ifdef FPS
+    #ifdef FPS
 	bFPS = 1;
     long pcam;
-    PyArg_ParseTuple(args,"l",&pcam);
+    int param;
+    PyArg_ParseTuple(args,"li",&pcam,&param);
     ICameraSceneNode* camera = (ICameraSceneNode*)pcam;
     device->getGUIEnvironment()->addImage( driver->getTexture("../media/data/textures/crosshairs/crosshair1.png"),
                                             core::position2d<s32>((luna->resolution[0]/2)-64,(luna->resolution[1]/2)-64));
-    #ifdef FPS
-          IAnimatedMesh*   gunmesh = smgr->getMesh("../media/data/models/weapons/M4/3d_person/M4A1d.3ds");
-          scene::IAnimatedMeshSceneNode* agun;
-          agun = smgr->addAnimatedMeshSceneNode(gunmesh);
-          if (agun)
-          {
-            agun->setMaterialTexture(0, driver->getTexture("../media/data/models/weapons/M4/1st_person/M4A1.jpg"));
-            agun->setScale(core::vector3df(1.2f, 1.2f, 1.2f));
-            agun->setPosition(core::vector3df(180.f,1.5f,0.f));
-            agun->setRotation(core::vector3df(0.f,0.f,90.f));
-            //agun->apply_light2node(agun);
-        	agun->addShadowVolumeSceneNode();
-          }
-          gunmesh->drop();
-       // scene::ICameraSceneNode* cam = smgr->addCameraSceneNodeFPS(0, 100.0f, .5f,-1,keyMap,8);
-                                  // cam->setPosition(core::vector3df(-200,100,200));
-                                 //  cam->setTarget(core::vector3df(0,0,0));
-        camera->setFOV(PI/2);
-        camera->setFarValue(7000);
 
+    switch(param){
+        case 0:
+        {
+              IAnimatedMesh*   gunmesh = smgr->getMesh("../media/data/models/weapons/M4/3d_person/M4A1d.3ds");
+              scene::IAnimatedMeshSceneNode* agun;
+              agun = smgr->addAnimatedMeshSceneNode(gunmesh);
+              if (agun)
+              {
+                agun->setMaterialTexture(0, driver->getTexture("../media/data/models/weapons/M4/1st_person/M4A1.jpg"));
+                agun->setScale(core::vector3df(1.2f, 1.2f, 1.2f));
+                agun->setPosition(core::vector3df(180.f,1.5f,0.f));
+                agun->setRotation(core::vector3df(0.f,0.f,90.f));
+                //agun->apply_light2node(agun);
+                agun->addShadowVolumeSceneNode();
+              }
+              gunmesh->drop();
+           // scene::ICameraSceneNode* cam = smgr->addCameraSceneNodeFPS(0, 100.0f, .5f,-1,keyMap,8);
+                                      // cam->setPosition(core::vector3df(-200,100,200));
+                                     //  cam->setTarget(core::vector3df(0,0,0));
+            camera->setFOV(PI/2);
+            camera->setFarValue(7000);
 
-        M4 = new firstPersonWeapon(device, camera);
-        //  apply_light2node(M4->getNode());
-        device->setEventReceiver(M4);
-      //  return Py_BuildValue("l",agun);
-    #endif
-    #endif // FPS
+            M4 = new firstPersonWeapon(device, camera);
+            //  apply_light2node(M4->getNode());
+            device->setEventReceiver(M4);
+
+            return Py_BuildValue("l",M4);
+
+        }break;
+
+        case 1:
+        {
+//                M4->LEFTBUTTONCLICKED=true;
+//                M4->RIGHTBUTTONCLICKED=true;
+        }break;
+    }
+#endif
+
 return Py_BuildValue("");
 }
 
@@ -227,12 +244,17 @@ PyObject * Python::PyIrr_GetCamera(PyObject * self,PyObject * args){
 //}
 
 
-//PyObject * Python::PyIrr_BindCamera(PyObject * self,PyObject * args)
-//{
-//camera->setTarget();
-////camera->bindTargetAndRotation(Node);
-//Py_RETURN_NONE;
-//}
+PyObject * Python::PyIrr_BindCamera(PyObject * self,PyObject * args)
+{
+long cam2,node_id;
+	PyArg_ParseTuple(args,"ll",&cam2,&node_id);
+	ICameraSceneNode *cam = (ICameraSceneNode*)cam2;
+	ISceneNode *Node = (ISceneNode*)node_id;
+    //cam->setTarget();
+    cam->bindTargetAndRotation(Node);
+
+Py_RETURN_NONE;
+}
 
 
 //device->getSceneManager()->getActiveCamera()

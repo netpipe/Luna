@@ -11,7 +11,7 @@
     #define PYTHON
    // #define ANGELSCRIPT
     #define Image2D
-  //  #define IRRCD
+    #define IRRCD
     #define OCCLUSION
         #define WATER
         //#define ReflectiveWater
