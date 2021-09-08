@@ -314,17 +314,22 @@ PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
 	//	EKEY_CODE ekey;
 	PyArg_ParseTuple(args,"ss",&type,&udev);
 
+
+
 	return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
-	int type;
+//	int type;
 	int result;
 	float x;
 	float y;
-	PyArg_ParseTuple(args,"iff",&type,&x,&y);
+	char * typem;
+//	PyArg_ParseTuple(args,"iff",&type,&x,&y);
+	PyArg_ParseTuple(args,"sff",&typem,&x,&y);
     //position2d<int> pos= device->getCursorControl()->getPosition();
 	//core::vector2d<int> position;
+
 
 	enum
     {
@@ -334,12 +339,13 @@ PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
         NUMBER_OF_MOUSE_BUTTONS
     };
 
-	switch (type){
-		case 1: //set
-			//	irr::gui::ICursorControl::setPosition (x, y);
-			device->getCursorControl()->setPosition(x,y);
+    	switch ( mparam2[typem] ){
+	//switch ( type ){
+		case mset: //set
+                //	irr::gui::ICursorControl::setPosition (x, y);
+                device->getCursorControl()->setPosition(x,y);
 			break;
-		case 2:	//get X
+		case mgetx:	//get X
 			{
 				//	printf("xcoord %i \n",pos.X);
 				//printf("xcoord %i",device->getCursorControl()->getPosition().X);
@@ -347,7 +353,7 @@ PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
 				return Py_BuildValue("i",device->getCursorControl()->getPosition().X);
 			}break;
 
-		case 3:	//get Y
+		case mgety:	//get Y
 			{
 			//pos = device->getCursorControl()->getPosition();
 			//printf("ycoord %i \n",device->getCursorControl()->getPosition().Y);
@@ -357,17 +363,17 @@ PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
 			//		return Py_BuildValue("i",luna->m_cInGameEvents.mouseY);
 			}break;
 
-		case 4:	//visible
+		case mvisible:	//visible
 			{
                 device->getCursorControl()->setVisible(1);
 			}break;
 
-		case 5:	//invisible
+		case minvisible:	//invisible
 			{
                 device->getCursorControl()->setVisible(0);
 			}break;
 
-		case 6: //getmouse1press state
+		case mlmouse: //getmouse1press state
 			{
 //                bool mbutton=mEvent.lmouse;
 //
@@ -378,7 +384,7 @@ PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
                 return Py_BuildValue("i",mEvent.lmouse);
 			}break;
 
-		case 7://getmouse2press state
+		case mrmouse://getmouse2press state
 			{
 //                bool mbutton=mEvent.rmouse;
 //
@@ -389,7 +395,7 @@ PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
                 return Py_BuildValue("i",mEvent.rmouse);
 			}break;
 
-		case 8://getmouse3press state
+		case mmmouse://getmouse3press state
 			{
                 bool mbutton=mEvent.mmouse;
 

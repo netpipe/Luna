@@ -26,30 +26,25 @@ PyMethodDef irr_Physics[] = {
 	};
 
 
-
 PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
 
 	long bptr;
-	int param;
+	//int param;
 	int state;
-	PyArg_ParseTuple(args,"lii",&bptr,&param,&state);
+	char * param;
+	float x,y,friction;
 
-    enum eparam{init,run,getx,gety,rotation,joint};
-	int Iparam=param;
-//	if ( state==0 ){  // use state for get and set var
+//	PyArg_ParseTuple(args,"lsifffff",&bptr,&param,&state,&w,&h,&x,&y,&friction);
+	PyArg_ParseTuple(args,"lsi",&bptr,&param,&state);
 
-       switch (param){
-            case eparam(init):
+
+       switch (esb2d[param]){
+
+            case eparamb2d(binit): //gravity based
             {
-                Body* b2 =new Body;
-//                b2->Set(Vec2(100.0f, 20.0f), FLT_MAX);
-//                b2->position.Set(0.0f, -0.5f * b2->width.y);
-//                world.Add(b2);
-//                //   ++b;
-//                ++numBodies;
-              //  printf("case0\n");
+                Body* b2 = new Body;
 
-              	b2->Set(Vec2(1.0f, 1.0f), 200.0f);
+              	b2->Set(Vec2(1.0f, 1.0f),220.0f);
                 b2->position.Set(0.0f, 43.0f);
                 world.Add(b2);
                 b2->friction = 0.1f;
@@ -59,13 +54,25 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
                     return Py_BuildValue("l", b2);
             }break;
 
-            case eparam(run): //run step
+//            case eparamb2d(init):// non moving
+//            {
+//                Body* b2 = new Body;
+//              	b2->Set(Vec2(w, h),FLT_MAX);
+//                b2->position.Set(x, y);
+//                world.Add(b2);
+//                b2->friction = friction;
+//                 ++numBodies;
+//
+//                    return Py_BuildValue("l", b2);
+//            }break;
+
+            case eparamb2d(brun): //run step
             {
              //   printf("run\n");
                 world.Step(timeStep);
             }break;
 
-            case getx:
+            case eparamb2d(bgetx):
             {
                 Body* b3;
                 b3=(Body*)bptr;
@@ -74,7 +81,7 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
             	return Py_BuildValue("f", b3->position.x);
             }break;
 
-            case gety:
+            case eparamb2d(bgety):
             {
                 Body* b3;
                 b3=(Body*)bptr;
@@ -83,7 +90,7 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
             	return Py_BuildValue("f", b3->position.y);
             }break;
 
-            case joint:
+            case eparamb2d(bjoint):
             {
                 Body* b3;
                 b3=(Body*)bptr;
@@ -95,7 +102,7 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
             	return Py_BuildValue("f", b3->position.y);
             }break;
 
-            case rotation:{
+            case eparamb2d(brotation):{
                 Body* b3;
                 b3=(Body*)bptr;
                 b3->rotation = 0.0f;
@@ -146,7 +153,8 @@ PyObject * Python::PyIrr_recast(PyObject * self,PyObject * args){
 		}
 	}
 #endif
-	//vector<irr::core::vector3df> lstPoints = recast->returnPath(vector3df_Start, vector3df_End);
+
+//vector<irr::core::vector3df> lstPoints = recast->returnPath(vector3df_Start, vector3df_End);
 //void RecastUtilM::resetCommonSettings()
 //{
 //m_cellSize = 4.0f; // 0.3f;
@@ -164,6 +172,7 @@ PyObject * Python::PyIrr_recast(PyObject * self,PyObject * args){
 //m_detailSampleDist = 6.0f;
 //m_detailSampleMaxError = 1.0f;
 //}
+
 	return Py_BuildValue("");
 }
 
@@ -175,7 +184,7 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
    // char * param;
     PyArg_ParseTuple(args,"liffff",&mVehicle,&param,&state,&ammount,&y,&z);
  //   vector3df* position = VehicleParam(mVehicle,param,state,ammount,y,z);
-	enum eparam{reset,accelerate,reverse,ebrake,brake,lsteer,rsteer};
+//	enum veparam{reset,accelerate,reverse,ebrake,brake,lsteer,rsteer};
 
 	Vehicle *vehicle = (Vehicle *)mVehicle;
 	//if param = "accelerate"
@@ -191,24 +200,24 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
 	if ( state==0 ){  // use state for get and set var
        switch (Iparam){
 
-            case eparam(reset):
+            case veparam(reset):
              //   m_cVehicle->resetVehicle();
 				vehicle->resetVehicle();
                 break;
 
-            case accelerate:
+            case veparam(accelerate):
                 vehicle->accelerate(1);
             break;
 
-            case reverse:
+            case veparam(reverse):
                 vehicle->reverse(1);
                 break;
-            case ebrake: //wind resistance
+            case veparam(ebrake): //wind resistance
                 vehicle->reverse(ammount);
                 printf("ebrake");
             break;
 
-            case brake:
+            case veparam(brake):
             	//printf('braking');
                                 vehicle->brake();
 //                   if (mEvent.getKeyState(    irr::EKEY_CODE( 0x26 ) ))//KEY_UP)  ) ///| getkey.keyUP
@@ -217,11 +226,11 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
                         //    m_cVehicle->accelerate(-1);   //wind resistance
                 break;
 
-            case lsteer:
+            case veparam(lsteer):
                 vehicle->steer_left();
                 break;
 
-            case rsteer:
+            case veparam(rsteer):
          //       printf("steer right");
                 vehicle->steer_right();
                 break;
@@ -388,6 +397,7 @@ PyObject * Python::PyIrr_addCar(PyObject * self,PyObject * args){
 	int vehicleWeight;
 	float maxBreakingForce, maxEngineForce,SpeedINC;
 	int Ctype=1;
+
 	float connectionHeight,suspensionStiffness,suspensionDamping,
 	suspensionCompression,rollInfluence,wheelFriction,wheelRadius,
 	wheelWidth,steeringIncrement, steeringClamp, CUBE_HALF_EXTENTS ,
@@ -443,9 +453,9 @@ PyObject * Python::PyIrr_addCar(PyObject * self,PyObject * args){
         bCar=1;
          Vehicle* m_cVehicle = new Vehicle;
          m_cVehicle->registerIrrDevice(*device);
-         #ifdef PHYSICS
+
          m_cVehicle->registerPhysics(*luna->m_cPhysics);
-         #endif
+
          m_cVehicle->registerScene(*m_cScene);
          m_cVehicle->registerCamera(camera);
 
@@ -480,10 +490,10 @@ PyObject * Python::PyIrr_addCar(PyObject * self,PyObject * args){
 //        node->setMaterialFlag(video::EMF_LIGHTING, false);
 
   //   Vehicles->push_back(m_cVehicle);
-return Py_BuildValue("l",m_cVehicle);
+    return Py_BuildValue("l",m_cVehicle);
 #endif
 #endif
-return Py_BuildValue("");
+    return Py_BuildValue("");
 
 }
 
@@ -645,7 +655,7 @@ PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
 //             }
 //         }
 //         }
-return Py_BuildValue("l",test);
+    return Py_BuildValue("l",test);
 	}
 
     #endif
@@ -675,10 +685,10 @@ void Python::rfm(ISceneNode* node ) //level loader
 //		node->setPosition(wheels);
 //  }
 
-  if(strcmp(node->getName(), "obstacle") == 0)
-  {
-	//	Obstacle::Instance()->Add(node);
-  }
+      if(strcmp(node->getName(), "obstacle") == 0)
+      {
+        //	Obstacle::Instance()->Add(node);
+      }
   if(strcmp(node->getName(), "level") == 0)
   {
     //! Enable fog for all materials on the level node.

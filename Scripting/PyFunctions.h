@@ -317,7 +317,18 @@ PyMethodDef irr_function[] =
 };
 
 //https://www.dreamincode.net/forums/topic/157186-conversion-of-string-to-enum/
-std::map< std::string, EKEY_CODE > keydictionary;
+    std::map< std::string, EKEY_CODE > keydictionary;
+
+    enum eparamb2d{binit,brun,bgetx,bgety,brotation,bjoint};
+    std::map< std::string, eparamb2d > esb2d;
+
+	enum veparam{vreset,vaccelerate,vreverse,vebrake,vbrake,vlsteer,vrsteer};
+    std::map< std::string, veparam > veparm2;
+
+    //mouseparam
+	enum mparam{mset,mgetx,mgety,mvisible,minvisible,mlmouse,mrmouse,mmmouse};
+    std::map< std::string, mparam > mparam2;
+
 void Python::initkeys(){
 keydictionary["KEY_LBUTTON"] = KEY_LBUTTON;
 keydictionary["KEY_RBUTTON"] = KEY_RBUTTON;
@@ -482,6 +493,31 @@ keydictionary["KEY_ZOOM"] = KEY_ZOOM;
 keydictionary["KEY_PA1"] = KEY_PA1;
 keydictionary["KEY_OEM_CLEAR"] = KEY_OEM_CLEAR;
 keydictionary["KEY_KEY_CODES_COUNT"] = KEY_KEY_CODES_COUNT;
+
+    esb2d["binit"] = binit;
+    esb2d["brun"] = brun;
+    esb2d["bgetx"] = bgetx;
+    esb2d["bgety"] = bgety;
+    esb2d["brotation"] = brotation;
+    esb2d["bjoint"] = bjoint;
+
+
+    veparm2["vreset"] = vreset;
+    veparm2["vaccelerate"] = vaccelerate;
+    veparm2["vreverse"] = vreverse;
+    veparm2["vebrake"] = vebrake;
+    veparm2["vbrake"] = vbrake;
+    veparm2["vlsteer"] = vlsteer;
+    veparm2["vrsteer"] = vrsteer;
+
+    mparam2["mset"] = mset;
+    mparam2["mgetx"] = mgetx;
+    mparam2["mgety"] = mgety;
+    mparam2["mvisible"] = mvisible;
+    mparam2["minvisible"] = minvisible;
+    mparam2["mlmouse"] = mlmouse;
+    mparam2["mrmouse"] = mrmouse;
+    mparam2["mmmouse"] = mmmouse;
 
 }
 

@@ -257,8 +257,8 @@ ticks = time.time()
 xcard=55 /2
 ycard=84 /2
 
-xcoord=input.mouse(2,0,0)
-ycoord=input.mouse(3,0,0)
+xcoord=input.mouse("mgetx",0,0)
+ycoord=input.mouse("mgety",0,0)
 
 #for i in range(5):
 # if xcoord = xcard (i*10)+100

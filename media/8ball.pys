@@ -51,9 +51,9 @@ if (init) :
  irrlichtlogo=addImage("../media/irrlichtlogo.jpg",88,31)
  a8ball=addImage("../media/8ball2.png",480,480)
  init=0
- input.mouse(4,0,0)
+ input.mouse("mvisible",0,0)
 
-image.iposition(irrlichtlogo, input.mouse(2,0,0),input.mouse(3,0,0))
+image.iposition(irrlichtlogo, input.mouse("mgetx",0,0),input.mouse("mgety",0,0))
 
 image.iposition(a8ball, 44,66)
 image.idraw(a8ball)
@@ -62,13 +62,13 @@ scene.drawtext(result,"../media/fontlucida.png",200,250,235,320)
 
 
 
-print (input.mouse(5,0,0))
-print (input.mouse(6,0,0))
-print (input.mouse(7,0,0))
+#print (input.mouse(5,0,0))
+#print (input.mouse(6,0,0))
+#print (input.mouse(7,0,0))
 
-if input.mouse(6,0,0): #mousebutton
- xcoord=input.mouse(2,0,0)
- ycoord=input.mouse(3,0,0)
+if input.mouse("mlmouse",0,0): #mousebutton
+ xcoord=input.mouse("mgetx",0,0)
+ ycoord=input.mouse("mgety",0,0)
 
  if ycoord > 200 and ycoord < 400 and xcoord > 200 and xcoord < 400:
    result=choice(responses)

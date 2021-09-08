@@ -496,7 +496,7 @@ void Python::render() {//active camera
 
         #ifdef OPENSTEER
         if (opensteer){ //OpenSteer::runGraphics();
-        OpenSteer::OpenSteerDemo::updateSimulationAndRedraw();
+            OpenSteer::OpenSteerDemo::updateSimulationAndRedraw();
          }
          #endif
 
