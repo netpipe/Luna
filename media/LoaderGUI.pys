@@ -58,9 +58,6 @@ if initloader:
     print("objects added")
     initloader=0
 
-    box2dbody=physics.b2d(1,"binit",1)
-    box2dbox=physics.b2d(1,"binit",1)
-
     base="../media/Frogger/"
 
     def addImage(loc,width,height):
@@ -72,21 +69,22 @@ if initloader:
     irrlichtlogo=addImage("../media/irrlichtlogo.jpg",88,33)
     lunaengine=addImage("../media/LunaEngine800600.png",800,450)
     #image.irotate(iaxe,i)
-
+    box2dbody=physics.b2d(1,0,"binit",500,500,3,4,5)
+    box2dbox=physics.b2d(1,0,"binit2",60,60,1,500,5)
    # os.system("aplay ../media/frogger.wav")
    # scene.flag1("../media/irrlichtlogo.jpg",0,0,20)
+
 input.mouse("mvisible",0,0)
 image.iposition(irrlichtlogo, 44,66)
 
-
 #######Loop
 #print ( box2dbody )
-physics.b2d(1,"brun",1) #step
-image.irotate(iaxe,physics.b2d(box2dbody,"brotation",1))
-image.irotate(box2di,physics.b2d(box2dbox,"brotation",1))
-image.iposition(iaxe, physics.b2d(box2dbody,"bgetx",1),physics.b2d(box2dbody,"bgety",1))
-image.iposition(box2di, physics.b2d(box2dbox,"bgetx",1)+10,physics.b2d(box2dbox,"bgety",1))  #crashes if booth positions are used forsome reason
-#image.iposition(box2di, input.mouse(2,0,0),input.mouse(3,0,0))  #crashes if booth positions are used forsome reason
+physics.b2d(1,0,"brun",0,0,0,0,0) #step
+image.irotate(iaxe,physics.b2d(box2dbody,0,"brotation",0,0,0,0,0))
+image.irotate(box2di,physics.b2d(box2dbox,0,"brotation",0,0,0,0,0))
+image.iposition(iaxe, physics.b2d(box2dbody,0,"bgetx",0,0,0,0,0),physics.b2d(box2dbody,0,"bgety",0,0,0,0,0))
+image.iposition(box2di, physics.b2d(box2dbox,0,"bgetx",0,0,0,0,0)+10,physics.b2d(box2dbox,0,"bgety",0,0,0,0,0))  #crashes if booth positions are used forsome reason
+#image.iposition(box2di, input.mouse("mgetx",0,0),input.mouse("mgety",0,0))  #crashes if booth positions are used forsome reason
 #image.iposition(iaxe, physics.b2d(box2dbody,3,1),physics.b2d(box2dbody,2,1))
 image.idraw(lunaengine)
 image.idraw(iaxe)
@@ -96,6 +94,7 @@ image.idraw(irrlichtlogo)
 #print ( input.mouse(6,0,0) )#mousebutton
 #print ( input.mouse(7,0,0) )#mousebutton
 #print ( input.mouse(8,0,0) )#mousebutton
+
 
 #standingObj=[]
 #standingObj.append(scene.add_cube(newId(),8, 200*8,200,95.99, 0,0,0, 1,1,0.125))
@@ -155,6 +154,9 @@ if input.getKey('KEY_SPACE'):
 
 if input.getKey('KEY_ESCAPE') :
  irr.exit()
+
+#scene.postprocess() # postprocess every so many loops to stop flicker
+
 
 
 #loaderResult=pysList[2]

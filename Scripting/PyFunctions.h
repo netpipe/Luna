@@ -319,7 +319,7 @@ PyMethodDef irr_function[] =
 //https://www.dreamincode.net/forums/topic/157186-conversion-of-string-to-enum/
     std::map< std::string, EKEY_CODE > keydictionary;
 
-    enum eparamb2d{binit,brun,bgetx,bgety,brotation,bjoint};
+    enum eparamb2d{binit,binit2,brun,bgetx,bgety,brotation,bjoint};
     std::map< std::string, eparamb2d > esb2d;
 
 	enum veparam{vreset,vaccelerate,vreverse,vebrake,vbrake,vlsteer,vrsteer};
@@ -495,12 +495,12 @@ keydictionary["KEY_OEM_CLEAR"] = KEY_OEM_CLEAR;
 keydictionary["KEY_KEY_CODES_COUNT"] = KEY_KEY_CODES_COUNT;
 
     esb2d["binit"] = binit;
+    esb2d["binit2"] = binit2;
     esb2d["brun"] = brun;
     esb2d["bgetx"] = bgetx;
     esb2d["bgety"] = bgety;
     esb2d["brotation"] = brotation;
     esb2d["bjoint"] = bjoint;
-
 
     veparm2["vreset"] = vreset;
     veparm2["vaccelerate"] = vaccelerate;
@@ -518,7 +518,6 @@ keydictionary["KEY_KEY_CODES_COUNT"] = KEY_KEY_CODES_COUNT;
     mparam2["mlmouse"] = mlmouse;
     mparam2["mrmouse"] = mrmouse;
     mparam2["mmmouse"] = mmmouse;
-
 }
 
 

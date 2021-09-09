@@ -29,13 +29,14 @@ PyMethodDef irr_Physics[] = {
 PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
 
 	long bptr;
+	long bptr2;
 	//int param;
-	int state;
+	//int state;
 	char * param;
-	float x,y,friction;
+	float w,h,x,y,friction;
 
-//	PyArg_ParseTuple(args,"lsifffff",&bptr,&param,&state,&w,&h,&x,&y,&friction);
-	PyArg_ParseTuple(args,"lsi",&bptr,&param,&state);
+	PyArg_ParseTuple(args,"llsfffff",&bptr,&bptr2,&param,&w,&h,&x,&y,&friction);
+//	PyArg_ParseTuple(args,"lsi",&bptr,&param,&state);
 
 
        switch (esb2d[param]){
@@ -44,31 +45,29 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
             {
                 Body* b2 = new Body;
 
-              	b2->Set(Vec2(1.0f, 1.0f),220.0f);
-                b2->position.Set(0.0f, 43.0f);
+              	b2->Set(Vec2(w, h),220.0f);
+                b2->position.Set(x, y);
                 world.Add(b2);
-                b2->friction = 0.1f;
-              //  ++b;
+                b2->friction = friction;
                  ++numBodies;
 
                     return Py_BuildValue("l", b2);
             }break;
 
-//            case eparamb2d(init):// non moving
-//            {
-//                Body* b2 = new Body;
-//              	b2->Set(Vec2(w, h),FLT_MAX);
-//                b2->position.Set(x, y);
-//                world.Add(b2);
-//                b2->friction = friction;
-//                 ++numBodies;
-//
-//                    return Py_BuildValue("l", b2);
-//            }break;
+            case eparamb2d(binit2):// non moving
+            {
+                Body* b2 = new Body;
+              	b2->Set(Vec2(w, h),FLT_MAX);
+                b2->position.Set(x, y);
+                world.Add(b2);
+                b2->friction = friction;
+                 ++numBodies;
+
+                    return Py_BuildValue("l", b2);
+            }break;
 
             case eparamb2d(brun): //run step
             {
-             //   printf("run\n");
                 world.Step(timeStep);
             }break;
 
@@ -77,7 +76,6 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
                 Body* b3;
                 b3=(Body*)bptr;
                 //  printf( "%f\n", b3->position.x );
-
             	return Py_BuildValue("f", b3->position.x);
             }break;
 
@@ -94,12 +92,20 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
             {
                 Body* b3;
                 b3=(Body*)bptr;
-                //Joint* j;
-                //	j->Set(b1, b2, Vec2(0.0f, 11.0f));
-                //	world.Add(j);
-                //	numJoints += 1;
+                Body* b2;
+                b2=(Body*)bptr2;
 
-            	return Py_BuildValue("f", b3->position.y);
+                Joint* j;
+                	j->Set(b1, b2, Vec2(x, y));
+                	world.Add(j);
+                	numJoints += 1;
+
+//    j->Set(bodies + numPlanks, bodies, Vec2(-9.125f + 1.25f * numPlanks, 5.0f));
+//	j->softness = softness;
+//	j->biasFactor = biasFactor;
+
+
+            	return Py_BuildValue("l", j);
             }break;
 
             case eparamb2d(brotation):{

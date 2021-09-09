@@ -345,6 +345,7 @@ PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
                 //	irr::gui::ICursorControl::setPosition (x, y);
                 device->getCursorControl()->setPosition(x,y);
 			break;
+
 		case mgetx:	//get X
 			{
 				//	printf("xcoord %i \n",pos.X);
