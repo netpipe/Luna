@@ -1088,7 +1088,7 @@
 					<Add after="./copyandrun.sh" />
 				</ExtraCommands>
 			</Target>
-			<Target title="LinuxUDEV2D">
+			<Target title="LinuxUDEV2DWII">
 				<Option output="./GAME/mLuna2dudev" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".d2dmobjsudev" />
@@ -1298,7 +1298,7 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Input/Controllers/wii/xwiimote/xwiimote.h" />
-		<Unit filename="Input/Controllers/wii/xwiimote/xwiimotemain.cpp" />
+		<Unit filename="Input/Controllers/wii/xwiimote/xwiimotemain.h" />
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimp.cpp" />
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimp.h" />
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimpExport.cpp" />
