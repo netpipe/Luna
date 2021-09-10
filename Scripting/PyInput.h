@@ -276,6 +276,7 @@ irr::scene::SMesh* convertPolyMesh(const PolyVox::SurfaceMesh<PolyVox::PositionM
 
 #endif
 
+//cwiid
 PyObject * Python::PyIrr_wii(PyObject * self,PyObject * args){
 // wii device accessor keystate return
 	char * btaddr;
@@ -306,17 +307,52 @@ PyObject * Python::PyIrr_wii(PyObject * self,PyObject * args){
 	return Py_BuildValue("");
 }
 
+#include "../Input/Controllers/wii/xwiimote/xwiimotemain.h"
 PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
 
 	s32 key;
 	int udev;
 	char * type;
+	int rdev;
 	//	EKEY_CODE ekey;
-	PyArg_ParseTuple(args,"ss",&type,&udev);
+	PyArg_ParseTuple(args,"isi",&rdev,&type,&udev);
 
 
+    switch (gp2[type]){
 
-	return Py_BuildValue("");
+        case gp(gpinit):
+        {
+        printf("wiitest");
+        #ifdef WII
+            wiimaininit(udev);
+        #endif
+        }break;
+
+        case gp(gprefresh):
+        {
+        #ifdef WII
+            refresh_all();
+        #endif
+        }break;
+
+        case gp(gprun):
+        {
+        #ifdef WII
+//        rdev = run_iface(iface);
+            run_iface(iface);
+        #endif
+        }break;
+
+        case gp(gpunref):
+        {
+        #ifdef WII
+            xwii_iface_unref(iface);
+        #endif
+        }break;
+
+    }
+
+	return Py_BuildValue("i",rdev);
 }
 
 PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
@@ -341,12 +377,12 @@ PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
 
     	switch ( mparam2[typem] ){
 	//switch ( type ){
-		case mset: //set
+		case mparam(mset): //set
                 //	irr::gui::ICursorControl::setPosition (x, y);
                 device->getCursorControl()->setPosition(x,y);
 			break;
 
-		case mgetx:	//get X
+		case mparam(mgetx):	//get X
 			{
 				//	printf("xcoord %i \n",pos.X);
 				//printf("xcoord %i",device->getCursorControl()->getPosition().X);

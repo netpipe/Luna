@@ -16,24 +16,28 @@
         #define WATER
         //#define ReflectiveWater
         //#define RealisticWater
-        #define EXTRAS
-        #define CHOPPER
-        #define BOIDS
-        #define TERRAIN
-        #define FLAG
-      //#define FLAG2   //FMX
-        #define COMPASS
-        #define TESSELATE
-        #define SCALC
-        #define SPRITES
-      //#define SKELETON // needs to be updated
-        #define PostProcess
-    //  #define VEGETATION //grass,weeds, vines
-      #define TREES //very cpu intensive does not work with emscripten yet.
-        #define ATMOSPHERE  //  freezes when no video acceleration is used
-                            //  or as a user without access to video rights is used
-        #define RIBBONTRAIL
-        #define BOX2DLITE
+    #define EXTRAS
+    #define CHOPPER
+    #define BOIDS
+    #define TERRAIN
+    #define FLAG
+    //#define FLAG2      //FMX
+    //#define WII //not ready for use yet also requires libudev.
+                    //xwiimote is easier to use with suse linux
+                    //cwiid has balanceboard support
+
+    #define COMPASS
+    #define TESSELATE
+    #define SCALC
+    #define SPRITES
+    //#define SKELETON  // needs to be updated
+    #define PostProcess
+    //#define VEGETATION //grass,weeds, vines
+    #define TREES       //very cpu intensive does not work with emscripten yet.
+    #define ATMOSPHERE  //  freezes when no video acceleration is used
+                        //  or as a user without access to video rights is used
+    #define RIBBONTRAIL
+    #define BOX2DLITE
       //#define FLARE
       //#define DECALS2 //replace needing physics to get working
      // #define SQLITE
@@ -85,7 +89,7 @@
 
 
 
-
+    // #define WII
   //  #define IRRCD   // irrlicht Collision Detection
     #define EVENTS
     #define FPS

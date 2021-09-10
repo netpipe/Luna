@@ -38,6 +38,9 @@ if initloader:
     scene.decals(1,camera)
     Light = scene.Light(10,0,100,0,"111111")
     print("camera added")
+    input.gamepad(0,"gpinit",1)
+
+
 
 
     colors=[]
@@ -74,6 +77,7 @@ if initloader:
    # os.system("aplay ../media/frogger.wav")
    # scene.flag1("../media/irrlichtlogo.jpg",0,0,20)
 
+input.gamepad(0,"gprun",1)
 input.mouse("mvisible",0,0)
 image.iposition(irrlichtlogo, 44,66)
 
@@ -90,6 +94,8 @@ image.idraw(lunaengine)
 image.idraw(iaxe)
 image.idraw(box2di)
 image.idraw(irrlichtlogo)
+
+
 
 #print ( input.mouse(6,0,0) )#mousebutton
 #print ( input.mouse(7,0,0) )#mousebutton

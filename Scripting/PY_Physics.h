@@ -115,8 +115,7 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
 
                 return Py_BuildValue("f", b3->rotation);
             }break;
-}
-
+        }
 	return Py_BuildValue("");
 }
 
@@ -185,10 +184,10 @@ PyObject * Python::PyIrr_recast(PyObject * self,PyObject * args){
 PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
 #ifdef PHYSICS
     float state,ammount,y,z;
-    int param;
+   // int param;
     long mVehicle;
-   // char * param;
-    PyArg_ParseTuple(args,"liffff",&mVehicle,&param,&state,&ammount,&y,&z);
+    char * param;
+    PyArg_ParseTuple(args,"lsffff",&mVehicle,&param,&state,&ammount,&y,&z);
  //   vector3df* position = VehicleParam(mVehicle,param,state,ammount,y,z);
 //	enum veparam{reset,accelerate,reverse,ebrake,brake,lsteer,rsteer};
 
@@ -202,28 +201,28 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
 	//nodeMap["Cone"] = ;
 
 //prob need one map for state too
-	int Iparam=param;
+//	int Iparam=param;
 	if ( state==0 ){  // use state for get and set var
-       switch (Iparam){
+       switch (veparam2[param]){
 
-            case veparam(reset):
+            case veparam(vreset):
              //   m_cVehicle->resetVehicle();
 				vehicle->resetVehicle();
                 break;
 
-            case veparam(accelerate):
+            case veparam(vaccelerate):
                 vehicle->accelerate(1);
             break;
 
-            case veparam(reverse):
+            case veparam(vreverse):
                 vehicle->reverse(1);
                 break;
-            case veparam(ebrake): //wind resistance
+            case veparam(vebrake): //wind resistance
                 vehicle->reverse(ammount);
                 printf("ebrake");
             break;
 
-            case veparam(brake):
+            case veparam(vbrake):
             	//printf('braking');
                                 vehicle->brake();
 //                   if (mEvent.getKeyState(    irr::EKEY_CODE( 0x26 ) ))//KEY_UP)  ) ///| getkey.keyUP
@@ -232,20 +231,18 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
                         //    m_cVehicle->accelerate(-1);   //wind resistance
                 break;
 
-            case veparam(lsteer):
+            case veparam(vlsteer):
                 vehicle->steer_left();
                 break;
 
-            case veparam(rsteer):
+            case veparam(vrsteer):
          //       printf("steer right");
                 vehicle->steer_right();
                 break;
-			case 7:
-
-            case 8:
+            case veparam(vrender):
             	vehicle->renderme();
                 break;
-            case 9:
+            case veparam(vsteerreset):
                 vehicle->steer_reset();
                 break;
             case 10:
@@ -255,12 +252,10 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
 //        camera->setPosition(vector3df( ha.X, ha.Y+40, ha.Z));
                            //     luna->m_cPhysics->createBox( btVector3(pos.X, pos.Y, pos.Z), btVector3(scl.X, scl.Y, scl.Z), 10); //weight
             break;
-            case 11:
+            case veparam(vsetpos):
                    vehicle->setPosition(vector3df(ammount,y,z));
 
             break;
-            case 12:
-                break;
        }
 
     } else if (state==1) {   //get vars

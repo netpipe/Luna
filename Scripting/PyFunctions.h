@@ -322,12 +322,16 @@ PyMethodDef irr_function[] =
     enum eparamb2d{binit,binit2,brun,bgetx,bgety,brotation,bjoint};
     std::map< std::string, eparamb2d > esb2d;
 
-	enum veparam{vreset,vaccelerate,vreverse,vebrake,vbrake,vlsteer,vrsteer};
+	enum veparam{vreset,vaccelerate,vreverse,vebrake,vbrake,vlsteer,
+	vrsteer,vsteerreset,vrender,vsetpos};
     std::map< std::string, veparam > veparm2;
 
     //mouseparam
 	enum mparam{mset,mgetx,mgety,mvisible,minvisible,mlmouse,mrmouse,mmmouse};
     std::map< std::string, mparam > mparam2;
+
+    enum gp{gpinit,gprefresh,gprun,gpunref,gpudev,wiix,wiiy,wiib,wiia,gpdpad,gpjoya1,gpjoya2};
+    std::map< std::string, gp > gp2;
 
 void Python::initkeys(){
 keydictionary["KEY_LBUTTON"] = KEY_LBUTTON;
@@ -509,6 +513,11 @@ keydictionary["KEY_KEY_CODES_COUNT"] = KEY_KEY_CODES_COUNT;
     veparm2["vbrake"] = vbrake;
     veparm2["vlsteer"] = vlsteer;
     veparm2["vrsteer"] = vrsteer;
+    veparm2["vsteerreset"] = vsteerreset;
+    veparm2["vrender"] = vrender;
+    veparm2["vsetpos"] = vsetpos;
+
+
 
     mparam2["mset"] = mset;
     mparam2["mgetx"] = mgetx;

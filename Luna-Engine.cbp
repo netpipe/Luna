@@ -1088,6 +1088,40 @@
 					<Add after="./copyandrun.sh" />
 				</ExtraCommands>
 			</Target>
+			<Target title="LinuxUDEV2D">
+				<Option output="./GAME/mLuna2dudev" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="GAME" />
+				<Option object_output=".d2dmobjsudev" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Compiler>
+					<Add option="-fpermissive" />
+					<Add option="-DMINIMAL" />
+					<Add option="-DMINIMAL2" />
+					<Add option="-DWII" />
+					<Add directory="../Box2D/Box2D/Box2D" />
+					<Add directory="../Box2D/Box2D/" />
+				</Compiler>
+				<Linker>
+					<Add library="GL" />
+					<Add library="openal" />
+					<Add library="Xxf86vm" />
+					<Add library="X11" />
+					<Add library="python2.7" />
+					<Add library="pthread" />
+					<Add library="Irrlicht" />
+					<Add library="SDL_sound" />
+					<Add library="ogg" />
+					<Add library="vorbis" />
+					<Add library="vorbisfile" />
+					<Add library="dl" />
+					<Add library="udev" />
+					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
+				</Linker>
+			</Target>
 		</Build>
 		<VirtualTargets>
 			<Add alias="All" targets="Linux Release;Linux Debug;" />
@@ -1257,6 +1291,14 @@
 		<Unit filename="Input/Compress/zpipe.h" />
 		<Unit filename="Input/Compress/zstr.h" />
 		<Unit filename="Input/Controllers/StringTools.cpp" />
+		<Unit filename="Input/Controllers/wii/xwiimote/core.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/Controllers/wii/xwiimote/monitor.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/Controllers/wii/xwiimote/xwiimote.h" />
+		<Unit filename="Input/Controllers/wii/xwiimote/xwiimotemain.cpp" />
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimp.cpp" />
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimp.h" />
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimpExport.cpp" />

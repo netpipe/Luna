@@ -18,7 +18,7 @@ using namespace io;
 #include <Python.h> // fix later -has to be in this order or the formationwrapper complains
 
 #ifdef FORMATION
-#include "../Scene/Formation.h"
+    #include "../Scene/Formation.h"
 #endif
 
 //#define PYTHON_MINIMALTESTs
@@ -73,11 +73,6 @@ void Python::ExecuteScript(irr::core::string<char> scriptname){
 //#endif
 
 
-
-
-
-
-
 // see pyfunctions.h for the rest of the initialization code
 
 #else // basically for minimal test of python for debugging.
@@ -90,7 +85,6 @@ vector<ITexture *> texture_array;
 
 static PyObject * Python::PyIrr_LoadTexture(PyObject * self,PyObject * args)
 {
-	//Watch this, tricky,remember to pass string ADDRESS to PyArg_ParseTuple
 	char * tex_name;
 	PyArg_ParseTuple(args,"s",&tex_name);
 	texture_array.push_back(driver->getTexture(tex_name));
@@ -122,7 +116,7 @@ static PyObject * Python::PyIrr_AddCubeSceneNode(PyObject * self,PyObject * args
 	s32 node_id;
 	float size;
 	float px,py,pz,rx,ry,rz,sx,sy,sz;
-	//Damn...thats a lot of parameters :)
+
 	PyArg_ParseTuple(args,"lffffffffff",&node_id,&size,&px,&py,&pz,&rx,&ry,&rz,&sx,&sy,&sz);
 	ISceneNode * node = smgr->getSceneNodeFromId(node_id);
 	if(node == NULL)
@@ -141,8 +135,6 @@ static PyObject * Python::PyIrr_AddCubeSceneNode(PyObject * self,PyObject * args
 
 static PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args)
 {
-
-	//Must make this useful someday, not today
 	char * message;
 	s32 x,y,x1,y1;
 	PyArg_ParseTuple(args,"sllll",&message,&x,&y,&x1,&y1);
@@ -154,8 +146,6 @@ static PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args)
 	default_font->draw(conv_message,rect<s32>(x,y,x1,y1),SColor(255,255,255,255));
 	//delete [] conv_message;
 	return Py_BuildValue("");
-
-
 };
 
 static PyMethodDef irr_funcs[] =
