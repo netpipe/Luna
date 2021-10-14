@@ -332,7 +332,8 @@ PyMethodDef irr_function[] =
 
     enum gp{gpinit,gprefresh,gprun,gpunref,gpudev,wiix,wiiy,wiib,wiia,gpdpad,gpjoya1,gpjoya2};
     std::map< std::string, gp > gp2;
-
+#include <iostream>
+#include <cstdint>
 void Python::initkeys(){
 keydictionary["KEY_LBUTTON"] = KEY_LBUTTON;
 keydictionary["KEY_RBUTTON"] = KEY_RBUTTON;
@@ -497,6 +498,8 @@ keydictionary["KEY_ZOOM"] = KEY_ZOOM;
 keydictionary["KEY_PA1"] = KEY_PA1;
 keydictionary["KEY_OEM_CLEAR"] = KEY_OEM_CLEAR;
 keydictionary["KEY_KEY_CODES_COUNT"] = KEY_KEY_CODES_COUNT;
+
+// using enum eparamb2d;
 
     esb2d["binit"] = binit;
     esb2d["binit2"] = binit2;
