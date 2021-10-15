@@ -40,7 +40,8 @@ if initloader:
     print("camera added")
     input.gamepad(0,"gpinit",1)
 
-
+#    input.gamepad(0,"gprun",1)
+#    input.gamepad(0,"wiiled",1)
 
 
     colors=[]
@@ -78,6 +79,7 @@ if initloader:
    # scene.flag1("../media/irrlichtlogo.jpg",0,0,20)
 
 input.gamepad(0,"gprun",1)
+#input.gamepad(0,"gprefresh",1)
 input.mouse("mvisible",0,0)
 image.iposition(irrlichtlogo, 44,66)
 

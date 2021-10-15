@@ -330,6 +330,8 @@ PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
 
         case gp(gprefresh):
         {
+                printf("fasdfsafd\n");
+
         #ifdef WII
             refresh_all();
         #endif
@@ -339,7 +341,7 @@ PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
         {
         #ifdef WII
 //        rdev = run_iface(iface);
-            run_iface(iface);
+          run_iface(iface);
         #endif
         }break;
 
@@ -350,8 +352,76 @@ PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
         #endif
         }break;
 
-    }
+        case gp(wiiled):
+        {
+        #ifdef WII
+        rumble_toggle();
+            led_toggle(1);
+        #endif
+        }break;
 
+    }
+//	switch (key) {
+//	case KEY_RESIZE:
+//		handle_resize();
+//		break;
+//	case 'k':
+//		key_toggle();
+//		break;
+//	case 'a':
+//		accel_toggle();
+//		break;
+//	case 'i':
+//		ir_toggle();
+//		break;
+//	case 'm':
+//		mp_toggle();
+//		break;
+//	case 'n':
+//		mp_normalization_toggle();
+//		break;
+//	case 'N':
+//		nunchuk_toggle();
+//		break;
+//	case 'c':
+//		classic_toggle();
+//		break;
+//	case 'b':
+//		bboard_toggle();
+//		break;
+//	case 'p':
+//		pro_toggle();
+//		break;
+//	case 'g':
+//		guit_toggle();
+//		break;
+//	case 'd':
+//		drums_toggle();
+//		break;
+//	case 'r':
+//		rumble_toggle();
+//		break;
+//	case '1':
+//		led_toggle(0);
+//		break;
+//	case '2':
+//		led_toggle(1);
+//		break;
+//	case '3':
+//		led_toggle(2);
+//		break;
+//	case '4':
+//		led_toggle(3);
+//		break;
+//	case 'f':
+//		freeze_toggle();
+//		break;
+//	case 's':
+//		refresh_all();
+//		break;
+//	case 'q':
+//		return -ECANCELED;
+//	}
 	return Py_BuildValue("i",rdev);
 }
 

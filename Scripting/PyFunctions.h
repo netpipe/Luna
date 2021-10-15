@@ -330,7 +330,7 @@ PyMethodDef irr_function[] =
 	enum mparam{mset,mgetx,mgety,mvisible,minvisible,mlmouse,mrmouse,mmmouse};
     std::map< std::string, mparam > mparam2;
 
-    enum gp{gpinit,gprefresh,gprun,gpunref,gpudev,wiix,wiiy,wiib,wiia,gpdpad,gpjoya1,gpjoya2};
+    enum gp{gpinit,gprefresh,gprun,gpunref,wiiled,gpudev,wiix,wiiy,wiib,wiia,gpdpad,gpjoya1,gpjoya2};
     std::map< std::string, gp > gp2;
 
 void Python::initkeys(){

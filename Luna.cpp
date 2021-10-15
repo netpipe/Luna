@@ -343,7 +343,13 @@ int Luna::init(){
         #ifdef __EMSCRIPTEN__
 			device = createDevice ( EDT_OGLES2,dimension2du (resolution[0],resolution[1]), 24, 0,1);
 		#else
+            #ifdef __linux__
 			device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 0,1);
+			#elif __APPLE__
+			device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 0,1);
+			#else //windows
+			device = createDevice ( EDT_SOFTWARE,dimension2du (resolution[0],resolution[1]), 24, 0,1); // seems to work with rdp better only runs without python currently
+			#endif
 		#endif
      //   device = createDevice ( EDT_SOFTWARE,dimension2du (resolution[0],resolution[1]), 24, 0,1);
 // EDT_NULL       device = createDevice ( EDT_BURNINGSVIDEO,dimension2du (resolution[0],resolution[1]), 24, 0,1);
@@ -453,12 +459,20 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
             int argc2= sizeof(argv2) / sizeof(char*) - 1;
             //int test = zpipe(argc2,argv2);
         #else
-            //stringw workingDirectory = device->getFileSystem()->getWorkingDirectory();
-            ////workingDirectory+="media/lib/";
+            stringw workingDirectory = device->getFileSystem()->getWorkingDirectory();
+           // workingDirectory+="../media/lib/";
             //const  char* test = (const char*) workingDirectory.c_str();
             //
-            //printf ( "working directory is %s " , test );
+            printf ( "working directory is %s " , workingDirectory.c_str() );
+
+            //find a way to set the ../media/lib folder after untaring
+            #ifdef __linux__
             //setenv("PYTHONHOME", (const char*)workingDirectory.c_str() , 0);
+
+            #else
+            workingDirectory = "C:\Python27"
+            Py_SetPythonHome( (const char*)workingDirectory.c_str()); // needs fixing still
+            #endif
         #endif
 
 		Python::registerIrrDevice(this,*device,m_cInGameEvents);
