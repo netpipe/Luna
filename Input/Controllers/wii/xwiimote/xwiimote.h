@@ -3,6 +3,7 @@
  * Written 2010-2013 by David Herrmann <dh.herrmann@gmail.com>
  * Dedicated to the Public Domain
  */
+  #include "../../../../config.h"
 #ifdef WII
 #ifndef XWII_XWIIMOTE_H
 #define XWII_XWIIMOTE_H

@@ -12,6 +12,7 @@
  * However, smaller applications might not use udev on their own so this API
  * wraps the udev API in a small easy xwiimote API.
  */
+  #include "../../../../config.h"
 #ifdef WII
 #include <fcntl.h>
 #include <libudev.h>

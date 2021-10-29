@@ -12,6 +12,7 @@
  * printed to the screen. When wiimote events are received, then the screen is
  * updated correspondingly. You can use the keyboard to control the wiimote.
  */
+ #include "../../../../config.h"
 #ifdef WII
 #include <errno.h>
 #include <fcntl.h>
@@ -1474,14 +1475,14 @@ static int run_iface(struct xwii_iface *iface)
 
 	while (true) {
 	#else
-		while (true) {
+	//	while (true) {
 	#endif
 		ret = poll(fds, fds_num, -1);
 		if ( ret < 0 ) {
 			if (errno != EINTR) {
 				ret = -errno;
 				print_error("Error: Cannot poll fds: %d", ret);
-				break;
+//				break;
 			}
 		}
 
@@ -1490,7 +1491,7 @@ static int run_iface(struct xwii_iface *iface)
 			if (ret != -EAGAIN) {
 				print_error("Error: Read failed with err:%d",
 					    ret);
-				break;
+		//		break;
 			}
 
 		} else if (!freeze) {
@@ -1562,8 +1563,9 @@ static int run_iface(struct xwii_iface *iface)
 		else if ( ret )
 			return ret;
 //		refresh();
+#ifndef testing12
 	}
-
+#endif
 	return ret;
 }
 
@@ -1612,6 +1614,12 @@ static char *get_dev(int num)
 	return ent;
 }
 
+int wiirun(){
+while (ret=true){
+ret = run_iface(iface);
+}
+
+}
 int wiimaininit(int udev)
 {
 	int ret = 0;
@@ -1659,9 +1667,9 @@ int wiimaininit(int udev)
 
 	ret = xwii_iface_watch(iface, true);
 
-	    while (ret=true){
+	   // while (ret=true){
 			ret = run_iface(iface);
-			}
+		//	}
 //	xwii_iface_unref(iface);
 #else
 			ret = run_iface(iface);
@@ -1679,7 +1687,7 @@ int wiimaininit(int udev)
 
 
   //  printf("xwiimote13ran\n");
-	return abs(ret);
+	//return abs(ret);
 }
 
 #endif

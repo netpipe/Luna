@@ -78,8 +78,10 @@ if initloader:
    # os.system("aplay ../media/frogger.wav")
    # scene.flag1("../media/irrlichtlogo.jpg",0,0,20)
 
-input.gamepad(0,"gprun",1)
-#input.gamepad(0,"gprefresh",1)
+#input.gamepad(0,"gprun",1)
+input.gamepad(0,"gprefresh",1)
+
+
 input.mouse("mvisible",0,0)
 image.iposition(irrlichtlogo, 44,66)
 

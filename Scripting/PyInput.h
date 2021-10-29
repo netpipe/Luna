@@ -308,6 +308,7 @@ PyObject * Python::PyIrr_wii(PyObject * self,PyObject * args){
 }
 
 #include "../Input/Controllers/wii/xwiimote/xwiimotemain.h"
+//#include "../Input/Controllers/wii/xwiimote/xwiimote.h"
 PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
 
 	s32 key;
@@ -317,12 +318,13 @@ PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
 	//	EKEY_CODE ekey;
 	PyArg_ParseTuple(args,"isi",&rdev,&type,&udev);
 
+//printf("test %s \n",gp2[type]);
 
     switch (gp2[type]){
 
         case gp(gpinit):
         {
-        printf("wiitest");
+        printf("wiitest\n");
         #ifdef WII
             wiimaininit(udev);
         #endif
@@ -333,7 +335,7 @@ PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
                 printf("fasdfsafd\n");
 
         #ifdef WII
-            refresh_all();
+            wiirun();
         #endif
         }break;
 
