@@ -335,7 +335,7 @@ PyMethodDef irr_function[] =
     accex,accey,accez,
     getbw,getbx,getby,getbz,
     wiix,wiiy,wiib,wiia,
-    gpdpad,gpjoya1,gpjoya2,rumble};
+    gpdpad,gpjoya1,gpjoya2,rumble,battery};
 
     std::map< std::string, gp > gp2;
 #include <iostream>
@@ -544,6 +544,7 @@ keydictionary["KEY_KEY_CODES_COUNT"] = KEY_KEY_CODES_COUNT;
     gp2["gpunref"] = gpunref;
     gp2["wiiled"] = wiiled;
     gp2["gpudev"] = gpudev;
+        gp2["rumble"] = rumble;
     gp2["accx"] = accx;
     gp2["accy"] = accy;
     gp2["accz"] = accz;
@@ -560,6 +561,7 @@ keydictionary["KEY_KEY_CODES_COUNT"] = KEY_KEY_CODES_COUNT;
     gp2["wiia"] = wiia;
     gp2["gpdpad"] = gpdpad;
     gp2["getbx"] = getbx;
+        gp2["battery"] = battery;
 //    gpdpad,
 //
 //    gpjoya1,gpjoya2,rumble};

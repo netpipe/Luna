@@ -211,7 +211,7 @@ char *xwii_monitor_poll(struct xwii_monitor *monitor)
 				return ret;
 		}
 	} else if (monitor->monitor) {
-		while (1) {
+	//	while (1) {
 			dev = udev_monitor_receive_device(monitor->monitor);
 			if (!dev)
 				return NULL;
@@ -219,7 +219,7 @@ char *xwii_monitor_poll(struct xwii_monitor *monitor)
 			ret = make_device(dev);
 			if (ret)
 				return ret;
-		}
+	//	}
 	}
 
 	return NULL;

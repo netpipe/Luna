@@ -38,12 +38,7 @@ if initloader :
     scene.decals(1,camera)
     Light = scene.Light(10,0,100,0,"111111")
     print("camera added")
-  #  if(init):
-    input.gamepad(0,"gpinit",1)
 
-#    input.gamepad(0,"gprun",1)
-     #   input.gamepad(0,"wiiled",1)
-   # input.gamepad(0,"rumble",1)
 
     colors=[]
   #  for i in range(3):
@@ -79,11 +74,17 @@ if initloader :
    # os.system("aplay ../media/frogger.wav")
    # scene.flag1("../media/irrlichtlogo.jpg",0,0,20)
  #   init=0
+    input.gamepad(0,"gpinit",1)
+    #input.gamepad(0,"rumble",1)
+   # input.gamepad(0,"wiiled",2)
 #input.gamepad(0,"gpinit",1)
 #input.gamepad(0,"gprun",1)
 input.gamepad(0,"gprefresh",1)
-
+#input.gamepad(0,"wiiled",2)
+#input.gamepad(0,"gpdpad",1)
 print(input.gamepad(0,"accy",1))
+
+
 input.mouse("mvisible",0,0)
 image.iposition(irrlichtlogo, 44,66)
 
@@ -124,7 +125,7 @@ elif input.getKey('KEY_LEFT'):
 elif input.getKey('KEY_RIGHT'):
     currentButton+=15
     irr.delay(100000)
-irr.delay(50000)
+irr.delay(5000)
 currentButton %= len(pysList)
 
 #currentButton1 %= len(zipFiles)

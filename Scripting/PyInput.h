@@ -402,11 +402,38 @@ float val;
         #endif
         }break;
 
+        case gp(gpdpad): {
+        #ifdef WII
+        //std::string * test ;
+       // char * test=
+       // pushedcontroller();
+       // printf("runningdpadtest");
+         //  test = string_move();
+           //string_move()
+          // printf( " %s",test );
+          // cout << test;
+        #endif
+        }break;
+
+        case gp(gpjoya1): {
+        #ifdef WII
+           val= bboard_getz();
+        #endif
+        }break;
+
+        case gp(gpjoya2): {
+        #ifdef WII
+           val= bboard_getz();
+        #endif
+        }break;
+
         //
 
         case gp(rumble):        {
         #ifdef WII
-          rumble_toggle();
+         // rumble_toggle(1);
+         printf("rumble");
+          xwii_iface_rumble(iface, 1);
         #endif
         }break;
 
@@ -418,7 +445,15 @@ float val;
 
         case gp(wiiled):        {
         #ifdef WII
-            led_toggle(2);
+            printf("led_toggle");
+            led_toggle(1);
+        #endif
+        }break;
+
+        case gp(battery):        {
+        #ifdef WII
+            val=battery_refresh();
+            //printf("%i ",battery_refresh());
         #endif
         }break;
 

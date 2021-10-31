@@ -34,6 +34,8 @@
 float accelexx,accelexy,accelexz;
 float accelx,accely,accelz;
 float vnextx,vnexty,vnextz;
+float mpax,mpay,mpaz;
+		std::string pushedbtns;
 #define testing12
 #ifdef testing12
 	struct xwii_event event;
@@ -80,16 +82,66 @@ static void print_error(const char *format, ...)
 
 /* key events */
 
+
+std::string pushedcontroller(){
+         //  return move(pushedbtns);
+         printf( "t%s",pushedbtns.c_str() );
+             return pushedbtns;
+        }
+
 static void key_show(const struct xwii_event *event)
 {
 	unsigned int code = event->v.key.code;
 	bool pressed = event->v.key.state;
-	char *str = NULL;
+	std::string str;
+pushedbtns ="";
+//printf("keyshow");
+	//if (pressed)
+	//	str = "X";
+	//else
+	//	str = " ";
 
+	if (code == XWII_KEY_LEFT) {
 	if (pressed)
-		str = "X";
-	else
-		str = " ";
+        str += "DL";
+	} else if (code == XWII_KEY_RIGHT) {
+	if (pressed)
+        str += "DR";
+	} else if (code == XWII_KEY_UP) {
+	if (pressed)
+        str += "DU";
+	} else if (code == XWII_KEY_DOWN) {
+	if (pressed)
+        str += "DD";
+	} else if (code == XWII_KEY_A) {
+		if (pressed)
+			str = "A";
+	} else if (code == XWII_KEY_B) {
+		if (pressed)
+			str += "B";
+	} else if (code == XWII_KEY_HOME) {
+		if (pressed)
+			str += "HOME+";
+		//else
+		//	str = "     ";
+
+	} else if (code == XWII_KEY_MINUS) {
+		if (pressed)
+			str += "-";
+	} else if (code == XWII_KEY_PLUS) {
+		if (pressed)
+			str += "+";
+	} else if (code == XWII_KEY_ONE) {
+		if (pressed)
+			str += "1";
+
+	} else if (code == XWII_KEY_TWO) {
+		if (pressed)
+			str += "2";
+	}
+printf("test %s",str.c_str() );
+   // pushedbtns = str.c_str();
+
 }
 
 static void key_clear(void)
@@ -351,7 +403,7 @@ static void mp_show(const struct xwii_event *event)
 {
 	static int32_t mp_x, mp_y;
 	int32_t x, y, z, factor, i;
-
+//printf("mp_show");
 	if (mp_do_refresh) {
 		xwii_iface_get_mp_normalization(iface, &x, &y, &z, &factor);
 		x = event->v.abs[0].x + x;
@@ -360,9 +412,9 @@ static void mp_show(const struct xwii_event *event)
 		xwii_iface_set_mp_normalization(iface, x, y, z, factor);
 	}
 
-	x = event->v.abs[0].x;
-	y = event->v.abs[0].y;
-	z = event->v.abs[0].z;
+	mpax = event->v.abs[0].x;
+	mpay = event->v.abs[0].y;
+	mpaz = event->v.abs[0].z;
 
 	if (mp_do_refresh) {
 		/* try to stabilize calibration as MP tends to report huge
@@ -371,9 +423,9 @@ static void mp_show(const struct xwii_event *event)
 			mp_do_refresh = false;
 	}
 
-printf ("%i x", x );
-printf ("%i y", y );
-printf ("%i z", z );
+//printf ("%i x", x );
+//printf ("%i y", y );
+//printf ("%i z", z );
 
 	/* draw movement hud */
 
@@ -391,14 +443,31 @@ printf ("%i z", z );
 	y = mp_y * 7 / 10000;
 	y = (y < 0) ? 0 : ((y > 7) ? 7 : y);
 
-printf ("%i x\n", x );
-printf ("%i y\n", y );
+//printf ("%i x\n", x );
+//printf ("%i y\n", y );
 //	mvprintw(39 + y, 1 + x, "X");
 //	mvprintw(47, 2,  " %d %d ", mp_x, mp_y);
-printf ("%i xs\n",( int16_t ) mp_x );
-printf ("%i ys\n",( int16_t ) mp_y );
+//printf ("%i xs\n",( int16_t ) mp_x );
+//printf ("%i ys\n",( int16_t ) mp_y );
 
 }
+
+//float getmpx(){
+//return mp_x;
+//}
+//float getmpy(){
+//return mp_y;
+//}
+//
+//float getmpax(){
+////return mp_x;
+//}
+//float getmpay(){
+////return mp_x;
+//}
+//float getmpaz(){
+////return mp_x;
+//}
 
 static void mp_clear(void)
 {
@@ -461,12 +530,13 @@ float nextz() {
 return vnextz;
 }
 
-static void nunchuk_show_ext(const struct xwii_event *event)
+void nunchuk_show_ext(const struct xwii_event *event)
 {
 	double val;
-	const char *str = " ";
+	std::string str = "";
 	int32_t v;
 
+printf("showext");
 	if (event->type == XWII_EVENT_NUNCHUK_MOVE) {
 		/* pow(val, 1/4) for smoother interpolation around the origin */
 
@@ -511,16 +581,27 @@ vnexty=val;
 		if (event->v.key.code == XWII_KEY_C) {
 			if (event->v.key.state){
 				str = "C";
-					printf("%s x\n",str);}
+					//printf("%s x\n",str);}
 //			mvprintw(37, 6, "%s", str);
 		} else if (event->v.key.code == XWII_KEY_Z) {
 			if (event->v.key.state){
-				str = "Z";
-					printf("%s x\n",str);
+				str += "Z";
+				//	printf("%s x\n",str);
 //			mvprintw(37, 18, "%s", str);
                 }
-		}
+//		} else if (event->v.key.code == XWII_KEY_Z) {
+//			if (event->v.key.state){
+//				str = "CZ";
+//				//	printf("%s x\n",str);
+////			mvprintw(37, 18, "%s", str);
+//                }
+//		}
 	}
+	}
+	}
+
+	pushedbtns = str.c_str();
+	//return str;
 }
 
 static void nunchuk_clear(void)
@@ -617,15 +698,17 @@ static void bboard_toggle(void)
 	}
 }
 
-/* pro controller */
 
-static void pro_show_ext(const struct xwii_event *event)
+
+/* pro controller */
+//dpad and button info
+void pro_show_ext(const struct xwii_event *event)
 {
 	uint16_t code = event->v.key.code;
 	int32_t v;
 	bool pressed = event->v.key.state;
-	char *str = NULL;
-
+	std::string str = "";
+//printf("pro_show_ext");
 	if (event->type == XWII_EVENT_PRO_CONTROLLER_MOVE) {
 		v = event->v.abs[0].x;
         printf("%d x\n",v);
@@ -637,111 +720,120 @@ static void pro_show_ext(const struct xwii_event *event)
         printf("%d y\n",v);
 	} else if (event->type == XWII_EVENT_PRO_CONTROLLER_KEY) {
 		if (pressed){
-			str = "X";
-			printf("%s \n",str);
+			str = "PRO";
+			//printf("%s \n",str);
 			}else{
 			str = " ";
-            printf("%s \n",str);
+           // printf("%s \n",str);
         }
 		if (code == XWII_KEY_A) {
 			if (pressed){
-				str = "A";
-				printf("%s \n",str);
+				str += "A";
+			//	printf("%s \n",str);
             }
 		} else if (code == XWII_KEY_B) {
 			if (pressed){
-				str = "B";
-				printf("%s \n",str);
+				str += "B";
+			//	printf("%s \n",str);
             }
 		} else if (code == XWII_KEY_X) {
 			if (pressed){
-				str = "X";
-				printf("%s \n",str);
+				str += "X";
+			//	printf("%s \n",str);
             }
 		} else if (code == XWII_KEY_Y) {
 			if (pressed){
-				str = "Y";
-				printf("%s \n",str);
+				str += "Y";
+			//	printf("%s \n",str);
             }
 		} else if (code == XWII_KEY_PLUS) {
 			if (pressed){
-				str = "+";
-				printf("%s \n",str);
+				str += "+";
+			//	printf("%s \n",str);
             }
 		} else if (code == XWII_KEY_MINUS) {
 			if (pressed){
-				str = "-";
-				printf("%s \n",str);
+				str += "-";
+			//	printf("%s \n",str);
 }
 		} else if (code == XWII_KEY_HOME) {
 			if (pressed){
-				str = "HOME+";
-				printf("%s \n",str);
+				str += "HOME+";
+				//printf("%s \n",str);
 				}
 			else{
 				str = "     ";
-				printf("%s \n",str);
+				//printf("%s \n",str);
 				}
 //			mvprintw(21, 130, "%s", str);
 		} else if (code == XWII_KEY_LEFT) {
 //			mvprintw(18, 108, "%s", str);
-				str = "TL";
-				printf("%s \n",str);
+				str = +"DL";
+			//	printf("%s \n",str);
 		} else if (code == XWII_KEY_RIGHT) {
-				str = "TL";
-				printf("%s \n",str);
+				str += "KR";
+			//	printf("%s \n",str);
 		} else if (code == XWII_KEY_UP) {
-				str = "TL";
-				printf("%s \n",str);
+				str += "DU";
+				printf("%s \n",str.c_str());
 		} else if (code == XWII_KEY_DOWN) {
-                str = "TL";
-				printf("%s \n",str);
+                str += "DD";
+				printf("%s \n",str.c_str());
 		} else if (code == XWII_KEY_TL) {
 			if (pressed) {
-				str = "TL";
-				printf("%s \n",str);}
+				str += "TL";
+				printf("%s \n",str.c_str());
+			}
 			else{
 				str = "  ";
 
 				}
-                printf("%s \n",str);
+             //   printf("%s \n",str);
 		} else if (code == XWII_KEY_TR) {
             if (pressed){
-				str = "TR";
-				printf("%s \n",str);}
+				str += "TR";
+			//	printf("%s \n",str);
+			}
 			else{
 				str = "  ";
-				printf("%s \n",str);
+			//	printf("%s \n",str);
 				}
-                printf("%s \n",str);
+              //  printf("%s \n",str);
 		} else if (code == XWII_KEY_ZL) {
 			if (pressed){
-				str = "ZL";
-				printf("%s \n",str);}
+				str += "ZL";
+			//	printf("%s \n",str);
+			}
 			else{
 				str = "  ";
-				printf("%s \n",str);}
+			//	printf("%s \n",str);
+			}
 		} else if (code == XWII_KEY_ZR) {
 			if (pressed){
-				str = "ZR";
-				printf("%s \n",str);}
+				str += "ZR";
+			//	printf("%s \n",str);
+			}
 			else{
 				str = "  ";
-				printf("%s \n",str);}
+			//	printf("%s \n",str);
+			}
 		} else if (code == XWII_KEY_THUMBL) {
 			if (!pressed){
-				str = "+";
-				printf("%s \n",str);}
+				str += "+";
+			//	printf("%s \n",str);
+			}
 		} else if (code == XWII_KEY_THUMBR) {
 			if (!pressed){
-				str = "+";
-                printf("%s \n",str);
+				str += "+";
+            //    printf("%s \n",str);
             }
 		}
-			printf("%s \n",str);
+
+pushedbtns=str.c_str();
+		//	printf("%s \n",str);
 	}
 
-
+//return str;
 }
 
 static void pro_clear(void)
@@ -785,7 +877,7 @@ static void pro_toggle(void)
 
 /* classic controller */
 
-static void classic_show_ext(const struct xwii_event *event)
+void classic_show_ext(const struct xwii_event *event)
 {
 	struct xwii_event ev;
 	int32_t v;
@@ -806,7 +898,7 @@ static void classic_show_ext(const struct xwii_event *event)
 		ev.v.abs[0].y *= 45;
 		ev.v.abs[1].x *= 45;
 		ev.v.abs[1].y *= 45;
-		pro_show_ext(&ev);
+		return pro_show_ext(&ev);
 
 		/* ...but handle RT/LT triggers which are not reported by pro
 		 * controllers. Note that if they report MAX (31) a key event is
@@ -1295,20 +1387,31 @@ printf("%i rumble\n" , on);
 //	mvprintw(1, 21, on ? "RUMBLE" : "      ");
 
 }
+	//static bool on = true;
 
-static void rumble_toggle(void)
+//	static void rumble_toggle(void)
+//{
+//	static bool on = true;
+//	int ret;
+//
+//	on = !on;
+//	ret = xwii_iface_rumble(iface, on);
+//	if (ret) {
+//		print_error("Error: Cannot toggle rumble motor: %d", ret);
+//		on = !on;
+//	}
+//
+////	rumble_show(on);
+//}
+static void rumble_toggle(bool on)
 {
-	static bool on = false;
 	int ret;
-
-	on = !on;
 	ret = xwii_iface_rumble(iface, on);
 	if (ret) {
 		print_error("Error: Cannot toggle rumble motor: %d", ret);
-		on = !on;
+		//on = !on;
 	}
-
-//	rumble_show(on);
+	//rumble_show(on);
 }
 
 /* LEDs */
@@ -1317,32 +1420,36 @@ static bool led_state[4];
 
 static void led_show(int n, bool on)
 {
-//	mvprintw(5, 59 + n*5, on ? "(#%i)" : " -%i ", n+1);
+printf("%i leds\n" , on);
+	//mvprintw(5, 59 + n*5, on ? "(#%i)" : " -%i ", n+1);
+}
+
+void led_refresh(int n)
+{
+	int ret;
+
+	ret = xwii_iface_get_led(iface, XWII_LED(n+1), &led_state[n]);
+ 	if (ret)
+		print_error("Error: Cannot read LED state");
+	else
+		led_show(n, led_state[n]);
+  //  return led_state;
 }
 
 static void led_toggle(int n)
 {
 	int ret;
-
+    led_state[n] = xwii_iface_get_led(iface, XWII_LED(n+1), &led_state[n]);
 	led_state[n] = !led_state[n];
-	ret = xwii_iface_set_led(iface, XWII_LED(n+1), led_state[n]);
+	ret = xwii_iface_set_led(iface, XWII_LED(n+1),  led_state[n]);
 	if (ret) {
 		print_error("Error: Cannot toggle LED %i: %d", n+1, ret);
 		led_state[n] = !led_state[n];
 	}
-	led_show(n, led_state[n]);
+	//	led_show(n, led_state[n]);
+    //led_refresh(n);
 }
 
-static void led_refresh(int n)
-{
-	int ret;
-
-	ret = xwii_iface_get_led(iface, XWII_LED(n+1), &led_state[n]);
-	if (ret)
-		print_error("Error: Cannot read LED state");
-	else
-		led_show(n, led_state[n]);
-}
 
 /* battery status */
 
@@ -1357,16 +1464,18 @@ printf("%i battery",capacity);
 //		mvprintw(7, 35 + i, "#");
 }
 
-static void battery_refresh(void)
+float battery_refresh(void)
 {
 	int ret;
 	uint8_t capacity;
 
 	ret = xwii_iface_get_battery(iface, &capacity);
-	if (ret)
-		print_error("Error: Cannot read battery capacity");
-	else
-		battery_show(capacity);
+
+//	if (ret)
+//		print_error("Error: Cannot read battery capacity");
+//	else
+	//	battery_show(capacity);
+	return capacity;
 }
 
 /* device type */
@@ -1418,7 +1527,7 @@ static void refresh_all(void)
 	devtype_refresh();
 	extension_refresh();
 	mp_refresh();
-
+mode = MODE_EXTENDED;
 //	printf("refresh");
 
 //	if (geteuid() != 0)
@@ -1501,6 +1610,7 @@ static int run_iface(struct xwii_iface *iface)
 	#else
 	//	while (true) {
 	#endif
+
 		ret = poll(fds, fds_num, -1);
 		if ( ret < 0 ) {
 			if (errno != EINTR) {
@@ -1520,76 +1630,100 @@ static int run_iface(struct xwii_iface *iface)
 
 		} else if (!freeze) {
 			switch (event.type) {
-			case XWII_EVENT_GONE:
+			case XWII_EVENT_GONE:{
 				print_info("Info: Device gone");
 				fds[1].fd = -1;
 				fds[1].events = 0;
 				fds_num = 1;
+	}
 				break;
-			case XWII_EVENT_WATCH:
+
+			case XWII_EVENT_WATCH:{
+            //    printf("handlewatch");
 				handle_watch();
+                }
 				break;
-			case XWII_EVENT_KEY:
+
+			case XWII_EVENT_KEY:{
+			 //               printf("keyshowevent");
 				if (mode != MODE_ERROR)
 					key_show(&event);
+				}
 				break;
-			case XWII_EVENT_ACCEL:
+
+			case XWII_EVENT_ACCEL:{
+			//   printf("accelevent");
 				if (mode == MODE_EXTENDED)
 					accel_show_ext(&event);
 				if (mode != MODE_ERROR)
 					accel_show(&event);
+				}
 				break;
-			case XWII_EVENT_IR:
+
+			case XWII_EVENT_IR:{
 				if (mode == MODE_EXTENDED)
 					ir_show_ext(&event);
 				if (mode != MODE_ERROR)
 					ir_show(&event);
+				}
 				break;
-			case XWII_EVENT_MOTION_PLUS:
+
+			case XWII_EVENT_MOTION_PLUS:{
 				if (mode != MODE_ERROR)
 					mp_show(&event);
+				}
 				break;
-			case XWII_EVENT_NUNCHUK_KEY:
-			case XWII_EVENT_NUNCHUK_MOVE:
+
+			case XWII_EVENT_NUNCHUK_KEY:{}
+			case XWII_EVENT_NUNCHUK_MOVE:{
 				if (mode == MODE_EXTENDED)
 					nunchuk_show_ext(&event);
+				}
 				break;
-			case XWII_EVENT_CLASSIC_CONTROLLER_KEY:
-			case XWII_EVENT_CLASSIC_CONTROLLER_MOVE:
+
+			case XWII_EVENT_CLASSIC_CONTROLLER_KEY:{}
+			case XWII_EVENT_CLASSIC_CONTROLLER_MOVE:{
+					//			printf("classic");
 				if (mode == MODE_EXTENDED)
 					classic_show_ext(&event);
+					}
 				break;
-			case XWII_EVENT_BALANCE_BOARD:
+			case XWII_EVENT_BALANCE_BOARD:{
 				if (mode == MODE_EXTENDED)
 					bboard_show_ext(&event);
+					}
 				break;
-			case XWII_EVENT_PRO_CONTROLLER_KEY:
-			case XWII_EVENT_PRO_CONTROLLER_MOVE:
+			case XWII_EVENT_PRO_CONTROLLER_KEY:{}
+			case XWII_EVENT_PRO_CONTROLLER_MOVE:{
 				if (mode == MODE_EXTENDED)
 					pro_show_ext(&event);
+					}
 				break;
-			case XWII_EVENT_GUITAR_KEY:
-			case XWII_EVENT_GUITAR_MOVE:
+			case XWII_EVENT_GUITAR_KEY:{}
+			case XWII_EVENT_GUITAR_MOVE:{
 				if (mode == MODE_EXTENDED)
 					guit_show_ext(&event);
+					}
 				break;
-			case XWII_EVENT_DRUMS_KEY:
-			case XWII_EVENT_DRUMS_MOVE:
+			case XWII_EVENT_DRUMS_KEY:{}
+			case XWII_EVENT_DRUMS_MOVE:{
 				if (mode == MODE_EXTENDED)
 					drums_show_ext(&event);
+                }
 				break;
 			}
 		}
 
+
 //		ret = keyboard();
 		if ( ret == -ECANCELED )
 			return 0;
-		else if ( ret )
-			return ret;
+//		else if ( ret )
+//			return ret;
 //		refresh();
-#ifndef testing12
-	}
-#endif
+//#ifndef testing12
+//	}
+//#endif
 	return ret;
 }
 
@@ -1657,7 +1791,7 @@ int wiimaininit(int udev)
 		} else {
 
 //			timeout(0);
-            printf("sdfs\n");
+          //  printf("sdfs\n");
 
 			handle_resize();
 			key_clear();
