@@ -1495,6 +1495,7 @@ static int run_iface(struct xwii_iface *iface)
 	fds_num = 2;
 
 	ret = xwii_iface_watch(iface, true);
+	printf("ndeftesting123");
 
 	while (true) {
 	#else
@@ -1638,9 +1639,9 @@ static char *get_dev(int num)
 }
 
 int wiirun(){
-while (ret=true){
+//while (ret=true){
 ret = run_iface(iface);
-}
+//}
 
 }
 int wiimaininit(int udev)
@@ -1691,7 +1692,7 @@ int wiimaininit(int udev)
 	ret = xwii_iface_watch(iface, true);
 
 	   // while (ret=true){
-			ret = run_iface(iface);
+			//ret = run_iface(iface);
 		//	}
 //	xwii_iface_unref(iface);
 #else

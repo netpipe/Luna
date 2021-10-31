@@ -311,6 +311,7 @@ PyObject * Python::PyIrr_wii(PyObject * self,PyObject * args){
 //#include "../Input/Controllers/wii/xwiimote/xwiimote.h"
 PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
 
+float val;
 	s32 key;
 	int udev;
 	char * type;
@@ -330,7 +331,6 @@ PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
         }break;
 
         case gp(gprefresh):        {
-                printf("fasdfsafd\n");
         #ifdef WII
             wiirun();
         #endif
@@ -340,23 +340,24 @@ PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
         #ifdef WII
 //        rdev = run_iface(iface);
           run_iface(iface);
+       //    wiirun();
         #endif
         }break;
 
         //accel
         case gp(accx):        {
         #ifdef WII
-            accel_showx();
+            val=accel_showx();
         #endif
         }break;
         case gp(accy):        {
         #ifdef WII
-            accel_showy();
+            val=accel_showy();
         #endif
         }break;
         case gp(accz):        {
         #ifdef WII
-            accel_showz();
+            val=accel_showz();
         #endif
         }break;
 
@@ -368,40 +369,46 @@ PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
         }break;
         case gp(accey):        {
         #ifdef WII
-            accelexy_showy();
+            val=accelexy_showy();
         #endif
         }break;
         case gp(accez):        {
         #ifdef WII
-            accelexz_showz();
+            val=accelexz_showz();
         #endif
         }break;
 
         //balance
         case gp(getbw):        {
         #ifdef WII
-            bboard_getw();
+            val=bboard_getw();
         #endif
         }break;
         case gp(getbx):        {
         #ifdef WII
-            bboard_getx();
+        val=bboard_getx();
         #endif
         }break;
 
         case gp(getby):        {
         #ifdef WII
-            bboard_gety();
+            val=bboard_gety();
         #endif
         }break;
 
         case gp(getbz): {
         #ifdef WII
-            bboard_getz();
+           val= bboard_getz();
         #endif
         }break;
 
         //
+
+        case gp(rumble):        {
+        #ifdef WII
+          rumble_toggle();
+        #endif
+        }break;
 
         case gp(gpunref):        {
         #ifdef WII
@@ -411,8 +418,7 @@ PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
 
         case gp(wiiled):        {
         #ifdef WII
-        rumble_toggle();
-            led_toggle(1);
+            led_toggle(2);
         #endif
         }break;
 
@@ -478,7 +484,7 @@ PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
 //	case 'q':
 //		return -ECANCELED;
 //	}
-	return Py_BuildValue("i",rdev);
+	return Py_BuildValue("f",val);
 }
 
 PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){

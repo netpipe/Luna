@@ -335,7 +335,7 @@ PyMethodDef irr_function[] =
     accex,accey,accez,
     getbw,getbx,getby,getbz,
     wiix,wiiy,wiib,wiia,
-    gpdpad,gpjoya1,gpjoya2};
+    gpdpad,gpjoya1,gpjoya2,rumble};
 
     std::map< std::string, gp > gp2;
 #include <iostream>
@@ -536,6 +536,33 @@ keydictionary["KEY_KEY_CODES_COUNT"] = KEY_KEY_CODES_COUNT;
     mparam2["mlmouse"] = mlmouse;
     mparam2["mrmouse"] = mrmouse;
     mparam2["mmmouse"] = mmmouse;
+
+
+    gp2["gpinit"] = gpinit;
+    gp2["gprefresh"] = gprefresh;
+    gp2["gprun"] = gprun;
+    gp2["gpunref"] = gpunref;
+    gp2["wiiled"] = wiiled;
+    gp2["gpudev"] = gpudev;
+    gp2["accx"] = accx;
+    gp2["accy"] = accy;
+    gp2["accz"] = accz;
+    gp2["accex"] = gpunref;
+    gp2["accey"] = accey;
+    gp2["accez"] = accez;
+    gp2["getbw"] = getbw;
+    gp2["getbx"] = getbx;
+    gp2["getby"] = getby;
+    gp2["getbz"] = getbz;
+    gp2["wiix"] = wiix;
+    gp2["wiiy"] = wiiy;
+    gp2["wiib"] = wiib;
+    gp2["wiia"] = wiia;
+    gp2["gpdpad"] = gpdpad;
+    gp2["getbx"] = getbx;
+//    gpdpad,
+//
+//    gpjoya1,gpjoya2,rumble};
 }
 
 
