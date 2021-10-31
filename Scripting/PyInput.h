@@ -322,40 +322,94 @@ PyObject * Python::PyIrr_gamePad(PyObject * self,PyObject * args){
 
     switch (gp2[type]){
 
-        case gp(gpinit):
-        {
+        case gp(gpinit):        {
         printf("wiitest\n");
         #ifdef WII
             wiimaininit(udev);
         #endif
         }break;
 
-        case gp(gprefresh):
-        {
+        case gp(gprefresh):        {
                 printf("fasdfsafd\n");
-
         #ifdef WII
             wiirun();
         #endif
         }break;
 
-        case gp(gprun):
-        {
+        case gp(gprun):        {
         #ifdef WII
 //        rdev = run_iface(iface);
           run_iface(iface);
         #endif
         }break;
 
-        case gp(gpunref):
-        {
+        //accel
+        case gp(accx):        {
+        #ifdef WII
+            accel_showx();
+        #endif
+        }break;
+        case gp(accy):        {
+        #ifdef WII
+            accel_showy();
+        #endif
+        }break;
+        case gp(accz):        {
+        #ifdef WII
+            accel_showz();
+        #endif
+        }break;
+
+        //accel ext
+        case gp(accex):        {
+        #ifdef WII
+            accelexx_showx();
+        #endif
+        }break;
+        case gp(accey):        {
+        #ifdef WII
+            accelexy_showy();
+        #endif
+        }break;
+        case gp(accez):        {
+        #ifdef WII
+            accelexz_showz();
+        #endif
+        }break;
+
+        //balance
+        case gp(getbw):        {
+        #ifdef WII
+            bboard_getw();
+        #endif
+        }break;
+        case gp(getbx):        {
+        #ifdef WII
+            bboard_getx();
+        #endif
+        }break;
+
+        case gp(getby):        {
+        #ifdef WII
+            bboard_gety();
+        #endif
+        }break;
+
+        case gp(getbz): {
+        #ifdef WII
+            bboard_getz();
+        #endif
+        }break;
+
+        //
+
+        case gp(gpunref):        {
         #ifdef WII
             xwii_iface_unref(iface);
         #endif
         }break;
 
-        case gp(wiiled):
-        {
+        case gp(wiiled):        {
         #ifdef WII
         rumble_toggle();
             led_toggle(1);

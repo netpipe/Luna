@@ -30,7 +30,10 @@
 #include <time.h>
 #include <unistd.h>
 #include "xwiimote.h"
-
+	uint16_t bbw, bbx, bby, bbz;
+float accelexx,accelexy,accelexz;
+float accelx,accely,accelz;
+float vnextx,vnexty,vnextz;
 #define testing12
 #ifdef testing12
 	struct xwii_event event;
@@ -121,20 +124,17 @@ static void key_toggle(void)
 }
 
 /* accelerometer events */
-
-static void accel_show_ext_x(double val)
-{
-	printf("%d x",val);
+float accelexx_showx(){
+//printf("%f x",accelexx);
+return accelexx;
 }
-
-static void accel_show_ext_y(double val)
-{
-	printf("%d y",val);
+float accelexy_showy(){
+//printf("%f x",accelexy);
+return accelexy;
 }
-
-static void accel_show_ext_z(double val)
-{
-	printf("%d z",val);
+float accelexz_showz(){
+//printf("%f x",accelexz);
+return accelexz;
 }
 
 static void accel_show_ext(const struct xwii_event *event)
@@ -149,17 +149,18 @@ static void accel_show_ext(const struct xwii_event *event)
 		val = 10 * pow(val, 0.25);
 	else
 		val = -10 * pow(-val, 0.25);
-	accel_show_ext_x(val);
-	printf("%d x/n",val);
-
+	//accel_show_ext_x(val);
+	//printf("%d x/n",val);
+    accelexx=val;
 	val = event->v.abs[0].z;
 	val /= 512;
 	if (val >= 0)
 		val = 5 * pow(val, 0.25);
 	else
 		val = -5 * pow(-val, 0.25);
-	accel_show_ext_z(val);
-	printf("%d z/n",val);
+		accelexz=val;
+	//accel_show_ext_z(val);
+	//printf("%d z/n",val);
 
 	val = event->v.abs[0].y;
 	val /= 512;
@@ -167,17 +168,34 @@ static void accel_show_ext(const struct xwii_event *event)
 		val = 5 * pow(val, 0.25);
 	else
 		val = -5 * pow(-val, 0.25);
-	accel_show_ext_y(val);
-	printf("%d y/n",val);
+	//accel_show_ext_y(val);
+	accelexy=val;
+	//printf("%d y/n",val);
 }
 
 static void accel_show(const struct xwii_event *event)
 {
+accelx=event->v.abs[0].x;
+accely=event->v.abs[0].x;
+accelz=event->v.abs[0].x;
 
-printf ("%d x\n", event->v.abs[0].x );
-printf ("%d y\n", event->v.abs[0].y );
-printf ("%d z\n", event->v.abs[0].z );
+//printf ("%d x\n", event->v.abs[0].x );
+//printf ("%d y\n", event->v.abs[0].y );
+//printf ("%d z\n", event->v.abs[0].z );
 
+}
+
+float accel_showx(){
+printf ("%f x\n",accelx);
+return accelx;
+}
+float accel_showy(){
+printf ("%f x\n",accely);
+return accely;
+}
+float accel_showz(){
+printf ("%f x\n",accelz);
+return accelz;
 }
 
 static void accel_clear(void)
@@ -433,20 +451,14 @@ static void mp_refresh(void)
 
 /* nunchuk */
 
-static void nunchuk_show_ext_x(double val)
-{
-printf ("%f ext_x\n", val );
-
+float nextx() {
+return vnextz;
 }
-
-static void nunchuk_show_ext_y(double val)
-{
-printf ("%f ext_y\n", val );
+float nexty() {
+return vnextz;
 }
-
-static void nunchuk_show_ext_z(double val)
-{
-printf ("%f ext_z\n", val );
+float nextz() {
+return vnextz;
 }
 
 static void nunchuk_show_ext(const struct xwii_event *event)
@@ -464,32 +476,32 @@ static void nunchuk_show_ext(const struct xwii_event *event)
 			val = 10 * pow(val, 0.25);
 		else
 			val = -10 * pow(-val, 0.25);
-		nunchuk_show_ext_x(val);
-
+	//	nunchuk_show_ext_x(val);
+vnextx=val;
 		val = event->v.abs[1].z;
 		val /= 512;
 		if (val >= 0)
 			val = 5 * pow(val, 0.25);
 		else
 			val = -5 * pow(-val, 0.25);
-		nunchuk_show_ext_z(val);
-
+	//	nunchuk_show_ext_z(val);
+vnextz=val;
 		val = event->v.abs[1].y;
 		val /= 512;
 		if (val >= 0)
 			val = 5 * pow(val, 0.25);
 		else
 			val = -5 * pow(-val, 0.25);
-		nunchuk_show_ext_y(val);
+	//	nunchuk_show_ext_y(val);
+vnexty=val;
+//		v = event->v.abs[0].x * 12;
+//printf("%i x\n",v);
 
-		v = event->v.abs[0].x * 12;
-printf("%i x\n",v);
+//		v = event->v.abs[0].y * 12;
+//printf("%i x\n",v);
 
-		v = event->v.abs[0].y * 12;
-printf("%i x\n",v);
-
-		v = event->v.abs[0].z * 12;
-printf("%i x\n",v);
+//		v = event->v.abs[0].z * 12;
+//printf("%i x\n",v);
 
 
 
@@ -553,16 +565,27 @@ static void nunchuk_toggle(void)
 
 static void bboard_show_ext(const struct xwii_event *event)
 {
-	uint16_t w, x, y, z;
+	bbw = event->v.abs[0].x;
+	bbx = event->v.abs[1].x;
+	bby = event->v.abs[2].x;
+	bbz = event->v.abs[3].x;
+}
 
-	w = event->v.abs[0].x;
-	x = event->v.abs[1].x;
-	y = event->v.abs[2].x;
-	z = event->v.abs[3].x;
-	printf("%u w\n",w);
-    printf("%u x\n",x);
-    printf("%u y\n",y);
-    printf("%u z\n",z);
+int bboard_getw(){
+	printf("%u w\n",bbw);
+return bbw;
+}
+int bboard_getx(){
+    printf("%u x\n",bbx);
+return bbx;
+}
+int bboard_gety(){
+    printf("%u y\n",bby);
+return bby;
+}
+int bboard_getz(){
+    printf("%u y\n",bbz);
+return bbz;
 }
 
 static void bboard_clear(void)
@@ -683,7 +706,7 @@ static void pro_show_ext(const struct xwii_event *event)
 				}
                 printf("%s \n",str);
 		} else if (code == XWII_KEY_TR) {
-			if (pressed){
+            if (pressed){
 				str = "TR";
 				printf("%s \n",str);}
 			else{
@@ -1418,15 +1441,15 @@ static void handle_resize(void)
 	//	mode = MODE_ERROR;
 //		mvprintw(0, 0, "Error: Screen smaller than 80x24; no view");
 //	} else if (LINES < 48 || COLS < 160) {
-	mode = MODE_NORMAL;
+	//mode = MODE_NORMAL;
 //		setup_window();
-		refresh_all();
+	//	refresh_all();
 //		print_info("Info: Screen smaller than 160x48; limited view");
 //	} else {
-//		mode = MODE_EXTENDED;
+		mode = MODE_EXTENDED;
 //		setup_ext_window();
 //		setup_window();
-//		refresh_all();
+		refresh_all();
 //		print_info("Info: Screen initialized for extended view");
 //	}
 }
