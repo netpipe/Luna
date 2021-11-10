@@ -16,7 +16,8 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  */
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #ifndef _FLUID_LIST_H
 #define _FLUID_LIST_H
 
@@ -59,3 +60,4 @@ int fluid_list_size(fluid_list_t *list);
 
 
 #endif  /* _FLUID_LIST_H */
+#endif

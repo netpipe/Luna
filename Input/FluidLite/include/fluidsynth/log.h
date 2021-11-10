@@ -11,13 +11,14 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Library General Public License for more details.
- *  
+ *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the Free
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
  * 02111-1307, USA
  */
-
+#include "../../../../config.h"
+#ifdef FLUIDLITE
 #ifndef _FLUIDSYNTH_LOG_H
 #define _FLUIDSYNTH_LOG_H
 
@@ -51,7 +52,7 @@ extern "C" {
 /**
  * FluidSynth log levels.
  */
-enum fluid_log_level { 
+enum fluid_log_level {
   FLUID_PANIC,   /**< The synth can't function correctly any more */
   FLUID_ERR,     /**< Serious error occurred */
   FLUID_WARN,    /**< Warning */
@@ -68,7 +69,7 @@ enum fluid_log_level {
  */
 typedef void (*fluid_log_function_t)(int level, char* message, void* data);
 
-FLUIDSYNTH_API 
+FLUIDSYNTH_API
 fluid_log_function_t fluid_set_log_function(int level, fluid_log_function_t fun, void* data);
 
 FLUIDSYNTH_API void fluid_default_log_function(int level, char* message, void* data);
@@ -81,3 +82,4 @@ FLUIDSYNTH_API int fluid_log(int level, char * fmt, ...);
 #endif
 
 #endif /* _FLUIDSYNTH_LOG_H */
+#endif

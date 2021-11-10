@@ -18,7 +18,8 @@
  * 02111-1307, USA
  */
 
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #ifndef _FLUID_CHORUS_H
 #define _FLUID_CHORUS_H
 
@@ -54,3 +55,4 @@ int fluid_chorus_get_type(fluid_chorus_t* chorus);
 
 
 #endif /* _FLUID_CHORUS_H */
+#endif

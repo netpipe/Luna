@@ -27,7 +27,8 @@
 /*
  * MT safe
  */
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #include "fluidsynth_priv.h"
 #include "fluid_hash.h"
 
@@ -386,3 +387,4 @@ fluid_str_hash(char* key)
 
   return h;
 }
+#endif

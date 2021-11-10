@@ -17,7 +17,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
  * 02111-1307, USA
  */
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 
 #ifndef _FLUID_GEN_H
 #define _FLUID_GEN_H
@@ -42,3 +43,4 @@ int fluid_gen_init(fluid_gen_t* gen, fluid_channel_t* channel);
 
 
 #endif /* _FLUID_GEN_H */
+#endif

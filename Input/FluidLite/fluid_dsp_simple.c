@@ -77,7 +77,8 @@
  *
  */
 
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 /* Nonoptimized DSP loop */
 #warning "This code is meant for experiments only.";
 
@@ -117,4 +118,4 @@ for (dsp_i = dsp_start; dsp_i < dsp_end; dsp_i++) {
 		dsp_chorus_buf[dsp_i] += voice->amp_chorus * dsp_sample;
 	}
 }
-
+#endif

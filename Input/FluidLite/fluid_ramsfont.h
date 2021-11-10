@@ -18,7 +18,8 @@
  * 02111-1307, USA
  */
 
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #ifndef _FLUID_RAMSFONT_H
 #define _FLUID_RAMSFONT_H
 
@@ -112,3 +113,4 @@ int fluid_rampreset_noteon(fluid_rampreset_t* preset, fluid_synth_t* synth, int 
 #endif
 
 #endif  /* _FLUID_SFONT_H */
+#endif

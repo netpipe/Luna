@@ -17,7 +17,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
  * 02111-1307, USA
  */
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #include "fluid_ramsfont.h"
 #include "fluid_sys.h"
 #include "fluid_synth.h"
@@ -1115,3 +1116,4 @@ delete_fluid_ramsample(fluid_sample_t* sample)
   FLUID_FREE(sample);
   return FLUID_OK;
 }
+#endif

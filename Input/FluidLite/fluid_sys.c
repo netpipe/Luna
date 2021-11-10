@@ -18,7 +18,8 @@
  * 02111-1307, USA
  */
 
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #include "fluid_sys.h"
 
 static char fluid_errbuf[512];  /* buffer for error message */
@@ -362,3 +363,4 @@ fluid_is_soundfont(char* filename)
  */
 
 //socket disabled
+#endif

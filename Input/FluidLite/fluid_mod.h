@@ -17,7 +17,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
  * 02111-1307, USA
  */
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #ifndef _FLUID_MOD_H
 #define _FLUID_MOD_H
 
@@ -38,3 +39,4 @@ void fluid_dump_modulator(fluid_mod_t * mod);
 
 
 #endif /* _FLUID_MOD_H */
+#endif

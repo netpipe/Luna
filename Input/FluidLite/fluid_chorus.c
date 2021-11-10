@@ -64,7 +64,8 @@
  * samples, the sinc function is windowed (Hamming window).
  *
  */
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #include "fluid_chorus.h"
 #include "fluid_sys.h"
 
@@ -604,3 +605,4 @@ fluid_chorus_reset(fluid_chorus_t* chorus)
 {
   fluid_chorus_init(chorus);
 }
+#endif

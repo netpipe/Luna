@@ -10,7 +10,8 @@ maybe delete the .so fluidlite and use static or use "export LD_LIBRARY_PATH=./"
 gcc alsademo.c -L../../ -lfluidlite -lasound -lm -I../../include -o alsademo
 
 */
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 /* Use the newer ALSA API */
 #define ALSA_PCM_NEW_HW_PARAMS_API
 
@@ -133,4 +134,4 @@ int main() {
   return 0;
 }
 
-
+#endif

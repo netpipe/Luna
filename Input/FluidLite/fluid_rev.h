@@ -18,7 +18,8 @@
  * 02111-1307, USA
  */
 
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #ifndef _FLUID_REV_H
 #define _FLUID_REV_H
 
@@ -65,3 +66,4 @@ typedef struct _fluid_revmodel_presets_t {
 
 
 #endif /* _FLUID_REV_H */
+#endif

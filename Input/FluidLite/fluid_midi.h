@@ -17,7 +17,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
  * 02111-1307, USA
  */
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #ifndef _FLUID_MIDI_H
 #define _FLUID_MIDI_H
 
@@ -245,3 +246,4 @@ struct _fluid_midi_event_t {
 
 
 #endif /* _FLUID_MIDI_H */
+#endif

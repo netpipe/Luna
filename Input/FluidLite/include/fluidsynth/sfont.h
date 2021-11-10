@@ -17,7 +17,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
  * 02111-1307, USA
  */
-
+#include "../../../../config.h"
+#ifdef FLUIDLITE
 #ifndef _FLUIDSYNTH_SFONT_H
 #define _FLUIDSYNTH_SFONT_H
 
@@ -250,3 +251,4 @@ struct _fluid_sample_t
 #endif
 
 #endif /* _FLUIDSYNTH_SFONT_H */
+#endif

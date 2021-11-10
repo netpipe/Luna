@@ -17,7 +17,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
  * 02111-1307, USA
  */
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 
 /*
 
@@ -63,3 +64,4 @@ void fluid_tuning_set_all(fluid_tuning_t* tuning, double* pitch);
 
 
 #endif /* _FLUID_TUNING_H */
+#endif

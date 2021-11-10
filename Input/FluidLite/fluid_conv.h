@@ -17,7 +17,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
  * 02111-1307, USA
  */
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #ifndef _FLUID_CONV_H
 #define _FLUID_CONV_H
 
@@ -61,3 +62,4 @@ extern fluid_real_t fluid_pan_tab[FLUID_PAN_SIZE];
 
 
 #endif /* _FLUID_CONV_H */
+#endif

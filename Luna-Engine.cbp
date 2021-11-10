@@ -1467,6 +1467,98 @@
 		</Unit>
 		<Unit filename="Input/Controllers/wii/xwiimote/xwiimote.h" />
 		<Unit filename="Input/Controllers/wii/xwiimote/xwiimotemain.h" />
+		<Unit filename="Input/FluidLite/alsademo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/FluidLite/fluid_chan.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/FluidLite/fluid_chan.h" />
+		<Unit filename="Input/FluidLite/fluid_chorus.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/FluidLite/fluid_chorus.h" />
+		<Unit filename="Input/FluidLite/fluid_config.h" />
+		<Unit filename="Input/FluidLite/fluid_conv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/FluidLite/fluid_conv.h" />
+		<Unit filename="Input/FluidLite/fluid_defsfont.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/FluidLite/fluid_defsfont.h" />
+		<Unit filename="Input/FluidLite/fluid_dsp_float.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/FluidLite/fluid_dsp_simple.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/FluidLite/fluid_gen.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/FluidLite/fluid_gen.h" />
+		<Unit filename="Input/FluidLite/fluid_hash.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/FluidLite/fluid_hash.h" />
+		<Unit filename="Input/FluidLite/fluid_init.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/FluidLite/fluid_list.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/FluidLite/fluid_list.h" />
+		<Unit filename="Input/FluidLite/fluid_midi.h" />
+		<Unit filename="Input/FluidLite/fluid_mod.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/FluidLite/fluid_mod.h" />
+		<Unit filename="Input/FluidLite/fluid_phase.h" />
+		<Unit filename="Input/FluidLite/fluid_ramsfont.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/FluidLite/fluid_ramsfont.h" />
+		<Unit filename="Input/FluidLite/fluid_rev.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/FluidLite/fluid_rev.h" />
+		<Unit filename="Input/FluidLite/fluid_settings.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/FluidLite/fluid_settings.h" />
+		<Unit filename="Input/FluidLite/fluid_sfont.h" />
+		<Unit filename="Input/FluidLite/fluid_synth.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/FluidLite/fluid_synth.h" />
+		<Unit filename="Input/FluidLite/fluid_sys.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/FluidLite/fluid_sys.h" />
+		<Unit filename="Input/FluidLite/fluid_tuning.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/FluidLite/fluid_tuning.h" />
+		<Unit filename="Input/FluidLite/fluid_voice.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/FluidLite/fluid_voice.h" />
+		<Unit filename="Input/FluidLite/fluidsynth_priv.h" />
+		<Unit filename="Input/FluidLite/include/fluidlite.h" />
+		<Unit filename="Input/FluidLite/include/fluidsynth/gen.h" />
+		<Unit filename="Input/FluidLite/include/fluidsynth/log.h" />
+		<Unit filename="Input/FluidLite/include/fluidsynth/misc.h" />
+		<Unit filename="Input/FluidLite/include/fluidsynth/mod.h" />
+		<Unit filename="Input/FluidLite/include/fluidsynth/ramsfont.h" />
+		<Unit filename="Input/FluidLite/include/fluidsynth/settings.h" />
+		<Unit filename="Input/FluidLite/include/fluidsynth/sfont.h" />
+		<Unit filename="Input/FluidLite/include/fluidsynth/synth.h" />
+		<Unit filename="Input/FluidLite/include/fluidsynth/types.h" />
+		<Unit filename="Input/FluidLite/include/fluidsynth/version.h" />
+		<Unit filename="Input/FluidLite/include/fluidsynth/voice.h" />
+		<Unit filename="Input/FluidLite/stb/stb_vorbis.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimp.cpp" />
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimp.h" />
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimpExport.cpp" />

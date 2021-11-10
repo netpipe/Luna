@@ -18,7 +18,8 @@
  * 02111-1307, USA
  */
 
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #ifndef _FLUID_VOICE_H
 #define _FLUID_VOICE_H
 
@@ -289,3 +290,4 @@ int fluid_dsp_float_interpolate_4th_order (fluid_voice_t *voice);
 int fluid_dsp_float_interpolate_7th_order (fluid_voice_t *voice);
 
 #endif /* _FLUID_VOICE_H */
+#endif

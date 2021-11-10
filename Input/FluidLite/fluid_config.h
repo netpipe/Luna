@@ -1,5 +1,6 @@
 /* src/config.h.in.  Generated from configure.ac by autoheader.  */
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 
 /* Define to activate debugging message */
 #undef DEBUG
@@ -36,3 +37,4 @@
 //#pragma warning(disable : 4101)
 //#pragma warning(disable : 4305)
 //#pragma warning(disable : 4996)
+#endif

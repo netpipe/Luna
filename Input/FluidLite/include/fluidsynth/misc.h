@@ -11,13 +11,14 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Library General Public License for more details.
- *  
+ *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the Free
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
  * 02111-1307, USA
  */
-
+#include "../../../../config.h"
+#ifdef FLUIDLITE
 #ifndef _FLUIDSYNTH_MISC_H
 #define _FLUIDSYNTH_MISC_H
 
@@ -43,7 +44,7 @@ FLUIDSYNTH_API int fluid_is_soundfont(char* filename);
 /**
  * fluid_is_midifile returns 1 if the specified filename is a MIDI
  * file. It retuns 0 otherwise. The current implementation only checks
- * for the "MThd" header in the file.  
+ * for the "MThd" header in the file.
  */
 FLUIDSYNTH_API int fluid_is_midifile(char* filename);
 
@@ -63,3 +64,4 @@ FLUIDSYNTH_API void fluid_set_hinstance(void* hinstance);
 #endif
 
 #endif /* _FLUIDSYNTH_MISC_H */
+#endif

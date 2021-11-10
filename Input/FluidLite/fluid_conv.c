@@ -17,7 +17,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
  * 02111-1307, USA
  */
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #include "fluid_conv.h"
 
 
@@ -318,3 +319,4 @@ fluid_convex(fluid_real_t val)
   }
   return fluid_convex_tab[(int) val];
 }
+#endif

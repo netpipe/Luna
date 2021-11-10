@@ -17,7 +17,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
  * 02111-1307, USA
  */
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #include "fluidsynth_priv.h"
 #include "fluid_phase.h"
 
@@ -683,3 +684,4 @@ fluid_dsp_float_interpolate_7th_order (fluid_voice_t *voice)
 
   return (dsp_i);
 }
+#endif

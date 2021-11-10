@@ -17,7 +17,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
  * 02111-1307, USA
  */
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #include <math.h>
 
 #include "fluid_synth.h"
@@ -3548,3 +3549,4 @@ fluid_synth_remove_bank_offset(fluid_synth_t* synth, int sfont_id)
 		synth->bank_offsets = fluid_list_remove(synth->bank_offsets, bank_offset);
 	}
 }
+#endif

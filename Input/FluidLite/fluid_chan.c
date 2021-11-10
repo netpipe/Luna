@@ -17,6 +17,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
  * 02111-1307, USA
  */
+#include "../../config.h"
+#ifdef FLUIDLITE
 
 #include "fluid_chan.h"
 #include "fluid_mod.h"
@@ -453,3 +455,5 @@ int fluid_channel_set_sfontnum(fluid_channel_t* chan, unsigned int sfontnum)
   chan->sfontnum = sfontnum;
   return FLUID_OK;
 }
+
+#endif

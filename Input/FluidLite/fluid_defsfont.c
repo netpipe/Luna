@@ -21,7 +21,8 @@
  * 02111-1307, USA
  */
 
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #include "fluid_defsfont.h"
 #include "fluid_sfont.h"
 /* Todo: Get rid of that 'include' */
@@ -3417,3 +3418,4 @@ gerr (int ev, char * fmt, ...)
 
   return (FAIL);
 }
+#endif

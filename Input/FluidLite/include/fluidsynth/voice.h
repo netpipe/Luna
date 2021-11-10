@@ -11,13 +11,14 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Library General Public License for more details.
- *  
+ *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the Free
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
  * 02111-1307, USA
  */
-
+#include "../../../../config.h"
+#ifdef FLUIDLITE
 #ifndef _FLUIDSYNTH_VOICE_H
 #define _FLUIDSYNTH_VOICE_H
 
@@ -31,11 +32,11 @@ extern "C" {
    *  Examples on using them can be found in fluid_defsfont.c
    */
 
-  /** Update all the synthesis parameters, which depend on generator gen. 
+  /** Update all the synthesis parameters, which depend on generator gen.
       This is only necessary after changing a generator of an already operating voice.
       Most applications will not need this function.*/
 
-FLUIDSYNTH_API void fluid_voice_update_param(fluid_voice_t* voice, int gen); 
+FLUIDSYNTH_API void fluid_voice_update_param(fluid_voice_t* voice, int gen);
 
 
   /* for fluid_voice_add_mod */
@@ -85,13 +86,14 @@ FLUIDSYNTH_API int fluid_voice_is_playing(fluid_voice_t* voice);
    * So it's a good idea to call fluid_voice_optimize_sample
    * on each sample once.
    */
-  
+
 FLUIDSYNTH_API int fluid_voice_optimize_sample(fluid_sample_t* s);
-       
-    
+
+
 
 #ifdef __cplusplus
 }
 #endif
 #endif /* _FLUIDSYNTH_VOICE_H */
 
+#endif

@@ -18,7 +18,8 @@
  * 02111-1307, USA
  */
 
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 /**
 
    This header contains a bunch of (mostly) system and machine
@@ -139,3 +140,4 @@ enum {
 
 
 #endif /* _FLUID_SYS_H */
+#endif

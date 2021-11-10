@@ -11,13 +11,14 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Library General Public License for more details.
- *  
+ *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the Free
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
  * 02111-1307, USA
  */
-
+#include "../../../../config.h"
+#ifdef FLUIDLITE
 #ifndef _FLUIDSYNTH_SETTINGS_H
 #define _FLUIDSYNTH_SETTINGS_H
 
@@ -28,12 +29,12 @@ extern "C" {
   /**
    *
    *    Synthesizer settings
-   *    
-   *     
+   *
+   *
    *     The create a synthesizer object you will have to specify its
-   *     settings. These settings are stored in the structure below. 
+   *     settings. These settings are stored in the structure below.
 
-   *     void my_synthesizer() 
+   *     void my_synthesizer()
    *     {
    *       fluid_settings_t* settings;
    *       fluid_synth_t* synth;
@@ -42,14 +43,14 @@ extern "C" {
    *
    *       settings = new_fluid_settings();
    *       fluid_settings_setstr(settings, "audio.driver", "alsa");
-   *       // ... change settings ... 
+   *       // ... change settings ...
    *       synth = new_fluid_synth(settings);
    *       adriver = new_fluid_audio_driver(settings, synth);
    *
    *       ...
    *
    *     }
-   * 
+   *
    *
    */
 
@@ -121,10 +122,10 @@ FLUIDSYNTH_API void delete_fluid_settings(fluid_settings_t* settings);
 
 
 
-FLUIDSYNTH_API 
+FLUIDSYNTH_API
 int fluid_settings_get_type(fluid_settings_t* settings, const char* name);
 
-FLUIDSYNTH_API 
+FLUIDSYNTH_API
 int fluid_settings_get_hints(fluid_settings_t* settings, const char* name);
 
 /** Returns whether the setting is changeable in real-time. */
@@ -132,66 +133,66 @@ FLUIDSYNTH_API int fluid_settings_is_realtime(fluid_settings_t* settings, const 
 
 
 /** returns 1 if the value has been set, 0 otherwise */
-FLUIDSYNTH_API 
+FLUIDSYNTH_API
 int fluid_settings_setstr(fluid_settings_t* settings, const char* name, const char* str);
 
-/** 
+/**
     Get the value of a string setting. If the value does not exists,
     'str' is set to NULL. Otherwise, 'str' will point to the
     value. The application does not own the returned value. Instead,
     the application should make a copy of the value if it needs it
     later.
 
-   \returns 1 if the value exists, 0 otherwise 
+   \returns 1 if the value exists, 0 otherwise
 */
-FLUIDSYNTH_API 
+FLUIDSYNTH_API
 int fluid_settings_getstr(fluid_settings_t* settings, const char* name, char** str);
 
 /** Get the default value of a string setting. */
-FLUIDSYNTH_API 
+FLUIDSYNTH_API
 char* fluid_settings_getstr_default(fluid_settings_t* settings, const char* name);
 
-/** Get the value of a numeric setting. 
+/** Get the value of a numeric setting.
 
    \returns 1 if the value exists and is equal to 'value', 0
-    otherwise 
+    otherwise
 */
-FLUIDSYNTH_API 
+FLUIDSYNTH_API
 int fluid_settings_str_equal(fluid_settings_t* settings, const char* name, char* value);
 
 
 /** returns 1 if the value has been set, 0 otherwise */
-FLUIDSYNTH_API 
+FLUIDSYNTH_API
 int fluid_settings_setnum(fluid_settings_t* settings, const char* name, double val);
 
 /** returns 1 if the value exists, 0 otherwise */
-FLUIDSYNTH_API 
+FLUIDSYNTH_API
 int fluid_settings_getnum(fluid_settings_t* settings, const char* name, double* val);
 
 /** Get the default value of a string setting. */
-FLUIDSYNTH_API 
+FLUIDSYNTH_API
 double fluid_settings_getnum_default(fluid_settings_t* settings, const char* name);
-  
+
 /** Get the range of values of a numeric settings. */
-FLUIDSYNTH_API 
+FLUIDSYNTH_API
 void fluid_settings_getnum_range(fluid_settings_t* settings, const char* name,
 				double* min, double* max);
 
 
 /** returns 1 if the value has been set, 0 otherwise */
-FLUIDSYNTH_API 
+FLUIDSYNTH_API
 int fluid_settings_setint(fluid_settings_t* settings, const char* name, int val);
 
 /** returns 1 if the value exists, 0 otherwise */
-FLUIDSYNTH_API 
+FLUIDSYNTH_API
 int fluid_settings_getint(fluid_settings_t* settings, const char* name, int* val);
 
 /** Get the default value of a string setting. */
-FLUIDSYNTH_API 
+FLUIDSYNTH_API
 int fluid_settings_getint_default(fluid_settings_t* settings, const char* name);
-  
+
 /** Get the range of values of a numeric settings. */
-FLUIDSYNTH_API 
+FLUIDSYNTH_API
 void fluid_settings_getint_range(fluid_settings_t* settings, const char* name,
 				int* min, int* max);
 
@@ -200,3 +201,4 @@ void fluid_settings_getint_range(fluid_settings_t* settings, const char* name,
 #endif
 
 #endif /* _FLUIDSYNTH_SETTINGS_H */
+#endif

@@ -18,7 +18,8 @@
  * 02111-1307, USA
  */
 
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #include "fluid_gen.h"
 #include "fluid_chan.h"
 
@@ -147,3 +148,4 @@ fluid_real_t fluid_gen_scale_nrpn(int gen, int data)
 	fluid_clip(value, -8192, 8192);
 	return value * (float) fluid_gen_info[gen].nrpn_scale;
 }
+#endif

@@ -18,7 +18,8 @@
  * 02111-1307, USA
  */
 
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #ifndef _FLUID_SYNTH_H
 #define _FLUID_SYNTH_H
 
@@ -202,3 +203,4 @@ void fluid_synth_dither_s16(int *dither_index, int len, float* lin, float* rin,
 void fluid_synth_settings(fluid_settings_t* settings);
 
 #endif  /* _FLUID_SYNTH_H */
+#endif

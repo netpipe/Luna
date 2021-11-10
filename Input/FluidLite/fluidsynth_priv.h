@@ -17,7 +17,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
  * 02111-1307, USA
  */
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 
 #ifndef _FLUIDSYNTH_PRIV_H
 #define _FLUIDSYNTH_PRIV_H
@@ -226,3 +227,4 @@ char* fluid_error(void);
 
 
 #endif /* _FLUIDSYNTH_PRIV_H */
+#endif

@@ -8,7 +8,8 @@
 
   Translated to C by Peter Hanappe, Mai 2001
 */
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #include "fluid_rev.h"
 
 /***************************************************************
@@ -559,3 +560,4 @@ fluid_revmodel_getwidth(fluid_revmodel_t* rev)
 {
   return rev->width;
 }
+#endif

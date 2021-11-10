@@ -24,7 +24,8 @@
  * GLib at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 
 #include "fluid_list.h"
 
@@ -255,3 +256,4 @@ fluid_list_t* fluid_list_insert_at(fluid_list_t *list, int n, void* data)
     return new_list;
   }
 }
+#endif

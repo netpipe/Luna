@@ -11,13 +11,14 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Library General Public License for more details.
- *  
+ *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the Free
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
  * 02111-1307, USA
  */
-
+#include "../../../../config.h"
+#ifdef FLUIDLITE
 #ifndef _FLUIDSYNTH_RAMSFONT_H
 #define _FLUIDSYNTH_RAMSFONT_H
 
@@ -41,7 +42,7 @@ extern "C" {
 /********************************************************************************/
 /********************************************************************************/
 
-/* 
+/*
    We are not using the sfloader protocol, as we need more arguments
    than what it provides.
 */
@@ -58,11 +59,11 @@ FLUIDSYNTH_API int fluid_ramsfont_set_name(fluid_ramsfont_t* sfont, char * name)
  *     by bank/num
  *     \returns 0 if success
  */
-FLUIDSYNTH_API 
+FLUIDSYNTH_API
 int fluid_ramsfont_add_izone(fluid_ramsfont_t* sfont,
 				unsigned int bank, unsigned int num, fluid_sample_t* sample,
 				int lokey, int hikey);
-				
+
 /* Removes the instrument zone corresponding to bank/num and to the sample
  *     \returns 0 if success
  */
@@ -77,7 +78,7 @@ FLUIDSYNTH_API
 int fluid_ramsfont_izone_set_gen(fluid_ramsfont_t* sfont,
 				unsigned int bank, unsigned int num, fluid_sample_t* sample,
 				int gen_type, float value);
-		
+
 /* Utility : sets the loop start/end values
  *     \on = 0 or 1; if 0, loopstart and loopend are not used
  *     \loopstart and loopend are floats, in frames
@@ -101,8 +102,8 @@ FLUIDSYNTH_API int fluid_sample_set_name(fluid_sample_t* sample, char * name);
  *     Warning : if copy_data is FALSE, data should have 8 unused frames at start
  *     and 8 unused frames at the end.
  */
-FLUIDSYNTH_API 
-int fluid_sample_set_sound_data(fluid_sample_t* sample, short *data, 
+FLUIDSYNTH_API
+int fluid_sample_set_sound_data(fluid_sample_t* sample, short *data,
 			       unsigned int nbframes, short copy_data, int rootkey);
 
 
@@ -111,3 +112,4 @@ int fluid_sample_set_sound_data(fluid_sample_t* sample, short *data,
 #endif
 
 #endif /* _FLUIDSYNTH_RAMSFONT_H */
+#endif

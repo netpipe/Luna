@@ -20,7 +20,8 @@
  * 02111-1307, USA
  */
 
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #ifndef _FLUID_DEFSFONT_H
 #define _FLUID_DEFSFONT_H
 
@@ -601,3 +602,4 @@ int fluid_sample_in_rom(fluid_sample_t* sample);
 
 
 #endif  /* _FLUID_SFONT_H */
+#endif

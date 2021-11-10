@@ -18,7 +18,8 @@
  * 02111-1307, USA
  */
 
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #ifndef _FLUID_PHASE_H
 #define _FLUID_PHASE_H
 
@@ -113,3 +114,4 @@ typedef unsigned long long fluid_phase_t;
 #define fluid_phase_index_plusplus(a)  (((a) += 0x100000000LL)
 
 #endif  /* _FLUID_PHASE_H */
+#endif

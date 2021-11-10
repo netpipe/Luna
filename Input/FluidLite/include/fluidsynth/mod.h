@@ -11,13 +11,14 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Library General Public License for more details.
- *  
+ *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the Free
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
  * 02111-1307, USA
  */
-
+#include "../../../../config.h"
+#ifdef FLUIDLITE
 #ifndef _FLUIDSYNTH_MOD_H
 #define _FLUIDSYNTH_MOD_H
 
@@ -87,10 +88,10 @@ FLUIDSYNTH_API fluid_mod_t * fluid_mod_new(void);
 FLUIDSYNTH_API void fluid_mod_delete(fluid_mod_t * mod);
 
 
-FLUIDSYNTH_API void fluid_mod_set_source1(fluid_mod_t* mod, int src, int flags); 
-FLUIDSYNTH_API void fluid_mod_set_source2(fluid_mod_t* mod, int src, int flags); 
-FLUIDSYNTH_API void fluid_mod_set_dest(fluid_mod_t* mod, int dst); 
-FLUIDSYNTH_API void fluid_mod_set_amount(fluid_mod_t* mod, double amount); 
+FLUIDSYNTH_API void fluid_mod_set_source1(fluid_mod_t* mod, int src, int flags);
+FLUIDSYNTH_API void fluid_mod_set_source2(fluid_mod_t* mod, int src, int flags);
+FLUIDSYNTH_API void fluid_mod_set_dest(fluid_mod_t* mod, int dst);
+FLUIDSYNTH_API void fluid_mod_set_amount(fluid_mod_t* mod, double amount);
 
 FLUIDSYNTH_API int fluid_mod_get_source1(fluid_mod_t* mod);
 FLUIDSYNTH_API int fluid_mod_get_flags1(fluid_mod_t* mod);
@@ -109,4 +110,4 @@ FLUIDSYNTH_API int fluid_mod_test_identity(fluid_mod_t * mod1, fluid_mod_t * mod
 }
 #endif
 #endif /* _FLUIDSYNTH_MOD_H */
-
+#endif

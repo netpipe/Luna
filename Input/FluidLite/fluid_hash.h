@@ -33,7 +33,8 @@
  * - reduced the number of API functions
  * - changed names to fluid_hashtable_...
  */
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #ifndef _FLUID_HASH_H
 #define _FLUID_HASH_H
 
@@ -62,3 +63,4 @@ unsigned int fluid_str_hash(char* v);
 
 #endif /* _FLUID_HASH_H */
 
+#endif

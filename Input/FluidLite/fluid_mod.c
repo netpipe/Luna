@@ -17,7 +17,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
  * 02111-1307, USA
  */
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #include "fluid_mod.h"
 #include "fluid_chan.h"
 #include "fluid_voice.h"
@@ -430,5 +431,5 @@ void fluid_dump_modulator(fluid_mod_t * mod){
   }; /* switch dest */
   printf(", amount %f flags %i src2 %i flags2 %i\n",amount, flags1, src2, flags2);
 };
-
+#endif
 

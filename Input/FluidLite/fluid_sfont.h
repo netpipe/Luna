@@ -18,7 +18,8 @@
  * 02111-1307, USA
  */
 
-
+#include "../../config.h"
+#ifdef FLUIDLITE
 #ifndef _PRIV_FLUID_SFONT_H
 #define _PRIV_FLUID_SFONT_H
 
@@ -75,3 +76,4 @@
 
 
 #endif /* _PRIV_FLUID_SFONT_H */
+#endif
