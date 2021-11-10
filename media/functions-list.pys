@@ -1,4 +1,4 @@
-#
+ #
 #				LUNA GAME ENGINE FUNCTION TEST PYTHON SCRIPT
 #if your having trouble importing modules into the engine from define pyreturn as none
 
@@ -17,7 +17,7 @@ loaderResult=""
 #Functions List
 ##############################################################################
 #test=irr.getstring="../media/main.pys"
-#print test
+print "test"
 #launcher GUI
 
 #scene.using ('../media/gameloader.pys',"1");

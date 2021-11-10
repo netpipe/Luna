@@ -686,7 +686,6 @@
 				<Option projectCompilerOptionsRelation="-1" />
 				<Option projectLinkerOptionsRelation="-1" />
 				<Option projectIncludeDirsRelation="-1" />
-				<Option projectResourceIncludeDirsRelation="-1" />
 				<Option projectLibDirsRelation="-1" />
 				<MakeCommands>
 					<Build command="" />
@@ -1097,7 +1096,6 @@
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />
 			<Add library="GL" />
-			<Add library="fluidsynth" />
 			<Add library="openal" />
 			<Add library="Xxf86vm" />
 			<Add library="X11" />
@@ -1111,17 +1109,10 @@
 			<Add library="assimp" />
 			<Add library="usb" />
 			<Add library="sqlite3" />
-			<Add library="jack" />
 			<Add library="ogg" />
 			<Add library="vorbis" />
 			<Add library="vorbisfile" />
-			<Add library="cAudio" />
-			<Add library="pulse" />
-			<Add library="readline" />
 			<Add library="sndfile" />
-			<Add library="pulse-simple" />
-			<Add library="gmodule-2.0" />
-			<Add library="dbus-1" />
 			<Add library="PolyVoxCore" />
 			<Add library="Irrlicht" />
 			<Add library="BulletSoftBody" />
@@ -1493,7 +1484,6 @@
 		<Unit filename="Input/Model/blender/readblend.h" />
 		<Unit filename="Input/SDL/SDLsound.h" />
 		<Unit filename="Input/SDLMixer.h" />
-		<Unit filename="Input/fluidsynthconfig.h" />
 		<Unit filename="Input/inputManager.cpp" />
 		<Unit filename="Input/inputManager.h" />
 		<Unit filename="Input/openal_playback.h" />
@@ -1794,6 +1784,8 @@
 				<doxyfile_dot />
 				<general />
 			</DoxyBlocks>
+			<code_completion />
+			<debugger />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
