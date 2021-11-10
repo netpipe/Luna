@@ -683,123 +683,19 @@
 				<Option type="1" />
 				<Option compiler="emscripten" />
 				<Option use_console_runner="0" />
-				<Option projectCompilerOptionsRelation="1" />
-				<Option projectLinkerOptionsRelation="1" />
-				<Option projectIncludeDirsRelation="1" />
-				<Option projectResourceIncludeDirsRelation="1" />
-				<Option projectLibDirsRelation="1" />
-				<Compiler>
-					<Add option="-D_IRR_STATIC_LIB_" />
-					<Add option="-D_IRR_EMSCRIPTEN_PLATFORM_" />
-					<Add option="-D__EMSCRIPTEN__" />
-					<Add option="-DNO_GLIB" />
-					<Add option="-DPYTHON" />
-					<Add directory="../emscripten-projects/irrlicht-ogl-es-2019dec/include" />
-					<Add directory="../emscripten-projects/net/irrNetLite22" />
-					<Add directory="../emscripten-projects/media/freetype2.8/build" />
-					<Add directory="../emscripten-projects/net/enet/include" />
-					<Add directory="FileSystem/readblend" />
-					<Add directory="../emscripten-projects/media/Ogg/include" />
-					<Add directory="../emscripten-projects/media/Vorbis/include" />
-					<Add directory="../emscripten-projects/media/theora/include" />
-					<Add directory="../emscripten-projects/media/cAudio2/include" />
-					<Add directory="../emscripten-projects/media/libtheoraplayer/include" />
-					<Add directory="../emscripten-projects/scripting/EmCPython/Python-2.7/Include" />
-					<Add directory="./entities/AI/recast/RecastDemo/Include" />
-					<Add directory="./entities/AI/recast/DebugUtils/Include" />
-					<Add directory="./entities/AI/recast/Recast/Include" />
-					<Add directory="./entities/AI/recast/Detour/Include" />
-					<Add directory="./entities/AI/recast/DetourCrowd/Include" />
-					<Add directory="./entities/AI/recast/DetourTileCache/Include" />
-					<Add directory="../emscripten-projects/AI/libIrrOpenSteer/include" />
-					<Add directory="../emscripten-projects/media/assimp/include" />
-					<Add directory="../emscripten-projects/media/fluidsynth-emscripten/include" />
-					<Add directory="../emscripten-projects/sqlite/sqlite-amalgamation-3300100" />
-					<Add directory="../emscripten-projects/physics/Bullet/bullet/src" />
-					<Add directory="../emscripten-projects/compression/zlib-1.2.3" />
-					<Add directory="../emscripten-projects/scripting/sqplus/sqplus" />
-					<Add directory="../emscripten-projects/media/freetype2.8/include" />
-					<Add directory="../emscripten-projects/scripting/EmCPython/Python-2.7/" />
-					<Add directory="../emscripten-projects/media/fluidsynth-emscripten/" />
-					<Add directory="../emscripten-projects/media/SparkEngine/include" />
-					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxCore/include" />
-					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxUtil/include" />
-					<Add directory="../emscripten-projects/compression/libtar/build/include" />
-					<Add directory="../emscripten-projects/media/SparkEngine/src" />
-					<Add directory="../EMLibs" />
-				</Compiler>
-				<Linker>
-					<Add option="-s ALLOW_MEMORY_GROWTH=1" />
-					<Add option="--preload-file media/" />
-					<Add option="-s FULL_ES2=1" />
-					<Add option="-s DISABLE_EXCEPTION_CATCHING=0" />
-					<Add option="-s NO_EXIT_RUNTIME=1" />
-					<Add option="-s ASSERTIONS=2" />
-					<Add option="-s TOTAL_MEMORY=64Mb" />
-					<Add option="--memory-init-file 0" />
-					<Add option="-s EMULATE_FUNCTION_POINTER_CASTS=1" />
-					<Add option="-s ERROR_ON_UNDEFINED_SYMBOLS=0" />
-					<Add option="--shared-memory" />
-					<Add library="GL" />
-					<Add library="openal" />
-					<Add library="dl" />
-					<Add library="irrNetLite22" />
-					<Add library="enet" />
-					<Add library="python2.7" />
-					<Add library="IrrOpenSteer" />
-					<Add library="pthread" />
-					<Add library="theora" />
-					<Add library="theoraplayer" />
-					<Add library="assimp" />
-					<Add library="GLESv2" />
-					<Add library="BulletSoftBody" />
-					<Add library="BulletDynamics" />
-					<Add library="BulletCollision" />
-					<Add library="LinearMath" />
-					<Add library="Irrlicht" />
-					<Add library="freetype" />
-					<Add library="SPARK" />
-					<Add library="SPARK_IRR" />
-					<Add library="sqlite3" />
-					<Add library="PolyVoxCore" />
-					<Add library="ogg" />
-					<Add library="vorbis" />
-					<Add library="vorbisfile" />
-					<Add library="tar" />
-					<Add library="z" />
-					<Add directory="../emscripten-projects/media/freetype2.8/build" />
-					<Add directory="../emscripten-projects/net/enet" />
-					<Add directory="../emscripten-projects/irrlicht-ogl-es-2019dec/lib/Linux" />
-					<Add directory="../emscripten-projects/media/theoraplayer/bin/Linux" />
-					<Add directory="../emscripten-projects/net/irrNetLite22" />
-					<Add directory="../emscripten-projects/AI/libIrrOpenSteer/lib" />
-					<Add directory="./entities/AI/recast/DebugUtils/Include/" />
-					<Add directory="../emscripten-projects/media/assimp/lib" />
-					<Add directory="../emscripten-projects/media/cAudio2/bin/gcc" />
-					<Add directory="../emscripten-projects/media/libtheoraplayer/src/.libs" />
-					<Add directory="../emscripten-projects/media/fluidsynth-emscripten/src" />
-					<Add directory="../emscripten-projects/sqlite/sqlite-amalgamation-3300100" />
-					<Add directory="../emscripten-projects/scripting/EmCPython/Python-2.7/" />
-					<Add directory="../emscripten-projects/physics/Bullet/bullet/src/BulletDynamics" />
-					<Add directory="../emscripten-projects/physics/Bullet/bullet/src/BulletSoftBody" />
-					<Add directory="../emscripten-projects/physics/Bullet/bullet/src/BulletCollision" />
-					<Add directory="../emscripten-projects/physics/Bullet/bullet/src/LinearMath" />
-					<Add directory="../emscripten-projects/media/Ogg" />
-					<Add directory="../emscripten-projects/media/Vorbis" />
-					<Add directory="../emscripten-projects/media/theora/" />
-					<Add directory="../emscripten-projects/physics/Bullet/bullet/msvc/2008/lib/Release" />
-					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxCore" />
-					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxUtil" />
-					<Add directory="../emscripten-projects/compression/zlib-1.2.3" />
-					<Add directory="../emscripten-projects/scripting/sqplus/lib" />
-					<Add directory="../emscripten-projects/media/SparkEngine/lib/emscripten/static" />
-					<Add directory="../emscripten-projects/compression/libtar/build/lib" />
-					<Add directory="../EMLibs" />
-				</Linker>
-				<ExtraCommands>
-					<Add before="./emclean.sh emscripten" />
-					<Add after="./copyandrun.sh" />
-				</ExtraCommands>
+				<Option projectCompilerOptionsRelation="-1" />
+				<Option projectLinkerOptionsRelation="-1" />
+				<Option projectIncludeDirsRelation="-1" />
+				<Option projectResourceIncludeDirsRelation="-1" />
+				<Option projectLibDirsRelation="-1" />
+				<MakeCommands>
+					<Build command="" />
+					<CompileFile command="" />
+					<Clean command="" />
+					<DistClean command="" />
+					<AskRebuildNeeded command="" />
+					<SilentBuild command=" &gt; $(CMD_NULL)" />
+				</MakeCommands>
 			</Target>
 			<Target title="emscripten-projects-testing-nopy">
 				<Option output="./Luna.html" prefix_auto="0" extension_auto="0" />
