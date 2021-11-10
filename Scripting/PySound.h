@@ -100,7 +100,7 @@ return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active camera
-#ifdef FLUIDSYNTH
+#ifdef FLUIDLITE
 //http://www.fluidsynth.org/api/index.html#MIDIPlayerMem
     int typee;
     char * sound;

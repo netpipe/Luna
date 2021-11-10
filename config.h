@@ -49,7 +49,7 @@
         //#define OPENAL2 // working with emscripten
         //#define SDLSound //- seems to play and freeze needs threading
         //#define SQLITE
-
+//#define FLUIDLITE
         #define AgAudio
             #ifdef AgAudio
                 #define _DEBUG_MODE_
@@ -118,7 +118,8 @@
   #define FLARE
   //#define FLARES
   //#define FLARE2  // more realistic and working
-  //#define FLUIDSYNTH
+  //#define FLUIDLITE
+  //#define FLUIDSYNTH //has been replaced by fluidlite
 
   //#define DECALS       //not used
   #define DECALS2
