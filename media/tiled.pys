@@ -63,9 +63,9 @@ if input.mouse("mlmouse",0,0): #mousebutton
  xcoord=input.mouse("mgetx",0,0)
  ycoord=input.mouse("mgety",0,0)
 
- if ycoord > 200 and ycoord < 400 and xcoord > 200 and xcoord < 400:
+ #if ycoord > 200 and ycoord < 400 and xcoord > 200 and xcoord < 400:
    #result=choice(responses)
-   irr.delay(5000)
+  # irr.delay(5000)
 
 
 
@@ -74,7 +74,7 @@ if input.mouse("mlmouse",0,0): #mousebutton
 
 
 
-irr.delay(100000)
+irr.delay(10000)
 
 if input.getKey('KEY_SPACE'):
     # result=choice(responses)

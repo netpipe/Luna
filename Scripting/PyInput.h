@@ -52,22 +52,30 @@ return (keystate);
 }
 
 //static COIS*                m_ois;
-
+ u32 numFF = 0;
 PyObject * Python::PyIrr_OIS(PyObject * self,PyObject * args){
 
 	int type;
 	char * devices2;
 	char * path;
-	PyArg_ParseTuple(args,"ss",&devices2,&path);
+	PyArg_ParseTuple(args,"si",&devices2,&type);
 #ifdef OIS2
 switch (type){
 
     case 0:{
-    COIS(device, 1, 1, 1);
+   // COIS(device, 1, 1, 1);
 //    // init ois (device, show cursor, buffered, debug enabled)
 //    //
-//    m_ois = new MyOIS(device, true, true, true);
-  //  if(m_ois->initialize())
+    m_ois = new MyOIS(device, true, true, true);
+   //  if(m_ois->initialize());
+    m_ois->initialize();
+
+    for(u32 i=0; i<m_ois->getNumSticks(); i++)
+    {
+        if(m_ois->hasForceFeedback(i))
+            ++numFF;
+    }
+
     }break;
 //    temp += m_ois->getNumKeyboards();
 //    temp += ", Mice: ";
@@ -75,12 +83,22 @@ switch (type){
 //    temp += ", JoySticks: ";
 //    temp += m_ois->getNumSticks();
     case 1:{
+    printf("%i keyboards",m_ois->getNumKeyboards());
+        printf("%i mice",m_ois->getNumMice());
+        printf("%i ff",numFF);
+//m_ois->mouseMoved
+    }break;
+    case 2:{
 
     }break;
 
 }
-#endif // OIS
    return Py_BuildValue("");
+#else // OIS
+
+
+   return Py_BuildValue("");
+   #endif
    }
 PyObject * Python::PyIrr_getKey(PyObject * self,PyObject * args){
 //irr::EKEY_CODE StringToEKey_Code( std::string tempString )

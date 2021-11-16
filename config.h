@@ -51,6 +51,7 @@
         //#define SQLITE
 //#define FLUIDLITE
 #define OIS2
+#define OIS2_LINUX_JOY_DEBUG
 #define TILED2D
         #define AgAudio
             #ifdef AgAudio
