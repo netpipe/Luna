@@ -69,16 +69,24 @@ if initloader :
     box2di=addImage("../media/box2d.png",60,60)
     irrlichtlogo=addImage("../media/irrlichtlogo.jpg",88,33)
     lunaengine=addImage("../media/LunaEngine800600.png",800,450)
+    image.iscale(iaxe,0.5,0.5)
+    image.iscale(lunaengine,0.5,0.5)
     #image.irotate(iaxe,i)
     box2dbody=physics.b2d(1,0,"binit",500,500,3,4,5)
     box2dbox=physics.b2d(1,0,"binit2",60,60,1,500,5)
    # os.system("aplay ../media/frogger.wav")
    # scene.flag1("../media/irrlichtlogo.jpg",0,0,20)
  #   init=0
-    irr.tiled("tiled/2dbasic.tmx",0)
+   # irr.tiled("tiled/2dbasic.tmx",0)
+   # irr.tiled("tiled/animation.tmx",0)
+    #irr.tiled("tiled/levels.tmx",0)
+    #irr.tiled("tiled/3dbasic.tmx",0)
     input.gamepad(0,"gpinit",1)
     #input.gamepad(0,"rumble",1)
    # input.gamepad(0,"wiiled",2)
+
+    irr.tiled("tiled/animation.tmx",0)
+irr.tiled("",2) #animated = 2 regular 1 and init =0
 #input.gamepad(0,"gpinit",1)
 #input.gamepad(0,"gprun",1)
 input.gamepad(0,"gprefresh",1)
@@ -86,8 +94,6 @@ input.gamepad(0,"gprefresh",1)
 #input.gamepad(0,"gpdpad",1)
 print(input.gamepad(0,"accy",1))
 
-
-irr.tiled("",1)
 
 
 input.mouse("mvisible",0,0)
