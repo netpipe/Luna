@@ -51,7 +51,7 @@ irr.tiled("",2) #animated = 2 regular 1 and init =0
 image.iposition(irrlichtlogo, input.mouse("mgetx",0,0),input.mouse("mgety",0,0))
 
 image.idraw(irrlichtlogo)
-scene.drawtext(result,"../media/fontlucida.png",200,250,235,320)
+scene.drawtext("testing","../media/fontlucida.png",200,250,235,320)
 
 
 
@@ -64,7 +64,7 @@ if input.mouse("mlmouse",0,0): #mousebutton
  ycoord=input.mouse("mgety",0,0)
 
  if ycoord > 200 and ycoord < 400 and xcoord > 200 and xcoord < 400:
-   result=choice(responses)
+   #result=choice(responses)
    irr.delay(5000)
 
 
@@ -77,7 +77,7 @@ if input.mouse("mlmouse",0,0): #mousebutton
 irr.delay(100000)
 
 if input.getKey('KEY_SPACE'):
-     result=choice(responses)
+    # result=choice(responses)
      irr.delay(50000)
 
 if input.getKey('KEY_ESCAPE') :
