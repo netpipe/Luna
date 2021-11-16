@@ -298,6 +298,11 @@
     CGUITTFace face,face2,face3;
 #endif
 
+#ifdef TILED2D
+#include "../Input/Model/irrTiled/irrTiled.h"
+irrTiled* tld;
+#endif
+
 #ifdef PYTHON
 PyMethodDef irr_function[] =
 {

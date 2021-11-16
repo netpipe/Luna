@@ -1482,6 +1482,7 @@
 		<Unit filename="Input/Model/blender/dna249-64bit.cpp" />
 		<Unit filename="Input/Model/blender/dna249.cpp" />
 		<Unit filename="Input/Model/blender/readblend.h" />
+		<Unit filename="Input/Model/irrTiled/irrTiled.h" />
 		<Unit filename="Input/SDL/SDLsound.h" />
 		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/inputManager.cpp" />
@@ -1784,8 +1785,6 @@
 				<doxyfile_dot />
 				<general />
 			</DoxyBlocks>
-			<code_completion />
-			<debugger />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

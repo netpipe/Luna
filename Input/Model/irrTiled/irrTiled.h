@@ -24,10 +24,11 @@ and must not be misrepresented as being the original software.
 3. This notice may not be removed or altered from any
 source distribution.
 *********************************************************************/
+#include "../../../config.h"
 
 #ifndef IRRTILED_H_INCLUDED
 #define IRRTILED_H_INCLUDED
-
+#ifdef TILED2D
 #include <irrlicht.h>
 #include <string>
 #define __STDC_WANT_LIB_EXT1__ 1
@@ -35,7 +36,7 @@ source distribution.
 #include <stdio.h>
 #include <stddef.h>
 #include <locale.h>
-
+#include <irrArray.h>
 using namespace irr;
 using namespace core;
 using namespace video;
@@ -82,9 +83,9 @@ struct OBJECT
     s32 x, y;
     s32 rotation;
     s32 width, height;
-    array<PROPERTY> properties;
+    core::array<PROPERTY> properties;
     SHAPE shape;
-    array<vector2di> points;
+    core::array<vector2di> points;
 };
 
 struct OBJECTGROUP
@@ -93,15 +94,15 @@ struct OBJECTGROUP
     s32 id;
     stringc name;
     SColor tintColor;
-    array<OBJECT> object;
-    array<PROPERTY> properties;
+    core::array<OBJECT> object;
+    core::array<PROPERTY> properties;
 };
 
 struct TILE
 {
     s32 id;
-    array<FRAME> animation;
-    array<OBJECTGROUP> objectGroup;
+    core::array<FRAME> animation;
+    core::array<OBJECTGROUP> objectGroup;
 };
 
 struct TILESET
@@ -113,8 +114,8 @@ struct TILESET
     stringc source;
     stringc name;
     IMAGE img;
-    array<recti> subRects;
-    array<TILE> tile;
+    core::array<recti> subRects;
+    core::array<TILE> tile;
 };
 
 struct LAYER
@@ -125,15 +126,15 @@ struct LAYER
     stringc name;
     stringc encoding;
     SColor tintColor;
-    array<s32> data;
-    array<PROPERTY> properties;
+    core::array<s32> data;
+    core::array<PROPERTY> properties;
 };
 
 struct GROUP
 {
     s32 id;
     stringc name;
-    array<PROPERTY> properties;
+    core::array<PROPERTY> properties;
 };
 
 struct IMAGELAYER
@@ -393,12 +394,12 @@ public:
     s32 nextLayerID=0;
     s32 nextObjectID=0;
     SColor backgroundColor;
-    array<PROPERTY> properties;
-    array<TILESET> tileset;
-    array<LAYER> layer;
-    array<OBJECTGROUP> objectGroup;
-    array<GROUP> group;
-    array<IMAGELAYER> imageLayer;
+    core::array<PROPERTY> properties;
+    core::array<TILESET> tileset;
+    core::array<LAYER> layer;
+    core::array<OBJECTGROUP> objectGroup;
+    core::array<GROUP> group;
+    core::array<IMAGELAYER> imageLayer;
 
 private:
 
@@ -600,9 +601,9 @@ private:
     }
 
     // Read all properties
-    array<PROPERTY> readProperties(io::IXMLReader* xml)
+    core::array<PROPERTY> readProperties(io::IXMLReader* xml)
     {
-        array<PROPERTY> pro;
+        core::array<PROPERTY> pro;
         while (xml->read())
         {
             if (xml->getNodeType() == io::EXN_ELEMENT)
@@ -756,7 +757,7 @@ private:
                                     {
                                         obj.shape = SHAPE::POLYGON;
 
-                                        array<stringc> ac;
+                                        core::array<stringc> ac;
                                         stringc(xml->getAttributeValue(L"points")).split(ac, " ", 4);
 
                                         for (u32 x = 0; x < ac.size(); ++x)
@@ -794,3 +795,4 @@ private:
 };
 
 #endif // IRRTILED_H_INCLUDED
+#endif

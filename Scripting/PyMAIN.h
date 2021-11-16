@@ -219,6 +219,7 @@ namespace Python {
     PyObject * PyIrr_recast(PyObject * self,PyObject * args);
     PyObject * PyIrr_media(PyObject * self,PyObject * args);
     PyObject * PyIrr_Mouse(PyObject * self,PyObject * args);
+    PyObject * PyIrr_Tiled(PyObject * self,PyObject * args);
 
 
     //media
