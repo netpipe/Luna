@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------------------
 #include "../../../config.h"
 
-#ifdef OIS
+#ifdef OIS2
 #include "irrlicht.h"
 #include "COIS.h"
 #ifdef _IRR_WINDOWS_API_

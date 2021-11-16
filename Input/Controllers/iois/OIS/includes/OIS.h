@@ -37,9 +37,9 @@ following restrictions:
  * This project is licensed under the terms of the <a href="https://opensource.org/licenses/Zlib">zlib/libpng licence</a>
  *
  */
-#include "../../../../config.h"
+#include "../../../../../config.h"
 
-#ifdef OIS
+#ifdef OIS2
 #ifndef OIS_OISALL_H
 #define OIS_OISALL_H
 

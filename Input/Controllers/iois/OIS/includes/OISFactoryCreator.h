@@ -23,9 +23,9 @@ following restrictions:
 
     3. This notice may not be removed or altered from any source distribution.
 */
-#include "../../../../config.h"
+#include "../../../../../config.h"
 
-#ifdef OIS
+#ifdef OIS2
 #ifndef OIS_FactoryCreator_H
 #define OIS_FactoryCreator_H
 

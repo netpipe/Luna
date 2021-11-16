@@ -303,6 +303,54 @@
 irrTiled* tld;
 #endif
 
+#ifdef OIS2
+#include "../Input/Controllers/iois/COIS.h"
+#include "../Input/Controllers/iois/wmain.h"
+//static COIS*                m_ois;
+
+//class MyOIS: public COIS, public IEventReceiver
+//{
+//protected:
+//    OIS::Effect*        m_effect;
+//    OIS::ForceFeedback* m_ff;
+//
+//public:
+//    MyOIS(IrrlichtDevice* idevice, bool showCursor=true, bool buffered=true,
+//        bool enableDebug=true) : COIS(idevice, showCursor, buffered, enableDebug)
+//    {
+//        m_effect = new OIS::Effect(OIS::Effect::ConstantForce, OIS::Effect::Constant);
+//
+//        // Set the duration of the effect in micro seconds.  The default (-1) will
+//        // play forever or until we "remove" it.
+//        m_effect->replay_length = 1500 * 1000; // 1.5 seconds
+////m_effect->direction		  = OIS::Effect::North;
+////  m_effect->setNumAxes(1);
+//        //
+//        // you can use this to modify the envelope parameters or magnitude
+//        //
+//
+//        OIS::ConstantEffect* ce = (OIS::ConstantEffect*)m_effect->getForceEffect();
+//        ce->level = 5000;  // -10k -> 10k
+////                    m_ff->start(1);
+//
+//
+//        m_ois = this;
+//    };
+//
+//    int initialize()
+//    {
+//        int result = COIS::initialize();
+//        if(result)
+//            return result;
+//
+//        m_ff = getFF(0);
+//        return 0;
+//    }
+//}
+
+//MyOIS* m_ois;
+#endif
+
 #ifdef PYTHON
 PyMethodDef irr_function[] =
 {

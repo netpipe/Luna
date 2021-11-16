@@ -139,14 +139,14 @@ bool MyOIS::keyPressed(const OIS::KeyEvent& arg )
 
     case OIS::KC_SYSRQ: /* print screen */
         {
-//            IImage* image = driver->createScreenShot();
-//char buf[32];
+//            IImage* image = m_videoDriver->createScreenShot();
+        //    char buf[32];
 
-      //      sprintf(buf,"cap%.2d.png",m_capNumber++);
-//
-     //       driver->writeImageToFile(image,buf);
+        //    sprintf(buf,"cap%.2d.png",m_capNumber++);
 
-       //     image->drop();
+       //     m_videoDriver->writeImageToFile(image,buf);
+
+        //    image->drop();
         }
         break;
     default:
@@ -163,7 +163,7 @@ bool MyOIS::keyReleased(const OIS::KeyEvent& arg )
     // add debug info to listbox
     stringw temp = "key.up.";
     temp += getKeyString(arg.key).c_str();
-//    m_listbox->setSelected(m_listbox->addItem(temp.c_str()));
+///    m_listbox->setSelected(m_listbox->addItem(temp.c_str()));
 
     //
     // for default gui handling
@@ -188,12 +188,12 @@ bool MyOIS::mouseMoved( const OIS::MouseEvent &arg )
     temp += ")";
 //    m_mlistbox->setSelected(m_mlistbox->addItem(temp.c_str()));
 //    if(m_mlistbox->getItemCount() > 200)
-  //  {
-  //      for(int i=0; i<50; i++)
-  //      {
-  //          m_mlistbox->removeItem(0);
-  //      }
-  //  }
+//    {
+//        for(int i=0; i<50; i++)
+//        {
+//            m_mlistbox->removeItem(0);
+//        }
+//    }
 
     return COIS::mouseMoved(arg);
 }
@@ -295,20 +295,11 @@ bool MyOIS::OnEvent(const SEvent& event)
     {
         s32 id = event.GUIEvent.Caller->getID();
 
-        switch(event.GUIEvent.EventType)
-        {
-        case EGET_CHECKBOX_CHANGED:
-//            setDebugEnabled(m_cb1->isChecked());
-            break;
-        case EGET_SCROLL_BAR_CHANGED:
-           {
-
-
-            }
-            break;
-        default:
-            break;
-        };
+      // switch(event.GUIEvent.EventType)
+       //
+      //default:
+     //     break;
+      //};
     }
 
     return false;

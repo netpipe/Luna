@@ -25,7 +25,7 @@ following restrictions:
 */
 #include "../../../../../config.h"
 
-#ifdef OIS
+#ifdef OIS2
 #include "linux/LinuxMouse.h"
 #include "linux/LinuxInputManager.h"
 #include "OISException.h"

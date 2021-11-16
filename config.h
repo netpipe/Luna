@@ -50,6 +50,7 @@
         //#define SDLSound //- seems to play and freeze needs threading
         //#define SQLITE
 //#define FLUIDLITE
+#define OIS2
 #define TILED2D
         #define AgAudio
             #ifdef AgAudio

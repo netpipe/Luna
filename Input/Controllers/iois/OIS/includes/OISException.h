@@ -23,15 +23,15 @@ following restrictions:
 
     3. This notice may not be removed or altered from any source distribution.
 */
-#include "../../../../config.h"
+#include "../../../../../config.h"
 
-#ifdef OIS
+#ifdef OIS2
 #ifndef _OIS_EXCEPTION_HEADER_
 #define _OIS_EXCEPTION_HEADER_
 #include "OISPrereqs.h"
 #include <exception>
 
-#ifdef OIS_WIN32_PLATFORM
+#ifdef OIS2_WIN32_PLATFORM
 #pragma warning(push)
 #pragma warning(disable : 4275) //Silence warning from MSVC when using std::exception as the base class of a dll-interface class (OIS::Exception)
 #endif
@@ -97,7 +97,7 @@ namespace OIS
 	{                      \
 	} while(0)
 
-#ifdef OIS_WIN32_PLATFORM
+#ifdef OIS2_WIN32_PLATFORM
 #pragma warning(pop)
 #endif
 

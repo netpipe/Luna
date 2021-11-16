@@ -23,13 +23,13 @@ following restrictions:
 
     3. This notice may not be removed or altered from any source distribution.
 */
-#include "../../../../config.h"
+#include "../../../../../config.h"
 
-#ifdef OIS
+#ifdef OIS2
 #ifndef OIS_Prereqs_H
 #define OIS_Prereqs_H
 
-#define OIS_LINUX_JOYFF_DEBUG
+//#define OIS_LINUX_JOYFF_DEBUG
 
 //----------------------------------------------------------------------------//
 // This Header File contains: forward declared classes
@@ -110,7 +110,7 @@ following restrictions:
 
 //-------------- Various helper preprocessor definitions ---------------------//
 
-#ifdef OIS_MSVC_COMPILER
+#ifdef OIS2_MSVC_COMPILER
 #	define OIS_INLINE_PRAGMA(x) __pragma(x) // x is intentionally not wrapped; __pragma rejects expressions beginning with '('.
 #else
 #	define OIS_INLINE_PRAGMA(x)

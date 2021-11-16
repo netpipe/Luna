@@ -25,7 +25,7 @@ following restrictions:
 */
 #include "../../../../../config.h"
 
-#ifdef OIS
+#ifdef OIS2
 #include "linux/EventHelpers.h"
 #include "linux/LinuxPrereqs.h"
 #include "linux/LinuxForceFeedback.h"
@@ -37,7 +37,7 @@ following restrictions:
 
 //#define OIS_LINUX_JOY_DEBUG
 
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 #include <iostream>
 #endif
 
@@ -62,7 +62,7 @@ DeviceComponentInfo getComponentInfo(int deviceID)
 	memset(ev_bits, 0, sizeof(ev_bits));
 
 	//Read "all" (hence 0) components of the device
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 	cout << "EventUtils::getComponentInfo(" << deviceID
 		 << ") : Reading device events features" << endl;
 #endif
@@ -81,7 +81,7 @@ DeviceComponentInfo getComponentInfo(int deviceID)
 				unsigned char abs_bits[1 + ABS_MAX / 8 / sizeof(unsigned char)];
 				memset(abs_bits, 0, sizeof(abs_bits));
 
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 				cout << "EventUtils::getComponentInfo(" << deviceID
 					 << ") : Reading device absolute axis features" << endl;
 #endif
@@ -117,7 +117,7 @@ DeviceComponentInfo getComponentInfo(int deviceID)
 				unsigned char rel_bits[1 + REL_MAX / 8 / sizeof(unsigned char)];
 				memset(rel_bits, 0, sizeof(rel_bits));
 
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 				cout << "EventUtils::getComponentInfo(" << deviceID
 					 << ") : Reading device relative axis features" << endl;
 #endif
@@ -138,7 +138,7 @@ DeviceComponentInfo getComponentInfo(int deviceID)
 				unsigned char key_bits[1 + KEY_MAX / 8 / sizeof(unsigned char)];
 				memset(key_bits, 0, sizeof(key_bits));
 
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 				cout << "EventUtils::getComponentInfo(" << deviceID
 					 << ") : Reading device buttons features" << endl;
 #endif
@@ -172,7 +172,7 @@ bool EventUtils::isJoyStick(int deviceID, JoyStickInfo& js)
 	bool joyButtonFound = false;
 	js.button_map.clear();
 
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 	cout << endl
 		 << "Displaying ButtonMapping Status:" << endl;
 #endif
@@ -186,12 +186,12 @@ bool EventUtils::isJoyStick(int deviceID, JoyStickInfo& js)
 
 		js.button_map[*i] = buttons++;
 
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 		cout << "Button Mapping ID (hex): " << hex << *i
 			 << " OIS Button Num: " << dec << buttons - 1 << endl;
 #endif
 	}
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 	cout << endl;
 #endif
 
@@ -203,7 +203,7 @@ bool EventUtils::isJoyStick(int deviceID, JoyStickInfo& js)
 		js.buttons	= buttons;
 		js.axes		= info.relAxes.size() + info.absAxes.size();
 		js.hats		= info.hats.size();
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 		cout << endl
 			 << "Device name:" << js.vendor << endl;
 		cout << "Device unique Id:" << getUniqueId(deviceID) << endl;
@@ -211,7 +211,7 @@ bool EventUtils::isJoyStick(int deviceID, JoyStickInfo& js)
 #endif
 
 //Map the Axes
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 		cout << endl
 			 << "Displaying AxisMapping Status:" << endl;
 #endif
@@ -220,7 +220,7 @@ bool EventUtils::isJoyStick(int deviceID, JoyStickInfo& js)
 		{
 			js.axis_map[*i] = axes;
 
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 			cout << "EventUtils::isJoyStick(" << deviceID
 				 << ") : Reading device absolute axis #" << *i << " features" << endl;
 #endif
@@ -230,7 +230,7 @@ bool EventUtils::isJoyStick(int deviceID, JoyStickInfo& js)
 				OIS_EXCEPT(E_General, "Could not read device absolute axis features");
 			js.axis_range[axes] = Range(absinfo.minimum, absinfo.maximum);
 
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 			cout << "Axis Mapping ID (hex): " << hex << *i
 				 << " OIS Axis Num: " << dec << axes << endl;
 #endif
@@ -245,7 +245,7 @@ bool EventUtils::isJoyStick(int deviceID, JoyStickInfo& js)
 //-----------------------------------------------------------------------------//
 string EventUtils::getName(int deviceID)
 {
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 	cout << "EventUtils::getName(" << deviceID
 		 << ") : Reading device name" << endl;
 #endif
@@ -259,7 +259,7 @@ string EventUtils::getName(int deviceID)
 //-----------------------------------------------------------------------------//
 string EventUtils::getUniqueId(int deviceID)
 {
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 	cout << "EventUtils::getUniqueId(" << deviceID
 		 << ") : Reading device unique Id" << endl;
 #endif
@@ -274,7 +274,7 @@ string EventUtils::getUniqueId(int deviceID)
 //-----------------------------------------------------------------------------//
 string EventUtils::getPhysicalLocation(int deviceID)
 {
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 	cout << "EventUtils::getPhysicalLocation(" << deviceID
 		 << ") : Reading device physical location" << endl;
 #endif
@@ -326,7 +326,7 @@ void EventUtils::enumerateForceFeedback(int deviceID, LinuxForceFeedback** ff)
 	unsigned char ff_bits[1 + FF_MAX / 8 / sizeof(unsigned char)];
 	memset(ff_bits, 0, sizeof(ff_bits));
 
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 	cout << "EventUtils::enumerateForceFeedback(" << deviceID
 		 << ") : Reading device force feedback features" << endl;
 #endif
@@ -334,7 +334,7 @@ void EventUtils::enumerateForceFeedback(int deviceID, LinuxForceFeedback** ff)
 	if(ioctl(deviceID, EVIOCGBIT(EV_FF, sizeof(ff_bits)), ff_bits) == -1)
 		OIS_EXCEPT(E_General, "Could not read device force feedback features");
 
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 	cout << "FF bits: " << hex;
 	for(int i = 0; i < sizeof(ff_bits); i++)
 		cout << (int)ff_bits[i];
@@ -357,7 +357,7 @@ void EventUtils::enumerateForceFeedback(int deviceID, LinuxForceFeedback** ff)
 
 		if(isBitSet(ff_bits, effect))
 		{
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 			cout << "  Effect Type: " << Effect::getEffectTypeName(typeMap[effect]) << endl;
 #endif
 

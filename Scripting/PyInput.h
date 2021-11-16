@@ -22,6 +22,7 @@
 
 PyMethodDef irr_Input[] =
 {
+    {"OIS",Python::PyIrr_OIS,METH_VARARGS,"get key state"},
     {"getKey",Python::PyIrr_getKey,METH_VARARGS,"get key state"},
     {"wii",Python::PyIrr_wii,METH_VARARGS,"wiimote access"},
     {"gamepad",Python::PyIrr_gamePad,METH_VARARGS,"gamepad"},
@@ -50,7 +51,37 @@ return (keystate);
 //return 1;
 }
 
+//static COIS*                m_ois;
 
+PyObject * Python::PyIrr_OIS(PyObject * self,PyObject * args){
+
+	int type;
+	char * devices2;
+	char * path;
+	PyArg_ParseTuple(args,"ss",&devices2,&path);
+#ifdef OIS2
+switch (type){
+
+    case 0:{
+    COIS(device, 1, 1, 1);
+//    // init ois (device, show cursor, buffered, debug enabled)
+//    //
+//    m_ois = new MyOIS(device, true, true, true);
+  //  if(m_ois->initialize())
+    }break;
+//    temp += m_ois->getNumKeyboards();
+//    temp += ", Mice: ";
+//    temp += m_ois->getNumMice();
+//    temp += ", JoySticks: ";
+//    temp += m_ois->getNumSticks();
+    case 1:{
+
+    }break;
+
+}
+#endif // OIS
+   return Py_BuildValue("");
+   }
 PyObject * Python::PyIrr_getKey(PyObject * self,PyObject * args){
 //irr::EKEY_CODE StringToEKey_Code( std::string tempString )
 

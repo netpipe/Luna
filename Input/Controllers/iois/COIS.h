@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------------------
 #include "../../../config.h"
 
-#ifdef OIS
+#ifdef OIS2
 #ifndef _COIS_H_
 #define _COIS_H_
 #include "OIS.h"
@@ -101,7 +101,7 @@ public:
     u32  getNumMice() {return m_numMice;}
 
     //! Returns the number of Joysticks available.
-    u32  getNumSticks() {retIOSurn m_numSticks;}
+    u32  getNumSticks() {return m_numSticks;}
 
     //! Keyboard keycode -> string representation
     irr::core::stringc getKeyString(const OIS::KeyCode key);

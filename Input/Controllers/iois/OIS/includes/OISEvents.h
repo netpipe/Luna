@@ -23,9 +23,9 @@ following restrictions:
 
     3. This notice may not be removed or altered from any source distribution.
 */
-#include "../../../../config.h"
+#include "../../../../../config.h"
 
-#ifdef OIS
+#ifdef OIS2
 #ifndef _OIS_EVENTHEADERS_
 #define _OIS_EVENTHEADERS_
 #include "OISPrereqs.h"

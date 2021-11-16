@@ -25,7 +25,7 @@ following restrictions:
 */
 #include "../../../../config.h"
 
-#ifdef OIS
+#ifdef OIS2
 #include "OISKeyboard.h"
 #include "OISException.h"
 

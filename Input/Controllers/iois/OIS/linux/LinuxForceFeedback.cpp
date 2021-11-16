@@ -25,7 +25,7 @@ following restrictions:
 */
 #include "../../../../../config.h"
 
-#ifdef OIS
+#ifdef OIS2
 #include "linux/LinuxForceFeedback.h"
 #include "OISException.h"
 
@@ -36,9 +36,9 @@ following restrictions:
 using namespace OIS;
 
 // 0 = No trace; 1 = Important traces; 2 = Debug traces
-#define OIS_LINUX_JOYFF_DEBUG 1
+//#define OIS_LINUX_JOYFF_DEBUG 1
 
-#ifdef OIS_LINUX_JOYFF_DEBUG
+#ifdef OIS2_LINUX_JOYFF_DEBUG
 #include <iostream>
 using namespace std;
 #endif

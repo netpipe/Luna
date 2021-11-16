@@ -25,7 +25,7 @@ following restrictions:
 */
 #include "../../../../../config.h"
 
-#ifdef OIS
+#ifdef OIS2
 #include "OISConfig.h"
 
 #include "linux/LinuxJoyStickEvents.h"
@@ -114,7 +114,7 @@ void LinuxJoyStick::capture()
 				{
 					int button = mButtonMap[js[i].code];
 
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 					cout << "\nButton Code: " << js[i].code << ", OIS Value: " << button << endl;
 #endif
 
@@ -194,7 +194,7 @@ void LinuxJoyStick::capture()
 				}
 
 				case EV_REL: //Relative Axes (Do any joystick actually have a relative axis?)
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 					cout << "\nWarning: Relatives axes not supported yet" << endl;
 #endif
 					break;
@@ -256,7 +256,7 @@ JoyStickInfoList LinuxJoyStick::_scanJoys()
 		if(fd == -1)
 			continue;
 
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 		cout << "Opening " << s.str() << "..." << endl;
 #endif
 		try
@@ -265,13 +265,13 @@ JoyStickInfoList LinuxJoyStick::_scanJoys()
 			if(EventUtils::isJoyStick(fd, js))
 			{
 				joys.push_back(js);
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 				cout << "=> Joystick added to list." << endl;
 #endif
 			}
 			else
 			{
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 				cout << "=> Not a joystick." << endl;
 #endif
 				close(fd);
@@ -279,7 +279,7 @@ JoyStickInfoList LinuxJoyStick::_scanJoys()
 		}
 		catch(...)
 		{
-#ifdef OIS_LINUX_JOY_DEBUG
+#ifdef OIS2_LINUX_JOY_DEBUG
 			cout << "Exception caught!!" << endl;
 #endif
 			close(fd);

@@ -23,9 +23,9 @@ following restrictions:
 
     3. This notice may not be removed or altered from any source distribution.
 */
-#include "../../../../config.h"
+#include "../../../../../config.h"
 
-#ifdef OIS
+#ifdef OIS2
 #ifndef OIS_CONFIG_HEADER
 #define OIS_CONFIG_HEADER
 
@@ -47,7 +47,7 @@ following restrictions:
 
 	So, if wanting to link against DLL version, just uncomment these lines.
 */
-//#ifdef OIS_DYNAMIC_LIB
+//#ifdef OIS2_DYNAMIC_LIB
 //#  undef OIS_DYNAMIC_LIB
 //#endif
 //#define OIS_DYNAMIC_LIB
