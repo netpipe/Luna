@@ -1,0 +1,84 @@
+#################################
+#INITIALIZE
+#called externally so it is set from functions.py or init.py
+#################################
+if (init) :
+ import irr
+ import physics
+ #if (EXTRAS)
+ import extras
+ import scene
+ import input
+ import image
+ #import sound
+ #import luna
+ import net
+ import gui
+
+ #irr.getstring = "../media/cards.pys"
+#import itertools
+#not needed includes just for testing
+ scene.using ('../media/string.py',"1");
+#scene.using ('../media/lib/python-skeletons/sys.py',"1");
+#scene.using ('../media/lib/python-skeletons/math.py',"1");
+#scene.using ('../media/lib/python2.7/os.py',"1");
+
+
+ import os
+ import itertools
+#import hashlib #causes issues with emscripten
+ #import random
+ import math
+ import time
+ #import shuffle
+
+#scene.using ('../media/lib/python2.7/random.py',"1"); #not working
+ scene.using ('../media/random.py',"1");
+ irr.delay(100000)
+ ticks = time.time()
+
+ myr.time_reseed();
+ #print randint(1,8);
+ irr.delay(100000)
+
+
+ irrlichtlogo=addImage("../media/irrlichtlogo.jpg",88,31)
+ a8ball=addImage("../media/8ball2.png",480,480)
+ init=0
+ input.mouse("mvisible",0,0)
+ irr.tiled("tiled/animation.tmx",0)
+irr.tiled("",2) #animated = 2 regular 1 and init =0
+image.iposition(irrlichtlogo, input.mouse("mgetx",0,0),input.mouse("mgety",0,0))
+
+image.idraw(irrlichtlogo)
+scene.drawtext(result,"../media/fontlucida.png",200,250,235,320)
+
+
+
+#print (input.mouse(5,0,0))
+#print (input.mouse(6,0,0))
+#print (input.mouse(7,0,0))
+
+if input.mouse("mlmouse",0,0): #mousebutton
+ xcoord=input.mouse("mgetx",0,0)
+ ycoord=input.mouse("mgety",0,0)
+
+ if ycoord > 200 and ycoord < 400 and xcoord > 200 and xcoord < 400:
+   result=choice(responses)
+   irr.delay(5000)
+
+
+
+#print (input.mouse(2,0,0))#xcoord
+#print (input.mouse(3,0,0))#ycoord
+
+
+
+irr.delay(100000)
+
+if input.getKey('KEY_SPACE'):
+     result=choice(responses)
+     irr.delay(50000)
+
+if input.getKey('KEY_ESCAPE') :
+ irr.exit()
