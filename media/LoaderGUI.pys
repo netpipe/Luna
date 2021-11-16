@@ -75,7 +75,7 @@ if initloader :
    # os.system("aplay ../media/frogger.wav")
    # scene.flag1("../media/irrlichtlogo.jpg",0,0,20)
  #   init=0
-    irr.tiled("tiled2d/2dbasic.tmx",0)
+    irr.tiled("tiled/2dbasic.tmx",0)
     input.gamepad(0,"gpinit",1)
     #input.gamepad(0,"rumble",1)
    # input.gamepad(0,"wiiled",2)
