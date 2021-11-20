@@ -13,6 +13,8 @@ PyMethodDef irr_Image[] =
 	{"abb",Python::PyIrr_aBillBoard,METH_VARARGS,"billboard"},
 	{"load_texture",Python::PyIrr_LoadTexture,METH_VARARGS,"Loads a texture"},
 	{"set_texture",Python::PyIrr_SetTexture,METH_VARARGS,"Adds a texture to a scene node"},
+	{"remove_texture",Python::PyIrr_rTexture,METH_VARARGS,"Adds a texture to a scene node"},
+
 	{"checkbounds",Python::PyIrr_icheckBounds,METH_VARARGS,"checkBounds"},
 	{"getbounds",Python::PyIrr_igetBounds,METH_VARARGS,"getbounds"},
 	{"loadfont",Python::PyIrr_LoadSpriteFont,METH_VARARGS,"loadfont"},
@@ -337,7 +339,7 @@ PyObject * Python::PyIrr_LoadTexture(PyObject * self,PyObject * args){
 PyObject * Python::PyIrr_SetTexture(PyObject * self,PyObject * args){
 	s32 tex_id;
 	long node_id;
-	PyArg_ParseTuple(args,"lI",&node_id,&tex_id); //This is your new best friend, seriously
+	PyArg_ParseTuple(args,"li",&node_id,&tex_id); //This is your new best friend, seriously
 	/*Quite similar to the scanf family of functions, don't you think? It take a format
 	string and some input data, and analyzes the input data and gives you the result
 	in a manner specified by the format string*/
@@ -350,6 +352,30 @@ PyObject * Python::PyIrr_SetTexture(PyObject * self,PyObject * args){
 	};
 	/*This line returns a value of Py_None, which is more or less the same thing as a
 	function with a return type of void in C++, in other words, no output values */
+	return Py_BuildValue("");
+};
+
+PyObject * Python::PyIrr_rTexture(PyObject * self,PyObject * args){
+	s32 tex_id;
+	long node_id;
+	int rload;
+	PyArg_ParseTuple(args,"lsi",&node_id,&tex_id,&rload); //This is your new best friend, seriously
+
+    switch (rload){
+        case 0:{ // get from texture name "./texture/picture4.jpg"
+            ITexture *textmp = driver->getTexture( tex_id );
+        driver->removeTexture( textmp );
+        }break;
+        case 1:{ // get from existing pointer
+        ITexture *textmp = node_id;
+        driver->removeTexture( textmp );
+        }break;
+        case 2:{        //reload texture
+    // get from texture name "./texture/picture4.jpg"
+        driver->getTexture( tex_id );
+        }break;
+    }
+
 	return Py_BuildValue("");
 };
 

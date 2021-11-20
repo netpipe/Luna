@@ -170,6 +170,7 @@ namespace Python {
     PyObject * PyIrr_GUIBar(PyObject * self,PyObject * args);
     PyObject * PyIrr_sineGraph2d(PyObject * self,PyObject * args);
     PyObject * PyIrr_GUIslider(PyObject * self,PyObject * args);
+    PyObject * PyIrr_rTexture(PyObject * self,PyObject * args);
 
     //Terrain
     PyObject * PyIrr_Trees(PyObject * self,PyObject * args);

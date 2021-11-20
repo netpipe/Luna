@@ -5,6 +5,9 @@
 ////-----------------------------------------------------------------------------
 //#define _CRT_SECURE_NO_WARNINGS 1
 //
+
+#include "../../../config.h"
+#ifdef OIS2
 #include "irrlicht.h"
 #include "COIS.h"
 //
@@ -463,3 +466,4 @@ bool MyOIS::OnEvent(const SEvent& event)
 //
 //    return 0;
 //}
+#endif
