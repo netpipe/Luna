@@ -38,6 +38,7 @@
 					<Add library="vorbis" />
 					<Add library="vorbisfile" />
 					<Add library="dl" />
+					<Add library="SDL" />
 					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
 				</Linker>
 			</Target>
@@ -1092,6 +1093,7 @@
 			<Add directory="/usr/include/python2.7" />
 			<Add directory="../irrlicht-1.8.4/include" />
 			<Add directory="Input/Controllers/iois/OIS/includes" />
+			<Add directory="Input/FluidLite/include/" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />
@@ -1354,9 +1356,6 @@
 		</Unit>
 		<Unit filename="Input/Controllers/wii/xwiimote/xwiimote.h" />
 		<Unit filename="Input/Controllers/wii/xwiimote/xwiimotemain.h" />
-		<Unit filename="Input/FluidLite/alsademo.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="Input/FluidLite/fluid_chan.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -1375,9 +1374,6 @@
 		</Unit>
 		<Unit filename="Input/FluidLite/fluid_defsfont.h" />
 		<Unit filename="Input/FluidLite/fluid_dsp_float.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="Input/FluidLite/fluid_dsp_simple.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Input/FluidLite/fluid_gen.c">
@@ -1483,6 +1479,7 @@
 		<Unit filename="Input/Model/blender/dna249.cpp" />
 		<Unit filename="Input/Model/blender/readblend.h" />
 		<Unit filename="Input/Model/irrTiled/irrTiled.h" />
+		<Unit filename="Input/SDL/SDL_fluidlite.h" />
 		<Unit filename="Input/SDL/SDLsound.h" />
 		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/inputManager.cpp" />

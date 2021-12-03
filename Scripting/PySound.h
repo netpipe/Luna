@@ -2,7 +2,7 @@
 #ifdef PYTHON
 PyMethodDef irr_Sound[] =
 {
-    {"fluidsynth",Python::PyIrr_FluidSynth,METH_VARARGS,"fluidsynth"},
+    {"fluidlite",Python::PyIrr_FluidSynth,METH_VARARGS,"fluidsynth"},
     {"soundman",Python::PyIrr_SoundMan,METH_VARARGS,"PyIrr_SoundMan"},
 	{NULL,NULL,0,NULL}
 };
@@ -106,105 +106,113 @@ PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active c
     char * sound;
     char * param;
     PyArg_ParseTuple(args,"ssi",&sound,&param,&typee);
-#define NETWORK_SUPPORT
+//#define NETWORK_SUPPORT
 
 	//char *psoundfont ="soundfonts/VintageDreamsWaves-v2.sf2";
     char *psoundfont =sound;
 	//char *psong = "BLUES.MID";
     char *psong = param;
 
+switch (typee){
+case 0:{
+  initFluidLite();
+}break;
 
-if( typee==0 ){
-
-//          fluid_player_play(player);
+case 1:{
+playNote();
+}break;
 }
-
-else if (typee == 1){
-//fluid_player_stop(player);
-//fluid_player_join(player);
-
-            /* Play a note */
-        fluid_synth_noteon(synth, 0, 60, 100);
-}
-else if (typee == 2){
-fluid_player_stop(player);
-//fluid_player_join(player);
-
-}
-
-else if (typee == 3){
-    //        printf("ready and playing");
-  //          fluid_player_stop(player);
-//        fluid_player_join(player);
-if (fluid_player_get_status(player) == FLUID_PLAYER_READY )
-{
-    printf("ready and playing");
-
-        fluid_player_add(player,param);
-        fluid_player_play(player);
-    }
-if (fluid_player_get_status(player) == FLUID_PLAYER_DONE )
-{
-    printf("done and replaying");
-
-        fluid_player_add(player,param);
-        fluid_player_play(player);
-    }
-//if  (fluid_is_midifile(psong)) {
+//if( typee==0 ){
 //
-//      if (player == NULL) {
-//	player = new_fluid_player(synth);
-//	if (player == NULL) {
-//	  fprintf(stderr, "Failed to create the midifile player.\n"
-//		  "Continuing without a player.\n");
-//	//  break;
-//	}
-//      }
-//
-//      fluid_player_add(player, psong);
-//          fluid_player_play(player);
-//    }
-
-
-       // fluid_player_join(player);
-//    if (fluid_file_renderer_process_block(renderer) != FLUID_OK)
-//    {
-//        break;
-    }
-
- if (typee == 4){
-    printf("playing");
-        fluid_player_set_loop(player,5);
-      //  fluid_player_join(player);
-      //  fluid_player_add(player,param);
-        fluid_player_play(player);
-//if (fluid_player_get_status(player) == FLUID_PLAYER_PLAYING)
-//{
-//    if (fluid_file_renderer_process_block(renderer) != FLUID_OK)
-//    {
-//        break;
-//    }
+////          fluid_player_play(player);
 //}
-}
-
-else if (typee == 6){ // render audio to file.
-//  if (fast_render) {
-//    char *filename;
-//    if (player == NULL) {
-//      fprintf(stderr, "No midi file specified!\n");
-//      goto cleanup;
+//
+//else if (typee == 1){
+////fluid_player_stop(player);
+////fluid_player_join(player);
+//
+//            /* Play a note */
+//        fluid_synth_noteon(synth, 0, 60, 100);
+//}
+//else if (typee == 2){
+//fluid_player_stop(player);
+////fluid_player_join(player);
+//
+//}
+//
+//else if (typee == 3){
+//    //        printf("ready and playing");
+//  //          fluid_player_stop(player);
+////        fluid_player_join(player);
+//if (fluid_player_get_status(player) == FLUID_PLAYER_READY )
+//{
+//    printf("ready and playing");
+//
+//        fluid_player_add(player,param);
+//        fluid_player_play(player);
+//    }
+//if (fluid_player_get_status(player) == FLUID_PLAYER_DONE )
+//{
+//    printf("done and replaying");
+//
+//        fluid_player_add(player,param);
+//        fluid_player_play(player);
+//    }
+////if  (fluid_is_midifile(psong)) {
+////
+////      if (player == NULL) {
+////	player = new_fluid_player(synth);
+////	if (player == NULL) {
+////	  fprintf(stderr, "Failed to create the midifile player.\n"
+////		  "Continuing without a player.\n");
+////	//  break;
+////	}
+////      }
+////
+////      fluid_player_add(player, psong);
+////          fluid_player_play(player);
+////    }
+//
+//
+//       // fluid_player_join(player);
+////    if (fluid_file_renderer_process_block(renderer) != FLUID_OK)
+////    {
+////        break;
 //    }
 //
-//    fluid_settings_dupstr (settings, "audio.file.name", &filename);
-//    printf ("Rendering audio to file '%s'..\n", filename);
-//    if (filename) FLUID_FREE (filename);
+// if (typee == 4){
+//    printf("playing");
+//        fluid_player_set_loop(player,5);
+//      //  fluid_player_join(player);
+//      //  fluid_player_add(player,param);
+//        fluid_player_play(player);
+////if (fluid_player_get_status(player) == FLUID_PLAYER_PLAYING)
+////{
+////    if (fluid_file_renderer_process_block(renderer) != FLUID_OK)
+////    {
+////        break;
+////    }
+////}
+//}
 //
-//    fast_render_loop(settings, synth, player);
-//  }
-}
+//else if (typee == 6){ // render audio to file.
+////  if (fast_render) {
+////    char *filename;
+////    if (player == NULL) {
+////      fprintf(stderr, "No midi file specified!\n");
+////      goto cleanup;
+////    }
+////
+////    fluid_settings_dupstr (settings, "audio.file.name", &filename);
+////    printf ("Rendering audio to file '%s'..\n", filename);
+////    if (filename) FLUID_FREE (filename);
+////
+////    fast_render_loop(settings, synth, player);
+////  }
+//}
 
 
-}
+//}
 //fluid_settings_setstr(settings, "audio.file.name", "/path/to/output.wav");
 
 #endif

@@ -72,6 +72,7 @@ using namespace gui;
 
 #ifdef SDLSound
 		#include "./Input/SDL/SDLsound.h"
+		#include "./Input/SDL/SDL_fluidlite.h"
 #endif
 
 #ifdef OPENAL2
@@ -395,7 +396,7 @@ int Luna::init(){
 //	SDLPlay();
 #endif
 
-#ifdef SDLSound
+#ifdef SDLSound1
 	sdlsoundinit();
 #endif
 

@@ -53,11 +53,13 @@
 //#define OIS2
 //#define OIS2_LINUX_JOY_DEBUG
 #define TILED2D
-        #define AgAudio
+       // #define AgAudio
             #ifdef AgAudio
                 #define _DEBUG_MODE_
                 #define _PLAY_SOUND_
             #endif
+        #define SDLSound
+        //#define FLUIDLITE
         //#define CODEEDITOR
         //#define OPENAL2
         #endif

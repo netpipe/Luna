@@ -1,5 +1,5 @@
 #include "../../config.h"
-#ifdef SDLSound
+#ifdef SDLSound1
 /**
  * SDL_sound; An abstract sound format decoding API.
  *

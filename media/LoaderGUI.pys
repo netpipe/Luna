@@ -85,6 +85,11 @@ if initloader :
     #input.gamepad(0,"rumble",1)
    # input.gamepad(0,"wiiled",2)
     input.OIS("",0)
+    scene.fluidlite("","",0)
+    scene.fluidlite("","",1)
+
+
+
     irr.tiled("tiled/animation.tmx",0)
 irr.tiled("",2) #animated = 2 regular 1 and init =0
 #input.gamepad(0,"gpinit",1)
