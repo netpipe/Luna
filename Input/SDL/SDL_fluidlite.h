@@ -94,13 +94,43 @@ printf("soundfont.sf2\n");
 
 	//Play
 	SDL_PauseAudio(0);
+printf("playnote\n");
+	//while (1)
+	//{
+		int nKey = 60 + rand() % 30;
 
+		fluid_synth_noteon(synth, 0, nKey, 127);
+
+		//if (wanted_spec.format == AUDIO_F32SYS)
+		//	fluid_synth_write_float(synth, SAMPLE_RATE, lpBuffer, 0, NUM_CHANNELS, lpBuffer, 1, NUM_CHANNELS);
+		//else if (wanted_spec.format == AUDIO_S16SYS)
+			fluid_synth_write_s16(synth, SAMPLE_RATE, lpBuffer, 0, NUM_CHANNELS, lpBuffer, 1, NUM_CHANNELS);
+
+		fluid_synth_noteoff(synth, 0, 60);
+
+		//Set audio buffer (PCM data)
+		audio_chunk = (Uint8*)lpBuffer;
+		//Audio buffer length
+		audio_len = length;
+		audio_pos = audio_chunk;
+
+		while (audio_len > 0)//Wait until finish
+		SDL_Delay(1);
+		//	} else {
+		//	return;
+		//	}
+
+//	}
+	free(lpBuffer);
+//	SDL_Quit();
+//
+//	return 0;
 }
 
 void playNote(){
 printf("playnote\n");
-	while (1)
-	{
+//	while (1)
+//	{
 		int nKey = 60 + rand() % 30;
 
 		fluid_synth_noteon(synth, 0, nKey, 127);
@@ -121,10 +151,10 @@ printf("playnote\n");
 		while (audio_len > 0)//Wait until finish
 			SDL_Delay(1);
 		//	} else {
-		//	return 1;
+		//	return;
 		//	}
 
-	}
+//	}
 //	free(lpBuffer);
 //	SDL_Quit();
 //

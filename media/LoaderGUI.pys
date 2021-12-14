@@ -85,8 +85,8 @@ if initloader :
     #input.gamepad(0,"rumble",1)
    # input.gamepad(0,"wiiled",2)
     input.OIS("",0)
-    scene.fluidlite("","",0)
-    scene.fluidlite("","",1)
+ #   scene.fluidlite("","",0)
+   # scene.fluidlite("","",1)
 
 
 

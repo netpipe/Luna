@@ -395,9 +395,11 @@ int Luna::init(){
 #ifdef SDLMixer
 //	SDLPlay();
 #endif
-
+#ifdef FLUIDLITE
+	initFluidLite();
+#endif
 #ifdef SDLSound1
-	sdlsoundinit();
+	//sdlsoundinit();
 #endif
 
 #ifdef OPENAL2

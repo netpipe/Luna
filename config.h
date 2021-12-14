@@ -59,7 +59,7 @@
                 #define _PLAY_SOUND_
             #endif
         #define SDLSound
-        //#define FLUIDLITE
+        #define FLUIDLITE
         //#define CODEEDITOR
         //#define OPENAL2
         #endif
