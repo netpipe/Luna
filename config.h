@@ -41,27 +41,31 @@
       //#define FLARE
       //#define DECALS2 //replace needing physics to get working
      // #define SQLITE
-#define LOADLEVELS
-    #ifdef MINIMAL2
+    #define LOADLEVELS
+
+
+
+    #ifdef MINIMAL2 //not so minimal extras
         //#define BOX2D // engine uses box2dlite already this is for testing
         //#define SOUND
         //#define SDLMixer // wip - might not be compatable with the engine
         //#define OPENAL2 // working with emscripten
         //#define SDLSound //- seems to play and freeze needs threading
         //#define SQLITE
-//#define FLUIDLITE
-//#define OIS2
-//#define OIS2_LINUX_JOY_DEBUG
-#define TILED2D
        // #define AgAudio
             #ifdef AgAudio
                 #define _DEBUG_MODE_
                 #define _PLAY_SOUND_
             #endif
-        #define SDLSound
-        #define FLUIDLITE
+           // #define SOUND
+        //#define SDLSound
+        //#define FLUIDLITE
         //#define CODEEDITOR
         //#define OPENAL2
+
+        //#define OIS2
+        //#define OIS2_LINUX_JOY_DEBUG
+        #define TILED2D
         #endif
 
 

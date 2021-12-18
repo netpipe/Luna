@@ -51,8 +51,8 @@ if (init) :
  #physics.box2d("test.png",1)
 
 
- sound2 = scene.soundman(0,"./media/bling.ogg",0) #create sound device
- #scene.soundman(1,str(sound2),1)#play sound
+ sound2 = scene.soundman(0,"../media/robocrep.ogg",0) #create sound device
+ scene.soundman(1,str(sound2),1)#play sound
  #scene.soundman(1,str(sound2),0)#stop sound
  #scene.soundman(1,str(sound2),2)#unloadsound / clear sounds
 
@@ -203,11 +203,11 @@ if (init) :
 #################################
 #if sound done playing loop
 #
-#if (icount > 400):
+if (icount > 400):
 # scene.soundman(1,1,1)
-# icount=0
-#else:
-# icount+=1
+ icount=0
+else:
+ icount+=1
 
 scene.fpsweapon(camera,1)
 
