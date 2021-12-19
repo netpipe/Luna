@@ -201,9 +201,9 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
 	//nodeMap["Cone"] = ;
 
 //prob need one map for state too
-//	int Iparam=param;
+	int Iparam=param;
 	if ( state==0 ){  // use state for get and set var
-       switch (veparam2[param]){
+       switch (Iparam){
 
             case veparam(vreset):
              //   m_cVehicle->resetVehicle();
@@ -260,7 +260,7 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
 
     } else if (state==1) {   //get vars
 	//int returnvar;
-		switch (param){
+		switch (Iparam){
 			case 0:
 	//				returnvar = m_cVehicle->getState();
 					return Py_BuildValue("i",m_cVehicle->getState());
