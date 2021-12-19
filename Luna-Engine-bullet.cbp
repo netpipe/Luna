@@ -45,6 +45,7 @@
 					<Add option="-fpermissive" />
 					<Add option="-DMINIMAL" />
 					<Add option="-DMINIMAL2" />
+					<Add option="-DPHYSICS" />
 					<Add directory="../Box2D/Box2D/Box2D" />
 					<Add directory="../Box2D/Box2D/" />
 				</Compiler>
@@ -74,6 +75,7 @@
 					<Add option="-DMINIMAL" />
 					<Add option="-DMINIMAL2" />
 					<Add option="-DSOUND" />
+					<Add option="-DPHYSICS" />
 					<Add directory="../Box2D/Box2D/Box2D" />
 					<Add directory="../Box2D/Box2D/" />
 				</Compiler>
@@ -106,6 +108,7 @@
 				<Compiler>
 					<Add option="-fpermissive" />
 					<Add option="-DPYTHON" />
+					<Add option="-DPHYSICS" />
 				</Compiler>
 			</Target>
 			<Target title="Linux Release">
@@ -121,6 +124,7 @@
 					<Add option="-fpermissive" />
 					<Add option="-DNDEBUG" />
 					<Add option="-DPYTHON" />
+					<Add option="-DPHYSICS" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -1089,6 +1093,7 @@
 			<Add option="`pkg-config gtk+-2.0 --cflags`" />
 			<Add option="-Wno-narrowing" />
 			<Add option="-DPARTICLES" />
+			<Add option="-DPHYSICS" />
 			<Add directory="../LunaLibs/irrlicht-1.8.4/source/Irrlicht" />
 			<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
 			<Add directory="../LunaLibs/net/irrNetLite22" />
