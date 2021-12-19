@@ -1112,7 +1112,7 @@
 			<Add directory="../LunaLibs/cAudio23/cAudio/include" />
 			<Add directory="../LunaLibs/cAudio23/include" />
 			<Add directory="Scene/SPARK" />
-			<Add directory="../LunaLibs/bullet3-2.86.1/src" />
+			<Add directory="../LunaLibs/bullet3-2.86.1/srcf" />
 			<Add directory="../LunaLibs/media/fluidsynth-emscripten/include2" />
 			<Add directory="../LunaLibs/media/fluidsynth-emscripten/2" />
 			<Add directory="../LunaLibs/SparkEngine/src" />
@@ -1124,6 +1124,7 @@
 			<Add directory="../irrlicht-1.8.4/include" />
 			<Add directory="Input/Controllers/iois/OIS/includes" />
 			<Add directory="Input/FluidLite/include/" />
+			<Add directory="Physics/bullet3/src" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />
@@ -1175,7 +1176,7 @@
 			<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 			<Add directory="../LunaLibs/PolyVox/library/PolyVoxCore" />
 			<Add directory="../LunaLibs/media/fluidsynth-emscripten/src3" />
-			<Add directory="../LunaLibs/bullet3-2.86.1/msvc/2008/lib/Debug" />
+			<Add directory="../LunaLibs/bullet3-2.86.1/msvc/2008/lib/Debugf" />
 			<Add directory="../LunaLibs/OpenSteer" />
 			<Add directory="../emscripten-projects/SDL/SDL_sound/src" />
 			<Add directory="../LunaLibs/libtheora-1.1.1" />
@@ -2062,7 +2063,6 @@
 		<Unit filename="Physics/bullet3/src/clew/clew.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Physics/bullet3/src/clew/clew.c"/>
 		<Unit filename="Physics/missile.cpp" />
 		<Unit filename="Scene/ATMOsphere.cpp" />
 		<Unit filename="Scene/BoltSceneNode.cpp" />
