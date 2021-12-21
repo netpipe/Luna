@@ -16,8 +16,8 @@
 	#include <PolyVoxCore/CubicSurfaceExtractorWithNormals.h>
 	#include <PolyVoxCore/SurfaceMesh.h>
 	#include <PolyVoxCore/SimpleVolume.h>
-//#include "..//include/MaterialDensityPair.h"
-//#include "../Input/Model/PolyVox/PolyVoxCore/include/MaterialDensityPair.h"
+    #include "PolyVoxCore/LargeVolume.h"
+using namespace PolyVox;
 
 int volumevoxel=63;
 PolyVox::SimpleVolume<uint8_t> volData(PolyVox::Region(PolyVox::Vector3DInt32(0,0,0), PolyVox::Vector3DInt32(volumevoxel, volumevoxel, volumevoxel)));
@@ -116,6 +116,7 @@ switch (type){
    return Py_BuildValue("");
    #endif
    }
+
 PyObject * Python::PyIrr_getKey(PyObject * self,PyObject * args){
 //irr::EKEY_CODE StringToEKey_Code( std::string tempString )
 
@@ -185,6 +186,95 @@ keyValue =  keydictionary[tempString2];
 }
 
 #ifdef POLYVOX
+
+//	struct osn_context *ctx;
+//	open_simplex_noise(77374, &ctx);
+//			/* Use three octaves: frequency N, N/2 and N/4 with relative amplitudes 4:2:1. */
+//			v0 = open_simplex_noise4(ctx, (double) x / FEATURE_SIZE / 4,
+//						(double) y / FEATURE_SIZE / 4, 0.0, 0.0);
+//			v1 = open_simplex_noise4(ctx, (double) x / FEATURE_SIZE / 2,
+//						(double) y / FEATURE_SIZE / 2, 0.0, 0.0);
+//			v2 = open_simplex_noise4(ctx, (double) x / FEATURE_SIZE / 1,
+//						(double) y / FEATURE_SIZE / 1, 0.0, 0.0);
+//			value = (v0 * 4 / 7.0 + v1 * 2 / 7.0 + v2 * 1 / 7.0) *5;
+
+
+//void createPerlinVolumeSlow(LargeVolume<MaterialDensityPair44>& volData)
+//{
+//	Perlin perlin(2,8,1,234);
+//
+//	for(int z = 1; z < 256-1; z++)
+//	{
+//		std::cout << z << std::endl;
+//		for(int y = 1; y < 256-1; y++)
+//		{
+//			for(int x = 1; x < 256-1; x++)
+//			{
+//				float perlinVal = perlin.Get3D(x /static_cast<float>(256-1), (y) / static_cast<float>(256-1), z / static_cast<float>(256-1));
+//
+//				perlinVal += 1.0f;
+//				perlinVal *= 0.5f;
+//				perlinVal *= 1.0f;//perlinVal *= VoxelTypeTraits<MaterialDensityPair44>::maxDensity();
+//
+//				MaterialDensityPair44 voxel;
+//
+//				voxel.setMaterial(245);
+//				voxel.setDensity(perlinVal);
+//
+//				/*if(perlinVal < 0.0f)
+//				{
+//					voxel.setMaterial(245);
+//					voxel.setDensity(VoxelTypeTraits<MaterialDensityPair44>::maxDensity());
+//				}
+//				else
+//				{
+//					voxel.setMaterial(0);
+//					voxel.setDensity(VoxelTypeTraits<MaterialDensityPair44>::minDensity());
+//				}*/
+//
+//				volData.setVoxelAt(x, y, z, voxel);
+//			}
+//		}
+//	}
+//}
+//
+//void createPerlinTerrain(LargeVolume<MaterialDensityPair44>& volData)
+//{
+//	Perlin perlin(2,2,1,234);
+//
+//	for(int x = 1; x < 255-1; x++)
+//	{
+//		if(x%(255/100) == 0) {
+//			std::cout << "." << std::flush;
+//		}
+//		for(int y = 1; y < 255-1; y++)
+//		{
+//			float perlinVal = perlin.Get(x / static_cast<float>(255-1), y / static_cast<float>(255-1));
+//			perlinVal += 1.0f;
+//			perlinVal *= 0.5f;
+//			perlinVal *= 255;
+//			for(int z = 1; z < 255-1; z++)
+//			{
+//				MaterialDensityPair44 voxel;
+//				if(z < perlinVal)
+//				{
+//					voxel.setMaterial(245);
+//					voxel.setDensity(MaterialDensityPair44::getMaxDensity());
+//				}
+//				else
+//				{
+//					voxel.setMaterial(0);
+//					voxel.setDensity(MaterialDensityPair44::getMinDensity());
+//				}
+//
+//				volData.setVoxelAt(x, y, z, voxel);
+//			}
+//		}
+//	}
+//	std::cout << std::endl;
+//}
+
+
 unsigned int doPoint(double cx, double cy, double cz)
 {
   // program from http://www.treblig.org/3dbrot/3dbrot.c
