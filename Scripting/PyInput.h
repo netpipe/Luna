@@ -175,28 +175,23 @@ PyObject * Python::PyIrr_voxelLoad(PyObject * self,PyObject * args){
 
 	int type;
 //	char * gui,*driver,*smgr;
-	char * device;
+//	char * device;
 	char * path;
-	PyArg_ParseTuple(args,"ss",&device,&path);
+	PyArg_ParseTuple(args,"s",&path);
 #ifdef POLYVOX
-   wchar_t cBuffer[100];
-    int move;
-//    gui::IGUIEnvironment* device = device->getGUIEnvironment();
-//    gui::IGUIEnvironment* gui = device->getGUIEnvironment();
-//    video::IVideoDriver* driver = device->getVideoDriver();
-//    irr::scene::ISceneManager* smgr = device->getSceneManager();
+//   wchar_t cBuffer[100];
+ //   int move;
 
 //    createMandelbulb(volData);
-
-
-
-    //Extract the surface
+//
+//
+//
+//    //Extract the surface
 //    PolyVox::SurfaceMesh<PolyVox::PositionMaterialNormal> polyvoxmesh;
 //    PolyVox::CubicSurfaceExtractorWithNormals<PolyVox::SimpleVolume< uint8_t >> surfaceExtractor(&volData, volData.getEnclosingRegion(), &polyvoxmesh);
 //    surfaceExtractor.execute();
-//
-//SMesh * testmesh = new SMesh();
-//
+////
+//    SMesh * testmesh = new SMesh();
 //
 //    irr::scene::IMeshBuffer * testbuffer = ConvertMesh(polyvoxmesh);
 //    printf("%i ",testbuffer->getVertexCount());
@@ -204,9 +199,11 @@ PyObject * Python::PyIrr_voxelLoad(PyObject * self,PyObject * args){
 //    testmesh->addMeshBuffer(testbuffer);
 //    testmesh->recalculateBoundingBox();
 //
-//
 //    scene::ISceneNode * testnode = smgr->addMeshSceneNode(testmesh); //, core::vector3df(2000, 1000, 2000),core::vector3df(0, 100, 0),core::vector3df(20.0F, 20.0F, 20.0F));
-//
+
+
+
+
 //
 //    testnode->setMaterialFlag(EMF_LIGHTING, true);
 //
@@ -265,6 +262,7 @@ PyObject * Python::PyIrr_voxelLoad(PyObject * self,PyObject * args){
 #endif
 
 }
+
 #ifdef POLYVOX
 irr::scene::SMesh* convertPolyMesh(const PolyVox::SurfaceMesh<PolyVox::PositionMaterialNormal>& meshPoly) {
    //irr::scene::SMeshBuffer* buffer =new irr::scene::SMeshBuffer();
