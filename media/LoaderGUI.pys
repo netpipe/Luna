@@ -87,7 +87,7 @@ if initloader :
     input.OIS("",0)
  #   scene.fluidlite("","",0)
    # scene.fluidlite("","",1)
-
+    input.voxelLoad("test");
 
 
     irr.tiled("tiled/animation.tmx",0)

@@ -18,6 +18,22 @@
 	#include <PolyVoxCore/SimpleVolume.h>
 //#include "..//include/MaterialDensityPair.h"
 //#include "../Input/Model/PolyVox/PolyVoxCore/include/MaterialDensityPair.h"
+
+int volumevoxel=63;
+PolyVox::SimpleVolume<uint8_t> volData(PolyVox::Region(PolyVox::Vector3DInt32(0,0,0), PolyVox::Vector3DInt32(volumevoxel, volumevoxel, volumevoxel)));
+
+const unsigned int size=63;
+#define RANGE 1.2
+const double xlow=-RANGE;
+const double xhigh=RANGE;
+const double ylow=-RANGE;
+const double yhigh=RANGE;
+const double zlow=-RANGE;
+const double zhigh=RANGE;
+
+const unsigned int maxiterations=80;
+const double mandpow=8.0;
+double r;
 #endif
 
 PyMethodDef irr_Input[] =
@@ -168,8 +184,97 @@ keyValue =  keydictionary[tempString2];
   return Py_BuildValue("b",keystate);
 }
 
+#ifdef POLYVOX
+unsigned int doPoint(double cx, double cy, double cz)
+{
+  // program from http://www.treblig.org/3dbrot/3dbrot.c
+  double x,y,z;
+  double newx,newy,newz;
+  double theta,phi,rpow;
+  //double r;
+  unsigned int i;
+  x=0.0;
+  y=0.0;
+  z=0.0;
+
+  for(i=0;(i<maxiterations) && ((x*x+y*y+z*z) < 2.0);i++)
+  {
+   /* These maths from http://www.skytopia.com/project/fractal/mandelbulb.html */
+    r = sqrt(x*x + y*y + z*z );
+    theta = atan2(sqrt(x*x + y*y) , z);
+    phi = atan2(y,x);
+    rpow = pow(r,mandpow);
+
+    newx = rpow * sin(theta*mandpow) * cos(phi*mandpow);
+    newy = rpow * sin(theta*mandpow) * sin(phi*mandpow);
+    newz = rpow * cos(theta*mandpow);
+
+    x=newx+cx;
+    y=newy+cy;
+    z=newz+cz;
+  }
+  return i;
+}
+
+double valInRange(double low, double high, unsigned int size, unsigned int off)
+{
+  return low+((high-low)/(double)size)*(double)off;
+}
+
+void createMandelbulb(PolyVox::SimpleVolume<uint8_t>& volData)
+{
+   uint8_t uValue=1;
+   //This three-level for loop iterates over every voxel in the volume
+   for (int z = 0; z < volData.getWidth(); z++)
+   {
+      double fz=valInRange(zlow, zhigh, size, z);
+      for (int y = 0; y < volData.getHeight(); y++)
+      {
+         double fy=valInRange(ylow, yhigh, size, y);
+         for (int x = 0; x < volData.getDepth(); x++)
+         {
+            double fx=valInRange(xlow, xhigh, size, x);
+            unsigned int val=doPoint(fx,fy,fz);
+            //printf("%i ",val);
+            if (val>=maxiterations-1)
+            {
+               uValue=r*12; //for example use r for material
+               volData.setVoxelAt(x, y, z, uValue);
+            }
+         }
+      }
+   }
+}
+
+irr::scene::IMeshBuffer* ConvertMesh(const PolyVox::SurfaceMesh<PolyVox::PositionMaterialNormal>& mesh) {
 
 
+   const std::vector<uint32_t>& indices = mesh.getIndices();
+   const std::vector<PolyVox::PositionMaterialNormal>& vertices = mesh.getVertices();
+
+   irr::scene::IDynamicMeshBuffer *mb = new irr::scene::CDynamicMeshBuffer(irr::video::EVT_STANDARD, irr::video::EIT_32BIT);
+
+   mb->getVertexBuffer().set_used(vertices.size());
+   for (size_t i = 0; i < vertices.size(); ++i) {
+       const PolyVox::Vector3DFloat& position = vertices[i].getPosition();
+       const PolyVox::Vector3DFloat& normal = vertices[i].getNormal();
+       mb->getVertexBuffer()[i].Pos.X = position.getX();
+       mb->getVertexBuffer()[i].Pos.Y = position.getY();
+       mb->getVertexBuffer()[i].Pos.Z = position.getZ();
+       mb->getVertexBuffer()[i].Normal.X = normal.getX();
+       mb->getVertexBuffer()[i].Normal.Y = normal.getY();
+       mb->getVertexBuffer()[i].Normal.Z = normal.getZ();
+       mb->getVertexBuffer()[i].Color = irr::video::SColor(255,0,200,200);
+   }
+
+   mb->getIndexBuffer().set_used(indices.size());
+   for (size_t i = 0; i < indices.size(); ++i) {
+       mb->getIndexBuffer().setValue(i, indices[i]);
+   }
+   mb->recalculateBoundingBox();
+   return mb;
+}
+#endif
 
 PyObject * Python::PyIrr_voxelLoad(PyObject * self,PyObject * args){
 
@@ -179,27 +284,27 @@ PyObject * Python::PyIrr_voxelLoad(PyObject * self,PyObject * args){
 	char * path;
 	PyArg_ParseTuple(args,"s",&path);
 #ifdef POLYVOX
-//   wchar_t cBuffer[100];
- //   int move;
+   wchar_t cBuffer[100];
+    int move;
 
-//    createMandelbulb(volData);
+    createMandelbulb(volData);
+
+
+
+    //Extract the surface
+    PolyVox::SurfaceMesh<PolyVox::PositionMaterialNormal> polyvoxmesh;
+    PolyVox::CubicSurfaceExtractorWithNormals<PolyVox::SimpleVolume< uint8_t >> surfaceExtractor(&volData, volData.getEnclosingRegion(), &polyvoxmesh);
+    surfaceExtractor.execute();
 //
-//
-//
-//    //Extract the surface
-//    PolyVox::SurfaceMesh<PolyVox::PositionMaterialNormal> polyvoxmesh;
-//    PolyVox::CubicSurfaceExtractorWithNormals<PolyVox::SimpleVolume< uint8_t >> surfaceExtractor(&volData, volData.getEnclosingRegion(), &polyvoxmesh);
-//    surfaceExtractor.execute();
-////
-//    SMesh * testmesh = new SMesh();
-//
-//    irr::scene::IMeshBuffer * testbuffer = ConvertMesh(polyvoxmesh);
-//    printf("%i ",testbuffer->getVertexCount());
-//    printf("%i ",testbuffer->getIndexCount());
-//    testmesh->addMeshBuffer(testbuffer);
-//    testmesh->recalculateBoundingBox();
-//
-//    scene::ISceneNode * testnode = smgr->addMeshSceneNode(testmesh); //, core::vector3df(2000, 1000, 2000),core::vector3df(0, 100, 0),core::vector3df(20.0F, 20.0F, 20.0F));
+    SMesh * testmesh = new SMesh();
+
+    irr::scene::IMeshBuffer * testbuffer = ConvertMesh(polyvoxmesh);
+    printf("%i ",testbuffer->getVertexCount());
+    printf("%i ",testbuffer->getIndexCount());
+    testmesh->addMeshBuffer(testbuffer);
+    testmesh->recalculateBoundingBox();
+
+    scene::ISceneNode * testnode = smgr->addMeshSceneNode(testmesh); //, core::vector3df(2000, 1000, 2000),core::vector3df(0, 100, 0),core::vector3df(20.0F, 20.0F, 20.0F));
 
 
 
@@ -219,34 +324,7 @@ PyObject * Python::PyIrr_voxelLoad(PyObject * self,PyObject * args){
 //        device->getGUIEnvironment()->getFont("arialbold.bmp");
 
 
-//irr::scene::IMeshBuffer* ConvertMesh(const PolyVox::SurfaceMesh<PolyVox::PositionMaterialNormal>& mesh) {
-//
-//
-//   const std::vector<uint32_t>& indices = mesh.getIndices();
-//   const std::vector<PolyVox::PositionMaterialNormal>& vertices = mesh.getVertices();
-//
-//   irr::scene::IDynamicMeshBuffer *mb = new irr::scene::CDynamicMeshBuffer(irr::video::EVT_STANDARD, irr::video::EIT_32BIT);
-//
-//   mb->getVertexBuffer().set_used(vertices.size());
-//   for (size_t i = 0; i < vertices.size(); ++i) {
-//       const PolyVox::Vector3DFloat& position = vertices[i].getPosition();
-//       const PolyVox::Vector3DFloat& normal = vertices[i].getNormal();
-//       mb->getVertexBuffer()[i].Pos.X = position.getX();
-//       mb->getVertexBuffer()[i].Pos.Y = position.getY();
-//       mb->getVertexBuffer()[i].Pos.Z = position.getZ();
-//       mb->getVertexBuffer()[i].Normal.X = normal.getX();
-//       mb->getVertexBuffer()[i].Normal.Y = normal.getY();
-//       mb->getVertexBuffer()[i].Normal.Z = normal.getZ();
-//       mb->getVertexBuffer()[i].Color = irr::video::SColor(255,0,200,200);
-//   }
-//
-//   mb->getIndexBuffer().set_used(indices.size());
-//   for (size_t i = 0; i < indices.size(); ++i) {
-//       mb->getIndexBuffer().setValue(i, indices[i]);
-//   }
-//   mb->recalculateBoundingBox();
-//   return mb;
-//}
+
 
 //
 // //http://irrlicht.sourceforge.net/forum/viewtopic.php?f=9&t=45175&p=284526&hilit=polyvox#p284526
