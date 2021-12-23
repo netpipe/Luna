@@ -87,7 +87,7 @@ bool connected,doit,login=0;
 // vector3df tmpvect;
 
 //#define PYTHON
-//#include <boost/python.hpp>   #not used just for ideas maybe
+//#include <boost/python.hRpp>   #not used just for ideas maybe
 #include "Scripting/PythonManager.h"
 
 #ifdef NDEBUG
@@ -476,7 +476,10 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
            // workingDirectory = "C:\Python27"
             //workingDirectory =
           // / Py_SetPythonHome("python");
-            Py_SetPythonHome( "..\\media\\pydata\\" ); // needs fixing still
+
+  //        device->getFileSystem()->addFileArchive("..\\media\\pydata.zip");
+// Py_SetPythonHome( "pydata" ); // needs fixing still
+           Py_SetPythonHome( "..\\media\\pydata\\" ); // needs fixing still
             //PySys_SetPath( 'C:/Dev/Luna/media/pydata/lib/'
             #endif
         #endif

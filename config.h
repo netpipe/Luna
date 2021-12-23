@@ -57,7 +57,7 @@
                 #define _DEBUG_MODE_
                 #define _PLAY_SOUND_
             #endif
-            #define SOUND
+         //   #define SOUND
         //#define SDLSound
         //#define FLUIDLITE
         //#define CODEEDITOR

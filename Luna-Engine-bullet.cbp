@@ -144,6 +144,8 @@
 					<Add option="-fpermissive" />
 					<Add option="-DMINIMAL" />
 					<Add option="-DWIN32" />
+					<Add option="-DMINIMAL2" />
+					<Add option="-DPHYSICS" />
 					<Add directory="E:/irrlicht-1.8.4/include" />
 					<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/opt/include/python2.7" />
 				</Compiler>
@@ -172,18 +174,23 @@
 					<Add option="-fpermissive" />
 					<Add option="-DMINIMAL" />
 					<Add option="-DWIN32" />
+					<Add option="-DPHYSICS" />
 					<Add directory="E:/irrlicht-1.8.4/include" />
 					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/include/python2.7" />
+					<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/libs/Win64" />
+					<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-m64" />
 					<Add library="Irrlicht" />
-					<Add library="E:/openal-soft-1.21.1-bin/libs/Win64/libOpenAL32.dll.a" />
+					<Add library="OpenAL32" />
 					<Add library="python2.7" />
 					<Add library="m" />
 					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/bin" />
 					<Add directory="E:/irrlicht-1.8.4/lib/Win64-gcc" />
 					<Add directory="D:/openal-soft-1.21.1-bin/libs/Win64" />
+					<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/libs/Win64" />
+					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Win32-gcc" />
 				</Linker>
 			</Target>
 			<Target title="WinDebug">
@@ -1122,7 +1129,7 @@
 			<Add directory="../LunaLibs/media/fluidsynth-emscripten/2" />
 			<Add directory="../LunaLibs/SparkEngine/src" />
 			<Add directory="../LunaLibs/SparkEngine/include" />
-			<Add directory="../LunaLibs/PolyVox/library/PolyVoxCore/include" />
+			<Add directory="../LunaLibs/PolyVox/library/PolyVoxCore/include3" />
 			<Add directory="../emscripten-projects/SDL/SDL_sound/src" />
 			<Add directory="../LunaLibs/zlib-1.2.3" />
 			<Add directory="/usr/include/python2.7" />
@@ -1130,6 +1137,7 @@
 			<Add directory="Input/Controllers/iois/OIS/includes" />
 			<Add directory="Input/FluidLite/include/" />
 			<Add directory="Physics/bullet3/src" />
+			<Add directory="../LunaLibs/polyvox-0.2.1/library/PolyVoxCore/include" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />
@@ -1179,7 +1187,7 @@
 			<Add directory="../LunaLibs/bullet3-2.86.1/src/BulletCollision" />
 			<Add directory="../LunaLibs/bullet3-2.86.1/src/LinearMath" />
 			<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
-			<Add directory="../LunaLibs/PolyVox/library/PolyVoxCore" />
+			<Add directory="../LunaLibs/PolyVox/library/PolyVoxCore3" />
 			<Add directory="../LunaLibs/media/fluidsynth-emscripten/src3" />
 			<Add directory="../LunaLibs/bullet3-2.86.1/msvc/2008/lib/Debugf" />
 			<Add directory="../LunaLibs/OpenSteer" />
@@ -1187,6 +1195,7 @@
 			<Add directory="../LunaLibs/libtheora-1.1.1" />
 			<Add directory="../LunaLibs/freetype-2.3.9" />
 			<Add directory="../irrlicht-1.8.4/lib/Linux" />
+			<Add directory="../LunaLibs/polyvox-0.2.1/library/PolyVoxCore" />
 		</Linker>
 		<Unit filename="DevLoop.h" />
 		<Unit filename="Equipment/Rifle.cpp" />
@@ -1522,9 +1531,9 @@
 		<Unit filename="Input/Model/blender/dna249.cpp" />
 		<Unit filename="Input/Model/blender/readblend.h" />
 		<Unit filename="Input/Model/irrTiled/irrTiled.h" />
+		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/SDL/SDL_fluidlite.h" />
 		<Unit filename="Input/SDL/SDLsound.h" />
-		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/inputManager.cpp" />
 		<Unit filename="Input/inputManager.h" />
 		<Unit filename="Input/openal_playback.h" />
@@ -2105,6 +2114,58 @@
 		<Unit filename="Scene/IrrCSG/LunaCSG.h" />
 		<Unit filename="Scene/Obstacle.cpp" />
 		<Unit filename="Scene/Obstacle.hpp" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/AStarPathfinder.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/AmbientOcclusionCalculator.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/Array.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/ArraySizes.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/BaseVolume.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/ConstVolumeProxy.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/CubicSurfaceExtractor.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/CubicSurfaceExtractorWithNormals.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/DefaultIsQuadNeeded.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/DefaultMarchingCubesController.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/Density.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/GradientEstimators.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/Impl/AStarPathfinderImpl.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/Impl/ArraySizesImpl.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/Impl/Block.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/Impl/MarchingCubesTables.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/Impl/RandomUnitVectors.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/Impl/RandomVectors.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/Impl/SubArray.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/Impl/TypeDef.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/Impl/Utility.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/Interpolation.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/IteratorController.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/LargeVolume.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/Log.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/LowPassFilter.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/MarchingCubesSurfaceExtractor.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/Material.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/MaterialDensityPair.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/MeshDecimator.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/PolyVoxForwardDeclarations.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/RawVolume.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/Raycast.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/Region.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/SimpleInterface.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/SimpleVolume.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/SurfaceMesh.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/Vector.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/VertexTypes.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/VolumeResampler.h" />
+		<Unit filename="Scene/PolyVox/include/PolyVoxCore/VoxelFilters.h" />
+		<Unit filename="Scene/PolyVox/source/AStarPathfinder.cpp" />
+		<Unit filename="Scene/PolyVox/source/ArraySizes.cpp" />
+		<Unit filename="Scene/PolyVox/source/Impl/MarchingCubesTables.cpp" />
+		<Unit filename="Scene/PolyVox/source/Impl/RandomUnitVectors.cpp" />
+		<Unit filename="Scene/PolyVox/source/Impl/RandomVectors.cpp" />
+		<Unit filename="Scene/PolyVox/source/Impl/Utility.cpp" />
+		<Unit filename="Scene/PolyVox/source/Log.cpp" />
+		<Unit filename="Scene/PolyVox/source/MeshDecimator.cpp" />
+		<Unit filename="Scene/PolyVox/source/Region.cpp" />
+		<Unit filename="Scene/PolyVox/source/SimpleInterface.cpp" />
+		<Unit filename="Scene/PolyVox/source/VertexTypes.cpp" />
 		<Unit filename="Scene/PostProcessing/CEffectPostProc.cpp" />
 		<Unit filename="Scene/PostProcessing/CEffectPostProc.h" />
 		<Unit filename="Scene/PostProcessing/CLensFlarePostProc.cpp" />
@@ -2249,6 +2310,8 @@
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshBuilder.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshQuery.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNode.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/Recast.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastAlloc.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastArea.cpp" />
@@ -2259,8 +2322,6 @@
 		<Unit filename="entities/AI/recast/Recast/Source/RecastMeshDetail.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRasterization.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRegion.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast_util.cpp" />
 		<Unit filename="entities/AI/recast_util.h" />
 		<Unit filename="entities/AI/recastmain.cpp" />
