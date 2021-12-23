@@ -473,8 +473,11 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
             //setenv("PYTHONHOME", (const char*)workingDirectory.c_str() , 0);
 
             #else
-            workingDirectory = "C:\Python27"
-            Py_SetPythonHome( (const char*)workingDirectory.c_str()); // needs fixing still
+           // workingDirectory = "C:\Python27"
+            //workingDirectory =
+          // / Py_SetPythonHome("python");
+            Py_SetPythonHome( "..\\media\\pydata\\" ); // needs fixing still
+            //PySys_SetPath( 'C:/Dev/Luna/media/pydata/lib/'
             #endif
         #endif
 

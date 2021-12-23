@@ -8,14 +8,14 @@ if initloader :
     import time
     import os
     import physics
-    import io
+ 
 
     id=100
     def newId():
       global id
       id+=1
       return id
-    from datetime import datetime
+  #  from datetime import datetime
 
     font="fontlucida.png"
     location= "../media/LoaderGUI/"
@@ -154,11 +154,11 @@ currentButton %= len(pysList)
 myHour = 15
 myMin = 33
 
-now = datetime.now()
-currentHour = now.hour
-currentMin = now.minute
+#now = datetime.now()
+#currentHour = now.hour
+#currentMin = now.minute
 
-scene.drawtext(str(now), font, 30,0,128,128)
+#scene.drawtext(str(now), font, 30,0,128,128)
 
 
 for i in range(len(pysList)):
