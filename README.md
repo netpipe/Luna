@@ -14,6 +14,13 @@ When using bulletblend or gamekit to design levels youll need to use older blend
 
 
 
+IMPORTANT STEP
+on windows extract pydata.tar in media folder to media folder so that the engine may run defined in luna.cpp
+
+
+
+
+
 
 Ffmpeg and P5 glove driver are LGPL from the libs repo.
 engine is zlib other than sockets code being ported out for irc client and p5 glove controller/ awaiting email on that.
