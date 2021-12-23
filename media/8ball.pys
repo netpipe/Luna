@@ -25,11 +25,11 @@ if (init) :
 
 
  import os
+ import math
+ import time
  import itertools
 #import hashlib #causes issues with emscripten
  #import random
- import math
- import time
  #import shuffle
 
 #scene.using ('../media/lib/python2.7/random.py',"1"); #not working
