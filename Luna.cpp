@@ -349,6 +349,8 @@ int Luna::init(){
 			#elif __APPLE__
 			device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 0,1);
 			#else //windows
+			//device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 0,1); // seems to work with rdp better only runs without python currently
+
 			device = createDevice ( EDT_SOFTWARE,dimension2du (resolution[0],resolution[1]), 24, 0,1); // seems to work with rdp better only runs without python currently
 			#endif
 		#endif

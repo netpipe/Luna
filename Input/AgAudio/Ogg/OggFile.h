@@ -5,7 +5,8 @@
 #ifdef __APPLE__
     #include <OpenAL/al.h>
 #else
-    #include <AL/al.h>
+    #include <al.h>
+      //  #include <AL/al.h>
 #endif
 
 #include <ogg/ogg.h>

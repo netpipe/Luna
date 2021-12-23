@@ -3,7 +3,8 @@
 #include "../../../config.h"
 #ifdef AgAudio
 #ifndef __APPLE__
-    #include <AL/al.h>
+    #include <al.h>
+  //  #include <AL/al.h>
 #else
     #include <OpenAL/al.h>
 #endif

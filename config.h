@@ -87,7 +87,7 @@
 
 
  #ifndef __EMSCRIPTEN__
- //#define SOUND
+ #define SOUND
  //#define VIDEO
 
  //todo put in simple openal sound
@@ -95,7 +95,7 @@
 
 //for AgAudio
 
-#define AgAudio // not working with emscripten
+//#define AgAudio // not working with emscripten
 //#ifdef __EMSCRIPTEN__
 #ifdef AgAudio
   #define _DEBUG_MODE_
@@ -154,12 +154,13 @@
   #define OCCLUSION
   //  #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
 
-  #define PHYSICS
+  #define BOX2DLITE
+  //#define PHYSICS
   #ifdef PHYSICS
   //if bullet carnot enabled with physics and car calls it crashes FIXME
   #define BULLETCAR // if FPSWEAPON is enabled the car wont work. diff event rec
   #define LOADLEVELS // with occlusion its slow?
-  #define BULLETBLEND
+ // #define BULLETBLEND
   #define RAGDOLL   //bulletRagdoll
   #endif
 

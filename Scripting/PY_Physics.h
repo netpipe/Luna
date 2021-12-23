@@ -38,7 +38,7 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
 	PyArg_ParseTuple(args,"llsfffff",&bptr,&bptr2,&param,&w,&h,&x,&y,&friction);
 //	PyArg_ParseTuple(args,"lsi",&bptr,&param,&state);
 
-
+#ifdef BOX2DLITE
        switch (esb2d[param]){
 
             case eparamb2d(binit): //gravity based
@@ -116,6 +116,7 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
                 return Py_BuildValue("f", b3->rotation);
             }break;
         }
+        #endif
 	return Py_BuildValue("");
 }
 

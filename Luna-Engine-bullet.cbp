@@ -144,7 +144,6 @@
 					<Add option="-fpermissive" />
 					<Add option="-DMINIMAL" />
 					<Add option="-DWIN32" />
-					<Add option="-DMINIMAL2" />
 					<Add option="-DPHYSICS" />
 					<Add directory="E:/irrlicht-1.8.4/include" />
 					<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/opt/include/python2.7" />
@@ -186,6 +185,47 @@
 					<Add library="OpenAL32" />
 					<Add library="python2.7" />
 					<Add library="m" />
+					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/bin" />
+					<Add directory="E:/irrlicht-1.8.4/lib/Win64-gcc" />
+					<Add directory="D:/openal-soft-1.21.1-bin/libs/Win64" />
+					<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/libs/Win64" />
+					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Win32-gcc" />
+				</Linker>
+			</Target>
+			<Target title="windows FULL64">
+				<Option platforms="Windows;" />
+				<Option output="./GAME/mLuna.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="GAME" />
+				<Option object_output=".wd2mobjs64" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Compiler>
+					<Add option="-m64" />
+					<Add option="-fpermissive" />
+					<Add option="-DWIN32" />
+					<Add option="-DPHYSICS" />
+					<Add directory="E:/irrlicht-1.8.4/include" />
+					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/include/python2.7" />
+					<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
+					<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/include" />
+				</Compiler>
+				<Linker>
+					<Add option="-m64" />
+					<Add library="Irrlicht" />
+					<Add library="OpenAL32" />
+					<Add library="python2.7" />
+					<Add library="m" />
+					<Add library="WSock32" />
+					<Add library="Winmm" />
+					<Add library="libirrNetLite22" />
+					<Add library="cAudio" />
+					<Add library="freetype" />
+					<Add library="opengl32" />
+					<Add library="glu32" />
+					<Add library="IrrOpenSteer" />
+					<Add library="z" />
 					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/bin" />
 					<Add directory="E:/irrlicht-1.8.4/lib/Win64-gcc" />
 					<Add directory="D:/openal-soft-1.21.1-bin/libs/Win64" />
@@ -1138,6 +1178,8 @@
 			<Add directory="Input/FluidLite/include/" />
 			<Add directory="Physics/bullet3/src" />
 			<Add directory="../LunaLibs/polyvox-0.2.1/library/PolyVoxCore/include" />
+			<Add directory="../LunaLibs/libogg-1.1.4/include" />
+			<Add directory="../LunaLibs/libvorbis-1.2.3/include" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />
@@ -1196,6 +1238,9 @@
 			<Add directory="../LunaLibs/freetype-2.3.9" />
 			<Add directory="../irrlicht-1.8.4/lib/Linux" />
 			<Add directory="../LunaLibs/polyvox-0.2.1/library/PolyVoxCore" />
+			<Add directory="../LunaLibs/libogg-1.1.4" />
+			<Add directory="../LunaLibs/libvorbis-1.2.3" />
+			<Add directory="../LunaLibs/cAudio23/cAudio/bin/win32-gcc" />
 		</Linker>
 		<Unit filename="DevLoop.h" />
 		<Unit filename="Equipment/Rifle.cpp" />

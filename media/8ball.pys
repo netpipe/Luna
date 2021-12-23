@@ -27,7 +27,7 @@ if (init) :
  import os
  import math
  import time
- import itertools
+# import itertools
 #import hashlib #causes issues with emscripten
  #import random
  #import shuffle
