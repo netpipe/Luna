@@ -18,9 +18,9 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
-
+#ifdef POLYVOX
 #ifndef __AmbientOcclusionCalculator_H__
 #define __AmbientOcclusionCalculator_H__
 
@@ -41,10 +41,10 @@ namespace PolyVox
 {
 	/**
 	 * \file
-	 * 
+	 *
 	 * Ambient occlusion
 	 */
-	
+
 	template<typename IsVoxelTransparentCallback>
 	class AmbientOcclusionCalculatorRaycastCallback
 	{
@@ -65,13 +65,13 @@ namespace PolyVox
 
 	// NOTE: The callback needs to be a functor not a function. I haven't been
 	// able to work the required template magic to get functions working as well.
-	// 
+	//
 	// Matt: If you make the function take a "IsVoxelTransparentCallback&&" then
 	// it will forward it on. Works for functors, functions and lambdas.
 	// This will be 'perfect forwarding' using 'universal references'
 	// This will require C++11 rvalue references which is why I haven't made the
 	// change yet.
-	
+
 	/// Calculate the ambient occlusion for the volume
 	template<typename VolumeType, typename IsVoxelTransparentCallback>
 	void calculateAmbientOcclusion(VolumeType* volInput, Array<3, uint8_t>* arrayResult, Region region, float fRayLength, uint8_t uNoOfSamplesPerOutputElement, IsVoxelTransparentCallback isVoxelTransparentCallback);
@@ -80,3 +80,5 @@ namespace PolyVox
 #include "PolyVoxCore/AmbientOcclusionCalculator.inl"
 
 #endif //__AmbientOcclusionCalculator_H__
+
+#endif

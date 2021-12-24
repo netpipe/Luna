@@ -205,7 +205,8 @@
 					<Add option="-m64" />
 					<Add option="-fpermissive" />
 					<Add option="-DWIN32" />
-					<Add option="-DPHYSICS" />
+					<Add option="-DMINIMAL" />
+					<Add option="-DEXTRACOMPILE" />
 					<Add directory="E:/irrlicht-1.8.4/include" />
 					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/include/python2.7" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
@@ -226,6 +227,8 @@
 					<Add library="glu32" />
 					<Add library="IrrOpenSteer" />
 					<Add library="z" />
+					<Add library="SPARK" />
+					<Add library="SPARK_IRR" />
 					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/bin" />
 					<Add directory="E:/irrlicht-1.8.4/lib/Win64-gcc" />
 					<Add directory="D:/openal-soft-1.21.1-bin/libs/Win64" />

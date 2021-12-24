@@ -352,6 +352,8 @@ int Luna::init(){
 			//device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 0,1); // seems to work with rdp better only runs without python currently
 
 			device = createDevice ( EDT_SOFTWARE,dimension2du (resolution[0],resolution[1]), 24, 0,1); // seems to work with rdp better only runs without python currently
+			//device = createDevice ( EDT_BURNINGSVIDEO,dimension2du (resolution[0],resolution[1]), 24, 0,1); // seems to work with rdp better only runs without python currently
+
 			#endif
 		#endif
      //   device = createDevice ( EDT_SOFTWARE,dimension2du (resolution[0],resolution[1]), 24, 0,1);

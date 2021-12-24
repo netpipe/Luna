@@ -67,7 +67,6 @@
     //#include "../entities/player.h"
     #include "../entities/OpenSteer/cOpenSteerDemo.h"
     #undef useIrrExtensions13
-    #define HUD //not sure if this is needed ?
 #endif
 
 #ifdef ATMOSPHERE
@@ -129,11 +128,8 @@
     #include "../GUI/cImage2D.h"
 #endif
 
-#ifdef FT2
-    #include "../Scene/spriteManager/BmFont.h"
-#endif // FT2
-
 #ifdef SPRITES
+    #include "../Scene/spriteManager/BmFont.h"
     #include "../Scene/spriteManager/SpriteManager.h"
     #include "../Scene/spriteManager/ParticleSystem.h"
 #endif
@@ -170,11 +166,8 @@
     CEffectPostProc* ppInvert;
 #endif
 
-#ifdef FT2
-    BmFont *bmfonts = new BmFont;
-#endif
-
 #ifdef SPRITES
+    BmFont *bmfonts = new BmFont;
     SpriteManager *sprites = new SpriteManager;
 #endif
 
@@ -293,7 +286,7 @@
     fluid_synth_t* synth = NULL;
 #endif
 
-#ifdef FT2
+#ifdef FT22
     CGUITTFont *fonts[6],*font,*font2;
     CGUITTFace face,face2,face3;
 #endif
