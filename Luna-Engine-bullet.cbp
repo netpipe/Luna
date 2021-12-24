@@ -12,7 +12,7 @@
 			<Target title="Linux Debug MINIMAL">
 				<Option output="./GAME/mLuna" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
-				<Option object_output=".dmobjs" />
+				<Option object_output=".dmobjsb" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option projectCompilerOptionsRelation="1" />
@@ -35,7 +35,7 @@
 			<Target title="Linux Debug 2D">
 				<Option output="./GAME/mLuna2d" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
-				<Option object_output=".d2dmobjs" />
+				<Option object_output=".d2dmobjsb" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option projectCompilerOptionsRelation="1" />
@@ -64,7 +64,7 @@
 			<Target title="Linux Debug 2D Sound">
 				<Option output="./GAME/mLuna2d" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
-				<Option object_output=".d2dmobjs" />
+				<Option object_output=".d2dmobjsb" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option projectCompilerOptionsRelation="1" />
@@ -134,7 +134,7 @@
 				<Option platforms="Windows;" />
 				<Option output="./GAME/mLuna.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
-				<Option object_output=".wdmobjs" />
+				<Option object_output=".wdmobjsb" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="1" />
@@ -163,7 +163,7 @@
 				<Option platforms="Windows;" />
 				<Option output="./GAME/mLuna.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
-				<Option object_output=".wd2mobjs" />
+				<Option object_output=".wd2mobjsb" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="1" />
@@ -196,7 +196,7 @@
 				<Option platforms="Windows;" />
 				<Option output="./GAME/mLuna.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
-				<Option object_output=".wd2mobjs64" />
+				<Option object_output=".wd2mobjs64b" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="1" />
@@ -2427,6 +2427,7 @@
 		<Unit filename="media/keys.pys" />
 		<Unit filename="media/main.pys" />
 		<Unit filename="media/net.pys" />
+		<Unit filename="media/tiled.pys" />
 		<Extensions>
 			<DoxyBlocks>
 				<comment_style block="0" line="0" />

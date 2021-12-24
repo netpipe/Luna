@@ -25,7 +25,7 @@ if (init) :
 
 
  import os
- import itertools
+ #import itertools
 #import hashlib #causes issues with emscripten
  #import random
  import math
@@ -46,7 +46,8 @@ if (init) :
  a8ball=addImage("../media/8ball2.png",480,480)
  init=0
  input.mouse("mvisible",0,0)
- irr.tiled("tiled/animation.tmx",0)
+#  irr.tiled("/tiled/animation.tmx",0)
+ irr.tiled("../media/tiled/animation.tmx",0)
 irr.tiled("",2) #animated = 2 regular 1 and init =0
 image.iposition(irrlichtlogo, input.mouse("mgetx",0,0),input.mouse("mgety",0,0))
 

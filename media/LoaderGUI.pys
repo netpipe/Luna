@@ -89,13 +89,8 @@ if initloader :
    # scene.fluidlite("","",1)
     input.voxelLoad("test");
 
-<<<<<<< HEAD
     #irr.tiled("tiled/animation.tmx",0)
     irr.tiled("../media/tiled/animation.tmx",0)
-=======
-   # irr.tiled("../media/tiled/animation.tmx",0)
-    irr.tiled("tiled/animation.tmx",0)
->>>>>>> 307c54eeee67e2e5a987ba2fa32b3782dbe84fb3
 irr.tiled("",2) #animated = 2 regular 1 and init =0
 #input.gamepad(0,"gpinit",1)
 #input.gamepad(0,"gprun",1)
