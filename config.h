@@ -1,3 +1,38 @@
+
+#ifdef EXTRACOMPILE  //leftovers and extra from minimal
+ //#define COMPRESS //needed for empython
+//#define SDLMixer // wip - might not be compatable with the engine
+//#define OPENAL2 // working with emscripten
+//#define SDLSound //- seems to play and freeze needs threading
+    // #define WII
+   // #define IRRc
+   //PathFinding
+    #define RECAST
+    #define MINAV
+    #define OPENSTEER
+    #define SPARK
+ // #define SKELETON // needs to be updated
+//  #define VEGETATION //grass,weeds, vines
+ // #define FLARE
+  //#define FLARES
+  //#define FLARE2  // more realistic and working
+  //#define FLUIDLITE
+  //#define FLUIDSYNTH //has been replaced by fluidlite
+  //#define DECALS       //not used
+  #define DECALS2
+  #define TESSELATE
+  //  #define occlusion.
+  //  #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
+      #define RIBBONTRAIL
+  //  #define DESTRUCTION //not working
+  #define FORMATIONDEMO
+ // #define HUD //causes crashing
+  #define FT2
+  //#define PYTHON_MINIMALTEST
+
+#endif
+
+
 #ifdef MINIMAL
  // MINIMAL defines
     #define EVENTS
@@ -79,7 +114,7 @@
 
   #define POLYVOX
 
-#else
+#else  // mainly used for old stuff before cleanup , emscripten perhaps it should work with minimal too
 
  #define PYTHON  // defined in the codeblocks project option defines for target management and testing builds
  // #define ANGELSCRIPT
@@ -169,7 +204,7 @@
       #define RIBBONTRAIL
   //  #define DESTRUCTION //not working
   #define FORMATIONDEMO
-  #define HUD
+ // #define HUD
   #define Image2D // Just testing out
   #define CHOPPER
 
@@ -181,4 +216,3 @@
   //#define PYTHON_MINIMALTEST
 
 #endif
-
