@@ -159,6 +159,9 @@ public:
         for (s32 i = 0; i < stringc(filename).findFirst('/')+1; ++i)
             directory += stringc(filename)[i];
 
+            directory = "../media/tiled/";
+
+            printf("%s",directory.c_str());
         dev = device;
 
         if (!xml)

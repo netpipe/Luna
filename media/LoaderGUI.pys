@@ -8,7 +8,7 @@ if initloader :
     import time
     import os
     import physics
- 
+
 
     id=100
     def newId():
@@ -89,8 +89,8 @@ if initloader :
    # scene.fluidlite("","",1)
     input.voxelLoad("test");
 
-
-    irr.tiled("tiled/animation.tmx",0)
+    #irr.tiled("tiled/animation.tmx",0)
+    irr.tiled("../media/tiled/animation.tmx",0)
 irr.tiled("",2) #animated = 2 regular 1 and init =0
 #input.gamepad(0,"gpinit",1)
 #input.gamepad(0,"gprun",1)
