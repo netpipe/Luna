@@ -349,10 +349,11 @@ int Luna::init(){
 			#elif __APPLE__
 			device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 0,1);
 			#else //windows
-			device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 0,1); // has issues with RDP had to rename windows/system32/atig6pxxx.dll to .dll.bak
+			device = createDevice ( EDT_OPENGL,dimension2du (resolution[0],resolution[1]), 24, 0,1); // has issues with RDP had to rename windows/system32/atig6pxxx.dll to .dll.bak but causes opengl to not work system wide
 
-			//device = createDevice ( EDT_SOFTWARE,dimension2du (resolution[0],resolution[1]), 24, 0,1);
+			//device = createDevice ( EDT_SOFTWARE,dimension2du (resolution[0],resolution[1]), 24, 0,1); // for development and speed over RDP
 			//device = createDevice ( EDT_BURNINGSVIDEO,dimension2du (resolution[0],resolution[1]), 24, 0,1);
+
 
 			#endif
 		#endif

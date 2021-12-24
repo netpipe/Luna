@@ -11,6 +11,9 @@
     #define MINAV
     #define OPENSTEER
     #define SPARK
+
+    #define SOUND
+
  // #define SKELETON // needs to be updated
 //  #define VEGETATION //grass,weeds, vines
  // #define FLARE
@@ -27,7 +30,7 @@
   //  #define DESTRUCTION //not working
   #define FORMATIONDEMO
  // #define HUD //causes crashing
-  #define FT2
+ // #define FT2
   //#define PYTHON_MINIMALTEST
 
 #endif
@@ -82,7 +85,7 @@
 
     #ifdef MINIMAL2 //not so minimal extras
         //#define BOX2D // engine uses box2dlite already this is for testing
-        //#define SOUND
+
         //#define SDLMixer // wip - might not be compatable with the engine
         //#define OPENAL2 // working with emscripten
         //#define SDLSound //- seems to play and freeze needs threading
