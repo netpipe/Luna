@@ -18,9 +18,10 @@ appreciated but is not required.
 misrepresented as being the original software.
 
 3. This notice may not be removed or altered from any source
-distribution. 	
+distribution.
 *******************************************************************************/
-
+#include "../../../../config.h"
+#ifdef POLYVOX
 #ifndef __PolyVox_ArraySizes_H__
 #define __PolyVox_ArraySizes_H__
 
@@ -31,7 +32,7 @@ namespace PolyVox
 {
 	///The ArraySizes class provide a convienient way to specify the dimensions of an Array.
 	////////////////////////////////////////////////////////////////////////////////
-	/// The Array class requires an array of integers to be passed to the constructor 
+	/// The Array class requires an array of integers to be passed to the constructor
 	/// to specify the dimensions of the Array to be built. C++ does not allow this to
 	/// be done in place, and so it typically requires an extra line of code - something
 	/// like this:
@@ -41,7 +42,7 @@ namespace PolyVox
 	/// Array<3,float> array(dimensions);
 	/// \endcode
 	///
-	/// The ArraySizes class can be constructed in place, and also provides implicit 
+	/// The ArraySizes class can be constructed in place, and also provides implicit
 	/// conversion to an array of integers. Hence it is now possible to declare the
 	/// above Array as follows:
 	///
@@ -49,7 +50,7 @@ namespace PolyVox
 	/// Array<3,float> array(ArraySizes(10)(20)(30));
 	/// \endcode
 	///
-	/// Usage of this class is therefore very simple, although the template code 
+	/// Usage of this class is therefore very simple, although the template code
 	/// behind it may appear complex. For reference, it is based upon the article here:
 	/// http://www.drdobbs.com/cpp/184401319/
 	////////////////////////////////////////////////////////////////////////////////
@@ -68,10 +69,11 @@ namespace PolyVox
 		operator UIntArray1 () const;
 
 	private:
-		// This class is only one dimensional. Higher dimensions 
+		// This class is only one dimensional. Higher dimensions
 		// are implemented via the ArraySizesImpl class.
-		uint32_t m_pSizes[1]; 
+		uint32_t m_pSizes[1];
 	};
 }//namespace PolyVox
 
 #endif //__PolyVox_ArraySizes_H__
+#endif

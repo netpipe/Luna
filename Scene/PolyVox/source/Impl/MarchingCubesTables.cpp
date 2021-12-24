@@ -18,9 +18,10 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
-
+#include "../../../config.h"
+#ifdef POLYVOX
 //These tables were based on the article "Polygonising a scalar field".
 //They have been optimised to allow a more efficient algorithm via bitwise operations.
 
@@ -326,3 +327,4 @@ namespace PolyVox
 		{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, }
 	};
 }
+#endif

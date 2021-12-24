@@ -20,7 +20,8 @@ freely, subject to the following restrictions:
     3. This notice may not be removed or altered from any source
     distribution.
 *******************************************************************************/
-
+#include "../../../../config.h"
+#ifdef POLYVOX
 #ifndef __PolyVox_AStarPathfinder_H__
 #define __PolyVox_AStarPathfinder_H__
 
@@ -50,7 +51,7 @@ namespace PolyVox
 	/// Provides a configuration for the AStarPathfinder.
 	////////////////////////////////////////////////////////////////////////////////
 	/// This structure stores the AStarPathfinder%s configuration options, because this
-	/// is simpler than providing a large number of get/set properties within the 
+	/// is simpler than providing a large number of get/set properties within the
 	/// AStarPathfinder itself. In order to create an instance of this structure you
 	/// must provide at least a volume, a start and end point, and a list to store
 	/// the result. All the other option have sensible default values which can
@@ -91,7 +92,7 @@ namespace PolyVox
 
 		/// The start point for the pathfinding algorithm.
 		Vector3DInt32 start;
-		
+
 		/// The end point for the pathfinding algorithm.
 		Vector3DInt32 end;
 
@@ -144,8 +145,8 @@ namespace PolyVox
 	/// resulting path is usually the shortest possible, but a less optimal path can
 	/// be exchanged for reduced computation time.
 	///
-	/// For an excellent overview of the A* algorithm please see Amit Patel's Game 
-	/// Programming page here: http://theory.stanford.edu/~amitp/GameProgramming/ 
+	/// For an excellent overview of the A* algorithm please see Amit Patel's Game
+	/// Programming page here: http://theory.stanford.edu/~amitp/GameProgramming/
 	/// Much of this class is based on the principles described in those pages.
 	///
 	/// Usage of this class if very strightforward. You create an instance of it
@@ -184,7 +185,7 @@ namespace PolyVox
 
 		//The current node
 		AllNodesContainer::iterator current;
-		
+
 		float m_fProgress;
 
 		AStarPathfinderParams<VolumeType> m_params;
@@ -194,3 +195,4 @@ namespace PolyVox
 #include "PolyVoxCore/AStarPathfinder.inl"
 
 #endif //__PolyVox_AStarPathfinder_H__
+#endif

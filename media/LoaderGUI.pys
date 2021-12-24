@@ -87,18 +87,18 @@ if initloader :
     input.OIS("",0)
  #   scene.fluidlite("","",0)
    # scene.fluidlite("","",1)
-    input.voxelLoad("test");
+   # input.voxelLoad("test");
 
     #irr.tiled("tiled/animation.tmx",0)
     irr.tiled("../media/tiled/animation.tmx",0)
 irr.tiled("",2) #animated = 2 regular 1 and init =0
 #input.gamepad(0,"gpinit",1)
 #input.gamepad(0,"gprun",1)
-input.gamepad(0,"gprefresh",1)
+#input.gamepad(0,"gprefresh",1)
 #input.gamepad(0,"wiiled",2)
 #input.gamepad(0,"gpdpad",1)
-print(input.gamepad(0,"accy",1))
-input.OIS("",1)
+#print(input.gamepad(0,"accy",1))
+#input.OIS("",1)
 
 
 input.mouse("mvisible",0,0)

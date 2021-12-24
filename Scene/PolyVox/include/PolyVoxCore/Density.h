@@ -18,9 +18,10 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
-
+#include "../../../../config.h"
+#ifdef POLYVOX
 #ifndef __PolyVox_Density_H__
 #define __PolyVox_Density_H__
 
@@ -96,13 +97,13 @@ namespace PolyVox
 		Type getDensity() const { return m_uDensity; }
 		/**
 		 * Set the density of the voxel
-		 * 
+		 *
 		 * \param uDensity The density to set to
 		 */
 		void setDensity(Type uDensity) { m_uDensity = uDensity; }
 
 		/// \return The maximum allowed density of the voxel
-		static Type getMaxDensity() { return (std::numeric_limits<Type>::max)(); } 
+		static Type getMaxDensity() { return (std::numeric_limits<Type>::max)(); }
 		/// \return The minimum allowed density of the voxel
 		static Type getMinDensity() { return (std::numeric_limits<Type>::min)(); }
 
@@ -173,7 +174,7 @@ namespace PolyVox
 		}
 
 		DensityType getThreshold(void)
-		{			
+		{
 			return m_tThreshold;
 		}
 
@@ -183,3 +184,4 @@ namespace PolyVox
 }
 
 #endif //__PolyVox_Density_H__
+#endif

@@ -18,9 +18,10 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
-
+#include "../../../../config.h"
+#ifdef POLYVOX
 #ifndef __PolyVox_Region_H__
 #define __PolyVox_Region_H__
 
@@ -33,16 +34,16 @@ namespace PolyVox
 	/**
 	Represents a part of a Volume.
 
-	Many operations in PolyVox are constrained to only part of a volume. For example, when running the surface extractors 
-	it is unlikely that you will want to run it on the whole volume at once, as this will give a very large mesh which may 
-	be too much to render. Instead you will probably want to run a surface extractor a number of times on different parts 
+	Many operations in PolyVox are constrained to only part of a volume. For example, when running the surface extractors
+	it is unlikely that you will want to run it on the whole volume at once, as this will give a very large mesh which may
+	be too much to render. Instead you will probably want to run a surface extractor a number of times on different parts
 	of the volume, there by giving a number of meshes which can be culled and rendered seperately.
 
-	The Region class is used to define these parts (regions) of the volume. Essentially it consists of an upper and lower 
-	bound which specify the range of voxels positions considered to be part of the region. Note that these bounds are 
+	The Region class is used to define these parts (regions) of the volume. Essentially it consists of an upper and lower
+	bound which specify the range of voxels positions considered to be part of the region. Note that these bounds are
 	<em>inclusive</em>. The class also provides functions for modifying the regions in a variety of ways.
 
-	\Note The dimensions of a region can be measured either in voxels or in cells. See the manual for more information 
+	\Note The dimensions of a region can be measured either in voxels or in cells. See the manual for more information
 	about these definitions.
 	*/
 #ifdef SWIG
@@ -119,8 +120,9 @@ namespace PolyVox
 		//when the volume size is 128^3 and the level of detail is 2. Very strange, but consistant.
 		//Presubablly some kind of alignment issue? It started after this class was changed to use
 		//int16's rather than int32's. To be investigated.
-		uint8_t dummy; 
+		uint8_t dummy;
 	};
 }
 
+#endif
 #endif

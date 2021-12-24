@@ -18,9 +18,10 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
-
+#include "../../../../config.h"
+#ifdef POLYVOX
 #ifndef __PolyVox_RawVolume_H__
 #define __PolyVox_RawVolume_H__
 
@@ -59,7 +60,7 @@ namespace PolyVox
 			Sampler(RawVolume<VoxelType>* volume);
 			~Sampler();
 
-			inline VoxelType getVoxel(void) const;			
+			inline VoxelType getVoxel(void) const;
 
 			void setPosition(const Vector3DInt32& v3dNewPos);
 			void setPosition(int32_t xPos, int32_t yPos, int32_t zPos);
@@ -161,3 +162,4 @@ namespace PolyVox
 #include "PolyVoxCore/RawVolumeSampler.inl"
 
 #endif //__PolyVox_RawVolume_H__
+#endif

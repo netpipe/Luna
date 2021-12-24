@@ -18,9 +18,10 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
-
+#include "../../../config.h"
+#ifdef POLYVOX
 #include "PolyVoxCore/MeshDecimator.h"
 #include "PolyVoxCore/SurfaceMesh.h"
 
@@ -41,7 +42,7 @@ namespace PolyVox
 			vecVertexMetadata[ct].isOnRegionFace.reset();
 		}
 
-		//Identify duplicate vertices, as they lie on the material edge. To do this we convert into integers and sort 
+		//Identify duplicate vertices, as they lie on the material edge. To do this we convert into integers and sort
 		//(first on z, then y, then x). They should be mostly in order as this is the order they come out of the
 		//CubicSurfaceExtractor in. Duplicates are now neighbours in the resulting list so just scan through for pairs.
 		std::vector<IntVertex> intVertices;
@@ -108,7 +109,7 @@ namespace PolyVox
 
 		//Initialise the metadata
 		for(uint32_t ct = 0; ct < vecVertexMetadata.size(); ct++)
-		{			
+		{
 			vecVertexMetadata[ct].isOnRegionFace.reset();
 			vecVertexMetadata[ct].isOnMaterialEdge = false;
 			vecVertexMetadata[ct].normal = m_pOutputMesh->m_vecVertices[ct].normal;
@@ -132,7 +133,7 @@ namespace PolyVox
 		}
 
 		//If all three vertices have the same material then we are not on a material edge. If any vertex has a different
-		//material then all three vertices are on a material edge. E.g. If one vertex has material 'a' and the other two 
+		//material then all three vertices are on a material edge. E.g. If one vertex has material 'a' and the other two
 		//have material 'b', then the two 'b's are still on an edge (with 'a') even though they are the same as eachother.
 		for(uint32_t ct = 0; ct < m_vecTriangles.size(); ct++)
 		{
@@ -140,8 +141,8 @@ namespace PolyVox
 			uint32_t v1 = m_vecTriangles[ct].v1;
 			uint32_t v2 = m_vecTriangles[ct].v2;
 
-			bool allMatch = 
-				(m_pOutputMesh->m_vecVertices[v0].material - m_pOutputMesh->m_vecVertices[v1].material < 0.001f) && 
+			bool allMatch =
+				(m_pOutputMesh->m_vecVertices[v0].material - m_pOutputMesh->m_vecVertices[v1].material < 0.001f) &&
 				(m_pOutputMesh->m_vecVertices[v1].material - m_pOutputMesh->m_vecVertices[v2].material < 0.001f);
 
 			if(!allMatch)
@@ -153,7 +154,7 @@ namespace PolyVox
 		}
 	}
 
-	template<> 
+	template<>
 	POLYVOX_API bool MeshDecimator<PositionMaterialNormal>::canCollapseNormalEdge(uint32_t uSrc, uint32_t uDst)
 	{
 		if(m_vecInitialVertexMetadata[uSrc].normal.dot(m_vecInitialVertexMetadata[uDst].normal) < m_fMinDotProductForCollapse)
@@ -165,7 +166,7 @@ namespace PolyVox
 		return !collapseChangesFaceNormals(uSrc, uDst, m_fMinDotProductForCollapse);
 	}
 
-	template<> 
+	template<>
 	POLYVOX_API bool MeshDecimator<PositionMaterial>::canCollapseNormalEdge(uint32_t uSrc, uint32_t uDst)
 	{
 		//We don't actually use the normal here, because we want to allow face
@@ -179,3 +180,4 @@ namespace PolyVox
 		return !collapseChangesFaceNormals(uSrc, uDst, 0.999f);
 	}
 }
+#endif

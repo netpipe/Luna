@@ -18,9 +18,10 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
-
+#include "../../../config.h"
+#ifdef POLYVOX
 #include "PolyVoxCore/Region.h"
 
 #include <limits>
@@ -155,7 +156,7 @@ namespace PolyVox
 	bool Region::containsPoint(const Vector3DInt32& pos, uint8_t boundary) const
 	{
 		return (pos.getX() <= m_v3dUpperCorner.getX() - boundary)
-			&& (pos.getY() <= m_v3dUpperCorner.getY() - boundary) 
+			&& (pos.getY() <= m_v3dUpperCorner.getY() - boundary)
 			&& (pos.getZ() <= m_v3dUpperCorner.getZ() - boundary)
 			&& (pos.getX() >= m_v3dLowerCorner.getX() + boundary)
 			&& (pos.getY() >= m_v3dLowerCorner.getY() + boundary)
@@ -182,7 +183,7 @@ namespace PolyVox
 
 	bool Region::containsPointInY(int32_t pos, uint8_t boundary) const
 	{
-		return (pos <= m_v3dUpperCorner.getY() - boundary) 
+		return (pos <= m_v3dUpperCorner.getY() - boundary)
 			&& (pos >= m_v3dLowerCorner.getY() + boundary);
 	}
 
@@ -256,3 +257,4 @@ namespace PolyVox
 		return m_v3dUpperCorner.getX() - m_v3dLowerCorner.getX();
 	}
 }
+#endif

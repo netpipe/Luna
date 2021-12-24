@@ -18,9 +18,10 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
-
+#include "../../../../config.h"
+#ifdef POLYVOX
 #ifndef __PolyVox_SimpleVolume_H__
 #define __PolyVox_SimpleVolume_H__
 
@@ -66,7 +67,7 @@ namespace PolyVox
 		public:
 			VoxelType* m_tUncompressedData;
 			uint16_t m_uSideLength;
-			uint8_t m_uSideLengthPower;	
+			uint8_t m_uSideLengthPower;
 		};
 
 		//There seems to be some descrepency between Visual Studio and GCC about how the following class should be declared.
@@ -92,7 +93,7 @@ namespace PolyVox
 			VoxelType getSubSampledVoxel(uint8_t uLevel) const;
 			/// Get the value of the current voxel
 			inline VoxelType getVoxel(void) const;
-			
+
 			/// Set the current voxel position
 			void setPosition(const Vector3DInt32& v3dNewPos);
 			/// Set the current voxel position
@@ -144,7 +145,7 @@ namespace PolyVox
 			inline VoxelType peekVoxel1px1py0pz(void) const;
 			inline VoxelType peekVoxel1px1py1pz(void) const;
 
-		private:			
+		private:
 			//Other current position information
 			VoxelType* mCurrentVoxel;
 		};
@@ -181,7 +182,7 @@ namespace PolyVox
 		/// Assignment operator
 		SimpleVolume& operator=(const SimpleVolume& rhs);
 
-	private:	
+	private:
 		void initialise(const Region& regValidRegion, uint16_t uBlockSideLength);
 
 		Block* getUncompressedBlock(int32_t uBlockX, int32_t uBlockY, int32_t uBlockZ) const;
@@ -216,3 +217,4 @@ namespace PolyVox
 #include "PolyVoxCore/SimpleVolumeSampler.inl"
 
 #endif //__PolyVox_SimpleVolume_H__
+#endif

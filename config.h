@@ -115,7 +115,7 @@
   #define RAGDOLL   //bulletRagdoll
   #endif
 
-  #define POLYVOX
+//  #define POLYVOX
 
 #else  // mainly used for old stuff before cleanup , emscripten perhaps it should work with minimal too
 

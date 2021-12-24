@@ -20,7 +20,8 @@ freely, subject to the following restrictions:
     3. This notice may not be removed or altered from any source
     distribution.
 *******************************************************************************/
-
+#include "../../../config.h"
+#ifdef POLYVOX
 #include "PolyVoxCore/SimpleInterface.h"
 
 //DOESN'T BELONG HERE - JUST FOR TESTING!!
@@ -41,3 +42,4 @@ namespace PolyVox
 		surfaceExtractor.execute();
 	}
 }
+#endif

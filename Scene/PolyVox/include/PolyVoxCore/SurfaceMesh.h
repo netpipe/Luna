@@ -18,9 +18,10 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
-
+#include "../../../../config.h"
+#ifdef POLYVOX
 #ifndef __PolyVox_SurfaceMesh_H__
 #define __PolyVox_SurfaceMesh_H__
 
@@ -50,13 +51,13 @@ namespace PolyVox
 	{
 	public:
 	   SurfaceMesh();
-	   ~SurfaceMesh();	   
+	   ~SurfaceMesh();
 
 	   const std::vector<uint32_t>& getIndices(void) const;
 	   uint32_t getNoOfIndices(void) const;
 	   uint32_t getNoOfNonUniformTrianges(void) const;
 	   uint32_t getNoOfUniformTrianges(void) const;
-	   uint32_t getNoOfVertices(void) const;	   
+	   uint32_t getNoOfVertices(void) const;
 	   std::vector<VertexType>& getRawVertexData(void); //FIXME - this should be removed
 	   const std::vector<VertexType>& getVertices(void) const;
 
@@ -87,13 +88,13 @@ namespace PolyVox
 	   int32_t m_iTimeStamp;
 
 	   int32_t m_iNoOfLod0Tris;
-	
-	public:		
+
+	public:
 		std::vector<uint32_t> m_vecTriangleIndices;
 		std::vector<VertexType> m_vecVertices;
 
 		std::vector<LodRecord> m_vecLodRecords;
-	};	
+	};
 
 	template <typename VertexType>
 	polyvox_shared_ptr< SurfaceMesh<VertexType> > extractSubset(SurfaceMesh<VertexType>& inputMesh, std::set<uint8_t> setMaterials);
@@ -102,3 +103,4 @@ namespace PolyVox
 #include "PolyVoxCore/SurfaceMesh.inl"
 
 #endif /* __SurfaceMesh_H__ */
+#endif

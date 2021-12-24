@@ -18,9 +18,10 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
-
+#include "../../../../config.h"
+#ifdef POLYVOX
 #ifndef __PolyVox_BaseVolume_H__
 #define __PolyVox_BaseVolume_H__
 
@@ -53,7 +54,7 @@ namespace PolyVox
 			~Sampler();
 
 			Vector3DInt32 getPosition(void) const;
-			inline VoxelType getVoxel(void) const;	
+			inline VoxelType getVoxel(void) const;
 
 			void setPosition(const Vector3DInt32& v3dNewPos);
 			void setPosition(int32_t xPos, int32_t yPos, int32_t zPos);
@@ -139,7 +140,7 @@ namespace PolyVox
 		/// Calculates approximatly how many bytes of memory the volume is currently using.
 		uint32_t calculateSizeInBytes(void);
 
-	protected:	
+	protected:
 		/// Constructor for creating a fixed size volume.
 		BaseVolume(const Region& regValid);
 
@@ -166,3 +167,4 @@ namespace PolyVox
 #include "PolyVoxCore/BaseVolumeSampler.inl"
 
 #endif //__PolyVox_BaseVolume_H__
+#endif

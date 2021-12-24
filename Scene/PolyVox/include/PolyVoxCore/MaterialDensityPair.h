@@ -18,9 +18,10 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
-
+#include "../../../../config.h"
+#ifdef POLYVOX
 #ifndef __PolyVox_MaterialDensityPair_H__
 #define __PolyVox_MaterialDensityPair_H__
 
@@ -133,9 +134,9 @@ namespace PolyVox
 		}
 
 		DensityType getThreshold(void)
-		{			
+		{
 			return m_tThreshold;
-		}		
+		}
 
 	private:
 		DensityType m_tThreshold;
@@ -145,4 +146,5 @@ namespace PolyVox
 	typedef MaterialDensityPair<uint16_t, 8, 8> MaterialDensityPair88;
 }
 
+#endif
 #endif

@@ -20,6 +20,7 @@ freely, subject to the following restrictions:
     3. This notice may not be removed or altered from any source
     distribution.
 *******************************************************************************/
+#include "../../../../config.h"
 #ifdef POLYVOX
 #ifndef __PolyVox_Array_H__
 #define __PolyVox_Array_H__

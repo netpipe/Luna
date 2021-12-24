@@ -18,18 +18,19 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
-
+#include "../../../config.h"
+#ifdef POLYVOX
 #include "PolyVoxCore/ArraySizes.h"
 
 namespace PolyVox
-{	
+{
 	/**
     \param uSize The size of the first dimension.
     */
-	ArraySizes::ArraySizes(uint32_t uSize) 
-	{ 
+	ArraySizes::ArraySizes(uint32_t uSize)
+	{
 		m_pSizes[0]=uSize;
 	}
 
@@ -40,8 +41,8 @@ namespace PolyVox
     \param uSize The size of the next dimension.
     \return A higher dimension version of this class.
     */
-	ArraySizesImpl<2> ArraySizes::operator () (uint32_t uSize) 
-	{ 
+	ArraySizesImpl<2> ArraySizes::operator () (uint32_t uSize)
+	{
 		return ArraySizesImpl<2>(m_pSizes, uSize);
 	}
 
@@ -53,3 +54,4 @@ namespace PolyVox
 		return m_pSizes;
 	}
 }
+#endif

@@ -18,11 +18,12 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
 
 #include "PolyVoxCore/VertexTypes.h"
-
+#include "../../../config.h"
+#ifdef POLYVOX
 namespace PolyVox
 {
 	PositionMaterialNormal::PositionMaterialNormal()
@@ -33,7 +34,7 @@ namespace PolyVox
 		:position(positionToSet)
 		,material(materialToSet)
 	{
-		
+
 	}
 
 	PositionMaterialNormal::PositionMaterialNormal(Vector3DFloat positionToSet, Vector3DFloat normalToSet, float materialToSet)
@@ -66,7 +67,7 @@ namespace PolyVox
 	void PositionMaterialNormal::setNormal(const Vector3DFloat& normalToSet)
 	{
 		normal = normalToSet;
-	}	
+	}
 
 	void PositionMaterialNormal::setPosition(const Vector3DFloat& positionToSet)
 	{
@@ -85,7 +86,7 @@ namespace PolyVox
 		:position(positionToSet)
 		,material(materialToSet)
 	{
-		
+
 	}
 
 	float PositionMaterial::getMaterial(void) const
@@ -108,3 +109,4 @@ namespace PolyVox
 		position = positionToSet;
 	}
 }
+#endif

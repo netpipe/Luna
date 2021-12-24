@@ -18,14 +18,15 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
-
+#include "../../../config.h"
+#ifdef POLYVOX
 #include "PolyVoxCore/Impl/RandomUnitVectors.h"
 
 namespace PolyVox
-{	
-	extern const Vector3DFloat randomUnitVectors[1024] = 
+{
+	extern const Vector3DFloat randomUnitVectors[1024] =
 	{
 		Vector3DFloat(+0.339922f, +0.827727f, -0.446454f),
 		Vector3DFloat(+0.084104f, -0.552666f, -0.829148f),
@@ -1053,3 +1054,4 @@ namespace PolyVox
 		Vector3DFloat(-0.526640f, +0.820445f, +0.222533f)
 	};
 }
+#endif

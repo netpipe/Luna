@@ -18,9 +18,10 @@ appreciated but is not required.
 misrepresented as being the original software.
 
 3. This notice may not be removed or altered from any source
-distribution. 	
+distribution.
 *******************************************************************************/
-
+#include "../../../../config.h"
+#ifdef POLYVOX
 #ifndef __PolyVox_ArraySizesImpl_H__
 #define __PolyVox_ArraySizesImpl_H__
 
@@ -59,3 +60,4 @@ namespace PolyVox
 #include "PolyVoxCore/Impl/ArraySizesImpl.inl"
 
 #endif //__PolyVox_ArraySizesImpl_H__
+#endif

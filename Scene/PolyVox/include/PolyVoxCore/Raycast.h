@@ -20,7 +20,8 @@ freely, subject to the following restrictions:
     3. This notice may not be removed or altered from any source
     distribution.
 *******************************************************************************/
-
+#include "../../../../config.h"
+#ifdef POLYVOX
 #ifndef __PolyVox_Raycast_H__
 #define __PolyVox_Raycast_H__
 
@@ -72,18 +73,18 @@ namespace PolyVox
 	/// Vector3DFloat direction(rayDir.x(), rayDir.y(), rayDir.z());
 	/// direction.normalise();
 	/// direction *= 1000.0f; //Casts ray of length 1000
-	/// 
+	///
 	/// RaycastResult raycastResult;
 	/// Raycast<Material8> raycast(m_pPolyVoxVolume, start, direction, raycastResult);
 	/// raycast.execute();
-	/// 
+	///
 	/// if(raycastResult.foundIntersection)
 	/// {
 	/// 	//...
 	/// }
 	/// \endcode
 	///
-	/// Some further notes, the Raycast uses full 26-connectivity, which basically means it 
+	/// Some further notes, the Raycast uses full 26-connectivity, which basically means it
 	/// will examine every voxel the ray touches, even if it just passes through the corner.
 	/// Also, it peforms a simple binary test against a voxel's threshold, rather than making
 	/// use of it's density. Therefore it will work best in conjunction with one of the 'cubic'
@@ -101,3 +102,4 @@ namespace PolyVox
 #include "PolyVoxCore/Raycast.inl"
 
 #endif //__PolyVox_Raycast_H__
+#endif

@@ -18,9 +18,10 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
-
+#include "../../../../config.h"
+#ifdef POLYVOX
 #ifndef __PolyVox_LargeVolume_H__
 #define __PolyVox_LargeVolume_H__
 
@@ -65,17 +66,17 @@ namespace PolyVox
 	/// In this particular example each voxel in the LargeVolume is of type 'Material8', as specified by the template parameter. This is one of several
 	/// predefined voxel types, and it is also possible to define your own. The Material8 type simply holds an integer value where zero represents
 	/// empty space and any other value represents a solid material.
-	/// 
+	///
 	/// The LargeVolume constructor takes a Region as a parameter. This specifies the valid range of voxels which can be held in the volume, so in this
 	/// particular case the valid voxel positions are (0,0,0) to (63, 127, 255). Attempts to access voxels outside this range will result is accessing the
 	/// border value (see getBorderValue() and setBorderValue()). PolyVox also has support for near infinite volumes which will be discussed later.
-	/// 
+	///
 	/// Access to individual voxels is provided via the setVoxelAt() and getVoxelAt() member functions. Advanced users may also be interested in
 	/// the Sampler class for faster read-only access to a large number of voxels.
-	/// 
+	///
 	/// Lastly the example prints out some properties of the LargeVolume. Note that the dimentsions getWidth(), getHeight(), and getDepth() are inclusive, such
 	/// that the width is 64 when the range of valid x coordinates goes from 0 to 63.
-	/// 
+	///
 	/// Data Representaion
 	/// ------------------
 	/// If stored carelessly, volume data can take up a huge amount of memory. For example, a volume of dimensions 1024x1024x1024 with
@@ -101,12 +102,12 @@ namespace PolyVox
 	///
 	/// However, if you are storing density values then you may want to take some care. The advantage of storing smoothly changing values
 	/// is that you can get smooth surfaces extracted, but storing smoothly changing values inside or outside objects (rather than just
-	/// on the boundary) does not benefit the surface and is very hard to compress effectively. You may wish to apply some thresholding to 
+	/// on the boundary) does not benefit the surface and is very hard to compress effectively. You may wish to apply some thresholding to
 	/// your density values to reduce this problem (this threasholding should only be applied to voxels who don't contribute to the surface).
 	///
 	/// Paging large volumes
 	/// --------------------
-	/// The compression scheme described previously will typically allow you to load several billion voxels into a few hundred megabytes of memory, 
+	/// The compression scheme described previously will typically allow you to load several billion voxels into a few hundred megabytes of memory,
 	/// though as explained the exact compression rate is highly dependant on your data. If you have more data than this then PolyVox provides a
 	/// mechanism by which parts of the volume can be paged out of memory by calling user supplied callback functions. This mechanism allows a
 	/// potentially unlimited amount of data to be loaded, provided the user is able to take responsibility for storing any data which PolyVox
@@ -119,12 +120,12 @@ namespace PolyVox
 	/// void myDataRequiredHandler(const ConstVolumeProxy<MaterialDensityPair44>& volume, const PolyVox::Region& reg)
 	/// {
 	///		//This function is being called because part of the data is missing from memory and needs to be supplied. The parameter
-	///		//'volume' provides access to the volume data, and the parameter 'reg' indicates which region of the volume you need fill.	
+	///		//'volume' provides access to the volume data, and the parameter 'reg' indicates which region of the volume you need fill.
 	/// }
 	///
 	/// void myDataOverflowHandler(const ConstVolumeProxy<MaterialDensityPair44>& vol, const PolyVox::Region& reg)
 	/// {
-	///		//This function is being called because part of the data is about to be removed from memory. The parameter 'volume' 
+	///		//This function is being called because part of the data is about to be removed from memory. The parameter 'volume'
 	///		//provides access to the volume data, and the parameter 'reg' indicates which region of the volume you need to store.
 	/// }
 	///
@@ -179,7 +180,7 @@ namespace PolyVox
 			Sampler& operator=(const Sampler& rhs);
 
 			VoxelType getSubSampledVoxel(uint8_t uLevel) const;
-			inline VoxelType getVoxel(void) const;			
+			inline VoxelType getVoxel(void) const;
 
 			void setPosition(const Vector3DInt32& v3dNewPos);
 			void setPosition(int32_t xPos, int32_t yPos, int32_t zPos);
@@ -244,7 +245,7 @@ namespace PolyVox
 			uint32_t timestamp;
 		};
 
-	public:		
+	public:
 		/// Constructor for creating a very large paging volume.
 		LargeVolume
 		(
@@ -316,7 +317,7 @@ namespace PolyVox
 		/// NOTE: accessing ANY voxels outside this region during the process of this function
 		/// is absolutely unsafe
 		polyvox_function<void(const ConstVolumeProxy<VoxelType>&, const Region&)> m_funcDataOverflowHandler;
-	
+
 		Block<VoxelType>* getUncompressedBlock(int32_t uBlockX, int32_t uBlockY, int32_t uBlockZ) const;
 		void eraseBlock(typename std::map<Vector3DInt32, LoadedBlock >::iterator itBlock) const;
 		/// this function can be called by m_funcDataRequiredHandler without causing any weird effects
@@ -358,3 +359,4 @@ namespace PolyVox
 #include "PolyVoxCore/LargeVolumeSampler.inl"
 
 #endif //__PolyVox_LargeVolume_H__
+#endif

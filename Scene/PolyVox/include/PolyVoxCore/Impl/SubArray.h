@@ -20,7 +20,8 @@ freely, subject to the following restrictions:
     3. This notice may not be removed or altered from any source
     distribution.
 *******************************************************************************/
-
+#include "../../../../config.h"
+#ifdef POLYVOX
 #ifndef __PolyVox_SubArray_H__
 #define __PolyVox_SubArray_H__
 
@@ -86,3 +87,4 @@ namespace PolyVox
 #include "PolyVoxCore/Impl/SubArray.inl"
 
 #endif //__PolyVox_SubArray_H__
+#endif

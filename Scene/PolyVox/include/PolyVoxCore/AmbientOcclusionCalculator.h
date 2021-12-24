@@ -20,6 +20,7 @@ freely, subject to the following restrictions:
     3. This notice may not be removed or altered from any source
     distribution.
 *******************************************************************************/
+#include "../../../../config.h"
 #ifdef POLYVOX
 #ifndef __AmbientOcclusionCalculator_H__
 #define __AmbientOcclusionCalculator_H__

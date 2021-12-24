@@ -18,9 +18,10 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
-
+#include "../../../../config.h"
+#ifdef POLYVOX
 #ifndef __PolyVox_TypeDef_H__
 #define __PolyVox_TypeDef_H__
 
@@ -61,7 +62,7 @@ freely, subject to the following restrictions:
 #endif // POLYVOX_SHARED
 
 //Check which compiler we are using and work around unsupported features as necessary.
-#if defined(_MSC_VER) && (_MSC_VER < 1600) 
+#if defined(_MSC_VER) && (_MSC_VER < 1600)
 	//To support old (pre-vc2010) Microsoft compilers we use boost to replace the
 	//std::shared_ptr and potentially other C++0x features. To use this capability you
 	//will need to make sure you have boost installed on your system.
@@ -75,7 +76,7 @@ freely, subject to the following restrictions:
 	#define polyvox_bind boost::bind
 	#define polyvox_placeholder_1 _1
 	#define polyvox_placeholder_2 _2
-	
+
 	#include <boost/static_assert.hpp>
 	#define static_assert BOOST_STATIC_ASSERT
 
@@ -102,4 +103,5 @@ freely, subject to the following restrictions:
 	//#define static_assert static_assert //we can use this
 #endif
 
+#endif
 #endif

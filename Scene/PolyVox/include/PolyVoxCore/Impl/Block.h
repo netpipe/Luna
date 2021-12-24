@@ -18,9 +18,10 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
-
+#include "../../../../config.h"
+#ifdef POLYVOX
 #ifndef __PolyVox_Block_H__
 #define __PolyVox_Block_H__
 
@@ -67,7 +68,7 @@ namespace PolyVox
 		std::vector< RunlengthEntry<uint16_t> > m_vecCompressedData;
 		VoxelType* m_tUncompressedData;
 		uint16_t m_uSideLength;
-		uint8_t m_uSideLengthPower;	
+		uint8_t m_uSideLengthPower;
 		bool m_bIsCompressed;
 		bool m_bIsUncompressedDataModified;
 	};
@@ -75,4 +76,5 @@ namespace PolyVox
 
 #include "PolyVoxCore/Impl/Block.inl"
 
+#endif
 #endif

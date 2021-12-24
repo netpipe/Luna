@@ -20,7 +20,8 @@ freely, subject to the following restrictions:
     3. This notice may not be removed or altered from any source
     distribution.
 *******************************************************************************/
-
+#include "../../../../config.h"
+#ifdef POLYVOX
 #ifndef __PolyVox_AStarPathfinderImpl_H__
 #define __PolyVox_AStarPathfinderImpl_H__
 
@@ -221,3 +222,4 @@ namespace PolyVox
 }
 
 #endif //__PolyVox_AStarPathfinderImpl_H__
+#endif

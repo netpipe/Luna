@@ -18,9 +18,10 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
-
+#include "../../../../config.h"
+#ifdef POLYVOX
 #ifndef __PolyVox_Interpolation_H__
 #define __PolyVox_Interpolation_H__
 
@@ -46,7 +47,7 @@ namespace PolyVox
         const Type& v00,const Type& v10,const Type& v01,const Type& v11,
         const float x, const float y)
     {
-        assert((x >= 0.0f) && (y >= 0.0f) && 
+        assert((x >= 0.0f) && (y >= 0.0f) &&
             (x <= 1.0f) && (y <= 1.0f));
 
 		// Linearly interpolate along x
@@ -65,7 +66,7 @@ namespace PolyVox
         const Type& v001,const Type& v101,const Type& v011,const Type& v111,
         const float x, const float y, const float z)
     {
-        assert((x >= 0.0f) && (y >= 0.0f) && (z >= 0.0f) && 
+        assert((x >= 0.0f) && (y >= 0.0f) && (z >= 0.0f) &&
             (x <= 1.0f) && (y <= 1.0f) && (z <= 1.0f));
 
 		// Bilinearly interpolate along Y
@@ -74,9 +75,10 @@ namespace PolyVox
 
 		// And linearly interpolate the results along z
 		Type v000_v100__v010_v110____v001_v101__v011_v111 = lerp(v000_v100__v010_v110, v001_v101__v011_v111, z);
-			
+
 		return v000_v100__v010_v110____v001_v101__v011_v111;
     }
 }
 
 #endif //__PolyVox_Interpolation_H__
+#endif

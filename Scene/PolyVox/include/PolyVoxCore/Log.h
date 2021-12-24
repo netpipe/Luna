@@ -18,9 +18,10 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
-
+#include "../../../../config.h"
+#ifdef POLYVOX
 #ifndef __PolyVox_Log_H__
 #define __PolyVox_Log_H__
 
@@ -28,7 +29,7 @@ freely, subject to the following restrictions:
 
 #include <string>
 
-//Note: The functions in this file are not for the user to call - they are 
+//Note: The functions in this file are not for the user to call - they are
 //intended for internal use only. The only exception is that you may set the
 //logHandler pointer to point at your own handling funtion for printing, etc.
 
@@ -43,7 +44,7 @@ namespace PolyVox
 		LS_INFO,
 		LS_WARN,
 		LS_ERROR
-	};	
+	};
 
 	POLYVOX_API extern void (*logHandler)(std::string, int severity);
 }
@@ -60,4 +61,5 @@ namespace PolyVox
 #define POLYVOX_LOG_WARN(message) if(logHandler){logHandler(message, LS_WARN);}
 #define POLYVOX_LOG_ERROR(message) if(logHandler){logHandler(message, LS_ERROR);}
 
+#endif
 #endif

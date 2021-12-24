@@ -18,9 +18,10 @@ freely, subject to the following restrictions:
     misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source
-    distribution. 	
+    distribution.
 *******************************************************************************/
-
+#include "../../../../config.h"
+#ifdef POLYVOX
 #ifndef __PolyVox_CubicSurfaceExtractorWithNormals_H__
 #define __PolyVox_CubicSurfaceExtractorWithNormals_H__
 
@@ -56,4 +57,5 @@ namespace PolyVox
 
 #include "PolyVoxCore/CubicSurfaceExtractorWithNormals.inl"
 
+#endif
 #endif
