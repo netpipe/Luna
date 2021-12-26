@@ -81,10 +81,10 @@ if initloader :
    # irr.tiled("tiled/animation.tmx",0)
     #irr.tiled("tiled/levels.tmx",0)
     #irr.tiled("tiled/3dbasic.tmx",0)
-    input.gamepad(0,"gpinit",1)
+    #input.gamepad(0,"gpinit",1)
     #input.gamepad(0,"rumble",1)
    # input.gamepad(0,"wiiled",2)
-    input.OIS("",0)
+    #input.OIS("",0)
  #   scene.fluidlite("","",0)
    # scene.fluidlite("","",1)
    # input.voxelLoad("test");
@@ -160,16 +160,20 @@ myMin = 33
 
 #scene.drawtext(str(now), font, 30,0,128,128)
 
+if input.mouse("mlmouse",0,0): #mousebutton
+   xcoord=input.mouse("mgetx",0,0)
+   ycoord=input.mouse("mgety",0,0)
+   mbtn=1;
 
 for i in range(len(pysList)):
     scene.drawtext(pysList[i],font, 32,46+i*47,128,160+i*47)
-    if input.mouse("mlmouse",0,0): #mousebutton
-      xcoord=input.mouse("mgetx",0,0)
-      ycoord=input.mouse("mgety",0,0)
-
+    if mbtn:
+    #  print(xcoord)
+    #  print(46*i-47)
+    #  print(ycoord)
       if ycoord > 46+i*47 and ycoord < 46+i*47+100 and xcoord > 5 and xcoord < 200: # buggy still need proper measures
         loaderResult=pysList[i]
-        print("button pushed")
+        print("button pushed2")
    #if i == currentButton:
    #image.set_texture(buttons[currentButton],colors[1])
    #else:

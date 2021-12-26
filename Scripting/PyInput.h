@@ -794,22 +794,24 @@ PyObject * Python::PyIrr_Mouse(PyObject * self,PyObject * args){
 
 		case mlmouse: //getmouse1press state
 			{
-//                bool mbutton=mEvent.lmouse;
+                bool mbutton=mEvent.lmouse;
 //
-//                if ( mbutton ){
-//                    mEvent.lmouse=false;
-//                 }
+                if ( mbutton ){
+                    mEvent.lmouse=false;
+                    return Py_BuildValue("i",1);
+                 }
 
                 return Py_BuildValue("i",mEvent.lmouse);
 			}break;
 
 		case mrmouse://getmouse2press state
 			{
-//                bool mbutton=mEvent.rmouse;
+                bool mbutton=mEvent.rmouse;
 //
-//                if ( mbutton ){
-//                    mEvent.rmouse=false;
-//                 }
+                if ( mbutton ){
+                    mEvent.rmouse=false;
+                    return Py_BuildValue("i",1);
+                 }
 
                 return Py_BuildValue("i",mEvent.rmouse);
 			}break;
