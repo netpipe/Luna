@@ -13,7 +13,7 @@ if(init):
  import time
 
  import os
- #import itertools
+ import itertools
  import math
  scene.using ('../media/random.py',"1");
  #scene.using ('../media/string.py',"1");
