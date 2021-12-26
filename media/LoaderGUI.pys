@@ -163,7 +163,9 @@ myMin = 33
 if input.mouse("mlmouse",0,0): #mousebutton
    xcoord=input.mouse("mgetx",0,0)
    ycoord=input.mouse("mgety",0,0)
-   mbtn=1;
+   mbtn=1
+else:
+   mbtn=0
 
 for i in range(len(pysList)):
     scene.drawtext(pysList[i],font, 32,46+i*47,128,160+i*47)
