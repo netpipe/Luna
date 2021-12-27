@@ -10,6 +10,7 @@
 		<Option virtualFolders="media/" />
 		<Build>
 			<Target title="Linux Debug MINIMAL">
+				<Option platforms="Unix;Mac;" />
 				<Option output="./GAME/mLuna" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".dmobjsb" />
@@ -33,6 +34,7 @@
 				</Linker>
 			</Target>
 			<Target title="Linux Debug 2D">
+				<Option platforms="Unix;Mac;" />
 				<Option output="./GAME/mLuna2d" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".d2dmobjsb" />
@@ -62,6 +64,7 @@
 				</Linker>
 			</Target>
 			<Target title="Linux Debug 2D Sound">
+				<Option platforms="Unix;Mac;" />
 				<Option output="./GAME/mLuna2d" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".d2dmobjsbs" />
@@ -98,6 +101,7 @@
 				</Linker>
 			</Target>
 			<Target title="Linux Debug FULL">
+				<Option platforms="Unix;Mac;" />
 				<Option output="./GAME/mLunaFULL" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".dmobjsb" />
@@ -388,6 +392,7 @@
 				</Linker>
 			</Target>
 			<Target title="mineDBG">
+				<Option platforms="Unix;Mac;" />
 				<Option output="./GAME/mdLuna" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".mdobjs" />
@@ -444,6 +449,7 @@
 				</Linker>
 			</Target>
 			<Target title="mineREL">
+				<Option platforms="Unix;Mac;" />
 				<Option output="./GAME/mLuna" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".mobjs" />
@@ -1145,6 +1151,7 @@
 				</ExtraCommands>
 			</Target>
 			<Target title="LinuxUDEV2DWII">
+				<Option platforms="Unix;Mac;" />
 				<Option output="./GAME/mLuna2dudev" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".d2dmobjsudev" />
