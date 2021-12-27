@@ -1143,6 +1143,7 @@ PyObject * Python::PyIrr_SPARKA(PyObject * self,PyObject * args) //active camera
 
 	return Py_BuildValue("");
 #endif
+return Py_BuildValue("");
 }
 
 #endif
