@@ -61,6 +61,7 @@
 					<Add library="Irrlicht" />
 					<Add library="dl" />
 					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
+					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>
 			<Target title="Linux Debug 2D Sound">
@@ -98,6 +99,7 @@
 					<Add library="SDL" />
 					<Add library="cAudio" />
 					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
+					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>
 			<Target title="Linux Debug FULL">
@@ -115,6 +117,7 @@
 					<Add option="-DEXTRACOMPILE" />
 					<Add option="-DPYTHON" />
 					<Add option="-DPHYSICS" />
+					<Add option="-DSOUND" />
 				</Compiler>
 				<Linker>
 					<Add library="GL" />
@@ -130,6 +133,7 @@
 					<Add library="ogg" />
 					<Add library="vorbis" />
 					<Add library="vorbisfile" />
+					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>
 			<Target title="Linux Debug">
@@ -151,6 +155,7 @@
 					<Add library="ogg" />
 					<Add library="vorbis" />
 					<Add library="vorbisfile" />
+					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>
 			<Target title="Linux Release">
@@ -170,6 +175,7 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>
 			<Target title="windows MINIMAL32">
@@ -572,6 +578,7 @@
 					<Add directory="../libs/libIrrOpenSteer_10-02-15/lib" />
 					<Add directory="/home/Dev/libs/game/irrlicht/irrlicht-1.7.3" />
 					<Add directory="/home/Dev/libs/game/irrlicht/irrlicht-1.7.3/lib/Linux" />
+					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>
 			<Target title="emscripten-debug">
@@ -1183,6 +1190,7 @@
 					<Add library="dl" />
 					<Add library="udev" />
 					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
+					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>
 		</Build>
@@ -1638,9 +1646,9 @@
 		<Unit filename="Input/Model/blender/dna249.cpp" />
 		<Unit filename="Input/Model/blender/readblend.h" />
 		<Unit filename="Input/Model/irrTiled/irrTiled.h" />
-		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/SDL/SDL_fluidlite.h" />
 		<Unit filename="Input/SDL/SDLsound.h" />
+		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/inputManager.cpp" />
 		<Unit filename="Input/inputManager.h" />
 		<Unit filename="Input/openal_playback.h" />
@@ -2417,8 +2425,6 @@
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshBuilder.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshQuery.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNode.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/Recast.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastAlloc.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastArea.cpp" />
@@ -2429,6 +2435,8 @@
 		<Unit filename="entities/AI/recast/Recast/Source/RecastMeshDetail.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRasterization.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRegion.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast_util.cpp" />
 		<Unit filename="entities/AI/recast_util.h" />
 		<Unit filename="entities/AI/recastmain.cpp" />

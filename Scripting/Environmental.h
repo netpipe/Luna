@@ -1012,8 +1012,8 @@ PyObject * Python::PyIrr_SPARKA(PyObject * self,PyObject * args) //active camera
     buff = new scene::CMeshBuffer<video::S3DVertex2TCoords>;
     buff->append(pVertices.pointer(),4,pIndices.pointer(),6);
     buff->getMaterial().MaterialType = video::EMT_LIGHTMAP;
-    buff->getMaterial().TextureLayer[0].Texture = driver->getTexture("media/SPARK/grass.bmp");
-    buff->getMaterial().TextureLayer[1].Texture = driver->getTexture("media/SPARK/lightmap3.bmp");
+    buff->getMaterial().TextureLayer[0].Texture = driver->getTexture("../media/SPARK/grass.bmp");
+    buff->getMaterial().TextureLayer[1].Texture = driver->getTexture("../media/SPARK/lightmap3.bmp");
     buff->getMaterial().Lighting = false;
     scene::SMesh* mesh = new scene::SMesh; mesh->addMeshBuffer(buff);
     scene::IMeshSceneNode* plane = smgr->addMeshSceneNode(mesh);
@@ -1029,7 +1029,7 @@ PyObject * Python::PyIrr_SPARKA(PyObject * self,PyObject * args) //active camera
 	// Renderers
 	IRRQuadRenderer* fireRenderer = IRRQuadRenderer::create(device);
 	fireRenderer->setScale(0.3f,0.3f);
-	fireRenderer->setTexture(driver->getTexture("media/SPARK/fire2.bmp"));
+	fireRenderer->setTexture(driver->getTexture("../media/SPARK/fire2.bmp"));
 	fireRenderer->setTexturingMode(TEXTURE_2D);
 	fireRenderer->setBlending(BLENDING_ADD);
 	fireRenderer->enableRenderingHint(DEPTH_WRITE,false);
@@ -1037,7 +1037,7 @@ PyObject * Python::PyIrr_SPARKA(PyObject * self,PyObject * args) //active camera
 
 	IRRQuadRenderer* smokeRenderer = IRRQuadRenderer::create(device);
 	smokeRenderer->setScale(0.3f,0.3f);
-	smokeRenderer->setTexture(driver->getTexture("media/SPARK/explosion.png"));
+	smokeRenderer->setTexture(driver->getTexture("../media/SPARK/explosion.png"));
 	smokeRenderer->setTexturingMode(TEXTURE_2D);
 	smokeRenderer->setBlending(BLENDING_ALPHA);
 	smokeRenderer->enableRenderingHint(DEPTH_WRITE,false);

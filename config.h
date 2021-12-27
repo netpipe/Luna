@@ -12,7 +12,7 @@
     #define OPENSTEER
     #define SPARK
 
-   // #define SOUND
+    #define SOUND
 
  // #define SKELETON // needs to be updated
 //  #define VEGETATION //grass,weeds, vines
