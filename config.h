@@ -12,7 +12,7 @@
     #define OPENSTEER
     #define SPARK
 
-    #define SOUND
+   // #define SOUND
 
  // #define SKELETON // needs to be updated
 //  #define VEGETATION //grass,weeds, vines
@@ -103,7 +103,7 @@
 
         //#define OIS2
         //#define OIS2_LINUX_JOY_DEBUG
-        #define TILED2D
+        //#define TILED2D
         #endif
 
  // #define PHYSICS

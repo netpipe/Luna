@@ -159,7 +159,6 @@ myMin = 33
 #currentMin = now.minute
 
 #scene.drawtext(str(now), font, 30,0,128,128)
-
 if input.mouse("mlmouse",0,0): #mousebutton
    xcoord=input.mouse("mgetx",0,0)
    ycoord=input.mouse("mgety",0,0)
