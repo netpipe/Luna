@@ -502,7 +502,7 @@ else if(driveType==5){ // Bikes
         tempNode = m_irrDevice->getSceneManager()->addAnimatedMeshSceneNode(
         m_irrDevice->getSceneManager()->getMesh("../media/models/vehicles/wheel.x") );
    //     if (i=0){
-        tempNode->setMaterialTexture(0, m_irrDevice->getVideoDriver()->getTexture("./media/models/vehicles/TIRE_TEX.TGA"));
+        tempNode->setMaterialTexture(0, m_irrDevice->getVideoDriver()->getTexture("../media/models/vehicles/TIRE_TEX.TGA"));
     //    };
         tempNode->setScale(vector3df(   (wheelWidth*   wheelScaleFactor),
                                         (wheelRadius*  wheelScaleFactor),
