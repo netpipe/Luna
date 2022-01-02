@@ -69,10 +69,12 @@ if (init) :
  terrain = scene.addTerrain(1,-100,-103,-100,5,1,5,"../media/terrain-heightmap.bmp","../media/terrain.jpg","../media/detailmap.bmp") # needs to be bmp to work with emscripten
  scene.setPosition(terrain,4,-111,-20,22)
  car1 = physics.addCar(model,texture, 3.0,1.0, 1.5,1.5,2.5,  1.5,1.5,1.4, 1.0,1.0,10,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 2.0)
- car2 = physics.addCar(model,texture, 1.0,1.0, 1.5,1.5,2.5,  1.5,1.5,1.4, 1.0,1.0,1.0,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
- physics.VehicleParams(car2,"vreset",0,0,0,0) #reset position
+# car2 = physics.addCar(model,texture, 1.0,1.0, 1.5,1.5,2.5,  1.5,1.5,1.4, 1.0,1.0,1.0,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
+ physics.VehicleParams(car1,"vreset",0,0,0,0) #reset position
 # physics.VehicleParams(car2,11,0,20,100,20) #position
-# physics.VehicleParams(car1,8,0,0,0,0)
+ #physics.VehicleParams(car1,8,0,0,0,0)
+ physics.VehicleParams(car1,"vrender",0,0,0,0)
+
 # irr.files("../media/cards.zip")
  flashlight=scene.flashlight(0,0)
 
@@ -209,7 +211,7 @@ if (icount > 400):
 else:
  icount+=1
 
-scene.fpsweapon(camera,1)
+#scene.fpsweapon(camera,1)
 
 
 
@@ -231,8 +233,10 @@ i+=1
 #if input.getKey('KEY_ESCAPE') :
 # paused=1
 # irr.exit()
+#physics.VehicleParams(car1,8,0,0,0,0)
 physics.VehicleParams(car1,"vrender",0,0,0,0)
-physics.VehicleParams(car2,"vrender",0,0,0,0)
+#print "test"
+#physics.VehicleParams(car2,"vrender",0,0,0,0)
 
 #physics.VehicleParams(car1,0,0,0,0,0)
 

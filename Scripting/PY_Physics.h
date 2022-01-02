@@ -200,11 +200,11 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
 	//int Iparam = nodeMap[param];
 	//nodeMap["Cone"] = NODES::Cone;
 	//nodeMap["Cone"] = ;
-
+ printf("test");
 //prob need one map for state too
-	int Iparam=param;
+	//int Iparam=veparam(param);
 	if ( state==0 ){  // use state for get and set var
-       switch (Iparam){
+       switch ( veparm2[param] ){
 
             case veparam(vreset):
              //   m_cVehicle->resetVehicle();
@@ -218,10 +218,10 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
             case veparam(vreverse):
                 vehicle->reverse(1);
                 break;
-            case veparam(vebrake): //wind resistance
+            case veparam(vebrake): {//wind resistance
                 vehicle->reverse(ammount);
                 printf("ebrake");
-            break;
+            }break;
 
             case veparam(vbrake):
             	//printf('braking');
@@ -240,9 +240,10 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
          //       printf("steer right");
                 vehicle->steer_right();
                 break;
-            case veparam(vrender):
+            case veparam(vrender):{
             	vehicle->renderme();
-                break;
+            	       printf("vrender");
+                }break;
             case veparam(vsteerreset):
                 vehicle->steer_reset();
                 break;
@@ -261,7 +262,7 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
 
     } else if (state==1) {   //get vars
 	//int returnvar;
-		switch (Iparam){
+		switch (veparm2[param]){
 			case 0:
 	//				returnvar = m_cVehicle->getState();
 					return Py_BuildValue("i",m_cVehicle->getState());

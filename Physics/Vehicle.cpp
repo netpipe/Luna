@@ -165,10 +165,10 @@ void Vehicle::renderme(){  //deltatime ?
 
 
 
-//tecan try to add down force on wheel thats not connected{ taken from bullet forums}
+// try to add down force on wheel thats not connected{ taken from bullet forums}
 //           for (i=0;i<m_numWheels;i++)
 //        {
-                btWheelInfo &wheel_info = m_vehicle->getWheelInfo(i);
+            //    btWheelInfo &wheel_info = m_vehicle->getWheelInfo(i);
 //wheel_info.m_raycastInfo.m_suspensionLength
 //                if ( wheel_info.m_raycastInfo.m_isInContact ){}
 //               else

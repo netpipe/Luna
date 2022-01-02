@@ -24,7 +24,7 @@ accelerating = 0
 # physics.VehicleParams(car1,3,10,0,0,0)
 
 if (driving and input.getKey('KEY_KEY_W') ):
- physics.VehicleParams(car1,1,0,0,0,0) #acceleration
+ physics.VehicleParams(car1,"vaccelerate",0,0,0,0) #acceleration
  accelerating=1
 if (driving and input.getKey('KEY_KEY_W')==0 ):
  accelerating=0
