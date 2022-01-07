@@ -19,14 +19,18 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
     PyArg_ParseTuple(args,"isi",&param,&sound,&state);
 
     #ifdef SOUND
+
+
     // sound intensity for raycasted sound.  // surfaceRoughnessHardness/propigation factor, distance,handle
     switch (param){
 
     case 0:
       {
+           //   managerID->initialize(1);
        // mysound=stoi(sound);
       //      mysound = managerID->create("bling","./media/bling.ogg",false);
       //   luna->manager->initialize(luna->manager->getAvailableDeviceName(0));
+      //managerID->initialize(1);
            mysound = managerID->create(sound,sound,false);
     //        return Py_BuildValue("l",manager
         //    mysound->play2d(true);

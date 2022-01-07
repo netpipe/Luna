@@ -391,7 +391,25 @@ int Luna::init(){
 	#endif
     #endif
 
+#ifdef SOUND2
 
+manager = cAudio::createAudioManager(false);
+	if(audioMgr)
+	{
+		cAudio::IAudioDeviceList* pDeviceList = cAudio::createAudioDeviceList();
+		unsigned int deviceCount = pDeviceList->getDeviceCount();
+		cAudio::cAudioString defaultDeviceName = pDeviceList->getDefaultDeviceName();
+				for(unsigned int i=0; i<deviceCount; ++i)
+		{
+			cAudio::cAudioString deviceName = pDeviceList->getDeviceName(i);
+			if(deviceName.compare(defaultDeviceName) == 0)
+				cout << i << "): " << deviceName.c_str() << " [DEFAULT] \n";
+			else
+				cout << i << "): " << deviceName.c_str() << " \n";
+		}
+manager->initialize(pDeviceList->getDeviceName(1).c_str());
+}
+#endif
 #ifdef AgAudio
 		Sound::Instance()->Create();
 	    Sound::Instance()->PlayBackgroundMusic(1);
