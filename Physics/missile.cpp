@@ -1,6 +1,7 @@
 //#include "stdafx.h"
 #include "../config.h"
 #ifdef PHYSICS
+#ifdef MISSILE
 #include <iostream>
 #include <map>
 #include <vector>
@@ -480,4 +481,5 @@ ISceneManager *smgr = device->getSceneManager();
 
     return 0;
 }
+#endif
 #endif
