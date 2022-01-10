@@ -811,7 +811,7 @@ PyObject * Python::PyIrr_LoadLevel(PyObject * self,PyObject * args){
      //   m_cVehicle->loadLevel(track.c_str());
      //   device->getFileSystem()->changeWorkingDirectoryTo("../");
 
-#ifdef IRRCDs
+#ifdef IRRCD
     metaSelector = device->getSceneManager()->createMetaTriangleSelector();
     selector = device->getSceneManager()->createOctTreeTriangleSelector(mesh,node,128);
     node->setTriangleSelector( selector );

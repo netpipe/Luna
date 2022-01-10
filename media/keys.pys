@@ -65,7 +65,8 @@ if input.getKey('KEY_KEY_S') :#or  input.getKey('KEY_DOWN') :
 # physics.VehicleParams(car1,4,0,0,0,0)
 
 if input.getKey('KEY_KEY_R') :
- physics.VehicleParams(car1,"vreset",0,0,0,0)
+ physics.VehicleParams(car1,"vreset",0,-200,0,0)
+ physics.VehicleParams(car1,"vsetpos",0,0,-10,0) #position
 if input.getKey('KEY_KEY_E') :
  physics.VehicleParams(car1,"vaccelerate",0,0,0,0) #acceleration
 
