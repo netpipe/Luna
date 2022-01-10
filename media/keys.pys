@@ -29,10 +29,10 @@ if (driving and input.getKey('KEY_KEY_W') ):
 if (driving and input.getKey('KEY_KEY_W')==0 ):
  accelerating=0
 
-if(input.getKey('KEY_KEY_E')):
-# scene.setCamera(camera,100,100,100)
+if (input.getKey('KEY_KEY_E') ):
+ #scene.setCamera(0,camera,100,100,100)
  #scene.setCamera(5,camera,physics.VehicleParams(car1,"vgetx",1,0,0,0),physics.VehicleParams(car1,"vgety",1,0,0,0),physics.VehicleParams(car1,"vgetz",1,0,0,0))
- scene.setCamera(0,camera,physics.VehicleParams(car1,"vgetx",1,0,0,0),physics.VehicleParams(car1,"vgety",1,0,0,0),physics.VehicleParams(car1,"vgetz",1,0,0,0))
+ scene.setCamera(0,camera,physics.VehicleParams(car1,"vgetx",0,0,0,0),physics.VehicleParams(car1,"vgety",0,0,0,0),physics.VehicleParams(car1,"vgetz",0,0,0,0))
  #scene.setCamera(camera,100,-100,-100)
 
 # physics.VehicleParams(car2,2,0,0) #acceleration

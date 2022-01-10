@@ -184,11 +184,12 @@ PyObject * Python::PyIrr_recast(PyObject * self,PyObject * args){
 
 PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
 #ifdef PHYSICS
-    float state,ammount,y,z;
+    float ammount,y,z;
+    int state;
    // int param;
     long mVehicle;
     char * param;
-    PyArg_ParseTuple(args,"lsffff",&mVehicle,&param,&state,&ammount,&y,&z);
+    PyArg_ParseTuple(args,"lsifff",&mVehicle,&param,&state,&ammount,&y,&z);
  //   vector3df* position = VehicleParam(mVehicle,param,state,ammount,y,z);
 //	enum veparam{reset,accelerate,reverse,ebrake,brake,lsteer,rsteer};
 
@@ -202,6 +203,7 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
 	//nodeMap["Cone"] = ;
 //prob need one map for state too
 	//int Iparam=veparam(param);
+	int Iparam=state;
 	if ( state==0 ){  // use state for get and set var
        switch ( veparm2[param] ){
 
@@ -240,8 +242,8 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
             case veparam(vsteerreset):
                 vehicle->steer_reset();
                 break;
-            case 10:
-                printf ("case 10");
+         //   case 10:
+         //       printf ("case 10");
 //                            vector3df ha = camera->getAbsolutePosition();
 //      //  printf("Jump position: %f %f %f \n", pos[0], pos[1], pos[2]);
 //        camera->setPosition(vector3df( ha.X, ha.Y+40, ha.Z));
@@ -249,30 +251,45 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
             break;
             case veparam(vsetpos):
                    vehicle->setPosition(vector3df(ammount,y,z));
-
             break;
-       }
-
-    } else if (state==1) {   //get vars
-	//int returnvar;
-		switch (veparm2[param]){
-			case veparam(vstate):
+            case veparam(vstate):{
 	//				returnvar = m_cVehicle->getState();
 					return Py_BuildValue("i",m_cVehicle->getState());
-				break;
+            }break;
 			case veparam(vgetx):{
 				vector3df position = vehicle->getPosition();
-					return Py_BuildValue("f",position.X);
-			break;}
+				return Py_BuildValue("f",position.X);
+			}break;
 			case veparam(vgety):{
 				vector3df position = vehicle->getPosition();
-					return Py_BuildValue("f",position.Y);
-			break;}
+				return Py_BuildValue("f",position.Y);
+			}break;
 			case veparam(vgetz):{
 				vector3df position = vehicle->getPosition();
-					return Py_BuildValue("f",position.Z);
-			break;}
-		}
+				return Py_BuildValue("f",position.Z);
+			}break;
+       }
+
+    } else if (state==12) {   //get vars
+	//int returnvar;
+	//	switch (veparm2[param]){
+//			case veparam(vstate):{
+//	//				returnvar = m_cVehicle->getState();
+//					return Py_BuildValue("i",m_cVehicle->getState());
+//				}break;
+//			case veparam(vgetx):{
+//			//	vector3df position = vehicle->getPosition();
+//				return Py_BuildValue("f",vehicle->getPosition().X);
+//			}break;
+//			case veparam(vgety):{
+//				//vector3df position = vehicle->getPosition();
+//				return Py_BuildValue("f",vehicle->getPosition().Y);
+//			}break;
+//			case veparam(vgetz):{
+//				//vector3df position = vehicle->getPosition();
+//				return Py_BuildValue("f",vehicle->getPosition().Z);
+//			}break;
+	//	}
     }
   return Py_BuildValue("");
   #endif

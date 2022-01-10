@@ -571,10 +571,10 @@ keydictionary["KEY_KEY_CODES_COUNT"] = KEY_KEY_CODES_COUNT;
     veparm2["vsteerreset"] = vsteerreset;
     veparm2["vrender"] = vrender;
     veparm2["vsetpos"] = vsetpos;
-    veparm2["vgetx"] = vsteerreset;
-    veparm2["vgety"] = vrender;
-    veparm2["vgetz"] = vsetpos;
-    veparm2["vstate"] = vsetpos;
+    veparm2["vgetx"] = vgetx;
+    veparm2["vgety"] = vgety;
+    veparm2["vgetz"] = vgetz;
+    veparm2["vstate"] = vstate;
 
     mparam2["mset"] = mset;
     mparam2["mgetx"] = mgetx;
