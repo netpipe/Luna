@@ -260,10 +260,18 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
 	//				returnvar = m_cVehicle->getState();
 					return Py_BuildValue("i",m_cVehicle->getState());
 				break;
-			case 1:
+			case 1:{
 				vector3df position = vehicle->getPosition();
-	///				return Py_BuildValue("l",position);
-			break;
+					return Py_BuildValue("f",position.X);
+			break;}
+			case 2:{
+				vector3df position = vehicle->getPosition();
+					return Py_BuildValue("f",position.Y);
+			break;}
+			case 3:{
+				vector3df position = vehicle->getPosition();
+					return Py_BuildValue("f",position.Z);
+			break;}
 		}
     }
   return Py_BuildValue("");
