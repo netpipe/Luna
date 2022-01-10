@@ -165,7 +165,8 @@ PyObject * Python::PyIrr_SetCamera(PyObject * self,PyObject * args){ //active ca
 	//	ICameraSceneNode *cam = cam2;
 	if (type == 3){
 	}else{
-	ICameraSceneNode *cam = (ICameraSceneNode *)cam2;
+	//ICameraSceneNode *cam = (ICameraSceneNode *)cam2;
+	cam = (ICameraSceneNode *)cam2;
 	}
 //	device->setActiveCamera(cam);
 	switch (type){

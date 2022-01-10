@@ -256,19 +256,19 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
     } else if (state==1) {   //get vars
 	//int returnvar;
 		switch (veparm2[param]){
-			case 0:
+			case veparam(vstate):
 	//				returnvar = m_cVehicle->getState();
 					return Py_BuildValue("i",m_cVehicle->getState());
 				break;
-			case 1:{
+			case veparam(vgetx):{
 				vector3df position = vehicle->getPosition();
 					return Py_BuildValue("f",position.X);
 			break;}
-			case 2:{
+			case veparam(vgety):{
 				vector3df position = vehicle->getPosition();
 					return Py_BuildValue("f",position.Y);
 			break;}
-			case 3:{
+			case veparam(vgetz):{
 				vector3df position = vehicle->getPosition();
 					return Py_BuildValue("f",position.Z);
 			break;}
