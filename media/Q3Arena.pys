@@ -1,0 +1,306 @@
+#################################
+#INITIALIZE
+#called externally so it is set from functions.py or init.py
+#################################
+if (init) :
+ import irr
+ import physics
+ #if (EXTRAS)
+ import extras
+ import scene
+ import input
+ import image
+ #import sound
+ #import luna
+ import net
+ import gui
+
+ import os
+ import math
+ import time
+ scene.using ('../media/string.py',"1");
+ scene.using ('../media/random.py',"1");
+
+ ticks = time.time()
+
+# myr.time_reseed();
+
+ #physics.opensteer(1) - wip
+# scene.postprocess() #toggles
+ scene.SPARK()
+# scene.CSG("test.3ds")
+
+
+ #box2d add body attach it to 2d graphic
+ #physics.box2d("test.png",1)
+
+
+ sound2 = scene.soundman(0,"../media/robocrep.ogg",0) #create sound device // seems to crash RDP sessions and this is what i've been using for now. so i will leave sound off.
+ scene.soundman(1,str(sound2),1)#play sound   // seems to crash RDP sessions and this is what i've been using for now. so i will leave sound off.
+ #scene.soundman(1,str(sound2),0)#stop sound
+ #scene.soundman(1,str(sound2),2)#unloadsound / clear sounds
+
+ camera = scene.addCamera(3,0,200,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
+ scene.fpsweapon(camera,0)
+ scene.decals(1,camera)
+
+
+ #shoot decals from camera
+
+ Light1 = scene.Light(10,100,150,1,"111111") # type , vector, color
+ model = "../media/models/vehicles/oldChevy-Truck.3ds"
+ texture = "../media/models/vehicles/oldChevy.bmp"
+ terrain = scene.addTerrain(1,-100,-103,-100,5,1,5,"../media/terrain-heightmap.bmp","../media/terrain.jpg","../media/detailmap.bmp") # needs to be bmp to work with emscripten
+ scene.setPosition(terrain,4,-111,-20,22)
+ car1 = physics.addCar(model,texture,0.8,1.0, 2.0,2.0,3.0,  2,2,3.0, 1.3,0.4,2.0,         1500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 2)
+ #car1 = physics.addCar(model,texture, 3.0,1.0, 1.5,1.5,2.5,  1.5,1.5,1.4, 1.0,1.0,1.0,         500,100.0,2200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 2.0)
+ car2 = physics.addCar(model,texture, 1.0,1.0, 1.5,1.5,2.5,  1.5,1.5,1.4, 1.0,1.0,1.0,         500,100.0,1200,20.0,     0,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
+ car3 = physics.addCar(model,texture, 1.0,1.0, 1.5,1.5,2.5,  1.5,1.5,1.4, 1.0,1.0,1.0,         500,100.0,1200,20.0,     4,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
+ car4 = physics.addCar(model,texture, 1.0,1.0, 1.5,1.5,2.5,  1.5,1.5,1.4, 1.0,1.0,1.0,         500,100.0,1200,20.0,     5,-0.03,6.0,0.0,0.7,   -0.01,100.0,0.8,0.6,0.1,0.45,    2.0, 0.3, 1.0)
+ physics.VehicleParams(car1,"vreset",0,0,0,0) #reset position
+ physics.VehicleParams(car1,"vsetpos",0,0,-20,0) #position
+ physics.VehicleParams(car2,"vreset",0,0,0,0)
+ physics.VehicleParams(car2,"vsetpos",0,50,-10,20) #position
+ physics.VehicleParams(car3,"vreset",0,0,0,0) #reset position
+ physics.VehicleParams(car3,"vsetpos",0,0,-20,70) #position
+ physics.VehicleParams(car4,"vreset",0,0,0,0) #reset position
+ physics.VehicleParams(car4,"vsetpos",0,0,-20,40) #position
+
+ for i in range(9):
+  irr.files("../media/Q3A/pak"+str(i)+".pk3")
+
+
+ scene.addAMesh("../media/datamaps/Q3A/maps/q3ctf1.bsp");
+
+
+ flashlight=scene.flashlight(0,0)
+
+ chopper=physics.chopper("../media/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
+ #scene.setPosition(chopper,5,20,200,20)
+
+# scene.recast("../media/dungeon.obj")
+# scene.grass("../media/data/vegData/output.grs")
+ #scene.addwater("none",1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
+ #gui.codeeditor(1) #shader editor #cpu limiter incase of bad code
+# extras.lensflare(1,10,100,10)
+ scene.flag1("../media/irrlichtlogo.jpg",10,10000,10)
+ #extras.blindboids(1,0,1,1)
+# gui.sgraph()
+# healthbar=gui.bar(0,0,20,40,100,60)
+ physics.bulletBlend("../media/data/clubsilo_packed.blend")
+# posx=scene.getCamera(camera,1)
+# print posx
+# posy=scene.getCamera(camera,2)
+# print posy
+# posz=scene.getCamera(camera,3)
+# print posz
+ #scene.setCamera(0,camera,posx,posy,posz)
+# scene.setCamera(0,camera,0,200,0)
+
+ #posy=scene.getPosition(helicopter,1)
+ #print posy
+ #posz=scene.getPosition(helicopter,2)
+ #print posz
+# if (0) : # can only be client or server
+#  if (1) :
+#   netman = net.connect()
+#   net.update(netman)
+#   net.send(netman,"shit yeah")
+#   net.update(netman)
+#  else :
+#   netserver = net.server()
+#   net.update(netserver)
+  # scene.sleep(1000)
+
+ #jungle = scene.addJungle()
+ #scene.addTree("jungle",1,terrain,1,1,1)#not working yet
+ #track1 = physics.loadTrack('../media/data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
+ #track1 = scene.loadLevel('../media/datamaps/Q3A/maps/q3ctf1.bsp',20,0,0)  # trackname , timeofday , lighting , track slot/stages
+# scene.setPosition(terrain ,4, -100,-10,-100)
+ #scene.exportScene("/home/clay/test/scene.irr")
+ #stage = scene.loadTrack('./data/Stage3/Stage3.irr',20,0,0)
+# stage = scene.loadTrack('../media/datamaps/Q3A/maps/q3ctf1.bsp',20,0,0)
+# table = scene.loadTrack('../media/table_football.3ds',20,0,0)
+# scene.setPosition(table ,1, 10,-50,10)
+
+ #sphere1 = scene.addSphereNode("data/textures/material/marble1_256.png",0,-1000,0, 5,5)
+ #scene.setVelocity(sphere1,10,10,10)
+ #scene.setPosition(sphere1 ,1, 10,100,10)
+#should be able to add trees without terrain/orientation
+ #scene.trees(terr,bush)
+ #scene.addTree2(bush)
+
+#for(u32 i = 0 ; i < 1000 ; i++)
+# {
+ # f32 cx = 100.0f + rand()%10040;
+#  f32 cy = 100.0f + rand()%10040;
+ # int type = rand()%8+1;
+#  int seed = rand();
+
+#################################
+# TESTING INIT CODE
+#################################
+ iaxe = image.iadd("../media/axe.jpg",10,10,500,500,10,10,800,800)
+ i=0
+
+ #  print image.height(hand2[1])
+   #image.oheight()
+   #image.width()
+ # image.iposition(hand2[1], 50,100)
+
+
+ teststring = "string"
+ teststring2 = list(teststring)
+ print teststring2
+  #0s.isupper()
+ # test = [1,2,3]
+  #test.append(2)
+  #test.pop(1)
+
+   #  fout            =            open('/etc/passwd','w')
+
+   #  try:
+   #  fin            =            open('bad_file')
+   #  for line  in  fin:
+   #  print
+   #   linefin.close()
+   #  except:
+   #  print'Something            went            wrong.'
+
+
+ # test.pop(1)
+
+     #    distance            =            math.sqrt(blank.x**2            +            blank.y**2
+      # fp            =            os.popen(cmd)
+
+      #     os.path.exists('memo.txt')
+      #     os.listdir(cwd)
+      #     if            os.path.isfile(path):
+      # cwd            =            os.getcwd()
+  #sum(test)
+
+
+
+  # deck[i][0]deck[i][1]
+
+   #1Spade
+   #1Heart
+   #1Diamond
+   #1Clubs
+
+# scene.soundman(0,1,1)
+# scene.soundman(1,1,1)
+
+
+ icount=0
+#################################
+ init = 0 #initialization finish - needs whitespace infront
+#################################
+
+#MAIN LOOP gets ran everytime
+
+#################################
+#if sound done playing loop
+#
+if (icount > 400):
+# scene.soundman(1,1,1)
+ icount=0
+else:
+ icount+=1
+
+#scene.fpsweapon(camera,1)
+
+
+
+#gui.bar(healthbar,1,20,40,200,60) #does not draw onanimate it
+#posx=scene.getPosition(helicopter,0)
+#print posx
+
+scene.flashlight(1,flashlight)
+scene.decals(0,camera)
+irr.delay(4000);
+
+#irr.delete(iaxe)
+#iaxe = image.iadd("../media/axe.jpg",10,10,500,500,10,10,800,800)
+image.irotate(iaxe,i)
+i+=1
+#image.idraw(iaxe)
+#image.idraw(iaxe2)
+
+#if input.getKey('KEY_ESCAPE') :
+# paused=1
+# irr.exit()
+#physics.VehicleParams(car1,8,0,0,0,0)
+physics.VehicleParams(car1,"vrender",0,0,0,0)
+#print "test"
+physics.VehicleParams(car2,"vrender",0,0,0,0)
+physics.VehicleParams(car3,"vrender",0,0,0,0)
+physics.VehicleParams(car4,"vrender",0,0,0,0)
+#physics.VehicleParams(car1,0,0,0,0,0)
+
+#time
+ticks = time.time()
+#print "Number of ticks since 12:00am, January 1, 1970:", ticks
+
+#myr=myrandom()
+#print [myr.getuniform() for x in range(20)]
+
+#print random variable set to make 0 or 1's semi randomly  remove /80 to get larger randoms
+#print int(str(ticks-int(ticks))[2:])%100/80 #Keeping only the numbers after the decimal point, otherwise you would get the same "random" number each second
+
+#print (input.mouse(5,0,0))#mousebutton
+#print (input.mouse(2,0,0))#xcoord
+#print (input.mouse(3,0,0))#ycoord
+
+#get card from mouse coord
+
+#just need the top portion middle coords find center
+#check card number
+xcard=55 /2
+ycard=84 /2
+
+xcoord=input.mouse("mgetx",0,0)
+ycoord=input.mouse("mgety",0,0)
+
+#for i in range(5):
+# if xcoord = xcard (i*10)+100
+#i*10,
+#
+#i*10)+100+55,
+#i*10+84
+
+#if input.getKey('KEY_KEY_F') :
+
+
+
+
+if input.getKey('KEY_F2') : #could have a release action
+ print "setting cube position"
+ #scene.add_cube()
+ scene.addSphereNode("../media/data/textures/material/marble1_256.png",0,20,5,5,500) #xyz radius mass
+ #scene.setPosition(cube_id,1,1,1)
+
+if input.getKey('KEY_F3') : #could have a release action
+ #if lasttime > 10:
+ image.iposition(hand2[1], randint(1,200),100)
+  #lasttime = 0
+ irr.delay(111000);
+
+if input.getKey('KEY_ESCAPE') :
+ irr.exit()
+
+
+#if lasttime < 10:
+# lasttime = lasttime+1
+
+#irr.delay(0.1);
+#irr.delay(10000);
+#irr.delay(1000);
+
+
+#scene.using ('../media/keys.pys',"1");
+
+#irr.update(); #could set timing here, maybe smgr gui  etc  todo
+
+
+
