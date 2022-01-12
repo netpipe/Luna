@@ -1,3 +1,5 @@
+#Quake3Arena port. also works well for smoking guns, reaction quake3 and return to castle wolfenstein. could probably even do kingpin and some of the startwars levels that use bsp.
+
 #################################
 #INITIALIZE
 #called externally so it is set from functions.py or init.py
