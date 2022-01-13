@@ -19,9 +19,6 @@ on windows extract pydata.tar in media folder to media folder so that the engine
 
 
 
-
-
-
 Ffmpeg and P5 glove driver are LGPL from the libs repo.
 engine is zlib other than sockets code being ported out for irc client and p5 glove controller/ awaiting email on that.
 have special permission to use cwiid code as zlib for engine and derivitaves but OIS looks like a better option.
@@ -39,4 +36,6 @@ sourceforge version compiles in virtualbox and on wine itself aswell as linux, v
 http://sourceforge.net/projects/agnostic/
 
 https://irrlicht.sourceforge.io/forum/viewtopic.php?f=6&t=35293&p=306116#p306116 more files if you need vm's screenshots or to chat about it.
+
+one of the easiest ways to help would be to freelance demos and games created with this. typically applications are 200 dollars and games are anywhere from 150 - 400 dollars CDN. it helps spread by usage and word of mouth how amazing the python integration is compared to any other engine on the market.
 
