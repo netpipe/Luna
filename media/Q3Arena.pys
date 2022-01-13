@@ -68,11 +68,27 @@ if (init) :
  physics.VehicleParams(car4,"vreset",0,0,0,0) #reset position
  physics.VehicleParams(car4,"vsetpos",0,0,-20,40) #position
 
- for i in range(9):
-  irr.files("../media/Q3A/pak"+str(i)+".pk3")
+# for i in range(9):
+#  irr.files("../media/Q3A/pak"+str(i)+".pk3")
+
+ cwd=os.getcwd()
+ #os.chdir("../media/Q3A/")
+ #cwd=os.getcwd()
+ flist= os.listdir("../media/Q3A/")
+ zipFiles=[x for x in flist if x.endswith(".pk3")]
+ #pysList.remove("LoaderGUI.pys")
+ for i in range(len(zipFiles)):
+  irr.files("../media/Q3A/"+zipFiles[i])
+ #os.chdir(cwd)
 
 
- scene.addAMesh("../media/datamaps/Q3A/maps/q3ctf1.bsp");
+#/usr/share/games/openarena/baseoa
+#/usr/share/games/openarena
+#/usr/share/games/openarena/missionpack
+#/usr/share/games/openarena/missionpack/mp-pak0.pk3
+
+
+ scene.addAMesh("../media/Q3A/maps/q3ctf1.bsp");
 
 
  flashlight=scene.flashlight(0,0)
