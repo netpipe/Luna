@@ -281,12 +281,15 @@ PyObject * Python::PyIrr_MeshManipulator(PyObject * self,PyObject * args){
 //
 PyObject * Python::PyIrr_addAnimatedMesh(PyObject * self,PyObject * args){
    // printf("loading animated mesh\n");
-
+   // long cam2;
     char *meshPath;
 	PyArg_ParseTuple(args,"s",&meshPath);
        IAnimatedMesh *mesh = smgr->getMesh( meshPath );
 //        irr::core::stringc extension;
     //   irr::core::getFileNameExtension(extension, value1);
+
+	//ICameraSceneNode *cam ;
+	//cam = (ICameraSceneNode *)cam2;
 
     	scene::ISceneNode* node = 0;
     printf("loading animated mesh\n");
@@ -302,6 +305,29 @@ PyObject * Python::PyIrr_addAnimatedMesh(PyObject * self,PyObject * args){
    //     node->getMaterial(0).BackfaceCulling = true;
 
     // possibly need a delete through scripting side
+
+          //  #ifdef IRRCD
+        metaSelector = device->getSceneManager()->createMetaTriangleSelector();
+        selector = device->getSceneManager()->createOctTreeTriangleSelector(mesh,node,128);
+        node->setTriangleSelector(selector);
+        metaSelector->addTriangleSelector(selector);
+        selector->drop();
+
+        //meshbuffer converter to IMesh
+        // scene::SMesh* mesh2 = new SMesh; // dont really need this
+        // mesh2->addMeshBuffer (meshBuffer2);
+        // mesh2->drop();
+
+        scene::ISceneNodeAnimator* anim;
+        anim = device->getSceneManager()->createCollisionResponseAnimator(
+            metaSelector, smgr->getActiveCamera(), core::vector3df(30,60,30),
+            core::vector3df(0,0,0),   /// MAIN irrGRAVITY
+            core::vector3df(0,10,0));
+        //  camera->addAnimator(anim); // bug use python to pass camera arrgss
+       // m_cInGameEvents.chopperControl->onCollision(anim);
+        anim->drop();
+        metaSelector->drop();
+    //#endif
 
 return Py_BuildValue("l",mesh);
 };

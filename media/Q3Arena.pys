@@ -1,4 +1,4 @@
-#Quake3Arena port. also works well for smoking guns, reaction quake3 and return to castle wolfenstein. could probably even do kingpin and some of the startwars levels that use bsp.
+#Quake3Arena port. also works well for smoking guns, reaction quake3 and return to castle wolfenstein. could probably even do kingpin and some of the startwars levels that use bsp. , i have this set for suse's version of openarena in /usr/share/games/openarena
 
 #################################
 #INITIALIZE
@@ -44,7 +44,7 @@ if (init) :
 
  camera = scene.addCamera(3,0,200,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
  scene.fpsweapon(camera,0)
- scene.decals(1,camera)
+ #scene.decals(1,camera)
 
 
  #shoot decals from camera
@@ -74,11 +74,11 @@ if (init) :
  cwd=os.getcwd()
  #os.chdir("../media/Q3A/")
  #cwd=os.getcwd()
- flist= os.listdir("../media/Q3A/")
+ flist= os.listdir("/usr/share/games/openarena/baseoa/")
  zipFiles=[x for x in flist if x.endswith(".pk3")]
  #pysList.remove("LoaderGUI.pys")
  for i in range(len(zipFiles)):
-  irr.files("../media/Q3A/"+zipFiles[i])
+  irr.files("/usr/share/games/openarena/baseoa/"+zipFiles[i])
  #os.chdir(cwd)
 
 
@@ -88,7 +88,8 @@ if (init) :
 #/usr/share/games/openarena/missionpack/mp-pak0.pk3
 
 
- scene.addAMesh("../media/Q3A/maps/q3ctf1.bsp");
+ scene.addAMesh("/maps/aggressor.bsp");
+
 
 
  flashlight=scene.flashlight(0,0)
@@ -133,7 +134,7 @@ if (init) :
  #jungle = scene.addJungle()
  #scene.addTree("jungle",1,terrain,1,1,1)#not working yet
  #track1 = physics.loadTrack('../media/data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
- #track1 = scene.loadLevel('../media/datamaps/Q3A/maps/q3ctf1.bsp',20,0,0)  # trackname , timeofday , lighting , track slot/stages
+ #track1 = scene.loadLevel('../media/Q3A/maps/q3ctf1.bsp',20,0,0)  # trackname , timeofday , lighting , track slot/stages
 # scene.setPosition(terrain ,4, -100,-10,-100)
  #scene.exportScene("/home/clay/test/scene.irr")
  #stage = scene.loadTrack('./data/Stage3/Stage3.irr',20,0,0)
@@ -307,6 +308,12 @@ if input.getKey('KEY_F3') : #could have a release action
 if input.getKey('KEY_ESCAPE') :
  irr.exit()
 
+if (input.getKey('KEY_KEY_E') ):
+ #scene.setPosition(car1,scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3))
+ #physics.VehicleParams(car1,"vsetpos",0,scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3))
+ physics.VehicleParams(car1,"vreset",0,-200,0,0)
+ #physics.VehicleParams(car1,"vsetpos",0,0,-10,0) #position
+ physics.VehicleParams(car1,"vsetpos",0,scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3))
 
 #if lasttime < 10:
 # lasttime = lasttime+1
@@ -315,10 +322,12 @@ if input.getKey('KEY_ESCAPE') :
 #irr.delay(10000);
 #irr.delay(1000);
 
-
+driving = 1
+accelerating = 0
 #scene.using ('../media/keys.pys',"1");
 
 #irr.update(); #could set timing here, maybe smgr gui  etc  todo
 
-
+if input.getKey('KEY_UP') :
+ physics.VehicleParams(car1,"vaccelerate",0,0,0,0)
 
