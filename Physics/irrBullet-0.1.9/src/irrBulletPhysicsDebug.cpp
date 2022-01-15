@@ -5,7 +5,8 @@
 // The above copyright notice and its accompanying information must remain here.
 
 // This code belongs to RandomMesh from the Irrlicht forum
-
+#include <../../../config.h>
+#ifdef IRRBULLET
 #include "irrBulletPhysicsDebug.h"
 #include <IrrlichtDevice.h>
 
@@ -55,3 +56,4 @@ void IPhysicsDebugDraw::reportErrorWarning(const char* text)
 void IPhysicsDebugDraw::draw3dText(const btVector3& location, const char* text)
 {
 }
+#endif // IRRBULLET

@@ -1,3 +1,5 @@
+#include <../../../config.h>
+#ifdef IRRBULLET
 #ifndef IRRBULLET_DEBUG_MODE
     #define IRRBULLET_DEBUG_MODE
 #endif
@@ -31,3 +33,4 @@
 #define IRRBULLET_VER_MAJOR 0
 #define IRRBULLET_VER_MINOR 1
 #define IRRBULLET_VER_MICRO 9
+#endif

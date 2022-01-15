@@ -5,7 +5,8 @@
 // The above copyright notice and its accompanying information must remain here.
 
 // This code belongs to RandomMesh from the Irrlicht forum
-
+#include <../../../config.h>
+#ifdef IRRBULLET
 #pragma once
 
 #include <LinearMath/btIDebugDraw.h>
@@ -57,3 +58,4 @@ private:
 
 	irr::ILogger* logger;
 };
+#endif

@@ -3,7 +3,8 @@
 // This file is part of the "irrBullet" Bullet physics wrapper.
 // For conditions of distribution and use, see copyright notice in irrBullet.h
 // The above copyright notice and its accompanying information must remain here.
-
+#include <../../../config.h>
+#ifdef IRRBULLET
 #pragma once
 
 #include "irrBulletCommon.h"
@@ -63,7 +64,7 @@ public:
     IRigidBody(irrBulletWorld* const world, ICollisionShape* const collShape);
 
     IRigidBody(irrBulletWorld* const world, const SRigidBodyConstructionInfo& info);
-    
+
 	IRigidBody(const IRigidBody& other) = default;
 
 	IRigidBody& operator=(const IRigidBody& other) = default;
@@ -327,3 +328,4 @@ protected:
     irr::core::aabbox3d<irr::f32> LiquidBox;
     bool DebugLiquidBox;
 };
+#endif

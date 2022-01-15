@@ -3,7 +3,8 @@
 // This file is part of the "irrBullet" Bullet physics wrapper.
 // For conditions of distribution and use, see copyright notice in irrBullet.h
 // The above copyright notice and its accompanying information must remain here.
-
+#include <../../../config.h>
+#ifdef IRRBULLET
 #pragma once
 
 #include <irrTypes.h>
@@ -60,7 +61,7 @@ public:
 
 	void setUpAxis(irr::u32 axis);
 
-	/*! 
+	/*!
 		This is neither a direction nor a velocity, but the amount to
 		increment the position each simulation iteration, regardless of deltatime.
 		This call will reset any velocity set by setVelocityForTimeInterval().
@@ -110,3 +111,4 @@ private:
 	btKinematicCharacterController* Character;
 	irr::core::matrix4 WorldTransform;
 };
+#endif

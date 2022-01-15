@@ -3,7 +3,8 @@
 // This file is part of the "irrBullet" Bullet physics wrapper.
 // For conditions of distribution and use, see copyright notice in irrBullet.h
 // The above copyright notice and its accompanying information must remain here.
-
+#include <../../../config.h>
+#ifdef IRRBULLET
 #pragma once
 
 #include "irrBulletCollisionObject.h"
@@ -146,7 +147,7 @@ class ISoftBody : public ICollisionObject
 {
     public:
         ISoftBody(irrBulletWorld* const world, irr::scene::IMeshSceneNode* const Node);
-        
+
 		ISoftBody(const ISoftBody& other) = default;
 
 		ISoftBody& operator=(const ISoftBody& other) = default;
@@ -271,3 +272,4 @@ class ISoftBody : public ICollisionObject
         std::vector<int> m_indices;
         std::map<int, btSoftBody::Node*> m_vertices;
 };
+#endif

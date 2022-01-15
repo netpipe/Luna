@@ -3,7 +3,8 @@
 // This file is part of the "irrBullet" Bullet physics wrapper.
 // For conditions of distribution and use, see copyright notice in irrBullet.h
 // The above copyright notice and its accompanying information must remain here.
-
+#include <../../../config.h>
+#ifdef IRRBULLET
 #pragma once
 
 #include <iostream>
@@ -50,3 +51,4 @@ class IMotionState : public btDefaultMotionState
         btTransform worldTransform;
         irr::core::matrix4 TransformMatrix;
 };
+#endif

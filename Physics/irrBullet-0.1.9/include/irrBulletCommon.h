@@ -3,7 +3,8 @@
 // This file is part of the "irrBullet" Bullet physics wrapper.
 // For conditions of distribution and use, see copyright notice in irrBullet.h
 // The above copyright notice and its accompanying information must remain here.
-
+#include <../../../config.h>
+#ifdef IRRBULLET
 #pragma once
 
 #define BIT(x) (1<<(x)) // For collision masking
@@ -66,3 +67,4 @@ inline irrPhysicsDebugMode operator|(irrPhysicsDebugMode a, irrPhysicsDebugMode 
 {
 	return static_cast<irrPhysicsDebugMode>(static_cast<int>(a) | static_cast<int>(b));
 }
+#endif

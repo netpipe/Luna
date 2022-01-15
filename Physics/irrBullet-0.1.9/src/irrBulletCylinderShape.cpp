@@ -3,7 +3,8 @@
 // This file is part of the "irrBullet" Bullet physics wrapper.
 // For conditions of distribution and use, see copyright notice in irrBullet.h
 // The above copyright notice and its accompanying information must remain here.
-
+#include <../../../config.h>
+#ifdef IRRBULLET
 #include <ISceneNode.h>
 #include "btBulletDynamicsCommon.h"
 #include "btBulletCollisionCommon.h"
@@ -46,3 +47,4 @@ void ICylinderShape::createShape(bool overrideMargin)
 ICylinderShape::~ICylinderShape()
 {
 }
+#endif

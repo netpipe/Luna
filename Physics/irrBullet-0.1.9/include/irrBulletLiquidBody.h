@@ -3,7 +3,8 @@
 // This file is part of the "irrBullet" Bullet physics wrapper.
 // For conditions of distribution and use, see copyright notice in irrBullet.h
 // The above copyright notice and its accompanying information must remain here.
-
+#include <../../../config.h>
+#ifdef IRRBULLET
 #pragma once
 
 #include <vector3d.h>
@@ -51,7 +52,7 @@ class ILiquidBody
     public:
         ILiquidBody(irrBulletWorld* const world, const irr::core::vector3df& pos, const irr::core::aabbox3df& aabb,
             irr::f32 waveFrequency=40000.0f, irr::f32 density=0.4f, bool makeInfinite=false);
-        
+
 		ILiquidBody(const ILiquidBody& other) = default;
 
 		ILiquidBody& operator=(const ILiquidBody& other) = default;
@@ -229,3 +230,4 @@ class ILiquidBody
         ///! For internal use only
         void affectRigidBody(IRigidBody* const body);
 };
+#endif

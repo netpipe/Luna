@@ -32,7 +32,7 @@
  // #define HUD //causes crashing
  // #define FT2
   //#define PYTHON_MINIMALTEST
-
+//#define IRRBULLET
 #endif
 
 
@@ -80,8 +80,6 @@
       //#define DECALS2 //replace needing physics to get working
      // #define SQLITE
     #define LOADLEVELS
-
-
 
     #ifdef MINIMAL2 //not so minimal extras
         //#define BOX2D // engine uses box2dlite already this is for testing

@@ -3,7 +3,8 @@
 // This file is part of the "irrBullet" Bullet physics wrapper.
 // For conditions of distribution and use, see copyright notice in irrBullet.h
 // The above copyright notice and its accompanying information must remain here.
-
+#include <../../../config.h>
+#ifdef IRRBULLET
 #include "irrBulletCollisionCallBackInformation.h"
 #include <BulletCollision/CollisionDispatch/btCollisionObject.h>
 #include "irrBulletCollisionObject.h"
@@ -44,3 +45,4 @@ SManifoldPoint& ICollisionCallbackInformation::getContactPoint(irr::u32 index)
     manifoldPoint.setInfo(point);
     return manifoldPoint;
 }
+#endif

@@ -3,7 +3,8 @@
 // This file is part of the "irrBullet" Bullet physics wrapper.
 // For conditions of distribution and use, see copyright notice in irrBullet.h
 // The above copyright notice and its accompanying information must remain here.
-
+#include <../../../config.h>
+#ifdef IRRBULLET
 #include <IMesh.h>
 #include <IMeshBuffer.h>
 #include "btBulletDynamicsCommon.h"
@@ -64,7 +65,7 @@ btTriangleMesh *ITriangleMeshShape::createTriangleMesh(IMesh* const mesh)
 			u16* mb_indices = mb->getIndices();
 			s32 numVertices = mb->getVertexCount();
 			for(j = 0; j < mb->getIndexCount(); j+=3)
-			{   
+			{
 				//index into irrlicht data
 				for (k = 0; k < 3; k++)
 				{
@@ -87,3 +88,4 @@ ITriangleMeshShape::~ITriangleMeshShape()
     if(CollisionMesh != nullptr)
         delete CollisionMesh;
 }
+#endif

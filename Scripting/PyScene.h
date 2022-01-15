@@ -306,7 +306,42 @@ PyObject * Python::PyIrr_addAnimatedMesh(PyObject * self,PyObject * args){
 
     // possibly need a delete through scripting side
 
-          //  #ifdef IRRCD
+
+    //  metaSelector = device->getSceneManager()->createMetaTriangleSelector();
+    //  m_cVehicle->recursiveFillMetaSelector(device->getSceneManager()->getRootSceneNode(), metaSelector);
+    //  m_cVehicle->recursiveFillMetaSelector(node, metaSelector);
+
+    #ifdef PHYSICStest
+      IMeshBuffer *meshBuffer23 = mesh->getMesh(0)->getMeshBuffer(0); //node->getMeshBuffer(0);
+      btTriangleMesh *collisionMesh23 = new btTriangleMesh();
+      luna->m_cPhysics->convertIrrMeshBufferBtTriangleMesh(meshBuffer23, collisionMesh23, vector3df(1,1,1));
+      btBvhTriangleMeshShape *chassisShape23 = new btBvhTriangleMeshShape(collisionMesh23, true);
+      //    btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
+    luna->m_cPhysics->localCreateRigidBody(0, tr, chassisShape23, node);
+    #endif
+
+    #ifdef PHYSICS3
+//    tr.setOrigin(btVector3(trackPosition.X, trackPosition.Y, trackPosition.Z));
+    btTriangleMesh *collisionMesh = new btTriangleMesh();
+
+  //  m_cScene->setGenericMaterial(node, 0);
+
+    int meshCount = mesh->getMeshBufferCount();
+        printf("MESHBUFFER COUNT %d /n",meshCount);
+//
+        for (int i=0; i < meshCount ; i++)//!load all meshes for CD
+        {
+//            //  meshBuffer2->append( mesh->getMeshBuffer(i) );
+//          //  m_cScene->setGenericMaterial(node, i); //outdoor sun lumenation
+            luna->m_cPhysics->convertIrrMeshBufferBtTriangleMesh(mesh->getMeshBuffer(i), collisionMesh, vector3df(1,1,1));
+//            //decalManager->addMesh(mesh->getMeshBuffer(i));
+        }
+//
+//    btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
+ //   luna->m_cPhysics->localCreateRigidBody(0, tr, trackShape, node);
+#endif
+
+            #ifdef IRRCD2
         metaSelector = device->getSceneManager()->createMetaTriangleSelector();
         selector = device->getSceneManager()->createOctTreeTriangleSelector(mesh,node,128);
         node->setTriangleSelector(selector);
@@ -327,7 +362,7 @@ PyObject * Python::PyIrr_addAnimatedMesh(PyObject * self,PyObject * args){
        // m_cInGameEvents.chopperControl->onCollision(anim);
         anim->drop();
         metaSelector->drop();
-    //#endif
+    #endif
 
 return Py_BuildValue("l",mesh);
 };
