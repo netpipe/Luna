@@ -31,8 +31,6 @@
   #define FORMATIONDEMO
  // #define HUD //causes crashing
  // #define FT2
-  //#define PYTHON_MINIMALTEST
-//#define IRRBULLET
 #endif
 
 
@@ -102,9 +100,11 @@
         //#define OIS2
         //#define OIS2_LINUX_JOY_DEBUG
         //#define TILED2D
+        //#define PYTHON_MINIMALTEST
+        #define PHYSICS // custom BulletImplimentation
+        //#define IRRBULLET
         #endif
 
- // #define PHYSICS
   #ifdef PHYSICS
   //if bullet carnot enabled with physics and car calls it crashes FIXME
   #define BULLETCAR // if FPSWEAPON is enabled the car wont work. diff event rec
