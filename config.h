@@ -94,7 +94,7 @@
          //   #define SOUND
         //#define SDLSound
         //#define FLUIDLITE
-        //#define CODEEDITOR
+        #define CODEEDITOR
         //#define OPENAL2
 
         //#define OIS2

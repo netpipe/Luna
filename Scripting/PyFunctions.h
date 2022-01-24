@@ -42,7 +42,7 @@
 #include "../GUI/CHUD.h"
 #endif
 
-#ifdef CODEEDITOR2
+#ifdef CODEEDITOR
 #include "../GUI/CodeEditor/CGUIEditBoxIRB.h"
 #endif // CODEEDITOR
 //CGUIEditBoxIRB * codeEditor;

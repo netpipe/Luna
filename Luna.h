@@ -48,6 +48,12 @@
 	#include "./Input/AgAudio/Sound.h"
 #endif
 
+
+#ifdef CODEEDITOR
+    #include "GUI/CodeEditor/CGUIEditBoxIRB.h"
+#endif // CODEEDITOR
+
+
 //#include "TerrainFactory/GrassSceneNode/CGrassPatchSceneNode.h"
 //#include "Input/Model/IrrAssimp/IrrAssimp.h"
 
@@ -152,6 +158,10 @@ class Luna
 		s32				counter;
 		IGUIListBox*	listbox;
 	};
+
+
+	CGUIEditBoxIRB * codeEditor;
+	IGUIContextMenu * menu;
 
 		IGUIWindow* windows;
 	private:

@@ -57,9 +57,6 @@ using namespace gui;
 
     #include "./Scene/decalManager/DecalManager.h"
 
-#ifdef CODEEDITOR
-    #include "GUI/CodeEditor/CGUIEditBoxIRB.h"
-#endif // CODEEDITOR
 
 
 #include <fcntl.h> //needed for python
@@ -619,7 +616,7 @@ void Luna::main_loop(){ //devloop actually
 			menu->setVisible(true);
 			menu->setEnabled(true);
 			windows->setVisible(true);
-			device->setEventReceiver(&receiver);
+//			device->setEventReceiver(&receiver);
 			device->getCursorControl()->setVisible(true);
 			    device->setResizable(true);
 		}else if ( Python::bCodeEditor == 3	){
