@@ -148,10 +148,10 @@ PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active c
 		//	if (mysound && listener)
 		//	{
 //				listener->setPosition(cAudio::cVector3(0, 0, 0));
-				mysound->play3d(cAudio::cVector3(0, 0, 0), 2.0f, true);
-				mysound->setVolume(1.0f);
-			//	mysound->setMinDistance(1.0f);
-			//	mysound->setMaxAttenuationDistance(100.0f);
+				mysound->play3d(cAudio::cVector3(0, 10, 0), 2.0f, true);
+				mysound->setVolume(0.20f);
+				mysound->setMinDistance(1.0f);
+				mysound->setMaxAttenuationDistance(100.0f);
 
 				//Play for 10 seconds
 				const int ticksToPlay = 400;
