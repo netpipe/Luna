@@ -102,7 +102,7 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
 
 return Py_BuildValue("");
 }
-
+#ifdef FLUIDLITE
 #include "../Input/FluidLite/include/fluidlite.h"
 #define SAMPLE_RATE 44100
 #define SAMPLE_SIZE 2 //4: Float Buffer   2: Signed Int Buffer
@@ -110,6 +110,7 @@ return Py_BuildValue("");
 #define NUM_CHANNELS 2
 #define NUM_SAMPLES (NUM_FRAMES * NUM_CHANNELS)
 #define TIME_INTERVAL 1000000 //1500000:duration
+#endif
 PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active camera
 #ifdef FLUIDLITE
 //http://www.fluidsynth.org/api/index.html#MIDIPlayerMem
@@ -201,8 +202,8 @@ PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active c
 //}break;
 //return Py_BuildValue("l",managerID);
 //}
-
+#endif
 return Py_BuildValue("");
 }
 #endif
-#endif
+
