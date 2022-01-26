@@ -52,7 +52,7 @@ if (init) :
 
 
  sound2 = scene.soundman(0,"../media/robocrep.ogg",0) #create sound device // seems to crash RDP sessions and this is what i've been using for now. so i will leave sound off.
- scene.soundman(1,str(sound2),1)#play sound   // seems to crash RDP sessions and this is what i've been using for now. so i will leave sound off.
+ #scene.soundman(1,str(sound2),1)#play sound   // seems to crash RDP sessions and this is what i've been using for now. so i will leave sound off.
  #scene.soundman(1,str(sound2),0)#stop sound
  #scene.soundman(1,str(sound2),2)#unloadsound / clear sounds
 
@@ -139,7 +139,9 @@ if (init) :
  #scene.trees(terr,bush)
  #scene.addTree2(bush)
  scene.addTree("1",1,terrain,1,1,1)  #JTree, jungle
- scene.addTree("1",2,terrain,1,21,21)  #JTree, jungle
+ #scene.addTree("1",2,terrain,1,21,21)  #JTree, jungle
+ scene.addwater("0",1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
+ #scene.addwater("0",1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
 
 #for(u32 i = 0 ; i < 1000 ; i++)
 # {

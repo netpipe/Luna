@@ -245,7 +245,7 @@ int Luna::shutdown(){
     #endif
 
 	#ifdef ReflectiveWater
-	/// delete water;
+	// delete water;
 	#endif
 
 	#ifdef RAGDOLL

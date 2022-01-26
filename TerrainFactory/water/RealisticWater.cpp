@@ -47,13 +47,13 @@ RealisticWaterSceneNode::RealisticWaterSceneNode(scene::ISceneManager* sceneMana
 
 	if (_videoDriver->getDriverType() == video::EDT_DIRECT3D9)
 	{
-		waterPixelShader = resourcePath + "/shaders/Water_ps.hlsl";
-		waterVertexShader = resourcePath + "/shaders/Water_vs.hlsl";
+		waterPixelShader = resourcePath + "../media/shaders/Water_ps.hlsl";
+		waterVertexShader = resourcePath + "../media/shaders/Water_vs.hlsl";
 	}
 	else if (_videoDriver->getDriverType() == video::EDT_OPENGL)
 	{
-		waterPixelShader = resourcePath + "/shaders/Water_ps.glsl";
-		waterVertexShader = resourcePath + "/shaders/Water_vs.glsl";
+		waterPixelShader = resourcePath + "../media/shaders/Water_ps.glsl";
+		waterVertexShader = resourcePath + "../media/shaders/Water_vs.glsl";
 	}
 
 	_shaderMaterial = GPUProgrammingServices->addHighLevelShaderMaterialFromFiles(
@@ -63,7 +63,7 @@ RealisticWaterSceneNode::RealisticWaterSceneNode(scene::ISceneManager* sceneMana
 
 	_waterSceneNode->setMaterialType((video::E_MATERIAL_TYPE)_shaderMaterial);
 
-	irr::video::ITexture* bumpTexture = _videoDriver->getTexture(resourcePath + "/data/waterbump.png");
+	irr::video::ITexture* bumpTexture = _videoDriver->getTexture(resourcePath + "../media/data/waterbump.png");
 	_waterSceneNode->setMaterialTexture(0, bumpTexture);
 
 	_refractionMap = _videoDriver->addRenderTargetTexture(renderTargetSize);

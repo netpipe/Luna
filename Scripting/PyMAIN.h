@@ -95,7 +95,9 @@ namespace Python {
         #include "../TerrainFactory/WaterNode/CReflectedWater.h"
         CReflectedWater *water;
     #endif
-
+    #ifdef RealisticWater
+    RealisticWaterSceneNode* water2;
+    #endif
     #ifdef occlusion
         Renderer22 *RenderMan;
     #endif
@@ -457,7 +459,9 @@ void Python::render() {//active camera
         #ifdef ReflectiveWater
             if (bWater){  water->updateRendertarget(smgr);  }
         #endif
-
+        #ifdef RealisticWater
+        //if (bWater){  water2->render();  }
+        #endif
         #ifdef COMPASS
         if (bCompass){
             //Compass --BRJ correct way to get heading posted by Vitek

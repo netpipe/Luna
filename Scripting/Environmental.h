@@ -360,7 +360,7 @@ return Py_BuildValue("0");
 
 PyObject * Python::PyIrr_WaterPlane(PyObject * self,PyObject * args){
 	#ifdef RealisticWater
-	int waterType=2;
+	//int waterType=2;
     char * script;
     float scaleX,scaleY,scaleZ,locX,locY,locZ;
     float wavespeed,refractionfactor,waveheight,wavedisplacement;
@@ -368,7 +368,8 @@ PyObject * Python::PyIrr_WaterPlane(PyObject * self,PyObject * args){
 
     PyArg_ParseTuple(args,"sffff",&script,&wavespeed,&refractionfactor,&waveheight,&wavedisplacement);
 
-	if (waterType==1){
+    stringc waterType=script;
+	if (waterType=="1"){
     #ifdef ReflectiveWater
             bWater=1;
             water = new CReflectedWater("ReflectedWater", device, smgr, -1, 10, 100,
@@ -386,10 +387,10 @@ PyObject * Python::PyIrr_WaterPlane(PyObject * self,PyObject * args){
 	}else{
     const f32 width = 512.0f;
 	const f32 height = 512.0f;
-	stringc resourcePath="./";
-
-	RealisticWaterSceneNode* water = new RealisticWaterSceneNode(smgr, width, height, resourcePath);
-	smgr->getRootSceneNode()->addChild(water);
+	stringc resourcePath="";
+bWater=1;
+	water2 = new RealisticWaterSceneNode(smgr, width, height, resourcePath);
+	smgr->getRootSceneNode()->addChild(water2);
 	}
 	#endif
 return Py_BuildValue("");

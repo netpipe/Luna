@@ -1,4 +1,4 @@
-
+//#define NDEBUG // for testing networking
 #ifdef EXTRACOMPILE  //leftovers and extra from minimal
  #define MINIMAL2
  //#define COMPRESS //needed for empython
@@ -13,8 +13,10 @@
     #define OPENSTEER
     #define SPARK
     #define SOUND
-  //  #define NETWORK
 
+    #ifdef NDEBUG
+      #define NETWORK
+    #endif
  // #define SKELETON // needs to be updated
 //  #define VEGETATION //grass,weeds, vines
  // #define FLARE
@@ -50,9 +52,9 @@
     #define Image2D
     #define IRRCD
     #define OCCLUSION
-        #define WATER
+        #define WATER //enables the other 2
         //#define ReflectiveWater
-        //#define RealisticWater
+        #define RealisticWater
     #define EXTRAS
     #define CHOPPER
     #define BOIDS
