@@ -1,6 +1,7 @@
 #ifndef _C_GRASS_GENERATOR_H_
 #define _C_GRASS_GENERATOR_H_
-
+#include "../../../config.h"
+#ifdef VEGETATION
 #include "irrlicht.h"
 
 //enclose the class in a namespace, things inside the
@@ -87,4 +88,5 @@ class CGrassGenerator
 
 }
 
+#endif
 #endif

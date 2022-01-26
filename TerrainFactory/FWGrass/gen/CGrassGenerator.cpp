@@ -1,5 +1,5 @@
 #include "../../../config.h"
-#ifdef VEGITATION
+#ifdef VEGETATION
 #include "CGrassGenerator.h"
 
 #include <iostream>

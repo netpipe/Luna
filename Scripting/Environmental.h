@@ -390,7 +390,7 @@ PyObject * Python::PyIrr_WaterPlane(PyObject * self,PyObject * args){
 	const f32 height = 512.0f;
 	stringc resourcePath="./";
 bWater=1;
-	water2 = new RealisticWaterSceneNode(smgr, width, height, resourcePath);
+	water2 = new RealisticWaterSceneNode(smgr, wavespeed, refractionfactor, resourcePath);
 	smgr->getRootSceneNode()->addChild(water2);
 		#endif
 	}

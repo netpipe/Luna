@@ -59,6 +59,7 @@
     #define CHOPPER
     #define BOIDS
     #define TERRAIN
+    #define VEGETATION //grass,weeds, vines
     #define FLAG
     //#define FLAG2      //FMX
     //#define WII //not ready for use yet also requires libudev.
@@ -71,7 +72,7 @@
     #define SPRITES
     //#define SKELETON  // needs to be updated
     #define PostProcess
-    //#define VEGETATION //grass,weeds, vines
+
     #define TREES       //very cpu intensive does not work with emscripten yet.
     #define forest
     #define ATMOSPHERE  //  freezes when no video acceleration is used

@@ -456,6 +456,16 @@ void Python::render() {//active camera
         //      }
         #endif
 
+//irr::ITimer* timer = device->getTimer();
+// irr::u32 timeThisFrame = timer->getTime();
+// timeThisFrame = timer->getTime();
+//
+//while( (timer->getTime() - timeThisFrame) <= 16 )
+//{    timer->tick();  };
+
+//skipper so that its not updated as often
+//nexttime = deltaTime - device->getTimer()->getRealTime()+200;
+
         #ifdef ReflectiveWater
             if (bWater){  water->updateRendertarget(smgr);  }
         #endif
