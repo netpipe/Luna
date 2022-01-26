@@ -1,3 +1,4 @@
+#include "../config.h"
 #ifdef forest
 #include "Forest.h"
 

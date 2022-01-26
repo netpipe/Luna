@@ -1,5 +1,6 @@
 #ifndef FOREST_H_
 #define FOREST_H_
+#include "../config.h"
 #ifdef forest
 #include <irrlicht.h>
 

@@ -429,7 +429,7 @@ public:
 	}
 };
 
-int main()
+int mainy()
 {
 
 	IrrlichtDevice *device =createDevice(video::EDT_OPENGL, core::dimension2d<s32>(640, 480), 16, false);

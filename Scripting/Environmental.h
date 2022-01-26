@@ -426,12 +426,15 @@ return Py_BuildValue("");
 PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic with shader
 {
 	long terr;
-	char *action;
+	char *action2;
 	char * bush;
 	float cx,cy,cz;
 	int type;
 	//PyArg_ParseTuple(args,"fffi",&loc.X,&loc.Y,&loc.Z,&btree);
-	PyArg_ParseTuple(args,"silfff",&action,&type,&terr,&cx,&cy,&cz);
+	PyArg_ParseTuple(args,"silfff",&action2,&type,&terr,&cx,&cy,&cz);
+
+	stringc action = action2;
+
 #ifdef TREES
 	//1 for klasger , KornJungle has both JTree and jungle
 
@@ -564,13 +567,16 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
 
 
 	return Py_BuildValue("l",tree2);
-	}else{ //kornjungles trees
+	}
+
+
+	else{ //kornjungles trees
 //		if (terraintype){
 //		Terrain *terr2=terr;
 //		}else{
 //		}
 	ITerrainSceneNode* terrain=(ITerrainSceneNode*)terr;
-	if (action = "jungle"){
+	if (action == "jungle"){
  	    jungleScene::Jungle *jungle =
         new jungleScene::Jungle(
                 10240, // world size

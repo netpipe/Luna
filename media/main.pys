@@ -138,6 +138,8 @@ if (init) :
 #should be able to add trees without terrain/orientation
  #scene.trees(terr,bush)
  #scene.addTree2(bush)
+ scene.addTree("1",1,terrain,1,1,1)  #JTree, jungle
+
 
 #for(u32 i = 0 ; i < 1000 ; i++)
 # {
