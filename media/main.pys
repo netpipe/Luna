@@ -139,7 +139,7 @@ if (init) :
  #scene.trees(terr,bush)
  #scene.addTree2(bush)
  scene.addTree("1",1,terrain,1,1,1)  #JTree, jungle
-
+ scene.addTree("1",2,terrain,1,21,21)  #JTree, jungle
 
 #for(u32 i = 0 ; i < 1000 ; i++)
 # {

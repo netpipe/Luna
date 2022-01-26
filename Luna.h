@@ -159,10 +159,10 @@ class Luna
 		IGUIListBox*	listbox;
 	};
 
-
+    #ifdef CODEEDITOR
 	CGUIEditBoxIRB * codeEditor;
 	IGUIContextMenu * menu;
-
+#endif
 		IGUIWindow* windows;
 	private:
 

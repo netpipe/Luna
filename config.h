@@ -96,7 +96,9 @@
          //   #define SOUND
         //#define SDLSound
         //#define FLUIDLITE
+
         #define CODEEDITOR
+
         //#define OPENAL2
         #define _IRR_COMPILE_WITH_BSP_LOADER_
         //#define OIS2
