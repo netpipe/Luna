@@ -12,7 +12,6 @@
     #define MINAV
     #define OPENSTEER
     #define SPARK
-    #define _IRR_COMPILE_WITH_BSP_LOADER_
     #define SOUND
 
  // #define SKELETON // needs to be updated
@@ -97,7 +96,7 @@
         //#define FLUIDLITE
         #define CODEEDITOR
         //#define OPENAL2
-
+        #define _IRR_COMPILE_WITH_BSP_LOADER_
         //#define OIS2
         //#define OIS2_LINUX_JOY_DEBUG
         //#define TILED2D
