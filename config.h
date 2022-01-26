@@ -22,7 +22,7 @@
  // #define FLARE
   //#define FLARES
   //#define FLARE2  // more realistic and working
-  //#define FLUIDLITE
+  #define FLUIDLITE
   //#define FLUIDSYNTH //has been replaced by fluidlite
   //#define DECALS       //not used
 //  #define DECALS2

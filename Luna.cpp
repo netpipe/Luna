@@ -423,7 +423,7 @@ manager->initialize(pDeviceList->getDeviceName(1).c_str());
 //	SDLPlay();
 #endif
 #ifdef FLUIDLITE
-	initFluidLite();
+//	initFluidLite();
 #endif
 #ifdef SDLSound1
 	//sdlsoundinit();
