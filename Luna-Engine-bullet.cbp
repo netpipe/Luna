@@ -1705,9 +1705,7 @@
 		<Unit filename="Physics/Ragdoll.cpp" />
 		<Unit filename="Physics/Ragdoll.h" />
 		<Unit filename="Physics/SoftBody.cpp" />
-		<Unit filename="Physics/Vehicle.cpp">
-			<Option virtualFolder="media/" />
-		</Unit>
+		<Unit filename="Physics/Vehicle.cpp" />
 		<Unit filename="Physics/Vehicle.h" />
 		<Unit filename="Physics/box2D.cpp" />
 		<Unit filename="Physics/box2D.h" />
