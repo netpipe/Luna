@@ -102,7 +102,12 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
 
 return Py_BuildValue("");
 }
-
+#define SAMPLE_RATE 44100
+#define SAMPLE_SIZE 2 //4: Float Buffer   2: Signed Int Buffer
+#define NUM_FRAMES SAMPLE_RATE
+#define NUM_CHANNELS 2
+#define NUM_SAMPLES (NUM_FRAMES * NUM_CHANNELS)
+#define TIME_INTERVAL 1000000 //1500000:duration
 PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active camera
 #ifdef FLUIDLITE
 //http://www.fluidsynth.org/api/index.html#MIDIPlayerMem
@@ -112,6 +117,20 @@ PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active c
     PyArg_ParseTuple(args,"ssi",&sound,&param,&typee);
 //#define NETWORK_SUPPORT
 
+
+if (param == "init"){
+	fluid_settings_t* settings = new_fluid_settings();
+	fluid_synth_t* synth = new_fluid_synth(settings);
+	int res = fluid_synth_sfload(synth, "sitar.sf2", 1);
+
+	double dlength = (double)(SAMPLE_RATE * NUM_CHANNELS * SAMPLE_SIZE) * TIME_INTERVAL / 1000000;
+	long length = (long)dlength;
+	char* audio_buf = (char*)calloc(1, length);
+
+	}
+
+	if (param == "init"){
+
 	//char *psoundfont ="soundfonts/VintageDreamsWaves-v2.sf2";
     char *psoundfont =sound;
 	//char *psong = "BLUES.MID";
@@ -119,11 +138,72 @@ PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active c
 
 switch (typee){
 case 0:{
-  initFluidLite();
+            int nKey = 60 + rand() % 30;
+			fluid_synth_noteon(synth, 0, nKey, 127);
+			fluid_synth_write_s16(synth, SAMPLE_RATE, audio_buf, 0, NUM_CHANNELS, audio_buf, 1, NUM_CHANNELS);
+			fluid_synth_noteoff(synth, 0, 60);
+
+			//Create a IAudio object and load a sound from a file
+			//cAudio::IAudioSource* mysound = audioMgr->create("bling", "ec7_stereo.ogg", true);
+			cAudio::IAudioSource* mysound = audioMgr->createFromRaw(
+				"bling", audio_buf, length, SAMPLE_RATE, cAudio::EAF_16BIT_STEREO);
+
+			//Set the IAudio Sound to play3d and loop
+			//play3d takes 4 arguments play3d(toloop,x,y,z,strength)
+			if (mysound && listener)
+			{
+				listener->setPosition(cAudio::cVector3(0, 0, 0));
+				mysound->play3d(cAudio::cVector3(0, 0, 0), 2.0f, true);
+				mysound->setVolume(1.0f);
+				mysound->setMinDistance(1.0f);
+				mysound->setMaxAttenuationDistance(100.0f);
+
+				//Play for 10 seconds
+				const int ticksToPlay = 400;
+				int currentTick = 0;
+				int currentSecTick = 0;
+
+				while (mysound->isPlaying() && currentTick < ticksToPlay)
+				{
+					//Figure out the location of our rotated sound
+					rot += 0.1f * 0.017453293f;  //0.1 degrees a frame
+
+					//Sound "starts" at x=5, y=0, z=0
+					float x = 5.0f * cosf(rot) - 0.0f * sinf(rot);
+					float z = 0.0f * cosf(rot) + 5.0f * sinf(rot);
+					mysound->move(cAudio::cVector3(x, 0.0, z));
+
+					++currentTick;
+
+					if (currentTick / 1000 > currentSecTick)
+					{
+						++currentSecTick;
+						std::cout << ".";
+					}
+
+					//Sleep for 1 ms to free some CPU
+					cAudio::cAudioSleep(1);
+				}
+			}
+			//audioMgr->releaseAllSources();
+		}
+
+		std::cout << std::endl;
+
+		cAudio::destroyAudioManager(audioMgr);
+	}
+	else
+	{
+		std::cout << "Failed to create audio playback manager. \n";
+	}
+
+	//free(audio_buf);
+
+  //initFluidLite();
 }break;
 
 case 1:{
-playNote();
+//playNote();
 }break;
 }
 //if( typee==0 ){
