@@ -118,7 +118,6 @@
 					<Add option="-DPYTHON" />
 					<Add option="-DPHYSICS" />
 					<Add option="-DSOUND" />
-					<Add option="-DNDEBUG" />
 				</Compiler>
 				<Linker>
 					<Add library="GL" />
