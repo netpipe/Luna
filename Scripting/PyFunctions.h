@@ -59,8 +59,9 @@
     #ifdef ReflevtiveWater
         #include "../TerrainFactory/WaterNode/CReflectedWater.h"
     #endif
-
-    #include "../TerrainFactory/water/RealisticWater.h"
+    #ifdef RealisticWater
+        #include "../TerrainFactory/water/RealisticWater.h"
+    #endif
 #endif
 
 #ifdef OPENSTEER

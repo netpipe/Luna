@@ -96,7 +96,7 @@ namespace Python {
         CReflectedWater *water;
     #endif
     #ifdef RealisticWater
-    RealisticWaterSceneNode* water2;
+        RealisticWaterSceneNode* water2;
     #endif
     #ifdef occlusion
         Renderer22 *RenderMan;
@@ -460,7 +460,10 @@ void Python::render() {//active camera
             if (bWater){  water->updateRendertarget(smgr);  }
         #endif
         #ifdef RealisticWater
-        //if (bWater){  water2->render();  }
+            if (bWater){  water2->OnAnimate(device->getTimer()->getTime()/1000);
+            water2->render();
+
+             }
         #endif
         #ifdef COMPASS
         if (bCompass){

@@ -359,7 +359,7 @@ return Py_BuildValue("0");
 
 
 PyObject * Python::PyIrr_WaterPlane(PyObject * self,PyObject * args){
-	#ifdef RealisticWater
+
 	//int waterType=2;
     char * script;
     float scaleX,scaleY,scaleZ,locX,locY,locZ;
@@ -385,14 +385,16 @@ PyObject * Python::PyIrr_WaterPlane(PyObject * self,PyObject * args){
             return Py_BuildValue("l",water);
     #endif
 	}else{
+	#ifdef RealisticWater
     const f32 width = 512.0f;
 	const f32 height = 512.0f;
-	stringc resourcePath="";
+	stringc resourcePath="./";
 bWater=1;
 	water2 = new RealisticWaterSceneNode(smgr, width, height, resourcePath);
 	smgr->getRootSceneNode()->addChild(water2);
+		#endif
 	}
-	#endif
+
 return Py_BuildValue("");
 }
 
