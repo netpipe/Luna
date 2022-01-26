@@ -475,6 +475,7 @@ void Python::render() {//active camera
 
              }
         #endif
+
         #ifdef COMPASS
         if (bCompass){
             //Compass --BRJ correct way to get heading posted by Vitek

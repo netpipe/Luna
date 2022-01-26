@@ -461,7 +461,7 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
 		//	scene::SMeshBuffer mesh = tree->midmesh();
 		//		tree->setRotation( core::vector3df(1,1,0) );
 		//	scene::IMeshBuffer* mesh = tree->MidLODMeshBuffer;//HighLODMeshBuffer;
-	//		printf ("fucking tree range %f",tree->MidRange);
+	//		printf ("tree range %f",tree->MidRange);
       //  if(btree == 1){
 
     //    });
@@ -470,7 +470,7 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
      if (action == "1" ){ //klasgers trees
 		//if (action == "Tree"){
 		CTreeGenerator* generator = 0;
-		//vector <CTreeSceneNode*> tree2;
+//		//vector <CTreeSceneNode*> tree2;
 		CTreeSceneNode* tree2;
 
 			video::ITexture* billTexture = 0;
@@ -573,21 +573,37 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
 	}
 
 
-	else{ //kornjungles trees
+//	else{ //kornjungles trees
 //		if (terraintype){
 //		Terrain *terr2=terr;
 //		}else{
 //		}
-	ITerrainSceneNode* terrain=(ITerrainSceneNode*)terr;
+
+   // ISceneNode* test = terr.cubeSceneNode;
+	//ITerrainSceneNode* terrain=(ITerrainSceneNode*)terr;
+  //  Terrain* terrain=(Terrain*)terr;
 	if (action == "jungle"){
- 	    jungleScene::Jungle *jungle =
+
+	    ITerrainSceneNode* terrain = smgr->addTerrainSceneNode(
+        "../media/terrain-heightmap.bmp",
+        0,                  // parent node
+        -1,                 // node id
+        core::vector3df(0.f, 0.f, 0.f),     // position
+        core::vector3df(0.f, 0.f, 0.f),     // rotation
+        core::vector3df(40.f, 4.4f, 40.f),  // scale
+        video::SColor ( 255, 255, 255, 255 ),   // vertexColor
+        5,                  // maxLOD
+        scene::ETPS_17,             // patchSize
+        4                   // smoothFactor
+        );
+
+ 	    jungle =
         new jungleScene::Jungle(
                 10240, // world size
                 8,// chunk size. "chunk size" * "chunk size" = "tree count per chunk"
                 16,// max tree dimension diameter
                 4,// tree circular detail
-                terrain,
-                smgr,
+                   terrain,             smgr,
                 -1);
 
     smgr->getRootSceneNode()->addChild(jungle);
@@ -601,7 +617,7 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
     jungle->getMaterial(1).MaterialType = EMT_TRANSPARENT_ALPHA_CHANNEL_REF;
     // start growing trees
 
-    for(u32 i = 0 ; i < 1000 ; i++)
+    for(u32 i = 0 ; i < 100 ; i++)
     {
         f32 cx = 100.0f + rand()%10040;
         f32 cy = 100.0f + rand()%10040;
@@ -782,194 +798,200 @@ PyObject * Python::PyIrr_Trees(PyObject * self,PyObject * args) //more realistic
     }
     return Py_BuildValue("l",jungle);
 	}
-
-	if (action == "JTree"){
-		 	    jungleScene::Jungle *jungle =
-        new jungleScene::Jungle(
-                10240, // world size
-                8,// chunk size. "chunk size" * "chunk size" = "tree count per chunk"
-                16,// max tree dimension diameter
-                4,// tree circular detail
-                terrain,
-                smgr,
-                -1);
-
-		int seed = rand();
-		switch(type){
-				case(1):
-				{
-					jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
-						16,// segment
-						5,// min rot
-						30,// max rot
-						800.0f, // length
-						8, // branching count
-						7.5f, // max radius;
-						3, // ground root
-						200.0f, // leaf_width
-						200.0f, // leaf height
-						2, // leaf segments
-						1.0, // leaf stiffness
-						0, //leaf type
-						0, // bark type
-						seed, // seed
-						true
-						);
-					break;
-				}
-				case(2):
-				{
-					jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
-						25,// segment
-						0,// min rot
-						15,// max rot
-						800.0f, // length
-						4, // branching count
-						25.0f, // max radius;
-						4, // ground root
-						400.0f, // leaf_width
-						400.0f, // leaf height
-						2, // leaf segments
-						1.0, // leaf stiffness
-						1, //leaf type
-						1, // bark type
-						seed, // seed
-						true
-						);
-					break;
-				}
-				case(3):
-				{
-					jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
-						32,// segment
-						0,// min rot
-						15,// max rot
-						400.0f, // length
-						4, // branching count
-						5.0f, // max radius;
-						3, // ground root
-						100.0f, // leaf_width
-						100.0f, // leaf height
-						2, // leaf segments
-						1.0, // leaf stiffness
-						2, //leaf type
-						2, // bark type
-						seed, // seed
-						true
-						);
-					break;
-				}
-				case(4):
-				{
-					jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
-						32,// segment
-						5,// min rot
-						20,// max rot
-						400.0f, // length
-						4, // branching count
-						20.0f, // max radius;
-						4, // ground root
-						100.0f, // leaf_width
-						100.0f, // leaf height
-						2, // leaf segments
-						1.0, // leaf stiffness
-						3, //leaf type
-						3, // bark type
-						seed, // seed
-						true
-						);
-					break;
-				}
-				case(5):
-				{
-					jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
-						12,// segment
-						10,// min rot
-						20,// max rot
-						400.0f, // length
-						4, // branching count
-						7.5f, // max radius;
-						3, // ground root
-						100.0f, // leaf_width
-						100.0f, // leaf height
-						2, // leaf segments
-						1.0, // leaf stiffness
-						4, //leaf type
-						4, // bark type
-						seed, // seed
-						true
-						);
-					break;
-				}
-				case(6):
-				{
-					jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
-						12,// segment
-						15,// min rot
-						20,// max rot
-						400.0f, // length
-						4, // branching count
-						5.0f, // max radius;
-						3, // ground root
-						100.0f, // leaf_width
-						100.0f, // leaf height
-						2, // leaf segments
-						1.0, // leaf stiffness
-						5, //leaf type
-						5, // bark type
-						seed, // seed
-						true
-					   );
-					break;
-				}
-				case(7):
-				{
-					jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
-						14,// segment
-						4,// min rot
-						20,// max rot
-						400.0f, // length
-						4, // branching count
-						10.0f, // max radius;
-						3, // ground root
-						100.0f, // leaf_width
-						100.0f, // leaf height
-						2, // leaf segments
-						1.0, // leaf stiffness
-						6, //leaf type
-						6, // bark type
-						seed, // seed
-						true
-					   );
-					break;
-				}
-				case(8):
-				{
-					jungle->addTreeAt(core::vector3df(cx, terrain->getHeight(cx,cy), cy),
-					   20,// segment
-					   0,// min rot
-					   30,// max rot
-					   400.0f, // length
-					   6, // branching count
-					   10.0f, // max radius;
-					   3, // ground root
-					   200.0f, // leaf_width
-					   200.0f, // leaf height
-					   2, // leaf segments
-					   1.0, // leaf stiffness
-					   7, //leaf type
-					   7, // bark type
-					   seed, // seed
-						true
-					   );
-						break;
-				}
-			}
-				return Py_BuildValue("l",jungle);
-		}
-
-
-	}
+//
+//	if (action == "JTree"){
+//		 	    jungle =   new jungleScene::Jungle(
+//                10240, // world size
+//                8,// chunk size. "chunk size" * "chunk size" = "tree count per chunk"
+//                16,// max tree dimension diameter
+//                4,// tree circular detail
+//                                smgr,
+//                -1);
+//                //    smgr->getRootSceneNode()->addChild(jungle);
+//    jungle->getMaterial(0).setTexture(0, driver->getTexture("../media/data/textures/trees/kornJungle/bark.png"));
+//    jungle->getMaterial(0).setTexture(1, driver->getTexture("../media/data/textures/trees/kornJungle/bark_normal.png"));
+//    jungle->getMaterial(0).MaterialType = EMT_NORMAL_MAP_SOLID;
+//    jungle->getMaterial(0).Shininess = 0.0f;
+//
+//    jungle->getMaterial(1).setFlag(EMF_BACK_FACE_CULLING, false);
+//    jungle->getMaterial(1).setTexture(0,driver->getTexture("../media/data/textures/trees/kornJungle/leaf.png"));
+//    jungle->getMaterial(1).MaterialType = EMT_TRANSPARENT_ALPHA_CHANNEL_REF;
+////    // start growing trees
+//    //type=3;
+//		int seed = rand();
+//		switch(type){
+//				case(1):
+//				{
+//					jungle->addTreeAt(core::vector3df(cx, cz, cy),
+//						16,// segment
+//						5,// min rot
+//						30,// max rot
+//						800.0f, // length
+//						8, // branching count
+//						7.5f, // max radius;
+//						3, // ground root
+//						200.0f, // leaf_width
+//						200.0f, // leaf height
+//						2, // leaf segments
+//						1.0, // leaf stiffness
+//						0, //leaf type
+//						0, // bark type
+//						seed, // seed
+//						true
+//						);
+//					break;
+//				}
+//				case(2):
+//				{
+//					jungle->addTreeAt(core::vector3df(cx, cz, cy),
+//						25,// segment
+//						0,// min rot
+//						15,// max rot
+//						800.0f, // length
+//						4, // branching count
+//						25.0f, // max radius;
+//						4, // ground root
+//						400.0f, // leaf_width
+//						400.0f, // leaf height
+//						2, // leaf segments
+//						1.0, // leaf stiffness
+//						1, //leaf type
+//						1, // bark type
+//						seed, // seed
+//						true
+//						);
+//					break;
+//				}
+//				case(3):
+//				{
+//					jungle->addTreeAt(core::vector3df(cx, cz, cy),
+//						32,// segment
+//						0,// min rot
+//						15,// max rot
+//						400.0f, // length
+//						4, // branching count
+//						5.0f, // max radius;
+//						3, // ground root
+//						100.0f, // leaf_width
+//						100.0f, // leaf height
+//						2, // leaf segments
+//						1.0, // leaf stiffness
+//						2, //leaf type
+//						2, // bark type
+//						seed, // seed
+//						true
+//						);
+//					break;
+//				}
+//				case(4):
+//				{
+//					jungle->addTreeAt(core::vector3df(cx, cz, cy),
+//						32,// segment
+//						5,// min rot
+//						20,// max rot
+//						400.0f, // length
+//						4, // branching count
+//						20.0f, // max radius;
+//						4, // ground root
+//						100.0f, // leaf_width
+//						100.0f, // leaf height
+//						2, // leaf segments
+//						1.0, // leaf stiffness
+//						3, //leaf type
+//						3, // bark type
+//						seed, // seed
+//						true
+//						);
+//					break;
+//				}
+//				case(5):
+//				{
+//					jungle->addTreeAt(core::vector3df(cx, cz, cy),
+//						12,// segment
+//						10,// min rot
+//						20,// max rot
+//						400.0f, // length
+//						4, // branching count
+//						7.5f, // max radius;
+//						3, // ground root
+//						100.0f, // leaf_width
+//						100.0f, // leaf height
+//						2, // leaf segments
+//						1.0, // leaf stiffness
+//						4, //leaf type
+//						4, // bark type
+//						seed, // seed
+//						true
+//						);
+//					break;
+//				}
+//				case(6):
+//				{
+//					jungle->addTreeAt(core::vector3df(cx, cz, cy),
+//						12,// segment
+//						15,// min rot
+//						20,// max rot
+//						400.0f, // length
+//						4, // branching count
+//						5.0f, // max radius;
+//						3, // ground root
+//						100.0f, // leaf_width
+//						100.0f, // leaf height
+//						2, // leaf segments
+//						1.0, // leaf stiffness
+//						5, //leaf type
+//						5, // bark type
+//						seed, // seed
+//						true
+//					   );
+//					break;
+//				}
+//				case(7):
+//				{
+//					jungle->addTreeAt(core::vector3df(cx, cz, cy),
+//						14,// segment
+//						4,// min rot
+//						20,// max rot
+//						400.0f, // length
+//						4, // branching count
+//						10.0f, // max radius;
+//						3, // ground root
+//						100.0f, // leaf_width
+//						100.0f, // leaf height
+//						2, // leaf segments
+//						1.0, // leaf stiffness
+//						6, //leaf type
+//						6, // bark type
+//						seed, // seed
+//						true
+//					   );
+//					break;
+//				}
+//				case(8):
+//				{
+//					jungle->addTreeAt(core::vector3df(cx, cz, cy),
+//					   20,// segment
+//					   0,// min rot
+//					   30,// max rot
+//					   400.0f, // length
+//					   6, // branching count
+//					   10.0f, // max radius;
+//					   3, // ground root
+//					   200.0f, // leaf_width
+//					   200.0f, // leaf height
+//					   2, // leaf segments
+//					   1.0, // leaf stiffness
+//					   7, //leaf type
+//					   7, // bark type
+//					   seed, // seed
+//						true
+//					   );
+//						break;
+//				}
+//			}
+//				return Py_BuildValue("l",jungle);
+//
+//	}
 	#endif
 return Py_BuildValue("");
 };

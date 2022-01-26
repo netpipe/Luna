@@ -151,6 +151,7 @@
 
 #ifdef TREES
     #include "../TerrainFactory/ProceduralTrees/kornJungle/Jungle.h"
+    jungleScene::Jungle *jungle;
 #endif // TREES
 
 #ifdef SQLITE
