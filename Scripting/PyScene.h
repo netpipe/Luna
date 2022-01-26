@@ -328,6 +328,8 @@ scene::ISceneNode* node=0;
 	if (mesh)
 	   node = smgr->addOctreeSceneNode( cmesh.getMesh(0,0,0,1) );
 
+	 //          node->setAutomaticCulling(EAC_OFF);
+   //  node->setMaterialFlag(EMF_LIGHTING, true);
 #endif
         }else{
 
@@ -345,13 +347,14 @@ scene::ISceneNode* node=0;
 	if (mesh)
 		node = smgr->addOctreeSceneNode(mesh->getMesh(0), 0, -1, 1024);
 
+		        node->setAutomaticCulling(EAC_OFF);
+     node->setMaterialFlag(EMF_LIGHTING, true);
        }
 
 	//	node = smgr->addMeshSceneNode(mesh->getMesh(0));
     //    node = smgr->addAnimatedMeshSceneNode( mesh );
 
-        node->setAutomaticCulling(EAC_OFF);
-     node->setMaterialFlag(EMF_LIGHTING, true);
+
    //     node->getMaterial(0).ZWriteEnable=1;
    //     node->getMaterial(0).BackfaceCulling = true;
 
