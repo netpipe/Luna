@@ -1,5 +1,6 @@
 
 #ifdef EXTRACOMPILE  //leftovers and extra from minimal
+ #define MINIMAL2
  //#define COMPRESS //needed for empython
 //#define SDLMixer // wip - might not be compatable with the engine
 //#define OPENAL2 // working with emscripten
@@ -11,7 +12,7 @@
     #define MINAV
     #define OPENSTEER
     #define SPARK
-
+    #define _IRR_COMPILE_WITH_BSP_LOADER_
     #define SOUND
 
  // #define SKELETON // needs to be updated

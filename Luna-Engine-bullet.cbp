@@ -113,6 +113,7 @@
 				<Compiler>
 					<Add option="-fpermissive" />
 					<Add option="-DMINIMAL" />
+					<Add option="-DMINIMAL2" />
 					<Add option="-DEXTRACOMPILE" />
 					<Add option="-DPYTHON" />
 					<Add option="-DPHYSICS" />
@@ -1609,6 +1610,8 @@
 		<Unit filename="Input/FluidLite/stb/stb_vorbis.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="Input/Model/BSP/CMOHAALevelMesh.cpp" />
+		<Unit filename="Input/Model/BSP/CMOHAALevelMesh.h" />
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimp.cpp" />
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimp.h" />
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimpExport.cpp" />

@@ -7,6 +7,12 @@
 ///SCENENODES and SCENESTUFF STUFF  -- included from pyfunctions
 ///TERRAIN
 
+#ifdef _IRR_COMPILE_WITH_BSP_LOADER_
+using namespace quake3;
+	Q3LevelLoadParameter loadParam;
+	#include "../Input/Model/BSP/CMOHAALevelMesh.h"
+#endif
+
 
 PyMethodDef irr_Scene[] =
 {
@@ -283,19 +289,64 @@ PyObject * Python::PyIrr_addAnimatedMesh(PyObject * self,PyObject * args){
    // printf("loading animated mesh\n");
    // long cam2;
     char *meshPath;
-	PyArg_ParseTuple(args,"s",&meshPath);
-       IAnimatedMesh *mesh = smgr->getMesh( meshPath );
+    int param;
+	PyArg_ParseTuple(args,"si",&meshPath,&param);
+#ifdef _IRR_COMPILE_WITH_BSP_LOADER_
+	 CMOHAALevelMesh* cmesh;
+#endif
+IAnimatedMesh *mesh=0;
+scene::ISceneNode* node=0;
+	if (param == 1){
+	#ifdef _IRR_COMPILE_WITH_BSP_LOADER_
+//	            device->getFileSystem()->addFileArchive("./Pak0.pk3");
+//             device->getFileSystem()->addFileArchive("./Pak1.pk3");
+//            device->getFileSystem()->addFileArchive("./Pak2.pk3");
+//  device->getFileSystem()->addFileArchive("./pak6.pk3");
+
+           // scene::IAnimatedMesh *mesh = 0;
+            scene::ISceneNode *node = 0;
+
+	// default Quake3 loadParam
+	loadParam.defaultLightMapMaterial = EMT_LIGHTMAP;
+	loadParam.defaultModulate = EMFN_MODULATE_1X;
+	loadParam.defaultFilter = EMF_ANISOTROPIC_FILTER;
+	loadParam.verbose = 2;
+	loadParam.mergeShaderBuffer = 1;		// merge meshbuffers with same material
+	loadParam.cleanUnResolvedMeshes = 1;	// should unresolved meshes be cleaned. otherwise blue texture
+	loadParam.loadAllShaders = 1;			// load all scripts in the script directory
+	loadParam.loadSkyShader = 0;			// load sky Shader
+	loadParam.alpharef = 1;
+
+
+        io::IFileSystem *filesys;
+
+        filesys=device->getFileSystem();
+
+                   CMOHAALevelMesh cmesh(filesys,smgr,loadParam); //createMesh
+        cmesh.loadFile(filesys->createAndOpenFile(meshPath)); //"mohdm6.bsp"
+
+	if (mesh)
+	   node = smgr->addOctreeSceneNode( cmesh.getMesh(0,0,0,1) );
+
+#endif
+        }else{
+
+
+       mesh = smgr->getMesh( meshPath );
 //        irr::core::stringc extension;
     //   irr::core::getFileNameExtension(extension, value1);
 
 	//ICameraSceneNode *cam ;
 	//cam = (ICameraSceneNode *)cam2;
 
-    	scene::ISceneNode* node = 0;
+    	//scene::ISceneNode* node = 0;
     printf("loading animated mesh\n");
 
 	if (mesh)
 		node = smgr->addOctreeSceneNode(mesh->getMesh(0), 0, -1, 1024);
+
+       }
+
 	//	node = smgr->addMeshSceneNode(mesh->getMesh(0));
     //    node = smgr->addAnimatedMeshSceneNode( mesh );
 

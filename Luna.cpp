@@ -607,7 +607,7 @@ void Luna::main_loop(){ //devloop actually
 	//       rt->render();
 
 	#ifdef PYTHON
-		#ifdef CODEEDITORs
+		#ifdef CODEEDITOR
 		if ( Python::bCodeEditor==1	){
 			Python::bCodeEditor=0;
 			windows->setVisible(true);
@@ -621,10 +621,10 @@ void Luna::main_loop(){ //devloop actually
 			    device->setResizable(true);
 		}else if ( Python::bCodeEditor == 3	){
 			Python::bCodeEditor = 0;
-			codeEditor->setEnabled(0);
-			codeEditor->setVisible(false);
-			menu->setVisible(false);
-			menu->setEnabled(false);
+		//	codeEditor->setEnabled(0);
+		//	codeEditor->setVisible(false);
+		//	menu->setVisible(false);
+		//	menu->setEnabled(false);
 			windows->setVisible(false);  //! not sure why but causes crashing on startup
 		}
 		#endif //code_editor

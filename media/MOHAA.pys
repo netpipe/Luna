@@ -74,11 +74,11 @@ if (init) :
  cwd=os.getcwd()
  #os.chdir("../media/Q3A/")
  #cwd=os.getcwd()
- flist= os.listdir("/usr/share/games/openarena/baseoa/")
+ flist= os.listdir("../media/mohaa/")
  zipFiles=[x for x in flist if x.endswith(".pk3")]
  #pysList.remove("LoaderGUI.pys")
  for i in range(len(zipFiles)):
-  irr.files("/usr/share/games/openarena/baseoa/"+zipFiles[i])
+  irr.files("../media/mohaa/"+zipFiles[i])
  #os.chdir(cwd)
 
 
@@ -87,8 +87,8 @@ if (init) :
 #/usr/share/games/openarena/missionpack
 #/usr/share/games/openarena/missionpack/mp-pak0.pk3
 
-
- scene.addAMesh("/maps/aggressor.bsp",0);
+# scene.addAMesh("/maps/aggressor.bsp");
+ scene.addAMesh("../media/mohaa/mohdm6.bsp",1);
 
 
 
