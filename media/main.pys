@@ -123,7 +123,7 @@ if (init) :
 
  #jungle = scene.addJungle()
  #scene.addTree("jungle",1,terrain,1,1,1)#not working yet
- #track1 = physics.loadTrack('../media/data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
+ track1 = physics.loadTrack('../media/data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
  #track1 = scene.loadLevel('extra/maps/urban.bsp',0,0,0)  # trackname , timeofday , lighting , track slot/stages
 # scene.setPosition(terrain ,4, -100,-10,-100)
  #scene.exportScene("/home/clay/test/scene.irr")
@@ -138,13 +138,13 @@ if (init) :
 #should be able to add trees without terrain/orientation
  #scene.trees(terr,bush)
  #scene.addTree2(bush)
- #scene.addTree("1",1,terrain,1,1,1)  #JTree, jungle
+ scene.addTree("1",1,terrain,1,1,1)  #JTree, jungle
  #scene.addTree("JTree",1,terrain,1,1,1)
  #scene.addTree("JTree",2,terrain,4,1,1)
- scene.addTree("jungle",1,terrain,1,1,1)
+ #scene.addTree("jungle",1,terrain,1,1,1)
  #scene.addTree("1",2,terrain,1,21,21)  #JTree, jungle
  #scene.addwater("1",1,0.5,4,0.5) #CReflectedWater#speed,refractionfactor,height,isplacement, todo x,y,z
- #scene.addwater("0",111,111.5,0,0) #RealisticWaterSceneNode#speed,refractionfactor,height,isplacement, todo x,y,z
+ scene.addwater("0",111,111.5,0,0) #RealisticWaterSceneNode#speed,refractionfactor,height,isplacement, todo x,y,z
 
 #for(u32 i = 0 ; i < 1000 ; i++)
 # {
