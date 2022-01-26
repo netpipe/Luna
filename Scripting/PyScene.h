@@ -350,8 +350,8 @@ scene::ISceneNode* node=0;
 	if (mesh)
 		node = smgr->addOctreeSceneNode(mesh->getMesh(0), 0, -1, 1024);
 
-		        node->setAutomaticCulling(EAC_OFF);
-     node->setMaterialFlag(EMF_LIGHTING, true);
+		       node->setAutomaticCulling(EAC_OFF);
+     //node->setMaterialFlag(EMF_LIGHTING, true);
        }
 
 	//	node = smgr->addMeshSceneNode(mesh->getMesh(0));
@@ -368,7 +368,7 @@ scene::ISceneNode* node=0;
     //  m_cVehicle->recursiveFillMetaSelector(device->getSceneManager()->getRootSceneNode(), metaSelector);
     //  m_cVehicle->recursiveFillMetaSelector(node, metaSelector);
 
-    #ifdef PHYSICStest
+    #ifdef PHYSICS3
       IMeshBuffer *meshBuffer23 = mesh->getMesh(0)->getMeshBuffer(0); //node->getMeshBuffer(0);
       btTriangleMesh *collisionMesh23 = new btTriangleMesh();
       luna->m_cPhysics->convertIrrMeshBufferBtTriangleMesh(meshBuffer23, collisionMesh23, vector3df(1,1,1));
@@ -378,7 +378,9 @@ scene::ISceneNode* node=0;
     #endif
 
     #ifdef PHYSICS2
-//    tr.setOrigin(btVector3(trackPosition.X, trackPosition.Y, trackPosition.Z));
+ //  vector3df trackPosition = vector3df(0,0,-1);
+ //   tr.setOrigin(btVector3(trackPosition.X, trackPosition.Y, trackPosition.Z));
+//    tr.setRotation()
     btTriangleMesh *collisionMesh = new btTriangleMesh();
 
   //  m_cScene->setGenericMaterial(node, 0);
@@ -394,8 +396,9 @@ scene::ISceneNode* node=0;
 //            //decalManager->addMesh(mesh->getMeshBuffer(i));
         }
 //
-//    btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
- //   luna->m_cPhysics->localCreateRigidBody(0, tr, trackShape, node);
+//tr.setRotation(btQuaternion(btVector3(0,1,0)));
+    btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
+    luna->m_cPhysics->localCreateRigidBody(0, tr, trackShape, node);
 #endif
 
             #ifdef IRRCD

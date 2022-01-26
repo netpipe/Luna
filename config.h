@@ -102,7 +102,7 @@
         //#define OIS2_LINUX_JOY_DEBUG
         //#define TILED2D
         //#define PYTHON_MINIMALTEST
-        #define PHYSICS // custom BulletImplimentation
+       // #define PHYSICS // custom BulletImplimentation
         //#define IRRBULLET
         #endif
 

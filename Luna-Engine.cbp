@@ -1495,6 +1495,8 @@
 		<Unit filename="Input/FluidLite/stb/stb_vorbis.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="Input/Model/BSP/CMOHAALevelMesh.cpp" />
+		<Unit filename="Input/Model/BSP/CMOHAALevelMesh.h" />
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimp.cpp" />
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimp.h" />
 		<Unit filename="Input/Model/IrrAssimp/IrrAssimpExport.cpp" />
