@@ -118,6 +118,7 @@
 					<Add option="-DPYTHON" />
 					<Add option="-DPHYSICS" />
 					<Add option="-DSOUND" />
+					<Add option="-DNDEBUG" />
 				</Compiler>
 				<Linker>
 					<Add library="GL" />
@@ -170,11 +171,27 @@
 					<Add option="-O2" />
 					<Add option="-fpermissive" />
 					<Add option="-DNDEBUG" />
-					<Add option="-DPYTHON" />
+					<Add option="-DMINIMAL" />
+					<Add option="-DMINIMAL2" />
+					<Add option="-DSOUND" />
 					<Add option="-DPHYSICS" />
+					<Add option="-DEXTRACOMPILE" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="GL" />
+					<Add library="openal" />
+					<Add library="Xxf86vm" />
+					<Add library="X11" />
+					<Add library="python2.7" />
+					<Add library="pthread" />
+					<Add library="Irrlicht" />
+					<Add library="dl" />
+					<Add library="IrrOpenSteer" />
+					<Add library="cAudio" />
+					<Add library="ogg" />
+					<Add library="vorbis" />
+					<Add library="vorbisfile" />
 					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>

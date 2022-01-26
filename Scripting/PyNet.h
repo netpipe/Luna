@@ -191,7 +191,7 @@ PyObject * Python::PyIrr_Receive(PyObject * self,PyObject * args){
 	long netMan;
 	char *message2;
 	PyArg_ParseTuple(args,"ls",&netMan,&message2);
-	#ifdef NETWORK
+	#ifdef NETWORK2
 //	net::INetManager* netManager=netMan;
 
 		while(1){ // receive whole file before continuing
@@ -262,7 +262,7 @@ PyObject * Python::PyIrr_Decrypt(PyObject * self,PyObject * args){
 PyObject * Python::PyIrr_Server(PyObject * self,PyObject * args){
 // on off restart
 // change host / port
-#ifdef NETWORK
+#ifdef NETWORK2
 class MyNetCallback : public net::INetCallback
 {
 public:
@@ -305,7 +305,7 @@ public:
 
 PyObject * Python::PyIrr_restartServer(PyObject * self,PyObject * args){
 
-	#ifdef NETWORK
+	#ifdef NETWORK2
 	return Py_BuildValue("");
 	#endif
 }
@@ -315,7 +315,7 @@ PyObject * Python::PyIrr_Update(PyObject * self,PyObject * args){
 
 	long netMan;
 	PyArg_ParseTuple(args,"l",&netMan);
-	#ifdef NETWORK
+	#ifdef NETWORK2
 	net::INetManager* netManager=netMan;
 
 		 Here is the update loop, we will exit if there is a connection problem.

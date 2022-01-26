@@ -87,14 +87,6 @@ bool connected,doit,login=0;
 //#include <boost/python.hRpp>   #not used just for ideas maybe
 #include "Scripting/PythonManager.h"
 
-#ifdef NDEBUG
-#include <irrNet.h>
-
-//    net::SOutPacket rotationPacket;
-    net::INetManager* netManager;
-	#include "Net/irrNetClient.h"
-
-
 
 #ifdef RIBBONTRAIL
 //#include "./Scene/RibbonTrailSceneNode/RibbonTrailSceneNode.h"
@@ -104,6 +96,18 @@ bool connected,doit,login=0;
 //#include "TerrainFactory/GrassSceneNode/CWindGenerator.h"
 //    scene::CGrassPatchSceneNode *grass[1000];
 //scene::IWindGenerator *wind = createWindGenerator( 30.0f, 3.0f );
+
+
+//#ifdef NDEBUG
+#ifdef NETWORK
+#include <irrNet.h>
+
+//    net::SOutPacket rotationPacket;
+    net::INetManager* netManager;
+	#include "Net/irrNetClient.h"
+
+
+
 class ClientNetCallback : public net::INetCallback{
 public:
 	virtual void handlePacket(net::SInPacket& packet)
@@ -141,8 +145,11 @@ public:
       //  tmpvect=vector3df(vec);
  //     std::cout << str.c_str();
 };
+
+ClientNetCallback* clientCallback;
 #endif
-//ClientNetCallback* clientCallback;
+//#endif
+
 
 
 int icount=0;
@@ -164,7 +171,7 @@ int Luna::mainloop(){
 
 int Luna::doLogin ( const std::wstring &username, const std::wstring &password ){
     // 0 is ok, -1 logingood , 1 is no server connection
-     #ifdef NDEBUG
+   //  #ifdef NDEBUG
      #ifdef NETWORK
     std::string uname ( username.begin(), username.end() );
     std::string pword ( password.begin(), password.end() );
@@ -196,7 +203,7 @@ while (!login){
     }
 }
 #endif
-#endif
+//#endif
    return -1;//iReturn;//-1; //good for debugging
 }
 
@@ -443,7 +450,7 @@ manager->initialize(pDeviceList->getDeviceName(1).c_str());
 int Luna::Run(){  // starts the game in dev mode or release mode some features are easier to impliment into the mainloop rather than scripting for testing //uses devloop or main_loop for emscripten
 
     events.devLogin=0;
-    #ifndef NDEBUG
+    #ifndef NDEBUG2  // put 2 here to disable for now its used to login
         events.devLogin=1;
     #endif
  //   driver->setVSync(0);

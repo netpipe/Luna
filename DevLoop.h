@@ -354,8 +354,8 @@ struct SAppContext
 			windows->setVisible(true);
 			codeEditor->setEnabled(true);
 			codeEditor->setVisible(true);
-			menu->setVisible(true);
-			menu->setEnabled(true);
+		//	menu->setVisible(true); // only seems to work when called from here
+		//	menu->setEnabled(true);
 			windows->setVisible(true);
 			//device->setEventReceiver(&receiver);
 			device->getCursorControl()->setVisible(true);
