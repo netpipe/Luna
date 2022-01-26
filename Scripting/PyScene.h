@@ -325,7 +325,7 @@ scene::ISceneNode* node=0;
                    CMOHAALevelMesh cmesh(filesys,smgr,loadParam); //createMesh
         cmesh.loadFile(filesys->createAndOpenFile(meshPath)); //"mohdm6.bsp"
 
-	if (mesh)
+//	if (mesh)
 	   node = smgr->addOctreeSceneNode( cmesh.getMesh(0,0,0,1) );
 
 	 //          node->setAutomaticCulling(EAC_OFF);
