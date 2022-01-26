@@ -89,7 +89,7 @@ if (init) :
 
 
  scene.addAMesh("/maps/aggressor.bsp",0);
-
+ gui.codeeditor(1)
 
 
  flashlight=scene.flashlight(0,0)

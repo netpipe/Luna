@@ -611,14 +611,14 @@ void Luna::main_loop(){ //devloop actually
 		if ( Python::bCodeEditor==1	){
 			Python::bCodeEditor=0;
 			windows->setVisible(true);
-			codeEditor->setEnabled(true);
-			codeEditor->setVisible(true);
-			menu->setVisible(true);
-			menu->setEnabled(true);
-			windows->setVisible(true);
-//			device->setEventReceiver(&receiver);
-			device->getCursorControl()->setVisible(true);
-			    device->setResizable(true);
+//			codeEditor->setEnabled(true);
+//			codeEditor->setVisible(true);
+//			menu->setVisible(true);
+//			menu->setEnabled(true);
+//			windows->setVisible(true);
+////			device->setEventReceiver(&receiver);
+//			device->getCursorControl()->setVisible(true);
+//			    device->setResizable(true);
 		}else if ( Python::bCodeEditor == 3	){
 			Python::bCodeEditor = 0;
 		//	codeEditor->setEnabled(0);
