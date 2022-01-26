@@ -296,6 +296,7 @@ PyObject * Python::PyIrr_addAnimatedMesh(PyObject * self,PyObject * args){
 #endif
 IAnimatedMesh *mesh=0;
 scene::ISceneNode* node=0;
+
 	if (param == 1){
 	#ifdef _IRR_COMPILE_WITH_BSP_LOADER_
 //	            device->getFileSystem()->addFileArchive("./Pak0.pk3");
@@ -304,7 +305,7 @@ scene::ISceneNode* node=0;
 //  device->getFileSystem()->addFileArchive("./pak6.pk3");
 
            // scene::IAnimatedMesh *mesh = 0;
-            scene::ISceneNode *node = 0;
+           // scene::ISceneNode *node = 0;
 
 	// default Quake3 loadParam
 	loadParam.defaultLightMapMaterial = EMT_LIGHTMAP;
@@ -325,14 +326,16 @@ scene::ISceneNode* node=0;
                    CMOHAALevelMesh cmesh(filesys,smgr,loadParam); //createMesh
         cmesh.loadFile(filesys->createAndOpenFile(meshPath)); //"mohdm6.bsp"
 
+
 //	if (mesh)
 	   node = smgr->addOctreeSceneNode( cmesh.getMesh(0,0,0,1) );
 
 	 //          node->setAutomaticCulling(EAC_OFF);
    //  node->setMaterialFlag(EMF_LIGHTING, true);
+        mesh =  cmesh.getMesh(0,0,0,1);
+
 #endif
         }else{
-
 
        mesh = smgr->getMesh( meshPath );
 //        irr::core::stringc extension;
@@ -374,7 +377,7 @@ scene::ISceneNode* node=0;
     luna->m_cPhysics->localCreateRigidBody(0, tr, chassisShape23, node);
     #endif
 
-    #ifdef PHYSICS3
+    #ifdef PHYSICS2
 //    tr.setOrigin(btVector3(trackPosition.X, trackPosition.Y, trackPosition.Z));
     btTriangleMesh *collisionMesh = new btTriangleMesh();
 
@@ -395,7 +398,7 @@ scene::ISceneNode* node=0;
  //   luna->m_cPhysics->localCreateRigidBody(0, tr, trackShape, node);
 #endif
 
-            #ifdef IRRCD2
+            #ifdef IRRCD
         metaSelector = device->getSceneManager()->createMetaTriangleSelector();
         selector = device->getSceneManager()->createOctTreeTriangleSelector(mesh,node,128);
         node->setTriangleSelector(selector);
@@ -412,7 +415,7 @@ scene::ISceneNode* node=0;
             metaSelector, smgr->getActiveCamera(), core::vector3df(30,60,30),
             core::vector3df(0,0,0),   /// MAIN irrGRAVITY
             core::vector3df(0,10,0));
-        //  camera->addAnimator(anim); // bug use python to pass camera arrgss
+          //camera->addAnimator(anim); // bug use python to pass camera arrgss
        // m_cInGameEvents.chopperControl->onCollision(anim);
         anim->drop();
         metaSelector->drop();
