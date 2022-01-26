@@ -200,10 +200,11 @@ PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active c
 //case 1:{
 ////playNote();
 //}break;
-//return Py_BuildValue("l",managerID);
-//}
-#endif
+return Py_BuildValue("l",mysound);
+}
+#else
 return Py_BuildValue("");
 }
 #endif
 
+#endif
