@@ -2416,6 +2416,7 @@
 		<Unit filename="Scene/spriteManager/main.cpp" />
 		<Unit filename="Scene/tesselatedImage/tesselatedImage.cpp" />
 		<Unit filename="Scene/tesselatedImage/tesselatedImage.h" />
+		<Unit filename="Scripting/EnviroVegetation.h" />
 		<Unit filename="Scripting/Environmental.h" />
 		<Unit filename="Scripting/PY_Physics.h" />
 		<Unit filename="Scripting/PyCamera.h" />
