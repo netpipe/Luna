@@ -14,6 +14,8 @@
     #define SPARK
     #define SOUND
 
+   // #define IRRBULLET //testing for now
+
     #ifdef NDEBUG
       #define NETWORK
     #endif
@@ -112,7 +114,7 @@
         //#define IRRBULLET
         #endif
 
-    #define IRRBULLET
+
 
   #ifdef PHYSICS
   //if bullet carnot enabled with physics and car calls it crashes FIXME
