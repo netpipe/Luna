@@ -188,13 +188,14 @@ PyObject * Python::PyIrr_omareDemo(PyObject * self,PyObject * args){
 
 PyObject * Python::PyIrr_bitCloud(PyObject * self,PyObject * args){
 	int param,state,Vehicle,ammount;
-    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+ //   PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+    PyArg_ParseTuple(args,"i",&Vehicle);
 #ifdef Bitcloud
 	clouds = new scene::CCloudSceneNode(
 			smgr->getRootSceneNode(), smgr,
             device->getTimer(), 666, core::vector3df(0,0,0), core::vector3df(0,0,0), core::vector3df(1,1,1));
 
-        video::ITexture * txture = driver->getTexture("./media/cloudgen/cloud.tga");
+        video::ITexture * txture = driver->getTexture("../media/cloudgen/cloud.tga");
         srand(time(NULL));
         clouds->setLOD(1);
         clouds->setMaxDepth(1);
@@ -210,8 +211,10 @@ PyObject * Python::PyIrr_bitCloud(PyObject * self,PyObject * args){
 		clouds->addAnimator(cloudsCycle);
 		cloudsCycle->drop();
         return Py_BuildValue("l",clouds);
-#endif
-           Py_RETURN_NONE;
+#else
+           //Py_RETURN_NONE;
+           return Py_BuildValue("");
+           #endif
 };
 
 PyObject * Python::PyIrr_realCloud(PyObject * self,PyObject * args){

@@ -66,6 +66,7 @@
                     //xwiimote is easier to use with suse linux
                     //cwiid has balanceboard support
     #define CLOUDS
+    #define Bitcloud
     #define COMPASS
     #define TESSELATE
     #define SCALC

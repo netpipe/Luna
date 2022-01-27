@@ -59,9 +59,7 @@ if (init) :
  camera = scene.addCamera(3,0,200,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
  scene.fpsweapon(camera,0)
  scene.decals(1,camera)
- #scene.atmosphere(1)              # set time of day / moonphase (i broke it)
- #extras.bitcloud(1)
- #extras.realCloud(1)
+
 
  #shoot decals from camera
 
@@ -211,6 +209,9 @@ if (init) :
 # scene.soundman(0,1,1)
 # scene.soundman(1,1,1)
 
+ scene.atmosphere(1)              # set time of day / moonphase (i broke it)
+ #extras.bitcloud(1)
+ extras.realCloud(1,1,1,1)
 
  icount=0
 #################################

@@ -470,22 +470,22 @@ mat2.multiplyWith1x4Matrix(vieta);
 void CreateSkyPallete(){//Psize-paletes dydis
 if (dangus!=NULL){driver->removeTexture(dangus);}
 
-dangus=driver->getTexture("./media/sky2.tga");
+dangus=driver->getTexture("../media/data/sky2.tga");
 
 //stars box
 smgr->addSkyBoxSceneNode(
-      driver->getTexture("./media/stars.bmp"),
-      driver->getTexture("./media/stars.bmp"),
-      driver->getTexture("./media/stars.bmp"),
-      driver->getTexture("./media/stars.bmp"),
-      driver->getTexture("./media/stars.bmp"),
-      driver->getTexture("./media/stars.bmp"));
+      driver->getTexture("../media/data/stars.bmp"),
+      driver->getTexture("../media/data/stars.bmp"),
+      driver->getTexture("../media/data/stars.bmp"),
+      driver->getTexture("../media/data/stars.bmp"),
+      driver->getTexture("../media/data/stars.bmp"),
+      driver->getTexture("../media/data/stars.bmp"));
 
 Sky = new CATMOskySceneNode(dangus,smgr->getRootSceneNode(), smgr,80, skyid);
 //sun billboard
     bill=new CATMOstarSceneNode(smgr->getRootSceneNode(),smgr,0, core::vector3df(0,0,0),core::dimension2d<f32>(150,150));
     bill->setMaterialFlag(video::EMF_LIGHTING, false);
-    bill->setMaterialTexture(0, driver->getTexture("./media/sun.tga"));
+    bill->setMaterialTexture(0, driver->getTexture("../media/data/sun.tga"));
     bill->getMaterial(0).MaterialTypeParam = 0.01f;
     bill->setMaterialType(video::EMT_TRANSPARENT_ALPHA_CHANNEL);
 
@@ -506,7 +506,7 @@ video::SColorf(1.0f, 0.6f, 0.7f, 1.0f), 10000.0f);
   device=device2;
   driver=Driver;
   smgr=mgr;
-  setSkyImage("./media/sky2.tga");
+  setSkyImage("../media/data/sky2.tga");
   CreateSkyPallete();
   startTimer();
   setAmbientLight2(SColor(255,255,255,255));//bug fix
