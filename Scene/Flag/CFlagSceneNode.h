@@ -1,7 +1,8 @@
 #ifdef _WIN32
 #pragma once
 #endif
-#ifdef FLAG
+#include "../../config.h"
+#ifdef FLAG2
 //********************************************************************************************
 // File:	CFlagSceneNode.h
 // Purpose:	Realtime flag vertex animation. Based on Flagsim by

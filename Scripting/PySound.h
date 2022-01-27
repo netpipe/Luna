@@ -129,10 +129,10 @@ PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active c
 	double dlength = (double)(SAMPLE_RATE * NUM_CHANNELS * SAMPLE_SIZE) * TIME_INTERVAL / 1000000;
 	long length = (long)dlength;
 	char* audio_buf = (char*)calloc(1, length);
+//}
 
-
-//switch (typee){
-//case 0:{
+switch (typee){
+case 0:{
             int nKey = 60 + rand() % 30;
 			fluid_synth_noteon(synth, 0, nKey, 127);
 			fluid_synth_write_s16(synth, SAMPLE_RATE, audio_buf, 0, NUM_CHANNELS, audio_buf, 1, NUM_CHANNELS);
@@ -168,13 +168,13 @@ PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active c
 		//			float z = 0.0f * cosf(rot) + 5.0f * sinf(rot);
 		//			mysound->move(cAudio::cVector3(x, 0.0, z));
 
-					++currentTick;
-
-					if (currentTick / 1000 > currentSecTick)
-					{
-						++currentSecTick;
-						std::cout << ".";
-					}
+//					++currentTick;
+//
+//					if (currentTick / 1000 > currentSecTick)
+//					{
+//						++currentSecTick;
+//						std::cout << ".";
+//					}
 
 					//Sleep for 1 ms to free some CPU
 					//cAudio::cAudioSleep(1);
@@ -193,14 +193,15 @@ PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active c
 //	}
 
 	//free(audio_buf);
-
-  //initFluidLite();
-//}break;
-
-//case 1:{
-////playNote();
-//}break;
 return Py_BuildValue("l",mysound);
+  //initFluidLite();
+}break;
+
+case 1:{
+//playNote();
+}break;
+}
+
 }
 #else
 return Py_BuildValue("");

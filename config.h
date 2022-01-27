@@ -54,14 +54,14 @@
     #define OCCLUSION
         #define WATER //enables the other 2
        // #define ReflectiveWater
-        #define RealisticWater
+        #define RealisticWater //cannot be enabled with postprocessing
     #define EXTRAS
     #define CHOPPER
     #define BOIDS
     #define TERRAIN
     #define VEGETATION //grass,weeds, vines
     #define FLAG
-    //#define FLAG2      //FMX
+    #define FLAG2      //FMX
     //#define WII //not ready for use yet also requires libudev.
                     //xwiimote is easier to use with suse linux
                     //cwiid has balanceboard support

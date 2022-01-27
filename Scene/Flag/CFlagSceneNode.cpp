@@ -1,4 +1,5 @@
-#ifdef FLAG
+#include "../../config.h"
+#ifdef FLAG2
 //********************************************************************************************
 // File:	CFlagSceneNode.cpp
 // Purpose:	Realtime flag vertex animation. Based on Flagsim by

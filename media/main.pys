@@ -41,10 +41,10 @@ if (init) :
 
 
 # irr.checkKeyState(); # obsolete check event loop to see if any key was pressed #existing functions should be moved to pre and post python functions
- #physics.opensteer(1) - wip
-# scene.postprocess() #toggles
+ #physics.opensteer(1) #- wip
+ #scene.postprocess() #toggles
  scene.SPARK()
-# scene.CSG("test.3ds")
+ #scene.CSG("test.3ds")
 
 
  #box2d add body attach it to 2d graphic
@@ -93,6 +93,7 @@ if (init) :
  #gui.codeeditor(1) #shader editor #cpu limiter incase of bad code
 # extras.lensflare(1,10,100,10)
  scene.flag1("../media/irrlichtlogo.jpg",10,10000,10)
+ #scene.flag2("../media/irrlichtlogo.jpg",10,10000,10)
  #extras.blindboids(1,0,1,1)
 # gui.sgraph()
 # healthbar=gui.bar(0,0,20,40,100,60)
@@ -144,7 +145,7 @@ if (init) :
  #scene.addTree("jungle",1,terrain,1,1,1)
  #scene.addTree("1",2,terrain,1,21,21)  #JTree, jungle
  #scene.addwater("1",1,0.5,4,0.5) #CReflectedWater#speed,refractionfactor,height,isplacement, todo x,y,z
- scene.addwater("0",111,111.5,0,0) #RealisticWaterSceneNode#speed,refractionfactor,height,isplacement, todo x,y,z
+ scene.addwater("0",111,111.5,0,0) # when this is enabled postprocessing cannot be on
 
  scene.fluidlite("","",0)
 #for(u32 i = 0 ; i < 1000 ; i++)
@@ -228,7 +229,7 @@ else:
 #scene.fpsweapon(camera,1)
 
 
-
+#scene.postprocess()
 #gui.bar(healthbar,1,20,40,200,60) #does not draw onanimate it
 #posx=scene.getPosition(helicopter,0)
 #print posx

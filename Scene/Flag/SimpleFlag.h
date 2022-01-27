@@ -9,7 +9,8 @@
 // zlib licence
 //
 
-
+#include "../../config.h"
+#ifdef FLAG
 #ifndef _C_FLAG_SCENENODE_H_INCLUDED_
 #define _C_FLAG_SCENENODE_H_INCLUDED_
 
@@ -315,3 +316,4 @@ f32	WindWave;
 
 #endif  // _C_FLAG_SCENENODE_H_INCLUDED_
 
+#endif

@@ -69,8 +69,8 @@ PyObject * Python::PyIrr_Flag2(PyObject * self,PyObject * args) //more realistic
 
 	ILogger* output = device->getLogger();
 
-	path vsFileName = "./shaders/Flag/flag_shader.vert";
-	path psFileName = "./shaders/Flag/flag_shader.frag";
+	path vsFileName = "../media/shaders/Flag/flag_shader.vert";
+	path psFileName = "../media/shaders/Flag/flag_shader.frag";
 
 	if(!driver->queryFeature(EVDF_PIXEL_SHADER_1_1) && !driver->queryFeature(EVDF_ARB_FRAGMENT_PROGRAM_1))
 	{
@@ -101,7 +101,7 @@ PyObject * Python::PyIrr_Flag2(PyObject * self,PyObject * args) //more realistic
 		cb->drop();
 	}
 
-	IImage* vertweightmap = driver->createImageFromFile("media/Flags/weightmap.tga");
+	IImage* vertweightmap = driver->createImageFromFile("../media/Flags/weightmap.tga");
 
 // create a couple of perlin generators
 	//Perlin1D* pgen1 = new Perlin1D(128,5,0.05f,2.0f,rand());
@@ -367,7 +367,7 @@ PyObject * Python::PyIrr_WaterPlane(PyObject * self,PyObject * args){
     float x,y,z,bigness;
 
     PyArg_ParseTuple(args,"sffff",&script,&wavespeed,&refractionfactor,&waveheight,&wavedisplacement);
-
+#ifdef WATER
     stringc waterType=script;
 	if (waterType=="1"){
     #ifdef ReflectiveWater
@@ -393,8 +393,9 @@ bWater=1;
 	water2 = new RealisticWaterSceneNode(smgr, wavespeed, refractionfactor, resourcePath);
 	smgr->getRootSceneNode()->addChild(water2);
 		#endif
-	}
 
+	}
+	#endif
 return Py_BuildValue("");
 }
 

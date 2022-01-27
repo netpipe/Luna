@@ -264,7 +264,7 @@ int Luna::shutdown(){
 	#endif
 
 	#ifdef FLAG2     // should be the flagmanager
-	 delete flag;
+//	 delete flag;
 	#endif
 
 	#ifdef PYTHON
