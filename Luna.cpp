@@ -49,6 +49,17 @@ using namespace gui;
     #endif
 #endif
 
+#ifdef IRRBULLET
+#include <bulletworld.h>
+#include <rigidbody.h>
+#include <boxshape.h>
+#include <sphereshape.h>
+#include <gimpactmeshshape.h>
+#include <raycastvehicle.h>
+#include <collisionobjectaffectordelete.h>
+#include <collisionobjectaffectorattract.h>
+#endif // IRRBULLET
+
 #include "./Equipment/firstPersonWeapon.h"
 
 #ifdef ATMOSPHERE

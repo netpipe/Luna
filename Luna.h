@@ -140,6 +140,10 @@ class Luna
         #ifdef PHYSICS
 		Physics *m_cPhysics;
 		#endif
+
+		#ifdef IRRBULLET
+            irrBulletWorld *world;
+		#endif // IRRBULLET
         SKeyMap keyMap[8]; // KEYMAP
         f32 frameDeltaTime;
 
