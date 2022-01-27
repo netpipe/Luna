@@ -94,12 +94,11 @@
 
 #ifdef FLAG
     #include "../Scene/Flag/SimpleFlag.h"
-   // #include "../Scene/Flag/CFlagSceneNode.h"
 #endif
-
 #ifdef FLAG2
     #include "../Scene/Flag/CFlagSceneNode.h"
-    #endif
+#endif
+
 #ifdef SKELETON
     #include "../entities/skeleton/Skeleton.h"
 #endif

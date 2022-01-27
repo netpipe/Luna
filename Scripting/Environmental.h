@@ -222,18 +222,18 @@ PyObject * Python::PyIrr_realCloud(PyObject * self,PyObject * args){
 	#ifdef CLOUDS
 	cloudLayer1 = new scene::CloudSceneNode(smgr->getRootSceneNode(), smgr);
 	cloudLayer1->setTranslation(core::vector2d<f32>(0.008f, 0.0f));
-	cloudLayer1->getMaterial(0).setTexture(0, driver->getTexture("data/clouds/cloud01.png"));
+	cloudLayer1->getMaterial(0).setTexture(0, driver->getTexture("../media/data/clouds/cloud01.png"));
 	cloudLayer1->setCloudHeight(0.5f, 0.1f, -0.05f);
 	// add 2nd cloud layer
 	cloudLayer2 = new scene::CloudSceneNode(smgr->getRootSceneNode(), smgr);
 	cloudLayer2->setTranslation(core::vector2d<f32>(0.006f, 0.003f));
-	cloudLayer2->getMaterial(0).setTexture(0, driver->getTexture("data/clouds/cloud02.png"));
+	cloudLayer2->getMaterial(0).setTexture(0, driver->getTexture("../media/data/clouds/cloud02.png"));
 	cloudLayer2->setCloudHeight(0.4f, 0.05f, -0.1f);
 	cloudLayer2->setTextureScale(0.5f);
 	// add 3rd cloud layer
 	cloudLayer3 = new scene::CloudSceneNode(smgr->getRootSceneNode(), smgr);
 	cloudLayer3->setTranslation(core::vector2d<f32>(0.006f, 0.003f));
-	cloudLayer3->getMaterial(0).setTexture(0, driver->getTexture("data/clouds/cloud03.png"));
+	cloudLayer3->getMaterial(0).setTexture(0, driver->getTexture("../media/data/clouds/cloud03.png"));
 	cloudLayer3->setCloudHeight(0.35f, 0.0f, -0.15f);
 	cloudLayer3->setTextureScale(0.4f);
 	#endif

@@ -65,7 +65,7 @@
     //#define WII //not ready for use yet also requires libudev.
                     //xwiimote is easier to use with suse linux
                     //cwiid has balanceboard support
-
+    #define CLOUDS
     #define COMPASS
     #define TESSELATE
     #define SCALC

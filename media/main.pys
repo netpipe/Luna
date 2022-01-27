@@ -52,14 +52,16 @@ if (init) :
 
 
  sound2 = scene.soundman(0,"../media/robocrep.ogg",0) #create sound device // seems to crash RDP sessions and this is what i've been using for now. so i will leave sound off.
- scene.soundman(1,str(sound2),1)#play sound   // seems to crash RDP sessions and this is what i've been using for now. so i will leave sound off.
+ #scene.soundman(1,str(sound2),1)#play sound   // seems to crash RDP sessions and this is what i've been using for now. so i will leave sound off.
  #scene.soundman(1,str(sound2),0)#stop sound
  #scene.soundman(1,str(sound2),2)#unloadsound / clear sounds
 
  camera = scene.addCamera(3,0,200,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
  scene.fpsweapon(camera,0)
  scene.decals(1,camera)
-
+ #scene.atmosphere(1)              # set time of day / moonphase (i broke it)
+ #extras.bitcloud(1)
+ #extras.realCloud(1)
 
  #shoot decals from camera
 
