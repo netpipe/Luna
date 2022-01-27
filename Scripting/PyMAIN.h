@@ -483,7 +483,7 @@ void Python::render() {//active camera
         if (bCompass){
             //Compass --BRJ correct way to get heading posted by Vitek
             core::vector3df fore(0, 0, 1);
-            camera->getAbsoluteTransformation().rotateVect(fore);
+            smgr->getActiveCamera()->getAbsoluteTransformation().rotateVect(fore);
             core::vector3df rot1 = fore.getHorizontalAngle();
             Compass1->SetCompassHeading( rot1.Y );
         }

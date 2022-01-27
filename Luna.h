@@ -20,10 +20,15 @@
 #include "entities/player.h"
 //#include "Encryption/Blowfish.h"
 
+#ifdef IRRBULLET
+    #include "Physics/irrBullet-0.1.9/include/irrBullet.h"
+#endif
+
 #ifdef PHYSICS
 	#include "Physics/Physics.h"
 	#include "Physics/Vehicle.h"
 #endif
+
 	#include "Scene/Scene.h"
 
 #ifdef DECALS2

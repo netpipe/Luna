@@ -166,7 +166,7 @@ Py_RETURN_NONE;
 
 PyObject * Python::PyIrr_omareDemo(PyObject * self,PyObject * args){
 	int param,state,Vehicle,ammount;
-    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+    PyArg_ParseTuple(args,"i",&state);
         //Omare's CloudGen
 	int nClouds =0;
 	int max =10;
@@ -179,7 +179,7 @@ PyObject * Python::PyIrr_omareDemo(PyObject * self,PyObject * args){
 			cloudgen->setPosition(core::vector3df(cloud_x,cloud_y,cloud_z));
 			cloudgen->setMaterialFlag(video::EMF_LIGHTING, false);
 			cloudgen->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
-			cloudgen->setMaterialTexture(0,	driver->getTexture("./media/cloudgen/cloud.jpg"));
+			cloudgen->setMaterialTexture(0,	driver->getTexture("../media/cloudgen/cloud.jpg"));
 			printf("cloud generated");
 			nClouds=nClouds+1;
 		};

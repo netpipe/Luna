@@ -112,6 +112,8 @@
         //#define IRRBULLET
         #endif
 
+    #define IRRBULLET
+
   #ifdef PHYSICS
   //if bullet carnot enabled with physics and car calls it crashes FIXME
   #define BULLETCAR // if FPSWEAPON is enabled the car wont work. diff event rec

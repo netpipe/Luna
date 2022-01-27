@@ -179,7 +179,7 @@ return Py_BuildValue("");
 
 PyObject * Python::PyIrr_Compass(PyObject * self,PyObject * args) {
     int param,state,Vehicle,ammount;
-    PyArg_ParseTuple(args,"liii",&Vehicle,&param,&ammount,&state);
+    PyArg_ParseTuple(args,"i",&state);
     #ifdef COMPASS
         bCompass=true;
         ///Compass
