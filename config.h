@@ -18,10 +18,6 @@
       #define NETWORK
     #endif
  // #define SKELETON // needs to be updated
-//  #define VEGETATION //grass,weeds, vines
- // #define FLARE
-  //#define FLARES
-  //#define FLARE2  // more realistic and working
   #define FLUIDLITE
   //#define FLUIDSYNTH //has been replaced by fluidlite
   //#define DECALS       //not used
@@ -102,6 +98,9 @@
         //#define FLUIDLITE
 
         #define CODEEDITOR
+        #define FLARE
+        #define FLARES
+        #define FLARE2  // more realistic and working
 
         //#define OPENAL2
         #define _IRR_COMPILE_WITH_BSP_LOADER_

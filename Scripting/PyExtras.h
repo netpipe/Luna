@@ -86,10 +86,10 @@ PyObject * Python::PyIrr_lensFlare(PyObject * self,PyObject * args){
         int param;
         float x,y,z;
     PyArg_ParseTuple(args,"ifff",&param,&x,&y,&z);
-    #ifdef FLARE
+    #ifdef FLARES
         scene::IMeshSceneNode* sunMeshNode;
     sunMeshNode = smgr->addSphereSceneNode(1, 1, smgr->getRootSceneNode());
-    sunMeshNode->setMaterialTexture(0, driver->getTexture("media/mesh.png"));
+    sunMeshNode->setMaterialTexture(0, driver->getTexture("../media/mesh.png"));
     sunMeshNode->setMaterialType(video::EMT_TRANSPARENT_ALPHA_CHANNEL);
     sunMeshNode->setMaterialFlag(video::EMF_LIGHTING, false);
     sunMeshNode->setScale(core::vector3d<f32>(600, 600, 600));
@@ -97,7 +97,7 @@ PyObject * Python::PyIrr_lensFlare(PyObject * self,PyObject * args){
 	//scene::CSceneNodeAnimatorFollowCamera* sunAnim = new scene::CSceneNodeAnimatorFollowCamera(core::vector3df(-8000, 4000, 750));
 	//sunMeshNode->addAnimator(sunAnim);
 	//sunAnim->drop();
-    if (param){
+    if (param==1){
     #ifdef FLARE
     lensFlareNode = new LensFlareSceneNode(sunMeshNode, smgr,1);
     lensFlareNode->setMaterialTexture(0, driver->getTexture("../media/flare.png"));
