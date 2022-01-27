@@ -1,5 +1,7 @@
 #pragma once
-
+#ifndef VEGETATION_H
+#define VEGETATION_H
+#include <array>
 #include "irrlicht.h"
 using namespace irr;
 using namespace video;
@@ -39,13 +41,13 @@ namespace IGE
 		ITerrainSceneNode*			m_Terrain		= nullptr;							// the terrain scenenode we are attached to
 		IImage*						m_LayoutImage	= nullptr;							// the layout image - used to determine whether a node/object is at any given position
 
-		array<IGE_MeshTemplate>		m_MeshTemplate;										// list	of nodes being used
-		array<ISceneNode*>			m_Nodes;											// list of visible nodes
-		array<short int>			m_NodeType;											// list of node types (index into the MeshTemplates)
-		array<vector3df>			m_NodePos;											// list of node positions
-		array<vector3df>			m_NodeScale;										// list of node scales
-		array<vector3df>			m_NodeRotation;										// list of node rotations
-		array<bool>					m_IsNodePosFree;									// list of open and closed slots in the node list
+		core::array<IGE_MeshTemplate>		m_MeshTemplate;										// list	of nodes being used
+		core::array<ISceneNode*>			m_Nodes;											// list of visible nodes
+		core::array<short int>			m_NodeType;											// list of node types (index into the MeshTemplates)
+		core::array<vector3df>			m_NodePos;											// list of node positions
+		core::array<vector3df>			m_NodeScale;										// list of node scales
+		core::array<vector3df>			m_NodeRotation;										// list of node rotations
+		core::array<bool>					m_IsNodePosFree;									// list of open and closed slots in the node list
 
 		float						m_ViewDistance				= 1000;					// distance from camera at which nodes become visible
 		f32							m_VisibleOffset				= 200.f;				// resize the camera frustum by this amount, you can use the maximal radius of your mesh to prevent close plane popping
@@ -124,3 +126,4 @@ namespace IGE
 	};
 
 } // end namespace IGE
+#endif

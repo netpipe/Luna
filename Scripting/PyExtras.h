@@ -62,6 +62,7 @@ PyMethodDef irr_Extras[] =
     {"realCloud",Python::PyIrr_realCloud,METH_VARARGS,"PyIrr_realCloud"},
     {"formationdemo",Python::PyIrr_FormationDemo,METH_VARARGS,"Loads FormationDemo"},
     {"motionTrail",Python::PyIrr_motionTrail,METH_VARARGS,"motionTrail"},
+        {"vegetation",Python::PyIrr_vegetation,METH_VARARGS,"vegetation"},
     {NULL,NULL,0,NULL}
 };
 

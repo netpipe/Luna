@@ -217,6 +217,7 @@ namespace Python {
     PyObject * PyIrr_Flare2(PyObject * self,PyObject * args);
     PyObject * PyIrr_lensFlare(PyObject * self,PyObject * args);
     PyObject * PyIrr_SPARKA(PyObject * self,PyObject * args);
+    PyObject * PyIrr_vegetation(PyObject * self,PyObject * args);
 
     //input
     PyObject * PyIrr_getKey(PyObject * self,PyObject * args);

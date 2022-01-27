@@ -2457,6 +2457,8 @@
 		<Unit filename="TerrainFactory/ProceduralTrees/kornJungle/TreeSeed.h" />
 		<Unit filename="TerrainFactory/Terrain.cpp" />
 		<Unit filename="TerrainFactory/Terrain.h" />
+		<Unit filename="TerrainFactory/Vegetation/IGE_SceneNode_Vegetation.cpp" />
+		<Unit filename="TerrainFactory/Vegetation/IGE_SceneNode_Vegetation.h" />
 		<Unit filename="TerrainFactory/WaterNode/CReflectedWater.cpp" />
 		<Unit filename="TerrainFactory/WaterNode/CReflectedWater.h" />
 		<Unit filename="TerrainFactory/WaterNode/CReflectedWater_ShaderCode.h" />

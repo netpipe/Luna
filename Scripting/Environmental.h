@@ -1181,4 +1181,5 @@ PyObject * Python::PyIrr_SPARKA(PyObject * self,PyObject * args) //active camera
 return Py_BuildValue("");
 }
 
+#include "EnviroVegetation.h"
 #endif

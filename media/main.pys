@@ -147,6 +147,7 @@ if (init) :
  #scene.addwater("1",1,0.5,4,0.5) #CReflectedWater#speed,refractionfactor,height,isplacement, todo x,y,z
  scene.addwater("0",111,111.5,0,0) # when this is enabled postprocessing cannot be on
 
+ extras.vegetation(1)
  scene.fluidlite("","",0)
  extras.lensflare(1,10,100,10)
  extras.omaredemo(1)
