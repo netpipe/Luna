@@ -5,7 +5,7 @@
 // The above copyright notice and its accompanying information must remain here.
 #include <../../../config.h>
 #ifdef IRRBULLET
-#include "irrBulletCollisionCallBackInformation.h"
+#include <irrBulletCollisionCallBackInformation.h>
 #include <BulletCollision/CollisionDispatch/btCollisionObject.h>
 #include "irrBulletCollisionObject.h"
 #include "irrBulletWorld.h"

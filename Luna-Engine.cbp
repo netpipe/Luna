@@ -109,7 +109,6 @@
 					<Add option="-DMINIMAL2" />
 					<Add option="-DEXTRACOMPILE" />
 					<Add option="-DSOUND" />
-					<Add option="-DPHYSICS" />
 					<Add option="-DPYTHON" />
 				</Compiler>
 				<Linker>
@@ -1141,6 +1140,7 @@
 			<Add directory="Input/Controllers/iois/OIS/includes" />
 			<Add directory="Input/FluidLite/include/" />
 			<Add directory="Scene/PolyVox/include" />
+			<Add directory="Physics/irrBullet-0.1.9/include" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />
@@ -1578,6 +1578,54 @@
 		<Unit filename="Physics/Vehicle.h" />
 		<Unit filename="Physics/box2D.cpp" />
 		<Unit filename="Physics/box2D.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBullet.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletBoxShape.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletBvhTriangleMeshShape.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletCapsuleShape.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletCollisionCallBackInformation.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletCollisionObject.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletCollisionObjectAffector.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletCollisionObjectAffectorAttract.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletCollisionObjectAffectorDelete.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletCollisionShape.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletCommon.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletCompileConfig.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletConvexHullShape.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletCylinderShape.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletGImpactMeshShape.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletKinematicCharacterController.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletLiquidBody.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletMotionState.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletPhysicsDebug.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletRayCastVehicle.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletRigidBody.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletSoftBody.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletSphereShape.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletTriangleMeshShape.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/include/irrBulletWorld.h" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBullet.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletBoxShape.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletBvhTriangleMeshShape.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletCapsuleShape.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletCollisionCallBackInformation.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletCollisionObject.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletCollisionObjectAffector.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletCollisionObjectAffectorAttract.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletCollisionObjectAffectorDelete.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletCollisionShape.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletConvexHullShape.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletCylinderShape.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletGImpactMeshShape.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletLiquidBody.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletMotionState.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletPhysicsDebug.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletRayCastVehicle.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletRigidBody.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletSoftBody.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletSphereShape.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletTriangleMeshShape.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletWorld.cpp" />
+		<Unit filename="Physics/irrBullet-0.1.9/src/irrBulletcommon.cpp" />
 		<Unit filename="Physics/missile.cpp" />
 		<Unit filename="Scene/ATMOsphere.cpp" />
 		<Unit filename="Scene/BoltSceneNode.cpp" />
