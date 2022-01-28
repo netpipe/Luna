@@ -22,9 +22,108 @@ PyMethodDef irr_Physics[] = {
     {"bullet",Python::PyIrr_Bullet,METH_VARARGS,"PyIrr_Bullet"},
     {"VehicleParams",Python::PyIrr_VehicleParams,METH_VARARGS,"VehicleParams"},
     {"b2d",Python::PyIrr_b2Dphysics,METH_VARARGS,"box2d"},
+//    {"loadScene",Python::PyIrr_loadScene,METH_VARARGS,"box2d"},
+    {"bBox",Python::PyIrr_irrbulletBox,METH_VARARGS,"box2d"},
+
 	{NULL,NULL,0,NULL}
 	};
 
+
+PyObject * Python::PyIrr_irrbulletBox(PyObject * self,PyObject * args){
+
+	float w,z,x,y,friction;
+
+	PyArg_ParseTuple(args,"fff",&x,&y,&z);
+	//	#ifdef TEST2
+int i=1;
+int j=1;
+	        auto Node = device->getSceneManager()->addCubeSceneNode(1.0f);
+	Node->setScale(vector3df(3,3,3));
+	//Node->setPosition(vector3df(3*j, 0+3*i+3, 0));
+	Node->setPosition(vector3df(x, y, z));
+	Node->setMaterialFlag(irr::video::EMF_LIGHTING, true);
+	Node->setMaterialFlag(irr::video::EMF_NORMALIZE_NORMALS, true);
+//	Node->setMaterialTexture(0, device->getVideoDriver()->getTexture(textureFile.c_str()));
+
+    Node->setMaterialFlag(irr::video::EMF_WIREFRAME, 1);
+
+	auto shape = new IBoxShape(Node, 10, false);
+
+	auto body = luna->world->addRigidBody(shape);
+	//}
+	//	#endif
+		return Py_BuildValue("");
+	}
+
+
+//
+//PyObject * Python::PyIrr_loadScene(PyObject * self,PyObject * args){
+//
+//	float w,h,x,y,friction;
+//
+//	PyArg_ParseTuple(args,"f",&friction);
+//	#ifdef TEST2
+//		device->getSceneManager()->loadScene("Scenes/SimpleScene.irr");
+//
+//	core::array<scene::ISceneNode *> nodes;
+//	device->getSceneManager()->getSceneNodesFromType(scene::ESNT_ANY, nodes); // Find all nodes
+//
+//	for (u32 i=0; i < nodes.size(); ++i)
+//	{
+//		scene::ISceneNode* node = nodes[i];
+//		stringc name = node->getName();
+//		const stringc prefix = name.subString(0,name.findFirst('_'));
+//		const stringc suffix = name.subString(name.findFirst('_')+1, name.size()-name.findFirst('_'));
+//
+//		//printf("PREFIX: %s\n", prefix.c_str());
+//		//printf("SUFFIX: %s\n", suffix.c_str());
+//
+//		if(node->getType() == scene::ESNT_MESH)
+//		{
+//		    if(prefix == "rigid")
+//            {
+//                ICollisionShape* shape = 0;
+//
+//                if(suffix == "mesh")
+//                    shape = new IGImpactMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), node->getBoundingBox().getVolume()*0.001);
+//
+//                else if(suffix == "box")
+//                    shape = new IBoxShape(node, node->getBoundingBox().getVolume()*0.001);
+//
+//                else if(suffix == "sphere")
+//                    shape = new ISphereShape(node, node->getBoundingBox().getVolume()*0.001);
+//
+//                world->addRigidBody(shape);
+//            }
+//
+//            else if(prefix == "static")
+//            {
+//                IBvhTriangleMeshShape* shape = new IBvhTriangleMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), 0.0f);
+//                IRigidBody* body = world->addRigidBody(shape);
+//            }
+//
+//            else if(prefix == "soft")
+//            {
+//                ISoftBody* softbody = world->addSoftBody(static_cast<IMeshSceneNode*>(node));
+//                softbody->setTotalMass(0.1f, false);
+//                softbody->setActivationState(EAS_DISABLE_DEACTIVATION);
+//                node->setMaterialFlag(EMF_BACK_FACE_CULLING, false);
+//                node->setAutomaticCulling(EAC_OFF);
+//
+//
+//
+//                softbody->getConfiguration().liftCoefficient = 0.0;
+//                softbody->getConfiguration().dragCoefficient = 0.0;
+//                softbody->getConfiguration().dampingCoefficient = 0.0;
+//                softbody->getConfiguration().poseMatchingCoefficient = 0.0f;
+//                softbody->getConfiguration().positionsSolverIterations = 56;
+//                softbody->updateConfiguration();
+//            }
+//		}
+//	}
+//	#endif
+//		return Py_BuildValue("");
+//	}
 
 PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
 
@@ -596,7 +695,65 @@ PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
      //   m_cVehicle->loadLevel(track.c_str());
 		device->getFileSystem()->changeWorkingDirectoryTo(rootdir.c_str());
 	#ifndef PHYSICS
-        #ifdef IRRCD
+	#ifdef IRRBULLET
+		core::array<scene::ISceneNode *> nodes;
+	device->getSceneManager()->getSceneNodesFromType(scene::ESNT_ANY, nodes); // Find all nodes
+
+	for (u32 i=0; i < nodes.size(); ++i)
+	{
+		scene::ISceneNode* node = nodes[i];
+		stringc name = node->getName();
+		const stringc prefix = name.subString(0,name.findFirst('_'));
+		const stringc suffix = name.subString(name.findFirst('_')+1, name.size()-name.findFirst('_'));
+
+		//printf("PREFIX: %s\n", prefix.c_str());
+		//printf("SUFFIX: %s\n", suffix.c_str());
+
+		if(node->getType() == scene::ESNT_MESH)
+		{
+		    if(prefix == "rigid")
+            {
+                ICollisionShape* shape = 0;
+
+                if(suffix == "mesh")
+                    shape = new IGImpactMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), node->getBoundingBox().getVolume()*0.001);
+
+                else if(suffix == "box")
+                    shape = new IBoxShape(node, node->getBoundingBox().getVolume()*0.001);
+
+                else if(suffix == "sphere")
+                    shape = new ISphereShape(node, node->getBoundingBox().getVolume()*0.001);
+
+                luna->world->addRigidBody(shape);
+            }
+
+            else if(prefix == "static")
+            {
+                IBvhTriangleMeshShape* shape = new IBvhTriangleMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), 0.0f);
+                IRigidBody* body =  luna->world->addRigidBody(shape);
+            }
+
+            else if(prefix == "soft")
+            {
+                ISoftBody* softbody =  luna->world->addSoftBody(static_cast<IMeshSceneNode*>(node));
+                softbody->setTotalMass(0.1f, false);
+          ///      softbody->setActivationState(EAS_DISABLE_DEACTIVATION);
+                node->setMaterialFlag(EMF_BACK_FACE_CULLING, false);
+                node->setAutomaticCulling(EAC_OFF);
+
+
+
+                softbody->getConfiguration().liftCoefficient = 0.0;
+                softbody->getConfiguration().dragCoefficient = 0.0;
+                softbody->getConfiguration().dampingCoefficient = 0.0;
+                softbody->getConfiguration().poseMatchingCoefficient = 0.0f;
+                softbody->getConfiguration().positionsSolverIterations = 56;
+                softbody->updateConfiguration();
+            }
+		}
+	}
+	#endif
+        #ifdef IRRCD2
         metaSelector = device->getSceneManager()->createMetaTriangleSelector();
         selector = device->getSceneManager()->createOctTreeTriangleSelector(mesh,node,128);
         node->setTriangleSelector(selector);

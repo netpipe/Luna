@@ -213,6 +213,7 @@ if (init) :
 
 # scene.soundman(0,1,1)
 # scene.soundman(1,1,1)
+ physics.bBox(scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3));
 
  scene.atmosphere(1)              # set time of day / moonphase (i broke it)
  #extras.bitcloud(1)
@@ -303,8 +304,9 @@ ycoord=input.mouse("mgety",0,0)
 if input.getKey('KEY_F2') : #could have a release action
  print "setting cube position"
  #scene.add_cube()
- scene.addSphereNode("../media/data/textures/material/marble1_256.png",scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3),5,500) #xyz radius mass
+ #scene.addSphereNode("../media/data/textures/material/marble1_256.png",scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3),5,500) #xyz radius mass
  #scene.setPosition(cube_id,1,1,1)
+ physics.bBox(scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3));
 
 if input.getKey('KEY_F3') : #could have a release action
  #if lasttime > 10:

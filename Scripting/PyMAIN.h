@@ -160,6 +160,7 @@ namespace Python {
     PyObject * PyIrr_CSG(PyObject * self,PyObject * args);
     PyObject * PyIrr_FileArchive(PyObject * self,PyObject * args);
     PyObject * PyIrr_Animators(PyObject * self,PyObject * args);
+    PyObject * PyIrr_irrbulletBox(PyObject * self,PyObject * args);
 
     //GUI
     PyObject * PyIrr_addHUD(PyObject * self,PyObject * args);
@@ -434,6 +435,7 @@ void Python::render() {//active camera
         // to the GUI environment.
         luna->world->debugDrawProperties(true);
         #endif
+
         #ifdef PHYSICS
          //    if (bPhysics){  // fix later should
         luna->m_cPhysics->updatePhysics(deltaTime);
