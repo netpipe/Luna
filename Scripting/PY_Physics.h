@@ -695,65 +695,7 @@ PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
      //   m_cVehicle->loadLevel(track.c_str());
 		device->getFileSystem()->changeWorkingDirectoryTo(rootdir.c_str());
 	#ifndef PHYSICS
-	#ifdef IRRBULLET
-		core::array<scene::ISceneNode *> nodes;
-	device->getSceneManager()->getSceneNodesFromType(scene::ESNT_ANY, nodes); // Find all nodes
-
-	for (u32 i=0; i < nodes.size(); ++i)
-	{
-		scene::ISceneNode* node = nodes[i];
-		stringc name = node->getName();
-		const stringc prefix = name.subString(0,name.findFirst('_'));
-		const stringc suffix = name.subString(name.findFirst('_')+1, name.size()-name.findFirst('_'));
-
-		//printf("PREFIX: %s\n", prefix.c_str());
-		//printf("SUFFIX: %s\n", suffix.c_str());
-
-		if(node->getType() == scene::ESNT_MESH)
-		{
-		    if(prefix == "rigid")
-            {
-                ICollisionShape* shape = 0;
-
-                if(suffix == "mesh")
-                    shape = new IGImpactMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), node->getBoundingBox().getVolume()*0.001);
-
-                else if(suffix == "box")
-                    shape = new IBoxShape(node, node->getBoundingBox().getVolume()*0.001);
-
-                else if(suffix == "sphere")
-                    shape = new ISphereShape(node, node->getBoundingBox().getVolume()*0.001);
-
-                luna->world->addRigidBody(shape);
-            }
-
-            else if(prefix == "static")
-            {
-                IBvhTriangleMeshShape* shape = new IBvhTriangleMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), 0.0f);
-                IRigidBody* body =  luna->world->addRigidBody(shape);
-            }
-
-            else if(prefix == "soft")
-            {
-                ISoftBody* softbody =  luna->world->addSoftBody(static_cast<IMeshSceneNode*>(node));
-                softbody->setTotalMass(0.1f, false);
-          ///      softbody->setActivationState(EAS_DISABLE_DEACTIVATION);
-                node->setMaterialFlag(EMF_BACK_FACE_CULLING, false);
-                node->setAutomaticCulling(EAC_OFF);
-
-
-
-                softbody->getConfiguration().liftCoefficient = 0.0;
-                softbody->getConfiguration().dragCoefficient = 0.0;
-                softbody->getConfiguration().dampingCoefficient = 0.0;
-                softbody->getConfiguration().poseMatchingCoefficient = 0.0f;
-                softbody->getConfiguration().positionsSolverIterations = 56;
-                softbody->updateConfiguration();
-            }
-		}
-	}
-	#endif
-        #ifdef IRRCD2
+        #ifdef IRRCD
         metaSelector = device->getSceneManager()->createMetaTriangleSelector();
         selector = device->getSceneManager()->createOctTreeTriangleSelector(mesh,node,128);
         node->setTriangleSelector(selector);
@@ -842,6 +784,68 @@ PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
 
 void Python::rfm(ISceneNode* node ) //level loader
 {
+
+
+			#ifdef IRRBULLET3
+		core::array<scene::ISceneNode *> nodes;
+	device->getSceneManager()->getSceneNodesFromType(scene::ESNT_ANY, nodes); // Find all nodes
+
+	for (u32 i=0; i < nodes.size(); ++i)
+	{
+		scene::ISceneNode* node = nodes[i];
+		stringc name = node->getName();
+		const stringc prefix = name.subString(0,name.findFirst('_'));
+		const stringc suffix = name.subString(name.findFirst('_')+1, name.size()-name.findFirst('_'));
+
+		//printf("PREFIX: %s\n", prefix.c_str());
+		//printf("SUFFIX: %s\n", suffix.c_str());
+
+		if(node->getType() == scene::ESNT_MESH)
+		{
+		    if(prefix == "rigid")
+            {
+                ICollisionShape* shape = 0;
+
+                if(suffix == "mesh")
+                    shape = new IGImpactMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), node->getBoundingBox().getVolume()*0.001);
+
+                else if(suffix == "box")
+                    shape = new IBoxShape(node, node->getBoundingBox().getVolume()*0.001);
+
+                else if(suffix == "sphere")
+                    shape = new ISphereShape(node, node->getBoundingBox().getVolume()*0.001);
+
+                luna->world->addRigidBody(shape);
+            }
+
+            else if(prefix == "static")
+            {
+                IBvhTriangleMeshShape* shape = new IBvhTriangleMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), 0.0f);
+                IRigidBody* body =  luna->world->addRigidBody(shape);
+            }
+
+            else if(prefix == "soft")
+            {
+                ISoftBody* softbody =  luna->world->addSoftBody(static_cast<IMeshSceneNode*>(node));
+                softbody->setTotalMass(0.1f, false);
+          ///      softbody->setActivationState(EAS_DISABLE_DEACTIVATION);
+                node->setMaterialFlag(EMF_BACK_FACE_CULLING, false);
+                node->setAutomaticCulling(EAC_OFF);
+
+
+
+                softbody->getConfiguration().liftCoefficient = 0.0;
+                softbody->getConfiguration().dragCoefficient = 0.0;
+                softbody->getConfiguration().dampingCoefficient = 0.0;
+                softbody->getConfiguration().poseMatchingCoefficient = 0.0f;
+                softbody->getConfiguration().positionsSolverIterations = 56;
+                softbody->updateConfiguration();
+            }
+		}
+	}
+	#endif
+
+
   //
   // the following if is basically the same as ISceneNode_assignTriangleSelector
   //
@@ -938,11 +942,16 @@ void Python::rfm(ISceneNode* node ) //level loader
 		#endif
 		#endif
 
-		#ifdef PHYSICS
-			btTriangleMesh *collisionMesh = new btTriangleMesh();
-		#endif
+		#ifdef IRRBULLET3
+        IBvhTriangleMeshShape* shape = new IBvhTriangleMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), 0.0f);
+        IRigidBody* body =  luna->world->addRigidBody(shape);
+        #endif // IRRBULLET
+
+ #ifdef PHYSICS
+ 			btTriangleMesh *collisionMesh = new btTriangleMesh();
 //#define PYTHON
   //  m_cScene->setGenericMaterial(node, 0);
+
 
     int meshCount = mesh->getMeshBufferCount();
 	printf("MESHBUFFER COUNT %d /n",meshCount);
@@ -951,11 +960,15 @@ void Python::rfm(ISceneNode* node ) //level loader
 	{
             //  meshBuffer2->append( mesh->getMeshBuffer(i) );
           //  m_cScene->setGenericMaterial(node, i); //outdoor sun lumenation
-          #ifdef PHYSICS
+
+
+
+
             luna->m_cPhysics->convertIrrMeshBufferBtTriangleMesh(mesh->getMeshBuffer(i), collisionMesh, vector3df(1,1,1));
             //decalManager->addMesh(mesh->getMeshBuffer(i));
-            #endif
+
 	}
+	#endif
  #ifdef PHYSICS
 	btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
     btRigidBody *test = luna->m_cPhysics->localCreateRigidBody(0, tr, trackShape, node);
