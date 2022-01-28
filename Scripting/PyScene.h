@@ -7,7 +7,8 @@
 ///SCENENODES and SCENESTUFF STUFF  -- included from pyfunctions
 ///TERRAIN
 
-#ifdef _IRR_COMPILE_WITH_BSP_LOADER_
+//#ifdef _IRR_COMPILE_WITH_BSP_LOADER_
+#ifdef test223
 using namespace quake3;
 	Q3LevelLoadParameter loadParam;
 	#include "../Input/Model/BSP/CMOHAALevelMesh.h"
