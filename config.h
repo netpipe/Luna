@@ -108,7 +108,7 @@
         #define FLARE2  // more realistic and working
         #define ENVVEG  // vegetation
         //#define OPENAL2
-        #define _IRR_COMPILE_WITH_BSP_LOADER_
+     //   #define _IRR_COMPILE_WITH_BSP_LOADER_ //seems to only compile on linux for the moment.
         //#define OIS2
         //#define OIS2_LINUX_JOY_DEBUG
         //#define TILED2D

@@ -720,7 +720,10 @@ void *CopyMeshesIntoQuadsGrass(void *mCTD)
 #if __EMSCRIPTEN__
          //   pthread_yield();
             #else
+            #ifdef WIN32
+             #else
              pthread_yield();
+             #endif
             #endif
 #endif
             //make the counter stay the same

@@ -6,6 +6,9 @@
 
 #ifndef __C_MOHAA_LEVEL_MESH_H_INCLUDED__
 #define __C_MOHAA_LEVEL_MESH_H_INCLUDED__
+#include "../../../config.h"
+//#ifdef _IRR_COMPILE_WITH_BSP_LOADER_
+#ifdef test223
 
 #include "IQ3LevelMesh.h"
 #include "IReadFile.h"
@@ -16,7 +19,7 @@
 #include "irrString.h"
 #include "ISceneManager.h"
 #include "os.h"
-#ifdef _IRR_COMPILE_WITH_BSP_LOADER_
+//#ifdef _IRR_COMPILE_WITH_BSP_LOADER_
 namespace irr
 {
 namespace scene

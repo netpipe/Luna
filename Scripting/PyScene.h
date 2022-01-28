@@ -291,14 +291,14 @@ PyObject * Python::PyIrr_addAnimatedMesh(PyObject * self,PyObject * args){
     char *meshPath;
     int param;
 	PyArg_ParseTuple(args,"si",&meshPath,&param);
-#ifdef _IRR_COMPILE_WITH_BSP_LOADER_
+#ifdef test223
 	 CMOHAALevelMesh* cmesh;
 #endif
 IAnimatedMesh *mesh=0;
 scene::ISceneNode* node=0;
 
 	if (param == 1){
-	#ifdef _IRR_COMPILE_WITH_BSP_LOADER_
+	#ifdef test223
 //	            device->getFileSystem()->addFileArchive("./Pak0.pk3");
 //             device->getFileSystem()->addFileArchive("./Pak1.pk3");
 //            device->getFileSystem()->addFileArchive("./Pak2.pk3");
