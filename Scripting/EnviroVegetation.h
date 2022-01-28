@@ -1,8 +1,10 @@
 #include "../config.h"
 #ifdef PYTHON
 #ifdef VEGETATION
-#define ENVVEG
+//#define ENVVEG
 #ifdef ENVVEG
+
+//todo not working at the moment
 
 #include "../TerrainFactory/Vegetation/IGE_SceneNode_Vegetation.h"
 using namespace IGE;
@@ -11,7 +13,7 @@ using namespace IGE;
 // to use a single model for all of this uncomment this line
  //#define USE_SINGLE_MODEL
 //#define MODELNAME "../GAME/media/vegetation/_assets/_Models/_Foliage/Seven/wheat1.obj"
-#define MODELNAME "./wheat1.obj"
+#define MODELNAME "../media/models/wheat1.obj"
 
 //#include <conio.h>
 
@@ -171,7 +173,7 @@ public:
 	virtual vector3df   getRotationFromLayoutImageColor(SColor pixel, int templatesize, int style, vector3df pos) { return vector3df(0, getRandomFloat(0, 360), 0); }
 	virtual vector3df   getScaleFromLayoutImageColor(SColor pixel, int templatesize, int style, vector3df pos) { return vector3df(2, 2, 2); }
 };
-
+#endif
 // create all of the vegetation
 // in this case, we create 6 different scenenodes and add mesh templates to each
 //void createVegetation()
@@ -182,8 +184,29 @@ PyObject * Python::PyIrr_vegetation(PyObject * self,PyObject * args) //flag one 
 	int t;
 	//	char * t;
 	PyArg_ParseTuple(args,"i",&t);
-#ifdef VEGETATION2
+#ifdef ENVVEG
 	    device->getFileSystem()->addFileArchive("../GAME/media/vegetation/_assets/_models/arteria3d_tropicalpack.zip");
+
+Camera2 = smgr->addCameraSceneNode();
+MainCamera = smgr->getActiveCamera() ;
+	    	terrain = smgr->addTerrainSceneNode(
+		"../GAME/media/vegetation/_assets/_terrain/heightmaps/terrain-plains.jpg",
+		0,                  // parent node
+		-1,                 // node id
+		core::vector3df(0.f, 0.f, 0.f),     // position
+		core::vector3df(0.f, 0.f, 0.f),     // rotation
+		TERRAIN_SCALE,  // scale
+		video::SColor(255, 255, 255, 255),   // vertexColor
+		5,                  // maxLOD
+		scene::ETPS_17,             // patchSize
+		4                   // smoothFactor
+	);
+
+		terrain->setMaterialFlag(video::EMF_LIGHTING, false);
+	terrain->setMaterialTexture(0, driver->getTexture("../GAMES/media/vegetation/_assets/_terrain/textures/aerial_grass_rock_diff_4k.jpg"));
+	terrain->setMaterialTexture(1, driver->getTexture("../GAMES/media/vegetation/_assets/_terrain/textures/aerial_grass_rock_diff_4k.jpg"));
+	terrain->setMaterialType(video::EMT_DETAIL_MAP);
+	terrain->scaleTexture(1.0f, 20.0f);
 
 	// if ther is no terrain then bail
 	if (!terrain)
@@ -311,4 +334,4 @@ PyObject * Python::PyIrr_vegetation(PyObject * self,PyObject * args) //flag one 
 
 #endif
 #endif
-#endif
+

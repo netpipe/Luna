@@ -14,8 +14,9 @@
     #define SPARK
     #define SOUND
 
+    #define PHYSICS
     #ifndef PHYSICS
-     //   #define IRRBULLET //testing for now
+        #define IRRBULLET //seems to be working
     #endif
 
     #ifdef NDEBUG
@@ -105,7 +106,7 @@
         #define FLARE
         #define FLARES
         #define FLARE2  // more realistic and working
-
+        #define ENVVEG  // vegetation
         //#define OPENAL2
         #define _IRR_COMPILE_WITH_BSP_LOADER_
         //#define OIS2
@@ -113,7 +114,6 @@
         //#define TILED2D
         //#define PYTHON_MINIMALTEST
        // #define PHYSICS // custom BulletImplimentation
-        //#define IRRBULLET
         #endif
 
 

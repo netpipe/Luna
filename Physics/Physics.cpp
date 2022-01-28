@@ -86,7 +86,7 @@ Physics::Physics() {
 	dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, broadphase, solver, collisionConfiguration);
 
 //	dynamicsWorld->getDispatchInfo().m_enableSPU = true;
-//	dynamicsWorld->setGravity ( btVector3 ( 0, -3.14, -0 ) ); //LHS y up
+	dynamicsWorld->setGravity ( btVector3 ( 0, -13.14, -0 ) ); //LHS y up
 
 	simulationSpeed = (15); //15
 	firstTick = true ;

@@ -1,4 +1,6 @@
 #pragma once
+#include "../../config.h"
+#ifdef ENVVEG
 #ifndef VEGETATION_H
 #define VEGETATION_H
 #include <array>
@@ -126,4 +128,5 @@ namespace IGE
 	};
 
 } // end namespace IGE
+#endif
 #endif

@@ -1,4 +1,5 @@
-
+#include "../../config.h"
+#ifdef ENVVEG
 #include "IGE_SceneNode_Vegetation.h"
 
 namespace IGE
@@ -330,5 +331,5 @@ namespace IGE
 
 
 } // end namspace IGE
-
+#endif
 

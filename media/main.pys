@@ -130,7 +130,7 @@ if (init) :
  #scene.exportScene("/home/clay/test/scene.irr")
  #stage = scene.loadTrack('./data/Stage3/Stage3.irr',20,0,0)
  #stage = scene.loadTrack('./StageData/irrb2/Hospital.irr',20,0,0)
-# table = scene.loadTrack('../media/table_football.3ds',20,0,0)
+ #table = physics.loadTrack('../media/FOOSEBALL/table_football.3ds',20,0,0)
 # scene.setPosition(table ,1, 10,-50,10)
 
  #sphere1 = scene.addSphereNode("data/textures/material/marble1_256.png",0,-1000,0, 5,5)
@@ -147,8 +147,8 @@ if (init) :
  #scene.addwater("1",1,0.5,4,0.5) #CReflectedWater#speed,refractionfactor,height,isplacement, todo x,y,z
  scene.addwater("0",111,111.5,0,0) # when this is enabled postprocessing cannot be on
 
- extras.vegetation(1)
- scene.fluidlite("","",0)
+ #extras.vegetation(1)
+# scene.fluidlite("","",0)
  extras.lensflare(1,10,100,10)
  extras.omaredemo(1)
  extras.compass(1)
@@ -303,7 +303,7 @@ ycoord=input.mouse("mgety",0,0)
 if input.getKey('KEY_F2') : #could have a release action
  print "setting cube position"
  #scene.add_cube()
- scene.addSphereNode("../media/data/textures/material/marble1_256.png",0,20,5,5,500) #xyz radius mass
+ scene.addSphereNode("../media/data/textures/material/marble1_256.png",scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3),5,500) #xyz radius mass
  #scene.setPosition(cube_id,1,1,1)
 
 if input.getKey('KEY_F3') : #could have a release action

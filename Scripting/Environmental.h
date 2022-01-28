@@ -1182,4 +1182,5 @@ return Py_BuildValue("");
 }
 
 #include "EnviroVegetation.h"
+
 #endif

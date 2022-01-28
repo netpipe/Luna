@@ -50,14 +50,14 @@ using namespace gui;
 #endif
 
 #ifdef IRRBULLET
-#include <bulletworld.h>
-#include <rigidbody.h>
-#include <boxshape.h>
-#include <sphereshape.h>
-#include <gimpactmeshshape.h>
-#include <raycastvehicle.h>
-#include <collisionobjectaffectordelete.h>
-#include <collisionobjectaffectorattract.h>
+#include <irrBulletWorld.h>
+#include <irrBulletRigidBody.h>
+#include <irrBulletBoxShape.h>
+#include <irrBulletSphereShape.h>
+#include <irrBulletGImpactMeshShape.h>
+#include <irrBulletRayCastVehicle.h>
+#include <irrBulletCollisionObjectAffectorDelete.h>
+#include <irrBulletCollisionObjectAffectorAttract.h>
 #endif // IRRBULLET
 
 #include "./Equipment/firstPersonWeapon.h"
@@ -397,6 +397,22 @@ int Luna::init(){
     m_cPhysics->registerIrrDevice(device);
 #endif
 
+#ifdef IRRBULLET
+    world = createIrrBulletWorld(device, true, 1); //
+
+   // world->setDebugMode(EPDM_DrawAabb |     //       EPDM_DrawContactPoints);
+
+    world->setGravity(vector3df(0,-10,0));
+
+
+   // camera = device->getSceneManager()->addCameraSceneNodeFPS();
+	//camera->setPosition(vector3df(50,15,200));
+
+
+//	createGround();
+//	createBoxes();
+	#endif
+
 //networking
     #ifdef NDEBUG
     #ifdef NETWORK
@@ -603,6 +619,17 @@ void Luna::main_loop(){ //devloop actually
         const u32 now = device->getTimer()->getTime();
 		frameDeltaTime = (f32)(now - then) / 1000.f; // Time in seconds
 		then = now;
+
+		#ifdef IRRBULLET
+        world->stepSimulation(frameDeltaTime*0.001f, 120);
+
+
+//        world->debugDrawWorld(debugDraw);
+
+        // This call will draw the technical properties of the physics simulation
+        // to the GUI environment.
+        world->debugDrawProperties(true);
+		#endif
 
 		#ifdef PYTHON
         Python::PreRender();
