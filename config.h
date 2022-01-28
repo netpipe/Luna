@@ -14,10 +14,10 @@
     #define SPARK
     #define SOUND
 
-    //#define PHYSICS
-    #ifndef PHYSICS
+    #define PHYSICS
+    //#ifndef PHYSICS
         #define IRRBULLET //seems to be working
-    #endif
+  //  #endif
 
     #ifdef NDEBUG
       #define NETWORK
