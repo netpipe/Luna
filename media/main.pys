@@ -214,7 +214,7 @@ if (init) :
 # scene.soundman(0,1,1)
 # scene.soundman(1,1,1)
  physics.bBox(scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3));
-
+ physics.bldemo(1,5,1)
  scene.atmosphere(1)              # set time of day / moonphase (i broke it)
  #extras.bitcloud(1)
  extras.realCloud(1,1,1,1)
@@ -229,7 +229,9 @@ if (init) :
 #################################
 #if sound done playing loop
 #
-if (icount > 400):
+if (icount > 200):
+ physics.bBox(scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3));
+
 # scene.soundman(1,1,1)
  icount=0
 else:

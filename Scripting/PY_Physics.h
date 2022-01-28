@@ -24,10 +24,107 @@ PyMethodDef irr_Physics[] = {
     {"b2d",Python::PyIrr_b2Dphysics,METH_VARARGS,"box2d"},
 //    {"loadScene",Python::PyIrr_loadScene,METH_VARARGS,"box2d"},
     {"bBox",Python::PyIrr_irrbulletBox,METH_VARARGS,"box2d"},
-
+{"bldemo",Python::PyIrr_irrbulletliquiddemo,METH_VARARGS,"box2d"},
 	{NULL,NULL,0,NULL}
 	};
 
+	PyObject * Python::PyIrr_irrbulletliquiddemo(PyObject * self,PyObject * args){
+
+	float w,z,x,y,friction;
+	//PyArg_ParseTuple(args,"f",&z);
+
+	PyArg_ParseTuple(args,"fff",&x,&y,&z);
+		#ifdef IRRBULLET
+    ILiquidBody* water = luna->world->addLiquidBody(vector3df(-5000,0,5000),irr::core::aabbox3df(0, -10000, 0, 10000, 0, 10000), 500.0f, 200.0f);
+    water->setCurrentDirection(vector3df(0,0,0));
+    water->setGlobalWaveChangeIncrement(0.01f);
+    water->setGlobalWaveUpdateFrequency(1.0f);
+    water->setMaxGlobalWaveHeight(4.0f);
+    water->setMinGlobalWaveHeight(-1.0f);
+    water->setLocalWaveValues(10,1,0.5f);
+    water->setInfinite(true);
+    water->setInfiniteDepth(true);
+    water->setLiquidDensity(0.1f);
+
+        IAnimatedMesh* mesh = device->getSceneManager()->addHillPlaneMesh( "myHill",
+		core::dimension2d<f32>(20,20),
+		core::dimension2d<u32>(40,40), 0, 0,
+		core::dimension2d<f32>(0,0),
+		core::dimension2d<f32>(1000,1000));
+
+	ISceneNode* node = device->getSceneManager()->addWaterSurfaceSceneNode(mesh->getMesh(0), 0.0f, 300.0f, 30.0f);
+	node->setPosition(core::vector3df(0,5,0));
+
+	node->setMaterialTexture(0, device->getVideoDriver()->getTexture("../media/data/waterbump.png"));
+	node->setScale(vector3df(1000,1,1000));
+
+	node->setMaterialType(EMT_TRANSPARENT_ADD_COLOR);
+	node->setMaterialFlag(EMF_BACK_FACE_CULLING, false);
+    int rows=2, columns=2;
+
+	for(u32 i=0; i < rows; i++)
+	{
+	    for(u32 j=0; j < columns; j++)
+        {
+            IRigidBody* body ;//= addCube(vector3df(i*15,0,j*15), vector3df(10,10,10), 1, "crate.jpg");
+
+            	        auto Node = device->getSceneManager()->addCubeSceneNode(1.0f);
+	Node->setScale(vector3df(3,3,3));
+	//Node->setPosition(vector3df(3*j, 0+3*i+3, 0));
+	Node->setPosition(vector3df(x, y, z));
+	Node->setMaterialFlag(irr::video::EMF_LIGHTING, true);
+	Node->setMaterialFlag(irr::video::EMF_NORMALIZE_NORMALS, true);
+    Node->setMaterialTexture(0, device->getVideoDriver()->getTexture("../media/data/waterbump.png"));
+
+    Node->setMaterialFlag(irr::video::EMF_WIREFRAME, 1);
+
+	auto shape = new IBoxShape(Node, 10, false);
+
+	body = luna->world->addRigidBody(shape);
+
+
+                irr::f32 t = 0.5f;
+                irr::f32 buoyancy = 1.8f;
+
+           vector<SBuoyancyPoint> points;
+           // points.push_back(SBuoyancyPoint(irr::core::vector3df(0,0,0), 180.0f));
+            points.push_back(SBuoyancyPoint(irr::core::vector3df(t,t,t), buoyancy));
+            points.push_back(SBuoyancyPoint(irr::core::vector3df(-t,t,t), buoyancy));
+            points.push_back(SBuoyancyPoint(irr::core::vector3df(-t,t,-t), buoyancy));
+            points.push_back(SBuoyancyPoint(irr::core::vector3df(t,t,-t), buoyancy));
+
+            points.push_back(SBuoyancyPoint(irr::core::vector3df(-t,-t,t), buoyancy));
+            points.push_back(SBuoyancyPoint(irr::core::vector3df(t,-t,t), buoyancy));
+            points.push_back(SBuoyancyPoint(irr::core::vector3df(-t,-t,-t), buoyancy));
+            points.push_back(SBuoyancyPoint(irr::core::vector3df(t,-t,-t), buoyancy));
+
+//            body->setBuoyancyPoints(SBuoyancyPoint(std::vector(t,t,t), buoyancy));
+//            body->setBuoyancyPoints(SBuoyancyPoint(std::vector(-t,t,t), buoyancy));
+//            body->setBuoyancyPoints(SBuoyancyPoint(std::vector(-t,t,-t), buoyancy));
+//            body->setBuoyancyPoints(SBuoyancyPoint(std::vector(t,t,-t), buoyancy));
+//
+//            body->setBuoyancyPoints(SBuoyancyPoint(std::vector(-t,-t,t), buoyancy));
+//            body->setBuoyancyPoints(SBuoyancyPoint(std::vector(t,-t,t), buoyancy));
+//            body->setBuoyancyPoints(SBuoyancyPoint(std::vector(-t,-t,-t), buoyancy));
+//            body->setBuoyancyPoints(SBuoyancyPoint(std::vector(t,-t,-t), buoyancy));
+
+
+
+            /*ICollisionObjectAffectorBuoyancy* affector = new ICollisionObjectAffectorBuoyancy(points,
+                irr::core::aabbox3df(0, -100, 0, 10000, 0, 10000), 1);
+            affector->setDebugDrawing(true);
+            body->addAffector(affector);*/
+
+            body->setBuoyancyPoints(points);
+
+
+            //body->setActivationState(EAS_DISABLE_DEACTIVATION);
+        }
+	}
+
+    #endif
+    	return Py_BuildValue("");
+    }
 
 PyObject * Python::PyIrr_irrbulletBox(PyObject * self,PyObject * args){
 
@@ -35,6 +132,7 @@ PyObject * Python::PyIrr_irrbulletBox(PyObject * self,PyObject * args){
 
 	PyArg_ParseTuple(args,"fff",&x,&y,&z);
 	//	#ifdef TEST2
+		#ifdef IRRBULLET
 int i=1;
 int j=1;
 	        auto Node = device->getSceneManager()->addCubeSceneNode(1.0f);
@@ -51,9 +149,11 @@ int j=1;
 
 	auto body = luna->world->addRigidBody(shape);
 	//}
-	//	#endif
+		#endif
 		return Py_BuildValue("");
 	}
+
+
 
 
 //

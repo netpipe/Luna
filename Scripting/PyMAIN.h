@@ -161,6 +161,7 @@ namespace Python {
     PyObject * PyIrr_FileArchive(PyObject * self,PyObject * args);
     PyObject * PyIrr_Animators(PyObject * self,PyObject * args);
     PyObject * PyIrr_irrbulletBox(PyObject * self,PyObject * args);
+    PyObject * PyIrr_irrbulletliquiddemo(PyObject * self,PyObject * args);
 
     //GUI
     PyObject * PyIrr_addHUD(PyObject * self,PyObject * args);

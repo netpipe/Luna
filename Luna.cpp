@@ -506,58 +506,6 @@ int Luna::shutdown(){
 
 
 //
-//irr::scene::IParticleSystemSceneNode* const createParticleSystem(const irr::core::vector3df& dir, irr::f32 min, irr::f32 max,
-//    const irr::video::SColor& darkest, const irr::video::SColor& brightest, irr::f32 minAge, irr::f32 maxAge, irr::f32 angle,
-//    const irr::core::dimension2df& minSize, const irr::core::dimension2df maxSize, const irr::core::stringc& textureFile,
-//    irr::f32 lifeTime, bool gravity, irr::video::E_MATERIAL_TYPE materialType, bool fadeOut) const
-//{
-//	auto ps =
-//    device->getSceneManager()->addParticleSystemSceneNode(false);
-//
-//    auto em = ps->createBoxEmitter(
-//        irr::core::aabbox3d<irr::f32>(-7,0,-7,7,1,7), // emitter size
-//        dir,   // initial direction core::vector3df(0.0f,0.01f,0.0f)
-//        min,max,                             // emit rate
-//        darkest,       // darkest color
-//        brightest,       // brightest color
-//        minAge,maxAge,angle,                         // min and max age, angle
-//        minSize,         // min size
-//        maxSize);        // max size
-//
-//    ps->setEmitter(em); // this grabs the emitter
-//    em->drop(); // so we can drop it here without deleting it
-//
-//    if(fadeOut)
-//    {
-//        auto paf = ps->createFadeOutParticleAffector();
-//        ps->addAffector(paf); // same goes for the affector
-//        paf->drop();
-//    }
-//
-//    if(gravity==true)
-//    {
-//        auto paf = ps->createGravityAffector(irr::core::vector3df(0.0f,-0.007f, 0.0f), 1800);
-//        ps->addAffector(paf); // same goes for the affector
-//        paf->drop();
-//    }
-//
-//    ps->setScale(irr::core::vector3df(0.4,0.4,0.4));
-//    ps->setMaterialFlag(irr::video::EMF_LIGHTING, false);
-//    ps->setMaterialFlag(irr::video::EMF_ZWRITE_ENABLE, false);
-//    ps->setMaterialTexture(0, device->getVideoDriver()->getTexture(textureFile.c_str()));
-//    ps->setMaterialType(materialType);
-//
-//    if(lifeTime > 0.0f)
-//    {
-//        irr::scene::ISceneNodeAnimator* anim = device->getSceneManager()->createDeleteAnimator(lifeTime);
-//        ps->addAnimator(anim);
-//        anim->drop();
-//    }
-//
-//    return ps;
-//}
-
-//
 //void createGround() const
 //{
 //    auto Node = device->getSceneManager()->addCubeSceneNode(1.0);
