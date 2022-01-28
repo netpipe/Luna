@@ -425,6 +425,15 @@ void Python::render() {//active camera
             if (btesimage){ tesImage->render(deltaTime); }
         #endif
 
+
+        #ifdef IRRBULLET
+        luna->world->stepSimulation(deltaTime*0.001f, 120);
+        //        world->debugDrawWorld(debugDraw);
+
+        // This call will draw the technical properties of the physics simulation
+        // to the GUI environment.
+        luna->world->debugDrawProperties(true);
+        #endif
         #ifdef PHYSICS
          //    if (bPhysics){  // fix later should
         luna->m_cPhysics->updatePhysics(deltaTime);

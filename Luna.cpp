@@ -50,7 +50,7 @@ using namespace gui;
 #endif
 
 #ifdef IRRBULLET
-#include <irrBullet.h>
+//#include <irrBullet.h>
 #include <irrBulletWorld.h>
 #include <irrBulletRigidBody.h>
 #include <irrBulletBoxShape.h>
@@ -59,9 +59,6 @@ using namespace gui;
 #include <irrBulletRayCastVehicle.h>
 #include <irrBulletCollisionObjectAffectorDelete.h>
 #include <irrBulletCollisionObjectAffectorAttract.h>
-class irrBulletWorld;
-class IRigidBody;
-
 #endif // IRRBULLET
 
 #include "./Equipment/firstPersonWeapon.h"
@@ -647,9 +644,31 @@ int Luna::init(){
     world->setGravity(vector3df(0,-10,0));
 
 
+        auto Node = device->getSceneManager()->addCubeSceneNode(1.0);
+	Node->setScale(irr::core::vector3df(600,3,600)); // 400, 3, 400
+	Node->setPosition(irr::core::vector3df(200,0,100));
+	Node->setMaterialFlag(irr::video::EMF_LIGHTING, true);
+	Node->setMaterialFlag(irr::video::EMF_NORMALIZE_NORMALS, true);
+	Node->setMaterialTexture(0, device->getVideoDriver()->getTexture("rockwall.jpg"));
+
+    if(1)
+        Node->setMaterialFlag(irr::video::EMF_WIREFRAME, true);
+
+	auto shape = new IBoxShape(Node, 0, false);
+
+	auto body = world->addRigidBody(shape);
+
+int columns=5;
+int rows = 5;
+    for(u32 j=0; j < columns; j++)
+    {
+        for(u32 i=0; i < rows; i++)
+        {
+           // addCube(vector3df(3*j, 0+3*i+3, 0), vector3df(3,3,3), 3);
+
         auto Node = device->getSceneManager()->addCubeSceneNode(1.0f);
-	Node->setScale(vector3df(1,1,1));
-	Node->setPosition(vector3df(1,1,1));
+	Node->setScale(vector3df(3,3,3));
+	Node->setPosition(vector3df(3*j, 0+3*i+3, 0));
 	Node->setMaterialFlag(irr::video::EMF_LIGHTING, true);
 	Node->setMaterialFlag(irr::video::EMF_NORMALIZE_NORMALS, true);
 //	Node->setMaterialTexture(0, device->getVideoDriver()->getTexture(textureFile.c_str()));
@@ -659,7 +678,8 @@ int Luna::init(){
 	auto shape = new IBoxShape(Node, 10, false);
 
 	auto body = world->addRigidBody(shape);
-
+       }
+    }
    // camera = device->getSceneManager()->addCameraSceneNodeFPS();
 	//camera->setPosition(vector3df(50,15,200));
 
@@ -875,12 +895,9 @@ void Luna::main_loop(){ //devloop actually
 		frameDeltaTime = (f32)(now - then) / 1000.f; // Time in seconds
 		then = now;
 
-		#ifdef IRRBULLET
+		#ifdef IRRBULLET3 //not needed
         world->stepSimulation(frameDeltaTime*0.001f, 120);
-
-
 //        world->debugDrawWorld(debugDraw);
-
         // This call will draw the technical properties of the physics simulation
         // to the GUI environment.
         world->debugDrawProperties(true);
