@@ -21,17 +21,17 @@ Luna game ( argc1,argv1 );
 
 void main_loop(){
 
-switch (init){
-	case 1:{
-			init=false;
-		game.Run();
-		game.main_loop();
-    };break;
-    case 0:
-    {
+//switch (init){
+//	case 1:{
+//			init=false;
+//		game.Run();
+//		game.main_loop();
+//    };break;
+//    case 0:
+//    {
             game.main_loop();
-    };break;
-    }
+//    };break;
+  //  }
 }
 
 int main ( int argc, char** argv )
