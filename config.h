@@ -109,9 +109,11 @@
         #define ENVVEG  // vegetation
         //#define OPENAL2
 
+       // #define MOHAABSP
+        #ifdef MOHAABSP
         #define _IRR_COMPILE_WITH_BSP_LOADER_ //seems to only compile on linux for the moment.
      #define test223 // mohaaloader linux only because of byteswap
-
+#endif
         //#define OIS2
         //#define OIS2_LINUX_JOY_DEBUG
         //#define TILED2D
