@@ -378,12 +378,13 @@ scene::ISceneNode* node=0;
     luna->m_cPhysics->localCreateRigidBody(0, tr, chassisShape23, node);
     #endif
 
-    #ifdef PHYSICS2
+ //   #ifdef PHYSICS2
  //  vector3df trackPosition = vector3df(0,0,-1);
  //   tr.setOrigin(btVector3(trackPosition.X, trackPosition.Y, trackPosition.Z));
 //    tr.setRotation()
+#ifdef PHYSICS
     btTriangleMesh *collisionMesh = new btTriangleMesh();
-
+#endif
   //  m_cScene->setGenericMaterial(node, 0);
 
     int meshCount = mesh->getMeshBufferCount();
@@ -393,14 +394,24 @@ scene::ISceneNode* node=0;
         {
 //            //  meshBuffer2->append( mesh->getMeshBuffer(i) );
 //          //  m_cScene->setGenericMaterial(node, i); //outdoor sun lumenation
+#ifdef PHYSICS
             luna->m_cPhysics->convertIrrMeshBufferBtTriangleMesh(mesh->getMeshBuffer(i), collisionMesh, vector3df(1,1,1));
+            #endif
+
+            		#ifdef IRRBULLET
+        IBvhTriangleMeshShape* shape = new IBvhTriangleMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), 0.0f);
+        IRigidBody* body =  luna->world->addRigidBody(shape);
+        #endif // IRRBULLET
+
 //            //decalManager->addMesh(mesh->getMeshBuffer(i));
         }
 //
 //tr.setRotation(btQuaternion(btVector3(0,1,0)));
+#ifdef PHYSICS
     btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
     luna->m_cPhysics->localCreateRigidBody(0, tr, trackShape, node);
-#endif
+    #endif
+//#endif
 
             #ifdef IRRCD
         metaSelector = device->getSceneManager()->createMetaTriangleSelector();

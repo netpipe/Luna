@@ -89,6 +89,7 @@ if (init) :
 
 # scene.addAMesh("/maps/aggressor.bsp");
  scene.addAMesh("../media/mohaa/mohdm6.bsp",1);
+ physics.bBox(scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3));
 
 
 
@@ -221,7 +222,9 @@ if (init) :
 #################################
 #if sound done playing loop
 #
-if (icount > 400):
+if (icount > 200):
+ physics.bBox(scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3));
+
 # scene.soundman(1,1,1)
  icount=0
 else:
