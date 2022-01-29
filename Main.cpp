@@ -20,15 +20,18 @@ bool init=1;
 Luna game ( argc1,argv1 );
 
 void main_loop(){
-	if ( init ){
-			init=false;
 
+switch (init){
+	case 1:{
+			init=false;
 		game.Run();
 		game.main_loop();
-}else{
-
-		game.main_loop();
-}
+    };break;
+    case 0:
+    {
+            game.main_loop();
+    };break;
+    }
 }
 
 int main ( int argc, char** argv )

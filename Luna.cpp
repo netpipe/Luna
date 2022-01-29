@@ -309,7 +309,9 @@ int Luna::shutdown(){
 	#endif
 
 	#ifdef NDEBUG
+		#ifdef NETWORK
 	 delete netManager;
+    #endif
     #endif
 
 	//    delete ClientNetCallback;
@@ -464,7 +466,7 @@ manager->initialize(pDeviceList->getDeviceName(1).c_str());
 
 
 //#######################################################################################
-
+//ran from main.cpp for speed
 int Luna::Run(){  // starts the game in dev mode or release mode some features are easier to impliment into the mainloop rather than scripting for testing //uses devloop or main_loop for emscripten
 
     events.devLogin=0;
@@ -479,6 +481,7 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
 							  if ( init() < 0 ) return -1;
                     device->setEventReceiver ( &m_cInGameEvents );
                     devloop();
+                    //mainloop();
 		#ifdef PYTHON
 			#ifdef __EMSCRIPTEN__
 				TAR* tar;

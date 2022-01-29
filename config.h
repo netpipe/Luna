@@ -20,7 +20,7 @@
   //  #endif
 
     #ifdef NDEBUG
-      #define NETWORK
+     // #define NETWORK
     #endif
  // #define SKELETON // needs to be updated
   #define FLUIDLITE
