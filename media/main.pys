@@ -127,7 +127,7 @@ if (init) :
 
  #jungle = scene.addJungle()
  #scene.addTree("jungle",1,terrain,1,1,1)#not working yet
- track1 = physics.loadTrack('../media/data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
+ #track1 = physics.loadTrack('../media/data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
  #track1 = scene.loadLevel('extra/maps/urban.bsp',0,0,0)  # trackname , timeofday , lighting , track slot/stages
 # scene.setPosition(terrain ,4, -100,-10,-100)
  #scene.exportScene("/home/clay/test/scene.irr")
@@ -218,7 +218,7 @@ if (init) :
 # scene.soundman(0,1,1)
 # scene.soundman(1,1,1)
  physics.bBox(scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3));
- physics.bldemo(1,5,1)
+ #physics.bldemo(1,5,1)
  scene.atmosphere(1)              # set time of day / moonphase (i broke it)
  #extras.bitcloud(1)
  extras.realCloud(1,1,1,1)

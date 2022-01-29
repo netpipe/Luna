@@ -1052,7 +1052,7 @@ void Python::rfm(ISceneNode* node ) //level loader
 		#endif
 		#endif
 
-		#ifdef IRRBULLET3
+		#ifdef IRRBULLET
         IBvhTriangleMeshShape* shape = new IBvhTriangleMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), 0.0f);
         IRigidBody* body =  luna->world->addRigidBody(shape);
         #endif // IRRBULLET

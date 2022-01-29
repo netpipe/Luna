@@ -14,7 +14,7 @@
     #define SPARK
     #define SOUND
 
-    //#define PHYSICS
+    //=#define PHYSICS
     //#ifndef PHYSICS
         #define IRRBULLET //seems to be working
   //  #endif
@@ -26,7 +26,7 @@
   #define FLUIDLITE
   //#define FLUIDSYNTH //has been replaced by fluidlite
   //#define DECALS       //not used
-//  #define DECALS2
+  #define DECALS2
   #define TESSELATE
   //  #define occlusion.
   //  #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
