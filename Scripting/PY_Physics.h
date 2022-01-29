@@ -795,7 +795,7 @@ PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
         node->setPosition(trackPosition);
      //   m_cVehicle->loadLevel(track.c_str());
 		device->getFileSystem()->changeWorkingDirectoryTo(rootdir.c_str());
-	#ifndef PHYSICS
+//	#ifndef PHYSICS
         #ifdef IRRCD
         metaSelector = device->getSceneManager()->createMetaTriangleSelector();
         selector = device->getSceneManager()->createOctTreeTriangleSelector(mesh,node,128);
@@ -818,34 +818,37 @@ PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
         anim->drop();
         metaSelector->drop();
     #endif
-#else //physics
-
+//#else //physics
+#ifdef PHYSICS
 
     tr.setOrigin(btVector3(trackPosition.X, trackPosition.Y, trackPosition.Z));
     btTriangleMesh *collisionMesh = new btTriangleMesh();
-
+#endif
   //  m_cScene->setGenericMaterial(node, 0);
 
     int meshCount = mesh->getMeshBufferCount();
         printf("MESHBUFFER COUNT %d /n",meshCount);
 
-        core::array<scene::ISceneNode *> nodes2;
+        //core::array<scene::ISceneNode *> nodes2;
 
         for (int i=0; i < meshCount ; i++)//!load all meshes for CD
         {
             //  meshBuffer2->append( mesh->getMeshBuffer(i) );
           //  m_cScene->setGenericMaterial(node, i); //outdoor sun lumenation
+          #ifdef PHYSICS
             luna->m_cPhysics->convertIrrMeshBufferBtTriangleMesh(mesh->getMeshBuffer(i), collisionMesh, vector3df(1,1,1));
+            #endif
             		#ifdef IRRBULLET
         IBvhTriangleMeshShape* shape = new IBvhTriangleMeshShape(node, static_cast<IAnimatedMeshSceneNode*>(node)->getMesh(), 0.0f);
         IRigidBody* body =  luna->world->addRigidBody(shape);
         #endif // IRRBULLET
             //decalManager->addMesh(mesh->getMeshBuffer(i));
         }
-
+ #ifdef PHYSICS
     btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
     btRigidBody *test = luna->m_cPhysics->localCreateRigidBody(0, tr, trackShape, node);
-#endif
+    #endif
+//#endif
 //        // Create a meta triangle selector to hold several triangle selectors.
 //        scene::IMetaTriangleSelector * metaSelector = smgr->createMetaTriangleSelector();
 //        m_cVehicle->recursiveFillMetaSelector( smgr->getRootSceneNode(), metaSelector );
