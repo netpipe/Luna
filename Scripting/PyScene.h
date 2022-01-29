@@ -434,7 +434,7 @@ scene::ISceneNode* node=0;
             metaSelector, smgr->getActiveCamera(), core::vector3df(30,60,30),
             core::vector3df(0,0,0),   /// MAIN irrGRAVITY
             core::vector3df(0,10,0));
-             camera=smgr->getActiveCamera();
+           //  camera=smgr->getActiveCamera();
           camera->addAnimator(anim); // bug use python to pass camera arrgss
 
        // m_cInGameEvents.chopperControl->onCollision(anim);
