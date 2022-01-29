@@ -1,10 +1,9 @@
 //! LUNA ENGINE 1.0
 /// aha
+// basically the spot where the headers get put in that dont go directly into the scripting side and where main loop features are located.
 
-//!TODO wondering how to get eeg and ai library into game for pattern recognition
-// speech and directional forces
 #include "Luna.h"
-//
+
 //Sound *Sound::m_sound = NULL;
 //Sound Sound::m_default_sound_buffer;
 #include "config.h"
@@ -598,7 +597,7 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
     return 1;
 }
 
-void Luna::main_loop(){ //devloop actually
+void Luna::main_loop(){ //main/devloop actually to save space plus its all scripted anyway
     //#ifdef __EMSCRIPTEN__
     //while (
     //			emscripten_run_script("alert('hi')");
@@ -693,14 +692,14 @@ void Luna::main_loop(){ //devloop actually
 			lastFPS = fps;
 		}
 		//sleep(0.101);
-		usleep(100);
+		usleep(100); //safty sleep for enviro controls
         //  device->sleep(5); // pythonize this
         //  }
         //#endif
 }
 
-void Luna::CheckKeyStates(void){
- //    obsolete:CheckKeyStates();
+void Luna::CheckKeyStates(void){ //    obsolete
+
  //check onEvent for any need to check keys ,
  // used to be where python one sits now
 printf("check keys\n");

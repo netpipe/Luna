@@ -167,26 +167,16 @@
 				<Option compiler="gcc" />
 				<Option projectResourceIncludeDirsRelation="0" />
 				<Compiler>
-					<Add option="-O2" />
 					<Add option="-fpermissive" />
-					<Add option="-DNDEBUG" />
 					<Add option="-DMINIMAL" />
 					<Add option="-DMINIMAL2" />
 					<Add option="-DEXTRACOMPILE" />
-					<Add option="-DSOUND" />
+					<Add option="-DPYTHON" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add library="GL" />
-					<Add library="openal" />
-					<Add library="Xxf86vm" />
-					<Add library="X11" />
-					<Add library="python2.7" />
-					<Add library="pthread" />
-					<Add library="Irrlicht" />
-					<Add library="dl" />
-					<Add library="IrrOpenSteer" />
 					<Add library="cAudio" />
+					<Add library="IrrOpenSteer" />
 					<Add library="ogg" />
 					<Add library="vorbis" />
 					<Add library="vorbisfile" />
@@ -212,19 +202,6 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add library="GL" />
-					<Add library="openal" />
-					<Add library="Xxf86vm" />
-					<Add library="X11" />
-					<Add library="python2.7" />
-					<Add library="pthread" />
-					<Add library="Irrlicht" />
-					<Add library="dl" />
-					<Add library="IrrOpenSteer" />
-					<Add library="cAudio" />
-					<Add library="ogg" />
-					<Add library="vorbis" />
-					<Add library="vorbisfile" />
 					<Add library="GL" />
 					<Add library="openal" />
 					<Add library="Xxf86vm" />
