@@ -44,22 +44,22 @@ PyMethodDef irr_Physics[] = {
     water->setLocalWaveValues(10,1,0.5f);
     water->setInfinite(true);
     water->setInfiniteDepth(true);
-    water->setLiquidDensity(0.1f);
+    water->setLiquidDensity(50.1f);
 
-        IAnimatedMesh* mesh = device->getSceneManager()->addHillPlaneMesh( "myHill",
-		core::dimension2d<f32>(20,20),
-		core::dimension2d<u32>(40,40), 0, 0,
-		core::dimension2d<f32>(0,0),
-		core::dimension2d<f32>(1000,1000));
-
-	ISceneNode* node = device->getSceneManager()->addWaterSurfaceSceneNode(mesh->getMesh(0), 0.0f, 300.0f, 30.0f);
-	node->setPosition(core::vector3df(0,5,0));
-
-	node->setMaterialTexture(0, device->getVideoDriver()->getTexture("../media/data/waterbump.png"));
-	node->setScale(vector3df(1000,1,1000));
-
-	node->setMaterialType(EMT_TRANSPARENT_ADD_COLOR);
-	node->setMaterialFlag(EMF_BACK_FACE_CULLING, false);
+//        IAnimatedMesh* mesh = device->getSceneManager()->addHillPlaneMesh( "myHill",
+//		core::dimension2d<f32>(20,20),
+//		core::dimension2d<u32>(40,40), 0, 0,
+//		core::dimension2d<f32>(0,0),
+//		core::dimension2d<f32>(1000,1000));
+//
+//	ISceneNode* node = device->getSceneManager()->addWaterSurfaceSceneNode(mesh->getMesh(0), 0.0f, 300.0f, 30.0f);
+//	node->setPosition(core::vector3df(0,5,0));
+//
+//	node->setMaterialTexture(0, device->getVideoDriver()->getTexture("../media/data/waterbump.png"));
+//	node->setScale(vector3df(1000,1,1000));
+//
+//	node->setMaterialType(EMT_TRANSPARENT_ADD_COLOR);
+//	node->setMaterialFlag(EMF_BACK_FACE_CULLING, false);
     int rows=2, columns=2;
 
 	for(u32 i=0; i < rows; i++)
@@ -74,9 +74,9 @@ PyMethodDef irr_Physics[] = {
 	Node->setPosition(vector3df(x, y, z));
 	Node->setMaterialFlag(irr::video::EMF_LIGHTING, true);
 	Node->setMaterialFlag(irr::video::EMF_NORMALIZE_NORMALS, true);
-    Node->setMaterialTexture(0, device->getVideoDriver()->getTexture("../media/data/waterbump.png"));
+    Node->setMaterialTexture(0, device->getVideoDriver()->getTexture("../media/terrain.jpg"));
 
-    Node->setMaterialFlag(irr::video::EMF_WIREFRAME, 1);
+   // Node->setMaterialFlag(irr::video::EMF_WIREFRAME, 1);
 
 	auto shape = new IBoxShape(Node, 10, false);
 
@@ -84,7 +84,7 @@ PyMethodDef irr_Physics[] = {
 
 
                 irr::f32 t = 0.5f;
-                irr::f32 buoyancy = 1.8f;
+                irr::f32 buoyancy = 0.8f;
 
            vector<SBuoyancyPoint> points;
            // points.push_back(SBuoyancyPoint(irr::core::vector3df(0,0,0), 180.0f));
@@ -142,8 +142,8 @@ int j=1;
 	Node->setMaterialFlag(irr::video::EMF_LIGHTING, true);
 	Node->setMaterialFlag(irr::video::EMF_NORMALIZE_NORMALS, true);
 //	Node->setMaterialTexture(0, device->getVideoDriver()->getTexture(textureFile.c_str()));
-
-    Node->setMaterialFlag(irr::video::EMF_WIREFRAME, 1);
+    Node->setMaterialTexture(0, device->getVideoDriver()->getTexture("../media/terrain.jpg"));
+  //  Node->setMaterialFlag(irr::video::EMF_WIREFRAME, 1);
 
 	auto shape = new IBoxShape(Node, 10, false);
 
@@ -767,6 +767,7 @@ PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
 	int tscale=param ;
     vector3df trackScale = vector3df(tscale,tscale,tscale); //50
     vector3df trackPosition = vector3df(0,0.0f,0);
+
 	IAnimatedMeshSceneNode *node;
 	IAnimatedMesh *mesh;
 	if ( extension == ".irr"){
@@ -828,11 +829,17 @@ PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
     int meshCount = mesh->getMeshBufferCount();
         printf("MESHBUFFER COUNT %d /n",meshCount);
 
+        core::array<scene::ISceneNode *> nodes2;
+
         for (int i=0; i < meshCount ; i++)//!load all meshes for CD
         {
             //  meshBuffer2->append( mesh->getMeshBuffer(i) );
           //  m_cScene->setGenericMaterial(node, i); //outdoor sun lumenation
             luna->m_cPhysics->convertIrrMeshBufferBtTriangleMesh(mesh->getMeshBuffer(i), collisionMesh, vector3df(1,1,1));
+            		#ifdef IRRBULLET
+        IBvhTriangleMeshShape* shape = new IBvhTriangleMeshShape(node, static_cast<IAnimatedMeshSceneNode*>(node)->getMesh(), 0.0f);
+        IRigidBody* body =  luna->world->addRigidBody(shape);
+        #endif // IRRBULLET
             //decalManager->addMesh(mesh->getMeshBuffer(i));
         }
 
@@ -894,53 +901,53 @@ void Python::rfm(ISceneNode* node ) //level loader
 	{
 		scene::ISceneNode* node = nodes[i];
 		stringc name = node->getName();
-		const stringc prefix = name.subString(0,name.findFirst('_'));
-		const stringc suffix = name.subString(name.findFirst('_')+1, name.size()-name.findFirst('_'));
+		const stringc prefix = name.subString(0,name.findFirst('.'));
+		const stringc suffix = name.subString(name.findFirst('.')+1, name.size()-name.findFirst('.'));
 
 		//printf("PREFIX: %s\n", prefix.c_str());
 		//printf("SUFFIX: %s\n", suffix.c_str());
 
 		if(node->getType() == scene::ESNT_MESH)
 		{
-		    if(prefix == "rigid")
-            {
-                ICollisionShape* shape = 0;
+//		    if(prefix == "ShapeIndexedFaceS")
+//            {
+//                ICollisionShape* shape = 0;
+//
+//                if(suffix == "101")
+//                    shape = new IGImpactMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), node->getBoundingBox().getVolume()*0.001);
+//
+//                else if(suffix == "box")
+//                    shape = new IBoxShape(node, node->getBoundingBox().getVolume()*0.001);
+//
+//                else if(suffix == "sphere")
+//                    shape = new ISphereShape(node, node->getBoundingBox().getVolume()*0.001);
+//
+//                luna->world->addRigidBody(shape);
+         //   }
 
-                if(suffix == "mesh")
-                    shape = new IGImpactMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), node->getBoundingBox().getVolume()*0.001);
-
-                else if(suffix == "box")
-                    shape = new IBoxShape(node, node->getBoundingBox().getVolume()*0.001);
-
-                else if(suffix == "sphere")
-                    shape = new ISphereShape(node, node->getBoundingBox().getVolume()*0.001);
-
-                luna->world->addRigidBody(shape);
-            }
-
-            else if(prefix == "static")
-            {
-                IBvhTriangleMeshShape* shape = new IBvhTriangleMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), 0.0f);
-                IRigidBody* body =  luna->world->addRigidBody(shape);
-            }
-
-            else if(prefix == "soft")
-            {
-                ISoftBody* softbody =  luna->world->addSoftBody(static_cast<IMeshSceneNode*>(node));
-                softbody->setTotalMass(0.1f, false);
-          ///      softbody->setActivationState(EAS_DISABLE_DEACTIVATION);
-                node->setMaterialFlag(EMF_BACK_FACE_CULLING, false);
-                node->setAutomaticCulling(EAC_OFF);
-
-
-
-                softbody->getConfiguration().liftCoefficient = 0.0;
-                softbody->getConfiguration().dragCoefficient = 0.0;
-                softbody->getConfiguration().dampingCoefficient = 0.0;
-                softbody->getConfiguration().poseMatchingCoefficient = 0.0f;
-                softbody->getConfiguration().positionsSolverIterations = 56;
-                softbody->updateConfiguration();
-            }
+//             if(prefix == "static")
+//            {
+//                IBvhTriangleMeshShape* shape = new IBvhTriangleMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), 0.0f);
+//                IRigidBody* body =  luna->world->addRigidBody(shape);
+//            }
+//
+//            else if(prefix == "soft")
+//            {
+//                ISoftBody* softbody =  luna->world->addSoftBody(static_cast<IMeshSceneNode*>(node));
+//                softbody->setTotalMass(0.1f, false);
+//          ///      softbody->setActivationState(EAS_DISABLE_DEACTIVATION);
+//                node->setMaterialFlag(EMF_BACK_FACE_CULLING, false);
+//                node->setAutomaticCulling(EAC_OFF);
+//
+//
+//
+//                softbody->getConfiguration().liftCoefficient = 0.0;
+//                softbody->getConfiguration().dragCoefficient = 0.0;
+//                softbody->getConfiguration().dampingCoefficient = 0.0;
+//                softbody->getConfiguration().poseMatchingCoefficient = 0.0f;
+//                softbody->getConfiguration().positionsSolverIterations = 56;
+//                softbody->updateConfiguration();
+//            }
 		}
 	}
 	#endif
@@ -1060,15 +1067,13 @@ void Python::rfm(ISceneNode* node ) //level loader
 	{
             //  meshBuffer2->append( mesh->getMeshBuffer(i) );
           //  m_cScene->setGenericMaterial(node, i); //outdoor sun lumenation
-
-
-
-
             luna->m_cPhysics->convertIrrMeshBufferBtTriangleMesh(mesh->getMeshBuffer(i), collisionMesh, vector3df(1,1,1));
             //decalManager->addMesh(mesh->getMeshBuffer(i));
 
 	}
 	#endif
+
+
  #ifdef PHYSICS
 	btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
     btRigidBody *test = luna->m_cPhysics->localCreateRigidBody(0, tr, trackShape, node);

@@ -88,7 +88,7 @@ if (init) :
  #scene.setPosition(chopper,5,20,200,20)
 
 # scene.recast("../media/dungeon.obj")
-#scene.grass("../media/data/vegData/output.grs")
+ #scene.grass("../media/data/vegData/output.grs")
  #scene.addwater("none",1,0.5,4,0.5) #speed,refractionfactor,height,isplacement, todo x,y,z
  #gui.codeeditor(1) #shader editor #cpu limiter incase of bad code
 
@@ -128,8 +128,9 @@ if (init) :
  #track1 = scene.loadLevel('extra/maps/urban.bsp',0,0,0)  # trackname , timeofday , lighting , track slot/stages
 # scene.setPosition(terrain ,4, -100,-10,-100)
  #scene.exportScene("/home/clay/test/scene.irr")
- #stage = scene.loadTrack('./data/Stage3/Stage3.irr',20,0,0)
- #stage = scene.loadTrack('./StageData/irrb2/Hospital.irr',20,0,0)
+ #stage = physics.loadTrack('../GAME/data/Stage3/Stage3.irr',20,0,0)
+ #stage = physics.loadTrack('../media/data/3/Scene.irr',20,0,0)
+ #stage = physics.loadTrack('./StageData/irrb2/Hospital.irr',20,0,0)
  #table = physics.loadTrack('../media/FOOSEBALL/table_football.3ds',20,0,0)
 # scene.setPosition(table ,1, 10,-50,10)
 
@@ -145,7 +146,7 @@ if (init) :
  #scene.addTree("jungle",1,terrain,1,1,1)
  #scene.addTree("1",2,terrain,1,21,21)  #JTree, jungle
  #scene.addwater("1",1,0.5,4,0.5) #CReflectedWater#speed,refractionfactor,height,isplacement, todo x,y,z
- #scene.addwater("0",111,111.5,0,0) # when this is enabled postprocessing cannot be on
+ scene.addwater("0",111,111.5,0,0) # when this is enabled postprocessing cannot be on
 
  #extras.vegetation(1)
 # scene.fluidlite("","",0)
