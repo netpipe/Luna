@@ -162,6 +162,8 @@ namespace Python {
     PyObject * PyIrr_Animators(PyObject * self,PyObject * args);
     PyObject * PyIrr_irrbulletBox(PyObject * self,PyObject * args);
     PyObject * PyIrr_irrbulletliquiddemo(PyObject * self,PyObject * args);
+    PyObject * PyIrr_physicspause(PyObject * self,PyObject * args);
+
 
     //GUI
     PyObject * PyIrr_addHUD(PyObject * self,PyObject * args);
@@ -330,7 +332,7 @@ namespace Python {
     #endif
 
     bool flag1,flag2,bImage2d,bCompass,formationDemo,bAtmosphere,bWater,blensFlare,bBlindBoids=0;
-    bool bOcclusion,bCar,bCarFollow,bSPARK,bDecals;
+    bool bOcclusion,bCar,bCarFollow,bSPARK,bDecals,bPhysics;
 
 #ifdef FORMATION
     WrapperClass::Formation * formation;
@@ -429,7 +431,13 @@ void Python::render() {//active camera
 
 
         #ifdef IRRBULLET
-        luna->world->stepSimulation(deltaTime*0.001f, 120);
+        if (bPhysics==1){
+         luna->world->stepSimulation(deltaTime*0.001f, 120);
+        }else{
+        luna->world->simulationPaused();
+       // luna->world->pauseSimulation();
+        }//world->pauseSimulation(!world->simulationPaused());
+
         //        world->debugDrawWorld(debugDraw);
 
         // This call will draw the technical properties of the physics simulation

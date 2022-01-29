@@ -37,6 +37,7 @@ if (init) :
  scene.using ('../media/random.py',"1");
 
  ticks = time.time()
+ physics.physics(1)
 
 # myr.time_reseed();
 

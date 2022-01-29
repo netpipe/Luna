@@ -80,7 +80,7 @@ if (init) :
  for i in range(len(zipFiles)):
   irr.files("../media/mohaa/"+zipFiles[i])
  #os.chdir(cwd)
-
+ physics.physics(1)
 
 #/usr/share/games/openarena/baseoa
 #/usr/share/games/openarena

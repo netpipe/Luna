@@ -25,8 +25,23 @@ PyMethodDef irr_Physics[] = {
 //    {"loadScene",Python::PyIrr_loadScene,METH_VARARGS,"box2d"},
     {"bBox",Python::PyIrr_irrbulletBox,METH_VARARGS,"box2d"},
 {"bldemo",Python::PyIrr_irrbulletliquiddemo,METH_VARARGS,"box2d"},
+{"physics",Python::PyIrr_physicspause,METH_VARARGS,"physics"},
 	{NULL,NULL,0,NULL}
 	};
+
+	PyObject * Python::PyIrr_physicspause(PyObject * self,PyObject * args){
+
+	float w,z,x,y;
+	int friction;
+	//PyArg_ParseTuple(args,"f",&z);
+
+	PyArg_ParseTuple(args,"i",&friction);
+
+	#ifdef IRRBULLET
+    bPhysics = true;
+    #endif
+    	return Py_BuildValue("");
+    }
 
 	PyObject * Python::PyIrr_irrbulletliquiddemo(PyObject * self,PyObject * args){
 
