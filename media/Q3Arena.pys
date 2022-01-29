@@ -90,7 +90,6 @@ if (init) :
 
  scene.addAMesh("/maps/aggressor.bsp",0);
  #table = physics.loadTrack("/maps/aggressor.bsp",20,0,0)
- gui.codeeditor(1)
 
 
  flashlight=scene.flashlight(0,0)
@@ -222,12 +221,12 @@ if (init) :
 #################################
 #if sound done playing loop
 #
-if (icount > 400):
+if (icount > 200):
+ physics.bBox(scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3));
 # scene.soundman(1,1,1)
  icount=0
 else:
  icount+=1
-
 #scene.fpsweapon(camera,1)
 
 

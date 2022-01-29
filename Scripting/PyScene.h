@@ -363,7 +363,10 @@ scene::ISceneNode* node=0;
    //     node->getMaterial(0).BackfaceCulling = true;
 
     // possibly need a delete through scripting side
-
+            		#ifdef IRRBULLET
+        IBvhTriangleMeshShape* shape = new IBvhTriangleMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), 0.0f);
+        IRigidBody* body =  luna->world->addRigidBody(shape);
+        #endif // IRRBULLET
 
     //  metaSelector = device->getSceneManager()->createMetaTriangleSelector();
     //  m_cVehicle->recursiveFillMetaSelector(device->getSceneManager()->getRootSceneNode(), metaSelector);
@@ -382,7 +385,8 @@ scene::ISceneNode* node=0;
  //  vector3df trackPosition = vector3df(0,0,-1);
  //   tr.setOrigin(btVector3(trackPosition.X, trackPosition.Y, trackPosition.Z));
 //    tr.setRotation()
-#ifdef PHYSICS
+//#define PHYSICS2
+#ifdef PHYSICS2
     btTriangleMesh *collisionMesh = new btTriangleMesh();
 #endif
   //  m_cScene->setGenericMaterial(node, 0);
@@ -394,11 +398,11 @@ scene::ISceneNode* node=0;
         {
 //            //  meshBuffer2->append( mesh->getMeshBuffer(i) );
 //          //  m_cScene->setGenericMaterial(node, i); //outdoor sun lumenation
-#ifdef PHYSICS
+            #ifdef PHYSICS2
             luna->m_cPhysics->convertIrrMeshBufferBtTriangleMesh(mesh->getMeshBuffer(i), collisionMesh, vector3df(1,1,1));
             #endif
 
-            		#ifdef IRRBULLET
+            		#ifdef IRRBULLET2
         IBvhTriangleMeshShape* shape = new IBvhTriangleMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), 0.0f);
         IRigidBody* body =  luna->world->addRigidBody(shape);
         #endif // IRRBULLET
@@ -407,7 +411,7 @@ scene::ISceneNode* node=0;
         }
 //
 //tr.setRotation(btQuaternion(btVector3(0,1,0)));
-#ifdef PHYSICS
+#ifdef PHYSICS2
     btBvhTriangleMeshShape *trackShape = new btBvhTriangleMeshShape(collisionMesh, true);
     luna->m_cPhysics->localCreateRigidBody(0, tr, trackShape, node);
     #endif
