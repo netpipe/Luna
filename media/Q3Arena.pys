@@ -91,6 +91,9 @@ if (init) :
  scene.addAMesh("/maps/aggressor.bsp",0);
  #table = physics.loadTrack("/maps/aggressor.bsp",20,0,0)
 
+ scene.atmosphere(1)              # set time of day / moonphase (i broke it)
+ #extras.bitcloud(1)
+ extras.realCloud(1,1,1,1)
 
  flashlight=scene.flashlight(0,0)
 

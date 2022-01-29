@@ -26,7 +26,7 @@
   #define FLUIDLITE
   //#define FLUIDSYNTH //has been replaced by fluidlite
   //#define DECALS       //not used
-  #define DECALS2
+  //#define DECALS2
   #define TESSELATE
   //  #define occlusion.
   //  #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
@@ -109,11 +109,13 @@
         #define ENVVEG  // vegetation
         //#define OPENAL2
 
-        //#define MOHAABSP
+        #ifndef WIN32
+        #define MOHAABSP
         #ifdef MOHAABSP
-        #define _IRR_COMPILE_WITH_BSP_LOADER_ //seems to only compile on linux for the moment.
-     #define test223 // mohaaloader linux only because of byteswap
-#endif
+            #define _IRR_COMPILE_WITH_BSP_LOADER_ //seems to only compile on linux for the moment.
+            #define test223 // mohaaloader linux only because of byteswap
+        #endif
+        #endif
         //#define OIS2
         //#define OIS2_LINUX_JOY_DEBUG
         //#define TILED2D
