@@ -223,7 +223,7 @@ if (init) :
  scene.atmosphere(1)              # set time of day / moonphase (i broke it)
  #extras.bitcloud(1)
  extras.realCloud(1,1,1,1)
-
+ scene.decals(1,camera)
  icount=0
 #################################
  init = 0 #initialization finish - needs whitespace infront
@@ -251,7 +251,7 @@ else:
 #print posx
 
 scene.flashlight(1,flashlight)
-#scene.decals(0,camera)
+scene.decals(0,camera)
 irr.delay(4000);
 
 #irr.delete(iaxe)

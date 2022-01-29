@@ -14,7 +14,7 @@
     #define SPARK
     #define SOUND
 
-   // #define PHYSICS
+    //#define PHYSICS
     //#ifndef PHYSICS
         #define IRRBULLET //seems to be working
   //  #endif
@@ -26,7 +26,10 @@
   #define FLUIDLITE
   //#define FLUIDSYNTH //has been replaced by fluidlite
   //#define DECALS       //not used
-  //#define DECALS2
+  #ifdef PHYSICS
+    #define DECALS2
+  #endif
+
   #define TESSELATE
   //  #define occlusion.
   //  #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
@@ -129,7 +132,7 @@
   //if bullet carnot enabled with physics and car calls it crashes FIXME
   #define BULLETCAR // if FPSWEAPON is enabled the car wont work. diff event rec
   #define LOADLEVELS // with occlusion its slow?
- // #define BULLETBLEND
+  //#define BULLETBLEND //only seems to work if you compile it with including bullet libs not compiled with bullet
   #define RAGDOLL   //bulletRagdoll
   #endif
 

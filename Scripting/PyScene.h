@@ -94,7 +94,7 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
 
 //	if (type){
     bDecals=1; // should fix this to be inside the defines
-#ifdef DECALS26
+#ifdef DECALS2
 
   if(bDecals){
 		#ifdef PHYSICS
@@ -143,7 +143,7 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
                nextDecal = 0;
          }
 }
-    break;
+   // break;
 
  #endif
 #endif
@@ -156,7 +156,7 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
 //    #endif
 
 
-    #ifdef DECALS23
+    #ifdef DECALS2
     	break;
 	case 1:
     bDecals=2;
