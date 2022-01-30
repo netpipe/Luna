@@ -14,7 +14,7 @@
     #define SPARK
     #define SOUND
 
-    //#define PHYSICS
+    #define PHYSICS
     //#ifndef PHYSICS
         #define IRRBULLET //seems to be working
   //  #endif
@@ -113,6 +113,7 @@
         //#define OPENAL2
 
         #ifndef WIN32
+        #define TILED2D
         #define MOHAABSP
         #ifdef MOHAABSP
             #define _IRR_COMPILE_WITH_BSP_LOADER_ //seems to only compile on linux for the moment.
@@ -121,7 +122,6 @@
         #endif
         //#define OIS2
         //#define OIS2_LINUX_JOY_DEBUG
-        //#define TILED2D
         //#define PYTHON_MINIMALTEST
        // #define PHYSICS // custom BulletImplimentation
         #endif
