@@ -473,12 +473,13 @@ void Python::render() {//active camera
             (*it)->Update();
         #endif
 
-        #ifdef FPS
-        if (bFPS){    M4->update(device->getTimer()->getTime());}
-        #endif
+
         //      }
         #endif
 
+        #ifdef FPS
+        if (bFPS){    M4->update(device->getTimer()->getTime());}
+        #endif
 //irr::ITimer* timer = device->getTimer();
 // irr::u32 timeThisFrame = timer->getTime();
 // timeThisFrame = timer->getTime();

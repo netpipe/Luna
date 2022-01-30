@@ -37,9 +37,18 @@ PyMethodDef irr_Physics[] = {
 
 	PyArg_ParseTuple(args,"i",&friction);
 
-	#ifdef IRRBULLET
+	switch (friction){
+	case 0:{
+	bPhysics = false;
+	}break;
+	case 1:{
+    #ifdef IRRBULLET
     bPhysics = true;
     #endif
+	}break;
+
+	}
+
     	return Py_BuildValue("");
     }
 
