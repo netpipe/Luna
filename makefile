@@ -4,6 +4,8 @@ C_FLAGS= -ffast-math -Wall -g -fpermissive -DMINIMAL
 COMPILE = $(CC) $(C_FLAGS) -c
 CCOMPILE = $(GCC) $(C_FLAGS) -c
 
+#not working yet
+
 L_FLAGS=-lGL -lopenal -lXxf86vm -lX11 -lpython2.7 -lpthread -lIrrlicht -lGL -lopenal -lXxf86vm -lX11 -lirrNetLite22 -lenet -lpython2.7 -lIrrOpenSteer -lpthread -ltheora -ltheoraplayer -lassimp -lusb -lsqlite3 -logg -lvorbis -lvorbisfile -lsndfile -lPolyVoxCore -lIrrlicht -lBulletSoftBody -lBulletDynamics -lBulletCollision -lLinearMath -lfreetype -lz -ldl -lSPARK -lSPARK_IRR
 
 L_INCLUDES=-L../LunaLibs/freetype-2.3.9/objs/.libs -L../LunaLibs/net/enet-1.2.1 -L../LunaLibs/irrlicht-1.8.4/lib/Linux -L../LunaLibs/Compiled/Linux -L../LunaLibs/libtheoraplayer/bin/Linux -L../LunaLibs/net/irrNetLite22 -L../LunaLibs/libIrrOpenSteer_10-02-15/lib -L./entities/AI/recast/DebugUtils/Include/ -L../LunaLibs/assimp-3.3.1/lib -L../LunaLibs/zlib-1.2.32 -L../LunaLibs/libtheoraplayer/ -L../LunaLibs/cAudio23/cAudio/bin/gcc -L../LunaLibs/bullet3-2.86.1/src/BulletDynamics -L../LunaLibs/bullet3-2.86.1/src/BulletSoftBody -L../LunaLibs/bullet3-2.86.1/src/BulletCollision -L../LunaLibs/bullet3-2.86.1/src/LinearMath -L../LunaLibs/SparkEngine/lib/Linux/static -L../LunaLibs/PolyVox/library/PolyVoxCore -L../LunaLibs/media/fluidsynth-emscripten/src3 -L../LunaLibs/bullet3-2.86.1/msvc/2008/lib/Debug -L../LunaLibs/OpenSteer -L../emscripten-projects/SDL/SDL_sound/src -L../LunaLibs/libtheora-1.1.1 -L../LunaLibs/freetype-2.3.9 -L../irrlicht-1.8.4/lib/Linux
