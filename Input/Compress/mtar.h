@@ -19,9 +19,9 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
-#include "../../../../config.h"
+#include "../../config.h"
 #ifdef COMPRESS
-#include "microtar-stdio.h"
+#include "./microtar/src/microtar-stdio.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -111,16 +111,28 @@ int extract_foreach_cb(mtar_t* tar, const mtar_header_t* h, void* arg)
     return 0;
 }
 
-void extract_files(mtar_t* tar, char** files, int num_files)
+//void extract_files(mtar_t* tar, char** files, int num_files)
+//{
+//    struct extract_args args;
+//    args.names = files;
+//    args.count = num_files;
+//
+//    int err = mtar_foreach(tar, extract_foreach_cb, &args);
+//    if(err)
+//        die(E_TAR, "extraction failed: %s", mtar_strerror(err));
+//}
+
+void extract_files2(mtar_t* tar, char* files, int num_files)
 {
     struct extract_args args;
-    args.names = files;
+    args.names = &files;
     args.count = num_files;
 
     int err = mtar_foreach(tar, extract_foreach_cb, &args);
     if(err)
         die(E_TAR, "extraction failed: %s", mtar_strerror(err));
 }
+
 
 void add_files(mtar_t* tar, char** files, int num_files)
 {
@@ -163,8 +175,10 @@ void add_files(mtar_t* tar, char** files, int num_files)
     }
 }
 
-bool extractTar(){
-//  extract_files(&tar, "tar.tar", 1);
+bool extractTar(char * tarfile){
+//string test=tarfile;
+    mtar_t tar;
+  extract_files2(&tar, "tar.tar", 1);
 }
 //
 //int main-non(int argc, char* argv[])

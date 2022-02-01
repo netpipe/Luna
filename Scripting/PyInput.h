@@ -46,9 +46,25 @@ PyMethodDef irr_Input[] =
 	{"sqlconnect",Python::PyIrr_sqlconnect,METH_VARARGS,"sqlconnect"},
 	{"sqlcommand",Python::PyIrr_sqlcommand,METH_VARARGS,"sqlcommand"},
 	{"voxelLoad",Python::PyIrr_voxelLoad,METH_VARARGS,"voxelLoad"},
+	{"tar",Python::PyIrr_tar,METH_VARARGS,"voxelLoad"},
     {NULL,NULL,0,NULL}
 };
 
+#include "../Input/Compress/mtar.h"
+PyObject * Python::PyIrr_tar(PyObject * self,PyObject * args){
+#ifdef COMPRESS
+	int type;
+	char * test;
+
+	PyArg_ParseTuple(args,"si",&test,&type);
+
+	//mtar_t tar;
+
+    extractTar(test);
+
+   return Py_BuildValue("");
+   #endif
+}
 
 bool Python::CheckKeyState(int key){
 	//might want to add some kind of key limiter to prevent several keypresses in a row

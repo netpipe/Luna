@@ -300,6 +300,8 @@ namespace Python {
     PyObject * PyIrr_iTransparent(PyObject * self,PyObject * args);
     PyObject * PyIrr_iFilter(PyObject * self,PyObject * args);
 
+    PyObject * PyIrr_tar(PyObject * self,PyObject * args);
+
     PyMODINIT_FUNC init_irr(void);
 
     //subsystem
