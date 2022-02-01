@@ -110,6 +110,7 @@
         #define FLARE2  // more realistic and working
         #define ENVVEG  // vegetation
         //#define OPENAL2
+        //#define COMPRESS
 
         #ifndef WIN32
         #define TILED2D

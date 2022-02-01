@@ -1256,6 +1256,15 @@
 		<Unit filename="Input/AgAudio/audio.h" />
 		<Unit filename="Input/Compress/Compress.cpp" />
 		<Unit filename="Input/Compress/Compress.h" />
+		<Unit filename="Input/Compress/microtar/src/microtar-stdio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/Compress/microtar/src/microtar-stdio.h" />
+		<Unit filename="Input/Compress/microtar/src/microtar.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/Compress/microtar/src/microtar.h" />
+		<Unit filename="Input/Compress/mtar.h" />
 		<Unit filename="Input/Compress/zpipe.h" />
 		<Unit filename="Input/Compress/zstr.h" />
 		<Unit filename="Input/Controllers/StringTools.cpp" />
