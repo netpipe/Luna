@@ -14,9 +14,9 @@
     #define SPARK
     #define SOUND
 
-    #define PHYSICS
+    //#define PHYSICS
     //#ifndef PHYSICS
-     //   #define IRRBULLET //seems to be working
+        #define IRRBULLET //seems to be working
   //  #endif
 
     #ifdef NDEBUG
