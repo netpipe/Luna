@@ -50,13 +50,13 @@
 				</Compiler>
 				<Linker>
 					<Add library="GL" />
-					<Add library="openal" />
 					<Add library="Xxf86vm" />
 					<Add library="X11" />
 					<Add library="python2.7" />
 					<Add library="pthread" />
 					<Add library="Irrlicht" />
 					<Add library="dl" />
+					<Add library="z" />
 					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
 				</Linker>
 			</Target>
@@ -92,6 +92,7 @@
 					<Add library="dl" />
 					<Add library="SDL" />
 					<Add library="cAudio" />
+					<Add library="z" />
 					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
 				</Linker>
 			</Target>
