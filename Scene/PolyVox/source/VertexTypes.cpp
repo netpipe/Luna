@@ -21,9 +21,10 @@ freely, subject to the following restrictions:
     distribution.
 *******************************************************************************/
 
+#ifdef POLYVOX
+
 #include "PolyVoxCore/VertexTypes.h"
 #include "../../../config.h"
-#ifdef POLYVOX
 namespace PolyVox
 {
 	PositionMaterialNormal::PositionMaterialNormal()
