@@ -20,7 +20,7 @@ misrepresented as being the original software.
 3. This notice may not be removed or altered from any source
 distribution.
 *******************************************************************************/
-#include "../../../../config.h"
+#include "../../../../../config.h"
 #ifdef POLYVOX
 #ifndef __PolyVox_ArraySizesImpl_H__
 #define __PolyVox_ArraySizesImpl_H__
