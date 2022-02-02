@@ -115,7 +115,7 @@ image.iposition(box2di, physics.b2d(box2dbox,0,"bgetx",0,0,0,0,0)+10,physics.b2d
 #image.iposition(iaxe, physics.b2d(box2dbody,3,1),physics.b2d(box2dbody,2,1))
 image.idraw(lunaengine)
 image.idraw(iaxe)
-image.idraw(box2di)
+#image.idraw(box2di)
 image.idraw(irrlichtlogo)
 
 
