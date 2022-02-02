@@ -88,7 +88,8 @@ PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args){
 	//Must make this useful someday, not today
 	char * message;
 	s32 x,y,x1,y1;
-	PyArg_ParseTuple(args,"ssiiii",&message,&font4,&x,&y,&x1,&y1); //may only need x,y when using ft2
+	s32 r,g,b,a;
+	PyArg_ParseTuple(args,"ssiiiiiiii",&message,&font4,&x,&y,&x1,&y1,&r,&g,&b,&a); //may only need x,y when using ft2
 
 	//IGUIFont * font2 = (IGUIFont *)font;
 
@@ -119,9 +120,8 @@ PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args){
 	stringw font4w=font4;
 	guienv->getSkin()->setFont(guienv->getFont(font4w.c_str()));
     gui::IGUIFont* font2 = guienv->getSkin()->getFont();
-
      //   font2 = guienv->getFont("./media/fontlucida.png");
-        font2->draw(ha.c_str(), core::recti(x + (150 * 0), y, x1 + (150 * 0), y1 + 20), video::SColor(255, 255, 255, 255));
+        font2->draw(ha.c_str(), core::recti(x + (150 * 0), y, x1 + (150 * 0), y1 + 20), video::SColor(r, g, b, a));
 
 	//guienv->addStaticText(L"sample text here!",rect<s32>(x,y,x1,y1), true);
 	//guienv->addStaticText(		ha.c_str(),		core::rect<s32>(x,y,x1,y1), true, true, 0, -1, true);

@@ -167,7 +167,7 @@ else:
    mbtn=0
 
 for i in range(len(pysList)):
-    scene.drawtext(pysList[i],font, 32,46+i*47,128,160+i*47)
+    scene.drawtext(pysList[i],font, 32,46+i*47,128,160+i*47,255,55,44,255)
     if mbtn:
     #  print(xcoord)
     #  print(46*i-47)
@@ -179,7 +179,7 @@ for i in range(len(pysList)):
    #image.set_texture(buttons[currentButton],colors[1])
    #else:
    #image.set_texture(buttons[i],colors[0])
-    scene.drawtext(str(currentButton), font, 0,0,128,128)
+    scene.drawtext(str(currentButton), font, 0,0,128,128,255,55,44,255)
 
 if input.getKey('KEY_SPACE'):
     #irr.files("../media/cards.zip")
