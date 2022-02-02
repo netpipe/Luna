@@ -62,8 +62,8 @@ PyObject * Python::PyIrr_tar(PyObject * self,PyObject * args){
 
     extractTar(test);
 
-   return Py_BuildValue("");
    #endif
+      return Py_BuildValue("");
 }
 
 bool Python::CheckKeyState(int key){

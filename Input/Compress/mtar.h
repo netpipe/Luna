@@ -178,7 +178,51 @@ void add_files(mtar_t* tar, char** files, int num_files)
 bool extractTar(char * tarfile){
 //string test=tarfile;
     mtar_t tar;
-  extract_files2(&tar, "tar.tar", 1);
+        const char* mode = "rb";
+//    if(op == OP_CREATE)
+  //      mode = "wb";
+    int err = mtar_open(&tar, tarfile, mode);
+    if(err)
+        die(E_TAR, "can't open archive: %s", mtar_strerror(err));
+
+        #ifdef WIN32
+       // if (_wmkdir(filename.c_str(), mode) != 0)
+        _wmkdir("../media/lib", 0775) ;
+        _wmkdir("../media/lib/python2.7", 0775) ;
+        _wmkdir("../media/lib/python2.7/compiler", 0775) ;
+        _wmkdir("../media/lib/python2.7/encodings", 0775) ;
+        _wmkdir("../media/lib/python2.7/importlib", 0775) ;
+        _wmkdir("../media/lib/python2.7/json", 0775);
+        _wmkdir("../media/lib/python2.7/logging", 0775);
+        _wmkdir("../media/lib/python2.7/plat-emscripten", 0775) ;
+        _wmkdir("../media/lib/python2.7/xml", 0775) ;
+        _wmkdir("../media/lib/python2.7/xml/sax", 0775) ;
+        _wmkdir("../media/lib/python2.7/xml/parsers", 0775) ;
+        _wmkdir("../media/lib/python2.7/xml/etree", 0775) ;
+        _wmkdir("../media/lib/python2.7/xml/dom", 0775) ;
+        #else
+        // if (mkdir(filename.c_str(), (u16)mode) != 0)
+        mkdir("../media/lib", 0775) ;
+        mkdir("../media/lib/python2.7", 0775) ;
+        mkdir("../media/lib/python2.7/compiler", 0775) ;
+        mkdir("../media/lib/python2.7/encodings", 0775) ;
+        mkdir("../media/lib/python2.7/importlib", 0775) ;
+        mkdir("../media/lib/python2.7/json", 0775);
+        mkdir("../media/lib/python2.7/logging", 0775);
+        mkdir("../media/lib/python2.7/plat-emscripten", 0775) ;
+        mkdir("../media/lib/python2.7/xml", 0775) ;
+        mkdir("../media/lib/python2.7/xml/sax", 0775) ;
+        mkdir("../media/lib/python2.7/xml/parsers", 0775) ;
+        mkdir("../media/lib/python2.7/xml/etree", 0775) ;
+        mkdir("../media/lib/python2.7/xml/dom", 0775) ;
+        #endif
+
+  extract_files2(&tar, tarfile, 1);
+
+      err = mtar_close(&tar);
+    if(err)
+        die(E_TAR, "failed to close archive: %s", mtar_strerror(err));
+
 }
 //
 //int main-non(int argc, char* argv[])
@@ -193,7 +237,9 @@ bool extractTar(char * tarfile){
 //"  mtar list tar-file\n"
 //"    List the members of the given tar archive, one filename per line.\n"
 //"\n"
-//"  mtar create tar-file members...\n"
+//"  mtar create tar-file members//    const char* mode = "rb";
+//    if(op == OP_CREATE)
+//        mode = "wb";...\n"
 //"  mtar add tar-file members...\n"
 //"    Create a new tar archive from the files listed on the command line.\n"
 //"    WARNING: Any existing file at tar-file will be overwritten!\n"
