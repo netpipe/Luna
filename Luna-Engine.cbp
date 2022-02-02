@@ -1142,6 +1142,7 @@
 			<Add directory="Input/FluidLite/include/" />
 			<Add directory="Scene/PolyVox/include" />
 			<Add directory="Physics/irrBullet-0.1.9/include" />
+			<Add directory="/usr/include/irrlicht" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />

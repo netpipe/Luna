@@ -1255,6 +1255,7 @@
 			<Add directory="../LunaLibs/libogg-1.1.4/include" />
 			<Add directory="../LunaLibs/libvorbis-1.2.3/include" />
 			<Add directory="Physics/irrBullet-0.1.9/include" />
+			<Add directory="/usr/include/irrlicht" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />
