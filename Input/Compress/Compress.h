@@ -1,6 +1,6 @@
 #ifndef __AZADIARCHIVE_H__
 #define __AZADIARCHIVE_H__
-#include "../config.h"
+#include "../../config.h"
 #ifdef COMPRESS
 #include <string>
 #include <zlib.h>
