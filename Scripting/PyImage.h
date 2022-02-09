@@ -56,13 +56,14 @@ PyObject * Python::PyIrr_iScale(PyObject * self,PyObject * args){
 		#ifdef Image2D
 	cImage* node = (cImage*)node_id;
 	irr::core::vector2df news;
-	news=vector2df(node->OrigImageRect.UpperLeftCorner.X-node->OrigImageRect.LowerRightCorner.X,node->OrigImageRect.UpperLeftCorner.Y-node->OrigImageRect.LowerRightCorner.Y);
-
+//	news=vector2df(node->OrigImageRect.UpperLeftCorner.X-node->OrigImageRect.LowerRightCorner.X,node->OrigImageRect.UpperLeftCorner.Y-node->OrigImageRect.LowerRightCorner.Y);
+	news.X=(X*-1);
+	news.Y=(Y*-1);
 //
-	news.X=(X*-1)*X;
-	news.Y=(Y*-1)*Y; // not sure why but had to invert values
-	news.X=news.X*X;
-	news.Y=news.Y*Y;
+//	news.X=(X*-1)*X;
+//	news.Y=(Y*-1)*Y; // not sure why but had to invert values
+//	news.X=news.X*X;
+//	news.Y=news.Y*Y;
 //news=vector2df(atof(node->OrigImageRect.LowerRightCorner.X),atof(node->OrigImageRect.LowerRightCorner.Y));
 //LowerRightCorner
 //news.Y=(node->OrigImageRect.Y);
