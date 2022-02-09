@@ -1,5 +1,4 @@
 class cImage {
-        irr::core::recti ImageRect, OrigImageRect, TextureRect, BoundRect;
         irr::core::position2di RotationPoint;
         irr::f32 Rotation, OldRotation;
         irr::video::ITexture* Texture;
@@ -11,6 +10,8 @@ class cImage {
         irr::video::SColor Color;
         irr::core::vector2df Scale;
 public:
+        irr::core::recti ImageRect, OrigImageRect, TextureRect, BoundRect;
+
         cImage(irr::video::ITexture* texture, irr::core::recti nsize, irr::core::recti texpos)
         {
                 Color = irr::video::SColor(0,255,255,255);
