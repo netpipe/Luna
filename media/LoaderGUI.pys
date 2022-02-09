@@ -118,7 +118,7 @@ image.idraw(iaxe)
 #image.idraw(box2di)
 image.idraw(irrlichtlogo)
 
-image.iscale(lunaengine,0.5,0.5)
+#image.iscale(lunaengine,0.5,0.5) ## need to stop repedative scaling or be able to get back to original.
 
 #print ( input.mouse(6,0,0) )#mousebutton
 #print ( input.mouse(7,0,0) )#mousebutton
