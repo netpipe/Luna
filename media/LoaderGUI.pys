@@ -70,7 +70,7 @@ if initloader :
     irrlichtlogo=addImage("../media/irrlichtlogo.jpg",88,33)
     lunaengine=addImage("../media/LunaEngine800600.png",800,450)
     image.iscale(iaxe,0.5,0.5)
-    image.iscale(lunaengine,0.5,0.5)
+    image.iscale(lunaengine,1,1)
     #image.irotate(iaxe,i)
     box2dbody=physics.b2d(1,0,"binit",500,500,3,4,5)
     box2dbox=physics.b2d(1,0,"binit2",60,60,1,500,5)
