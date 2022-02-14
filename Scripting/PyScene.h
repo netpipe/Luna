@@ -726,16 +726,14 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
     int bullet;
     PyArg_ParseTuple(args,"lifff",&node_id,&bullet,&x,&y,&z);
 
-     if (bullet == 6){
-     IAnimatedMeshSceneNode *nodetmp= (IAnimatedMeshSceneNode*) node_id;
-     nodetmp->setPosition(vector3df(x,y,z));
-     }
-    if (bullet == 1){
+    switch(bullet){
+    case 1:{
             #ifdef PHYSICS
             btRigidBody *test = (btRigidBody *)node_id;
             test->translate(btVector3 (x,y,z));
             #endif
-    }else if (bullet == 3){
+            }break;
+    case 3:{
         #ifdef TERRAIN
             Terrain* mnode = (Terrain*)node_id;
             vector3df newpos;
@@ -749,7 +747,8 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
          //   btRigidBody *test = mnode->mRigidBody;
 
 #endif
-    }else if (bullet == 4){
+    }break;
+    case 4:{
         #ifdef TERRAIN
             Terrain* mnode =(Terrain*)node_id;
             vector3df newpos;
@@ -762,24 +761,22 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
 #endif
          //   btRigidBody *test = mnode->mRigidBody;
 #endif
-} else if (bullet == 5 ){
+    }break;
+    case 5:{
     #ifdef CHOPPER
     ChopperControl *chopper = (ChopperControl*)node_id;
     chopper->setPosition(x,y,z);
 #endif
-}else if (bullet == 0){
-    ISceneNode * node = (ISceneNode *)node_id;// could also get from name smgr->getSceneNodeFromId(node_id);
-    	if(node != NULL)
-        {
-            node->setPosition(vector3df(x,y,z));
-            printf("%i %i %i",x,y,z);
-        }
-    else{
-    printf ("nodeID not valid");
-    }
-    }
-
-
+    }break;
+    case 0:{
+        ISceneNode * node = (ISceneNode *)node_id;// could also get from name smgr->getSceneNodeFromId(node_id);
+            if(node != NULL)
+            {
+                node->setPosition(vector3df(x,y,z));
+                printf("%i %i %i",x,y,z);
+            }
+    }break;
+}
 
 return Py_BuildValue("");
 }
