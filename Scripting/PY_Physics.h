@@ -909,7 +909,7 @@ PyObject * Python::PyIrr_LoadTrack(PyObject * self,PyObject * args){
 //             }
 //         }
 //         }
-    return Py_BuildValue("l",test);
+    return Py_BuildValue("l",node);
 	}
 
     #endif

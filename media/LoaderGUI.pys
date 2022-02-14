@@ -1,4 +1,4 @@
-###priority todo mouse clicks
+###todo
 
 if initloader :
     import irr

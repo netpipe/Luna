@@ -137,7 +137,7 @@ if (init) :
  #stage = physics.loadTrack('./StageData/irrb2/Hospital.irr',20,0,0)
  #table = physics.loadTrack('../media/FOOSEBALL/table_football.3ds',20,0,0)
  table = physics.loadTrack('../media/Pinball/DevilsPinball-table-only.3ds',20,0,0)
-# scene.setPosition(table ,1, 10,-50,10)
+ scene.setPosition(table ,0, 10,-50,10)
 
  #sphere1 = scene.addSphereNode("data/textures/material/marble1_256.png",0,-1000,0, 5,5)
  #scene.setVelocity(sphere1,10,10,10)

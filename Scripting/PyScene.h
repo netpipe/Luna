@@ -726,6 +726,10 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
     int bullet;
     PyArg_ParseTuple(args,"lifff",&node_id,&bullet,&x,&y,&z);
 
+     if (bullet == 6){
+     IAnimatedMeshSceneNode *nodetmp= (IAnimatedMeshSceneNode*) node_id;
+     nodetmp->setPosition(vector3df(x,y,z));
+     }
     if (bullet == 1){
             #ifdef PHYSICS
             btRigidBody *test = (btRigidBody *)node_id;
