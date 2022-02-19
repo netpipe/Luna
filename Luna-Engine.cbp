@@ -30,6 +30,8 @@
 					<Add library="python2.7" />
 					<Add library="pthread" />
 					<Add library="Irrlicht" />
+					<Add library="z" />
+					<Add library="dl" />
 				</Linker>
 			</Target>
 			<Target title="Linux Debug 2D">
