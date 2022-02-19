@@ -22,6 +22,7 @@
 				<Compiler>
 					<Add option="-fpermissive" />
 					<Add option="-DMINIMAL" />
+					<Add option="-DWBULLET" />
 				</Compiler>
 				<Linker>
 					<Add library="GL" />
@@ -48,6 +49,7 @@
 					<Add option="-fpermissive" />
 					<Add option="-DMINIMAL" />
 					<Add option="-DMINIMAL2" />
+					<Add option="-DWBULLET" />
 					<Add directory="../Box2D/Box2D/Box2D" />
 					<Add directory="../Box2D/Box2D/" />
 				</Compiler>
@@ -79,6 +81,7 @@
 					<Add option="-DMINIMAL" />
 					<Add option="-DMINIMAL2" />
 					<Add option="-DSOUND" />
+					<Add option="-DWBULLET" />
 					<Add directory="../Box2D/Box2D/Box2D" />
 					<Add directory="../Box2D/Box2D/" />
 				</Compiler>
@@ -116,8 +119,7 @@
 					<Add option="-DMINIMAL" />
 					<Add option="-DMINIMAL2" />
 					<Add option="-DEXTRACOMPILE" />
-					<Add option="-DPYTHON" />
-					<Add option="-DSOUND" />
+					<Add option="-DWBULLET" />
 				</Compiler>
 				<Linker>
 					<Add library="GL" />

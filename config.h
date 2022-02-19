@@ -123,8 +123,13 @@
         //#define OIS2
         //#define OIS2_LINUX_JOY_DEBUG
         //#define PYTHON_MINIMALTEST
-       // #define PHYSICS // custom BulletImplimentation
-        #endif
+        #ifdef WBULLET
+            #define PHYSICS
+         //   #ifndef PHYSICS
+                //#define IRRBULLET // use on its own or with PHYSICS
+         //   #endif
+          #endif
+    #endif
 
 
 
@@ -138,7 +143,13 @@
 
 //  #define POLYVOX
 
-#else  // mainly used for old stuff before cleanup , emscripten perhaps it should work with minimal too
+
+
+
+
+#else
+// mainly used for old stuff , emscripten remove this list later
+
 
  #define PYTHON  // defined in the codeblocks project option defines for target management and testing builds
  // #define ANGELSCRIPT
