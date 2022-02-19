@@ -136,8 +136,9 @@ if (init) :
  #stage = physics.loadTrack('../media/data/3/Scene.irr',20,0,0)
  #stage = physics.loadTrack('./StageData/irrb2/Hospital.irr',20,0,0)
  #table = physics.loadTrack('../media/FOOSEBALL/table_football.3ds',20,0,0)
- table = physics.loadTrack('../media/Pinball/DevilsPinball-table-only.3ds',20,0,0)
- scene.setPosition(table ,0, 10,-50,10)
+
+ #table = physics.loadTrack('../media/Pinball/DevilsPinball-table-only.3ds',20,0,0)
+ #scene.setPosition(table ,0, 10,-50,10)
 
  #sphere1 = scene.addSphereNode("data/textures/material/marble1_256.png",0,-1000,0, 5,5)
  #scene.setVelocity(sphere1,10,10,10)
@@ -314,9 +315,9 @@ ycoord=input.mouse("mgety",0,0)
 if input.getKey('KEY_F2') : #could have a release action
  print "setting cube position"
  #scene.add_cube()
- #scene.addSphereNode("../media/data/textures/material/marble1_256.png",scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3),5,500) #xyz radius mass
+ scene.addSphereNode("../media/data/textures/material/marble1_256.png",scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3),5,500) #xyz radius mass
  #scene.setPosition(cube_id,1,1,1)
- physics.bBox(scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3));
+ #physics.bBox(scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3));
 
 if input.getKey('KEY_F3') : #could have a release action
  #if lasttime > 10:
