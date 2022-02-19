@@ -119,10 +119,10 @@ image.iposition(iaxe, physics.b2d(box2dbody,0,"bgetx",0,0,0,0,0),physics.b2d(box
 image.iposition(box2di, physics.b2d(box2dbox,0,"bgetx",0,0,0,0,0)+10,physics.b2d(box2dbox,0,"bgety",0,0,0,0,0))  #crashes if booth positions are used forsome reason
 #image.iposition(box2di, input.mouse("mgetx",0,0),input.mouse("mgety",0,0))  #crashes if booth positions are used forsome reason
 #image.iposition(iaxe, physics.b2d(box2dbody,3,1),physics.b2d(box2dbody,2,1))
-image.idraw(lunaengine)
-image.idraw(iaxe)
+#image.idraw(lunaengine)
+#image.idraw(iaxe)
 #image.idraw(box2di)
-image.idraw(irrlichtlogo)
+#image.idraw(irrlichtlogo)
 
 #image.iscale(lunaengine,0.5,0.5) ## need to stop repedative scaling or be able to get back to original.
 

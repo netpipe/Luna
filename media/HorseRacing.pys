@@ -1,0 +1,389 @@
+if init:
+    import irr
+    import scene
+    import input
+    import image
+    import time
+    init=False
+    scene.using ('../media/random.py',"1");
+    myr.time_reseed();
+
+    location="../media/HorseRacing/"
+    font="fontlucida.png"
+    id =100
+    count=0
+    HScale=0.5
+    numOfHorses=7
+    animSpeed=.2
+    changeAmount=100
+    selected=False
+    selectedNum=-1
+    scores={}
+    sortedS=[]
+    order=0
+    visibility={"Numpad":False,"Keyboard":False}
+
+
+    mouseCoord=[0,0]
+    mbtn=0
+    UIState=0 #0 brand new, 1 started playing, 2 watching, 3 continue or submit, 4 lost- quit or play again
+    def newId():
+        global id
+        id+=1
+        return id
+
+    def addImage(loc,width,height):
+        return image.iadd(loc,0,0,width,height,0,0,width,height)
+
+    def readScores():
+        global scores
+        try:
+            with open(location+"scores.txt","r") as file:
+                lines=file.readlines()
+                temp=""
+                for line in lines:
+                    temp=line.replace("\n","")
+                    temp=temp.split("|")
+                    scores[temp[0]]=int(temp[1])
+        except:
+            file =open(location+"scores.txt","w")
+            file.close()
+
+    def addScore(name,score):
+        readScores()
+        scores[name]=int(score)
+        sortedScores=sorted(scores,key=scores.get)
+        sortedScores=[[sortedScores[x],scores[sortedScores[x]]] for x in range(len(sortedScores))]
+        sortedScores.reverse()
+        try:
+            with open(location+"scores.txt","w") as file:
+                for sc in sortedScores:
+                    if not sc == sortedScores[-1]:
+                        file.write(sc[0]+"|"+str(sc[1])+"\n")
+                    else:
+                        file.write(sc[0]+"|"+str(sc[1]))
+        except:
+            print("oops")
+
+    def hideButtons():
+        for i in range(len(Buttons)):
+                Buttons[i]["visible"]=False
+        canvas["visible"]=False
+        endState["visible"]=False
+    def hideNums():
+        for bt in numButtons:
+                bt["visible"]=False
+                bt["selected"]=False
+                selected=False
+
+    def editButtons(indexes,key,value,multiple=False):
+        if multiple:
+
+            j=0
+            for i in indexes:
+                Buttons[i][key]=value[j]
+                j+=1
+        else:
+            for i in indexes:
+                Buttons[i][key]=value
+
+    def editNumButtons(indexes,key,value,multiple=False):
+        if multiple:
+
+            for i in indexes:
+                numButtons[i][key]=value[i]
+        else:
+            for i in indexes:
+                numButtons[i][key]=value
+
+    def toggleKeyboard(visible=True):
+        for k in keyBoard:
+            k["visible"]=visible
+
+    def resetHorses():
+        global Horses
+        dist=128/numOfHorses
+        for h in range(len(Horses)):
+            Horses[h]={"x":32,"y":200+dist*h,"velocity":0,"accel":0,"anim":0,"order":0}
+
+    def play():
+        global UIState
+        if UIState==0:
+            hideButtons()
+            editButtons(indexes=[0,4,5,6,7],key="visible",value=True)
+            editNumButtons(indexes=[x for x in range(numOfHorses)],key="visible",value=True)
+            yVal=Horses[0]["y"]
+            for i in range(len(Horses)):
+                editNumButtons(indexes=[i],key="y",value=yVal+24*i)
+            UIState=1
+        elif UIState ==1:
+            if selected:
+                Buttons[6]["val"]-=Buttons[7]["val"]
+                for h in Horses:
+                    h["velocity"]=randint(500,1000)/100
+                    h["accel"]=randint(20,100)/100
+                    hideButtons()
+                    #editButtons(indexes=[6,7],key="visible",val=True)
+                    UIState=2
+                Horses[0]["velocity"]=10
+
+    def contin():
+        global UIState
+        UIState=0
+        resetHorses()
+        hideButtons()
+        play()
+
+    def raceFinish():
+        global UIState
+        print(Horses[selectedNum]["order"])
+        print(selectedNum)
+        if Horses[selectedNum]["order"]==0:
+            Buttons[6]["val"]+=2*Buttons[7]["val"]
+        if Buttons[6]["val"]<= 0:
+
+            hideButtons()
+            editButtons(indexes=[1,2],key="visible",value=True)
+            endState["text"]="You Lost!"
+            endState["visible"]=True
+            UIState=4
+        else:
+            hideButtons()
+            editButtons(indexes=[2,9],key="visible",value=True)
+            endState["text"]="You Won!"
+            endState["visible"]=True
+            UIState==3
+
+    def submit(name,cash):
+        #write name and score to local file
+        global UIState
+        addScore(name,cash)
+        hideButtons()
+        hideNums()
+        toggleKeyboard(False)
+        editButtons(indexes=[0,1,2],key="visible",value=True)
+        UIState=0
+
+    def scoreBoard():
+        #pull names and scores from local file to display
+
+        hideButtons()
+        hideNums()
+        toggleKeyboard(False)
+        editButtons(indexes=[0,1,2],key="visible",value=True)
+        global scores,UIState,sortedS
+        readScores()
+        sortedScores=sorted(scores,key=scores.get)
+        sortedScores=[[sortedScores[x],scores[sortedScores[x]]] for x in range(len(sortedScores))]
+        sortedScores.reverse()
+        canvas["visible"]=True
+        sortedS=sortedScores
+
+
+    def Quit():
+        global UIState
+        if endState["visible"]:
+            if endState["text"] == "You Lost!":
+                irr.exit()
+            else:
+                hideButtons()
+                editButtons(indexes=[2,3,10],key="visible",value=True)
+                hideNums()
+                toggleKeyboard(visible=True)
+        else:
+            irr.exit()
+
+    def write(txt,coord1=(0,0),length=640,color=(0,0,0),alpha=255):
+        scene.drawtext(str(txt), font, coord1[0],coord1[1],coord1[0]+64,coord1[1]+16,alpha,color[0],color[1],color[2])
+
+
+    horseIm=[]
+
+    for i in range(11):
+        if i <10:
+            horseIm.append(addImage(location+"Horse/tile00"+str(i)+".png",128,128))
+        else:
+            horseIm.append(addImage(location+"Horse/tile0"+str(i)+".png",128,128))
+
+    horseIm.append(addImage(location+"Horse/tile015.png",128,128))
+
+    for img in horseIm:
+        image.iscale(img,HScale,HScale)
+        image.iposition(img,9999,9999)
+
+
+    Buttons=[
+        {"text":"Play","x":512-48,"y":100,"visible":True,"variable":False},#0
+        {"text":"High Scores","x":512-48,"y":150,"visible":True,"variable":False},#1
+        {"text":"Quit","x":512-48,"y":200,"visible":True,"variable":False},#2
+        {"text":"Submit","x":512-48,"y":200,"visible":False,"variable":False},#3
+        {"text":"Increase","x":384,"y":576,"visible":False,"pressed":False,"variable":False},#4
+        {"text":"Decrease","x":256,"y":576,"visible":False,"pressed":False,"variable":False},#5
+        {"text":"Cash:","x":64,"y":576,"visible":False,"val":1000,"variable":True},#6
+        {"text":"Bet Amount:","x":512,"y":576,"visible":False,"val":0,"variable":True},#7
+        {"text":"Score:","x":512-48,"y":200,"visible":False,"val":0,"variable":True},#8
+        {"text":"Continue","x":512-48,"y":100,"visible":False,"variable":False},#9
+        {"text":"Name:","x":512-48,"y":200,"visible":False,"val":"","variable":True}#10
+    ]
+    endState={"text":"You Win","x":512-48,"y":350,"visible":False}
+    canvas={"visible":False,"x":128,"y":128}
+    numButtons=[]
+    for i in range(10):
+        numButtons.append({"val":str(i+1),"x":12,"y":0,"visible":False,"selected":False})
+
+    #####generate keyboard
+
+    keys="Q W E R T Y U I O P|A S D F G H J K L|Z X C V B N M"
+    keyRows= keys.split("|")
+    keyLayout=[]
+    for row in keyRows:
+        keyLayout.append(row.split(" "))
+
+    keyBoard=[]
+    for i in range(len(keyLayout)):
+        for j in range(len(keyLayout[i])):
+            keyBoard.append({"letter":keyLayout[i][j],"x":392+i*8+j*20,"y":100+i*20,"visible":False})
+
+
+    mapIm=addImage(location+"Tiles/map1.png",960,640)
+    buttonIm=addImage(location+"button.png",128,32)
+    smallButtonIm=addImage(location+"smallButton.png",24,24)
+    canvasIm=addImage(location+"canvas.png",128,192)
+    image.iscale(canvas,3,3)
+    # image.iscale(buttonIm,2,1)
+    # image.iscale(smallButtonIm,0.5,0.5)
+    # image.iscale(mapIm,1,1)
+
+    image.iposition(mapIm,0,0)
+
+    dist=128/numOfHorses
+    Horses=[]
+
+    for i in range(numOfHorses):
+        gap=i*dist
+        Horses.append({"x":32,"y":200+gap,"velocity":0,"accel":0,"anim":0,"order":0})
+
+
+
+
+input.mouse("mvisible",0,0)
+if input.mouse("mlmouse",0,0): #mouse left button
+   mouseCoord[0]=input.mouse("mgetx",0,0)
+   mouseCoord[1]=input.mouse("mgety",0,0)
+   mbtn=1
+else:
+   mbtn=0
+if mbtn:
+    for bt in Buttons:
+        if bt["visible"]:
+            if mouseCoord[0] > bt["x"] and mouseCoord[0] < bt["x"]+128:
+                if mouseCoord[1] > bt["y"] and mouseCoord[1] < bt["y"]+32:
+                    # button "bt" is clicked
+                    if bt["text"]=="Play":
+                        play()
+                    elif bt["text"]=="High Scores":
+                        scoreBoard()
+                    elif bt["text"]=="Quit":
+                        Quit()
+                    elif bt["text"]=="Submit":
+                        submit(Buttons[10]["val"],Buttons[6]["val"])
+
+                    elif bt["text"]=="Increase":
+                        bt["pressed"]=True
+                        if Buttons[7]["val"]+changeAmount < Buttons[6]["val"]:
+                            Buttons[7]["val"]+=changeAmount
+                        else:
+                            Buttons[7]["val"]=Buttons[6]["val"]
+
+                    elif bt["text"]=="Decrease":
+                        bt["pressed"]=True
+                        if Buttons[6]["val"] < changeAmount:
+                            Buttons[7]["val"]=Buttons[6]["val"]
+                        else:
+                            Buttons[7]["val"]-=changeAmount
+
+                    elif bt["text"]=="Continue":
+                        contin()
+
+    for bt in numButtons:
+        if bt["visible"]:
+            if mouseCoord[0] > bt["x"] and mouseCoord[0] < bt["x"]+32:
+                if mouseCoord[1] > bt["y"] and mouseCoord[1] < bt["y"]+32:
+                    hideNums()
+                    selected=True
+                    bt["selected"]=True
+                    selectedNum=int(bt["val"])-1
+    if visibility["Keyboard"]:
+        for bt in keyBoard:
+            if bt["visible"]:
+                if mouseCoord[0] > bt["x"] and mouseCoord[0] < bt["x"]+32:
+                    if mouseCoord[1] > bt["y"] and mouseCoord[1] < bt["y"]+32:
+                        Buttons[10]["name"].append(bt["letter"])
+
+image.idraw(mapIm)
+irr.delay(50000)
+#irr.tiled("",2)
+count+=1
+if count>10:
+    count=0
+
+
+
+
+for bt in Buttons:
+    if bt["visible"]:
+        image.iposition(buttonIm,bt["x"],bt["y"])
+        image.idraw(buttonIm)
+        if bt["variable"]:
+            write(bt["text"]+" "+str(bt["val"]),coord1=(bt["x"]+64-3*len(bt["text"]+" "+str(bt["val"])),bt["y"]+8))
+        else:
+            write(bt["text"],coord1=(bt["x"]+64-3*len(bt["text"]),bt["y"]+8))
+    if endState["visible"]:
+        image.iposition(buttonIm,endState["x"],endState["y"])
+        image.idraw(buttonIm)
+        write(endState["text"],coord1=(endState["x"]+64-3*len(endState["text"]),endState["y"]+8))
+
+for bt in numButtons:
+    if bt["visible"] or bt["selected"]:
+        image.iposition(smallButtonIm,bt["x"],bt["y"])
+        image.idraw(smallButtonIm)
+        write(int(bt["val"]),coord1=(bt["x"]+7,bt["y"]+4),length=16)
+
+if canvas["visible"]:
+    image.iposition(canvasIm,canvas["x"],canvas["y"])
+    image.idraw(canvasIm)
+    r=10
+    if len(sortedS)<10:r=len(sortedS)
+    for i in range(r):
+        write(str(i+1)+". "+str(sortedS[i][0])+" - "+str(sortedS[i][1]),(canvas["x"],canvas["y"]+i*16))
+
+
+# for i in range(8):
+#     for j in range(8):
+#         image.iposition(grassIm[0],i*62,j*62)
+#         image.idraw(grassIm[0])
+
+for horse in Horses:
+    horse["x"]+=horse["velocity"]
+    horse["anim"]+=horse["velocity"]*animSpeed
+    horse["anim"]%=11
+
+    horse["velocity"]+=horse["accel"]
+
+    image.iposition(horseIm[int(horse["anim"])],horse["x"],horse["y"])
+    if horse["velocity"] ==0:
+        image.iposition(horseIm[-1],horse["x"],horse["y"])
+        image.idraw(horseIm[-1])
+    else:
+        image.idraw(horseIm[int(horse["anim"])])
+
+    if horse["x"]>=900 and not horse["velocity"]==0:
+        horse["velocity"]=0
+        horse["accel"]=0
+        horse["order"]=order
+        order+=1
+    if order>= numOfHorses:
+        order=0
+        raceFinish()
+
+

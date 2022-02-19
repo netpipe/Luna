@@ -30,6 +30,8 @@
 					<Add library="python2.7" />
 					<Add library="pthread" />
 					<Add library="Irrlicht" />
+					<Add library="z" />
+					<Add library="dl" />
 				</Linker>
 			</Target>
 			<Target title="Linux Debug 2D">
@@ -51,12 +53,12 @@
 				</Compiler>
 				<Linker>
 					<Add library="GL" />
-					<Add library="Xxf86vm" />
-					<Add library="X11" />
+					<Add library="Irrlicht" />
 					<Add library="python2.7" />
 					<Add library="pthread" />
-					<Add library="Irrlicht" />
+					<Add library="Xxf86vm" />
 					<Add library="dl" />
+					<Add library="X11" />
 					<Add library="z" />
 					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
 					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
