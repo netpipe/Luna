@@ -52,7 +52,7 @@ irr.tiled("",2) #animated = 2 regular 1 and init =0
 image.iposition(irrlichtlogo, input.mouse("mgetx",0,0),input.mouse("mgety",0,0))
 
 image.idraw(irrlichtlogo)
-scene.drawtext("testing","../media/fontlucida.png",200,250,235,320)
+scene.drawtext("testing","../media/fontlucida.png",200,250,235,320,255,255,200,255)
 
 
 
