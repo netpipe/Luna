@@ -34,8 +34,8 @@ if(init):
 
 
  camera = scene.addCamera(1, 0,0,0)
- scene.decals(1,camera)
- Light1 = scene.Light(10,0,100,0,"111111")
+ #scene.decals(1,camera)
+ #Light1 = scene.Light(10,0,100,0,"111111")
 
  input.mouse("mvisible",0,0)
 
@@ -102,15 +102,16 @@ if(init):
 
  init=0
 
+image.idraw(hand1[0])
 irr.delay(200000)
 
-image.idraw(iaxe)
+#image.idraw(iaxe)
 #scene.drawtext("cool bean tree","../media/fontlucida.png",5,250,235,320)
 #scene.drawtext("cool bean tree","../media/fontlucida.png",50,250,235,320)
-for i in hand1:
- image.idraw(i)
-for i in hand2:
- image.idraw(i)
+#for i in hand1:
+# image.idraw(i)
+#for i in hand2:
+# image.idraw(i)
 #print('test')
 
 cube_id = scene.add_cube(newId(),128,0,64,97, 0,0,0, 1,1,1/128)
@@ -119,13 +120,13 @@ tex_id = image.load_texture("../media/crate.png")
 image.set_texture(cube_id,tex_id)
 #scene.setPosition(cube_id,50,355,350)
 
-while 0:
- image.idraw(iaxe)
+#while 0:
+ #image.idraw(iaxe)
 # scene.drawtext("cool bean tree","../media/fontlucida.png",5,250,235,320)
 # scene.drawtext("cool bean tree","../media/fontlucida.png",50,250,235,320)
- for i in hand1:
-  image.idraw(i)
- for i in hand2:
-  image.idraw(i)
- print('testing')
+ #for i in hand1:
+ # image.idraw(i)
+ #for i in hand2:
+ # image.idraw(i)
+ #print('testing')
 

@@ -10,6 +10,9 @@ if initloader :
     import physics
 
 
+    def addImage(loc,width,height):
+     return image.iadd(loc,0,0,width,height,0,0,width,height)
+
     id=100
     def newId():
       global id
@@ -59,15 +62,11 @@ if initloader :
     print("objects added")
     initloader=0
 
-  #  base="../media/Frogger/"
-
-    def addImage(loc,width,height):
-      return image.iadd(loc,0,0,width,height,0,0,width,height)
-
     #frogStanding= image.load_texture(base+"frogStanding.png")
-    iaxe=addImage("../media/axe.jpg",500,500)
+
     box2di=addImage("../media/box2d.png",60,60)
     irrlichtlogo=addImage("../media/irrlichtlogo.jpg",88,33)
+    iaxe=addImage("../media/axe.jpg",500,500)
     lunaengine=addImage("../media/LunaEngine800600.png",800,450)
     image.iscale(iaxe,0.5,0.5)
     #image.iscale(lunaengine,0.1,0.1)
@@ -114,15 +113,16 @@ input.mouse("mvisible",0,0)
 #print ( box2dbody )
 physics.b2d(1,0,"brun",0,0,0,0,0) #step
 image.irotate(iaxe,physics.b2d(box2dbody,0,"brotation",0,0,0,0,0))
-#image.irotate(box2di,physics.b2d(box2dbox,0,"brotation",0,0,0,0,0))
+image.irotate(box2di,physics.b2d(box2dbox,0,"brotation",0,0,0,0,0))
 image.iposition(iaxe, physics.b2d(box2dbody,0,"bgetx",0,0,0,0,0),physics.b2d(box2dbody,0,"bgety",0,0,0,0,0))
-#image.iposition(box2di, physics.b2d(box2dbox,0,"bgetx",0,0,0,0,0)+10,physics.b2d(box2dbox,0,"bgety",0,0,0,0,0))  #crashes if booth positions are used forsome reason
+image.iposition(box2di, physics.b2d(box2dbox,0,"bgetx",0,0,0,0,0)+10,physics.b2d(box2dbox,0,"bgety",0,0,0,0,0))  #crashes if booth positions are used forsome reason
 #image.iposition(box2di, input.mouse("mgetx",0,0),input.mouse("mgety",0,0))  #crashes if booth positions are used forsome reason
 #image.iposition(iaxe, physics.b2d(box2dbody,3,1),physics.b2d(box2dbody,2,1))
-#image.idraw(lunaengine)
+
+image.idraw(lunaengine)
 image.idraw(iaxe)
-#image.idraw(box2di)
-#image.idraw(irrlichtlogo)
+image.idraw(box2di)
+image.idraw(irrlichtlogo)
 
 #image.iscale(lunaengine,0.5,0.5) ## need to stop repedative scaling or be able to get back to original.
 
