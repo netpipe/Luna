@@ -59,7 +59,7 @@ if initloader :
     print("objects added")
     initloader=0
 
-    base="../media/Frogger/"
+  #  base="../media/Frogger/"
 
     def addImage(loc,width,height):
       return image.iadd(loc,0,0,width,height,0,0,width,height)
@@ -108,19 +108,19 @@ irr.tiled("",2) #animated = 2 regular 1 and init =0
 
 
 input.mouse("mvisible",0,0)
-image.iposition(irrlichtlogo, 44,66)
+#image.iposition(irrlichtlogo, 44,66)
 
 #######Loop
 #print ( box2dbody )
 physics.b2d(1,0,"brun",0,0,0,0,0) #step
-image.irotate(iaxe,physics.b2d(box2dbody,0,"brotation",0,0,0,0,0))
-image.irotate(box2di,physics.b2d(box2dbox,0,"brotation",0,0,0,0,0))
-image.iposition(iaxe, physics.b2d(box2dbody,0,"bgetx",0,0,0,0,0),physics.b2d(box2dbody,0,"bgety",0,0,0,0,0))
-image.iposition(box2di, physics.b2d(box2dbox,0,"bgetx",0,0,0,0,0)+10,physics.b2d(box2dbox,0,"bgety",0,0,0,0,0))  #crashes if booth positions are used forsome reason
+#image.irotate(iaxe,physics.b2d(box2dbody,0,"brotation",0,0,0,0,0))
+#image.irotate(box2di,physics.b2d(box2dbox,0,"brotation",0,0,0,0,0))
+#image.iposition(iaxe, physics.b2d(box2dbody,0,"bgetx",0,0,0,0,0),physics.b2d(box2dbody,0,"bgety",0,0,0,0,0))
+#image.iposition(box2di, physics.b2d(box2dbox,0,"bgetx",0,0,0,0,0)+10,physics.b2d(box2dbox,0,"bgety",0,0,0,0,0))  #crashes if booth positions are used forsome reason
 #image.iposition(box2di, input.mouse("mgetx",0,0),input.mouse("mgety",0,0))  #crashes if booth positions are used forsome reason
 #image.iposition(iaxe, physics.b2d(box2dbody,3,1),physics.b2d(box2dbody,2,1))
 #image.idraw(lunaengine)
-#image.idraw(iaxe)
+image.idraw(iaxe)
 #image.idraw(box2di)
 #image.idraw(irrlichtlogo)
 

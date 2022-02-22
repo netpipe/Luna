@@ -105,8 +105,8 @@ if(init):
 irr.delay(200000)
 
 image.idraw(iaxe)
-scene.drawtext("cool bean tree","../media/fontlucida.png",5,250,235,320)
-scene.drawtext("cool bean tree","../media/fontlucida.png",50,250,235,320)
+#scene.drawtext("cool bean tree","../media/fontlucida.png",5,250,235,320)
+#scene.drawtext("cool bean tree","../media/fontlucida.png",50,250,235,320)
 for i in hand1:
  image.idraw(i)
 for i in hand2:
@@ -121,8 +121,8 @@ image.set_texture(cube_id,tex_id)
 
 while 0:
  image.idraw(iaxe)
- scene.drawtext("cool bean tree","../media/fontlucida.png",5,250,235,320)
- scene.drawtext("cool bean tree","../media/fontlucida.png",50,250,235,320)
+# scene.drawtext("cool bean tree","../media/fontlucida.png",5,250,235,320)
+# scene.drawtext("cool bean tree","../media/fontlucida.png",50,250,235,320)
  for i in hand1:
   image.idraw(i)
  for i in hand2:

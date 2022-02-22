@@ -45,7 +45,7 @@ PyObject * Python::PyIrr_iRotate(PyObject * self,PyObject * args){
      //   irr::f32 GetRotation() { return Rotation; };
 return Py_BuildValue("l",node_id);
 #endif
-
+return Py_BuildValue("");
 }
 
 PyObject * Python::PyIrr_iScale(PyObject * self,PyObject * args){

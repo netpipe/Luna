@@ -9,8 +9,9 @@ class cImage {
         irr::video::SColor TransColor;
         irr::video::SColor Color;
         irr::core::vector2df Scale;
+                irr::core::recti ImageRect, OrigImageRect, TextureRect, BoundRect;
 public:
-        irr::core::recti ImageRect, OrigImageRect, TextureRect, BoundRect;
+
 
         cImage(irr::video::ITexture* texture, irr::core::recti nsize, irr::core::recti texpos)
         {
