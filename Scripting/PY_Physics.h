@@ -334,7 +334,7 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
             case eparamb2d(brotation):{
                 Body* b3;
                 b3=(Body*)bptr;
-                b3->rotation = 0.0f;
+                //b3->rotation = 0.0f;
 
                 return Py_BuildValue("f", b3->rotation);
             }break;
