@@ -190,7 +190,7 @@
 				</Linker>
 			</Target>
 			<Target title="windows MINIMAL32">
-				<Option platforms="Windows;" />
+				<Option platforms="Windows;Unix;" />
 				<Option output="./GAME/mLuna.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".wdmobjsb" />
@@ -208,24 +208,15 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add library="GL" />
-					<Add library="openal" />
-					<Add library="Xxf86vm" />
-					<Add library="X11" />
-					<Add library="python2.7" />
-					<Add library="pthread" />
 					<Add library="Irrlicht" />
-					<Add library="dl" />
-					<Add library="IrrOpenSteer" />
-					<Add library="cAudio" />
-					<Add library="ogg" />
-					<Add library="vorbis" />
-					<Add library="vorbisfile" />
+					<Add library="python2.7" />
+					<Add library="m" />
+					<Add library="z" />
 					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>
 			<Target title="windows MINIMAL64">
-				<Option platforms="Windows;" />
+				<Option platforms="Windows;Unix;" />
 				<Option output="./GAME/mLuna.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".wd2mobjsb" />
@@ -247,9 +238,9 @@
 				<Linker>
 					<Add option="-m64" />
 					<Add library="Irrlicht" />
-					<Add library="OpenAL32" />
 					<Add library="python2.7" />
 					<Add library="m" />
+					<Add library="z" />
 					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/bin" />
 					<Add directory="E:/irrlicht-1.8.4/lib/Win64-gcc" />
 					<Add directory="D:/openal-soft-1.21.1-bin/libs/Win64" />

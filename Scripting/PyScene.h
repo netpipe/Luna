@@ -773,7 +773,7 @@ PyObject * Python::PyIrr_setPosition(PyObject * self,PyObject * args){
             if(node != NULL)
             {
                 node->setPosition(vector3df(x,y,z));
-                printf("%i %i %i",x,y,z);
+              //  printf("%i %i %i",x,y,z); // major windows speedup commenting any console text
             }
     }break;
 }

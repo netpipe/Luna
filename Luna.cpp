@@ -520,6 +520,9 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
             //setenv("PYTHONHOME", (const char*)workingDirectory.c_str() , 0);
 
             #else
+
+            //  untar the pydata folder using mtar or zip to its respective folders media/lib/python2.7
+
            // workingDirectory = "C:\Python27"
             //workingDirectory =
           // / Py_SetPythonHome("python");

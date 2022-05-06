@@ -197,6 +197,7 @@ if input.getKey('KEY_ESCAPE') :
 
 #scene.postprocess() # postprocess every so many loops to stop flicker
 
-
+if input.getKey('KEY_ESCAPE') :
+ irr.exit()
 
 #loaderResult=pysList[2]
