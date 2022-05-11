@@ -13,6 +13,7 @@ When using bulletblend or gamekit to design levels youll need to use older blend
 
 WINDOWS BUILD
 IMPORTANT STEP
+-compile irrlicht dll and dont use static lib .a files or it will crash
 -on windows extract pydata.tar in media folder so its has /lib/python2.7 in there so you dont get a module site error when starting luna
 -copy the dll from irrlicht185/bin/win32-gcc/irrlicht.dll to luna/GAME/irrlicht.dll where you see your exe
 -todo make the tar extract itself if no directory exists
