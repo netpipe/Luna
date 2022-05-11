@@ -562,17 +562,17 @@ for i in range(4):
   scene.setPosition(tripleTurtles[i*3+j],0, tripleTurtlesX[i*3+j]+currentSpeeds[0],8,96)
   tripleTurtlesX[i*3+j]+=currentSpeeds[0]
   if tripleTurtlesX[i*3+j]<=-64:
-   global biggestX
+   #global biggestX
    tripleTurtlesX[i*3+j]=biggestX+currentOffsets[0]
 
 
 for i in range(4):
  for j in range(3):
-  global leastX
+  #global leastX
   scene.setPosition(LogsSmall[i][j],0, LogsSmallX[i*3+j]+currentSpeeds[1],16,96)
   LogsSmallX[i*3+j]+=currentSpeeds[1]
   if LogsSmallX[i*3+j]>=64:
-   global leastX
+   #global leastX
    LogsSmallX[i*3+j]=-64-currentOffsets[1]-8
 
 for i in range(3):
@@ -592,20 +592,20 @@ for i in range(3):
 
 for i in range(5):
  for j in range(2):
-  global biggestX
+  #global biggestX
   scene.setPosition(doubleTurtles[i*2+j],0, doubleTurtlesX[i*2+j]+currentSpeeds[3],32,96)
   doubleTurtlesX[i*2+j]+=currentSpeeds[3]
   if doubleTurtlesX[i*2+j]<=-64:
-   global biggestX
+   #global biggestX
    doubleTurtlesX[i*2+j]=biggestX+currentOffsets[3]
 
 for i in range(4):
  for j in range(4):
-  global leastX
+  #global leastX
   scene.setPosition(LogsMed[i][j],0, LogsMedX[i*4+j]+currentSpeeds[4],40,96)
   LogsMedX[i*4+j]+=currentSpeeds[4]
   if LogsMedX[i*4+j]>=64:
-   global leastX
+   #global leastX
    LogsMedX[i*4+j]=leastX-8-currentOffsets[4]
 
 

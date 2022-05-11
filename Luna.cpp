@@ -529,7 +529,7 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
 
   //        device->getFileSystem()->addFileArchive("..\\media\\pydata.zip");
 // Py_SetPythonHome( "pydata" ); // needs fixing still
-           Py_SetPythonHome( "..\\media\\pydata\\" ); // needs fixing still
+           Py_SetPythonHome( "..\\media\\"); // needs fixing still
             //PySys_SetPath( 'C:/Dev/Luna/media/pydata/lib/'
             #endif
         #endif
