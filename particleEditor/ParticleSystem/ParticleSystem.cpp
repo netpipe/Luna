@@ -51,6 +51,9 @@ void ParticleSystem::initializeSystem(void)
   m_pParticle.position = vector3df(0,0,0);
   m_pParticle.scale = vector3df(1,1,1);
   m_pParticle.size = dimension2d<f32>(2.0f, 2.0f);
+//  m_pParticle.setMinStartSize = dimension2d<f32>(2.0f, 2.0f);
+//  m_pParticle.setMaxStartSize = dimension2d<f32>(2.0f, 2.0f);
+
   m_pParticle.materialType = EMT_TRANSPARENT_VERTEX_ALPHA;
 
   //! Initialize Emitter.
