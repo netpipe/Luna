@@ -6,16 +6,17 @@ Linux Debug works / Release uses different loop   /  also the -maindir.cbp is fo
 mineDBG
 emscripten-project-testing 
 
-windows minimal compile should be working now but may require path fixes
-
 In codeblocks the proper way to see the source and header files is to uncheck the display by type toggle when right clicking on workspace.
 
 When using bulletblend or gamekit to design levels youll need to use older blender 249 also need to save on 32 bit to avoid big endian issues. i might have a converter somewhere for it too.
 
 
-
+WINDOWS BUILD
 IMPORTANT STEP
-on windows extract pydata.tar in media folder to media folder so that the engine may run defined in luna.cpp
+-compile irrlicht dll and dont use static lib .a files or it will crash
+-on windows extract pydata.tar in media folder so its has /lib/python2.7 in there so you dont get a module site error when starting luna
+-copy the dll from irrlicht185/bin/win32-gcc/irrlicht.dll to luna/GAME/irrlicht.dll where you see your exe
+-todo make the tar extract itself if no directory exists
 
 
 
@@ -23,19 +24,8 @@ Ffmpeg and P5 glove driver are LGPL from the libs repo.
 engine is zlib other than sockets code being ported out for irc client and p5 glove controller/ awaiting email on that.
 have special permission to use cwiid code as zlib for engine and derivitaves but OIS looks like a better option.
 
-
 Engine itself is zlib licence.
-
 You will need these aswell most of it compiles with codeblocks, the occasional project may still use cmake. also there are cb to makefile converters if you want them.
 
 https://github.com/tecan/LunaLibs
 https://github.com/tecan/IrrlichtDemos
-
-
-sourceforge version compiles in virtualbox and on wine itself aswell as linux, very outdated though.
-http://sourceforge.net/projects/agnostic/
-
-https://irrlicht.sourceforge.io/forum/viewtopic.php?f=6&t=35293&p=306116#p306116 more files if you need vm's screenshots or to chat about it.
-
-one of the easiest ways to help would be to freelance demos and games created with this. typically applications are 200 dollars and games are anywhere from 150 - 400 dollars CDN. it helps spread by usage and word of mouth how amazing the python integration is compared to any other engine on the market.
-
