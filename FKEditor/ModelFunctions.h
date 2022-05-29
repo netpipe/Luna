@@ -120,6 +120,7 @@ void loadModel(const c8* fn)
        )
     {
         Device->getFileSystem()->addZipFileArchive( filename.c_str () );
+        Device->getSceneManager()->loadScene("level.irr");
         return;
     }
 

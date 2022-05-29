@@ -122,6 +122,7 @@ public:
         addFileType(L"    Quake III (*.md3)",".md3","./media/filetypes/md3type.png");
         addFileType(L"    Quake bsp (*.bsp)",".bsp","./media/filetypes/md3type.png");
         addFileType(L"    IRRMESH (*.irrmesh)",".irrmesh","./media/filetypes/md3type.png");
+                addFileType(L"    IRRMESH (*.pk3)",".pk3","./media/filetypes/md3type.png");
     }
 ////////////////////////////////////////////////////////////////////////////////
 // Create the filelist using the defined filestypes

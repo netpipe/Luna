@@ -10,6 +10,9 @@ using namespace video;
 using namespace scene;
 
 
+// TODO needs work loading pk3 and zip files. - the pk3 files require level.irr to be named the same as the pk3 file
+
+
 
 IrrlichtDevice *Device = 0;
 
