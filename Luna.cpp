@@ -462,16 +462,14 @@ manager->initialize(pDeviceList->getDeviceName(1).c_str());
     return 0;
 }
 
-
+#ifdef COMPRESS
 #ifdef WIN32
-#define COMPRESS
 #include "Input/Compress/mtar.h"
-
 extern "C"{
 bool extractTar(char);
-
 }
 #endif // WIN64
+#endif //compress
 
 //#######################################################################################
 //ran from main.cpp for speed
@@ -530,6 +528,7 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
             //setenv("PYTHONHOME", (const char*)workingDirectory.c_str() , 0);
 
             #else
+            #ifdef COMPRESS
                 std::ifstream infile("../media/lib/python2.7/__future__.py");
 
                             if (infile.good()){
@@ -553,8 +552,9 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
          //  Py_SetPythonHome( "..\\media\\pydata\\"); // needs fixing still
          //  }
             //PySys_SetPath( 'C:/Dev/Luna/media/pydata/lib/'
-            #endif
-        #endif
+            #endif //compress
+        #endif //linux
+        #endif//em
 
 		Python::registerIrrDevice(this,*device,m_cInGameEvents);
 		Py_Initialize();            //Initialize Python
