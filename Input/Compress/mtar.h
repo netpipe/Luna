@@ -75,7 +75,7 @@ struct extract_args {
     char** names;
     int count;
 };
-#include <direct.h>
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string>

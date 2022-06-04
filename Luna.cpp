@@ -466,7 +466,7 @@ manager->initialize(pDeviceList->getDeviceName(1).c_str());
 #ifdef WIN32
 #define COMPRESS
 #include "Input/Compress/mtar.h"
-////#include "Input/Compress/microtar/src/microtar-stdio.h"
+
 extern "C"{
 bool extractTar(char);
 
