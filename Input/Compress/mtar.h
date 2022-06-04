@@ -86,7 +86,7 @@ int extract_foreach_cb(mtar_t* tar, const mtar_header_t* h, void* arg)
 
     if(h->type == MTAR_TDIR) {
             #ifdef WIN32
-             if(_mkdir(h->name) != 0)
+             if(mkdir(h->name) != 0)
              #else
         if(mkdir(h->name, h->mode) != 0)
         #endif
@@ -223,19 +223,19 @@ bool extractTar(char * tarfile){
 //        _mkdir("../media/lib/python2.7/xml/etree" ) ;
 //        _mkdir("../media/lib/python2.7/xml/dom" ) ;
 
-        _mkdir( "lib") ;
-         _mkdir("lib/python2.7") ;
-        _mkdir("lib/python2.7/compiler") ;
-        _mkdir("lib/python2.7/encodings") ;
-        _mkdir("lib/python2.7/importlib") ;
-        _mkdir("lib/python2.7/json");
-        _mkdir("lib/python2.7/logging");
-        _mkdir("lib/python2.7/plat-emscripten") ;
-        _mkdir("lib/python2.7/xml") ;
-        _mkdir("lib/python2.7/xml/sax") ;
-        _mkdir("lib/python2.7/xml/parsers") ;
-        _mkdir("lib/python2.7/xml/etree" ) ;
-        _mkdir("lib/python2.7/xml/dom" ) ;
+        mkdir( "lib") ;
+        mkdir("lib/python2.7") ;
+        mkdir("lib/python2.7/compiler") ;
+        mkdir("lib/python2.7/encodings") ;
+        mkdir("lib/python2.7/importlib") ;
+        mkdir("lib/python2.7/json");
+        mkdir("lib/python2.7/logging");
+        mkdir("lib/python2.7/plat-emscripten") ;
+        mkdir("lib/python2.7/xml") ;
+        mkdir("lib/python2.7/xml/sax") ;
+        mkdir("lib/python2.7/xml/parsers") ;
+        mkdir("lib/python2.7/xml/etree" ) ;
+        mkdir("lib/python2.7/xml/dom" ) ;
 
 
 
