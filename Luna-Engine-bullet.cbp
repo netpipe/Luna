@@ -1381,7 +1381,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Input/Compress/microtar/src/microtar.h" />
-		<Unit filename="Input/Compress/mtar.h" />
 		<Unit filename="Input/Compress/zpipe.h" />
 		<Unit filename="Input/Compress/zstr.h" />
 		<Unit filename="Input/Controllers/StringTools.cpp" />
@@ -1668,9 +1667,9 @@
 		<Unit filename="Input/Model/blender/dna249.cpp" />
 		<Unit filename="Input/Model/blender/readblend.h" />
 		<Unit filename="Input/Model/irrTiled/irrTiled.h" />
-		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/SDL/SDL_fluidlite.h" />
 		<Unit filename="Input/SDL/SDLsound.h" />
+		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/inputManager.cpp" />
 		<Unit filename="Input/inputManager.h" />
 		<Unit filename="Input/openal_playback.h" />
@@ -2498,8 +2497,6 @@
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshBuilder.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshQuery.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNode.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/Recast.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastAlloc.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastArea.cpp" />
@@ -2510,6 +2507,8 @@
 		<Unit filename="entities/AI/recast/Recast/Source/RecastMeshDetail.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRasterization.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRegion.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast_util.cpp" />
 		<Unit filename="entities/AI/recast_util.h" />
 		<Unit filename="entities/AI/recastmain.cpp" />
@@ -2581,4 +2580,3 @@
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
-
