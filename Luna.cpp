@@ -530,27 +530,25 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
             //setenv("PYTHONHOME", (const char*)workingDirectory.c_str() , 0);
 
             #else
-    std::ifstream infile("./lib/python2.7/__future__.py");
-            if (!infile.good()){
+                std::ifstream infile("../media/lib/python2.7/__future__.py");
 
-                     extractTar("../media/pydata.tar");
-
-
-            }
-
-
-            //  untar the pydata folder using mtar or zip to its respective folders media/lib/python2.7
-
+                            if (infile.good()){
            // workingDirectory = "C:\Python27"
-            //workingDirectory =
           // / Py_SetPythonHome("python");
-
   //        device->getFileSystem()->addFileArchive("..\\media\\pydata.zip");
 // Py_SetPythonHome( "pydata" ); // needs fixing still
-//           Py_SetPythonHome( "..\\media\\"); // needs fixing still
+           Py_SetPythonHome( ".\\media\\"); // needs fixing still
+           }else{
+                std::ifstream infile2("./lib/python2.7/__future__.py");
 
-           Py_SetPythonHome( ".\\"); // needs fixing still
+                if (!infile2.good()){
 
+                   extractTar("../media/pydata.tar");
+
+                }
+                               Py_SetPythonHome( ".\\"); // needs fixing still
+
+            }
          //  if std::filesystem::exists("..\\media\\pydata\\"){
          //  Py_SetPythonHome( "..\\media\\pydata\\"); // needs fixing still
          //  }
