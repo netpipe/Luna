@@ -1,7 +1,7 @@
 //#define NDEBUG // for testing networking
 #ifdef EXTRACOMPILE  //leftovers and extra from minimal
  #define MINIMAL2
- //#define COMPRESS //needed for empython
+ #define COMPRESS //needed for empython
 //#define SDLMixer // wip - might not be compatable with the engine
 //#define OPENAL2 // working with emscripten
 //#define SDLSound //- seems to play and freeze needs threading

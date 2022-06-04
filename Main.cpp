@@ -13,6 +13,20 @@
 //#include <emscripten.h>
 //#endif
 
+
+////#ifdef WIN32
+//#define COMPRESS
+//#include "Input/Compress/mtar.h"
+//////#include "Input/Compress/microtar/src/microtar-stdio.h"
+//extern "C"{
+//bool extractTar(char);
+//
+//}
+//
+//
+////#endif // WIN64
+
+
 int argc1=0;
  char** argv1;
 bool init=1;
@@ -44,7 +58,9 @@ int main ( int argc, char** argv )
 	emscripten_set_main_loop(main_loop,0,1);
 #else
 		Luna game ( argc,argv );
-
+//#ifdef WIN32
+//		  extractTar("../media/pydata.tar");
+//#endif
 		game.Run();
 		while (!game.m_cInGameEvents.Quit){
 			game.main_loop();
@@ -53,4 +69,5 @@ int main ( int argc, char** argv )
 		system("PAUSE");
 	return 0;
 }
+
 

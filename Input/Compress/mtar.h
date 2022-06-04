@@ -75,14 +75,21 @@ struct extract_args {
     char** names;
     int count;
 };
-
+#include <direct.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string>
 int extract_foreach_cb(mtar_t* tar, const mtar_header_t* h, void* arg)
 {
     struct extract_args* args = arg;
     (void)args; /* TODO */
 
     if(h->type == MTAR_TDIR) {
+            #ifdef WIN32
+             if(_mkdir(h->name) != 0)
+             #else
         if(mkdir(h->name, h->mode) != 0)
+        #endif
             die(E_FS, "cannot create directory \"%s\"", h->name);
         return 0;
     }
@@ -187,19 +194,53 @@ bool extractTar(char * tarfile){
 
         #ifdef WIN32
        // if (_wmkdir(filename.c_str(), mode) != 0)
-        _wmkdir("../media/lib", 0775) ;
-        _wmkdir("../media/lib/python2.7", 0775) ;
-        _wmkdir("../media/lib/python2.7/compiler", 0775) ;
-        _wmkdir("../media/lib/python2.7/encodings", 0775) ;
-        _wmkdir("../media/lib/python2.7/importlib", 0775) ;
-        _wmkdir("../media/lib/python2.7/json", 0775);
-        _wmkdir("../media/lib/python2.7/logging", 0775);
-        _wmkdir("../media/lib/python2.7/plat-emscripten", 0775) ;
-        _wmkdir("../media/lib/python2.7/xml", 0775) ;
-        _wmkdir("../media/lib/python2.7/xml/sax", 0775) ;
-        _wmkdir("../media/lib/python2.7/xml/parsers", 0775) ;
-        _wmkdir("../media/lib/python2.7/xml/etree", 0775) ;
-        _wmkdir("../media/lib/python2.7/xml/dom", 0775) ;
+//        _wmkdir("../media/lib", 0775) ;
+//        _wmkdir("../media/lib/python2.7", 0775) ;
+//        _wmkdir("../media/lib/python2.7/compiler", 0775) ;
+//        _wmkdir("../media/lib/python2.7/encodings", 0775) ;
+//        _wmkdir("../media/lib/python2.7/importlib", 0775) ;
+//        _wmkdir("../media/lib/python2.7/json", 0775);
+//        _wmkdir("../media/lib/python2.7/logging", 0775);
+//        _wmkdir("../media/lib/python2.7/plat-emscripten", 0775) ;
+//        _wmkdir("../media/lib/python2.7/xml", 0775) ;
+//        _wmkdir("../media/lib/python2.7/xml/sax", 0775) ;
+//        _wmkdir("../media/lib/python2.7/xml/parsers", 0775) ;
+//        _wmkdir("../media/lib/python2.7/xml/etree", 0775) ;
+//        _wmkdir("../media/lib/python2.7/xml/dom", 0775) ;
+
+//        _mkdir("../media") ;
+      //  _mkdir( "../media/lib") ;
+//        _mkdir("../media/lib/python2.7") ;
+//        _mkdir("../media/lib/python2.7/compiler") ;
+//        _mkdir("../media/lib/python2.7/encodings") ;
+//        _mkdir("../media/lib/python2.7/importlib") ;
+//        _mkdir("../media/lib/python2.7/json");
+//        _mkdir("../media/lib/python2.7/logging");
+//        _mkdir("../media/lib/python2.7/plat-emscripten") ;
+//        _mkdir("../media/lib/python2.7/xml") ;
+//        _mkdir("../media/lib/python2.7/xml/sax") ;
+//        _mkdir("../media/lib/python2.7/xml/parsers") ;
+//        _mkdir("../media/lib/python2.7/xml/etree" ) ;
+//        _mkdir("../media/lib/python2.7/xml/dom" ) ;
+
+        _mkdir( "lib") ;
+         _mkdir("lib/python2.7") ;
+        _mkdir("lib/python2.7/compiler") ;
+        _mkdir("lib/python2.7/encodings") ;
+        _mkdir("lib/python2.7/importlib") ;
+        _mkdir("lib/python2.7/json");
+        _mkdir("lib/python2.7/logging");
+        _mkdir("lib/python2.7/plat-emscripten") ;
+        _mkdir("lib/python2.7/xml") ;
+        _mkdir("lib/python2.7/xml/sax") ;
+        _mkdir("lib/python2.7/xml/parsers") ;
+        _mkdir("lib/python2.7/xml/etree" ) ;
+        _mkdir("lib/python2.7/xml/dom" ) ;
+
+
+
+      //  std::filesystem::exists("helloworld.txt");
+
         #else
         // if (mkdir(filename.c_str(), (u16)mode) != 0)
         mkdir("../media/lib", 0775) ;

@@ -9,102 +9,6 @@
 		<Option compiler="gcc" />
 		<Option virtualFolders="media/" />
 		<Build>
-			<Target title="Linux Debug MINIMAL">
-				<Option platforms="Unix;Mac;" />
-				<Option output="./GAME/mLuna" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="GAME" />
-				<Option object_output=".dmobjsb" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Option projectCompilerOptionsRelation="1" />
-				<Option projectLinkerOptionsRelation="1" />
-				<Option projectResourceIncludeDirsRelation="1" />
-				<Compiler>
-					<Add option="-fpermissive" />
-					<Add option="-DMINIMAL" />
-					<Add option="-DWBULLET" />
-				</Compiler>
-				<Linker>
-					<Add library="GL" />
-					<Add library="Xxf86vm" />
-					<Add library="X11" />
-					<Add library="python2.7" />
-					<Add library="pthread" />
-					<Add library="Irrlicht" />
-					<Add library="z" />
-					<Add library="dl" />
-				</Linker>
-			</Target>
-			<Target title="Linux Debug 2D">
-				<Option platforms="Unix;Mac;" />
-				<Option output="./GAME/mLuna2d" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="GAME" />
-				<Option object_output=".d2dmobjsb" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Option projectCompilerOptionsRelation="1" />
-				<Option projectLinkerOptionsRelation="1" />
-				<Option projectResourceIncludeDirsRelation="1" />
-				<Compiler>
-					<Add option="-fpermissive" />
-					<Add option="-DMINIMAL" />
-					<Add option="-DMINIMAL2" />
-					<Add option="-DWBULLET" />
-					<Add directory="../Box2D/Box2D/Box2D" />
-					<Add directory="../Box2D/Box2D/" />
-				</Compiler>
-				<Linker>
-					<Add library="Irrlicht" />
-					<Add library="pthread" />
-					<Add library="python2.7" />
-					<Add library="X11" />
-					<Add library="z" />
-					<Add library="GL" />
-					<Add library="dl" />
-					<Add library="Xxf86vm" />
-					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
-					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
-				</Linker>
-			</Target>
-			<Target title="Linux Debug 2D Sound">
-				<Option platforms="Unix;Mac;" />
-				<Option output="./GAME/mLuna2d" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="GAME" />
-				<Option object_output=".d2dmobjsbs" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Option projectCompilerOptionsRelation="1" />
-				<Option projectLinkerOptionsRelation="1" />
-				<Option projectResourceIncludeDirsRelation="1" />
-				<Compiler>
-					<Add option="-fpermissive" />
-					<Add option="-DMINIMAL" />
-					<Add option="-DMINIMAL2" />
-					<Add option="-DSOUND" />
-					<Add option="-DWBULLET" />
-					<Add directory="../Box2D/Box2D/Box2D" />
-					<Add directory="../Box2D/Box2D/" />
-				</Compiler>
-				<Linker>
-					<Add library="GL" />
-					<Add library="openal" />
-					<Add library="Xxf86vm" />
-					<Add library="X11" />
-					<Add library="python2.7" />
-					<Add library="pthread" />
-					<Add library="Irrlicht" />
-					<Add library="SDL_sound" />
-					<Add library="ogg" />
-					<Add library="vorbis" />
-					<Add library="vorbisfile" />
-					<Add library="dl" />
-					<Add library="SDL" />
-					<Add library="cAudio" />
-					<Add library="z" />
-					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
-					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
-				</Linker>
-			</Target>
 			<Target title="Linux Debug FULL">
 				<Option platforms="Unix;Mac;" />
 				<Option output="./GAME/mLunaFULL" prefix_auto="0" extension_auto="0" />
@@ -241,12 +145,14 @@
 					<Add library="python2.7" />
 					<Add library="m" />
 					<Add library="z" />
+					<Add library="mtar" />
 					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/bin" />
 					<Add directory="E:/irrlicht-1.8.4/lib/Win64-gcc" />
 					<Add directory="D:/openal-soft-1.21.1-bin/libs/Win64" />
 					<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/libs/Win64" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Win32-gcc" />
 					<Add directory="../irrlicht-1.8.5/lib/Win32-gcc" />
+					<Add directory="../mtar" />
 				</Linker>
 			</Target>
 			<Target title="windows FULL64">
@@ -1381,15 +1287,12 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Input/Compress/microtar/src/microtar.h" />
-		<Unit filename="Input/Compress/mtar.h" />
 		<Unit filename="Input/Compress/zpipe.h" />
 		<Unit filename="Input/Compress/zstr.h" />
 		<Unit filename="Input/Controllers/StringTools.cpp" />
 		<Unit filename="Input/Controllers/iois/COIS.cpp" />
 		<Unit filename="Input/Controllers/iois/COIS.h" />
 		<Unit filename="Input/Controllers/iois/OIS/OISEffect.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
 			<Option target="Linux Debug" />
 			<Option target="Linux Release" />
 			<Option target="mineDBG" />
@@ -1402,12 +1305,9 @@
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
 			<Option target="Linux Debug FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISException.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
 			<Option target="Linux Debug" />
 			<Option target="Linux Release" />
 			<Option target="mineDBG" />
@@ -1420,12 +1320,9 @@
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
 			<Option target="Linux Debug FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISForceFeedback.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
 			<Option target="Linux Debug" />
 			<Option target="Linux Release" />
 			<Option target="mineDBG" />
@@ -1438,12 +1335,9 @@
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
 			<Option target="Linux Debug FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISInputManager.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
 			<Option target="Linux Debug" />
 			<Option target="Linux Release" />
 			<Option target="mineDBG" />
@@ -1456,12 +1350,9 @@
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
 			<Option target="Linux Debug FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISJoyStick.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
 			<Option target="Linux Debug" />
 			<Option target="Linux Release" />
 			<Option target="mineDBG" />
@@ -1474,12 +1365,9 @@
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
 			<Option target="Linux Debug FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISKeyboard.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
 			<Option target="Linux Debug" />
 			<Option target="Linux Release" />
 			<Option target="mineDBG" />
@@ -1492,12 +1380,9 @@
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
 			<Option target="Linux Debug FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISObject.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
 			<Option target="Linux Debug" />
 			<Option target="Linux Release" />
 			<Option target="mineDBG" />
@@ -1510,7 +1395,6 @@
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
 			<Option target="Linux Debug FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/includes/OIS.h" />
