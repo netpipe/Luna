@@ -1,5 +1,5 @@
 ########## GAME COMPLETE ISSUES LEFT(OR TODO ): NEEDS BLACK FONT(TEXT IS PLACED WHERE IT SHOULD BE BUT NOT VISIBLE)
-############################################## 
+##############################################
 
 ############initialization
 if(init):
@@ -159,3 +159,5 @@ if recovered==0 and uiTimer<250:
   else:
    scene.drawtext("WINNER",font,384,704,448,736,255,55,44,255)
    print("winner")
+
+irr.delay(30000)
