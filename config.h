@@ -88,9 +88,16 @@
      // #define SQLITE
     #define LOADLEVELS
 
-    #ifdef MINIMAL2 //not so minimal extras
-        //#define BOX2D // engine uses box2dlite already this is for testing
 
+            #define CODEEDITOR
+        #define FLARE
+        #define FLARES
+        #define FLARE2  // more realistic and working
+        #define ENVVEG  // vegetation
+        //#define OPENAL2
+        #define COMPRESS
+
+    #ifdef MINIMAL2 //not so minimal extras
         //#define SDLMixer // wip - might not be compatable with the engine
         //#define OPENAL2 // working with emscripten
         //#define SDLSound //- seems to play and freeze needs threading
@@ -102,15 +109,6 @@
             #endif
          //   #define SOUND
         //#define SDLSound
-        //#define FLUIDLITE
-
-        #define CODEEDITOR
-        #define FLARE
-        #define FLARES
-        #define FLARE2  // more realistic and working
-        #define ENVVEG  // vegetation
-        //#define OPENAL2
-        #define COMPRESS
 
         #ifndef WIN32
         #define TILED2D
