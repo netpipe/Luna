@@ -462,14 +462,18 @@ manager->initialize(pDeviceList->getDeviceName(1).c_str());
     return 0;
 }
 
-#ifdef COMPRESS
+//#ifdef COMPRESS
+//#define MTAR
+//#endif // COMPRESS
+
+#ifdef MTAR // needed unless you manually extract the python files into the /media/lib folder or  GAME/lib folder
 #ifdef WIN32
 #include "Input/Compress/mtar.h"
 extern "C"{
 bool extractTar(char);
 }
 #endif // WIN64
-#endif //compress
+#endif //mtar
 
 //#######################################################################################
 //ran from main.cpp for speed
@@ -542,7 +546,9 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
 
                 if (!infile2.good()){
             #ifdef COMPRESS
+            #ifdef MTAR
                    extractTar("../media/pydata.tar");
+                   #endif
             #endif //compress
                 }
                                Py_SetPythonHome( ".\\"); // needs fixing still

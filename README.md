@@ -13,18 +13,13 @@ When using bulletblend or gamekit to design levels youll need to use older blend
 
 WINDOWS BUILD
 IMPORTANT STEP
+-windows 64 minimal is what im using as a build target in codeblocks at the moment.
 -compile irrlicht dll and dont use static lib .a files or it will crash
+-on windows if you get a site module error crash during startup  -  extract pydata.tar in media folder so its has either GAME/lib/python2.7 or media/lib/python2.7 in there so you dont get a module site error when starting luna
 
-
--------this has changed
--on windows extract pydata.tar in media folder so its has /lib/python2.7 in there so you dont get a module site error when starting luna
--------is now
-in the game folder so media/pydata.tar needs to be extracted to GAME/lib folder unless you build mtar from the lunaLibs folder
-
+in the game folder so media/pydata.tar needs to be extracted to GAME/lib folder unless you build mtar from the lunaLibs folder using #define COMPRESS default
 
 -copy the dll from irrlicht185/bin/win32-gcc/irrlicht.dll to luna/GAME/irrlicht.dll where you see your exe
--todo make the tar extract itself if no directory exists
-
 
 
 Ffmpeg and P5 glove driver are LGPL from the libs repo.

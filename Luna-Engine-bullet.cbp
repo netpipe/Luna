@@ -241,6 +241,43 @@
 					<Add library="python2.7" />
 					<Add library="m" />
 					<Add library="z" />
+					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/bin" />
+					<Add directory="E:/irrlicht-1.8.4/lib/Win64-gcc" />
+					<Add directory="D:/openal-soft-1.21.1-bin/libs/Win64" />
+					<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/libs/Win64" />
+					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Win32-gcc" />
+					<Add directory="../irrlicht-1.8.5/lib/Win32-gcc" />
+					<Add directory="../lunaLibs/mtar" />
+					<Add directory="../mtar" />
+				</Linker>
+			</Target>
+			<Target title="windows MINIMAL64-withtar">
+				<Option platforms="Windows;Unix;" />
+				<Option output="./GAME/mLuna.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="GAME" />
+				<Option object_output=".wd2mobjsb" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Compiler>
+					<Add option="-m64" />
+					<Add option="-fpermissive" />
+					<Add option="-DMINIMAL" />
+					<Add option="-DWIN32" />
+					<Add option="-DPHYSICS" />
+					<Add option="-DMTAR" />
+					<Add directory="E:/irrlicht-1.8.4/include" />
+					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/include/python2.7" />
+					<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/libs/Win64" />
+					<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
+				</Compiler>
+				<Linker>
+					<Add option="-m64" />
+					<Add library="Irrlicht" />
+					<Add library="python2.7" />
+					<Add library="m" />
+					<Add library="z" />
 					<Add library="mtar" />
 					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/bin" />
 					<Add directory="E:/irrlicht-1.8.4/lib/Win64-gcc" />
