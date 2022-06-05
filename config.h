@@ -14,7 +14,7 @@
     #define SPARK
     //#define SOUND
 
-   // #define PHYSICS
+    #define PHYSICS
     //#ifndef PHYSICS
     //    #define IRRBULLET //seems to be working
   //  #endif
@@ -27,7 +27,7 @@
   //#define FLUIDSYNTH //has been replaced by fluidlite
   //#define DECALS       //not used
   #ifdef PHYSICS
-  //  #define DECALS2
+    #define DECALS2
   #endif
 
   #define TESSELATE
