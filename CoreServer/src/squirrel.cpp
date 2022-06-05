@@ -14,6 +14,7 @@ void Squirrel::PrintUsage()
 #define _INTERACTIVE 0
 #define _DONE 2
 */
+#ifdef SQUIRREL
 #include "includes/squirrel.h"
 HSQUIRRELVM v; // i put this here because in the class it causes problems
 
@@ -281,3 +282,4 @@ void Squirrel::Interactive()
 	}
 }
 */
+#endif

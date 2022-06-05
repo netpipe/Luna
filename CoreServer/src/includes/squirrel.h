@@ -1,3 +1,6 @@
+#ifdef SQUIRREL
+#ifndef H_SQUIRREL
+#define H_SQUIRREL
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,13 +11,15 @@
 #include <crtdbg.h>
 #include <conio.h>
 #endif
-#include <squirrel.h>
+
+#include "squirrel.h"
 #include <sqstdblob.h>
 #include <sqstdsystem.h>
 #include <sqstdio.h>
 #include <sqstdmath.h>
 #include <sqstdstring.h>
 #include <sqstdaux.h>
+
 
 #ifdef SQUNICODE
 #define scfprintf fwprintf
@@ -49,3 +54,5 @@ class Squirrel
 int do_main( );
 const SQChar *filename;
 };
+#endif // SQUIRREL
+#endif

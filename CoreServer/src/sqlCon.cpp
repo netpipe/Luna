@@ -1,3 +1,4 @@
+#ifdef SQUIRREL
 #include "sqlCon.h"
 #include <iostream>
 #include <string.h>
@@ -284,3 +285,4 @@ int main(void)
 }
 
 */
+#endif

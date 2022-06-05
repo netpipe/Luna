@@ -11,23 +11,41 @@
 //#define headlessGUI //define for console mode only
 
 //#include "logging/logging.h"
+//#define SQUIRREL
+#ifdef SQUIRREL
 #include "sqlCon.h"
 #include "includes/squirrel.h"
+#endif
+
+
+#define headlessGUI
+//#define COMPILE_WITH_IRRLICHT
+#ifndef headlessGUI
 #include <irrlicht.h>
-#include <irrNet.h>
+
+
+
+
+
 using namespace irr;
 using namespace core;
 using namespace scene;
 using namespace video;
 using namespace io;
 using namespace gui;
+vector3df tmpvect;
+#endif
 
+#include <irrNet.h>
+using namespace irr;
+
+//#define SQL
 
 void handleConnection();
 bool doit;
 bool connected,authorized;
 
-vector3df tmpvect;
+
 //	u32 address = netManager->getClientAddress(playerId);
 
 class ServerNetCallback : public net::INetCallback
@@ -148,7 +166,7 @@ int main()
  //   SQ->do_main();
  //   SQ->LoadFile("test.nut");
 //#define noSQL
-#ifndef noSQL
+#ifdef SQL
 std::string a;
     sqlCon *sq =new sqlCon("ha.db");
     //  sq->execute(".dump");

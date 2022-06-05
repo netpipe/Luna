@@ -3,6 +3,7 @@
 
 #include <string>
 #include <stdio.h>
+#ifdef SQL
 #include <sqlite3.h>
 
 
@@ -19,5 +20,5 @@ char *zErrMsg;
   std::string search(char*);
   static int callback(void *, int , char **, char **);
 };
-
+#endif
 #endif
