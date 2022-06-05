@@ -230,7 +230,6 @@ PyObject * Python::PyIrr_iDraw(PyObject * self,PyObject * args){
    	long node_id;
 //draw all in vector image stack
 //midpoint
-
 	PyArg_ParseTuple(args,"l",&node_id);
 	#ifdef Image2D
 	cImage* node = (cImage*)node_id;
@@ -245,7 +244,6 @@ return Py_BuildValue("");
 PyObject * Python::PyIrr_iAdd(PyObject * self,PyObject * args){
     //	s32 node_id;
 	//	float size;
-	//bImage2d =1;
 	char * texture;
    	float x1,y1,x2,y2,xx1,yy1,xx2,yy2;
 	//Damn...thats a lot of parameters :)
@@ -294,7 +292,7 @@ PyObject * Python::PyIrr_2Dimage(PyObject * self,PyObject * args) {//active came
     #ifdef Image2D
     bImage2d=1;
         //cImage*
-        image = new cImage(driver->getTexture("data/sydney.bmp"),
+        image = new cImage(driver->getTexture("../media/sydney.bmp"),
                                     rect<s32>(0,256,512,512),rect<s32>(0,0,512,256));
        // image->SetTransparent(true);
       //  image->SetTransparentColor(SColor(0,255,0,255),driver);
@@ -307,7 +305,7 @@ PyObject * Python::PyIrr_2Dimage(PyObject * self,PyObject * args) {//active came
 //const video::SColor *const colors = 0,
 //bool useAlphaChannelOfTexture = false
 //)
-
+return Py_BuildValue("l",image);
     #endif
 //        sprites->clear();
 //

@@ -12,9 +12,9 @@
     #define MINAV
     #define OPENSTEER
     #define SPARK
-    #define SOUND
+    //#define SOUND
 
-    #define PHYSICS
+   // #define PHYSICS
     //#ifndef PHYSICS
     //    #define IRRBULLET //seems to be working
   //  #endif
@@ -23,11 +23,11 @@
      // #define NETWORK
     #endif
  // #define SKELETON // needs to be updated
-  #define FLUIDLITE
+  //#define FLUIDLITE
   //#define FLUIDSYNTH //has been replaced by fluidlite
   //#define DECALS       //not used
   #ifdef PHYSICS
-    #define DECALS2
+  //  #define DECALS2
   #endif
 
   #define TESSELATE

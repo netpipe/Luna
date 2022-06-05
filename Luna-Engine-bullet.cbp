@@ -123,7 +123,6 @@
 				</Compiler>
 				<Linker>
 					<Add library="GL" />
-					<Add library="openal" />
 					<Add library="Xxf86vm" />
 					<Add library="X11" />
 					<Add library="python2.7" />
@@ -135,6 +134,7 @@
 					<Add library="ogg" />
 					<Add library="vorbis" />
 					<Add library="vorbisfile" />
+					<Add library="openal" />
 					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>
@@ -1292,7 +1292,7 @@
 			<Add directory="../LunaLibs/libvorbis-1.2.3/include" />
 			<Add directory="Physics/irrBullet-0.1.9/include" />
 			<Add directory="/usr/include/irrlicht" />
-			<Add directory="../irrlicht-1.8.5/include" />
+			<Add directory="../irrlicht-1.8.5/include2" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />
@@ -1308,12 +1308,9 @@
 			<Add library="theora" />
 			<Add library="theoraplayer" />
 			<Add library="assimp" />
-			<Add library="usb" />
-			<Add library="sqlite3" />
 			<Add library="ogg" />
 			<Add library="vorbis" />
 			<Add library="vorbisfile" />
-			<Add library="sndfile" />
 			<Add library="PolyVoxCore" />
 			<Add library="Irrlicht" />
 			<Add library="BulletSoftBody" />
@@ -1342,8 +1339,7 @@
 			<Add directory="../LunaLibs/bullet3-2.86.1/src/BulletCollision" />
 			<Add directory="../LunaLibs/bullet3-2.86.1/src/LinearMath" />
 			<Add directory="../LunaLibs/SparkEngine/lib/Linux/statics" />
-			<Add directory="../LunaLibs/PolyVox/library/PolyVoxCore3" />
-			<Add directory="../LunaLibs/media/fluidsynth-emscripten/src3" />
+			<Add directory="../LunaLibs/PolyVox/library/PolyVoxCore" />
 			<Add directory="../LunaLibs/bullet3-2.86.1/msvc/2008/lib/Debugf" />
 			<Add directory="../LunaLibs/OpenSteer" />
 			<Add directory="../emscripten-projects/SDL/SDL_sound/src" />
@@ -1354,7 +1350,8 @@
 			<Add directory="../LunaLibs/libogg-1.1.4" />
 			<Add directory="../LunaLibs/libvorbis-1.2.3" />
 			<Add directory="../LunaLibs/cAudio23/cAudio/bin/win32-gcc" />
-			<Add directory="../irrlicht-1.8.5/lib/Linux" />
+			<Add directory="../irrlicht-1.8.5/lib/Linux2" />
+			<Add directory="../LunaLibs/assimp-3.3.1" />
 		</Linker>
 		<Unit filename="DevLoop.h" />
 		<Unit filename="Equipment/Rifle.cpp" />
@@ -1707,9 +1704,9 @@
 		<Unit filename="Input/Model/blender/dna249.cpp" />
 		<Unit filename="Input/Model/blender/readblend.h" />
 		<Unit filename="Input/Model/irrTiled/irrTiled.h" />
-		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/SDL/SDL_fluidlite.h" />
 		<Unit filename="Input/SDL/SDLsound.h" />
+		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/inputManager.cpp" />
 		<Unit filename="Input/inputManager.h" />
 		<Unit filename="Input/openal_playback.h" />
@@ -2537,8 +2534,6 @@
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshBuilder.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshQuery.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNode.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/Recast.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastAlloc.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastArea.cpp" />
@@ -2549,6 +2544,8 @@
 		<Unit filename="entities/AI/recast/Recast/Source/RecastMeshDetail.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRasterization.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRegion.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast_util.cpp" />
 		<Unit filename="entities/AI/recast_util.h" />
 		<Unit filename="entities/AI/recastmain.cpp" />

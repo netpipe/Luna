@@ -512,7 +512,7 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
 		#ifdef EVENTS
 			device->setEventReceiver ( &m_cInGameEvents );
 		#endif
-
+//Py_SetPythonHome( "../media/"); // needs fixing still
         #ifdef __EMSCRIPTEN__
             setenv("PYTHONHOME", "/", 0);
             //			zstrdeflate("./media.zip");
