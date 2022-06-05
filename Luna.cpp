@@ -547,7 +547,7 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
                     #endif
                     #endif //compress
                 }
-                py_SetPythonHome( ".\\"); // needs fixing still
+                Py_SetPythonHome( ".\\"); // needs fixing still
             }
          //  if std::filesystem::exists("..\\media\\pydata\\"){
          //  Py_SetPythonHome( "..\\media\\pydata\\"); // needs fixing still
