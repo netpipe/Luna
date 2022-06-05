@@ -88,14 +88,8 @@
      // #define SQLITE
     #define LOADLEVELS
 
-
-            #define CODEEDITOR
-        #define FLARE
-        #define FLARES
-        #define FLARE2  // more realistic and working
-        #define ENVVEG  // vegetation
-        //#define OPENAL2
-        #define COMPRESS
+        #define CODEEDITOR
+    #define COMPRESS
 
     #ifdef MINIMAL2 //not so minimal extras
         //#define SDLMixer // wip - might not be compatable with the engine
@@ -109,6 +103,12 @@
             #endif
          //   #define SOUND
         //#define SDLSound
+
+        #define FLARE
+        #define FLARES
+        #define FLARE2  // more realistic and working
+        #define ENVVEG  // vegetation
+        //#define OPENAL2
 
         #ifndef WIN32
         #define TILED2D

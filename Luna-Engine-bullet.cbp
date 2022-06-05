@@ -22,6 +22,7 @@
 				<Compiler>
 					<Add option="-fpermissive" />
 					<Add option="-DMINIMAL" />
+					<Add option="-DPHYSICS" />
 				</Compiler>
 				<Linker>
 					<Add library="Irrlicht" />
@@ -137,59 +138,8 @@
 					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>
-			<Target title="Linux Debug">
-				<Option platforms="Unix;Mac;" />
-				<Option output="./GAME/Luna" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="GAME" />
-				<Option object_output=".dobjs" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Option projectResourceIncludeDirsRelation="1" />
-				<Compiler>
-					<Add option="-fpermissive" />
-					<Add option="-DPYTHON" />
-					<Add option="-DMINIMAL" />
-					<Add option="-DMINIMAL2" />
-					<Add option="-DEXTRACOMPILE" />
-				</Compiler>
-				<Linker>
-					<Add library="cAudio" />
-					<Add library="IrrOpenSteer" />
-					<Add library="ogg" />
-					<Add library="vorbis" />
-					<Add library="vorbisfile" />
-					<Add library="z" />
-					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
-				</Linker>
-			</Target>
-			<Target title="Linux Release">
-				<Option platforms="Unix;Mac;" />
-				<Option output="./GAME/dLuna" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="./GAME/" />
-				<Option object_output=".robjs" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Option projectResourceIncludeDirsRelation="0" />
-				<Compiler>
-					<Add option="-fpermissive" />
-					<Add option="-DMINIMAL" />
-					<Add option="-DMINIMAL2" />
-					<Add option="-DEXTRACOMPILE" />
-					<Add option="-DPYTHON" />
-				</Compiler>
-				<Linker>
-					<Add option="-s" />
-					<Add library="cAudio" />
-					<Add library="IrrOpenSteer" />
-					<Add library="ogg" />
-					<Add library="vorbis" />
-					<Add library="vorbisfile" />
-					<Add library="z" />
-					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
-				</Linker>
-			</Target>
 			<Target title="windows MINIMAL32">
-				<Option platforms="Windows;Unix;" />
+				<Option platforms="Windows;" />
 				<Option output="./GAME/mLuna.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".wdmobjsb" />
@@ -215,7 +165,7 @@
 				</Linker>
 			</Target>
 			<Target title="windows MINIMAL64">
-				<Option platforms="Windows;Unix;" />
+				<Option platforms="Windows;" />
 				<Option output="./GAME/mLuna.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".wd2mobjsb" />
@@ -251,7 +201,7 @@
 				</Linker>
 			</Target>
 			<Target title="windows MINIMAL64-withtar">
-				<Option platforms="Windows;Unix;" />
+				<Option platforms="Windows;" />
 				<Option output="./GAME/mLuna.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".wd2mobjsb" />
@@ -336,296 +286,6 @@
 					<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/libs/Win64" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Win32-gcc" />
 					<Add directory="../LunaLibs/SparkEngine/lib/mingw/static" />
-				</Linker>
-			</Target>
-			<Target title="WinDebug">
-				<Option platforms="Windows;" />
-				<Option output="./GAME/Luna_win.exe" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="./GAME/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Option use_console_runner="0" />
-				<Option projectIncludeDirsRelation="1" />
-				<Option projectResourceIncludeDirsRelation="0" />
-				<Option projectLibDirsRelation="1" />
-				<Compiler>
-					<Add directory="../libs/pthreads-w32-2-8-0-release" />
-					<Add directory="../libs/bullet-2.75/src" />
-					<Add directory="../libs/libogg-1.1.4/include" />
-					<Add directory="../libs/libvorbis-1.2.3/include" />
-					<Add directory="../libs/freetype-2.3.9/include" />
-					<Add directory="C:/Program Files/OpenAL 1.1 SDK" />
-					<Add directory="../libs/net/enet-1.2.1/include" />
-					<Add directory="../libs/net/irrNetLite21" />
-					<Add directory="../libs/ffmpeg-0.5/libavcodec" />
-					<Add directory="../libs/ffmpeg-0.5/libavdevice" />
-					<Add directory="../libs/ffmpeg-0.5/" />
-					<Add directory="../libs/ffmpeg-0.5/libavformat" />
-					<Add directory="../libs/ffmpeg-0.5/libswscale" />
-					<Add directory="C:/Program Files/Python2.6/include" />
-					<Add directory="../libs/cAudio2/include" />
-					<Add directory="../libs/net/syncsys/include" />
-					<Add directory="../libs/angelscript/include" />
-					<Add directory="../libs/angelscript" />
-					<Add directory="../libs/SparkEngine/include" />
-				</Compiler>
-				<Linker>
-					<Add library="OpenAL32" />
-					<Add library="WSock32" />
-					<Add library="Winmm" />
-					<Add library="python26" />
-					<Add library="pthreads" />
-					<Add library="cAudio" />
-					<Add directory="../libs/bullet-2.75/out/release71/libs" />
-					<Add directory="../libs/irrlicht-1.6/lib/Win32-gcc" />
-					<Add directory="C:/Program Files/OpenAL 1.1 SDK/libs/Win32" />
-					<Add directory="../libs/libogg-1.1.4/" />
-					<Add directory="../libs/libvorbis-1.2.3/" />
-					<Add directory="../libs/freetype-2.3.9" />
-					<Add directory="../libs/pthreads-w32-2-8-0-release" />
-					<Add directory="../libs/net/irrNetLite21" />
-					<Add directory="../libs/net/enet-1.2.1" />
-					<Add directory="C:/Program Files/Python2.6/libs" />
-					<Add directory="C:/Dev/Agnostic/Libs/bullet/out/release8/libs" />
-					<Add directory="../libs/net/enet-1.2/bin/Debug" />
-					<Add directory="../libs/cAudio2/bin/win32-gcc" />
-					<Add directory="../libs/angelscript" />
-					<Add directory="../libs/zlib-1.2.3" />
-					<Add directory="../libs/SparkEngine/lib/mingw/static" />
-				</Linker>
-			</Target>
-			<Target title="WinRelease">
-				<Option platforms="Windows;" />
-				<Option output="./GAME/Azadi.exe" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="./GAME/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Option use_console_runner="0" />
-				<Option projectResourceIncludeDirsRelation="0" />
-				<Compiler>
-					<Add option="-march=pentium3" />
-					<Add option="-O2" />
-					<Add option="-DNDEBUG" />
-					<Add directory="../libs/pthreads-w32-2-8-0-release" />
-					<Add directory="../libs/bullet/src" />
-					<Add directory="../libs/libogg-1.1.4/include" />
-					<Add directory="../libs/libvorbis-1.2.3/include" />
-					<Add directory="../libs/freetype-2.3.9/include" />
-					<Add directory="C:/Program Files/OpenAL 1.1 SDK" />
-					<Add directory="../libs/net/enet-1.2.1/include" />
-					<Add directory="../libs/net/irrNetLite21" />
-					<Add directory="../libs/ffmpeg-0.5/libavcodec" />
-					<Add directory="../libs/ffmpeg-0.5/libavdevice" />
-					<Add directory="../libs/ffmpeg-0.5/" />
-					<Add directory="../libs/ffmpeg-0.5/libavformat" />
-					<Add directory="../libs/ffmpeg-0.5/libswscale" />
-					<Add directory="C:/Program Files/Python2.6/include" />
-					<Add directory="../libs/cAudio2/include" />
-				</Compiler>
-				<Linker>
-					<Add option="-s" />
-					<Add library="OpenAL32" />
-					<Add library="WSock32" />
-					<Add library="Winmm" />
-					<Add library="python26" />
-					<Add library="irrnet" />
-					<Add library="pthreads" />
-					<Add library="cAudio" />
-					<Add directory="../libs/bullet/out/release8/libs" />
-					<Add directory="C:/Program Files/OpenAL 1.1 SDK/libs/Win32" />
-					<Add directory="../libs/libogg-1.1.4/" />
-					<Add directory="../libs/libvorbis-1.2.3/" />
-					<Add directory="../libs/freetype-2.3.9" />
-					<Add directory="../libs/pthreads-w32-2-8-0-release" />
-					<Add directory="../libs/net/irrNetLite21" />
-					<Add directory="../libs/net/enet-1.2.1/bin/Release" />
-					<Add directory="C:/Program Files/Python2.6/libs" />
-					<Add directory="C:/Dev/Agnostic/Libs/bullet/out/release8/libs" />
-					<Add directory="../libs/net/enet-1.2/bin/Debug" />
-				</Linker>
-			</Target>
-			<Target title="mineDBG">
-				<Option platforms="Unix;Mac;" />
-				<Option output="./GAME/mdLuna" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="GAME" />
-				<Option object_output=".mdobjs" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Option projectLinkerOptionsRelation="1" />
-				<Option projectResourceIncludeDirsRelation="1" />
-				<Compiler>
-					<Add option="-fpermissive" />
-					<Add option="-DPYTHON" />
-				</Compiler>
-				<Linker>
-					<Add option="`pkg-config gtk+-2.0 --libs`" />
-					<Add library="GL" />
-					<Add library="fluidsynth" />
-					<Add library="openal" />
-					<Add library="Xxf86vm" />
-					<Add library="X11" />
-					<Add library="dl" />
-					<Add library="irrNetLite22" />
-					<Add library="enet" />
-					<Add library="python2.7" />
-					<Add library="IrrOpenSteer" />
-					<Add library="pthread" />
-					<Add library="theora" />
-					<Add library="theoraplayer" />
-					<Add library="assimp" />
-					<Add library="usb" />
-					<Add library="boost_thread" />
-					<Add library="boost_system" />
-					<Add library="sqlite3" />
-					<Add library="asound" />
-					<Add library="jack" />
-					<Add library="readline" />
-					<Add library="sndfile" />
-					<Add library="pulse" />
-					<Add library="pulse-simple" />
-					<Add library="gmodule-2.0" />
-					<Add library="dbus-1" />
-					<Add library="PolyVoxCore" />
-					<Add library="Irrlicht" />
-					<Add library="BulletSoftBody" />
-					<Add library="BulletDynamics" />
-					<Add library="BulletCollision" />
-					<Add library="LinearMath" />
-					<Add library="freetype" />
-					<Add library="z" />
-					<Add library="ogg" />
-					<Add library="vorbis" />
-					<Add library="vorbisfile" />
-					<Add library="SPARK" />
-					<Add library="SPARK_IRR" />
-					<Add library="cAudio" />
-				</Linker>
-			</Target>
-			<Target title="mineREL">
-				<Option platforms="Unix;Mac;" />
-				<Option output="./GAME/mLuna" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="GAME" />
-				<Option object_output=".mobjs" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Option use_console_runner="0" />
-				<Option projectResourceIncludeDirsRelation="1" />
-				<Compiler>
-					<Add option="-fpermissive" />
-					<Add option="-DNDEBUG" />
-					<Add option="-DPYTHON" />
-				</Compiler>
-				<Linker>
-					<Add library="GL" />
-					<Add library="openal" />
-					<Add library="Xxf86vm" />
-					<Add library="X11" />
-					<Add library="dl" />
-					<Add library="irrNetLite22" />
-					<Add library="enet" />
-					<Add library="python2.7" />
-					<Add library="IrrOpenSteer" />
-					<Add library="pthread" />
-					<Add library="theora" />
-					<Add library="theoraplayer" />
-					<Add library="assimp" />
-					<Add library="usb" />
-					<Add library="boost_thread" />
-					<Add library="boost_system" />
-					<Add library="fluidsynth" />
-					<Add library="readline" />
-					<Add library="sndfile" />
-					<Add library="pulse" />
-					<Add library="pulse-simple" />
-					<Add library="sqlite3" />
-				</Linker>
-			</Target>
-			<Target title="1.7.3 debug">
-				<Option output="../mdLuna173" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="../" />
-				<Option object_output=".173mdobjs" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Option use_console_runner="0" />
-				<Option projectResourceIncludeDirsRelation="1" />
-				<Compiler>
-					<Add option="-fpermissive" />
-					<Add option="-Dirrlicht17" />
-					<Add directory="../libs/ffmpeg/libavcodec" />
-					<Add directory="../libs/ffmpeg/libavformat" />
-					<Add directory="../libs/ffmpeg" />
-					<Add directory="../libs/ffmpeg/libswscale" />
-					<Add directory="../libs/ffmpeg/libavutil" />
-					<Add directory="../libs/ffmpeg/libavdevice" />
-					<Add directory="/home/Dev/libs/game/irrlicht/irrlicht-1.7.3/source/irrlicht" />
-					<Add directory="/home/Dev/libs/game/irrlicht/irrlicht-1.7.3/include" />
-					<Add directory="../libs/net/irrNetLite21" />
-					<Add directory="../libs/net/enet/include" />
-					<Add directory="/home/Dev/libs/physics/bullet-2.75/src" />
-					<Add directory="../libs/freetype-2.3.9/include" />
-					<Add directory="../libs/net/enet-1.2.1" />
-					<Add directory="FileSystem/readblend" />
-					<Add directory="../libs/cAudio2/include" />
-					<Add directory="../libs/libtheora-1.1.1/include/theora" />
-					<Add directory="/home/Dev/libs/Media/libtheoraplayer/include" />
-					<Add directory="/usr/include/AL" />
-					<Add directory="/home/Dev/libs/Media/cAudio/cAudio/cAudio/include" />
-					<Add directory="/usr/include/python2.7" />
-					<Add directory="./entities/AI/recast/RecastDemo/Include" />
-					<Add directory="./entities/AI/recast/DebugUtils/Include" />
-					<Add directory="./entities/AI/recast/Recast/Include" />
-					<Add directory="./entities/AI/recast/Detour/Include" />
-					<Add directory="./entities/AI/recast/DetourCrowd/Include" />
-					<Add directory="./entities/AI/recast/DetourTileCache/Include" />
-					<Add directory="../libs/libIrrOpenSteer_10-02-15/include" />
-				</Compiler>
-				<Linker>
-					<Add option="--preload-file GAME/RACING/racer/" />
-					<Add library="GL" />
-					<Add library="cAudio" />
-					<Add library="openal" />
-					<Add library="avutil" />
-					<Add library="theora" />
-					<Add library="theoraplayer" />
-					<Add library="Xxf86vm" />
-					<Add library="pthread" />
-					<Add library="Xcursor" />
-					<Add library="X11" />
-					<Add library="dl" />
-					<Add library="irrnet" />
-					<Add library="enet" />
-					<Add library="python2.7" />
-					<Add library="Recast" />
-					<Add library="Detour" />
-					<Add library="DebugUtils" />
-					<Add library="DetourCrowd" />
-					<Add library="DetourTileCache" />
-					<Add library="IrrOpenSteer" />
-					<Add directory="/home/Dev/libs/scripting/Python-2.6.2/Lib" />
-					<Add directory="../libs/ffmpeg/libavcodec" />
-					<Add directory="../libs/ffmpeg/libavformat" />
-					<Add directory="../libs/ffmpeg/libswscale" />
-					<Add directory="../libs/ffmpeg/libavutil" />
-					<Add directory="../libs/ffmpeg/libavdevice" />
-					<Add directory="../libs/freetype-2.3.9/objs/.libs" />
-					<Add directory="../libs/net/enet-1.2.1" />
-					<Add directory="/home/Dev/libs/physics/bullet-2.75/src/BulletDynamics" />
-					<Add directory="/home/Dev/libs/physics/bullet-2.75/src/BulletSoftBody" />
-					<Add directory="/home/Dev/libs/physics/bullet-2.75/src/BulletCollision" />
-					<Add directory="/home/Dev/libs/physics/bullet-2.75/src/LinearMath" />
-					<Add directory="../libs/Compiled/Linux" />
-					<Add directory="/home/Dev/libs/Media/libtheoraplayer/bin/" />
-					<Add directory="/home/Dev/libs/Media/cAudio/cAudio/cAudio" />
-					<Add directory="../libs/net/irrNetLite21" />
-					<Add directory="../libs/RecastNavigation/DebugUtils/" />
-					<Add directory="../libs/RecastNavigation/Recast" />
-					<Add directory="../libs/RecastNavigation/DetourCrowd" />
-					<Add directory="../libs/RecastNavigation/DetourTileCache" />
-					<Add directory="../libs/RecastNavigation/Detour" />
-					<Add directory="../libs/libIrrOpenSteer_10-02-15/lib" />
-					<Add directory="/home/Dev/libs/game/irrlicht/irrlicht-1.7.3" />
-					<Add directory="/home/Dev/libs/game/irrlicht/irrlicht-1.7.3/lib/Linux" />
-					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>
 			<Target title="emscripten-debug">
@@ -886,124 +546,6 @@
 					<SilentBuild command=" &gt; $(CMD_NULL)" />
 				</MakeCommands>
 			</Target>
-			<Target title="emscripten-projects-testing-nopy">
-				<Option output="./Luna.html" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="GAME" />
-				<Option object_output=".emtestobjsnopy" />
-				<Option type="1" />
-				<Option compiler="emscripten" />
-				<Option use_console_runner="0" />
-				<Option projectCompilerOptionsRelation="1" />
-				<Option projectLinkerOptionsRelation="1" />
-				<Option projectIncludeDirsRelation="1" />
-				<Option projectResourceIncludeDirsRelation="1" />
-				<Option projectLibDirsRelation="1" />
-				<Compiler>
-					<Add option="-D_IRR_STATIC_LIB_" />
-					<Add option="-D_IRR_EMSCRIPTEN_PLATFORM_" />
-					<Add option="-D__EMSCRIPTEN__" />
-					<Add option="-DNO_GLIB" />
-					<Add directory="../emscripten-projects/irrlicht-ogl-es-2019dec/include" />
-					<Add directory="../emscripten-projects/net/irrNetLite22" />
-					<Add directory="../emscripten-projects/media/freetype2.8/build" />
-					<Add directory="../emscripten-projects/net/enet/include" />
-					<Add directory="FileSystem/readblend" />
-					<Add directory="../emscripten-projects/media/Ogg/include" />
-					<Add directory="../emscripten-projects/media/Vorbis/include" />
-					<Add directory="../emscripten-projects/media/theora/include" />
-					<Add directory="../emscripten-projects/media/cAudio2/include" />
-					<Add directory="../emscripten-projects/media/libtheoraplayer/include" />
-					<Add directory="../emscripten-projects/scripting/EmCPython/Python-2.7/Include" />
-					<Add directory="./entities/AI/recast/RecastDemo/Include" />
-					<Add directory="./entities/AI/recast/DebugUtils/Include" />
-					<Add directory="./entities/AI/recast/Recast/Include" />
-					<Add directory="./entities/AI/recast/Detour/Include" />
-					<Add directory="./entities/AI/recast/DetourCrowd/Include" />
-					<Add directory="./entities/AI/recast/DetourTileCache/Include" />
-					<Add directory="../emscripten-projects/AI/libIrrOpenSteer/include" />
-					<Add directory="../emscripten-projects/media/assimp/include" />
-					<Add directory="../emscripten-projects/media/fluidsynth-emscripten/include" />
-					<Add directory="../emscripten-projects/sqlite/sqlite-amalgamation-3300100" />
-					<Add directory="../emscripten-projects/physics/Bullet/bullet/src" />
-					<Add directory="../emscripten-projects/compression/zlib-1.2.3" />
-					<Add directory="../emscripten-projects/scripting/sqplus/sqplus" />
-					<Add directory="../emscripten-projects/media/freetype2.8/include" />
-					<Add directory="../emscripten-projects/scripting/EmCPython/Python-2.7/" />
-					<Add directory="../emscripten-projects/media/fluidsynth-emscripten/" />
-					<Add directory="../emscripten-projects/media/SparkEngine/include" />
-					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxCore/include" />
-					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxUtil/include" />
-					<Add directory="../emscripten-projects/compression/libtar/build/include" />
-				</Compiler>
-				<Linker>
-					<Add option="-s ALLOW_MEMORY_GROWTH=1" />
-					<Add option="--preload-file media/" />
-					<Add option="-s FULL_ES2=1" />
-					<Add option="-s DISABLE_EXCEPTION_CATCHING=0" />
-					<Add option="-s NO_EXIT_RUNTIME=1" />
-					<Add option="--shared-memory" />
-					<Add option="-s ERROR_ON_UNDEFINED_SYMBOLS=0" />
-					<Add library="GL" />
-					<Add library="openal" />
-					<Add library="X11" />
-					<Add library="dl" />
-					<Add library="irrNetLite22" />
-					<Add library="enet" />
-					<Add library="IrrOpenSteer" />
-					<Add library="pthread" />
-					<Add library="theora" />
-					<Add library="theoraplayer" />
-					<Add library="assimp" />
-					<Add library="GLESv2" />
-					<Add library="BulletSoftBody" />
-					<Add library="BulletDynamics" />
-					<Add library="BulletCollision" />
-					<Add library="LinearMath" />
-					<Add library="Irrlicht" />
-					<Add library="freetype" />
-					<Add library="SPARK" />
-					<Add library="SPARK_IRR" />
-					<Add library="sqlite3" />
-					<Add library="PolyVoxCore" />
-					<Add library="ogg" />
-					<Add library="vorbis" />
-					<Add library="vorbisfile" />
-					<Add library="z" />
-					<Add directory="../emscripten-projects/media/freetype2.8/build" />
-					<Add directory="../emscripten-projects/net/enet" />
-					<Add directory="../emscripten-projects/irrlicht-ogl-es-2019dec/lib/Linux" />
-					<Add directory="../LunaLibs/Compiled/Linux" />
-					<Add directory="../emscripten-projects/media/theoraplayer/bin/Linux" />
-					<Add directory="../emscripten-projects/net/irrNetLite22" />
-					<Add directory="../emscripten-projects/AI/libIrrOpenSteer/lib" />
-					<Add directory="./entities/AI/recast/DebugUtils/Include/" />
-					<Add directory="../emscripten-projects/media/assimp/lib" />
-					<Add directory="../emscripten-projects/media/cAudio2/bin/gcc" />
-					<Add directory="../emscripten-projects/media/libtheoraplayer/src/.libs" />
-					<Add directory="../emscripten-projects/media/fluidsynth-emscripten/src" />
-					<Add directory="../emscripten-projects/sqlite/sqlite-amalgamation-3300100" />
-					<Add directory="../emscripten-projects/scripting/EmCPython/Python-2.7/" />
-					<Add directory="../emscripten-projects/physics/Bullet/bullet/src/BulletDynamics" />
-					<Add directory="../emscripten-projects/physics/Bullet/bullet/src/BulletSoftBody" />
-					<Add directory="../emscripten-projects/physics/Bullet/bullet/src/BulletCollision" />
-					<Add directory="../emscripten-projects/physics/Bullet/bullet/src/LinearMath" />
-					<Add directory="../EMLibs/Compiled/emscripten" />
-					<Add directory="../emscripten-projects/media/Ogg" />
-					<Add directory="../emscripten-projects/media/Vorbis" />
-					<Add directory="../emscripten-projects/media/theora/" />
-					<Add directory="../emscripten-projects/physics/Bullet/bullet/msvc/2008/lib/Release" />
-					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxCore" />
-					<Add directory="../emscripten-projects/PolyVox/library/PolyVoxUtil" />
-					<Add directory="../emscripten-projects/compression/zlib-1.2.3" />
-					<Add directory="../emscripten-projects/scripting/sqplus/lib" />
-					<Add directory="../emscripten-projects/media/SparkEngine/lib/emscripten/static" />
-					<Add directory="../emscripten-projects/compression/libtar/build/lib" />
-				</Linker>
-				<ExtraCommands>
-					<Add before="./emclean.sh emscripten" />
-					<Add after="./copyandrun.sh" />
-				</ExtraCommands>
-			</Target>
 			<Target title="emminimal">
 				<Option output="./GAME/Luna.html" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
@@ -1241,9 +783,6 @@
 				</Linker>
 			</Target>
 		</Build>
-		<VirtualTargets>
-			<Add alias="All" targets="Linux Release;Linux Debug;" />
-		</VirtualTargets>
 		<Compiler>
 			<Add option="-I/usr/include/atk-1.0 -I/usr/include/pango-1.0" />
 			<Add option="-I/usr/include/pixman-1" />
@@ -1425,15 +964,9 @@
 		<Unit filename="Input/Controllers/iois/OIS/OISEffect.cpp">
 			<Option target="Linux Debug 2D" />
 			<Option target="Linux Debug MINIMAL" />
-			<Option target="Linux Debug" />
-			<Option target="Linux Release" />
-			<Option target="mineDBG" />
-			<Option target="mineREL" />
-			<Option target="1.7.3 debug" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
-			<Option target="emscripten-projects-testing-nopy" />
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
@@ -1443,15 +976,9 @@
 		<Unit filename="Input/Controllers/iois/OIS/OISException.cpp">
 			<Option target="Linux Debug 2D" />
 			<Option target="Linux Debug MINIMAL" />
-			<Option target="Linux Debug" />
-			<Option target="Linux Release" />
-			<Option target="mineDBG" />
-			<Option target="mineREL" />
-			<Option target="1.7.3 debug" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
-			<Option target="emscripten-projects-testing-nopy" />
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
@@ -1461,15 +988,9 @@
 		<Unit filename="Input/Controllers/iois/OIS/OISForceFeedback.cpp">
 			<Option target="Linux Debug 2D" />
 			<Option target="Linux Debug MINIMAL" />
-			<Option target="Linux Debug" />
-			<Option target="Linux Release" />
-			<Option target="mineDBG" />
-			<Option target="mineREL" />
-			<Option target="1.7.3 debug" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
-			<Option target="emscripten-projects-testing-nopy" />
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
@@ -1479,15 +1000,9 @@
 		<Unit filename="Input/Controllers/iois/OIS/OISInputManager.cpp">
 			<Option target="Linux Debug 2D" />
 			<Option target="Linux Debug MINIMAL" />
-			<Option target="Linux Debug" />
-			<Option target="Linux Release" />
-			<Option target="mineDBG" />
-			<Option target="mineREL" />
-			<Option target="1.7.3 debug" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
-			<Option target="emscripten-projects-testing-nopy" />
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
@@ -1497,15 +1012,9 @@
 		<Unit filename="Input/Controllers/iois/OIS/OISJoyStick.cpp">
 			<Option target="Linux Debug 2D" />
 			<Option target="Linux Debug MINIMAL" />
-			<Option target="Linux Debug" />
-			<Option target="Linux Release" />
-			<Option target="mineDBG" />
-			<Option target="mineREL" />
-			<Option target="1.7.3 debug" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
-			<Option target="emscripten-projects-testing-nopy" />
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
@@ -1515,15 +1024,9 @@
 		<Unit filename="Input/Controllers/iois/OIS/OISKeyboard.cpp">
 			<Option target="Linux Debug 2D" />
 			<Option target="Linux Debug MINIMAL" />
-			<Option target="Linux Debug" />
-			<Option target="Linux Release" />
-			<Option target="mineDBG" />
-			<Option target="mineREL" />
-			<Option target="1.7.3 debug" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
-			<Option target="emscripten-projects-testing-nopy" />
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
@@ -1533,15 +1036,9 @@
 		<Unit filename="Input/Controllers/iois/OIS/OISObject.cpp">
 			<Option target="Linux Debug 2D" />
 			<Option target="Linux Debug MINIMAL" />
-			<Option target="Linux Debug" />
-			<Option target="Linux Release" />
-			<Option target="mineDBG" />
-			<Option target="mineREL" />
-			<Option target="1.7.3 debug" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
-			<Option target="emscripten-projects-testing-nopy" />
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
