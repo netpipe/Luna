@@ -23,15 +23,15 @@
 					<Add option="-DMINIMAL" />
 				</Compiler>
 				<Linker>
-					<Add library="GL" />
 					<Add library="openal" />
-					<Add library="Xxf86vm" />
-					<Add library="X11" />
 					<Add library="python2.7" />
 					<Add library="pthread" />
 					<Add library="Irrlicht" />
+					<Add library="GL" />
 					<Add library="z" />
 					<Add library="dl" />
+					<Add library="Xxf86vm" />
+					<Add library="X11" />
 				</Linker>
 			</Target>
 			<Target title="Linux Debug 2D">
