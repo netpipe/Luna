@@ -7,7 +7,7 @@ emscripten-project-testing to build emscripten version
 
 When using bulletblend or gamekit to design levels youll need to use older blender 249 also need to save on 32 bit to avoid big endian issues. the converter is in FKEditor/utf32.sh
 
-
+https://www.youtube.com/watch?v=tGeGPyMKP3s -- fresh Compile on linux
 WINDOWS BUILD
 IMPORTANT STEP
 -windows 64 minimal is what im using as a build target in codeblocks at the moment.
