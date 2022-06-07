@@ -33,6 +33,8 @@ have special permission to use cwiid code as zlib for engine and derivitaves but
 
 the media folder has some vegetation from arteria3d with a special licence it can be used with Luna Games commercially for anyone.
 
+GAME folder is just for the binary and the rest of the media in there is old and for porting only, had to use ../media folder instead to be emscripten compatible.
+
 Engine itself is zlib licence.
 You will need these aswell most of it compiles with codeblocks, the occasional project may still use cmake. also there are cb to makefile converters if you want them.
 
