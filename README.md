@@ -5,7 +5,7 @@ Linux Debug works / Release uses different loop   /  also the -maindir.cbp is fo
 
 emscripten-project-testing to build emscripten version
 
-When using bulletblend or gamekit to design levels youll need to use older blender 249 also need to save on 32 bit to avoid big endian issues. i might have a converter somewhere for it too.
+When using bulletblend or gamekit to design levels youll need to use older blender 249 also need to save on 32 bit to avoid big endian issues. the converter is in FKEditor/utf32.sh
 
 
 WINDOWS BUILD
