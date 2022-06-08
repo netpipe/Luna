@@ -9,8 +9,9 @@ if initloader :
     import os
     import physics
     #import logging
-    #import threading
-   # import multiprocessing
+    import threading
+    import multiprocessing
+    from multiprocessing import Process
     scene.using ('../media/playsound.py',"1")
 
    # from playsound import playsound
@@ -21,11 +22,11 @@ if initloader :
     #T = Thread(target=playy) # create thread
     #T.start() # Launch created thread
 
-    #def playsound2():
-    playsound('../media/robocrep.ogg')
+    def playsound2():
+        playsound('../media/robocrep.ogg')
 
-   # P = Process(name="playsound",target=playy)
-  #  P.start() # Inititialize Process
+    P = Process(name="playsound",target=playsound2)
+    P.start() # Inititialize Process
 
     #could possibly have threads for spawning call subprocesses for other scripts
    # import subprocess
