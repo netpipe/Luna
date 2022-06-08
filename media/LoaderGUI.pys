@@ -9,24 +9,31 @@ if initloader :
     import os
     import physics
     #import logging
-    import threading
-    import multiprocessing
-    from multiprocessing import Process
-    scene.using ('../media/playsound.py',"1")
+    from sys import platform
+    if platform == "linux" or platform == "linux2":
+        import threading
+        import multiprocessing
+        from multiprocessing import Process
+        scene.using ('../media/playsound.py',"1")
 
    # from playsound import playsound
     #https://stackoverflow.com/questions/53246933/python-execute-playsound-in-separate-thread
     #https://realpython.com/intro-to-python-threading/
 
     #from threading import Thread
-    #T = Thread(target=playy) # create thread
-    #T.start() # Launch created thread
+   # T = Thread(target=playy) # create thread
+   # T.start() # Launch created thread
 
-    def playsound2():
-        playsound('../media/robocrep.ogg')
+        def playsound2():
+            playsound('../media/robocrep.ogg')
 
-    P = Process(name="playsound",target=playsound2)
-    P.start() # Inititialize Process
+        P = Process(name="playsound",target=playsound2)
+        P.start() # Inititialize Process
+
+  #  elif platform == "darwin":
+    # OS X
+  #  elif platform == "win32":
+
 
     #could possibly have threads for spawning call subprocesses for other scripts
    # import subprocess
@@ -116,8 +123,8 @@ if initloader :
    # input.voxelLoad("test");
 
     #irr.tiled("tiled/animation.tmx",0)
-    irr.tiled("../media/tiled/animation.tmx",0)
-irr.tiled("",2) #animated = 2 regular 1 and init =0
+#    irr.tiled("../media/tiled/animation.tmx",0)
+#irr.tiled("",2) #animated = 2 regular 1 and init =0
 
 #    irr.tiled("../media/tiled/3dbasic.tmx",0)
 #irr.tiled("",3)
