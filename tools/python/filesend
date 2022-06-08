@@ -1,0 +1,49 @@
+https://www.codeproject.com/Questions/1034715/Receiving-a-file-through-python-socket
+
+client.py
+
+Python
+Copy Code
+
+import socket
+
+HOST = 'server ip'        # The remote host
+PORT = 42050              # The same port as used by the server
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((HOST, PORT))
+f = open('my.csv', 'rb')
+print "Sending Data ...."  
+l = f.read()
+while True:      
+    for line in l:
+        s.send(line)    
+    break
+f.close()
+print "Sending Complete"
+s.close()
+
+
+
+server.py
+
+Python
+Copy Code
+
+import socket
+
+HOST = 'local ip'         # server ip
+PORT = 42050              # Arbitrary non-privileged port
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind((HOST, PORT))
+print "Server running", HOST, PORT
+s.listen(5)
+conn, addr = s.accept()
+print'Connected by', addr
+
+while True:
+    data = "".join(iter(lambda:conn.recv(1),"\n"))       
+    print data   
+    if not data: break                
+      
+print "Done Receiving"
+conn.close()

@@ -9,6 +9,12 @@ if initloader :
     import os
     import physics
 
+    #could possibly have threads for spawning call subprocesses for other scripts
+   # import subprocess
+   # from subprocess import call
+   # call(["gedit"])
+    #url = "www.google.com"
+    #call(["curl", {url}, '--output', "index.html"])
 
     def addImage(loc,width,height):
      return image.iadd(loc,0,0,width,height,0,0,width,height)

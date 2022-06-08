@@ -11,6 +11,7 @@ if(init):
  import input
  import image
  import time
+ import socket
 
  import os
  import itertools

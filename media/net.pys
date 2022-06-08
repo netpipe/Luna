@@ -1,1 +1,22 @@
+    #import urllib
+    #import urllib2
+    #import wget
+    #import pycurl
 
+    #subprocess.run(["gedit", ""])  # doesn't capture output
+    #url = "www.google.com"
+    #call(["curl", {url}, '--output', "song.html"])
+
+    #wget.download('http://www.example.com/')
+    #urllib.urlretrieve ('http://www.example.com/', "test.html")
+   # with urllib.request.urlopen('http://www.example.com/') as f:
+    #    html = f.read().decode('utf-8')
+    #urllib2.urlopen('http://www.example.com/')
+
+
+     #  response = urllib2.urlopen('http://www.google.com/')
+  #  html = response.read()
+   # print(html)
+
+#sockets work
+   #https://www.codeproject.com/Questions/1034715/Receiving-a-file-through-python-socket
