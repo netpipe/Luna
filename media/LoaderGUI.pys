@@ -8,6 +8,24 @@ if initloader :
     import time
     import os
     import physics
+    #import logging
+    #import threading
+   # import multiprocessing
+    scene.using ('../media/playsound.py',"1")
+
+   # from playsound import playsound
+    #https://stackoverflow.com/questions/53246933/python-execute-playsound-in-separate-thread
+    #https://realpython.com/intro-to-python-threading/
+
+    #from threading import Thread
+    #T = Thread(target=playy) # create thread
+    #T.start() # Launch created thread
+
+    #def playsound2():
+    playsound('../media/robocrep.ogg')
+
+   # P = Process(name="playsound",target=playy)
+  #  P.start() # Inititialize Process
 
     #could possibly have threads for spawning call subprocesses for other scripts
    # import subprocess
