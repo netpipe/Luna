@@ -14,6 +14,11 @@ if initloader :
     #https://pypi.org/search get more code here
     from sys import platform
     if platform == "linux" or platform == "linux2":
+        import dbus
+        scene.using ('../media/lib/notify2.py',"1")
+        init("notify2 test suite")
+        n = Notification("Title", "Body text")
+        n.show()
         #import itertools
         #import sqlite3
         #import xml
