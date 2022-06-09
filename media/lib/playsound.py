@@ -126,7 +126,7 @@ def _playsoundOSX(sound, block = True):
     if block:
         sleep(nssound.duration())
 
-def _playsoundNix(sound, block = True):
+def _playsoundNix(sound, block = False):
     """Play a sound using GStreamer.
 
     Inspired by this:

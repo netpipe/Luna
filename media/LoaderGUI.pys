@@ -17,21 +17,27 @@ if initloader :
         #import itertools
         #import sqlite3
         #import xml
-        scene.using ('../media/lib/numpy1.py',"1")
+        #scene.using ('../media/lib/numpy1.py',"1")
         #scene.using ('../media/lib/numpy_nn/__init__.py',"1")
         scene.using ('../media/lib/playsound.py',"1")
-        import threading
-        import multiprocessing
-        from multiprocessing import Process
+        #import threading
+        #import multiprocessing
+        #from multiprocessing import Process
         #from threading import Thread
-        #T = Thread(target=play) # create thread
-        #T.start() # Launch created thread
 
         def playsound2():
             playsound('../media/robocrep.ogg')
 
-        P = Process(name="playsound",target=playsound2)
-        P.start() # Inititialize Process
+        #T = Thread(target=playsound2) # create thread
+        #T.start() # Launch created thread
+        #del T
+        #P = Process(name="playsound",target=playsound2)
+        #P.start() # Inititialize Process
+        #P.join()
+        #del P
+
+        playsound2()
+        #seems to make quitting application harder
     #  elif platform == "darwin":
     #  elif platform == "win32":
 
