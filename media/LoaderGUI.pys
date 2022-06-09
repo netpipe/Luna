@@ -1,7 +1,7 @@
 ###todo
         #https://stackoverflow.com/questions/53246933/python-execute-playsound-in-separate-thread
         #https://realpython.com/intro-to-python-threading/
-
+#https://github.com/python/cpython/tree/3.10/Lib has list of imports available
 if initloader :
     import irr
     import scene
@@ -14,7 +14,9 @@ if initloader :
     #https://pypi.org/search get more code here
     from sys import platform
     if platform == "linux" or platform == "linux2":
-        import itertools
+        #import itertools
+        #import sqlite3
+        #import xml
         scene.using ('../media/lib/numpy1.py',"1")
         #scene.using ('../media/lib/numpy_nn/__init__.py',"1")
         scene.using ('../media/lib/playsound.py',"1")
