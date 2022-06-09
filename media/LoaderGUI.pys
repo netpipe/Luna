@@ -15,9 +15,9 @@ if initloader :
     from sys import platform
     if platform == "linux" or platform == "linux2":
         import itertools
-        scene.using ('../media/numpy1.py',"1")
-        #scene.using ('../media/numpy_nn/__init__.py',"1")
-        scene.using ('../media/playsound.py',"1")
+        scene.using ('../media/lib/numpy1.py',"1")
+        #scene.using ('../media/lib/numpy_nn/__init__.py',"1")
+        scene.using ('../media/lib/playsound.py',"1")
         import threading
         import multiprocessing
         from multiprocessing import Process
