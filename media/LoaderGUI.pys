@@ -9,15 +9,17 @@ if initloader :
     import os
     import physics
     #import logging
+    #https://pypi.org/search get more code here
     from sys import platform
     if platform == "linux" or platform == "linux2":
+        import itertools
         scene.using ('../media/numpy1.py',"1")
-        #scene.using ('../media/numpy1.py',"1")
-
+        #scene.using ('../media/numpy_nn/__init__.py',"1")
+        scene.using ('../media/playsound.py',"1")
         import threading
         import multiprocessing
         from multiprocessing import Process
-        scene.using ('../media/playsound.py',"1")
+
 
    # from playsound import playsound
     #https://stackoverflow.com/questions/53246933/python-execute-playsound-in-separate-thread
