@@ -11,7 +11,7 @@ if (init) :
  eot=2.666666667
  PI= 3.141592654
  DEG= PI/180
- scene.using ('../media/random.py',"1");
+ scene.using ('../media/lib/random.py',"1");
 
  def addImage(loc,width,height):
   return image.iadd(loc,0,0,width,height,0,0,width,height)

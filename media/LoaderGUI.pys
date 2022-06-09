@@ -1,4 +1,6 @@
 ###todo
+        #https://stackoverflow.com/questions/53246933/python-execute-playsound-in-separate-thread
+        #https://realpython.com/intro-to-python-threading/
 
 if initloader :
     import irr
@@ -19,33 +21,26 @@ if initloader :
         import threading
         import multiprocessing
         from multiprocessing import Process
-
-
-   # from playsound import playsound
-    #https://stackoverflow.com/questions/53246933/python-execute-playsound-in-separate-thread
-    #https://realpython.com/intro-to-python-threading/
-
-    #from threading import Thread
-   # T = Thread(target=playy) # create thread
-   # T.start() # Launch created thread
+        #from threading import Thread
+        #T = Thread(target=play) # create thread
+        #T.start() # Launch created thread
 
         def playsound2():
             playsound('../media/robocrep.ogg')
 
         P = Process(name="playsound",target=playsound2)
         P.start() # Inititialize Process
-
-  #  elif platform == "darwin":
-    # OS X
-  #  elif platform == "win32":
-
+    #  elif platform == "darwin":
+    #  elif platform == "win32":
 
     #could possibly have threads for spawning call subprocesses for other scripts
-   # import subprocess
-   # from subprocess import call
-   # call(["gedit"])
+    # import subprocess
+    # from subprocess import call
+    # call(["gedit"])
     #url = "www.google.com"
     #call(["curl", {url}, '--output', "index.html"])
+
+
 
     def addImage(loc,width,height):
      return image.iadd(loc,0,0,width,height,0,0,width,height)

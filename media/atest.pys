@@ -17,7 +17,7 @@ if(init):
  import itertools
  import operator
  import math
- scene.using ('../media/random.py',"1");
+ scene.using ('../media/lib/random.py',"1");
  #scene.using ('../media/string.py',"1");
 
 

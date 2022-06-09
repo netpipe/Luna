@@ -10,7 +10,7 @@ if(init):
  import time
 
 
- scene.using ('../media/random.py',"1");
+ scene.using ('../media/lib/random.py',"1");
  id =100
  uiTimer=0
  uiState=0

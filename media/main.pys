@@ -18,7 +18,7 @@ if (init) :
  #irr.getstring = "../media/cards.pys"
 #import itertools
 #not needed includes just for testing
- scene.using ('../media/string.py',"1");
+ scene.using ('../media/lib/string.py',"1");
 #scene.using ('../media/lib/python-skeletons/sys.py',"1");
 #scene.using ('../media/lib/python-skeletons/math.py',"1");
 #scene.using ('../media/lib/python2.7/os.py',"1");
