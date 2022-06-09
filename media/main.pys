@@ -34,7 +34,7 @@ if (init) :
  #import shuffle
 
 #scene.using ('../media/lib/python2.7/random.py',"1"); #not working
- scene.using ('../media/random.py',"1");
+ scene.using ('../media/lib/random.py',"1");
 
  ticks = time.time()
  physics.physics(1)
