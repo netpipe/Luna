@@ -1,3 +1,7 @@
+#this file will suposedly allow us to make node.js sockets from python is this websockets ?
+#i was hoping to use
+#https://github.com/0xJeremy/socket.engine)
+#https://stackoverflow.com/questions/10152290/python-websocket-handshake-rfc-6455
 import socket
 from threading import Thread
 from json import dumps as dictToJson
