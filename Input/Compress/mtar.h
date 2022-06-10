@@ -79,25 +79,72 @@ struct extract_args {
 #include <stdlib.h>
 #include <stdio.h>
 #include <string>
+int dir_exists(const char* name)
+{
+    struct stat sb;
+    if (stat(name, &sb) == 0 && (sb.st_mode& S_IFDIR) == S_IFDIR)
+    {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+int make_dir_recursive(const char* name, int mode)
+{
+    mode=ACCESSPERMS;
+    int result = 1;
+    char* copy_name = strdup(name);
+    char* last_slash = strrchr(copy_name, '/');
+    if (last_slash)
+    {
+        *last_slash = 0;
+        if (!make_dir_recursive(copy_name, mode))
+            result = 0;
+    }
+
+    if (result)
+    {
+#ifdef WIN32
+        if (!dir_exists(name))
+            if (mkdir(name) != 0)
+                result = 0;
+#else
+        if (!dir_exists(name))
+            if (mkdir(name, mode) != 0)
+                result = 0;
+#endif // WIN32
+    }
+    return result;
+}
+
 int extract_foreach_cb(mtar_t* tar, const mtar_header_t* h, void* arg)
 {
-    struct extract_args* args = arg;
+    struct extract_args* args = (struct extract_args*)arg;
     (void)args; /* TODO */
 
     if(h->type == MTAR_TDIR) {
-            #ifdef WIN32
-             if(mkdir(h->name) != 0)
-             #else
-        if(mkdir(h->name, h->mode) != 0)
-        #endif
+        if (!make_dir_recursive(h->name, h->mode))
             die(E_FS, "cannot create directory \"%s\"", h->name);
         return 0;
     }
+
 
     if(h->type != MTAR_TREG) {
         fprintf(stderr, "warning: not extracting unsupported type \"%s\"", h->name);
         return 0;
     }
+
+    char* copy_name = strdup(h->name);
+    char* last_slash = strrchr(copy_name, '/');
+    if (last_slash)
+    {
+        *last_slash = 0;
+        if (!make_dir_recursive(copy_name, h->mode))
+            die(E_FS, "cannot create directory \"%s\"", h->name);
+    }
+    free(copy_name);
 
     int fd = open(h->name, O_CREAT|O_WRONLY|O_TRUNC, h->mode);
     if(fd < 0)
@@ -192,7 +239,7 @@ bool extractTar(char * tarfile){
     if(err)
         die(E_TAR, "can't open archive: %s", mtar_strerror(err));
 
-        #ifdef WIN32
+        #ifdef WIN32 // obsolete ifdef automatic dir creation is working now.
        // if (_wmkdir(filename.c_str(), mode) != 0)
 //        _wmkdir("../media/lib", 0775) ;
 //        _wmkdir("../media/lib/python2.7", 0775) ;
@@ -223,19 +270,19 @@ bool extractTar(char * tarfile){
 //        _mkdir("../media/lib/python2.7/xml/etree" ) ;
 //        _mkdir("../media/lib/python2.7/xml/dom" ) ;
 
-        mkdir( "lib") ;
-        mkdir("lib/python2.7") ;
-        mkdir("lib/python2.7/compiler") ;
-        mkdir("lib/python2.7/encodings") ;
-        mkdir("lib/python2.7/importlib") ;
-        mkdir("lib/python2.7/json");
-        mkdir("lib/python2.7/logging");
-        mkdir("lib/python2.7/plat-emscripten") ;
-        mkdir("lib/python2.7/xml") ;
-        mkdir("lib/python2.7/xml/sax") ;
-        mkdir("lib/python2.7/xml/parsers") ;
-        mkdir("lib/python2.7/xml/etree" ) ;
-        mkdir("lib/python2.7/xml/dom" ) ;
+//        mkdir( "lib") ;
+//        mkdir("lib/python2.7") ;
+//        mkdir("lib/python2.7/compiler") ;
+//        mkdir("lib/python2.7/encodings") ;
+//        mkdir("lib/python2.7/importlib") ;
+//        mkdir("lib/python2.7/json");
+//        mkdir("lib/python2.7/logging");
+//        mkdir("lib/python2.7/plat-emscripten") ;
+//        mkdir("lib/python2.7/xml") ;
+//        mkdir("lib/python2.7/xml/sax") ;
+//        mkdir("lib/python2.7/xml/parsers") ;
+//        mkdir("lib/python2.7/xml/etree" ) ;
+//        mkdir("lib/python2.7/xml/dom" ) ;
 
 
 
@@ -243,19 +290,19 @@ bool extractTar(char * tarfile){
 
         #else
         // if (mkdir(filename.c_str(), (u16)mode) != 0)
-        mkdir("../media/lib", 0775) ;
-        mkdir("../media/lib/python2.7", 0775) ;
-        mkdir("../media/lib/python2.7/compiler", 0775) ;
-        mkdir("../media/lib/python2.7/encodings", 0775) ;
-        mkdir("../media/lib/python2.7/importlib", 0775) ;
-        mkdir("../media/lib/python2.7/json", 0775);
-        mkdir("../media/lib/python2.7/logging", 0775);
-        mkdir("../media/lib/python2.7/plat-emscripten", 0775) ;
-        mkdir("../media/lib/python2.7/xml", 0775) ;
-        mkdir("../media/lib/python2.7/xml/sax", 0775) ;
-        mkdir("../media/lib/python2.7/xml/parsers", 0775) ;
-        mkdir("../media/lib/python2.7/xml/etree", 0775) ;
-        mkdir("../media/lib/python2.7/xml/dom", 0775) ;
+//        mkdir("../media/lib", 0775) ;
+//        mkdir("../media/lib/python2.7", 0775) ;
+//        mkdir("../media/lib/python2.7/compiler", 0775) ;
+//        mkdir("../media/lib/python2.7/encodings", 0775) ;
+//        mkdir("../media/lib/python2.7/importlib", 0775) ;
+//        mkdir("../media/lib/python2.7/json", 0775);
+//        mkdir("../media/lib/python2.7/logging", 0775);
+//        mkdir("../media/lib/python2.7/plat-emscripten", 0775) ;
+//        mkdir("../media/lib/python2.7/xml", 0775) ;
+//        mkdir("../media/lib/python2.7/xml/sax", 0775) ;
+//        mkdir("../media/lib/python2.7/xml/parsers", 0775) ;
+//        mkdir("../media/lib/python2.7/xml/etree", 0775) ;
+//        mkdir("../media/lib/python2.7/xml/dom", 0775) ;
         #endif
 
   extract_files2(&tar, tarfile, 1);
