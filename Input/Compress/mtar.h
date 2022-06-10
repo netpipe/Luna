@@ -19,6 +19,9 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
+
+#ifndef H_MTAR
+#define H_MTAR
 #include "../../config.h"
 #ifdef COMPRESS
 #include "./microtar/src/microtar-stdio.h"
@@ -93,7 +96,7 @@ int dir_exists(const char* name)
 
 int make_dir_recursive(const char* name, int mode)
 {
-    mode=ACCESSPERMS;
+
     int result = 1;
     char* copy_name = strdup(name);
     char* last_slash = strrchr(copy_name, '/');
@@ -111,6 +114,7 @@ int make_dir_recursive(const char* name, int mode)
             if (mkdir(name) != 0)
                 result = 0;
 #else
+    mode=ACCESSPERMS;
         if (!dir_exists(name))
             if (mkdir(name, mode) != 0)
                 result = 0;
@@ -394,4 +398,5 @@ bool extractTar(char * tarfile){
 //
 //    return 0;
 //}
+#endif
 #endif
