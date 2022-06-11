@@ -20,24 +20,21 @@ if initloader :
     #see atest.pys file for more imports i've found to be valid
     from sys import platform
     if platform == "linux" or platform == "linux2":
-        #import ssl
-        import ftplib
-        #import httplib
-        import tarfile
-        import zipfile
+        #import socket, time, ssl, threading
+        #import ftplib
+        #import httplib #not working
+        #import tarfile
 
-
+        #import zipfile
         #with zipfile.ZipFile("../media/cards.zip") as archive:
         #    archive.printdir()
 
 
-        #import socket, time, ssl, threading
-        import gi #if you get an error on this with linux then delete the Luna/GAME/lib folder
-
-        scene.using ('../media/lib/notify2.py',"1")
-        init("notify2 test suite")
-        n = Notification("Luna Engine", "Test Message, Welcome!")
-        n.show()
+        #import gi #if you get an error on this with linux then delete the Luna/GAME/lib folder
+        #scene.using ('../media/lib/notify2.py',"1")
+        #init("notify2 test suite")
+        #n = Notification("Luna Engine", "Test Message, Welcome!")
+        #n.show()
 
         scene.using ('../media/lib/playsound.py',"1")
         #import threading

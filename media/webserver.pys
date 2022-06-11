@@ -16,8 +16,8 @@ if (init) :
     import gui
 
     import socket
-//#https://gist.githubusercontent.com/joaoventura/824cbb501b8585f7c61bd54fec42f08f/raw/dbd18e3b50feb7be3fe2e12481ec7731ef71050d/httpserver.py
-
+#https://gist.githubusercontent.com/joaoventura/824cbb501b8585f7c61bd54fec42f08f/raw/dbd18e3b50feb7be3fe2e12481ec7731ef71050d/httpserver.py
+#was hoping to find a non blocking webserver
     def handle_request(request):
         """Handles the HTTP request."""
 
@@ -49,7 +49,7 @@ if (init) :
     server_socket.listen(1)
     print('Listening on port %s ...' % SERVER_PORT)
 
-    while True:
+    #while True:
         # Wait for client connections
         client_connection, client_address = server_socket.accept()
 
@@ -62,10 +62,10 @@ if (init) :
         client_connection.sendall(response.encode())
 
         # Close connection
-        client_connection.close()
+       # client_connection.close()
 
     # Close socket
-    server_socket.close()
+    #server_socket.close()
 
 
 
