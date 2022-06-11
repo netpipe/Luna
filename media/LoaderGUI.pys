@@ -15,7 +15,10 @@ if initloader :
     from sys import platform
     if platform == "linux" or platform == "linux2":
         #import dbus
-
+        #import ssl
+        #import ftplib
+        #import httplib
+        #import socket, time, ssl, threading
         #scene.using ('../media/lib/notify2.py',"1")
         #init("notify2 test suite")
         #n = Notification("Title", "Body text")

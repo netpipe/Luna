@@ -95,7 +95,7 @@ bool connected,doit,login=0;
 // vector3df tmpvect;
 
 //#define PYTHON
-//#include <boost/python.hRpp>   #not used just for ideas maybe
+//#include <boost/python.hpp>   #not used just for ideas maybe
 #include "Scripting/PythonManager.h"
 
 
