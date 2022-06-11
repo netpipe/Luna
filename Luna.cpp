@@ -532,7 +532,7 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
             //setenv("PYTHONHOME", (const char*)workingDirectory.c_str() , 0);
 
             #else
-          //  Py_SetPythonHome( "./"); // needs fixing still
+            //Py_SetPythonHome( ".\\"); // needs fixing still
             std::ifstream infile("../media/lib/python2.7/__future__.py");
             if (infile.good()){
                 //Py_SetPythonHome("python");
@@ -543,7 +543,8 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
                 if (!infile2.good()){
                     #ifdef COMPRESS
                     #ifdef MTAR
-                        extractTar("../media/pydata.tar");
+                       // extractTar("../media/pydata.tar");
+                        extractTar("./pydatawin.tar");
                     #endif
                     #endif //compress
                 }
