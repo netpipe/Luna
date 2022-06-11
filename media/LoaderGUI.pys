@@ -11,7 +11,7 @@ if initloader :
     import os
     import physics
     #import logging
-    #import xml #causes crash on windows
+    import xml
     #https://pypi.org/search get more code here
     from sys import platform
     if platform == "linux" or platform == "linux2":
