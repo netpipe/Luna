@@ -1,3 +1,22 @@
+#################################
+#INITIALIZE
+#called externally so it is set from functions.py or init.py
+#################################
+if (init) :
+    import irr
+    import physics
+    #if (EXTRAS)
+    import extras
+    import scene
+    import input
+    import image
+    #import sound
+    #import luna
+    import net
+    import gui
+
+
+
     #import urllib
     #import urllib2
     #import wget
@@ -20,3 +39,33 @@
 
 #sockets work
    #https://www.codeproject.com/Questions/1034715/Receiving-a-file-through-python-socket
+
+
+        #https://stackoverflow.com/questions/43408325/how-to-download-image-from-http-server-python-sockets
+        import socket
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect(('netpipe.ca', 80))
+        s.sendall('GET /wp-content/uploads/2018/04/untitled3.png HTTP/1.1\r\nHOST: netpipe.ca\r\n\r\n')
+
+        reply = ""
+
+        while True:
+            data = s.recv(2048)
+            if not data: break
+            reply += data
+
+        # get image size
+        size = -1
+        tmp = reply.split('\r\n')
+        for line in tmp:
+           if "Content-Length:" in line:
+              size = int(line.split()[1])
+              break
+
+        headers =  reply.split('\r\n\r\n')[0]
+        image = reply.split('\r\n\r\n')[1]
+
+        # save image
+        f = open('image.png', 'wb')
+        f.write(image)
+        f.close()
