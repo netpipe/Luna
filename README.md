@@ -12,7 +12,7 @@ WINDOWS BUILD
 IMPORTANT STEP
 -windows 64 minimal is what im using as a build target in codeblocks at the moment.
 -compile irrlicht dll and dont use static lib .a files or it will crash
--on windows if you get a site module error crash during startup  -  extract pydata.tar in media folder so its has either GAME/lib/python2.7 or media/lib/python2.7 in there so you dont get a module site error when starting luna
+-if you need the proper python support extract pydatawin.tar manually there is a bug with my mtar extractor for file permissions. i used peazip
 
 in the game folder so media/pydata.tar needs to be extracted to GAME/lib folder unless you build mtar from the lunaLibs folder using #define COMPRESS default
 

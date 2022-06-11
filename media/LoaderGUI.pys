@@ -13,8 +13,8 @@ if initloader :
     #import logging
     import xml
    # scene.using ('../media/lib/socket.py',"1")
-    import socket
-    import ssl
+    #import socket
+    #import ssl
     #https://pypi.org/search get more code here
     from sys import platform
     if platform == "linux" or platform == "linux2":
