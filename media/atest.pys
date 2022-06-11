@@ -11,7 +11,40 @@ if(init):
  import input
  import image
  import time
- import socket
+ import xml
+ from sys import platform
+ if platform == "linux" or platform == "linux2":
+     #import socket
+     #import socket
+     #import ssl
+     #https://pypi.org/search get more code here
+     # scene.using ('../media/lib/socket.py',"1")
+     #import logging
+     #import dbus
+
+     #import argparse
+     #import itertools
+     #import sqlite3
+     #import xml
+        #scene.using ('../media/lib/numpy1.py',"1")
+        #scene.using ('../media/lib/numpy_nn/__init__.py',"1")
+
+         #import gi
+        #gi.require_version('Gtk', '3.0')
+        #from gi.repository import Gtk #could not import
+        #win = Gtk.Window()
+        #win.connect("destroy", Gtk.main_quit)
+        #win.show()
+        #Gtk.main()
+
+
+    #could possibly have threads for spawning call subprocesses for other scripts
+    # import subprocess
+    # from subprocess import call
+    # call(["gedit"])
+    #url = "www.google.com"
+    #call(["curl", {url}, '--output', "index.html"])
+    #os.system("aplay ../media/frogger.wav")
 
  import os
  import itertools

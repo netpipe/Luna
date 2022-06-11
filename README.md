@@ -12,7 +12,7 @@ WINDOWS BUILD
 IMPORTANT STEP
 -windows 64 minimal is what im using as a build target in codeblocks at the moment.
 -compile irrlicht dll and dont use static lib .a files or it will crash
--if you need the proper python support extract pydatawin.tar manually there is a bug with my mtar extractor for file permissions. i used peazip
+-if you need the proper python support extract pydatawin.tar manually there is a bug with my mtar extractor for file permissions. i used peazip. this was the lib folder from codeblocks
 
 in the game folder so media/pydata.tar needs to be extracted to GAME/lib folder unless you build mtar from the lunaLibs folder using #define COMPRESS default
 

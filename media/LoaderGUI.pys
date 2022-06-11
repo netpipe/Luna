@@ -2,6 +2,10 @@
         #https://stackoverflow.com/questions/53246933/python-execute-playsound-in-separate-thread
         #https://realpython.com/intro-to-python-threading/
 #https://github.com/python/cpython/tree/3.10/Lib has list of imports available
+
+#in order to use all the windows features like sound , sockets and ssl you have to extract pydatawin.tar manually
+
+
 if initloader :
     import irr
     import scene
@@ -10,38 +14,20 @@ if initloader :
     import time
     import os
     import physics
-    #import logging
     import xml
-   # scene.using ('../media/lib/socket.py',"1")
-    #import socket
-    #import ssl
-    #https://pypi.org/search get more code here
     from sys import platform
     if platform == "linux" or platform == "linux2":
-        #import dbus
         #import ssl
         #import ftplib
         #import httplib
         #import socket, time, ssl, threading
-        #scene.using ('../media/lib/notify2.py',"1")
-        #init("notify2 test suite")
-        #n = Notification("Title", "Body text")
-        #n.show()
+        import gi #if you get an error on this with linux then delete the Luna/GAME/lib folder
 
-        #import argparse
-        #import gi
-        #gi.require_version('Gtk', '3.0')
-        #from gi.repository import Gtk #could not import
-        #win = Gtk.Window()
-        #win.connect("destroy", Gtk.main_quit)
-        #win.show()
-        #Gtk.main()
+        scene.using ('../media/lib/notify2.py',"1")
+        init("notify2 test suite")
+        n = Notification("Luna Engine", "Test Message, Welcome!")
+        n.show()
 
-        #import itertools
-        #import sqlite3
-        #import xml
-        #scene.using ('../media/lib/numpy1.py',"1")
-        #scene.using ('../media/lib/numpy_nn/__init__.py',"1")
         scene.using ('../media/lib/playsound.py',"1")
         #import threading
         #import multiprocessing
@@ -63,14 +49,6 @@ if initloader :
         #seems to make quitting application harder
     #  elif platform == "darwin":
     #  elif platform == "win32":
-
-    #could possibly have threads for spawning call subprocesses for other scripts
-    # import subprocess
-    # from subprocess import call
-    # call(["gedit"])
-    #url = "www.google.com"
-    #call(["curl", {url}, '--output', "index.html"])
-
 
 
     def addImage(loc,width,height):
@@ -141,10 +119,6 @@ if initloader :
    # os.system("aplay ../media/frogger.wav")
    # scene.flag1("../media/irrlichtlogo.jpg",0,0,20)
  #   init=0
-   # irr.tiled("tiled/2dbasic.tmx",0)
-   # irr.tiled("tiled/animation.tmx",0)
-    #irr.tiled("tiled/levels.tmx",0)
-    #irr.tiled("tiled/3dbasic.tmx",0)
     #input.gamepad(0,"gpinit",1)
     #input.gamepad(0,"rumble",1)
    # input.gamepad(0,"wiiled",2)
@@ -153,6 +127,10 @@ if initloader :
    # scene.fluidlite("","",1)
    # input.voxelLoad("test");
 
+   # irr.tiled("tiled/2dbasic.tmx",0)
+   # irr.tiled("tiled/animation.tmx",0)
+    #irr.tiled("tiled/levels.tmx",0)
+    #irr.tiled("tiled/3dbasic.tmx",0)
     #irr.tiled("tiled/animation.tmx",0)
     irr.tiled("../media/tiled/animation.tmx",0)
 irr.tiled("",2) #animated = 2 regular 1 and init =0

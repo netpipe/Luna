@@ -238,8 +238,8 @@ else:
 
 del system
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
     # block is always True if you choose to run this from the command line.
-    from sys import argv
-    playsound(argv[1])
+  #  from sys import argv
+  #  playsound(argv[1])
 

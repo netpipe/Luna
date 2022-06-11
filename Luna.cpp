@@ -539,7 +539,8 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
                 //device->getFileSystem()->addFileArchive("..\\media\\pydata.zip");
                 Py_SetPythonHome( "..\\media\\"); // needs fixing still
            }else{
-                std::ifstream infile2("./lib/python2.7/__future__.py");
+                std::ifstream infile2("./lib/python2.7/sockets.py");
+                //std::ifstream infile2("./lib/python2.7/__future__.py");
                 if (!infile2.good()){
                     #ifdef COMPRESS
                     #ifdef MTAR
