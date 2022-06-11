@@ -15,11 +15,22 @@ if initloader :
     import os
     import physics
     import xml
+    #scene.using ('../media/lib/random.py',"1")
+
+    #see atest.pys file for more imports i've found to be valid
     from sys import platform
     if platform == "linux" or platform == "linux2":
         #import ssl
-        #import ftplib
+        import ftplib
         #import httplib
+        import tarfile
+        import zipfile
+
+
+        #with zipfile.ZipFile("../media/cards.zip") as archive:
+        #    archive.printdir()
+
+
         #import socket, time, ssl, threading
         import gi #if you get an error on this with linux then delete the Luna/GAME/lib folder
 

@@ -51,14 +51,14 @@
 					<Add directory="../Box2D/Box2D/" />
 				</Compiler>
 				<Linker>
-					<Add library="GL" />
-					<Add library="Xxf86vm" />
-					<Add library="X11" />
-					<Add library="python2.7" />
-					<Add library="pthread" />
 					<Add library="Irrlicht" />
 					<Add library="dl" />
 					<Add library="z" />
+					<Add library="pthread" />
+					<Add library="python2.7" />
+					<Add library="X11" />
+					<Add library="Xxf86vm" />
+					<Add library="GL" />
 					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
 				</Linker>
 			</Target>
@@ -756,6 +756,7 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Input/Compress/microtar/src/microtar.h" />
+		<Unit filename="Input/Compress/mtar.h" />
 		<Unit filename="Input/Compress/zpipe.h" />
 		<Unit filename="Input/Compress/zstr.h" />
 		<Unit filename="Input/Controllers/StringTools.cpp" />
@@ -1382,6 +1383,7 @@
 		<Unit filename="media/keys.pys" />
 		<Unit filename="media/main.pys" />
 		<Unit filename="media/net.pys" />
+		<Unit filename="media/webserver.pys" />
 		<Extensions>
 			<DoxyBlocks>
 				<comment_style block="0" line="0" />
