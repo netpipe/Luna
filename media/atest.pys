@@ -26,6 +26,10 @@ if(init):
      #import itertools
      #import sqlite3
      #import xml
+
+        #import urllib
+        #import urlparse
+
         #scene.using ('../media/lib/numpy1.py',"1")
         #scene.using ('../media/lib/numpy_nn/__init__.py',"1")
 

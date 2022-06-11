@@ -24,7 +24,9 @@ if initloader :
         #import ftplib
         #import httplib #not working
         #import tarfile
-
+        import urllib
+        import urlparse
+        #scene.using ('../media/lib/wget.py',"1")
         #import zipfile
         #with zipfile.ZipFile("../media/cards.zip") as archive:
         #    archive.printdir()
