@@ -543,8 +543,8 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
                 if (!infile2.good()){
                     #ifdef COMPRESS
                     #ifdef MTAR
-                        extractTar("../media/pydata.tar");
-                        //extractTar("./pydatawin.tar");
+                       // extractTar("../media/pydata.tar");
+                        extractTar("./pydatawin.tar");
                     #endif
                     #endif //compress
                 }
