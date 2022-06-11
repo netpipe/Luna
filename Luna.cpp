@@ -532,12 +532,12 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
             //setenv("PYTHONHOME", (const char*)workingDirectory.c_str() , 0);
 
             #else
-
+          //  Py_SetPythonHome( "./"); // needs fixing still
             std::ifstream infile("../media/lib/python2.7/__future__.py");
             if (infile.good()){
                 //Py_SetPythonHome("python");
                 //device->getFileSystem()->addFileArchive("..\\media\\pydata.zip");
-                Py_SetPythonHome( ".\\media\\"); // needs fixing still
+                Py_SetPythonHome( "..\\media\\"); // needs fixing still
            }else{
                 std::ifstream infile2("./lib/python2.7/__future__.py");
                 if (!infile2.good()){
@@ -547,7 +547,7 @@ int Luna::Run(){  // starts the game in dev mode or release mode some features a
                     #endif
                     #endif //compress
                 }
-                Py_SetPythonHome( ".\\"); // needs fixing still
+             //   Py_SetPythonHome( ".\\"); // needs fixing still
             }
          //  if std::filesystem::exists("..\\media\\pydata\\"){
          //  Py_SetPythonHome( "..\\media\\pydata\\"); // needs fixing still
