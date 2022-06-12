@@ -50,7 +50,7 @@ if initloader :
         #seems to make quitting application harder
     #  elif platform == "darwin":
     #  elif platform == "win32":
-
+    #physics.opensteer(1)
 
     def addImage(loc,width,height):
      return image.iadd(loc,0,0,width,height,0,0,width,height)

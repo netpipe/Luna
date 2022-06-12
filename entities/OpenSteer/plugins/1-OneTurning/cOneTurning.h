@@ -1,3 +1,4 @@
+#include "../../../../config.h"
 #ifdef OPENSTEER
 #ifndef CONETURNING_H
 #define CONETURNING_H

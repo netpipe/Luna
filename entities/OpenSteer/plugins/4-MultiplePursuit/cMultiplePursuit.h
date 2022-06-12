@@ -1,3 +1,4 @@
+#include "../../../../config.h"
 #ifdef OPENSTEER
 #ifndef C_MpBase_H
 #define C_MpBase_H

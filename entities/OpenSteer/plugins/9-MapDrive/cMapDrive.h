@@ -1,3 +1,4 @@
+#include "../../../../config.h"
 #ifdef OPENSTEER
 #ifndef C_MapDrive_H
 #define C_MapDrive_H

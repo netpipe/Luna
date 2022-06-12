@@ -522,22 +522,24 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
 int osteerinit =0;
 PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){
 	#ifdef OPENSTEER
+	int plugin;
 	//vector3df loc;
 	//char * path;
 	//PyArg_ParseTuple(args,"sfff",&loc.X,&loc.Y,&loc.Z);
-	PyArg_ParseTuple(args,"");
-    opensteer = 1;
+	PyArg_ParseTuple(args,"i",plugin);
+
     // initialize graphics first !!!
-//         if( osteerinit ) {
+         if( !osteerinit ) {
+             opensteer = 1;
     OpenSteer::initializeGraphics(device);
     // initialize OpenSteerDemo application
 	OpenSteer::OpenSteerDemo::initialize();
+    OpenSteer::OpenSteerDemo::selectNextPlugIn();//for some reason it likes to be cycled a few times first
+   OpenSteer::OpenSteerDemo::selectNextPlugIn();
+       OpenSteer::OpenSteerDemo::selectNextPlugIn();
+       }else {// or restart
     OpenSteer::OpenSteerDemo::selectNextPlugIn();
- //  OpenSteer::OpenSteerDemo::selectNextPlugIn();
-//       OpenSteer::OpenSteerDemo::selectNextPlugIn();
-//       }else {// or restart
-//    OpenSteer::OpenSteerDemo::selectNextPlugIn();
-//    }
+    }
     // were going to need more to this function maybe some internal calls for things like individual paths
   #endif
 //        Py_RETURN_NONE;
