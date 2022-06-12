@@ -26,7 +26,7 @@ if initloader :
         #import httplib #not working
         #import tarfile
         #import urllib
-        import bs4
+
         #scene.using ('../media/lib/wget.py',"1")
         from contextlib import contextmanager
         #import zipfile
