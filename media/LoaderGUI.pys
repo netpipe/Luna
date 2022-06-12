@@ -31,7 +31,6 @@ if initloader :
         #    archive.printdir()
         import cStringIO
         import imghdr
-        import glfw
 
         #import gi #if you get an error on this with linux then delete the Luna/GAME/lib folder
         #scene.using ('../media/lib/notify2.py',"1")
