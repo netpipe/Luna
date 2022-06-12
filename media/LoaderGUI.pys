@@ -28,7 +28,7 @@ if initloader :
         #import urllib
         #from collections import defaultdict
         #import cmath
-        from .base import ClipboardBase, ClipboardSetupException, ClipboardException
+
         #scene.using ('../media/lib/network/wget.py',"1")
         #from contextlib import contextmanager
         #import zipfile
