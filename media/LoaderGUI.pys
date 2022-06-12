@@ -84,7 +84,7 @@ if initloader :
     scene.decals(1,camera)
     Light = scene.Light(10,0,100,0,"111111")
     print("camera added")
-    physics.opensteer(0) #might be from updating irrlicht still need to look at it closer
+    #physics.opensteer(0) #might be from updating irrlicht still need to look at it closer
 
     colors=[]
   #  for i in range(3):
