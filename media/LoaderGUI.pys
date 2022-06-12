@@ -16,6 +16,7 @@ if initloader :
     import physics
     import xml
     #scene.using ('../media/lib/random.py',"1")
+    import struct
 
     #see atest.pys file for more imports i've found to be valid
     from sys import platform
@@ -25,6 +26,19 @@ if initloader :
         #import httplib #not working
         #import tarfile
         import urllib
+            #https://pypi.org/project/joysticks - works !
+        #struct_format = 'llHHI'
+        #infile_path = "/dev/input/js0"
+        #infile = open(infile_path, "rb")
+        #event_size = struct.calcsize(struct_format)
+        #while True:
+        #    event = infile.read(event_size)
+        #    data = struct.unpack(struct_format, event)
+        #    print(data)
+            # (tv_sec, tv_usec, etype, code, value) = data
+
+
+
         #scene.using ('../media/lib/wget.py',"1")
         #import zipfile
         #with zipfile.ZipFile("../media/cards.zip") as archive:
