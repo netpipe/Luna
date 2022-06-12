@@ -519,26 +519,26 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
     return Py_BuildValue("");
 }
 
-int osteerinit =0;
 PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){
 	#ifdef OPENSTEER
 	int plugin;
 	//vector3df loc;
 	//char * path;
 	//PyArg_ParseTuple(args,"sfff",&loc.X,&loc.Y,&loc.Z);
-	PyArg_ParseTuple(args,"i",plugin);
+	PyArg_ParseTuple(args,"i",&plugin);
 
-    // initialize graphics first !!!
-         if( !osteerinit ) {
+//    // initialize graphics first !!!
+         if( !opensteer ) {
              opensteer = 1;
     OpenSteer::initializeGraphics(device);
     // initialize OpenSteerDemo application
 	OpenSteer::OpenSteerDemo::initialize();
-    OpenSteer::OpenSteerDemo::selectNextPlugIn();//for some reason it likes to be cycled a few times first
-   OpenSteer::OpenSteerDemo::selectNextPlugIn();
-       OpenSteer::OpenSteerDemo::selectNextPlugIn();
+   // OpenSteer::OpenSteerDemo::selectNextPlugIn();//for some reason it likes to be cycled a few times first
+   //OpenSteer::OpenSteerDemo::selectNextPlugIn();
+   //OpenSteer::OpenSteerDemo::selectNextPlugIn();
        }else {// or restart
-    OpenSteer::OpenSteerDemo::selectNextPlugIn();
+       OpenSteer::OpenSteerDemo::updateSimulationAndRedraw();
+    //OpenSteer::OpenSteerDemo::selectNextPlugIn();
     }
     // were going to need more to this function maybe some internal calls for things like individual paths
   #endif
@@ -572,7 +572,7 @@ PyObject * Python::PyIrr_BulletBlend(PyObject * self,PyObject * args) {
 	int thing;
 	char *file2;
 	//place open file dialogue here and get rid of this list to clean up the source
-	//PyArg_ParseTuple(args,"fffi",&loc.X,&loc.Y,&loc.Z,thing);
+	//PyArg_ParseTuple(args,"fffi",&loc.X,&loc.Y,&loc.Z,&thing);
 	PyArg_ParseTuple(args,"s",&file2);
 
     #ifdef BULLETBLEND
