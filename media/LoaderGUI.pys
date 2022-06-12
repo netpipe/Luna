@@ -25,27 +25,13 @@ if initloader :
         #import ftplib
         #import httplib #not working
         #import tarfile
-        import urllib
-            #https://pypi.org/project/joysticks - works !
-        #struct_format = 'llHHI'
-        #infile_path = "/dev/input/js0"
-        #infile = open(infile_path, "rb")
-        #event_size = struct.calcsize(struct_format)
-        #while True:
-        #    event = infile.read(event_size)
-        #    data = struct.unpack(struct_format, event)
-        #    print(data)
-            # (tv_sec, tv_usec, etype, code, value) = data
-
-
-
+        #import urllib
         #scene.using ('../media/lib/wget.py',"1")
+
         #import zipfile
         #with zipfile.ZipFile("../media/cards.zip") as archive:
         #    archive.printdir()
-        import cStringIO
-        import imghdr
-       # import imageio
+
         #import gi #if you get an error on this with linux then delete the Luna/GAME/lib folder
         #scene.using ('../media/lib/notify2.py',"1")
         #init("notify2 test suite")
@@ -53,21 +39,9 @@ if initloader :
         #n.show()
 
         scene.using ('../media/lib/playsound.py',"1")
-        #import threading
-        #import multiprocessing
-        #from multiprocessing import Process
-        #from threading import Thread
-
         def playsound2():
             playsound('../media/robocrep.ogg')
 
-        #T = Thread(target=playsound2) # create thread
-        #T.start() # Launch created thread
-        #del T
-        #P = Process(name="playsound",target=playsound2)
-        #P.start() # Inititialize Process
-        #P.join()
-        #del P
 
         playsound2()
         #seems to make quitting application harder
