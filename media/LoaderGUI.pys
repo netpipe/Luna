@@ -28,7 +28,7 @@ if initloader :
         #import urllib
 
         #scene.using ('../media/lib/wget.py',"1")
-        from contextlib import contextmanager
+        #from contextlib import contextmanager
         #import zipfile
         #with zipfile.ZipFile("../media/cards.zip") as archive:
         #    archive.printdir()
