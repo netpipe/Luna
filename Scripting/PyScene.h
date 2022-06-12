@@ -89,18 +89,20 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
 	PyArg_ParseTuple(args,"il",&type,&cam2);
 
 	ICameraSceneNode *cam = (ICameraSceneNode *)cam2;
-	switch (type){
+	int test=type;
+	switch (test){
 	case 0:
 
-//	if (type){
-    bDecals=1; // should fix this to be inside the defines
+    //	if (type){
+   // bDecals=1; // should fix this to be inside the defines
 #ifdef DECALS2
 
-  if(bDecals){
+
 		#ifdef PHYSICS
+		  if(bDecals){
         btVector3 Normal;
 
-//      vector3df pos = camera->getPosition();
+       // vector3df pos = camera->getPosition();
         vector3df upvect = cam->getUpVector();
         vector3df target = cam->getTarget();
 
@@ -109,8 +111,8 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
 		line.end = line.start + (cam->getTarget() - line.start).normalize() * 1000.0f;
 
         btVector3 rayHit = luna->m_cPhysics->RaycastWorld(btVector3(line.start.X, line.start.Y, line.start.Z),btVector3(line.end.X, line.end.Y, line.end.Z),Normal);
-   //     printf("ray position position: %f %f %f \n", rayHit[0], rayHit[1], rayHit[2]);
-   //     printf("hit normal vector: %f %f %f \n", Normal[0], Normal[1], Normal[2]);
+       // printf("ray position position: %f %f %f \n", rayHit[0], rayHit[1], rayHit[2]);
+       // printf("hit normal vector: %f %f %f \n", Normal[0], Normal[1], Normal[2]);
 
 //#ifdef DECALS2
 
@@ -145,7 +147,25 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
 }
    // break;
 
+ //#endif //physics
+ #else // this is for non physics collision detection
+//        if (smgr->getSceneCollisionManager()->getCollisionPoint(line, selector, intersection, tri,outNode))
+//         {
+//       //  if ( rayHit[0] != 0)
+//       //  {
+//            vector3df hitsend = vector3df(rayHit[0], rayHit[1], rayHit[2]);
+//            // vector3df hitsend = vector3df(1, 1,1);
+//             vector3df norm = vector3df(Normal[0], Normal[1], Normal[2]);
+//
+//            decals[nextDecal]->VNSetup(norm,hitsend);
+//            nextDecal++;
+//            if (nextDecal >= MAX_DECALS)
+//               nextDecal = 0;
+//         }
+
  #endif
+
+
 #endif
 
 //    #ifdef DECALS
@@ -171,8 +191,8 @@ PyObject * Python::PyIrr_DecalManager(PyObject * self,PyObject * args){ //active
         int nextDecal=0;
 
     return Py_BuildValue("");
-    break;
     #endif
+    break;
 	}
 return Py_BuildValue("");
 }

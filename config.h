@@ -84,7 +84,7 @@
     #define RIBBONTRAIL
     #define BOX2DLITE
       //#define FLARE
-      //#define DECALS2 //replace needing physics to get working
+      #define DECALS2 //replace needing physics to get working
      // #define SQLITE
     #define LOADLEVELS
 
@@ -104,6 +104,7 @@
          //   #define SOUND
         //#define SDLSound
 
+        //  #define POLYVOX
         #define FLARE
         #define FLARES
         #define FLARE2  // more realistic and working
@@ -125,25 +126,19 @@
             #define PHYSICS
          //   #ifndef PHYSICS
                 //#define IRRBULLET // use on its own or with PHYSICS
-         //   #endif
+            //#endif
           #endif
     #endif
 
 
 
   #ifdef PHYSICS
-  //if bullet carnot enabled with physics and car calls it crashes FIXME
-  #define BULLETCAR // if FPSWEAPON is enabled the car wont work. diff event rec
-  #define LOADLEVELS // with occlusion its slow?
-  //#define BULLETBLEND //only seems to work if you compile it with including bullet libs not compiled with bullet
-  #define RAGDOLL   //bulletRagdoll
+      //if bullet carnot enabled with physics and car calls it crashes FIXME
+      #define BULLETCAR // if FPSWEAPON is enabled the car wont work. diff event rec
+      #define LOADLEVELS // with occlusion its slow?
+      //#define BULLETBLEND //only seems to work if you compile it with including bullet libs not compiled with bullet
+      #define RAGDOLL   //bulletRagdoll
   #endif
-
-//  #define POLYVOX
-
-
-
-
 
 #else
 // mainly used for old stuff , emscripten remove this list later
