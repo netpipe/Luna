@@ -1,0 +1,11 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+sockslib/__init__.py
+sockslib/socks.py
+sockslib/socksauth.py
+sockslib.egg-info/PKG-INFO
+sockslib.egg-info/SOURCES.txt
+sockslib.egg-info/dependency_links.txt
+sockslib.egg-info/top_level.txt
