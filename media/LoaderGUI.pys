@@ -16,7 +16,7 @@ if initloader :
     import physics
     import xml
     #scene.using ('../media/lib/random.py',"1")
-
+    import SDL
     #see atest.pys file for more imports i've found to be valid
     from sys import platform
     if platform == "linux" or platform == "linux2":
@@ -31,7 +31,7 @@ if initloader :
         #    archive.printdir()
         import cStringIO
         import imghdr
-
+       # import imageio
         #import gi #if you get an error on this with linux then delete the Luna/GAME/lib folder
         #scene.using ('../media/lib/notify2.py',"1")
         #init("notify2 test suite")
