@@ -37,7 +37,7 @@ GAME folder is just for the binary and the rest of the media in there is old and
 
 Engine itself is zlib/bsd/apache/irrlicht licence. there might also be GPL librarys used in it aswell.
 
-there might have been GPL in the ../media/lib/ folder. thats ok the engine should still be able to run without most of it so just strip it out when distributing, should not be an issue in final version.
+there might have been GPL in the ../media/lib/ folder. thats ok the engine should still be able to run without most of the user scripts so just strip it out when distributing if you dont want to share your code, should not be an issue in final version.
 
 You will need these aswell most of it compiles with codeblocks, the occasional project may still use cmake. also there are cb to makefile converters if you want them.
 
