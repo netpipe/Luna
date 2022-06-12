@@ -26,7 +26,9 @@ if initloader :
         #import httplib #not working
         #import tarfile
         #import urllib
-        from collections import defaultdict
+        #from collections import defaultdict
+        #import cmath
+
         #scene.using ('../media/lib/network/wget.py',"1")
         #from contextlib import contextmanager
         #import zipfile
