@@ -16,7 +16,7 @@ if initloader :
     import physics
     import xml
     #scene.using ('../media/lib/random.py',"1")
-    import SDL
+
     #see atest.pys file for more imports i've found to be valid
     from sys import platform
     if platform == "linux" or platform == "linux2":
