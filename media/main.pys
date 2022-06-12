@@ -186,7 +186,7 @@ if (init) :
     # slow on both windows and linux. going to leave disabled for now.
     #scene.addwater("0",111,111.5,0,0) # when this is enabled postprocessing cannot be on
 
-    physics.opensteer(1)
+    #physics.opensteer(1)
 
  #extras.vegetation(1)
 # scene.fluidlite("","",0)
