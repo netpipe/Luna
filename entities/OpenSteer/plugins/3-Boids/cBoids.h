@@ -1,5 +1,5 @@
 #include "../../../../config.h"
-#ifdef OPENSTEER
+#ifdef OPENSTEER3
 #ifndef C_TEMPLATE_H
 #define C_TEMPLATE_H
 

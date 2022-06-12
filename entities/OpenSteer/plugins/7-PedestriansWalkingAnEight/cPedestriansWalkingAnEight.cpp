@@ -1,5 +1,5 @@
 #include "../../../../config.h"
-#ifdef OPENSTEER
+#ifdef OPENSTEER2
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #include "cPedestriansWalkingAnEight.h"
 
@@ -89,7 +89,7 @@ void Pedestrian8::reset(){
   // pick a random direction for path following (upstream or downstream)
   pathDirection = (frandom01() > 0.5) ? -1 : +1;
   // trail parameters: 3 seconds with 60 points along the trail
-  setTrailParameters(3, 60);
+//  setTrailParameters(3, 60);
   // notify proximity database that our position has changed
   proximityToken->updateForNewPosition(position());
   // load the mesh

@@ -31,7 +31,7 @@ void LowSpeedTurn::reset(){
   // for next instance: step speed
   startSpeed += 0.15f;
   // 15 seconds and 150 points along the trail
-  setTrailParameters(15, 150);
+//  setTrailParameters(15, 150);
 
   clearTrailHistory();    // prevent long streaks due to teleportation
   // load the mesh

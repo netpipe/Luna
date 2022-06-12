@@ -1,5 +1,5 @@
 #include "../../../../config.h"
-#ifdef OPENSTEER
+#ifdef OPENSTEER2
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #include "cCaptureTheFlag.h"
 
@@ -221,7 +221,7 @@ bool CtfSeeker::clearPathToGoal(){
     const float eForwardDistance = forward().dot (eOffset);
 
     // xxx temp move this up before the conditionals
-    annotationXZCircle (e.radius(), eFuture, clearPathColor, 20); //xxx
+  //  annotationXZCircle (e.radius(), eFuture, clearPathColor, 20); //xxx
 
     // consider as potential blocker if within the corridor
     if(inCorridor){

@@ -184,12 +184,12 @@ void OpenSteer::initializeGraphics( IrrlichtDevice *device){
     irrPointers.Driver = irrPointers.Device->getVideoDriver();
     irrPointers.SMgr = irrPointers.Device->getSceneManager();
     irrPointers.GUIEnv = irrPointers.Device->getGUIEnvironment();
-    irrPointers.Camera = irrPointers.SMgr->addCameraSceneNodeFPS(0,90,0.2);
+    //irrPointers.Camera = irrPointers.SMgr->addCameraSceneNodeFPS(0,90,0.2);
     //    irrPointers.Camera =device->getSceneManager()->getActiveCamera();
-    irrPointers.Camera->setPosition(irr::core::vector3df(0,50,-40));
-    irrPointers.Camera->setTarget(irr::core::vector3df(0,0,0));
-    irrPointers.Camera->setInputReceiverEnabled(true);
-    device->setEventReceiver(&UserInput);
+//    irrPointers.Camera->setPosition(irr::core::vector3df(0,50,-40));
+//    irrPointers.Camera->setTarget(irr::core::vector3df(0,0,0));
+//    irrPointers.Camera->setInputReceiverEnabled(true);
+    //device->setEventReceiver(&UserInput);
     Text1 = irrPointers.GUIEnv->addStaticText(L"", irr::core::recti(10,480,250,600), false, true);
     Text2 = irrPointers.GUIEnv->addStaticText(L"", irr::core::recti(600,500,800,600), false, true);
     Text3 = irrPointers.GUIEnv->addStaticText(L"", irr::core::recti(0,10,800,30), false, true);
