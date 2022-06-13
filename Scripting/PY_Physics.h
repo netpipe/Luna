@@ -538,8 +538,9 @@ PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){
    //OpenSteer::OpenSteerDemo::selectNextPlugIn();
    //OpenSteer::OpenSteerDemo::updateSimulationAndRedraw();
        }else {// or restart
-       OpenSteer::OpenSteerDemo::updateSimulationAndRedraw();
-    //OpenSteer::OpenSteerDemo::selectNextPlugIn();
+       //already implimented in pymain.h
+      // OpenSteer::OpenSteerDemo::updateSimulationAndRedraw(); //used this and it works
+    OpenSteer::OpenSteerDemo::selectNextPlugIn();
     //OpenSteer::runGraphics();
     }
     // were going to need more to this function maybe some internal calls for things like individual paths

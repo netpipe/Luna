@@ -14,13 +14,13 @@ if initloader :
     import time
     import os
     import physics
-    import xml
+    #import xml
     #scene.using ('../media/lib/random.py',"1")
-    import struct
+    #import struct
 
     #see atest.pys file for more imports i've found to be valid
-    from sys import platform
-    if platform == "linux" or platform == "linux2":
+    #from sys import platform
+   # if platform == "linux" or platform == "linux2":
         #import socket, time, ssl, threading
         #import ftplib
         #import httplib #not working
@@ -41,9 +41,9 @@ if initloader :
         #n = Notification("Luna Engine", "Test Message, Welcome!")
         #n.show()
 
-        scene.using ('../media/lib/playsound.py',"1")
-        def playsound2():
-            playsound('../media/robocrep.ogg')
+  #      scene.using ('../media/lib/playsound.py',"1")
+     #   def playsound2():
+        #    playsound('../media/robocrep.ogg')
 
 
         #playsound2()
@@ -84,7 +84,7 @@ if initloader :
     scene.decals(1,camera)
     Light = scene.Light(10,0,100,0,"111111")
     print("camera added")
-    physics.opensteer(0) #might be from updating irrlicht still need to look at it closer
+    #physics.opensteer(0) #might be from updating irrlicht still need to look at it closer
 
     colors=[]
   #  for i in range(3):
@@ -133,8 +133,8 @@ if initloader :
     #irr.tiled("tiled/levels.tmx",0)
     #irr.tiled("tiled/3dbasic.tmx",0)
     #irr.tiled("tiled/animation.tmx",0)
-    irr.tiled("../media/tiled/animation.tmx",0)
-irr.tiled("",2) #animated = 2 regular 1 and init =0
+  #  irr.tiled("../media/tiled/animation.tmx",0)
+#irr.tiled("",2) #animated = 2 regular 1 and init =0
 
 #    irr.tiled("../media/tiled/3dbasic.tmx",0)
 #irr.tiled("",3)
