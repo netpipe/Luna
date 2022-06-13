@@ -12,6 +12,9 @@
     #define MINAV
     #define OPENSTEER
     #define SPARK
+    #ifdef linux
+        //#define OPENSTEER2
+    #endif
     //#define SOUND
 
     //#define PHYSICS
