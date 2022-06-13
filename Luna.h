@@ -17,7 +17,9 @@
 	#include <cAudio.h>
 #endif
 
+#ifdef FPS
 #include "entities/player.h"
+#endif
 //#include "Encryption/Blowfish.h"
 
 #ifdef IRRBULLET

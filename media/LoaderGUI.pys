@@ -50,8 +50,29 @@ if initloader :
         #playsound2()
         #seems to make quitting application harder
     #  elif platform == "darwin":
-    #  elif platform == "win32":
+    elif platform == "win323":
+        scene.using ('../media/lib/random.py',"1");
+        scene.using ('../media/lib/playsound.py',"1")
+       # import threading
+       # from threading import Thread
+       # import multiprocessing
+      #  from multiprocessing import Process
+        def stest():
+            playsound('test.mp3')
+       # P = Process(name="playsound",target=stest)
+       #P.start() # Inititialize Process
+      #  T = Thread(target=stest) # create thread
+      #  T.start() # Launch created thread
+        stest()
 
+    #clip = AudioClip(r'../media/test.mp3')
+
+    #clip.play()
+
+    # Let it play for up to 30 seconds, then stop it.
+    #import time
+   # time.sleep(min(5, clip.seconds()))
+   # clip.stop()
 
     def addImage(loc,width,height):
      return image.iadd(loc,0,0,width,height,0,0,width,height)

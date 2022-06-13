@@ -1,5 +1,5 @@
 #include "../../../../config.h"
-#ifdef OPENSTEER2
+#ifdef OPENSTEER23
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #include "cSoccerPlugIn.h"
 

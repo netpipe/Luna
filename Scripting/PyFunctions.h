@@ -63,9 +63,10 @@
         #include "../TerrainFactory/water/RealisticWater.h"
     #endif
 #endif
-
-#ifdef OPENSTEER
+#ifdef FPS
     //#include "../entities/player.h"
+#endif
+#ifdef OPENSTEER
     #include "../entities/OpenSteer/cOpenSteerDemo.h"
     #undef useIrrExtensions13
 #endif
