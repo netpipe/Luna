@@ -1,3 +1,5 @@
+#include "../../config.h"
+#ifdef SPEECH
 #include <stdio.h>
 #include <string.h>
 #include "reciter.h"
@@ -120,7 +122,7 @@ pos36554:
                 input[X] = 155;
                 return 1;
             }
-            
+
             if (mem64 != '.') break;
             X++;
             A = tab36376[inputtemp[X]] & 1;
@@ -135,7 +137,7 @@ pos36554:
             mem62 = 37541;
             goto pos36700;
         }
-        
+
         if(mem57 != 0) break;
         inputtemp[X] = ' ';
         X = ++mem56;
@@ -163,7 +165,7 @@ pos36700:
 	while((GetRuleByte(mem62, ++Y) & 127) != '=');
 	mem64 = Y;
 
-	
+
 	mem60 = X = mem61;
 	// compare the string within the bracket
 	Y = mem66 + 1;
@@ -207,9 +209,9 @@ pos36700:
                     }
                 }
                 break;
-                
+
             case '@':
-                if(!Code37055(mem59-1,4)) { 
+                if(!Code37055(mem59-1,4)) {
                     A = inputtemp[X];
                     if (A != 72) r = 1;
                     if ((A != 84) && (A != 67) && (A != 83)) r = 1;
@@ -246,7 +248,7 @@ pos36700:
             if (!match("ING")) goto pos36700;
             mem58 = X;
         }
-        
+
 pos37184:
         r = 0;
         do {
@@ -254,9 +256,9 @@ pos37184:
                 Y = mem65 + 1;
                 if(Y == mem64) {
                     mem61 = mem60;
-                    
-                    if (debug) PrintRule(mem62);
-                    
+
+                   /// if (debug) PrintRule(mem62);
+
                     while(1) {
                         mem57 = A = GetRuleByte(mem62, Y);
                         A = A & 127;
@@ -280,7 +282,7 @@ pos37184:
                 if (A == '@') {
                     if(Code37055(mem58+1, 4) == 0) {
                         A = inputtemp[X];
-                        if ((A != 82) && (A != 84) && 
+                        if ((A != 82) && (A != 84) &&
                             (A != 67) && (A != 83)) r = 1;
                     } else {
                         r = -2;
@@ -292,7 +294,7 @@ pos37184:
             }
 
             if (r == 1) goto pos36700;
-            if (r == -2) { 
+            if (r == -2) {
                 r = 0;
                 continue;
             }
@@ -301,3 +303,4 @@ pos37184:
     } while (A == '%');
 	return 0;
 }
+#endif

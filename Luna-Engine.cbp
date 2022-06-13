@@ -1109,12 +1109,37 @@
 		<Unit filename="Input/Model/blender/dna249.cpp" />
 		<Unit filename="Input/Model/blender/readblend.h" />
 		<Unit filename="Input/Model/irrTiled/irrTiled.h" />
-		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/SDL/SDL_fluidlite.h" />
 		<Unit filename="Input/SDL/SDLsound.h" />
+		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/inputManager.cpp" />
 		<Unit filename="Input/inputManager.h" />
 		<Unit filename="Input/openal_playback.h" />
+		<Unit filename="Input/speech/ReciterTabs.h" />
+		<Unit filename="Input/speech/RenderTabs.h" />
+		<Unit filename="Input/speech/SamTabs.h" />
+		<Unit filename="Input/speech/createtransitions.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/speech/debug.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/speech/debug.h" />
+		<Unit filename="Input/speech/processframes.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/speech/reciter.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/speech/reciter.h" />
+		<Unit filename="Input/speech/render.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/speech/render.h" />
+		<Unit filename="Input/speech/sam.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/speech/sam.h" />
 		<Unit filename="Input/sqlite/sqlite3.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -1436,8 +1461,6 @@
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshBuilder.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshQuery.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNode.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/Recast.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastAlloc.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastArea.cpp" />
@@ -1448,6 +1471,8 @@
 		<Unit filename="entities/AI/recast/Recast/Source/RecastMeshDetail.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRasterization.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRegion.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast_util.cpp" />
 		<Unit filename="entities/AI/recast_util.h" />
 		<Unit filename="entities/AI/recastmain.cpp" />

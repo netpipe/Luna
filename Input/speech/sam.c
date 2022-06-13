@@ -1,3 +1,5 @@
+#include "../../config.h"
+#ifdef SPEECH
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -75,7 +77,7 @@ void Init() {
 
 	bufferpos = 0;
 	// TODO, check for free the memory, 10 seconds of output should be more than enough
-	buffer = malloc(22050*10); 
+	buffer = malloc(22050*10);
 
 	for(i=0; i<256; i++) {
 		stress[i] = 0;
@@ -97,7 +99,7 @@ int SAMMain() {
 	phonemeindex[255] = 32; //to prevent buffer overflow
 
 	if (!Parser1()) return 0;
-	if (debug) PrintPhonemes(phonemeindex, phonemeLength, stress);
+	//if (debug) PrintPhonemes(phonemeindex, phonemeLength, stress);
 	Parser2();
 	CopyStress();
 	SetPhonemeLength();
@@ -111,7 +113,7 @@ int SAMMain() {
 	} while (++X != 0);
 	InsertBreath();
 
-	if (debug) PrintPhonemes(phonemeindex, phonemeLength, stress);
+//	if (debug) PrintPhonemes(phonemeindex, phonemeLength, stress);
 
 	PrepareOutput();
 	return 1;
@@ -179,7 +181,7 @@ void InsertBreath() {
 
 // Iterates through the phoneme buffer, copying the stress value from
 // the following phoneme under the following circumstance:
-       
+
 //     1. The current phoneme is voiced, excluding plosives and fricatives
 //     2. The following phoneme is voiced, excluding plosives and fricatives, and
 //     3. The following phoneme is stressed
@@ -220,7 +222,7 @@ void CopyStress() {
 void Insert(unsigned char position/*var57*/, unsigned char mem60, unsigned char mem59, unsigned char mem58)
 {
 	int i;
-	for(i=253; i >= position; i--) // ML : always keep last safe-guarding 255	
+	for(i=253; i >= position; i--) // ML : always keep last safe-guarding 255
 	{
 		phonemeindex[i+1]  = phonemeindex[i];
 		phonemeLength[i+1] = phonemeLength[i];
@@ -239,7 +241,7 @@ signed int full_match(unsigned char sign1, unsigned char sign2) {
         // GET FIRST CHARACTER AT POSITION Y IN signInputTable
         // --> should change name to PhonemeNameTable1
         unsigned char A = signInputTable1[Y];
-        
+
         if (A == sign1) {
             A = signInputTable2[Y];
             // NOT A SPECIAL AND MATCHES SECOND CHARACTER?
@@ -266,27 +268,27 @@ signed int wild_match(unsigned char sign1) {
 //
 //     DHAX KAET IHZ AH5GLIY. <0x9B>
 //
-// The byte 0x9B marks the end of the buffer. Some phonemes are 2 bytes 
-// long, such as "DH" and "AX". Others are 1 byte long, such as "T" and "Z". 
+// The byte 0x9B marks the end of the buffer. Some phonemes are 2 bytes
+// long, such as "DH" and "AX". Others are 1 byte long, such as "T" and "Z".
 // There are also stress markers, such as "5" and ".".
 //
 // The first character of the phonemes are stored in the table signInputTable1[].
 // The second character of the phonemes are stored in the table signInputTable2[].
 // The stress characters are arranged in low to high stress order in stressInputTable[].
-// 
+//
 // The following process is used to parse the input[] buffer:
-// 
+//
 // Repeat until the <0x9B> character is reached:
 //
 //        First, a search is made for a 2 character match for phonemes that do not
-//        end with the '*' (wildcard) character. On a match, the index of the phoneme 
+//        end with the '*' (wildcard) character. On a match, the index of the phoneme
 //        is added to phonemeIndex[] and the buffer position is advanced 2 bytes.
 //
 //        If this fails, a search is made for a 1 character match against all
-//        phoneme names ending with a '*' (wildcard). If this succeeds, the 
+//        phoneme names ending with a '*' (wildcard). If this succeeds, the
 //        phoneme is added to phonemeIndex[] and the buffer position is advanced
 //        1 byte.
-// 
+//
 //        If this fails, search for a 1 character match in the stressInputTable[].
 //        If this succeeds, the stress value is placed in the last stress[] table
 //        at the same index of the last added phoneme, and the buffer position is
@@ -335,7 +337,7 @@ int Parser1()
             // stress table backwards.
             match = 8; // End of stress table. FIXME: Don't hardcode.
             while( (sign1 != stressInputTable[match]) && (match>0) ) --match;
-            
+
             if (match == 0) return 0; // failure
 
             stress[position-1] = (unsigned char)match; // Set stress for prior phoneme
@@ -376,7 +378,7 @@ void Code41240() {
                 if (A != END) {
                     if ((flags[A] & 8) || (A == 36) || (A == 37)) {++pos; continue;} // '/H' '/X'
                 }
-                
+
             }
             Insert(pos+1, index+1, phonemeLengthTable[index+1], stress[pos]);
             Insert(pos+2, index+2, phonemeLengthTable[index+2], stress[pos]);
@@ -389,28 +391,28 @@ void Code41240() {
 
 void ChangeRule(unsigned char position, unsigned char mem60, const char * descr)
 {
-    if (debug) printf("RULE: %s\n",descr);
+//    if (debug) printf("RULE: %s\n",descr);
     phonemeindex[position] = 13; //rule;
     Insert(position+1, mem60, 0, stress[position]);
 }
 
 void drule(const char * str) {
-    if (debug) printf("RULE: %s\n",str);
+//    if (debug) printf("RULE: %s\n",str);
 }
 
 void drule_pre(const char *descr, unsigned char X) {
     drule(descr);
-    if (debug) {
-        printf("PRE\n");
-        printf("phoneme %d (%c%c) length %d\n", X, signInputTable1[phonemeindex[X]], signInputTable2[phonemeindex[X]], phonemeLength[X]);
-    }
+//    if (debug) {
+//        printf("PRE\n");
+//        printf("phoneme %d (%c%c) length %d\n", X, signInputTable1[phonemeindex[X]], signInputTable2[phonemeindex[X]], phonemeLength[X]);
+//    }
 }
 
 void drule_post(unsigned char X) {
-    if (debug) {
-        printf("POST\n");
-        printf("phoneme %d (%c%c) length %d\n", X, signInputTable1[phonemeindex[X]], signInputTable2[phonemeindex[X]], phonemeLength[X]);
-    }
+//    if (debug) {
+//        printf("POST\n");
+//        printf("phoneme %d (%c%c) length %d\n", X, signInputTable1[phonemeindex[X]], signInputTable2[phonemeindex[X]], phonemeLength[X]);
+//    }
 }
 
 
@@ -462,7 +464,7 @@ void rule_g(unsigned char pos) {
     // Example: GO
 
     unsigned char index = phonemeindex[pos+1];
-            
+
     // If dipthong ending with YX, move continue processing next phoneme
     if ((index != 255) && ((flags[index] & FLAG_DIP_YX) == 0)) {
         // replace G with GX and continue processing next phoneme
@@ -485,12 +487,12 @@ void rule_dipthong(unsigned char p, unsigned short pf, unsigned char pos) {
 
     // If ends with IY, use YX, else use WX
     unsigned char A = (pf & FLAG_DIP_YX) ? 21 : 20; // 'WX' = 20 'YX' = 21
-                
+
     // Insert at WX or YX following, copying the stress
     if (A==20) drule("insert WX following dipthong NOT ending in IY sound");
     else if (A==21) drule("insert YX following dipthong ending in IY sound");
     Insert(pos+1, A, 0, stress[pos]);
-                
+
     if (p == 53) rule_alveolar_uw(pos); // Example: NEW, DEW, SUE, ZOO, THOO, TOO
     else if (p == 42) rule_ch(pos);     // Example: CHEW
     else if (p == 44) rule_j(pos);      // Example: JAY
@@ -500,13 +502,13 @@ void Parser2() {
 	unsigned char pos = 0; //mem66;
     unsigned char p;
 
-	if (debug) printf("Parser2\n");
+//	if (debug) printf("Parser2\n");
 
 	while((p = phonemeindex[pos]) != END) {
 		unsigned short pf;
 		unsigned char prior;
 
-		if (debug) printf("%d: %c%c\n", pos, signInputTable1[p], signInputTable2[p]);
+//		if (debug) printf("%d: %c%c\n", pos, signInputTable1[p], signInputTable2[p]);
 
 		if (p == 0) { // Is phoneme pause?
 			++pos;
@@ -563,8 +565,8 @@ void Parser2() {
                 //      S K -> S G
                 //      S KX -> S GX
                 // Examples: SPY, STY, SKY, SCOWL
-                
-                if (debug) printf("RULE: S* %c%c -> S* %c%c\n", signInputTable1[p], signInputTable2[p],signInputTable1[p-12], signInputTable2[p-12]);
+
+//                if (debug) printf("RULE: S* %c%c -> S* %c%c\n", signInputTable1[p], signInputTable2[p],signInputTable1[p-12], signInputTable2[p-12]);
                 phonemeindex[pos] = p-12;
             } else if (!(pf & FLAG_PLOSIVE)) {
                 p = phonemeindex[pos];
@@ -572,7 +574,7 @@ void Parser2() {
                 else if (p == 42) rule_ch(pos); // Example: CHEW
                 else if (p == 44) rule_j(pos);  // Example: JAY
             }
-            
+
             if (p == 69 || p == 57) { // 'T', 'D'
                 // RULE: Soften T following vowel
                 // NOTE: This rule fails for cases such as "ODD"
@@ -717,9 +719,9 @@ void AdjustLengths() {
 
             // FIXME: The debug code here breaks the rule.
             // prior phoneme a stop consonant>
-            if((flags[index] & FLAG_STOPCONS) != 0) 
+            if((flags[index] & FLAG_STOPCONS) != 0)
                 drule_pre("<LIQUID CONSONANT> <DIPTHONG> - decrease by 2",X);
-            
+
             phonemeLength[X] -= 2; // 20ms
             drule_post(X);
          }
@@ -727,3 +729,4 @@ void AdjustLengths() {
         ++loopIndex;
     }
 }
+#endif

@@ -1,6 +1,7 @@
 #ifndef SAMTABS_H
 #define SAMTABS_H
-
+#include "../../config.h"
+#ifdef SPEECH
 //tab40672
 unsigned char stressInputTable[] =
 {
@@ -38,7 +39,7 @@ unsigned char signInputTable2[] =
 	'N'
 };
 
-//loc_9F8C 
+//loc_9F8C
 enum {
     FLAG_PLOSIVE  = 0x0001,
     FLAG_STOPCONS = 0x0002, /* stop consonant */
@@ -74,7 +75,7 @@ unsigned short flags[]={
 
 
 //tab45616???
-unsigned char phonemeStressedLengthTable[] = 
+unsigned char phonemeStressedLengthTable[] =
 {
 	0x00 , 0x12 , 0x12 , 0x12 , 8 ,0xB , 9 ,0xB ,
 	0xE ,0xF ,0xB , 0x10 ,0xC , 6 , 6 ,0xE ,
@@ -85,11 +86,11 @@ unsigned char phonemeStressedLengthTable[] =
 	0xE ,0xF ,0xF ,0xF ,0xE ,0xE , 8 , 2 ,
 	2 , 7 , 2 , 1 , 7 , 2 , 2 , 7 ,
 	2 , 2 , 8 , 2 , 2 , 6 , 2 , 2 ,
-	7 , 2 , 4 , 7 , 1 , 4 , 5 , 5     
+	7 , 2 , 4 , 7 , 1 , 4 , 5 , 5
 };
 
 //tab45536???
-unsigned char phonemeLengthTable[] = 
+unsigned char phonemeLengthTable[] =
 {
 	0 , 0x12 , 0x12 , 0x12 , 8 , 8 , 8 , 8 ,
 	8 ,0xB , 6 ,0xC ,0xA , 5 , 5 ,0xB ,
@@ -212,4 +213,5 @@ SPECIAL
 
 */
 
+#endif
 #endif

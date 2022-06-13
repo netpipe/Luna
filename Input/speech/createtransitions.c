@@ -1,3 +1,5 @@
+#include "../../config.h"
+#ifdef SPEECH
 #include <stdio.h>
 #include <stdlib.h>
 #include "render.h"
@@ -6,11 +8,11 @@
 //
 // Linear transitions are now created to smoothly connect each
 // phoeneme. This transition is spread between the ending frames
-// of the old phoneme (outBlendLength), and the beginning frames 
+// of the old phoneme (outBlendLength), and the beginning frames
 // of the new phoneme (inBlendLength).
 //
-// To determine how many frames to use, the two phonemes are 
-// compared using the blendRank[] table. The phoneme with the 
+// To determine how many frames to use, the two phonemes are
+// compared using the blendRank[] table. The phoneme with the
 // smaller score is used. In case of a tie, a blend of each is used:
 //
 //      if blendRank[phoneme1] ==  blendRank[phomneme2]
@@ -74,7 +76,7 @@ unsigned char Read(unsigned char p, unsigned char Y)
 	case 172: return amplitude1[Y];
 	case 173: return amplitude2[Y];
 	case 174: return amplitude3[Y];
-	default: 
+	default:
 		printf("Error reading from tables");
 		return 0;
 	}
@@ -107,7 +109,7 @@ void interpolate(unsigned char width, unsigned char table, unsigned char frame, 
 
     unsigned char error = 0;
     unsigned char pos   = width;
-    unsigned char val   = Read(table, frame) + div; 
+    unsigned char val   = Read(table, frame) + div;
 
     while(--pos) {
         error += remainder;
@@ -122,10 +124,10 @@ void interpolate(unsigned char width, unsigned char table, unsigned char frame, 
 }
 
 void interpolate_pitch(unsigned char pos, unsigned char mem49, unsigned char phase3) {
-    // unlike the other values, the pitches[] interpolates from 
-    // the middle of the current phoneme to the middle of the 
+    // unlike the other values, the pitches[] interpolates from
+    // the middle of the current phoneme to the middle of the
     // next phoneme
-        
+
     // half the width of the current and next phoneme
     unsigned char cur_width  = phonemeLengthOutput[pos] / 2;
     unsigned char next_width = phonemeLengthOutput[pos+1] / 2;
@@ -138,7 +140,7 @@ void interpolate_pitch(unsigned char pos, unsigned char mem49, unsigned char pha
 
 unsigned char CreateTransitions()
 {
-	unsigned char mem49 = 0; 
+	unsigned char mem49 = 0;
 	unsigned char pos = 0;
 	while(1) {
 		unsigned char next_rank;
@@ -157,7 +159,7 @@ unsigned char CreateTransitions()
         // get the ranking of each phoneme
 		next_rank = blendRank[next_phoneme];
 		rank      = blendRank[phoneme];
-		
+
 		// compare the rank - lower rank value is stronger
 		if (rank == next_rank) {
             // same rank, so use out blend lengths from each phoneme
@@ -174,12 +176,12 @@ unsigned char CreateTransitions()
 			phase2 = inBlendLength[phoneme];
 		}
 
-		mem49 += phonemeLengthOutput[pos]; 
+		mem49 += phonemeLengthOutput[pos];
 
 		speedcounter = mem49 + phase2;
 		phase3       = mem49 - phase1;
 		transition   = phase1 + phase2; // total transition?
-		
+
 		if (((transition - 2) & 128) == 0) {
             unsigned char table = 169;
             interpolate_pitch(pos, mem49, phase3);
@@ -192,15 +194,16 @@ unsigned char CreateTransitions()
                 // 172  amplitude1
                 // 173  amplitude2
                 // 174  amplitude3
-                
+
                 char value = Read(table, speedcounter) - Read(table, phase3);
                 interpolate(transition, table, phase3, value);
                 table++;
             }
         }
 		++pos;
-	} 
+	}
 
     // add the length of this phoneme
     return mem49 + phonemeLengthOutput[pos];
 }
+#endif

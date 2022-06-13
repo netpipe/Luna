@@ -15,6 +15,7 @@
             #define OPENSTEER2 // the rest of the extra plugins if its compiling good.
         #endif
     #define SPARK
+    #define SPEECH
 
   //  #ifdef linux
   //  #endif

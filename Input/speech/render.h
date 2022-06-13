@@ -1,6 +1,7 @@
 #ifndef RENDER_H
 #define RENDER_H
-
+#include "../../config.h"
+#ifdef SPEECH
 void Render();
 void SetMouthThroat(unsigned char mouth, unsigned char throat);
 
@@ -14,4 +15,5 @@ unsigned char CreateTransitions();
 #define RISING_INFLECTION (1)
 #define FALLING_INFLECTION (255)
 
+#endif
 #endif
