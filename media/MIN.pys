@@ -14,8 +14,16 @@ if(init):
 #################################
 # TESTING INIT CODE
 #################################
-    iaxe = image.iadd("../media/axe.jpg",10,10,500,500,10,10,800,800)
-    i=0
+
+
+
+#################################
+    init = 0 #initialization finish - needs whitespace infront
+#################################
+
+#MAIN LOOP gets ran everytime
+
+#################################
     
 if input.getKey('KEY_ESCAPE') :
  irr.exit()
