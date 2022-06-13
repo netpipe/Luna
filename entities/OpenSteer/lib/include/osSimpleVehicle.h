@@ -42,7 +42,7 @@
 namespace OpenSteer{
   //! SimpleVehicle_1 adds concrete LocalSpace methods to AbstractVehicle
   typedef LocalSpaceMixin<AbstractVehicle> SimpleVehicle_1;
-#ifndef OPENSTEER2
+#ifndef OPENSTEER3
   class SimpleVehicle : public SimpleVehicle_1{
 #else
   //! SimpleVehicle_2 adds concrete annotation methods to SimpleVehicle_1
