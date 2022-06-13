@@ -1,3 +1,15 @@
+#################################
+##  _
+## | |
+## | |    _   _ _ __   __ _
+## | |   | | | | '_ \ / _` |
+## | |___| |_| | | | | (_| |
+## |______\__,_|_| |_|\__,_|
+##    Luna Game Engine
+#################################
+## Title - Horse Racing
+#not working yet
+
 if init:
     import irr
     import scene
@@ -6,6 +18,7 @@ if init:
     import time
     init=False
     scene.using ('../media/random.py',"1");
+    myr=myrandom()
     myr.time_reseed();
 
     location="../media/HorseRacing/"
@@ -320,12 +333,12 @@ if mbtn:
                     if mouseCoord[1] > bt["y"] and mouseCoord[1] < bt["y"]+32:
                         Buttons[10]["name"].append(bt["letter"])
 
-image.idraw(mapIm)
+#image.idraw(mapIm)
 irr.delay(50000)
 #irr.tiled("",2)
-count+=1
-if count>10:
-    count=0
+#count+=1
+#if count>10:
+#    count=0
 
 
 
