@@ -533,7 +533,7 @@ PyObject * Python::PyIrr_OpenSteer(PyObject * self,PyObject * args){
     OpenSteer::initializeGraphics(device);
     // initialize OpenSteerDemo application
 	OpenSteer::OpenSteerDemo::initialize();
-    OpenSteer::OpenSteerDemo::selectNextPlugIn();//for some reason it likes to be cycled a few times first
+   // OpenSteer::OpenSteerDemo::selectNextPlugIn();//for some reason it likes to be cycled a few times first
    OpenSteer::OpenSteerDemo::selectNextPlugIn();
    //OpenSteer::OpenSteerDemo::selectNextPlugIn();
    //OpenSteer::OpenSteerDemo::updateSimulationAndRedraw();

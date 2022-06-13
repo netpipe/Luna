@@ -11,7 +11,7 @@
 
 
 
-#include <IrrOpenSteer.h>
+#include "IrrOpenSteer.h"
 
 struct datIrrPointers{
   irr::IrrlichtDevice* Device;

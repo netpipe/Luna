@@ -43,12 +43,12 @@ namespace OpenSteer{
   //! SimpleVehicle_1 adds concrete LocalSpace methods to AbstractVehicle
   typedef LocalSpaceMixin<AbstractVehicle> SimpleVehicle_1;
   //! SimpleVehicle_2 adds concrete annotation methods to SimpleVehicle_1
-  typedef AnnotationMixin<SimpleVehicle_1> SimpleVehicle_2;
+ // typedef AnnotationMixin<SimpleVehicle_1> SimpleVehicle_2;
   //! SimpleVehicle_3 adds concrete steering methods to SimpleVehicle_2
-  typedef SteerLibraryMixin<SimpleVehicle_2> SimpleVehicle_3;
+//  typedef SteerLibraryMixin<SimpleVehicle_2> SimpleVehicle_3;
 
   // SimpleVehicle adds concrete vehicle methods to SimpleVehicle_3
-  class SimpleVehicle : public SimpleVehicle_3{
+  class SimpleVehicle : public SimpleVehicle_1{
     private:
       float _mass;       // mass (defaults to unity so acceleration=force)
       float _radius;     // size of bounding sphere, for obstacle avoidance, etc.
@@ -80,7 +80,7 @@ namespace OpenSteer{
 
         // reset SteerLibraryMixin state
         // (XXX this seems really fragile, needs to be redesigned XXX)
-        SimpleVehicle_3::reset ();
+//        SimpleVehicle_3::reset ();
 
         mass (1);          // mass (defaults to 1 so acceleration=force)
         speed (0);         // speed along Forward direction.
@@ -186,12 +186,12 @@ namespace OpenSteer{
 
       // Annotation
       //! draw lines from vehicle's position showing its velocity and acceleration
-      void annotationVelocityAcceleration(video::IVideoDriver* driver, float maxLengthA, float maxLengthV);
-      void annotationVelocityAcceleration(video::IVideoDriver* driver, float maxLengthA, float maxLengthV, Vec3 pos);
+      void annotationVelocityAcceleration(irr::video::IVideoDriver* driver, float maxLengthA, float maxLengthV);
+      void annotationVelocityAcceleration(irr::video::IVideoDriver* driver, float maxLengthA, float maxLengthV, Vec3 pos);
       /*dpc*/ void annotationVelocityAcceleration (float maxLengthA, float maxLengthV);
 
       //! draw lines from vehicle's position showing its velocity and acceleration
-      void annotationVelocityAcceleration(video::IVideoDriver* driver, float maxLength){
+      void annotationVelocityAcceleration(irr::video::IVideoDriver* driver, float maxLength){
         annotationVelocityAcceleration(driver, maxLength, maxLength);
       }
       /*dpc*/ void annotationVelocityAcceleration (float maxLength){
@@ -199,7 +199,7 @@ namespace OpenSteer{
               }
 
       //! draw lines from vehicle's position showing its velocity and acceleration
-      void annotationVelocityAcceleration(video::IVideoDriver* driver){
+      void annotationVelocityAcceleration(irr::video::IVideoDriver* driver){
         annotationVelocityAcceleration(driver, 3, 3);
       }
       /*dpc*/ void annotationVelocityAcceleration (void){
