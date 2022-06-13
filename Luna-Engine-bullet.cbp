@@ -9,7 +9,7 @@
 		<Option compiler="gcc" />
 		<Option virtualFolders="media/" />
 		<Build>
-			<Target title="Linux Debug MINIMAL">
+			<Target title="Linux MINIMAL">
 				<Option platforms="Unix;Mac;" />
 				<Option output="./GAME/mLuna" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
@@ -35,9 +35,9 @@
 					<Add library="GL" />
 				</Linker>
 			</Target>
-			<Target title="Linux Debug 2D">
+			<Target title="Linux MINIMUM2">
 				<Option platforms="Unix;Mac;" />
-				<Option output="./GAME/mLuna2d" prefix_auto="0" extension_auto="0" />
+				<Option output="./GAME/mLuna" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".d2dmobjsb" />
 				<Option type="1" />
@@ -66,9 +66,9 @@
 					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>
-			<Target title="Linux Debug 2D Sound">
+			<Target title="Linux MINIMUM2 - cAudio">
 				<Option platforms="Unix;Mac;" />
-				<Option output="./GAME/mLuna2d" prefix_auto="0" extension_auto="0" />
+				<Option output="./GAME/mLunaA" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".d2dmobjsbs" />
 				<Option type="1" />
@@ -105,11 +105,39 @@
 					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>
-			<Target title="Linux Debug FULL">
+			<Target title="Linux FULL">
 				<Option platforms="Unix;Mac;" />
 				<Option output="./GAME/mLunaFULL" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".fobjsb" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Compiler>
+					<Add option="-fpermissive" />
+					<Add option="-DMINIMAL" />
+					<Add option="-DMINIMAL2" />
+					<Add option="-DEXTRACOMPILE" />
+					<Add option="-DWBULLET" />
+				</Compiler>
+				<Linker>
+					<Add library="Irrlicht" />
+					<Add library="dl" />
+					<Add library="pthread" />
+					<Add library="python2.7" />
+					<Add library="Xxf86vm" />
+					<Add library="X11" />
+					<Add library="GL" />
+					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
+				</Linker>
+			</Target>
+			<Target title="Linux FULL-cAudio">
+				<Option platforms="Unix;Mac;" />
+				<Option output="./GAME/LunaFULLA" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="GAME" />
+				<Option object_output=".fcobjsb" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option projectCompilerOptionsRelation="1" />
@@ -1003,88 +1031,95 @@
 		<Unit filename="Input/Controllers/iois/COIS.cpp" />
 		<Unit filename="Input/Controllers/iois/COIS.h" />
 		<Unit filename="Input/Controllers/iois/OIS/OISEffect.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
+			<Option target="Linux MINIMUM2" />
+			<Option target="Linux MINIMAL" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
-			<Option target="Linux Debug FULL" />
+			<Option target="Linux MINIMUM2 - cAudio" />
+			<Option target="Linux FULL-cAudio" />
+			<Option target="Linux FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISException.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
+			<Option target="Linux MINIMUM2" />
+			<Option target="Linux MINIMAL" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
-			<Option target="Linux Debug FULL" />
+			<Option target="Linux MINIMUM2 - cAudio" />
+			<Option target="Linux FULL-cAudio" />
+			<Option target="Linux FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISForceFeedback.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
+			<Option target="Linux MINIMUM2" />
+			<Option target="Linux MINIMAL" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
-			<Option target="Linux Debug FULL" />
+			<Option target="Linux MINIMUM2 - cAudio" />
+			<Option target="Linux FULL-cAudio" />
+			<Option target="Linux FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISInputManager.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
+			<Option target="Linux MINIMUM2" />
+			<Option target="Linux MINIMAL" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
-			<Option target="Linux Debug FULL" />
+			<Option target="Linux MINIMUM2 - cAudio" />
+			<Option target="Linux FULL-cAudio" />
+			<Option target="Linux FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISJoyStick.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
+			<Option target="Linux MINIMUM2" />
+			<Option target="Linux MINIMAL" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
-			<Option target="Linux Debug FULL" />
+			<Option target="Linux MINIMUM2 - cAudio" />
+			<Option target="Linux FULL-cAudio" />
+			<Option target="Linux FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISKeyboard.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
+			<Option target="Linux MINIMUM2" />
+			<Option target="Linux MINIMAL" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
-			<Option target="Linux Debug FULL" />
+			<Option target="Linux MINIMUM2 - cAudio" />
+			<Option target="Linux FULL-cAudio" />
+			<Option target="Linux FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISObject.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
+			<Option target="Linux MINIMUM2" />
+			<Option target="Linux MINIMAL" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
 			<Option target="emminimal" />
 			<Option target="empythontest" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
-			<Option target="Linux Debug FULL" />
+			<Option target="Linux MINIMUM2 - cAudio" />
+			<Option target="Linux FULL-cAudio" />
+			<Option target="Linux FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/includes/OIS.h" />
 		<Unit filename="Input/Controllers/iois/OIS/includes/OISConfig.h" />
