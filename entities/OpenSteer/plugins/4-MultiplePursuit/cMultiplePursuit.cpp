@@ -97,9 +97,9 @@ void MpWanderer::reset(){
 }
 // per frame simulation update
 void MpWanderer::update(const float currentTime, const float elapsedTime){
-///  const Vec3 wander2d = steerForWander(elapsedTime).setYtoZero();
- /// const Vec3 steer = forward() + (wander2d * 3);
- /// applySteeringForce(steer, elapsedTime);
+  const Vec3 wander2d = steerForWander(elapsedTime).setYtoZero();
+  const Vec3 steer = forward() + (wander2d * 3);
+  applySteeringForce(steer, elapsedTime);
   // update Irrlicht node
   setPosition(position().vector3df());
   irr::scene::ISceneNode::setRotation(forward().vector3df().getHorizontalAngle());
@@ -139,7 +139,7 @@ void MpPursuer::update(const float currentTime, const float elapsedTime){
   const float r = radius() + wanderer->radius();
   if(d < r) reset();
   const float maxTime = 20; // xxx hard-to-justify value
-///  applySteeringForce(steerForPursuit(*wanderer, maxTime), elapsedTime);
+  applySteeringForce(steerForPursuit(*wanderer, maxTime), elapsedTime);
   // update Irrlicht node
   setPosition(position().vector3df());
   irr::scene::ISceneNode::setRotation(forward().vector3df().getHorizontalAngle());

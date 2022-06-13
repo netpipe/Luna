@@ -1,5 +1,5 @@
 #include "../../../../config.h"
-#ifdef OPENSTEER3
+#ifdef OPENSTEER
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #ifndef C_TEMPLATE_PLUGIN_H
 #define C_TEMPLATE_PLUGIN_H

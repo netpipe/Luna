@@ -1,5 +1,5 @@
 #include "../../../../config.h"
-#ifdef OPENSTEER2
+#ifdef OPENSTEER
 #ifndef C_CtfBase_H
 #define C_CtfBase_H
 
