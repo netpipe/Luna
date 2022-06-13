@@ -1,5 +1,5 @@
 #include "../../../../config.h"
-#ifdef OPENSTEER
+#ifdef OPENSTEER2
 #ifndef C_Soccer_H
 #define C_Soccer_H
 
