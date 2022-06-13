@@ -42,15 +42,15 @@
 namespace OpenSteer{
   //! SimpleVehicle_1 adds concrete LocalSpace methods to AbstractVehicle
   typedef LocalSpaceMixin<AbstractVehicle> SimpleVehicle_1;
-#ifdef WIN32
+#ifndef OPENSTEER2
   class SimpleVehicle : public SimpleVehicle_1{
 #else
   //! SimpleVehicle_2 adds concrete annotation methods to SimpleVehicle_1
-//  typedef AnnotationMixin<SimpleVehicle_1> SimpleVehicle_2;
+  typedef AnnotationMixin<SimpleVehicle_1> SimpleVehicle_2;
   //! SimpleVehicle_3 adds concrete steering methods to SimpleVehicle_2
-//  typedef SteerLibraryMixin<SimpleVehicle_2> SimpleVehicle_3;
+  typedef SteerLibraryMixin<SimpleVehicle_2> SimpleVehicle_3;
  //   class SimpleVehicle : public SimpleVehicle_3{ //original causes demos not to work
-   class SimpleVehicle : public SimpleVehicle_1{
+   class SimpleVehicle : public SimpleVehicle_3{
 #endif
   // SimpleVehicle adds concrete vehicle methods to SimpleVehicle_3
   //class SimpleVehicle : public SimpleVehicle_1{

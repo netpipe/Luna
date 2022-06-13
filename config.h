@@ -14,6 +14,7 @@
     #define SPARK
     #ifdef linux
         //#define OPENSTEER2
+        #define OPENSTEER3
     #endif
     //#define SOUND
 
