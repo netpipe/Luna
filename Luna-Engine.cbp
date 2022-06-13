@@ -114,6 +114,7 @@
 					<Add option="-DEXTRACOMPILE" />
 					<Add directory="../Box2D/Box2D/Box2D" />
 					<Add directory="../Box2D/Box2D/" />
+					<Add directory="entities/OpenSteer/lib/include" />
 				</Compiler>
 				<Linker>
 					<Add library="Irrlicht" />
@@ -677,7 +678,7 @@
 			<Add directory="./entities/AI/recast/Detour/Include" />
 			<Add directory="./entities/AI/recast/DetourCrowd/Include" />
 			<Add directory="./entities/AI/recast/DetourTileCache/Include" />
-			<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/include" />
+			<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/include4" />
 			<Add directory="../LunaLibs/assimp-3.3.1/include" />
 			<Add directory="../LunaLibs/Scripting/sqplus-code/sqplus" />
 			<Add directory="../LunaLibs/Scripting/sqplus-code/include" />
@@ -711,7 +712,6 @@
 			<Add library="irrNetLite22" />
 			<Add library="enet" />
 			<Add library="python2.7" />
-			<Add library="IrrOpenSteer" />
 			<Add library="pthread" />
 			<Add library="theora" />
 			<Add library="theoraplayer" />
@@ -739,7 +739,7 @@
 			<Add directory="../LunaLibs/Compiled/Linux" />
 			<Add directory="../LunaLibs/libtheoraplayer/bin/Linux" />
 			<Add directory="../LunaLibs/net/irrNetLite22" />
-			<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/lib" />
+			<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/lib3" />
 			<Add directory="./entities/AI/recast/DebugUtils/Include/" />
 			<Add directory="../LunaLibs/assimp-3.3.1/lib" />
 			<Add directory="../LunaLibs/zlib-1.2.32" />
@@ -1495,6 +1495,18 @@
 		<Unit filename="entities/OpenSteer/plugins/6-Pedestrian/cPedestrian.h" />
 		<Unit filename="entities/OpenSteer/plugins/6-Pedestrian/cPedestrianPlugIn.cpp" />
 		<Unit filename="entities/OpenSteer/plugins/6-Pedestrian/cPedestrianPlugIn.h" />
+		<Unit filename="entities/OpenSteer/plugins/7-PedestriansWalkingAnEight/cPedestriansWalkingAnEight.cpp" />
+		<Unit filename="entities/OpenSteer/plugins/7-PedestriansWalkingAnEight/cPedestriansWalkingAnEight.h" />
+		<Unit filename="entities/OpenSteer/plugins/7-PedestriansWalkingAnEight/cPedestriansWalkingAnEightPlugIn.cpp" />
+		<Unit filename="entities/OpenSteer/plugins/7-PedestriansWalkingAnEight/cPedestriansWalkingAnEightPlugIn.h" />
+		<Unit filename="entities/OpenSteer/plugins/8-CaptureTheFlag/cCaptureTheFlag.cpp" />
+		<Unit filename="entities/OpenSteer/plugins/8-CaptureTheFlag/cCaptureTheFlag.h" />
+		<Unit filename="entities/OpenSteer/plugins/8-CaptureTheFlag/cCaptureTheFlagPlugIn.cpp" />
+		<Unit filename="entities/OpenSteer/plugins/8-CaptureTheFlag/cCaptureTheFlagPlugIn.h" />
+		<Unit filename="entities/OpenSteer/plugins/9-MapDrive/cMapDrive.cpp" />
+		<Unit filename="entities/OpenSteer/plugins/9-MapDrive/cMapDrive.h" />
+		<Unit filename="entities/OpenSteer/plugins/9-MapDrive/cMapDrivePlugIn.cpp" />
+		<Unit filename="entities/OpenSteer/plugins/9-MapDrive/cMapDrivePlugIn.h" />
 		<Unit filename="entities/chopper_control.cpp" />
 		<Unit filename="entities/chopper_control.h" />
 		<Unit filename="entities/player.cpp" />

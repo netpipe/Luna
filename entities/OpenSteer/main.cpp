@@ -1,7 +1,7 @@
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com) */
 
 #include "cOpenSteerDemo.h"
-//#undef useIrrExtensions13
+#undef useIrrExtensions13
 #include <irrlicht.h>
 
 
@@ -82,6 +82,7 @@ int main(int argc, char **argv){
   guienv = device->getGUIEnvironment();
 
 
+	smgr->addCameraSceneNode(0, vector3df(0,30,-40), vector3df(0,5,0));
 
   // initialize graphics first !!!
   OpenSteer::initializeGraphics(device);
@@ -89,7 +90,9 @@ int main(int argc, char **argv){
   OpenSteer::OpenSteerDemo::initialize();
 
   OpenSteer::OpenSteerDemo::selectNextPlugIn();
-//  OpenSteer::OpenSteerDemo::selectNextPlugIn();
+  OpenSteer::OpenSteerDemo::selectNextPlugIn();
+OpenSteer::runGraphics();
+
 #ifdef __EMSCRIPTEN__
 	emscripten_set_main_loop(main_loop,0,1);
 #else
