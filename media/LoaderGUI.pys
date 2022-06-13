@@ -147,7 +147,7 @@ irr.tiled("",2) #animated = 2 regular 1 and init =0
 #print(input.gamepad(0,"accy",1))
 #input.OIS("",1)
 
-physics.opensteer(1)
+#physics.opensteer(1) #supported in pymain.h so this is not needed
 input.mouse("mvisible",0,0)
 #image.iposition(irrlichtlogo, 44,66)
 
