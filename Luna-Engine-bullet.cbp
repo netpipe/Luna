@@ -118,7 +118,6 @@
 				<Compiler>
 					<Add option="-fpermissive" />
 					<Add option="-DMINIMAL" />
-					<Add option="-DMINIMAL2" />
 					<Add option="-DEXTRACOMPILE" />
 					<Add option="-DWBULLET" />
 				</Compiler>
@@ -146,7 +145,6 @@
 				<Compiler>
 					<Add option="-fpermissive" />
 					<Add option="-DMINIMAL" />
-					<Add option="-DMINIMAL2" />
 					<Add option="-DEXTRACOMPILE" />
 					<Add option="-DWBULLET" />
 				</Compiler>
