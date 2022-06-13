@@ -1,10 +1,23 @@
-###todo
+#################################
+##  _
+## | |
+## | |    _   _ _ __   __ _
+## | |   | | | | '_ \ / _` |
+## | |___| |_| | | | | (_| |
+## |______\__,_|_| |_|\__,_|
+##    Luna Game Engine
+#################################
+##Title: LoaderGUI
+##Description
+#
+#
+#
         #https://stackoverflow.com/questions/53246933/python-execute-playsound-in-separate-thread
         #https://realpython.com/intro-to-python-threading/
 #https://github.com/python/cpython/tree/3.10/Lib has list of imports available
 
 #in order to use all the windows features like sound , sockets and ssl you have to extract pydatawin.tar manually
-
+#################################
 
 if initloader :
     import irr

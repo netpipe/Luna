@@ -1,6 +1,16 @@
+#################################
+##  _
+## | |
+## | |    _   _ _ __   __ _
+## | |   | | | | '_ \ / _` |
+## | |___| |_| | | | | (_| |
+## |______\__,_|_| |_|\__,_|
+##    Luna Game Engine
+###############################
+## Title - Pirate Slot Machine Port
+#################################
 ########## GAME COMPLETE ISSUES LEFT(OR TODO ): NEEDS BLACK FONT(TEXT IS PLACED WHERE IT SHOULD BE BUT NOT VISIBLE)
 ##############################################
-
 ############initialization
 if(init):
  import irr

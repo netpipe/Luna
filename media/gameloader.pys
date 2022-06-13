@@ -1,6 +1,17 @@
-# GameLoader Script - GUI to choose what game to load
+#################################
+##  _
+## | |
+## | |    _   _ _ __   __ _
+## | |   | | | | '_ \ / _` |
+## | |___| |_| | | | | (_| |
+## |______\__,_|_| |_|\__,_|
+##    Luna Game Engine
+#################################
+##Title: GameLoader Script -
+##Description - GUI to choose what game to load
 #put your init vars into functions-list.pys
 
+#################################
 
 import irr
 import scene
