@@ -40,7 +40,6 @@
 		<Unit filename="cMeshTool.h" />
 		<Unit filename="cOpenSteerDemo.cpp" />
 		<Unit filename="cOpenSteerDemo.h" />
-		<Unit filename="lib/include/IrrOpenSteer.h" />
 		<Unit filename="lib/include/osAbstractVehicle.h" />
 		<Unit filename="lib/include/osAnnotation.h" />
 		<Unit filename="lib/include/osClock.h" />

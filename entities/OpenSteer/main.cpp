@@ -1,5 +1,7 @@
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com) */
 
+
+// not working at the moment, though the same code runs in the engine.
 #include "cOpenSteerDemo.h"
 #undef useIrrExtensions13
 #include <irrlicht.h>
@@ -10,15 +12,7 @@
 #endif
 using namespace irr;
 
-/*
-There are 5 sub namespaces in the Irrlicht Engine. Take a look at them, you can
-read a detailed description of them in the documentation by clicking on the top
-menu item 'Namespace List' or by using this link:
-http://irrlicht.sourceforge.net/docu/namespaces.html
-Like the irr namespace, we do not want these 5 sub namespaces now, to keep this
-example simple. Hence, we tell the compiler again that we do not want always to
-write their names.
-*/
+
 using namespace core;
 using namespace scene;
 using namespace video;
@@ -33,15 +27,17 @@ IGUIEnvironment *guienv;
 void main_loop(){
   while(device->run()){
       driver->beginScene(true, true, SColor(0, 0, 0, 0));
-      OpenSteer::runGraphics();
+
        // OpenSteer::OpenSteerDemo::updateSimulationAndRedraw();
       smgr->drawAll();
     //OpenSteer::runGraphics();
 
 
 	guienv->drawAll();
+
 	//manager->drawAll();
 	driver->endScene();
+		      OpenSteer::runGraphics();
   device->sleep(10);
   }
 };
@@ -91,8 +87,10 @@ int main(int argc, char **argv){
 
   OpenSteer::OpenSteerDemo::selectNextPlugIn();
   OpenSteer::OpenSteerDemo::selectNextPlugIn();
-OpenSteer::runGraphics();
-
+//OpenSteer::runGraphics();
+//  while(device->run()){
+//        OpenSteer::runGraphics();
+//}
 #ifdef __EMSCRIPTEN__
 	emscripten_set_main_loop(main_loop,0,1);
 #else
