@@ -12,11 +12,11 @@
     #define MINAV
     #define OPENSTEER
     #define SPARK
-    #ifdef linux
+  //  #ifdef linux
         #define OPENSTEER2 // the rest of the extra plugins if its compiling good.
         #define OPENSTEER3 //use this for whatever plugin your working on
         //osSimpleVehicle.h has an issue where the define needs to be toggled during build to work if you find error
-    #endif
+  //  #endif
     //#define SOUND
 
     //#define PHYSICS
@@ -48,7 +48,7 @@
 #ifdef MINIMAL
  // MINIMAL defines
     #define EVENTS
-    #define FPS // for some reason it needs PHYSICS enabled
+  //  #define FPS // for some reason it needs PHYSICS enabled
     #define CSG // constructive solid geometry
     #define SGRAPH2D // 2d plot graph
     #define WIND
