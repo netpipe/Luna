@@ -19,8 +19,8 @@ if initloader :
     #import struct
 
     #see atest.pys file for more imports i've found to be valid
-    #from sys import platform
-   # if platform == "linux" or platform == "linux2":
+    from sys import platform
+    if platform == "linux" or platform == "linux2":
         #import socket, time, ssl, threading
         #import ftplib
         #import httplib #not working
@@ -41,10 +41,11 @@ if initloader :
         #n = Notification("Luna Engine", "Test Message, Welcome!")
         #n.show()
 
-  #      scene.using ('../media/lib/playsound.py',"1")
+        scene.using ('../media/lib/playsound.py',"1")
      #   def playsound2():
         #    playsound('../media/robocrep.ogg')
-
+        #playsound('../media/robocrep.ogg')
+        playsound('../media/bling.ogg')
 
         #playsound2()
         #seems to make quitting application harder
@@ -208,9 +209,11 @@ myMin = 33
 
 #scene.drawtext(str(now), font, 30,0,128,128)
 if input.mouse("mlmouse",0,0): #mousebutton
-   xcoord=input.mouse("mgetx",0,0)
-   ycoord=input.mouse("mgety",0,0)
-   mbtn=1
+    xcoord=input.mouse("mgetx",0,0)
+    ycoord=input.mouse("mgety",0,0)
+    mbtn=1
+    if platform == "linux" or platform == "linux2":
+        playsound('../media/bling.ogg')
 else:
    mbtn=0
 
@@ -238,8 +241,5 @@ if input.getKey('KEY_ESCAPE') :
  irr.exit()
 
 #scene.postprocess() # postprocess every so many loops to stop flicker
-
-if input.getKey('KEY_ESCAPE') :
- irr.exit()
 
 #loaderResult=pysList[2]
