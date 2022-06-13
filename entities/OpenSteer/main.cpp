@@ -26,18 +26,20 @@ IGUIEnvironment *guienv;
 
 void main_loop(){
   while(device->run()){
+
       driver->beginScene(true, true, SColor(0, 0, 0, 0));
 
-       // OpenSteer::OpenSteerDemo::updateSimulationAndRedraw();
       smgr->drawAll();
     //OpenSteer::runGraphics();
 
+	          OpenSteer::OpenSteerDemo::updateSimulationAndRedraw();
 
 	guienv->drawAll();
 
 	//manager->drawAll();
 	driver->endScene();
-		      OpenSteer::runGraphics();
+
+		   //   OpenSteer::runGraphics();
   device->sleep(10);
   }
 };

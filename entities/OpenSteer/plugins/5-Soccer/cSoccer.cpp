@@ -1,5 +1,5 @@
 #include "../../../../config.h"
-#ifdef OPENSTEER23
+#ifdef OPENSTEER2
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 
 #include "cSoccer.h"
@@ -121,7 +121,7 @@ void Ball::setMaterial(irr::video::SMaterial newMaterial){
 
 //! The Player
 // constructor
-Player::Player(std::vector<Player*> others, std::vector<Player*> allplayers, Ball* ball, bool isTeamA, int id, irr::scene::ISceneManager* smgr, irr::scene::ISceneNode* parent)
+cosPlayer::cosPlayer(std::vector<cosPlayer*> others, std::vector<cosPlayer*> allplayers, Ball* ball, bool isTeamA, int id, irr::scene::ISceneManager* smgr, irr::scene::ISceneNode* parent)
 :ISceneNode(parent,smgr), m_others(others), m_AllPlayers(allplayers), m_Ball(ball), b_ImTeamA(isTeamA), m_MyID(id){
   reset();
   //! disable lighting
@@ -129,7 +129,7 @@ Player::Player(std::vector<Player*> others, std::vector<Player*> allplayers, Bal
 }
 
 // reset state
-void Player::reset(){
+void cosPlayer::reset(){
   SimpleVehicle::reset(); // reset the vehicle
   speed(0.0f);         // speed along Forward direction.
   maxForce(3000.7f);      // steering force is clipped to this magnitude
@@ -150,7 +150,7 @@ void Player::reset(){
   setScale(irr::core::vector3df(1.0, 0.5, 1.0));
 }
 // per frame simulation update
-void Player::update(const float currentTime, const float elapsedTime){
+void cosPlayer::update(const float currentTime, const float elapsedTime){
   // if I hit the ball, kick it.
   const float distToBall = Vec3::distance(position(), m_Ball->position());
   const float sumOfRadii = radius() + m_Ball->radius();
@@ -190,11 +190,11 @@ void Player::update(const float currentTime, const float elapsedTime){
 //  recordTrailVertex(currentTime, position());
 }
 // draw this character/vehicle into the scene
-void Player::draw(){
+void cosPlayer::draw(){
   // Irrlicht does all the work ;)
 }
 
-void Player::clearTrailHistory(){
+void cosPlayer::clearTrailHistory(){
   // we use our own trail mesh
   Trail.faceIndices.clear();
   Trail.faceVertices.clear();
@@ -207,7 +207,7 @@ void Player::clearTrailHistory(){
   Trail.lineVertices.push_back(vert);
 
 }
-void Player::recordTrailVertex(const float currentTime, const Vec3& pos){
+void cosPlayer::recordTrailVertex(const float currentTime, const Vec3& pos){
   // we use our own trail mesh
   Trail.lineIndices.push_back(Trail.lineVertices.size() - 1);
   Trail.lineIndices.push_back(Trail.lineVertices.size());
@@ -218,27 +218,27 @@ void Player::recordTrailVertex(const float currentTime, const Vec3& pos){
 }
 
 // SceneNode
-void Player::OnRegisterSceneNode(){
+void cosPlayer::OnRegisterSceneNode(){
   if(IsVisible) irrPointers.SMgr->registerNodeForRendering(this);
   ISceneNode::OnRegisterSceneNode();
 }
-void Player::render(){
+void cosPlayer::render(){
   irrPointers.Driver->setMaterial(Material);
   irrPointers.Driver->setTransform(irr::video::ETS_WORLD, irr::scene::ISceneNode::AbsoluteTransformation);
   Mesh.draw(irrPointers.Driver);
   irrPointers.Driver->setTransform(irr::video::ETS_WORLD, irr::core::matrix4());
   Trail.draw(irrPointers.Driver);
 }
-const irr::core::aabbox3d<irr::f32>& Player::getBoundingBox() const{
+const irr::core::aabbox3d<irr::f32>& cosPlayer::getBoundingBox() const{
   return Box;
 }
-irr::u32 Player::getMaterialCount(){
+irr::u32 cosPlayer::getMaterialCount(){
   return 1;
 }
-irr::video::SMaterial& Player::getMaterial(irr::u32 i){
+irr::video::SMaterial& cosPlayer::getMaterial(irr::u32 i){
   return Material;
 }
-void Player::setMaterial(irr::video::SMaterial newMaterial){
+void cosPlayer::setMaterial(irr::video::SMaterial newMaterial){
   Material = newMaterial;
 }
 

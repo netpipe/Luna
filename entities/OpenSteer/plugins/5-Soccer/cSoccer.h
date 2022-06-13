@@ -1,5 +1,5 @@
 #include "../../../../config.h"
-#ifdef OPENSTEER23
+#ifdef OPENSTEER2
 #ifndef C_Soccer_H
 #define C_Soccer_H
 
@@ -64,14 +64,14 @@ class Ball : public SimpleVehicle, public irr::scene::ISceneNode{
 
 };
 
-class Player : public SimpleVehicle, public irr::scene::ISceneNode{
+class cosPlayer : public SimpleVehicle, public irr::scene::ISceneNode{
   private:
     datMesh Trail;
     irr::core::aabbox3df Box;
     irr::video::SMaterial Material;
 
-    const std::vector<Player*>	m_others;
-    const std::vector<Player*>	m_AllPlayers;
+    const std::vector<cosPlayer*>	m_others;
+    const std::vector<cosPlayer*>	m_AllPlayers;
     Ball*	m_Ball;
     bool	b_ImTeamA;
     int		m_MyID;
@@ -80,8 +80,8 @@ class Player : public SimpleVehicle, public irr::scene::ISceneNode{
   public:
     datMesh Mesh;
     // constructor
-    Player(std::vector<Player*> others,
-           std::vector<Player*> allplayers,
+    cosPlayer(std::vector<cosPlayer*> others,
+           std::vector<cosPlayer*> allplayers,
            Ball* ball,
            bool isTeamA,
            int id,

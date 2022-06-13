@@ -24,7 +24,6 @@ if(init):
      #import dbus
 
      #import argparse
-     #import itertools
      #import sqlite3
      #import xml
 
@@ -144,30 +143,6 @@ if(init):
        del deck[i]
        hand1.append(image.iadd(card1,i*10,i*10,i*10+55,i*10+84,0,0,55,84))
 
-    for i in range(5): #use range to place cards on screen
-      print("You got:")
-      if deck[i][1]=="Club":
-       print(deck[i][0], "of", deck[i][1])
-       #card1="\"" + str(deck[i][0]) + "CLUBS.jpg"
-       card1="./media/" + str(deck[i][0]) + "CLUBS.png"
-       del deck[i]
-       hand2.append(image.iadd(card1,(i*10)+100,i*10,(i*10)+100+55,i*10+84,0,0,55,84))
-      if deck[i][1]=="Spade":
-       print(deck[i][0], "of", deck[i][1])
-       card1="./media/" + str(deck[i][0]) + "SPADES.png"
-       del deck[i]
-       hand2.append(image.iadd(card1,(i*10)+100,i*10,(i*10)+100+55,i*10+84,0,0,55,84))
-      if deck[i][1]=="Diamond":
-       print(deck[i][0], "of", deck[i][1])
-       card1="./media/" + str(deck[i][0]) + "DIAMONDS.png"
-       del deck[i]
-       hand2.append(image.iadd(card1,(i*10)+100,i*10,(i*10)+100+55,i*10+84,0,0,55,84))
-      if deck[i][1]=="Heart":
-       print(deck[i][0], "of", deck[i][1])
-       card1="./media/" + str(deck[i][0]) + "HEARTS.png"
-       del deck[i]
-       hand2.append(image.iadd(card1,(i*10)+100,i*10,(i*10)+100+55,i*10+84,0,0,55,84))
-
     init=0
 
 #image.idraw(hand1[0])
@@ -189,6 +164,9 @@ image.idraw(hand1[1])
 #print tex_id #print cube_id #texture cube with video todo
 #image.set_texture(cube_id,tex_id)
 #scene.setPosition(cube_id,50,355,350)
+
+if input.getKey('KEY_ESCAPE') :
+ irr.exit()
 
 irr.delay(200000)
 

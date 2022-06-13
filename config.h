@@ -11,12 +11,14 @@
     #define RECAST
     #define MINAV
     #define OPENSTEER
+        #ifdef OPENSTEER
+            #define OPENSTEER2 // the rest of the extra plugins if its compiling good.
+        #endif
     #define SPARK
+
   //  #ifdef linux
-        #define OPENSTEER2 // the rest of the extra plugins if its compiling good.
-        #define OPENSTEER3 //use this for whatever plugin your working on
-        //osSimpleVehicle.h has an issue where the define needs to be toggled during build to work if you find error
   //  #endif
+
     //#define SOUND
 
     //#define PHYSICS

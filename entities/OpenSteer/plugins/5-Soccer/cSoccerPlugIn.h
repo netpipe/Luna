@@ -1,5 +1,5 @@
 #include "../../../../config.h"
-#ifdef OPENSTEER23
+#ifdef OPENSTEER2
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #ifndef C_MicTestPlugIn_H
 #define C_MicTestPlugIn_H
@@ -22,9 +22,9 @@ class MicTestPlugIn : public PlugIn{
     const AVGroup& allVehicles () {return (const AVGroup&) TeamA;}
     unsigned int	m_PlayerCountA;
     unsigned int	m_PlayerCountB;
-    std::vector<Player*> TeamA;
-    std::vector<Player*> TeamB;
-    std::vector<Player*> m_AllPlayers;
+    std::vector<cosPlayer*> TeamA;
+    std::vector<cosPlayer*> TeamB;
+    std::vector<cosPlayer*> m_AllPlayers;
     Ball	  *m_Ball;
     AABBox	*m_bbox;
     AABBox	*m_TeamAGoal;

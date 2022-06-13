@@ -1,6 +1,6 @@
 #include "../../../../config.h"
 #ifdef OPENSTEER3
-/*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
+/*! Irrlicht implementation by A.Buschhï¿½ter (http://abusoft.g0dsoft.com)*/
 #include "cBoids.h"
 
 //! extern Irrlicht stuff

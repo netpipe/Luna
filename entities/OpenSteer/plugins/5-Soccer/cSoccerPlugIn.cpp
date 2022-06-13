@@ -1,5 +1,5 @@
 #include "../../../../config.h"
-#ifdef OPENSTEER23
+#ifdef OPENSTEER2
 /*! Irrlicht implementation by A.Buschhüter (http://abusoft.g0dsoft.com)*/
 #include "cSoccerPlugIn.h"
 
@@ -49,7 +49,7 @@ void MicTestPlugIn::open(){
   // Build team A
   m_PlayerCountA = 8;
   for(unsigned int i=0; i < m_PlayerCountA ; i++){
-    Player* pMicTest = new Player(TeamA, m_AllPlayers, m_Ball, true, i, SMgr, SRoot);
+    cosPlayer* pMicTest = new cosPlayer(TeamA, m_AllPlayers, m_Ball, true, i, SMgr, SRoot);
     pMicTest->Mesh.setColor(irr::video::SColor(255, 0,200,0));
     TeamA.push_back(pMicTest);
     m_AllPlayers.push_back(pMicTest);
@@ -57,7 +57,7 @@ void MicTestPlugIn::open(){
   // Build Team B
   m_PlayerCountB = 8;
   for(unsigned int i=0; i < m_PlayerCountB ; i++){
-    Player *pMicTest = new Player(TeamB, m_AllPlayers, m_Ball, false, i, SMgr, SRoot);
+    cosPlayer *pMicTest = new cosPlayer(TeamB, m_AllPlayers, m_Ball, false, i, SMgr, SRoot);
     pMicTest->Mesh.setColor(irr::video::SColor(255, 0,0,200));
     TeamB.push_back(pMicTest);
     m_AllPlayers.push_back(pMicTest);
