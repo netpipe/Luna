@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Irrlicht Pong" />
+		<Option pch_mode="0" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="emscripten">
+				<Option output="./Pong.html" prefix_auto="0" extension_auto="0" />
+				<Option type="1" />
+				<Option compiler="emscripten" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Compiler>
+					<Add option="-D__EMSCRIPTEN__" />
+					<Add option="-DUSESDL" />
+					<Add directory="../../../media/freetype2.8/include" />
+					<Add directory="../../../media/freetype2.8/build/include/" />
+					<Add directory="../../../SDL/SDL_sound/src" />
+					<Add directory="../../../SDL/build/SDL2/include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s ALLOW_MEMORY_GROWTH=1" />
+					<Add option="-s ASYNCIFY=1" />
+					<Add library="SDL" />
+					<Add library="SDL_sound" />
+					<Add library="m" />
+					<Add library="openal" />
+					<Add directory="../../../SDL/SDL_sound/src" />
+					<Add directory="../../../SDL/build/SDL2/build/.libs" />
+				</Linker>
+			</Target>
+			<Target title="linux64">
+				<Option output="./Pong" prefix_auto="0" extension_auto="0" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Compiler>
+					<Add option="`sdl-config --libs`" />
+					<Add option="-DUSESDL" />
+				</Compiler>
+				<Linker>
+					<Add option="`sdl-config --cflags`" />
+					<Add library="SDL" />
+					<Add library="SDL_sound" />
+					<Add library="m" />
+				</Linker>
+			</Target>
+		</Build>
+		<VirtualTargets>
+			<Add alias="All" targets="emscripten;" />
+		</VirtualTargets>
+		<Compiler>
+			<Add option="-DUSESDL" />
+		</Compiler>
+		<Linker>
+			<Add library="SDL" />
+		</Linker>
+		<Unit filename="ReciterTabs.h" />
+		<Unit filename="RenderTabs.h" />
+		<Unit filename="SamTabs.h" />
+		<Unit filename="createtransitions.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="debug.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="debug.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="processframes.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="reciter.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="reciter.h" />
+		<Unit filename="render.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="render.h" />
+		<Unit filename="sam.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sam.h" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,53 @@
+# depslib dependency file v1.0
+1537692314 source:/home/netpipe/Dev/Luna/Input/speech3/debug.c
+	<stdio.h>
+
+1537692314 source:/home/netpipe/Dev/Luna/Input/speech3/reciter.c
+	<stdio.h>
+	<string.h>
+	"reciter.h"
+	"ReciterTabs.h"
+	"debug.h"
+
+1537692314 /home/netpipe/Dev/Luna/Input/speech3/reciter.h
+
+1537692314 /home/netpipe/Dev/Luna/Input/speech3/ReciterTabs.h
+
+1537692314 /home/netpipe/Dev/Luna/Input/speech3/debug.h
+
+1537692314 source:/home/netpipe/Dev/Luna/Input/speech3/render.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"render.h"
+	"RenderTabs.h"
+	"debug.h"
+
+1537692314 /home/netpipe/Dev/Luna/Input/speech3/render.h
+
+1537692314 /home/netpipe/Dev/Luna/Input/speech3/RenderTabs.h
+
+1537692314 source:/home/netpipe/Dev/Luna/Input/speech3/sam.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"debug.h"
+	"sam.h"
+	"render.h"
+	"SamTabs.h"
+
+1537692314 /home/netpipe/Dev/Luna/Input/speech3/sam.h
+
+1537692314 /home/netpipe/Dev/Luna/Input/speech3/SamTabs.h
+
+1655147102 source:/home/netpipe/Dev/Luna/Input/speech3/main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"reciter.h"
+	"sam.h"
+	"debug.h"
+	<SDL/SDL.h>
+	<SDL/SDL_audio.h>
+
