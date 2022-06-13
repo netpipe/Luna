@@ -94,6 +94,7 @@ if(init):
 
     irr.files("../media/cards.zip")
 
+    myr=myrandom()
     #import shuffle
     myr.time_reseed();
     print randint(1,8);
