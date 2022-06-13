@@ -332,8 +332,8 @@ Vec3 MapDriver::steerToAvoidObstaclesOnMap(const float minTimeToCollision, const
       const float q = twoPi * fracLimit;
       const Vec3 fooz = position () - center;
       const Vec3 booz = fooz.rotateAboutGlobalY (sign * q);
-      annotationLine (center, center + fooz, gRed);
-      annotationLine (center, center + booz, gRed);
+//      annotationLine (center, center + fooz, gRed);
+ //     annotationLine (center, center + booz, gRed);
     }
   }
 
@@ -662,8 +662,8 @@ bool MapDriver::detectImminentCollision(){
     // annotation
     if(!curvedSteering){
       const Vec3 d(step * (float)samples);
-      annotationLine(lOffset, lOffset + d, gWhite);
-      annotationLine(rOffset, rOffset + d, gWhite);
+//      annotationLine(lOffset, lOffset + d, gWhite);
+ //     annotationLine(rOffset, rOffset + d, gWhite);
     }
 
     // increment sideways displacement of scan line
@@ -835,7 +835,7 @@ Vec3 MapDriver::steerToFollowPathCurve(const int direction, const float predicti
 
   // facing the wrong way?
   if(alignedness < 0){
-    annotationLine (p, p + (nowTangent * 10), gCyan);
+//    annotationLine (p, p + (nowTangent * 10), gCyan);
 
     // if nearly anti-parallel
     if(alignedness < -0.707f){

@@ -238,7 +238,7 @@ bool CtfSeeker::clearPathToGoal(){
 
         if(!safeToTurnTowardsGoal){
           // this enemy blocks the path to the goal, so return false
-          annotationLine (position(), e.position(), clearPathColor);
+//          annotationLine (position(), e.position(), clearPathColor);
           // return false;
           xxxReturn = false;
         }
@@ -265,7 +265,7 @@ Vec3 CtfSeeker::steerToEvadeAllDefenders(){
         // const float timeEstimate = 0.5f * eDistance / e.speed;//xxx
         const float timeEstimate = 0.15f * eDistance / e.speed();//xxx
         const Vec3 future = e.predictFuturePosition (timeEstimate);
-        annotationXZCircle (e.radius(), future, evadeColor, 20); // xxx
+//        annotationXZCircle (e.radius(), future, evadeColor, 20); // xxx
         const Vec3 offset = future - position();
         const Vec3 lateral = offset.perpendicularComponent(forward());
         const float d = lateral.length();
@@ -290,7 +290,7 @@ Vec3 CtfSeeker::XXXsteerToEvadeAllDefenders(){
     const Vec3 eFuture = e.predictFuturePosition(timeEstimate);
 
     // annotation
-    annotationXZCircle(e.radius(), eFuture, evadeColor, 20);
+//    annotationXZCircle(e.radius(), eFuture, evadeColor, 20);
 
     // steering to flee from eFuture (enemy's future position)
     const Vec3 flee = steerForFleeEx(eFuture);
@@ -337,7 +337,7 @@ Vec3 CtfSeeker::steeringForSeeker(){
             seek + limitMaxDeviationAngle (evade, 0.5f, forward());
 
         // annotation: show evasion steering force
-        annotationLine (position(),position()+(steer*0.2f),evadeColor);
+//        annotationLine (position(),position()+(steer*0.2f),evadeColor);
         return steer;
       }else{
         const Vec3 evade = XXXsteerToEvadeAllDefenders ();

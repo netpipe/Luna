@@ -171,7 +171,7 @@ void Player::update(const float currentTime, const float elapsedTime){
           float Z = m_Ball->position().z - position().z > 0 ? -1.0f : 1.0f;
           Vec3 behindBall = m_Ball->position() + (b_ImTeamA ? Vec3(2.0f,0.0f,Z) : Vec3(-2.0f,0.0f,Z));
           Vec3 behindBallForce = steerForSeekEx(behindBall);
-          annotationLine(position(), behindBall , Color(0.0f,1.0f,0.0f));
+  //        annotationLine(position(), behindBall , Color(0.0f,1.0f,0.0f));
           Vec3 evadeTarget = steerForFleeEx(m_Ball->position());
           applySteeringForce(behindBallForce*10.0f + evadeTarget, elapsedTime);
         }

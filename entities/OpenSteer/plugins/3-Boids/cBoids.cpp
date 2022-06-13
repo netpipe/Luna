@@ -201,10 +201,10 @@ void Boid::annotateAvoidObstacle(const float minDistanceToCollision){
   const Vec3 BR = position()            - boxSide;
   const Vec3 BL = position()            + boxSide;
   const Color white (1,1,1);
-  annotationLine(FR, FL, white);
-  annotationLine(FL, BL, white);
-  annotationLine(BL, BR, white);
-  annotationLine(BR, FR, white);
+//  annotationLine(FR, FL, white);
+//  annotationLine(FL, BL, white);
+//  annotationLine(BL, BR, white);
+//  annotationLine(BR, FR, white);
 }
 #endif
 
