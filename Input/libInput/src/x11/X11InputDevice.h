@@ -1,3 +1,5 @@
+#include "../../../../config.h"
+#ifdef LIBINPUT
 /*
  * X11InputDevice.h
  *
@@ -32,3 +34,4 @@ public:
 };
 
 #endif /* X11_X11INPUTDEVICE_H_ */
+#endif

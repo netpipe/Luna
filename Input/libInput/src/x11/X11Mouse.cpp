@@ -1,3 +1,5 @@
+#include "../../../../config.h"
+#ifdef LIBINPUT
 /*
  * X11Mouse.cpp
  *
@@ -116,3 +118,4 @@ MouseStatePtr X11Mouse::getMouseState() {
 
 	return mouse_state;
 }
+#endif

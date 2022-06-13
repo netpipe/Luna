@@ -1,3 +1,5 @@
+#include "../../../../config.h"
+#ifdef LIBINPUT
 /*
  * X11Keyboard.cpp
  *
@@ -75,3 +77,4 @@ X11Keyboard::KeyState X11Keyboard::getkeystate(int key) {
 	return KeyState::Released;
 
 }
+#endif

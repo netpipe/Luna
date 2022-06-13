@@ -1,3 +1,5 @@
+#include "../../../config.h"
+#ifdef LIBINPUT
 /*
  * InputController.cpp
  *
@@ -57,3 +59,4 @@ MousePtr InputController::getMouseById(int id) {
 
 	return nullptr;
 }
+#endif

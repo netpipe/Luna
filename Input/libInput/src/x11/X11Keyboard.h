@@ -1,3 +1,5 @@
+#include "../../../../config.h"
+#ifdef LIBINPUT
 /*
  * X11Keyboard.h
  *
@@ -25,3 +27,4 @@ public:
 };
 
 #endif /* X11_X11KEYBOARD_H_ */
+#endif

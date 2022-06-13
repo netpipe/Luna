@@ -110,7 +110,6 @@
 				<Compiler>
 					<Add option="-fpermissive" />
 					<Add option="-DMINIMAL" />
-					<Add option="-DMINIMAL2" />
 					<Add option="-DEXTRACOMPILE" />
 					<Add directory="../Box2D/Box2D/Box2D" />
 					<Add directory="../Box2D/Box2D/" />
@@ -241,7 +240,6 @@
 					<Add option="-m64" />
 					<Add option="-fpermissive" />
 					<Add option="-DMINIMAL" />
-					<Add option="-DMINIMAL2" />
 					<Add option="-DEXTRACOMPILE" />
 					<Add option="-DWIN32" />
 					<Add option="-DMTAR" />
@@ -1114,6 +1112,19 @@
 		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/inputManager.cpp" />
 		<Unit filename="Input/inputManager.h" />
+		<Unit filename="Input/libInput/include/InputController.h" />
+		<Unit filename="Input/libInput/include/InputDevice.h" />
+		<Unit filename="Input/libInput/include/Keyboard.h" />
+		<Unit filename="Input/libInput/include/Mouse.h" />
+		<Unit filename="Input/libInput/src/InputController.cpp" />
+		<Unit filename="Input/libInput/src/x11/X11InputController.cpp" />
+		<Unit filename="Input/libInput/src/x11/X11InputController.h" />
+		<Unit filename="Input/libInput/src/x11/X11InputDevice.cpp" />
+		<Unit filename="Input/libInput/src/x11/X11InputDevice.h" />
+		<Unit filename="Input/libInput/src/x11/X11Keyboard.cpp" />
+		<Unit filename="Input/libInput/src/x11/X11Keyboard.h" />
+		<Unit filename="Input/libInput/src/x11/X11Mouse.cpp" />
+		<Unit filename="Input/libInput/src/x11/X11Mouse.h" />
 		<Unit filename="Input/openal_playback.h" />
 		<Unit filename="Input/speech/ReciterTabs.h" />
 		<Unit filename="Input/speech/RenderTabs.h" />

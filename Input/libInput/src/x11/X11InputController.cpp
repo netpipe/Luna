@@ -1,3 +1,5 @@
+#include "../../../../config.h"
+#ifdef LIBINPUT
 /*
  * X11InputController.cpp
  *
@@ -201,3 +203,4 @@ int X11InputController::attachDeviceById(int device_id, bool is_pointer) {
 Display* X11InputController::display() {
 	return m_display;
 }
+#endif

@@ -1,3 +1,5 @@
+#include "../../../../config.h"
+#ifdef LIBINPUT
 /*
  * X11Mouse.h
  *
@@ -33,3 +35,4 @@ public:
 };
 
 #endif /* X11_X11MOUSE_H_ */
+#endif

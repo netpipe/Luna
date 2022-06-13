@@ -1,3 +1,5 @@
+#include "../../../../config.h"
+#ifdef LIBINPUT
 /*
  * X11InputDevice.cpp
  *
@@ -34,3 +36,4 @@ void X11InputDevice::setAsMaster(bool master) {
 char* X11InputDevice::name() {
 	return m_device_info->name;
 }
+#endif

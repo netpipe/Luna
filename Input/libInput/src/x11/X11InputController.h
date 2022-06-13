@@ -7,7 +7,8 @@
 
 #ifndef X11_X11INPUTCONTROLLER_H_
 #define X11_X11INPUTCONTROLLER_H_
-
+#include "../../../../config.h"
+#ifdef LIBINPUT
 #include <InputController.h>
 #include "X11InputDevice.h"
 #include <X11/Xlib.h>
@@ -48,3 +49,4 @@ public:
 };
 
 #endif /* X11_X11INPUTCONTROLLER_H_ */
+#endif
