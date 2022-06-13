@@ -113,6 +113,7 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="1" />
 				<Option projectResourceIncludeDirsRelation="1" />
 				<Compiler>
 					<Add option="-fpermissive" />
@@ -122,19 +123,18 @@
 					<Add option="-DWBULLET" />
 				</Compiler>
 				<Linker>
-					<Add library="GL" />
-					<Add library="Xxf86vm" />
-					<Add library="X11" />
-					<Add library="python2.7" />
-					<Add library="pthread" />
 					<Add library="Irrlicht" />
 					<Add library="dl" />
-					<Add library="IrrOpenSteer" />
 					<Add library="cAudio" />
 					<Add library="ogg" />
 					<Add library="vorbis" />
 					<Add library="vorbisfile" />
 					<Add library="openal" />
+					<Add library="pthread" />
+					<Add library="python2.7" />
+					<Add library="Xxf86vm" />
+					<Add library="X11" />
+					<Add library="GL" />
 					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>
@@ -883,7 +883,6 @@
 			<Add library="irrNetLite22" />
 			<Add library="enet" />
 			<Add library="python2.7" />
-			<Add library="IrrOpenSteer" />
 			<Add library="pthread" />
 			<Add library="theora" />
 			<Add library="theoraplayer" />
