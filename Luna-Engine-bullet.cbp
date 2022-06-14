@@ -183,6 +183,7 @@
 					<Add option="-DMINIMAL" />
 					<Add option="-DEXTRACOMPILE" />
 					<Add option="-DWBULLET" />
+					<Add option="-DIRRLICHTSVN" />
 					<Add directory="../LunaLibs/irrlicht-code/source/Irrlicht" />
 					<Add directory="../LunaLibs/irrlicht-code/include" />
 					<Add directory="../LunaLibs/net/irrNetLite22f" />
