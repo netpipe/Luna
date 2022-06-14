@@ -1,4 +1,4 @@
-#include "../../../config.h"
+#include "../../../../config.h"
 #ifdef IRRNETLITE
 /**
  @file  win32.c

@@ -5,9 +5,11 @@
 #ifdef COMPILE_WITH_IRRLICHT
   #include <irrlicht.h>
 #endif
-
+#define IRRLICHT_SDK_VERSION
 #ifndef IRRLICHT_SDK_VERSION
   #include "NoIrrlicht/NoIrrlicht.h"
+#else
+#include <irrlicht.h>
 #endif
 
 #ifndef s64
@@ -19,6 +21,7 @@ typedef signed long long u64;
 #endif
 
 #include <string>
+
 
 namespace irr
 {

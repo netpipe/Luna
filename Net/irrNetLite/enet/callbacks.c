@@ -1,20 +1,17 @@
+#include "../../../../config.h"
+#ifdef IRRNETLITE
 /**
  @file callbacks.c
  @brief ENet callback functions
 */
-#include "../../../config.h"
-#ifdef IRRNETLITE
 #define ENET_BUILDING_LIB 1
 #include "enet/enet.h"
 
-static ENetCallbacks callbacks = { malloc, free, rand };
+static ENetCallbacks callbacks = { malloc, free, rand, abort };
 
 int
 enet_initialize_with_callbacks (ENetVersion version, const ENetCallbacks * inits)
 {
-   if (version != ENET_VERSION)
-     return -1;
-
    if (inits -> malloc != NULL || inits -> free != NULL)
    {
       if (inits -> malloc == NULL || inits -> free == NULL)
@@ -27,6 +24,12 @@ enet_initialize_with_callbacks (ENetVersion version, const ENetCallbacks * inits
    if (inits -> rand != NULL)
      callbacks.rand = inits -> rand;
 
+   if (version >= ENET_VERSION_CREATE (1, 2, 2))
+   {
+      if (inits -> no_memory != NULL)
+        callbacks.no_memory = inits -> no_memory;
+   }
+
    return enet_initialize ();
 }
 
@@ -36,7 +39,7 @@ enet_malloc (size_t size)
    void * memory = callbacks.malloc (size);
 
    if (memory == NULL)
-     abort ();
+     callbacks.no_memory ();
 
    return memory;
 }

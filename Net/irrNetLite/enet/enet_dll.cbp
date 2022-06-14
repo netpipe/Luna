@@ -7,8 +7,8 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin\Debug\libenet" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj\Debug\" />
+				<Option output="bin/Debug/enet" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option createDefFile="1" />
@@ -18,8 +18,8 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin\Release\libenet" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj\Release\" />
+				<Option output="bin/Release/enet" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option createDefFile="1" />
@@ -35,6 +35,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-DENET_DLL" />
+			<Add option="-DIRRNETLITE" />
 			<Add directory="include" />
 		</Compiler>
 		<Linker>
@@ -47,19 +48,16 @@
 		<Unit filename="host.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="include\enet\callbacks.h" />
-		<Unit filename="include\enet\enet.h" />
-		<Unit filename="include\enet\list.h" />
-		<Unit filename="include\enet\protocol.h" />
-		<Unit filename="include\enet\time.h" />
-		<Unit filename="include\enet\types.h" />
-		<Unit filename="include\enet\unix.h" />
-		<Unit filename="include\enet\utility.h" />
-		<Unit filename="include\enet\win32.h" />
+		<Unit filename="include/enet/callbacks.h" />
+		<Unit filename="include/enet/enet.h" />
+		<Unit filename="include/enet/list.h" />
+		<Unit filename="include/enet/protocol.h" />
+		<Unit filename="include/enet/time.h" />
+		<Unit filename="include/enet/types.h" />
+		<Unit filename="include/enet/unix.h" />
+		<Unit filename="include/enet/utility.h" />
+		<Unit filename="include/enet/win32.h" />
 		<Unit filename="list.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="packet.c">
@@ -77,10 +75,6 @@
 		<Unit filename="win32.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
-		</Extensions>
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

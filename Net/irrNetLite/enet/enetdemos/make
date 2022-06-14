@@ -1,3 +1,0 @@
-g++ -o server.bin server.cpp -lenet
- g++ -o client.bin client.cpp -lenet
-
