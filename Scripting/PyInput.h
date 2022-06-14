@@ -47,8 +47,21 @@ PyMethodDef irr_Input[] =
 	{"sqlcommand",Python::PyIrr_sqlcommand,METH_VARARGS,"sqlcommand"},
 	{"voxelLoad",Python::PyIrr_voxelLoad,METH_VARARGS,"voxelLoad"},
 	{"tar",Python::PyIrr_tar,METH_VARARGS,"voxelLoad"},
+	{"getInput",Python::PyIrr_tar,METH_VARARGS,"voxelLoad"},
     {NULL,NULL,0,NULL}
 };
+
+
+PyObject * Python::PyIrr_getInput(PyObject * self,PyObject * args){
+	int type;
+	char * cstring;
+	PyArg_ParseTuple(args,"is",&type,&cstring);
+	#ifdef LIBINPUT
+    getInput(1,"mouse");
+return Py_BuildValue("");
+#endif
+return Py_BuildValue("");
+}
 
 #include "../Input/Compress/mtar.h"
 PyObject * Python::PyIrr_tar(PyObject * self,PyObject * args){
