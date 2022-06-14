@@ -1287,6 +1287,7 @@
 		<Unit filename="Input/libInput/include/Keyboard.h" />
 		<Unit filename="Input/libInput/include/Mouse.h" />
 		<Unit filename="Input/libInput/lunaInput.h" />
+		<Unit filename="Input/libInput/src/InputController.cpp" />
 		<Unit filename="Input/libInput/src/x11/X11InputController.cpp" />
 		<Unit filename="Input/libInput/src/x11/X11InputController.h" />
 		<Unit filename="Input/libInput/src/x11/X11InputDevice.cpp" />
