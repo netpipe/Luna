@@ -19,10 +19,20 @@
 #include <chrono>
 #include <vector>
 #include <iostream>
+#include <irrlicht.h>
 
 using namespace std;
 
-int main5(int argc, char* argv[]) {
+IrrlichtDevice* Devicelibinput;
+
+
+//int initializeLibInput(IrrlichtDevice* test){
+//Devicelibinput=test;
+//Devicelibinput.WindowId;
+//}
+
+
+int getInput(int xdevice,int param) {
 	Display* display = XOpenDisplay(NULL);
 	int screen = DefaultScreen(display);
 	Window main_window;
