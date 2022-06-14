@@ -9,7 +9,7 @@
 		<Option compiler="gcc" />
 		<Option virtualFolders="media/" />
 		<Build>
-			<Target title="Linux Debug MINIMAL">
+			<Target title="Linux MINIMAL">
 				<Option output="./GAME/mLuna" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".dmobjs" />
@@ -34,7 +34,7 @@
 					<Add library="X11" />
 				</Linker>
 			</Target>
-			<Target title="Linux Debug 2D">
+			<Target title="Linux -  MINIMAL2">
 				<Option output="./GAME/mLuna2d" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".d2dmobjs" />
@@ -62,7 +62,7 @@
 					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
 				</Linker>
 			</Target>
-			<Target title="Linux Debug 2D Sound">
+			<Target title="Linux MINIMAL2 - cAudio">
 				<Option output="./GAME/mLuna2d" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".d2dmobjs" />
@@ -98,7 +98,7 @@
 					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
 				</Linker>
 			</Target>
-			<Target title="LinuxExtra">
+			<Target title="Linux Full">
 				<Option output="./GAME/LunaE" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".Emobjs" />
@@ -127,6 +127,101 @@
 					<Add library="Xi" />
 					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
 					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
+				</Linker>
+			</Target>
+			<Target title="Linux Full-SVN">
+				<Option output="./GAME/LunaE" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="GAME" />
+				<Option object_output=".Esmobjs" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Option projectIncludeDirsRelation="1" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Option projectLibDirsRelation="1" />
+				<Compiler>
+					<Add option="-fpermissive" />
+					<Add option="-DMINIMAL" />
+					<Add option="-DEXTRACOMPILE" />
+					<Add directory="../Box2D/Box2D/Box2D" />
+					<Add directory="../Box2D/Box2D/" />
+					<Add directory="entities/OpenSteer/lib/include" />
+					<Add directory="../LunaLibs/irrlicht-code/source/Irrlicht" />
+					<Add directory="../LunaLibs/irrlicht-code/include" />
+					<Add directory="../LunaLibs/freetype-2.3.9/include" />
+					<Add directory="FileSystem/readblend" />
+					<Add directory="../LunaLibs/libtheora-1.1.1/include/theora" />
+					<Add directory="../LunaLibs/libtheoraplayer/include" />
+					<Add directory="/usr/include/AL" />
+					<Add directory="/usr/include/python" />
+					<Add directory="./entities/AI/recast/RecastDemo/Include" />
+					<Add directory="./entities/AI/recast/DebugUtils/Include" />
+					<Add directory="./entities/AI/recast/Recast/Include" />
+					<Add directory="./entities/AI/recast/Detour/Include" />
+					<Add directory="./entities/AI/recast/DetourCrowd/Include" />
+					<Add directory="./entities/AI/recast/DetourTileCache/Include" />
+					<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/include4" />
+					<Add directory="../LunaLibs/assimp-3.3.1/include" />
+					<Add directory="../LunaLibs/Scripting/sqplus-code/sqplus" />
+					<Add directory="../LunaLibs/Scripting/sqplus-code/include" />
+					<Add directory="../LunaLibs/cAudio23/cAudio/include" />
+					<Add directory="../LunaLibs/cAudio23/include" />
+					<Add directory="Scene/SPARK" />
+					<Add directory="../LunaLibs/bullet3-2.86.1/src" />
+					<Add directory="../LunaLibs/media/fluidsynth-emscripten/include2" />
+					<Add directory="../LunaLibs/media/fluidsynth-emscripten/2" />
+					<Add directory="../LunaLibs/SparkEngine/src" />
+					<Add directory="../LunaLibs/SparkEngine/include" />
+					<Add directory="../emscripten-projects/SDL/SDL_sound/src" />
+					<Add directory="../LunaLibs/zlib-1.2.3" />
+					<Add directory="/usr/include/python2.7" />
+					<Add directory="Input/Controllers/iois/OIS/includes" />
+					<Add directory="Input/FluidLite/include/" />
+					<Add directory="Scene/PolyVox/include" />
+					<Add directory="Physics/irrBullet-0.1.9/include" />
+					<Add directory="/usr/include/irrlicht" />
+					<Add directory="../LunaLibs/opensteer/include/OpenSteer2" />
+					<Add directory="../LunaLibs/opensteer/include/2" />
+					<Add directory="Input/libInput/include" />
+					<Add directory="Net/irrNetLite/enet/include" />
+				</Compiler>
+				<Linker>
+					<Add library="Irrlicht" />
+					<Add library="dl" />
+					<Add library="z" />
+					<Add library="pthread" />
+					<Add library="python2.7" />
+					<Add library="X11" />
+					<Add library="Xxf86vm" />
+					<Add library="GL" />
+					<Add library="Xi" />
+					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
+					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
+					<Add directory="../LunaLibs/freetype-2.3.9/objs/.libs" />
+					<Add directory="../LunaLibs/net/enet-1.2.1" />
+					<Add directory="../LunaLibs/irrlicht-code/lib/Linux" />
+					<Add directory="../LunaLibs/Compiled/Linux" />
+					<Add directory="../LunaLibs/libtheoraplayer/bin/Linux" />
+					<Add directory="../LunaLibs/net/irrNetLite22" />
+					<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/lib3" />
+					<Add directory="./entities/AI/recast/DebugUtils/Include/" />
+					<Add directory="../LunaLibs/assimp-3.3.1/lib" />
+					<Add directory="../LunaLibs/zlib-1.2.32" />
+					<Add directory="../LunaLibs/libtheoraplayer/" />
+					<Add directory="../LunaLibs/cAudio23/cAudio/bin/gcc" />
+					<Add directory="../LunaLibs/bullet3-2.86.1/src/BulletDynamics" />
+					<Add directory="../LunaLibs/bullet3-2.86.1/src/BulletSoftBody" />
+					<Add directory="../LunaLibs/bullet3-2.86.1/src/BulletCollision" />
+					<Add directory="../LunaLibs/bullet3-2.86.1/src/LinearMath" />
+					<Add directory="../LunaLibs/PolyVox/library/PolyVoxCore" />
+					<Add directory="../LunaLibs/media/fluidsynth-emscripten/src3" />
+					<Add directory="../LunaLibs/bullet3-2.86.1/msvc/2008/lib/Debug" />
+					<Add directory="../LunaLibs/OpenSteer2" />
+					<Add directory="../emscripten-projects/SDL/SDL_sound/src" />
+					<Add directory="../LunaLibs/libtheora-1.1.1" />
+					<Add directory="../LunaLibs/freetype-2.3.9" />
+					<Add directory="../irrlicht-1.8.4/lib/Linux" />
 				</Linker>
 			</Target>
 			<Target title="windows MINIMAL32">
@@ -702,9 +797,7 @@
 			<Add option="-DPARTICLES" />
 			<Add directory="../LunaLibs/irrlicht-1.8.4/source/Irrlicht" />
 			<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
-			<Add directory="../LunaLibs/net/irrNetLite22f" />
 			<Add directory="../LunaLibs/freetype-2.3.9/include" />
-			<Add directory="../LunaLibs/net/enet-1.2.1/includef" />
 			<Add directory="FileSystem/readblend" />
 			<Add directory="../LunaLibs/libtheora-1.1.1/include/theora" />
 			<Add directory="../LunaLibs/libtheoraplayer/include" />
@@ -731,13 +824,11 @@
 			<Add directory="../emscripten-projects/SDL/SDL_sound/src" />
 			<Add directory="../LunaLibs/zlib-1.2.3" />
 			<Add directory="/usr/include/python2.7" />
-			<Add directory="../irrlicht-1.8.4/include" />
 			<Add directory="Input/Controllers/iois/OIS/includes" />
 			<Add directory="Input/FluidLite/include/" />
 			<Add directory="Scene/PolyVox/include" />
 			<Add directory="Physics/irrBullet-0.1.9/include" />
 			<Add directory="/usr/include/irrlicht" />
-			<Add directory="../irrlicht-1.8.5/include" />
 			<Add directory="../LunaLibs/opensteer/include/OpenSteer2" />
 			<Add directory="../LunaLibs/opensteer/include/2" />
 			<Add directory="entities/OpenSteer/lib/include" />
@@ -750,8 +841,6 @@
 			<Add library="openal" />
 			<Add library="Xxf86vm" />
 			<Add library="X11" />
-			<Add library="irrNetLite22" />
-			<Add library="enet" />
 			<Add library="python2.7" />
 			<Add library="pthread" />
 			<Add library="theora" />
@@ -872,88 +961,95 @@
 		<Unit filename="Input/Controllers/iois/COIS.cpp" />
 		<Unit filename="Input/Controllers/iois/COIS.h" />
 		<Unit filename="Input/Controllers/iois/OIS/OISEffect.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
+			<Option target="Linux -  MINIMAL2" />
+			<Option target="Linux MINIMAL" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
 			<Option target="emminimal" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
-			<Option target="LinuxExtra" />
+			<Option target="Linux MINIMAL2 - cAudio" />
+			<Option target="Linux Full" />
 			<Option target="LinuxExtracAudio" />
+			<Option target="Linux Full-SVN" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISException.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
+			<Option target="Linux -  MINIMAL2" />
+			<Option target="Linux MINIMAL" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
 			<Option target="emminimal" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
-			<Option target="LinuxExtra" />
+			<Option target="Linux MINIMAL2 - cAudio" />
+			<Option target="Linux Full" />
 			<Option target="LinuxExtracAudio" />
+			<Option target="Linux Full-SVN" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISForceFeedback.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
+			<Option target="Linux -  MINIMAL2" />
+			<Option target="Linux MINIMAL" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
 			<Option target="emminimal" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
-			<Option target="LinuxExtra" />
+			<Option target="Linux MINIMAL2 - cAudio" />
+			<Option target="Linux Full" />
 			<Option target="LinuxExtracAudio" />
+			<Option target="Linux Full-SVN" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISInputManager.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
+			<Option target="Linux -  MINIMAL2" />
+			<Option target="Linux MINIMAL" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
 			<Option target="emminimal" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
-			<Option target="LinuxExtra" />
+			<Option target="Linux MINIMAL2 - cAudio" />
+			<Option target="Linux Full" />
 			<Option target="LinuxExtracAudio" />
+			<Option target="Linux Full-SVN" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISJoyStick.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
+			<Option target="Linux -  MINIMAL2" />
+			<Option target="Linux MINIMAL" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
 			<Option target="emminimal" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
-			<Option target="LinuxExtra" />
+			<Option target="Linux MINIMAL2 - cAudio" />
+			<Option target="Linux Full" />
 			<Option target="LinuxExtracAudio" />
+			<Option target="Linux Full-SVN" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISKeyboard.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
+			<Option target="Linux -  MINIMAL2" />
+			<Option target="Linux MINIMAL" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
 			<Option target="emminimal" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
-			<Option target="LinuxExtra" />
+			<Option target="Linux MINIMAL2 - cAudio" />
+			<Option target="Linux Full" />
 			<Option target="LinuxExtracAudio" />
+			<Option target="Linux Full-SVN" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISObject.cpp">
-			<Option target="Linux Debug 2D" />
-			<Option target="Linux Debug MINIMAL" />
+			<Option target="Linux -  MINIMAL2" />
+			<Option target="Linux MINIMAL" />
 			<Option target="emscripten-debug" />
 			<Option target="emscripten-projects" />
 			<Option target="emscripten-projects-testing" />
 			<Option target="emminimal" />
 			<Option target="LinuxUDEV2DWII" />
-			<Option target="Linux Debug 2D Sound" />
-			<Option target="LinuxExtra" />
+			<Option target="Linux MINIMAL2 - cAudio" />
+			<Option target="Linux Full" />
 			<Option target="LinuxExtracAudio" />
+			<Option target="Linux Full-SVN" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/includes/OIS.h" />
 		<Unit filename="Input/Controllers/iois/OIS/includes/OISConfig.h" />

@@ -44,7 +44,7 @@ CLensFlareSceneNode::CLensFlareSceneNode(ISceneNode* parent,
     material.Lighting = false;
     material.MaterialType = video::EMT_TRANSPARENT_ADD_COLOR;
     material.ZBuffer = false;
-    material.ZWriteEnable = false;
+    material.ZWriteEnable = 0;
     BBox.MinEdge = core::vector3df(-2, -2, -2 );
     BBox.MaxEdge = core::vector3df( 2,  2,  2 );
 	setPosition(position);

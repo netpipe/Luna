@@ -45,7 +45,7 @@ CloudSceneNode::CloudSceneNode(scene::ISceneNode* parent, scene::ISceneManager* 
 	Material.Wireframe = false;
 	Material.Lighting = false;
 	//Material.ZBuffer = video::ECFN_NEVER;
-	Material.ZWriteEnable = false;
+	Material.ZWriteEnable = 0;
 
 	// setup the texture wrap
 	Material.TextureLayer[0].TextureWrapU = video::ETC_REPEAT;

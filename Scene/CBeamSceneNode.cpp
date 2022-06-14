@@ -11,18 +11,18 @@ namespace irr
             // Setup the beam material
             material.Wireframe = false;
             material.Lighting = false;
-            material.ZWriteEnable = false;
+            material.ZWriteEnable = 0;
 
             material.MaterialType = video::EMT_TRANSPARENT_ALPHA_CHANNEL;
             material.setTexture(0, mgr->getVideoDriver( )->getTexture( szBeam ));
 
             material2.Wireframe = false;
             material2.Lighting = false;
-            material2.ZWriteEnable = false;
+            material2.ZWriteEnable = 0;
 
             material2.MaterialType = video::EMT_TRANSPARENT_ALPHA_CHANNEL;
             material2.setTexture(0, mgr->getVideoDriver( )->getTexture( szBeamFront ));
-            material2.BackfaceCulling = false;
+            material2.BackfaceCulling = 0;
 
             m_thickness = 1.0f;
            AutomaticCullingState = EAC_FRUSTUM_SPHERE;
