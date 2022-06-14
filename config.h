@@ -116,7 +116,7 @@
         #define FLARE
         #define FLARES
         #define FLARE2  // more realistic and working
-        #define ENVVEG  // vegetation
+        #define ENVVEG  // IGE_SceneNode_Vegetation
         //#define OPENAL2
 
         #ifndef WIN32

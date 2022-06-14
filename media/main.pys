@@ -201,7 +201,7 @@ if (init) :
     physics.opensteer(1)
     physics.opensteer(1)
     #physics.opensteer(1)
- #extras.vegetation(1)
+    #extras.vegetation(1)
 # scene.fluidlite("","",0)
  #extras.lensflare(1,10,100,10)
  #extras.omaredemo(1)

@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1242879405 source:/home/Dev/libs/net/enet/enet demos/BSD SOCKETS/TCP/BSD Client.cpp
+	<stdio.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+	<memory.h>
+	<stdlib.h>
+	<unistd.h>
+

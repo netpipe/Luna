@@ -11,8 +11,8 @@ using namespace IGE;
 
 
 // to use a single model for all of this uncomment this line
- //#define USE_SINGLE_MODEL
-//#define MODELNAME "../GAME/media/vegetation/_assets/_Models/_Foliage/Seven/wheat1.obj"
+ #define USE_SINGLE_MODEL
+//#define MODELNAME "../media/vegetation/_assets/_Models/_Foliage/Seven/wheat1.obj"
 #define MODELNAME "../media/models/wheat1.obj"
 
 //#include <conio.h>
@@ -185,12 +185,19 @@ PyObject * Python::PyIrr_vegetation(PyObject * self,PyObject * args) //flag one 
 	//	char * t;
 	PyArg_ParseTuple(args,"i",&t);
 #ifdef ENVVEG
-	    device->getFileSystem()->addFileArchive("../GAME/media/vegetation/_assets/_models/arteria3d_tropicalpack.zip");
 
-Camera2 = smgr->addCameraSceneNode();
+	    if (t==3){
+	for (u32 i = 0; i < vegetationLayers.size(); i++){
+		//vegetationLayers[i]->processLayout();
+		vegetationLayers[i]->render();
+		}
+		return Py_BuildValue("");
+	    }
+
+//Camera2 = smgr->addCameraSceneNodeFPS();
 MainCamera = smgr->getActiveCamera() ;
 	    	terrain = smgr->addTerrainSceneNode(
-		"../GAME/media/vegetation/_assets/_terrain/heightmaps/terrain-plains.jpg",
+		"../media/vegetation/_assets/_terrain/heightmaps/terrain-plains.jpg",
 		0,                  // parent node
 		-1,                 // node id
 		core::vector3df(0.f, 0.f, 0.f),     // position
@@ -203,8 +210,8 @@ MainCamera = smgr->getActiveCamera() ;
 	);
 
 		terrain->setMaterialFlag(video::EMF_LIGHTING, false);
-	terrain->setMaterialTexture(0, driver->getTexture("../GAMES/media/vegetation/_assets/_terrain/textures/aerial_grass_rock_diff_4k.jpg"));
-	terrain->setMaterialTexture(1, driver->getTexture("../GAMES/media/vegetation/_assets/_terrain/textures/aerial_grass_rock_diff_4k.jpg"));
+	terrain->setMaterialTexture(0, driver->getTexture("../media/vegetation/_assets/_terrain/textures/aerial_grass_rock_diff_4k.jpg"));
+	terrain->setMaterialTexture(1, driver->getTexture("../media/vegetation/_assets/_terrain/textures/aerial_grass_rock_diff_4k.jpg"));
 	terrain->setMaterialType(video::EMT_DETAIL_MAP);
 	terrain->scaleTexture(1.0f, 20.0f);
 
@@ -214,111 +221,112 @@ MainCamera = smgr->getActiveCamera() ;
 		printf("terrain node is not valid!");
 		return;
 	}
+    device->getFileSystem()->addFileArchive("vegetation/_assets/_models/arteria3d_tropicalpack.zip");
 
 	// clear any existing vegetation layers
 	for (u32 i = 0; i < vegetationLayers.size(); i++) vegetationLayers[i]->remove(); vegetationLayers.clear();
 
-
 	// create the layer and add some templates to it
-	IGE_SceneNode_Vegetation_Grass* grass = new IGE_SceneNode_Vegetation_Grass(terrain, "../GAME/media/vegetation/_assets/_Foliage/_LayoutImages/grasslayout.jpg",VIEW_DISTANCE_GRASS, vector3df(5, 0, 5), useLight, useFog, smgr, 0);
+	IGE_SceneNode_Vegetation_Grass* grass = new IGE_SceneNode_Vegetation_Grass(terrain, "media/vegetation/_Assets/_Foliage/_LayoutImages/grasslayout.jpg",VIEW_DISTANCE_GRASS, vector3df(5, 0, 5), useLight, useFog, smgr, 0);
 #ifdef USE_SINGLE_MODEL
 	grass->addMeshTemplate(MODELNAME, 0);
 #else
-	grass->addMeshTemplate("../GAME/media/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/misc/trop_grass(region).x", 0);
+	grass->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/misc/trop_grass(region).x", 0);
 #endif
 	vegetationLayers.push_back(grass);
 
 	// create the layer and add some templates to it
-	IGE_SceneNode_Vegetation_Flowers* flowers = new IGE_SceneNode_Vegetation_Flowers(terrain, "../GAME/media/vegetation/_assets/_Foliage/_LayoutImages/flowerslayout.jpg",VIEW_DISTANCE_FLOWERS, vector3df(50, 0, 50), useLight, useFog, smgr, 0);
+	IGE_SceneNode_Vegetation_Flowers* flowers = new IGE_SceneNode_Vegetation_Flowers(terrain, "media/vegetation/_Assets/_Foliage/_LayoutImages/flowerslayout.jpg",VIEW_DISTANCE_FLOWERS, vector3df(50, 0, 50), useLight, useFog, smgr, 0);
 #ifdef USE_SINGLE_MODEL
 	grass->addMeshTemplate(MODELNAME, 0);
 #else
-	flowers->addMeshTemplate("../GAME/media/vegetation/_assets/_Models/_Foliage/tropical/arteria3d_tropicalpack/flowers/flower 1.x", 0);
-		flowers->addMeshTemplate("../GAME/media/vegetation/_assets/_Models/_Foliage/tropical/arteria3d_tropicalpack/flowers/flower 2.x", 0);
-		flowers->addMeshTemplate("../GAME/media/vegetation/_assets/_Models/_Foliage/tropical/arteria3d_tropicalpack/flowers/flower 3.x", 0);
-		flowers->addMeshTemplate("../GAME/media/vegetation/_assets/_Models/_Foliage/tropical/arteria3d_tropicalpack/flowers/flower 4.x", 0);
-		flowers->addMeshTemplate("../GAME/media/vegetation/_assets/_Models/_Foliage/tropical/arteria3d_tropicalpack/flowers/flower 5.x", 0);
-		flowers->addMeshTemplate("../GAME/media/vegetation/_assets/_Models/_Foliage/tropical/arteria3d_tropicalpack/flowers/flower 6.x", 0);
-		flowers->addMeshTemplate("../GAME/media/vegetation/_assets/_Models/_Foliage/tropical/arteria3d_tropicalpack/flowers/flower 7.x", 0);
+	flowers->addMeshTemplate("media/vegetation/_assets/_Models/_Foliage/tropical/arteria3d_tropicalpack/flowers/flower 1.x", 0);
+		flowers->addMeshTemplate("media/vegetation/_assets/_Models/_Foliage/tropical/arteria3d_tropicalpack/flowers/flower 2.x", 0);
+		flowers->addMeshTemplate("media/vegetation/_assets/_Models/_Foliage/tropical/arteria3d_tropicalpack/flowers/flower 3.x", 0);
+		flowers->addMeshTemplate("media/vegetation/_assets/_Models/_Foliage/tropical/arteria3d_tropicalpack/flowers/flower 4.x", 0);
+		flowers->addMeshTemplate("media/vegetation/_assets/_Models/_Foliage/tropical/arteria3d_tropicalpack/flowers/flower 5.x", 0);
+		flowers->addMeshTemplate("media/vegetation/_assets/_Models/_Foliage/tropical/arteria3d_tropicalpack/flowers/flower 6.x", 0);
+		flowers->addMeshTemplate("media/vegetation/_assets/_Models/_Foliage/tropical/arteria3d_tropicalpack/flowers/flower 7.x", 0);
 #endif
 		vegetationLayers.push_back(flowers);
 
 	// create the layer and add some templates to it
-	IGE_SceneNode_Vegetation_Shrubs* shrubs = new IGE_SceneNode_Vegetation_Shrubs(terrain, "../GAME/media/vegetation/_assets/_Foliage/_LayoutImages/shrubslayout.jpg", VIEW_DISTANCE_SHRUBS, vector3df(500, 0, 500), useLight, useFog, smgr, 0);
+	IGE_SceneNode_Vegetation_Shrubs* shrubs = new IGE_SceneNode_Vegetation_Shrubs(terrain, "media/vegetation/_Assets/_Foliage/_LayoutImages/shrubslayout.jpg", VIEW_DISTANCE_SHRUBS, vector3df(500, 0, 500), useLight, useFog, smgr, 0);
 #ifdef USE_SINGLE_MODEL
 	grass->addMeshTemplate(MODELNAME, 0);
 #else
-	shrubs->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/fan plant.x", 0);
-		shrubs->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/fan plant version 2.x", 0);
-		shrubs->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/fan plant version 3.x", 0);
-		shrubs->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant a.x", 0);
-		shrubs->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant b.x", 0);
-		shrubs->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant c.x", 0);
-		shrubs->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant d.x", 0);
-		shrubs->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant e.x", 0);
-		shrubs->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant g.x", 0);
-		shrubs->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant h.x", 0);
-		shrubs->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant k.x", 0);
-		shrubs->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant l.x", 0);
-		shrubs->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant m.x", 0);
-		shrubs->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant n.x", 0);
-		shrubs->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant n version2.x", 0);
+	shrubs->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/fan plant.x", 0);
+		shrubs->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/fan plant version 2.x", 0);
+		shrubs->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/fan plant version 3.x", 0);
+		shrubs->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant a.x", 0);
+		shrubs->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant b.x", 0);
+		shrubs->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant c.x", 0);
+		shrubs->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant d.x", 0);
+		shrubs->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant e.x", 0);
+		shrubs->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant g.x", 0);
+		shrubs->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant h.x", 0);
+		shrubs->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant k.x", 0);
+		shrubs->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant l.x", 0);
+		shrubs->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant m.x", 0);
+		shrubs->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant n.x", 0);
+		shrubs->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/plants/plant n version2.x", 0);
 #endif
 		vegetationLayers.push_back(shrubs);
 
 	// create the layer and add some templates to it
-	IGE_SceneNode_Vegetation_SmallTrees* SmallTrees = new IGE_SceneNode_Vegetation_SmallTrees(terrain, "../GAME/media/vegetation/_assets/_Foliage/_LayoutImages/smalltreeslayout.jpg", VIEW_DISTANCE_SMALLTREES, vector3df(500, 0, 500), useLight, useFog, smgr, 0);
+	IGE_SceneNode_Vegetation_SmallTrees* SmallTrees = new IGE_SceneNode_Vegetation_SmallTrees(terrain, "media/vegetation/_Assets/_Foliage/_LayoutImages/smalltreeslayout.jpg", VIEW_DISTANCE_SMALLTREES, vector3df(500, 0, 500), useLight, useFog, smgr, 0);
 #ifdef USE_SINGLE_MODEL
 	grass->addMeshTemplate(MODELNAME, 0);
 #else
-	SmallTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/bananatree.x", 0);
-		SmallTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/bananatree version2.x", 0);
-		SmallTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/bananatree version2 b.x", 0);
-		SmallTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/floorpalm.x", 0);
-		SmallTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/floorpalm 2.x", 0);
-		SmallTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/palm1.x", 0);
-		SmallTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/palm2.x", 0);
-		SmallTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/palm3.x", 0);
-		SmallTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/palm3 B.x", 0);
-		SmallTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/palm3 C.x", 0);
-		SmallTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/palm4.x", 0);
-		SmallTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/palm5.x", 0);
-		SmallTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/palm6.x", 0);
-		SmallTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/worn palm.x", 0);
-		SmallTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/yuka.x", 0);
-		//SmallTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/yuka 2.x", 0);
+	SmallTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/bananatree.x", 0);
+		SmallTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/bananatree version2.x", 0);
+		SmallTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/bananatree version2 b.x", 0);
+		SmallTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/floorpalm.x", 0);
+		SmallTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/floorpalm 2.x", 0);
+		SmallTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/palm1.x", 0);
+		SmallTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/palm2.x", 0);
+		SmallTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/palm3.x", 0);
+		SmallTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/palm3 B.x", 0);
+		SmallTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/palm3 C.x", 0);
+		SmallTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/palm4.x", 0);
+		SmallTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/palm5.x", 0);
+		SmallTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/palm6.x", 0);
+		SmallTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/worn palm.x", 0);
+		SmallTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/yuka.x", 0);
+		//SmallTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/yuka 2.x", 0);
 #endif
 		vegetationLayers.push_back(SmallTrees);
 
 	// create the layer and add some templates to it
-	IGE_SceneNode_Vegetation_LargeTrees* LargeTrees = new IGE_SceneNode_Vegetation_LargeTrees(terrain, "../GAME/media/vegetation/_assets/_Foliage/_LayoutImages/largetreeslayout.jpg", VIEW_DISTANCE_LARGETREES, vector3df(500, 0, 500), useLight, useFog, smgr, 0);
+	IGE_SceneNode_Vegetation_LargeTrees* LargeTrees = new IGE_SceneNode_Vegetation_LargeTrees(terrain, "media/vegetation/_Assets/_Foliage/_LayoutImages/largetreeslayout.jpg", VIEW_DISTANCE_LARGETREES, vector3df(500, 0, 500), useLight, useFog, smgr, 0);
 #ifdef USE_SINGLE_MODEL
 		grass->addMeshTemplate(MODELNAME, 0);
 #else
-		LargeTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/bananatree.x", 0);
-		LargeTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/bananatree version2.x", 0);
-		LargeTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/bananatree version2 b.x", 0);
-		LargeTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/floorpalm.x", 0);
-		LargeTrees->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/floorpalm 2.x", 0);
+		LargeTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/bananatree.x", 0);
+		LargeTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/bananatree version2.x", 0);
+		LargeTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/bananatree version2 b.x", 0);
+		LargeTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/floorpalm.x", 0);
+		LargeTrees->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/trees/floorpalm 2.x", 0);
 #endif
 		vegetationLayers.push_back(LargeTrees);
 
 	// create the layer and add some templates to it
-	IGE_SceneNode_Vegetation_Rocks* rocks = new IGE_SceneNode_Vegetation_Rocks(terrain, "../GAME/media/vegetation/_assets/_Foliage/_LayoutImages/rockslayout.jpg", VIEW_DISTANCE_ROCKS, vector3df(500, 0, 500), useLight, useFog, smgr, 0);
+	IGE_SceneNode_Vegetation_Rocks* rocks = new IGE_SceneNode_Vegetation_Rocks(terrain, "media/vegetation/_Assets/_Foliage/_LayoutImages/rockslayout.jpg", VIEW_DISTANCE_ROCKS, vector3df(500, 0, 500), useLight, useFog, smgr, 0);
 #ifdef USE_SINGLE_MODEL
 		grass->addMeshTemplate(MODELNAME, 0);
 #else
-		rocks->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/rocks/LargeCoveRockA.x", 0);
-		rocks->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/rocks/rock2.x", 0);
-		rocks->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/rocks/LargeCoveRockB.x", 0);
-	//	rocks->addMeshTemplate("../GAME/media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/rocks/rock4.x", 0);
+		rocks->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/rocks/LargeCoveRockA.x", 0);
+		rocks->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/rocks/rock2.x", 0);
+		rocks->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/rocks/LargeCoveRockB.x", 0);
+	//	rocks->addMeshTemplate("media/vegetation/_assets/_models/_foliage/tropical/arteria3d_tropicalpack/rocks/rock4.x", 0);
 #endif
 		vegetationLayers.push_back(rocks);
 
 	// now process all of the layers
 	// each layer will scan the layout image and create node positions, rotations and scales based on the layout image
-	for (u32 i = 0; i < vegetationLayers.size(); i++)
+	for (u32 i = 0; i < vegetationLayers.size(); i++){
 		vegetationLayers[i]->processLayout();
+		}
 #endif
 		return Py_BuildValue("");
 }

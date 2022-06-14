@@ -1,5 +1,6 @@
 #include "../../config.h"
 #ifdef ENVVEG
+
 #include "IGE_SceneNode_Vegetation.h"
 
 namespace IGE
@@ -12,11 +13,13 @@ namespace IGE
 		ISceneManager* smgr, s32 id)
 		: ISceneNode(parent, smgr, id, vector3df(),vector3df(), vector3df(1,1,1)),m_Terrain(parent),m_ViewDistance(viewdistance),m_LayoutRandomness(layoutRandomness),m_UseLight(uselight),m_UseFog(usefog)
 	{
+	SceneManager = smgr;
 #ifdef _DEBUG
 		setDebugName("IGE_SceneNode_Vegetation");
 #endif
 		Box = parent->getBoundingBox();
 		m_LayoutImage = smgr->getVideoDriver()->createImageFromFile(layoutimagefilename.c_str());
+setVisible(true);
 	}
 
 
@@ -43,14 +46,14 @@ namespace IGE
 	//! renders the node.
 	void IGE_SceneNode_Vegetation::render()
 	{
-		if (m_CameraToUse != 0)
-		{
-			update(m_CameraToUse->getPosition(), m_CameraToUse);
-		}
-		else
-		{
+//		if (m_CameraToUse != 0)
+//		{
+//			update(m_CameraToUse->getPosition(), m_CameraToUse);
+//		}
+//		else
+//		{
 			update(SceneManager->getActiveCamera()->getPosition(), SceneManager->getActiveCamera());
-		}
+//		}
 	//	ISceneNodeList::Iterator it = Children.begin();
 	//	for (; it != Children.end(); ++it)
 	//		(*it)->render();
@@ -232,27 +235,28 @@ namespace IGE
 	// called each frame to update what is visible and what is not
 	void IGE_SceneNode_Vegetation::update(vector3df center, ICameraSceneNode* camera)
 	{
-		if (!isVisible()) return;
-
-		if (m_HelperForDeleting == 0) m_HelperForDeleting = 1; else m_HelperForDeleting = 0;
-
-		// make the frustum a little bigger to stop popping near the front plane
-		SViewFrustum origFrustum = *camera->getViewFrustum();
-		SViewFrustum frustum = origFrustum;
-		for (int i = 0; i < scene::SViewFrustum::VF_PLANE_COUNT; ++i)
-		{
-			frustum.planes[i].recalculateD(frustum.planes[i].getMemberPoint() + frustum.planes[i].Normal * m_VisibleOffset);
-		}
-		frustum.recalculateBoundingBox();
-
+        //printf("checking update");
+//		if (!isVisible()) return;
+//
+//		if (m_HelperForDeleting == 0) m_HelperForDeleting = 1; else m_HelperForDeleting = 0;
+//
+//		// make the frustum a little bigger to stop popping near the front plane
+//		SViewFrustum origFrustum = *camera->getViewFrustum();
+//		SViewFrustum frustum = origFrustum;
+//		for (int i = 0; i < scene::SViewFrustum::VF_PLANE_COUNT; ++i)
+//		{
+//			frustum.planes[i].recalculateD(frustum.planes[i].getMemberPoint() + frustum.planes[i].Normal * m_VisibleOffset);
+//		}
+//		frustum.recalculateBoundingBox();
+//
 		for (u32 i = m_HelperForDeleting; i < m_NodePos.size(); i += 2)
 		{
-			line3d<f32> ray;
-			ray.start = center;
-			ray.end = m_NodePos[i];
-			float d = ray.getLength();
-			if (m_IsNodePosFree[i] && d < m_ViewDistance && canBeSeenByCamPyramidPlanes(frustum, m_NodePos[i]))
-			{
+//			line3d<f32> ray;
+//			ray.start = center;
+//			ray.end = m_NodePos[i];
+//			float d = ray.getLength();
+//			if (m_IsNodePosFree[i] && d < m_ViewDistance && canBeSeenByCamPyramidPlanes(frustum, m_NodePos[i]))
+//			{
 				if (m_MeshTemplate[m_NodeType[i]].m_Node != nullptr)
 				{
 					m_Nodes[i] = m_MeshTemplate[m_NodeType[i]].m_Node->clone();
@@ -263,15 +267,15 @@ namespace IGE
 					m_Nodes[i]->setMaterialFlag(EMF_FOG_ENABLE, m_UseFog);
 					m_IsNodePosFree[i] = false;
 				}
-			}
-			else
-			{
-				if (d > m_ViewDistance || !canBeSeenByCamPyramidPlanes(frustum, m_NodePos[i]))
-				{
-					if (m_Nodes[i] != nullptr) m_Nodes[i]->remove(); m_Nodes[i] = nullptr;
-					m_IsNodePosFree[i] = true;
-				}
-			}
+//			}
+//			else
+//			{
+//				if (d > m_ViewDistance || !canBeSeenByCamPyramidPlanes(frustum, m_NodePos[i]))
+//				{
+//					if (m_Nodes[i] != nullptr) m_Nodes[i]->remove(); m_Nodes[i] = nullptr;
+//					m_IsNodePosFree[i] = true;
+//				}
+		//	}
 		}
 	}
 
@@ -331,5 +335,8 @@ namespace IGE
 
 
 } // end namspace IGE
+
+
+
 #endif
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Workspace">
+		<Project filename="UDP/BSD Server.cbp" />
+		<Project filename="UDP/BSD Client.cbp" active="1" />
+		<Project filename="TCP/BSD Server.cbp" />
+		<Project filename="TCP/BSD Client.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>
