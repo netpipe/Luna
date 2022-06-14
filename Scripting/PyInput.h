@@ -47,19 +47,23 @@ PyMethodDef irr_Input[] =
 	{"sqlcommand",Python::PyIrr_sqlcommand,METH_VARARGS,"sqlcommand"},
 	{"voxelLoad",Python::PyIrr_voxelLoad,METH_VARARGS,"voxelLoad"},
 	{"tar",Python::PyIrr_tar,METH_VARARGS,"voxelLoad"},
-	{"getInput",Python::PyIrr_tar,METH_VARARGS,"voxelLoad"},
+	{"libinput",Python::PyIrr_getInput,METH_VARARGS,"voxelLoad"},
     {NULL,NULL,0,NULL}
 };
 
+bool getInputInit=0;
 
 PyObject * Python::PyIrr_getInput(PyObject * self,PyObject * args){
-	int type;
+	int idevice;
+	int param;
 	char * cstring;
-	PyArg_ParseTuple(args,"is",&type,&cstring);
+	PyArg_ParseTuple(args,"ii",&idevice,&param);
 	#ifdef LIBINPUT
-    getInput(1,"mouse");
-return Py_BuildValue("");
-#endif
+  //  getInput(idevice,param);
+  initializeLibInput(device);
+    getInput(1,1);
+    return Py_BuildValue("");
+    #endif
 return Py_BuildValue("");
 }
 
