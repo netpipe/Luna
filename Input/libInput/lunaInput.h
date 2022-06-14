@@ -139,7 +139,7 @@ int getInput(int xdevice,int param) {
 //			printf("\n");
 //		//}
 //		std::this_thread::sleep_for(std::chrono::milliseconds(100));
-	}
+	//}
 
 //	int ret = input_controller.detachDeviceById(14);
 //	printf("Detached ret: %d\n", ret);
