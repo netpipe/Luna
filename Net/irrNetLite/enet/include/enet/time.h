@@ -1,4 +1,6 @@
-/** 
+#include "../../../config.h"
+#ifdef IRRNETLITE
+/**
  @file  time.h
  @brief ENet time constants and macros
 */
@@ -16,3 +18,4 @@
 
 #endif /* __ENET_TIME_H__ */
 
+#endif

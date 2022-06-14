@@ -1,4 +1,6 @@
-/** 
+#include "../../../config.h"
+#ifdef IRRNETLITE
+/**
  @file  utility.h
  @brief ENet utility header
 */
@@ -10,3 +12,4 @@
 
 #endif /* __ENET_UTILITY_H__ */
 
+#endif

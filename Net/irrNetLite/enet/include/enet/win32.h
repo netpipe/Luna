@@ -1,4 +1,6 @@
-/** 
+#include "../../../config.h"
+#ifdef IRRNETLITE
+/**
  @file  win32.h
  @brief ENet Win32 header
 */
@@ -56,3 +58,4 @@ typedef fd_set ENetSocketSet;
 #endif /* __ENET_WIN32_H__ */
 
 
+#endif

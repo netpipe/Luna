@@ -1,7 +1,9 @@
-/** 
+/**
  @file callbacks.c
  @brief ENet callback functions
 */
+#include "../../../config.h"
+#ifdef IRRNETLITE
 #define ENET_BUILDING_LIB 1
 #include "enet/enet.h"
 
@@ -21,13 +23,13 @@ enet_initialize_with_callbacks (ENetVersion version, const ENetCallbacks * inits
       callbacks.malloc = inits -> malloc;
       callbacks.free = inits -> free;
    }
-      
+
    if (inits -> rand != NULL)
      callbacks.rand = inits -> rand;
 
    return enet_initialize ();
 }
-           
+
 void *
 enet_malloc (size_t size)
 {
@@ -51,3 +53,4 @@ enet_rand (void)
    return callbacks.rand ();
 }
 
+#endif

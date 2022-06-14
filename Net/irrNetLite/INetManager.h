@@ -1,6 +1,7 @@
 #ifndef IRRNET_INM_H
 #define IRRNET_INM_H
-
+#include "../../config.h"
+#ifdef IRRNETLITE
 #include "SPacket.h"
 
 /** \mainpage
@@ -240,3 +241,4 @@ INetManager* createIrrNetServer(INetCallback* callback, const u32 port = 45000, 
 		3. This notice may not be removed or altered from any source distribution.
 */
 
+#endif

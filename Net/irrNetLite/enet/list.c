@@ -1,11 +1,13 @@
-/** 
+#include "../../../config.h"
+#ifdef IRRNETLITE
+/**
  @file list.c
  @brief ENet linked list functions
 */
 #define ENET_BUILDING_LIB 1
 #include "enet/list.h"
 
-/** 
+/**
     @defgroup list ENet linked list utility functions
     @ingroup private
     @{
@@ -50,8 +52,9 @@ enet_list_size (ENetList * list)
         position != enet_list_end (list);
         position = enet_list_next (position))
      ++ size;
-   
+
    return size;
 }
 
 /** @} */
+#endif

@@ -1,6 +1,7 @@
 #ifndef IRRNET_CNM_H
 #define IRRNET_CNM_H
-
+#include "../../config.h"
+#ifdef IRRNETLITE
 #include <wchar.h>
 #include <iostream>
 #include <string>
@@ -17,7 +18,7 @@ namespace irr
 {
 	namespace net
 	{
-			
+
 		class CNetManager : public INetManager
 		{
 		public:
@@ -41,7 +42,7 @@ namespace irr
 			virtual void sendOutPacketUnreliable(SOutPacket& outpacket);
 			virtual void sendOutPacketUnreliable(SOutPacket& outpacket, const u16 playerId);
 			virtual void kickClient(const u16 playerId, bool hardKick);
-		
+
 			virtual const u32 getPeerCount();
 			virtual const u32 getPing();
 			virtual const u32 getClientAddress(const u16 playerId);
@@ -72,18 +73,18 @@ namespace irr
 			ENetAddress address;
 
 			u16 playerID;
-			
+
 			INetCallback* pHandler;
 			u32 netIterations;
 			SNetParams netParams;
-			
+
 			std::vector<SPeerData*> players;
 			bool verbose;
 			bool globPacketRelay;
 
 			E_IRRNET_CONNECTION_STATUS connectionStatus;
 			E_NET_MODE mode;
-	
+
 			bool setUpClient(const c8* addressc, u32 port);
 			bool setUpServer(u32 port);
 
@@ -118,3 +119,4 @@ namespace irr
   3. This notice may not be removed or altered from any source distribution.
 
   */
+#endif

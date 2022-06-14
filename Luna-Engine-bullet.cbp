@@ -902,6 +902,7 @@
 			<Add directory="../irrlicht-1.8.5/include2" />
 			<Add directory="entities/OpenSteer/lib/include" />
 			<Add directory="Input/libInput/include" />
+			<Add directory="Net/irrNetLite/enet/include" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />
@@ -1334,6 +1335,47 @@
 		<Unit filename="MainLoop.h" />
 		<Unit filename="Net/irrNetClient.cpp" />
 		<Unit filename="Net/irrNetClient.h" />
+		<Unit filename="Net/irrNetLite/CEncryption.h" />
+		<Unit filename="Net/irrNetLite/CNetManager.cpp" />
+		<Unit filename="Net/irrNetLite/CNetManager.h" />
+		<Unit filename="Net/irrNetLite/INetManager.h" />
+		<Unit filename="Net/irrNetLite/SPacket.cpp" />
+		<Unit filename="Net/irrNetLite/SPacket.h" />
+		<Unit filename="Net/irrNetLite/enet/callbacks.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Net/irrNetLite/enet/host.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Net/irrNetLite/enet/include/enet/callbacks.h" />
+		<Unit filename="Net/irrNetLite/enet/include/enet/enet.h" />
+		<Unit filename="Net/irrNetLite/enet/include/enet/list.h" />
+		<Unit filename="Net/irrNetLite/enet/include/enet/protocol.h" />
+		<Unit filename="Net/irrNetLite/enet/include/enet/time.h" />
+		<Unit filename="Net/irrNetLite/enet/include/enet/types.h" />
+		<Unit filename="Net/irrNetLite/enet/include/enet/unix.h" />
+		<Unit filename="Net/irrNetLite/enet/include/enet/utility.h" />
+		<Unit filename="Net/irrNetLite/enet/include/enet/win32.h" />
+		<Unit filename="Net/irrNetLite/enet/install-sh" />
+		<Unit filename="Net/irrNetLite/enet/list.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Net/irrNetLite/enet/packet.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Net/irrNetLite/enet/peer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Net/irrNetLite/enet/protocol.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Net/irrNetLite/enet/unix.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Net/irrNetLite/enet/win32.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Net/irrNetLite/irrNet.h" />
 		<Unit filename="Net/irrNetServer.cpp" />
 		<Unit filename="Net/irrNetServer.h" />
 		<Unit filename="Physics/Box2D_Lite/Arbiter.cpp" />

@@ -1,5 +1,7 @@
 #ifndef IRRNET_H
 #define IRRNET_H
+#include "../../config.h"
+#ifdef IRRNETLITE
 #include "SPacket.h"
 #include "INetManager.h"
 #endif
@@ -25,4 +27,5 @@
   3. This notice may not be removed or altered from any source distribution.
 
   */
-  
+
+#endif

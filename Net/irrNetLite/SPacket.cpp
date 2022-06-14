@@ -1,3 +1,5 @@
+#include "../../config.h"
+#ifdef IRRNETLITE
 #include "SPacket.h"
 #include "zlib/zlib.h"
 #include "CEncryption.h"
@@ -113,7 +115,7 @@ SOutPacket& SOutPacket::operator << (const c8* string)
 
 	enlargeBuffer(2);
 	memcpy(buff.pointer() + buff.size() - 2, &tmp, 2);
-	
+
 	enlargeBuffer(tmp);
 	memcpy(buff.pointer() + buff.size() - tmp, string, tmp);
 	return *this;
@@ -125,7 +127,7 @@ SOutPacket& SOutPacket::operator << (const core::stringc& string)
 
 	enlargeBuffer(2);
 	memcpy(buff.pointer() + buff.size() - 2, &tmp, 2);
-	
+
 	enlargeBuffer(tmp);
 	memcpy(buff.pointer() + buff.size() - tmp, &string[0], tmp);
 	return *this;
@@ -137,7 +139,7 @@ SOutPacket& SOutPacket::operator << (const std::string& string)
 
 	enlargeBuffer(2);
 	memcpy(buff.pointer() + buff.size() - 2, &tmp, 2);
-	
+
 	enlargeBuffer(tmp);
 	memcpy(buff.pointer() + buff.size() - tmp, &string[0], tmp);
 	return *this;
@@ -172,7 +174,7 @@ void SOutPacket::compressPacket()
 {
 	const u32 compBound = compressBound(buff.size()) + 4;
 	core::array<c8> newBuff(compBound);
-	
+
 	const u32 currSize = buff.size();
 	memcpy(newBuff.pointer(), &currSize, 4);
 
@@ -205,7 +207,7 @@ void SOutPacket::encryptPacket(const c8 key[16])
 	const u32 newSize = buff.size() + (16 - (buff.size() % 16));
 	tmpbuff.set_used(newSize);
 	buff.set_used(newSize);
-	
+
 	for(u32 i = 0;i < newSize;i+=16)
 		CEncryption::Encrypt((u8*)buff.pointer() + i, (u8*)tmpbuff.pointer() + i);
 
@@ -218,7 +220,7 @@ void SOutPacket::decryptPacket(const c8 key[16])
 	const u32 newSize = buff.size();
 	core::array<c8> tmpbuff;
 	tmpbuff.set_used(newSize);
-	
+
 	for(u32 i = 0;i < newSize;i+=16)
 		CEncryption::Decrypt((u8*)buff.pointer() + i, (u8*)tmpbuff.pointer() + i);
 
@@ -322,7 +324,7 @@ void SInPacket::operator >> (core::stringc& string)
 	string = tempBuff;
 
 	delete [] tempBuff;
-	
+
 	pos += sz;
 }
 
@@ -338,7 +340,7 @@ void SInPacket::operator >> (std::string& string)
 	string = tempBuff;
 
 	delete [] tempBuff;
-	
+
 	pos += sz;
 }
 
@@ -387,7 +389,7 @@ void SInPacket::operator >> (core::stringw& string)
 	string = tempBuff;
 
 	delete [] tempBuff;
-	
+
 	pos += wcharByteSize;
 }
 
@@ -448,7 +450,7 @@ void SInPacket::encryptPacket(const c8 key[16])
 	const u32 newSize = buff.size() + (16 - (buff.size() % 16));
 	tmpbuff.set_used(newSize);
 	buff.set_used(newSize);
-	
+
 	for(u32 i = 0;i < newSize;i+=16)
 		CEncryption::Encrypt((u8*)buff.pointer() + i, (u8*)tmpbuff.pointer() + i);
 
@@ -461,7 +463,7 @@ void SInPacket::decryptPacket(const c8 key[16])
 	const u32 newSize = buff.size();
 	core::array<c8> tmpbuff;
 	tmpbuff.set_used(newSize);
-	
+
 	for(u32 i = 0;i < newSize;i+=16)
 		CEncryption::Decrypt((u8*)buff.pointer() + i, (u8*)tmpbuff.pointer() + i);
 
@@ -475,3 +477,4 @@ u32 SInPacket::getSize()
 
 } // Close Net Namespace
 } // Close Irr namespace
+#endif

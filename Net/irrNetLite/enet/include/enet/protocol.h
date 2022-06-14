@@ -1,4 +1,6 @@
-/** 
+#include "../../../config.h"
+#ifdef IRRNETLITE
+/**
  @file  protocol.h
  @brief ENet protocol
 */
@@ -172,3 +174,4 @@ typedef union
 
 #endif /* __ENET_PROTOCOL_H__ */
 
+#endif

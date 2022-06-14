@@ -1,4 +1,6 @@
-/** 
+#include "../../../config.h"
+#ifdef IRRNETLITE
+/**
  @file  callbacks.h
  @brief ENet callbacks
 */
@@ -26,3 +28,4 @@ extern int    enet_rand (void);
 
 #endif /* __ENET_CALLBACKS_H__ */
 
+#endif

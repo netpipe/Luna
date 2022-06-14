@@ -1,3 +1,5 @@
+#include "../../../config.h"
+#ifdef IRRNETLITE
 /**
  @file  unix.c
  @brief ENet Unix system specific functions
@@ -436,3 +438,4 @@ enet_socket_wait (ENetSocket socket, enet_uint32 * condition, enet_uint32 timeou
 
 #endif
 
+#endif

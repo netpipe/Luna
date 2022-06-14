@@ -1,6 +1,7 @@
 #ifndef NET_PACKET_H
 #define NET_PACKET_H
-
+#include "../../config.h"
+#ifdef IRRNETLITE
 #ifdef COMPILE_WITH_IRRLICHT
   #include <irrlicht.h>
 #endif
@@ -163,4 +164,5 @@ class SInPacket
 } // Close Net Namespace
 } // Close Irr namespace
 
+#endif
 #endif

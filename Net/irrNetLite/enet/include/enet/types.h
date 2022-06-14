@@ -1,4 +1,6 @@
-/** 
+#include "../../../config.h"
+#ifdef IRRNETLITE
+/**
  @file  types.h
  @brief type definitions for ENet
 */
@@ -11,3 +13,4 @@ typedef unsigned int enet_uint32;      /**< unsigned 32-bit type */
 
 #endif /* __ENET_TYPES_H__ */
 
+#endif

@@ -1,6 +1,8 @@
-/** 
+#include "../../../config.h"
+#ifdef IRRNETLITE
+/**
  @file  list.h
- @brief ENet list management 
+ @brief ENet list management
 */
 #ifndef __ENET_LIST_H__
 #define __ENET_LIST_H__
@@ -40,3 +42,4 @@ extern size_t enet_list_size (ENetList *);
 
 #endif /* __ENET_LIST_H__ */
 
+#endif
