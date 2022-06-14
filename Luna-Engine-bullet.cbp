@@ -901,6 +901,7 @@
 			<Add directory="/usr/include/irrlicht2" />
 			<Add directory="../irrlicht-1.8.5/include2" />
 			<Add directory="entities/OpenSteer/lib/include" />
+			<Add directory="Input/libInput/include" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />
