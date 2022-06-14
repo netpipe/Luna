@@ -120,6 +120,10 @@
 #endif
 
 
+    #ifdef LIBINPUT
+        #include "../Input/libInput/lunaInput.h"
+    #endif
+
 #ifdef SPARK
     #include "../Scene/SPARK/SPK.h"
     #include "../Scene/SPARK/SPK_IRR.h"

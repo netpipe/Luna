@@ -1,13 +1,16 @@
+#ifndef HLUNAINPUT
+#define HLUNAINPUT
+#include "../../../config.h"
+#ifdef LIBINPUT
+
 #include <InputController.h>
+
 #include <Keyboard.h>
 #include <Mouse.h>
 
-#if USE_X11
 	#include "../src/x11/X11InputController.h"
 	#include "../src/x11/X11Keyboard.h"
-#else
-	#error Please specify a suitable platform
-#endif
+
 
 
 #include <X11/Xutil.h>
@@ -131,3 +134,5 @@ int main5(int argc, char* argv[]) {
 
 //	input_controller.enumerate();
 }
+#endif
+#endif

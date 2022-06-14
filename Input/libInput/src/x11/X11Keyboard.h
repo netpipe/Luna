@@ -1,5 +1,4 @@
-#include "../../../../config.h"
-#ifdef LIBINPUT
+
 /*
  * X11Keyboard.h
  *
@@ -9,7 +8,8 @@
 
 #ifndef X11_X11KEYBOARD_H_
 #define X11_X11KEYBOARD_H_
-
+#include "../../../../config.h"
+#ifdef LIBINPUT
 #include "X11InputDevice.h"
 #include "X11InputController.h"
 #include <Keyboard.h>

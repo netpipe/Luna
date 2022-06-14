@@ -1,5 +1,4 @@
-#include "../../../../config.h"
-#ifdef LIBINPUT
+
 /*
  * X11InputDevice.h
  *
@@ -9,7 +8,8 @@
 
 #ifndef X11_X11INPUTDEVICE_H_
 #define X11_X11INPUTDEVICE_H_
-
+#include "../../../../config.h"
+#ifdef LIBINPUT
 #include <InputDevice.h>
 #include <X11/extensions/XInput2.h>
 

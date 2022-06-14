@@ -17,8 +17,9 @@
     #define SPARK
     #define SPEECH
 
-  //  #ifdef linux
-  //  #endif
+    #ifdef linux
+        #define LIBINPUT
+    #endif
 
     //#define SOUND
 

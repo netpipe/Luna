@@ -1,5 +1,4 @@
-#include "../../../../config.h"
-#ifdef LIBINPUT
+
 /*
  * X11Mouse.h
  *
@@ -9,7 +8,8 @@
 
 #ifndef X11_X11MOUSE_H_
 #define X11_X11MOUSE_H_
-
+#include "../../../../config.h"
+#ifdef LIBINPUT
 #include "X11InputController.h"
 #include "X11InputDevice.h"
 #include <Mouse.h>

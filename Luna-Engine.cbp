@@ -124,6 +124,7 @@
 					<Add library="X11" />
 					<Add library="Xxf86vm" />
 					<Add library="GL" />
+					<Add library="Xi" />
 					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
 					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
@@ -740,6 +741,7 @@
 			<Add directory="../LunaLibs/opensteer/include/OpenSteer2" />
 			<Add directory="../LunaLibs/opensteer/include/2" />
 			<Add directory="entities/OpenSteer/lib/include" />
+			<Add directory="Input/libInput/include" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />
@@ -1116,6 +1118,7 @@
 		<Unit filename="Input/libInput/include/InputDevice.h" />
 		<Unit filename="Input/libInput/include/Keyboard.h" />
 		<Unit filename="Input/libInput/include/Mouse.h" />
+		<Unit filename="Input/libInput/lunaInput.h" />
 		<Unit filename="Input/libInput/src/InputController.cpp" />
 		<Unit filename="Input/libInput/src/x11/X11InputController.cpp" />
 		<Unit filename="Input/libInput/src/x11/X11InputController.h" />
