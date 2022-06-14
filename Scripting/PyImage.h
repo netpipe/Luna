@@ -246,7 +246,7 @@ PyObject * Python::PyIrr_iAdd(PyObject * self,PyObject * args){
 	//	float size;
 	char * texture;
    	float x1,y1,x2,y2,xx1,yy1,xx2,yy2;
-	//Damn...thats a lot of parameters :)
+	//thats a lot of parameters
 	PyArg_ParseTuple(args,"sffffffff",&texture,&x1,&y1,&x2,&y2,&xx1,&yy1,&xx2,&yy2);
 #ifdef Image2D
 	core::recti nsize(x1,y1,x2,y2);
@@ -276,8 +276,6 @@ PyObject * Python::PyIrr_iTexture(PyObject * self,PyObject * args){
 PyObject * Python::PyIrr_iAlpha(PyObject * self,PyObject * args){
    	long node_id;
 	//draw all in vector image stack
-
-	//Damn...thats a lot of parameters :)
 	PyArg_ParseTuple(args,"l",&node_id);
 	#ifdef Image2D
 		cImage* node = (cImage*)node_id;

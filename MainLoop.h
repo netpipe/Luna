@@ -1,3 +1,7 @@
+// this file to be cleaned up after development could possibly do a 2d only engine here aswell
+// not really being used it was more for testing networking and setting up a lobby
+
+
 #ifdef NDEBUG // if debug build then do this one
 #include "config.h"
     enum GUI_ELEMENTS

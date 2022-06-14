@@ -27,10 +27,11 @@ if initloader :
     import time
     import os
     import physics
+    import gui
     #import xml
     #scene.using ('../media/lib/random.py',"1")
     #import struct
-
+    #gui.window("test",200,300,400,400) #needs to close automatically before launching other games
     #see atest.pys file for more imports i've found to be valid
     from sys import platform
     if platform == "linux" or platform == "linux2":
