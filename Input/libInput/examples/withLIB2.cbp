@@ -17,8 +17,10 @@
 			<Add alias="All" targets="default;" />
 		</VirtualTargets>
 		<Compiler>
+			<Add option="-DLIBINPUT" />
 			<Add option="-DUSE_X11" />
 			<Add directory="/home/Dev/libs/Irrlicht/include" />
+			<Add directory="../src/x11" />
 			<Add directory="../include" />
 		</Compiler>
 		<Linker>
@@ -28,11 +30,22 @@
 			<Add library="Xau" />
 			<Add library="Xext" />
 			<Add library="Xi" />
-			<Add library="libInput" />
 			<Add directory="/home/Dev/libs/Irrlicht/lib/Linux" />
-			<Add directory="../src" />
 		</Linker>
-		<Unit filename="query_state.cpp" />
+		<Unit filename="../include/InputController.h" />
+		<Unit filename="../include/InputDevice.h" />
+		<Unit filename="../include/Keyboard.h" />
+		<Unit filename="../include/Mouse.h" />
+		<Unit filename="../src/InputController.cpp" />
+		<Unit filename="../src/x11/X11InputController.cpp" />
+		<Unit filename="../src/x11/X11InputController.h" />
+		<Unit filename="../src/x11/X11InputDevice.cpp" />
+		<Unit filename="../src/x11/X11InputDevice.h" />
+		<Unit filename="../src/x11/X11Keyboard.cpp" />
+		<Unit filename="../src/x11/X11Keyboard.h" />
+		<Unit filename="../src/x11/X11Mouse.cpp" />
+		<Unit filename="../src/x11/X11Mouse.h" />
+		<Unit filename="query_state2.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
