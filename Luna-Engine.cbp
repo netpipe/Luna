@@ -702,9 +702,9 @@
 			<Add option="-DPARTICLES" />
 			<Add directory="../LunaLibs/irrlicht-1.8.4/source/Irrlicht" />
 			<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
-			<Add directory="../LunaLibs/net/irrNetLite22" />
+			<Add directory="../LunaLibs/net/irrNetLite22f" />
 			<Add directory="../LunaLibs/freetype-2.3.9/include" />
-			<Add directory="../LunaLibs/net/enet-1.2.1/include" />
+			<Add directory="../LunaLibs/net/enet-1.2.1/includef" />
 			<Add directory="FileSystem/readblend" />
 			<Add directory="../LunaLibs/libtheora-1.1.1/include/theora" />
 			<Add directory="../LunaLibs/libtheoraplayer/include" />
