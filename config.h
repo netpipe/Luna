@@ -16,7 +16,7 @@
         #endif
     #define SPARK
     #define SPEECH
-   // #define IRRNETLITE
+    #define IRRNETLITE
 
     #ifdef linux
         #define LIBINPUT
