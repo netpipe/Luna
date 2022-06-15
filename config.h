@@ -16,7 +16,7 @@
         #endif
     #define SPARK
     #define SPEECH
-    #define IRRNETLITE
+  //  #define IRRNETLITE
 
     #ifdef linux
         #define LIBINPUT
@@ -135,7 +135,9 @@
         //#define PYTHON_MINIMALTEST
         #ifdef WBULLET
             #define PHYSICS
-                #define DESTRUCTION
+                #ifdef linux
+                    #define DESTRUCTION
+                #endif
          //   #ifndef PHYSICS
                 //#define IRRBULLET // use on its own or with PHYSICS
             //#endif
