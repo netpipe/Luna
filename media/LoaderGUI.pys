@@ -165,8 +165,9 @@ if initloader :
    # input.voxelLoad("test");
 
     #input.libinput(1,1)
-    input.speech("testing this out",1,100)
-
+    if platform == "linux" or platform == "linux2":
+        input.speech("this is a hello and hi welcome to luna game engine",1,100)
+        playsound('test.wav')
    # irr.tiled("tiled/2dbasic.tmx",0)
    # irr.tiled("tiled/animation.tmx",0)
     #irr.tiled("tiled/levels.tmx",0)
