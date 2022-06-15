@@ -134,6 +134,7 @@ namespace Python {
     PyObject * PyIrr_getPosition(PyObject * self,PyObject * args);
     PyObject * PyIrr_motionTrail(PyObject * self,PyObject * args);
     PyObject * PyIrr_getInput(PyObject * self,PyObject * args);
+    PyObject * PyIrr_Speech(PyObject * self,PyObject * args);
 
     PyObject * PyIrr_Event(PyObject * self,PyObject * args);
     PyObject * PyIrr_gamePad(PyObject * self,PyObject * args);

@@ -48,10 +48,25 @@ PyMethodDef irr_Input[] =
 	{"voxelLoad",Python::PyIrr_voxelLoad,METH_VARARGS,"voxelLoad"},
 	{"tar",Python::PyIrr_tar,METH_VARARGS,"voxelLoad"},
 	{"libinput",Python::PyIrr_getInput,METH_VARARGS,"voxelLoad"},
+	{"speech",Python::PyIrr_Speech,METH_VARARGS,"voxelLoad"},
     {NULL,NULL,0,NULL}
 };
 
 bool getInputInit=0;
+
+PyObject * Python::PyIrr_Speech(PyObject * self,PyObject * args){
+	int idevice;
+	int param;
+	char * cdstring;
+	PyArg_ParseTuple(args,"sii",&cdstring,&param,&idevice);
+	#ifdef SPEECH
+
+lunaSpeech(cdstring,param,idevice,100);
+//lunaSpeech("testing the test ou",100,100,100);
+    return Py_BuildValue("");
+    #endif
+return Py_BuildValue("");
+}
 
 PyObject * Python::PyIrr_getInput(PyObject * self,PyObject * args){
 	int idevice;
@@ -59,9 +74,11 @@ PyObject * Python::PyIrr_getInput(PyObject * self,PyObject * args){
 	char * cstring;
 	PyArg_ParseTuple(args,"ii",&idevice,&param);
 	#ifdef LIBINPUT
-  //  getInput(idevice,param);
+
   initializeLibInput(device);
-    getInput(1,1);
+     getInput(idevice,param);
+   // getInput(1,1);
+
     return Py_BuildValue("");
     #endif
 return Py_BuildValue("");
