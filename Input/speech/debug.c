@@ -59,7 +59,7 @@ void PrintOutput(
 
 }
 
-extern unsigned char GetRuleByte(unsigned short mem62, unsigned char Y);
+unsigned char GetRuleByte(unsigned short mem62, unsigned char Y);
 
 void PrintRule(unsigned short offset)
 {

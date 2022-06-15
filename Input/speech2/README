@@ -1,0 +1,809 @@
+
+What is SAM?
+============
+
+Sam is a very small Text-To-Speech (TTS) program written in C, that runs on most popular platforms.
+It is an adaption to C of the speech software SAM (Software Automatic Mouth) for the Commodore C64 published 
+in the year 1982 by Don't Ask Software. It includes a Text-To-Phoneme converter called reciter and a Phoneme-To-Speech routine for the 
+final output. It is so small that it will work also on embedded computers. On my computer it takes
+less than 39KB of disk space and is a fully stand alone program.
+For immediate output it uses the SDL-library, otherwise it can save .wav files. 
+
+Compile
+=======
+
+Simply type "make" in your command prompt.
+If you want to compile without SDL delete the "-DUSESDL" statement from the file "Makefile".
+
+It should compile on every UNIX-like operating system. For Windows you need cygwin.
+
+
+Usage
+=====
+
+type
+
+	./sam I am Sam
+
+for the first output.
+
+If you have disabled SDL try
+
+	./sam -wav i_am_sam.wav I am Sam
+
+to get a wav file.
+
+you can try other options like
+	-pitch number
+	-speed number
+	-throat number
+	-mouth number
+
+Some typical values written in the original manual are:
+
+	DESCRIPTION          SPEED     PITCH     THROAT    MOUTH
+	Elf                   72        64        110       160
+	Little Robot          92        60        190       190
+	Stuffy Guy            82        72        110       105
+	Little Old Lady       82        32        145       145
+	Extra-Terrestrial    100        64        150       200
+	SAM                   72        64        128       128
+
+
+It can even sing
+look at
+	sing.bat
+for a small example.
+
+For phoneme output look in the table in Appendix 1.
+
+
+For additional features take a look at the original manual found at
+	http://www.retrobits.net/atari/sam.shtml
+
+
+Adaption To C
+=============
+
+This program was converted semi-automatic into C by converting each assembler opcode.
+e. g. 
+
+	lda 56		=>	A = mem[56];
+	jmp 38018  	=>	goto pos38018;
+	inc 38		=>	mem[38]++;
+	.			.
+	.			.
+
+Then it was manually rewritten to remove most of the 
+jumps and register variables in the code and rename the variables to proper names. 
+Most of the description below is a result of this rewriting process.
+
+Unfortunately its still a not very good readable. But you should see where I started :)
+
+
+
+Short description
+=================
+
+First of all I will limit myself here to a very coarse description. 
+There are very many exceptions defined in the source code that I will not explain. 
+Also a lot of code is unknown for me e. g. Code47503. 
+For a complete understanding of the code I need more time and especially more eyes have a look on the code. 
+
+Reciter
+-------
+
+It changes the english text to phonemes by a ruleset shown in Appendix 3.
+
+The rule
+	" ANT(I)",	"AY",
+means that if he find an "I" with previous letters " ANT", exchange the I by the phoneme "AY".
+
+There are some special signs in this rules like
+	#
+	&
+	@
+	^
+	+
+	:
+	%
+which can mean e. g. that there must be a vocal or a consonant or something else. 
+
+With the -debug option you will get the resulting phonemes for this translation.
+
+
+Output
+------
+
+Here is the full tree of subroutine calls:
+
+Code39771
+	Parser1
+	Parser2
+		Insert
+	Code41883
+	SetPhonemeLength
+	Code48619
+	Code41240
+		Insert
+	Code48431
+		Insert
+		
+	Code48547
+		Code47574
+			Special1
+			Code47503
+			Code48227
+
+
+Code39771 is the entry routine and calls all further routines. 
+Parser1 transforms the phoneme input and transforms it to three tables
+	phonemeindex[]
+	stress[]
+	phonemelength[] (zero at this moment)
+	
+This tables are now changed: 
+
+Parser2 exchanges some phonemes by others and inserts new. 
+Code41883 adds 1 to the stress under some circumstances
+SetPhonemeLength sets phoneme lengths. 
+Code48619 changes the phoneme lengths
+Code41240 adds some additional phonemes
+Code48431 has some extra rules
+
+
+Appendix 2 shows all possible phonemes and some flag fields.  
+The final content of these tables can be seen with the -debug command.
+
+
+These tables is now partly copied into the small tables:
+	phonemeindexOutput[]
+	stressOutput[]
+	phonemelengthOutput[]
+for output.
+
+Final Output
+------------
+
+Except of some special phonemes the output is build by a linear combination:
+	
+	A =   A1 * sin ( f1 * t ) +
+	      A2 * sin ( f2 * t ) +
+	      A3 * rect( f3 * t )
+
+where rect is a rectangular function with the same periodicity like sin. 
+It seems really strange, but this is really enough for most types of phonemes. 
+
+Therefore the above phonemes are converted with some tables to 
+	tab43008[]
+	frequency1[]  =  f1
+	frequency2[]  =  f2
+	frequency3[]  =  f3
+	amplitude1[]  =  A1
+	amplitude2[]  =  A2
+	amplitude3[]  =  A3
+	
+Above formula is calculated in one very good omptimized routine.
+It only consist of 26 commands:
+
+48087: 	LDX 43		; get phase	
+	CLC		
+	LDA 42240,x	; load sine value (high 4 bits)
+	ORA TabAmpl1,y	; get amplitude (in low 4 bits)
+	TAX		
+	LDA 42752,x	; multiplication table
+	STA 56		; store 
+
+	LDX 42		; get phase
+	LDA 42240,x	; load sine value (high 4 bits)
+	ORA TabAmpl2,y	; get amplitude (in low 4 bits)
+	TAX		
+	LDA 42752,x	; multiplication table
+	ADC Var56	; add with previous values
+	STA 56		; and store
+
+	LDX 41		; get phase
+	LDA 42496,x	; load rect value (high 4 bits)
+	ORA TabAmpl3,y	; get amplitude (in low 4 bits)
+	TAX		
+	LDA 42752,x	; multiplication table
+	ADC 56		; add with previous values
+
+	ADC #136		
+	LSR A		; get highest 4 bits
+	LSR A		
+	LSR A		
+	LSR A		
+	STA 54296	;SID   main output command
+
+
+The rest is handled in a special way. At the moment I cannot figure out in which way. 
+But it seems that it uses some noise (e. g. for "s") using a table with random values. 
+
+
+Contact
+=======
+
+If you have questions don' t hesitate to ask me.
+If you discovered some new knowledge about the code please mail me.
+
+Sebastian Macke
+Email: sebastian@macke.de
+
+
+
+APPENDIX 1: PHONETIC ALPHABET FOR SAM
+-------------------------------------
+
+     VOWELS                            VOICED CONSONANTS
+IY           f(ee)t                    R        red
+IH           p(i)n                     L        allow
+EH           beg                       W        away
+AE           Sam                       W        whale
+AA           pot                       Y        you
+AH           b(u)dget                  M        Sam
+AO           t(al)k                    N        man
+OH           cone                      NX       so(ng)
+UH           book                      B        bad
+UX           l(oo)t                    D        dog
+ER           bird                      G        again
+AX           gall(o)n                  J        judge
+IX           dig(i)t                   Z        zoo
+                                       ZH       plea(s)ure
+   DIPHTHONGS                          V        seven
+EY           m(a)de                    DH       (th)en
+AY           h(igh)
+OY           boy
+AW           h(ow)                     UNVOICED CONSONANTS
+OW           slow                      S         Sam
+UW           crew                      Sh        fish
+                                       F         fish
+                                       TH        thin
+ SPECIAL PHONEMES                      P         poke
+UL           sett(le) (=AXL)           T         talk
+UM           astron(omy) (=AXM)        K         cake
+UN           functi(on) (=AXN)         CH        speech
+Q            kitt-en (glottal stop)    /H        a(h)ead
+
+
+APPENDIX 2: Phonemes And flag Field
+-----------------------------------
+
+
+Ind  | phoneme |  flags   |
+-----|---------|----------|
+0    |   *     | 00000000 |
+1    |  .*     | 00000000 |
+2    |  ?*     | 00000000 |
+3    |  ,*     | 00000000 |
+4    |  -*     | 00000000 |
+
+VOWELS
+5    |  IY     | 10100100 |
+6    |  IH     | 10100100 |
+7    |  EH     | 10100100 |
+8    |  AE     | 10100100 |
+9    |  AA     | 10100100 |
+10   |  AH     | 10100100 |
+11   |  AO     | 10000100 |
+17   |  OH     | 10000100 |
+12   |  UH     | 10000100 |
+16   |  UX     | 10000100 |
+15   |  ER     | 10000100 |
+13   |  AX     | 10100100 |
+14   |  IX     | 10100100 |
+
+DIPTHONGS
+48   |  EY     | 10110100 |
+49   |  AY     | 10110100 |
+50   |  OY     | 10110100 |
+51   |  AW     | 10010100 |
+52   |  OW     | 10010100 |
+53   |  UW     | 10010100 |
+
+
+21   |  YX     | 10000100 |
+20   |  WX     | 10000100 |
+18   |  RX     | 10000100 |
+19   |  LX     | 10000100 |
+37   |  /X     | 01000000 |
+30   |  DX     | 01001000 |
+
+
+22   |  WH     | 01000100 |
+
+
+VOICED CONSONANTS
+23   |  R*     | 01000100 |
+24   |  L*     | 01000100 |
+25   |  W*     | 01000100 |
+26   |  Y*     | 01000100 |
+27   |  M*     | 01001100 |
+28   |  N*     | 01001100 |
+29   |  NX     | 01001100 |
+54   |  B*     | 01001110 |
+57   |  D*     | 01001110 |
+60   |  G*     | 01001110 |
+44   |  J*     | 01001100 |
+38   |  Z*     | 01000100 |
+39   |  ZH     | 01000100 |
+40   |  V*     | 01000100 |
+41   |  DH     | 01000100 |
+
+unvoiced CONSONANTS
+32   |  S*     | 01000000 |
+33   |  SH     | 01000000 |
+34   |  F*     | 01000000 |
+35   |  TH     | 01000000 |
+66   |  P*     | 01001011 |
+69   |  T*     | 01001011 |
+72   |  K*     | 01001011 |
+42   |  CH     | 01001000 |
+36   |  /H     | 01000000 |
+
+43   |  **     | 01000000 |
+45   |  **     | 01000100 |
+46   |  **     | 00000000 |
+47   |  **     | 00000000 |
+
+
+55   |  **     | 01001110 |
+56   |  **     | 01001110 |
+58   |  **     | 01001110 |
+59   |  **     | 01001110 |
+61   |  **     | 01001110 |
+62   |  **     | 01001110 |
+63   |  GX     | 01001110 |
+64   |  **     | 01001110 |
+65   |  **     | 01001110 |
+67   |  **     | 01001011 |
+68   |  **     | 01001011 |
+70   |  **     | 01001011 |
+71   |  **     | 01001011 |
+73   |  **     | 01001011 |
+74   |  **     | 01001011 |
+75   |  KX     | 01001011 |
+76   |  **     | 01001011 |
+77   |  **     | 01001011 |
+
+
+SPECIAL
+78   |  UL     | 10000000 |
+79   |  UM     | 11000001 |
+80   |  UN     | 11000001 |
+31   |  Q*     | 01001100 |
+
+
+
+
+
+APPENDIX 3: Text To Phoneme Table
+---------------------------------
+
+" (A.)",	"EH4Y. ",
+"(A) ",		"AH",
+" (ARE) ",	"AAR",
+" (AR)O",	"AXR",
+"(AR)#",	"EH4R",
+" ^(AS)#",	"EY4S",
+"(A)WA",	"AX",
+"(AW)",		"AO5",
+" :(ANY)",	"EH4NIY",
+"(A)^+#",	"EY5",
+"#:(ALLY)",	"ULIY",
+" (AL)#",	"UL",
+"(AGAIN)",	"AXGEH4N",
+"#:(AG)E",	"IHJ",
+"(A)^%",	"EY",
+"(A)^+:#",	"AE",
+" :(A)^+ ",	"EY4",
+" (ARR)",	"AXR",
+"(ARR)",	"AE4R",
+" ^(AR) ",	"AA5R",
+"(AR)",		"AA5R",
+"(AIR)",	"EH4R",
+"(AI)",		"EY4",
+"(AY)",		"EY5",
+"(AU)",		"AO4",
+"#:(AL) ",	"UL",
+"#:(ALS) ",	"ULZ",
+"(ALK)",	"AO4K",
+"(AL)^",	"AOL",
+" :(ABLE)",	"EY4BUL",
+"(ABLE)",	"AXBUL",
+"(A)VO",	"EY4",
+"(ANG)+",	"EY4NJ",
+"(ATARI)",	"AHTAA4RIY",
+"(A)TOM",	"AE",
+"(A)TTI",	"AE",
+" (AT) ",	"AET",
+" (A)T",	"AH",
+"(A)",		"AE",
+" (B) ",	"BIY4",
+" (BE)^#",	"BIH",
+"(BEING)",	"BIY4IHNX",
+" (BOTH) ",	"BOW4TH",
+" (BUS)#",	"BIH4Z",
+"(BREAK)",	"BREY5K",
+"(BUIL)",	"BIH4L",
+"(B)",		"B",
+" (C) ",	"SIY4",
+" (CH)^",	"K",
+"^E(CH)",	"K",
+"(CHA)R#",	"KEH5",
+"(CH)",		"CH",
+" S(CI)#",	"SAY4",
+"(CI)A",	"SH",
+"(CI)O",	"SH",
+"(CI)EN",	"SH",
+"(CITY)",	"SIHTIY",
+"(C)+",		"S",
+"(CK)",		"K",
+"(COMMODORE)",	"KAA4MAHDOHR",
+"(COM)",	"KAHM",
+"(CUIT)",	"KIHT",
+"(CREA)",	"KRIYEY",
+"(C)",		"K",
+" (D) ",	"DIY4",
+" (DR.) ",	"DAA4KTER",
+"#:(DED) ",	"DIHD",
+".E(D) ",	"D",
+"#:^E(D) ",	"T",
+" (DE)^#",	"DIH",
+" (DO) ",	"DUW",
+" (DOES)",	"DAHZ",
+"(DONE) ",	"DAH5N",
+"(DOING)",	"DUW4IHNX",
+" (DOW)",	"DAW",
+"#(DU)A",	"JUW",
+"#(DU)^#",	"JAX",
+"(D)",		"D",
+
+" (E) ",	"IYIY4",
+"#:(E) ",	"",
+"':^(E) ",	"",
+" :(E) ",	"IY",
+"#(ED) ",	"D",
+"#:(E)D ",	"",
+"(EV)ER",	"EH4V",
+"(E)^%",	"IY4",
+"(ERI)#",	"IY4RIY",
+"(ERI)",	"EH4RIH",
+"#:(ER)#",	"ER",
+"(ERROR)",	"EH4ROHR",
+"(ERASE)",	"IHREY5S",
+"(ER)#",	"EHR",
+"(ER)",		"ER",
+" (EVEN)",	"IYVEHN",
+"#:(E)W",	"",
+"@(EW)",	"UW",
+"(EW)",		"YUW",
+"(E)O",		"IY",
+"#:&(ES) ",	"IHZ",
+"#:(E)S ",	"",
+"#:(ELY) ",	"LIY",
+"#:(EMENT)",	"MEHNT",
+"(EFUL)",	"FUHL",
+"(EE)",		"IY4",
+"(EARN)",	"ER5N",
+" (EAR)^",	"ER5",
+"(EAD)",	"EHD",
+"#:(EA) ",	"IYAX",
+"(EA)SU",	"EH5",
+"(EA)",		"IY5",
+"(EIGH)",	"EY4",
+"(EI)",		"IY4",
+" (EYE)",	"AY4",
+"(EY)",		"IY",
+"(EU)",		"YUW5",
+"(EQUAL)",	"IY4KWUL",
+"(E)",		"EH",
+
+" (F) ",	"EH4F",
+"(FUL)",	"FUHL",
+"(FRIEND)",	"FREH5ND",
+"(FATHER)",	"FAA4DHER",
+"(F)F",		"",
+"(F)",		"F",
+
+" (G) ",	"JIY4",
+"(GIV)",	"GIH5V",
+" (G)I^",	"G",
+"(GE)T",	"GEH5",
+"SU(GGES)",	"GJEH4S",
+"(GG)",		"G",
+" B#(G)",	"G",
+"(G)+",		"J",
+"(GREAT)",	"GREY4T",
+"(GON)E",	"GAO5N",
+"#(GH)",	"",
+" (GN)",	"N",
+"(G)",		"G",
+
+" (H) ",	"EY4CH",
+" (HAV)",	"/HAE6V",
+" (HERE)",	"/HIYR",
+" (HOUR)",	"AW5ER",
+"(HOW)",	"/HAW",
+"(H)#",		"/H",
+"(H)",		"",
+
+" (IN)",	"IHN",
+" (I) ",	"AY4",
+"(I) ",		"AY",
+"(IN)D",	"AY5N",
+"SEM(I)",	"IY",
+" ANT(I)",	"AY",
+"(IER)",	"IYER",
+"#:R(IED) ",	"IYD",
+"(IED) ",	"AY5D",
+"(IEN)",	"IYEHN",
+"(IE)T",	"AY4EH",
+"(I')",		"AY5",
+" :(I)^%",	"AY5",
+" :(IE) ",	"AY4",
+"(I)%",		"IY",
+"(IE)",		"IY4",
+" (IDEA)",	"AYDIY5AH",
+"(I)^+:#",	"IH",
+"(IR)#",	"AYR",
+"(IZ)%",	"AYZ",
+"(IS)%",	"AYZ",
+"I^(I)^#",	"IH",
+"+^(I)^+",	"AY",
+"#:^(I)^+",	"IH",
+"(I)^+",	"AY",
+"(IR)",		"ER",
+"(IGH)",	"AY4",
+"(ILD)",	"AY5LD",
+" (IGN)",	"IHGN",
+"(IGN) ",	"AY4N",
+"(IGN)^",	"AY4N",
+"(IGN)%",	"AY4N",
+"(ICRO)",	"AY4KROH",
+"(IQUE)",	"IY4K",
+"(I)",		"IH",
+
+" (J) ",	"JEY4",
+"(J)",		"J",
+
+" (K) ",	"KEY4",
+" (K)N",	"",
+"(K)",		"K",
+
+" (L) ",	"EH4L",
+"(LO)C#",	"LOW",
+"L(L)",		"",
+"#:^(L)%",	"UL",
+"(LEAD)",	"LIYD",
+" (LAUGH)",	"LAE4F",
+"(L)",		"L",
+
+" (M) ",	"EH4M",
+" (MR.) ",	"MIH4STER",
+" (MS.)",	"MIH5Z",
+" (MRS.) ",	"MIH4SIXZ",
+"(MOV)",	"MUW4V",
+"(MACHIN)",	"MAHSHIY5N",
+"M(M)",		"",
+"(M)",		"M",
+
+" (N) ",	"EH4N",
+"E(NG)+",	"NJ",
+"(NG)R",	"NXG",
+"(NG)#",	"NXG",
+"(NGL)%",	"NXGUL",
+"(NG)",		"NX",
+"(NK)",		"NXK",
+" (NOW) ",	"NAW4",
+"N(N)",		"",
+"(NON)E",	"NAH4N",
+"(N)",		"N",
+
+" (O) ",	"OH4W",
+"(OF) ",	"AHV",
+" (OH) ",	"OW5",
+"(OROUGH)",	"ER4OW",
+"#:(OR) ",	"ER",
+"#:(ORS) ",	"ERZ",
+"(OR)",		"AOR",
+" (ONE)",	"WAHN",
+"#(ONE) ",	"WAHN",
+"(OW)",		"OW",
+" (OVER)",	"OW5VER",
+"PR(O)V",	"UW4",
+"(OV)",		"AH4V",
+"(O)^%",	"OW5",
+"(O)^EN",	"OW",
+"(O)^I#",	"OW5",
+"(OL)D",	"OW4L",
+"(OUGHT)",	"AO5T",
+"(OUGH)",	"AH5F",
+" (OU)",	"AW",
+"H(OU)S#",	"AW4",
+"(OUS)",	"AXS",
+"(OUR)",	"OHR",
+"(OULD)",	"UH5D",
+"(OU)^L",	"AH5",
+"(OUP)",	"UW5P",
+"(OU)",		"AW",
+"(OY)",		"OY",
+"(OING)",	"OW4IHNX",
+"(OI)",		"OY5",
+"(OOR)",	"OH5R",
+"(OOK)",	"UH5K",
+"F(OOD)",	"UW5D",
+"L(OOD)",	"AH5D",
+"M(OOD)",	"UW5D",
+"(OOD)",	"UH5D",
+"F(OOT)",	"UH5T",
+"(OO)",		"UW5",
+"(O')",		"OH",
+"(O)E",		"OW",
+"(O) ",		"OW",
+"(OA)",		"OW4",
+" (ONLY)",	"OW4NLIY",
+" (ONCE)",	"WAH4NS",
+"(ON'T)",	"OW4NT",
+"C(O)N",	"AA",
+"(O)NG",	"AO",
+" :^(O)N",	"AH",
+"I(ON)",	"UN",
+"#:(ON)",	"UN",
+"#^(ON)",	"UN",
+"(O)ST",	"OW",
+"(OF)^",	"AO4F",
+"(OTHER)",	"AH5DHER",
+"R(O)B",	"RAA",
+"^R(O):#",	"OW5",
+"(OSS) ",	"AO5S",
+"#:^(OM)",	"AHM",
+"(O)",		"AA",
+
+" (P) ",	"PIY4",
+"(PH)",		"F",
+"(PEOPL)",	"PIY5PUL",
+"(POW)",	"PAW4",
+"(PUT) ",	"PUHT",
+"(P)P",		"",
+"(P)S",		"",
+"(P)N",		"",
+"(PROF.)",	"PROHFEH4SER",
+"(P)",		"P",
+
+" (Q) ",	"KYUW4",
+"(QUAR)",	"KWOH5R",
+"(QU)",		"KW",
+"(Q)",		"K",
+
+" (R) ",	"AA5R",
+" (RE)^#",	"RIY",
+"(R)R",		"",
+"(R)",		"R",
+
+" (S) ",	"EH4S",
+"(SH)",		"SH",
+"#(SION)",	"ZHUN",
+"(SOME)",	"SAHM",
+"#(SUR)#",	"ZHER",
+"(SUR)#",	"SHER",
+"#(SU)#",	"ZHUW",
+"#(SSU)#",	"SHUW",
+"#(SED)",	"ZD",
+"#(S)#",	"Z",
+"(SAID)",	"SEHD",
+"^(SION)",	"SHUN",
+"(S)S", 	"",
+".(S) ",	"Z",
+"#:.E(S) ",	"Z",
+"#:^#(S) ",	"S",
+"U(S) ",	"S",
+" :#(S) ",	"Z",
+"##(S) ",	"Z",
+" (SCH)",	"SK",
+"(S)C+",	"",
+"#(SM)",	"ZUM",
+"#(SN)'",	"ZUM",
+"(STLE)",	"SUL",
+"(S)",		"S",
+
+" (T) ",	"TIY4",
+" (THE) #",	"DHIY",
+" (THE) ",	"DHAX",
+"(TO) ",	"TUX",
+" (THAT)",	"DHAET",
+" (THIS) ",	"DHIHS",
+" (THEY)",	"DHEY",
+" (THERE)",	"DHEHR",
+"(THER)",	"DHER",
+"(THEIR)",	"DHEHR",
+" (THAN) ",	"DHAEN",
+" (THEM) ",	"DHAEN",
+"(THESE) ",	"DHIYZ",
+" (THEN)",	"DHEHN",
+"(THROUGH)",	"THRUW4",
+"(THOSE)",	"DHOHZ",
+"(THOUGH) ",	"DHOW",
+"(TODAY)",	"TUXDEY",
+"(TOMO)RROW",	"TUMAA5",
+"(TO)TAL",	"TOW5",
+" (THUS)",	"DHAH4S",
+"(TH)",		"TH",
+"#:(TED)",	"TIXD",
+"S(TI)#N",	"CH",
+"(TI)O",	"SH",
+"(TI)A",	"SH",
+"(TIEN)",	"SHUN",
+"(TUR)#",	"CHER",
+"(TU)A",	"CHUW",
+" (TWO)",	"TUW",
+"&(T)EN ",	"",
+"(T)",		"T",
+
+" (U) ",	"YUW4",
+" (UN)I",	"YUWN",
+" (UN)",	"AHN",
+" (UPON)",	"AXPAON",
+"@(UR)#",	"UH4R",
+"(UR)#",	"YUH4R",
+"(UR)",		"ER",
+"(U)^ ",	"AH",
+"(U)^^",	"AH5",
+"(UY)",		"AY5",
+" G(U)#",	"",
+"G(U)%",	"",
+"G(U)#",	"W",
+"#N(U)",	"YUW",
+"@(U)",		"UW",
+"(U)",		"YUW",
+
+" (V) ",	"VIY4",
+"(VIEW)",	"VYUW5",
+"(V)",		"V",
+
+" (W) ",	"DAH4BULYUW",
+" (WERE)",	"WER",
+"(WA)SH",	"WAA",
+"(WA)ST",	"WEY",
+"(WA)S",	"WAH",
+"(WA)T",	"WAA",
+"(WHERE)",	"WHEHR",
+"(WHAT)",	"WHAHT",
+"(WHOL)",	"/HOWL",
+"(WHO)",	"/HUW",
+"(WH)",		"WH",
+"(WAR)#",	"WEHR",
+"(WAR)",	"WAOR",
+"(WOR)^",	"WER",
+"(WR)",		"R",
+"(WOM)A",	"WUHM",
+"(WOM)E",	"WIHM",
+"(WEA)R",	"WEH",
+"(WANT)",	"WAA5NT",
+"ANS(WER)",	"ER",
+"(W)",		"W",
+
+" (X) ",	"EH4KR",
+" (X)",		"Z",
+"(X)",		"KS",
+
+" (Y) ",	"WAY4",
+"(YOUNG)",	"YAHNX",
+" (YOUR)",	"YOHR",
+" (YOU)",	"YUW",
+" (YES)",	"YEHS",
+" (Y)",		"Y",
+"F(Y)",		"AY",
+"PS(YCH)",	"AYK",
+"#:^(Y)",	"IY",
+"#:^(Y)I",	"IY",
+" :(Y) ",	"AY",
+" :(Y)#",	"AY",
+" :(Y)^+:#","IH",
+" :(Y)^#",	"AY",
+"(Y)",		"IH",
+
+" (Z) ",	"ZIY4",
+"(Z)",		"Z",
+" ", 	" "
+

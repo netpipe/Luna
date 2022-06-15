@@ -2,18 +2,42 @@
 #define SAM_H
 #include "../../config.h"
 #ifdef SPEECH
-void SetInput(unsigned char *_input);
-void SetSpeed(unsigned char _speed);
-void SetPitch(unsigned char _pitch);
-void SetMouth(unsigned char _mouth);
-void SetThroat(unsigned char _throat);
-void EnableSingmode();
+int Code39771();
+void PrintDebug();
 
-int SAMMain();
 
-char* GetBuffer();
-extern int GetBufferLength();
+#ifdef USEEXTERN
 
+extern int bufferpos;
+extern int scale;
+extern char buffer[22050*100];
+extern int singmode;
+
+//standard sam sound
+extern unsigned char speed;
+extern unsigned char pitch;
+extern unsigned char mouth;
+extern unsigned char throat;
+extern char input[256];  //tab39445
+
+
+#else
+
+
+
+int bufferpos=0;
+int scale=50;
+char buffer[22050*100];
+int singmode = 0;
+
+
+//standard sam sound
+unsigned char speed = 72;
+unsigned char pitch = 64;
+unsigned char mouth = 128;
+unsigned char throat = 128;
+
+char input[256]; //tab39445
 
 //char input[]={"/HAALAOAO MAYN NAAMAEAE IHSTT SAEBAASTTIHAAN \x9b\x9b\0"};
 //unsigned char input[]={"/HAALAOAO \x9b\0"};
@@ -34,6 +58,10 @@ extern int GetBufferLength();
 
 //unsigned char input[]={" EYAYOYAWOWUW ULUMUNQ YXWXRXLX/XDX\x9b\0"};
 
+#endif
+
+
 
 #endif
+
 #endif

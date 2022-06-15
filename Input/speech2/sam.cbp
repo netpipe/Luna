@@ -38,6 +38,7 @@
 				<Option projectResourceIncludeDirsRelation="1" />
 				<Compiler>
 					<Add option="`sdl-config --libs`" />
+					<Add option="-fpermissive" />
 					<Add option="-DUSESDL" />
 					<Add option="-DSPEECH" />
 				</Compiler>
@@ -59,32 +60,11 @@
 			<Add library="SDL" />
 		</Linker>
 		<Unit filename="ReciterTabs.h" />
-		<Unit filename="RenderTabs.h" />
 		<Unit filename="SamTabs.h" />
-		<Unit filename="createtransitions.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="debug.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="debug.h" />
-		<Unit filename="main.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="processframes.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="reciter.c">
-			<Option compilerVar="CC" />
-		</Unit>
+		<Unit filename="main.cpp" />
+		<Unit filename="reciter.cpp" />
 		<Unit filename="reciter.h" />
-		<Unit filename="render.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="render.h" />
-		<Unit filename="sam.c">
-			<Option compilerVar="CC" />
-		</Unit>
+		<Unit filename="sam.cpp" />
 		<Unit filename="sam.h" />
 		<Extensions />
 	</Project>

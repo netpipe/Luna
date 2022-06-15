@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1158522417 source:/home/netpipe/Desktop/speech/2/sam.cpp
+	<stdio.h>
+	"sam.h"
+	"SamTabs.h"
+
+1158500246 /home/netpipe/Desktop/speech/2/sam.h
+
+1158519767 /home/netpipe/Desktop/speech/2/SamTabs.h
+
+1655265718 source:/home/netpipe/Desktop/speech/2/reciter.cpp
+	<stdio.h>
+	<string.h>
+	"reciter.h"
+	"ReciterTabs.h"
+
+1655265755 /home/netpipe/Desktop/speech/2/reciter.h
+
+1655265323 /home/netpipe/Desktop/speech/2/ReciterTabs.h
+
+1655265416 source:/home/netpipe/Desktop/speech/2/main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"reciter.h"
+	"sam.h"
+	<SDL/SDL.h>
+	<SDL/SDL_audio.h>
+

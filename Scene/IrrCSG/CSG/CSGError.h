@@ -7,7 +7,7 @@
 void heapAllocationFailure();
 void externalError();
 void triangleSplitError();
-void debug(char msg[]);
+void debug2(char msg[]);
 
 #endif
 #endif

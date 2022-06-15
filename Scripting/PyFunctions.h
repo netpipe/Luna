@@ -120,6 +120,14 @@
 #endif
 
 
+    #ifdef SPEECH
+//    #include "../Input/speech/reciter.h"
+//    #include "../Input/speech/sam.h"
+//    #include "../Input/speech/debug.h"
+      #include "../Input/lunaspeech.h"
+    #endif
+
+
     #ifdef LIBINPUT
         #include "../Input/libInput/lunaInput.h"
     #endif

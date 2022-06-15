@@ -5,7 +5,6 @@
 //todo fix GUI button render needs its own receiver
 //todo fix GUI instances into vector
 
-
     enum GUI_ELEMENTS
 {
 	MENU_QUIT = 200,

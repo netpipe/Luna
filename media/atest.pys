@@ -12,7 +12,7 @@ if(init):
     import image
     import time
     import xml
-    import socket
+    #import socket
     from sys import platform
     if platform == "linux" or platform == "linux2":
      #import socket
@@ -50,7 +50,9 @@ if(init):
     #call(["curl", {url}, '--output', "index.html"])
     #os.system("aplay ../media/frogger.wav")
 
+        import struct
         def joystick():
+            global data
             struct_format = 'llHHI'
             infile_path = "/dev/input/js0"
             infile = open(infile_path, "rb")
@@ -58,7 +60,7 @@ if(init):
             while True:
                 event = infile.read(event_size)
                 data = struct.unpack(struct_format, event)
-                print(data)
+               # print(data)
                 # (tv_sec, tv_usec, etype, code, value) = data
 
         #import threading
@@ -145,7 +147,7 @@ if(init):
        hand1.append(image.iadd(card1,i*10,i*10,i*10+55,i*10+84,0,0,55,84))
 
     init=0
-
+print(data)
 #image.idraw(hand1[0])
 image.idraw(hand1[1])
 #image.idraw(hand2[0])

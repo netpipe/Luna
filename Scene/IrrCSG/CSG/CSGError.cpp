@@ -25,7 +25,7 @@ void triangleSplitError() {
 	exit(3);
 }
 
-void debug(char msg[]) {
+void debug2(char msg[]) {
 	printf("### DEBUG:%s\n", msg);
 }
 #endif

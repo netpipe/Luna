@@ -51,3 +51,91 @@
 	<SDL/SDL.h>
 	<SDL/SDL_audio.h>
 
+1655261902 source:/home/netpipe/Dev/Luna/Input/speech/createtransitions.c
+	"../../config.h"
+	<stdio.h>
+	<stdlib.h>
+	"render.h"
+
+1655255456 /home/netpipe/Dev/Luna/config.h
+
+1655148860 /home/netpipe/Dev/Luna/Input/speech/render.h
+	"../../config.h"
+
+1655261886 source:/home/netpipe/Dev/Luna/Input/speech/debug.c
+	"../../config.h"
+	<stdio.h>
+
+1655148860 source:/home/netpipe/Dev/Luna/Input/speech/processframes.c
+	"../../config.h"
+	"render.h"
+
+1655149330 source:/home/netpipe/Dev/Luna/Input/speech/reciter.c
+	"../../config.h"
+	<stdio.h>
+	<string.h>
+	"reciter.h"
+	"ReciterTabs.h"
+	"debug.h"
+
+1655261481 /home/netpipe/Dev/Luna/Input/speech/reciter.h
+	"../../config.h"
+
+1655148860 /home/netpipe/Dev/Luna/Input/speech/ReciterTabs.h
+	"../../config.h"
+
+1655259967 /home/netpipe/Dev/Luna/Input/speech/debug.h
+	"../../config.h"
+
+1655149351 source:/home/netpipe/Dev/Luna/Input/speech/render.c
+	"../../config.h"
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"render.h"
+	"RenderTabs.h"
+	"debug.h"
+
+1655148836 /home/netpipe/Dev/Luna/Input/speech/RenderTabs.h
+	"../../config.h"
+
+1655149501 source:/home/netpipe/Dev/Luna/Input/speech/sam.c
+	"../../config.h"
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"debug.h"
+	"sam.h"
+	"render.h"
+	"SamTabs.h"
+
+1655261884 /home/netpipe/Dev/Luna/Input/speech/sam.h
+	"../../config.h"
+
+1655148856 /home/netpipe/Dev/Luna/Input/speech/SamTabs.h
+	"../../config.h"
+
+1655260266 source:/home/netpipe/Dev/Luna/Input/speech/main.c
+	"../../config.h"
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"reciter.h"
+	"sam.h"
+	"debug.h"
+	<SDL/SDL.h>
+	<SDL/SDL_audio.h>
+
+1655260266 source:/home/netpipe/Dev/Luna/Input/speech/main.cpp
+	"../../config.h"
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"reciter.h"
+	"sam.h"
+	"debug.h"
+	<SDL/SDL.h>
+	<SDL/SDL_audio.h>
+
