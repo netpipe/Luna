@@ -1419,7 +1419,6 @@
 		<Unit filename="Input/openal_playback.h" />
 		<Unit filename="Input/speech2/ReciterTabs.h" />
 		<Unit filename="Input/speech2/SamTabs.h" />
-		<Unit filename="Input/speech2/main.cpp" />
 		<Unit filename="Input/speech2/reciter.cpp" />
 		<Unit filename="Input/speech2/reciter.h" />
 		<Unit filename="Input/speech2/sam.cpp" />
