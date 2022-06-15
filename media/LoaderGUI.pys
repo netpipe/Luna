@@ -164,7 +164,7 @@ if initloader :
    # scene.fluidlite("","",1)
    # input.voxelLoad("test");
 
-    input.libinput(1,1)
+   # input.libinput(1,1)
 
    # irr.tiled("tiled/2dbasic.tmx",0)
    # irr.tiled("tiled/animation.tmx",0)
