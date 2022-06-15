@@ -15,7 +15,6 @@
             #define OPENSTEER2 // the rest of the extra plugins if its compiling good.
         #endif
     #define SPARK
-    #define SPEECH
   //  #define IRRNETLITE
 
     #ifdef linux
@@ -99,7 +98,7 @@
      // #define SQLITE
     #define LOADLEVELS
 
-        #define CODEEDITOR
+    #define CODEEDITOR
     #define COMPRESS
 
     #ifdef MINIMAL2 //not so minimal extras
@@ -114,7 +113,7 @@
             #endif
          //   #define SOUND
         //#define SDLSound
-
+        #define SPEECH
         //  #define POLYVOX
         #define FLARE
         #define FLARES
@@ -143,8 +142,6 @@
             //#endif
           #endif
     #endif
-
-
 
   #ifdef PHYSICS
       //if bullet carnot enabled with physics and car calls it crashes FIXME
