@@ -196,10 +196,10 @@ printf("testing speech");
         case 4://Little Old Lady
        speed=82;	pitch=32;    throat = 145;    mouth=145;
             break;
-        case 4://Extra-Terrestrial
+        case 5://Extra-Terrestrial
        speed=100;	pitch=64;    throat = 150;    mouth=200;
             break;
-        case 5://SAM
+        case 6://SAM
        speed=72;	pitch=64;    throat = 128;    mouth=128;
             break;
     }
