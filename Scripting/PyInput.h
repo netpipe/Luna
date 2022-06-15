@@ -55,14 +55,21 @@ PyMethodDef irr_Input[] =
 bool getInputInit=0;
 
 PyObject * Python::PyIrr_Speech(PyObject * self,PyObject * args){
-	int idevice;
-	int param;
-	char * cdstring;
-	PyArg_ParseTuple(args,"sii",&cdstring,&param,&idevice);
+	int vpitch;
+	int vspeed;
+	int vthroat;
+	int vmouth;
+    int vmode;
+	int vvoice;
+
+	char * saystring;
+	PyArg_ParseTuple(args,"siiiiii",&saystring,&vspeed,&vpitch,&vthroat,&vmouth,&vmode,&vvoice);
 	#ifdef SPEECH
 
-lunaSpeech(cdstring,param,idevice,100);
-//lunaSpeech("testing the test ou",100,100,100);
+    //int *vpitch,int *vmouth,int *vthroat, int *vspeed,int *vmode,int *vvoice);
+
+    lunaSpeech(saystring,vspeed,vpitch,vthroat,vmouth,vmode,vvoice);
+    //lunaSpeech("testing the test ou",100,100,100);
     return Py_BuildValue("");
     #endif
 return Py_BuildValue("");

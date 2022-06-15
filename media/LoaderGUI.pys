@@ -166,7 +166,7 @@ if initloader :
 
     #input.libinput(1,1)
     if platform == "linux" or platform == "linux2":
-        input.speech("this is a hello and hi welcome to luna game engine",1,100)
+        input.speech("this is a hello and hi welcome to luna gaaaame engine",100,100,100,100,0,0)
         playsound('test.wav')
    # irr.tiled("tiled/2dbasic.tmx",0)
    # irr.tiled("tiled/animation.tmx",0)
