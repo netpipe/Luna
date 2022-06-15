@@ -205,10 +205,10 @@ printf("testing speech");
     }
 
     switch (vmode){
-    case 0:
+    case 1:
         singmode = 1;
         break;
-    case 1:
+    case 2:
         phonetic = 1;
         break;
     }
