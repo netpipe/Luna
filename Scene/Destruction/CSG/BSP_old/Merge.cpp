@@ -1,3 +1,5 @@
+#include "../../../../config.h"
+#ifdef DESTRUCTION
 /*
 ===============================================================================
 	File:	Merge.cpp
@@ -517,3 +519,4 @@ void NodeyBSPTree::RemoveFacesInsideNode_R( Polygon* inFaces, const Node* pNode,
 //--------------------------------------------------------------//
 //				End Of File.									//
 //--------------------------------------------------------------//
+#endif

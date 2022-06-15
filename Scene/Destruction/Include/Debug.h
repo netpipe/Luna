@@ -7,7 +7,8 @@
 
 #ifndef __MX_DEBUG_H__
 #define __MX_DEBUG_H__
-
+#include "../../../config.h"
+#ifdef DESTRUCTION
 /*
 ================================================================================
 
@@ -205,7 +206,7 @@ class ERROR_##msg {									\
 #define ASSERT_SIZEOF_32_BYTE_MULTIPLE( type )	FILE_SCOPED_COMPILE_TIME_ASSERT( ( sizeof( type ) & 31 ) == 0 )
 
 #endif // !__MX_DEBUG_H__
-
+#endif
 //--------------------------------------------------------------//
 //				End Of File.									//
 //--------------------------------------------------------------//

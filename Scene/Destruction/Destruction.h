@@ -1,3 +1,4 @@
+
 /*
 ===============================================================================
 	File:	Destruction.h
@@ -7,7 +8,8 @@
 
 #ifndef __MX_DESTRUCTION__COMMON_SHARED_HEADER_H__
 #define __MX_DESTRUCTION__COMMON_SHARED_HEADER_H__
-
+#include "../../config.h"
+#ifdef DESTRUCTION
 #include "Common/Common.h"
 #include "Common/Mesh.h"
 #include "CSG/GeoMod.h"
@@ -46,3 +48,4 @@ public:
 //--------------------------------------------------------------//
 //				End Of File.									//
 //--------------------------------------------------------------//
+#endif

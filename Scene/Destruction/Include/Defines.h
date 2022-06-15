@@ -7,7 +7,8 @@
 
 #ifndef __MX_DEFINES_H__
 #define __MX_DEFINES_H__
-
+#include "../../../config.h"
+#ifdef DESTRUCTION
 //==================================
 // Path to media content.
 #define PATH_TO_MEDIA	"Media/"
@@ -51,3 +52,4 @@
 //-------------------------------------------------------------
 
 #endif // !__MX_DEFINES_H__
+#endif

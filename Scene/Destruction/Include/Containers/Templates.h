@@ -7,7 +7,8 @@
 
 #ifndef __MX_TEMPLATES_H__
 #define __MX_TEMPLATES_H__
-
+#include "../../../../config.h"
+#ifdef DESTRUCTION
 #include <iostream>
 
 namespace mix {
@@ -1668,6 +1669,7 @@ void PrependItem( T *& pList, T * item )
 
 }//end of namespace mix
 
+#endif /* ! __MX_TEMPLATES_H__ */
 #endif /* ! __MX_TEMPLATES_H__ */
 
 //--------------------------------------------------------------//

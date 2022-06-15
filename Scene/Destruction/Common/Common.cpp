@@ -1,3 +1,5 @@
+#include "../../../config.h"
+#ifdef DESTRUCTION
 /*
 ===============================================================================
 	File:	Common.cpp
@@ -41,3 +43,4 @@ bool VolumeIntersectsFrustum( const mxBounds& bv, const TViewFrustum& frustum )
 //--------------------------------------------------------------//
 //				End Of File.									//
 //--------------------------------------------------------------//
+#endif

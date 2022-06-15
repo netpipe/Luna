@@ -4,7 +4,8 @@
 	Desc:.
 ===============================================================================
 */
-
+#include "../../../../config.h"
+#ifdef DESTRUCTION
 #include "../../stdafx.h"
 #pragma hdrstop
 #include "../../Include/IrrMix.h"
@@ -144,3 +145,4 @@ bool SphereIntersectsFrustum( const Vec3D& center, f32 radius, const TViewFrustu
 //--------------------------------------------------------------//
 //				End Of File.									//
 //--------------------------------------------------------------//
+#endif

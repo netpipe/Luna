@@ -1,4 +1,5 @@
-
+#include "../../../../config.h"
+#ifdef DESTRUCTION
 inline bool Node::IsLeaf() const
 { return Type != Internal; }
 
@@ -36,3 +37,4 @@ inline const mxPlane & Node::GetPlane() const
 
 inline const mxBounds & Node::GetBounds() const
 {	return Bounds;	}
+#endif

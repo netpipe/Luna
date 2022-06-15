@@ -7,7 +7,8 @@
 
 #ifndef __MX_MEMORY_H__
 #define __MX_MEMORY_H__
-
+#include "../../../../config.h"
+#ifdef DESTRUCTION
 #include "Pool/Pool.h"
 #include "FreeList/FreeList.h"
 
@@ -28,6 +29,7 @@ public:
 }//end of namespace mix
 
 #endif /* ! __MX_MEMORY_H__ */
+#endif
 
 //--------------------------------------------------------------//
 //				End Of File.									//

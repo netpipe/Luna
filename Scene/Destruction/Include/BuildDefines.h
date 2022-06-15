@@ -7,7 +7,8 @@
 
 #ifndef __MX_BUILD_DEFINES_H__
 #define __MX_BUILD_DEFINES_H__
-
+#include "../../../config.h"
+#ifdef DESTRUCTION
 //#define MX_DEBUG		// Debug build.
 #define MX_DEVELOPER	// For statistics, testing, etc.
 #define MX_SOUND		// Compile with sound.
@@ -25,7 +26,7 @@
 #pragma warning ( disable: 4996 )
 
 #endif // !__MX_BUILD_DEFINES_H__
-
+#endif
 //--------------------------------------------------------------//
 //				End Of File.									//
 //--------------------------------------------------------------//

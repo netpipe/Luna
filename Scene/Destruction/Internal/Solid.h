@@ -1,3 +1,5 @@
+#include "../../../config.h"
+#ifdef DESTRUCTION
 /*
 ===============================================================================
 	File:	CGeomoddableSolid_v0.inl
@@ -235,3 +237,4 @@ void CGeomoddableSolid_v0::ApplyDecal( const Vec3D& position, const Vec3D& norma
 //--------------------------------------------------------------//
 //				End Of File.									//
 //--------------------------------------------------------------//
+#endif

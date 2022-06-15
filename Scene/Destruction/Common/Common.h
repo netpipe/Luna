@@ -1,3 +1,5 @@
+#include "../../../config.h"
+#ifdef DESTRUCTION
 /*
 ===============================================================================
 	File:	Common.h
@@ -40,3 +42,4 @@ INLINE bool VolumesOverlap( const mxBounds& bv1, const mxBounds& bv2, const f32 
 //--------------------------------------------------------------//
 
 
+#endif

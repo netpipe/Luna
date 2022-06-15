@@ -7,6 +7,8 @@
 
 #ifndef __MX_TYPEDEFS_H__
 #define __MX_TYPEDEFS_H__
+#include "../../../config.h"
+#ifdef DESTRUCTION
 #include <irrlicht.h>
 
 #include "BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h"
@@ -133,3 +135,4 @@ typedef E_TROOLEAN	trool;
 //--------------------------------------------------------------//
 //				End Of File.									//
 //--------------------------------------------------------------//
+#endif

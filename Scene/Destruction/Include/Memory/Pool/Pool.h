@@ -25,7 +25,8 @@
 
 #ifndef __MEMORY_POOL_H__
 #define __MEMORY_POOL_H__
-
+#include "../../../../../config.h"
+#ifdef DESTRUCTION
 #ifdef __linux
 typedef unsigned int WORD;
 typedef bool BYTE;
@@ -202,6 +203,7 @@ void operator delete( void* p, ::mix::mxMemoryPool<T> & rMemPool )
 	return rMemPool.Delete( p );
 }
 
+#endif // !__MEMORY_POOL_H__
 #endif // !__MEMORY_POOL_H__
 
 //--------------------------------------------------------------//

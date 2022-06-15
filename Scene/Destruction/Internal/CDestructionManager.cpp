@@ -1,3 +1,5 @@
+#include "../../../config.h"
+#ifdef DESTRUCTION
 /*
 ===============================================================================
 	File:	CDestructionManager.cpp
@@ -56,3 +58,4 @@ void CDestructionManager::DeleteSolid( mxGeomoddableSolid* pointer )
 //--------------------------------------------------------------//
 //				End Of File.									//
 //--------------------------------------------------------------//
+#endif

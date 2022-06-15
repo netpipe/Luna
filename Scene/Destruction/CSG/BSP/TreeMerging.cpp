@@ -1,3 +1,5 @@
+#include "../../../../config.h"
+#ifdef DESTRUCTION
 /*
 ===============================================================================
 	File:	TreeMerging.cpp
@@ -15,3 +17,4 @@ namespace mix {
 ================================*/
 
 }//end of namespace mix
+#endif

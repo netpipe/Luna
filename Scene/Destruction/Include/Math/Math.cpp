@@ -1,6 +1,7 @@
 // Copyright (C) 2004 Id Software, Inc.
 //
-
+#include "../../../../config.h"
+#ifdef DESTRUCTION
 //#include "stdafx.h"
 #pragma hdrstop
 #include "../../Include/IrrMix.h"
@@ -105,3 +106,4 @@ float idMath::BitsToFloat( int i, int exponentBits, int mantissaBits ) {
 	value = sign << IEEE_FLT_SIGN_BIT | ( exponent + IEEE_FLT_EXPONENT_BIAS ) << IEEE_FLT_MANTISSA_BITS | mantissa;
 	return *reinterpret_cast<float *>(&value);
 }
+#endif

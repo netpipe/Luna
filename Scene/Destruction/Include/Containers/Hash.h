@@ -1,13 +1,14 @@
 /*
 ===============================================================================
 File:	Hash.h
-Desc:	
+Desc:
 ===============================================================================
 */
 
 #ifndef __MX_HASH_H__
 #define __MX_HASH_H__
-
+#include "../../../../config.h"
+#ifdef DESTRUCTION
 namespace mix {
 
 	/**\file
@@ -55,7 +56,7 @@ namespace mix {
 	};
 
 	/**
-	* Template for hash value computing, suitable for integral types and types 
+	* Template for hash value computing, suitable for integral types and types
 	* that can be casted to such.
 	*/
 	template <class T>
@@ -77,24 +78,24 @@ namespace mix {
 	class csHashComputer<void*> : public csHashComputerIntegral<void*> {};
 
 	template<>
-	class csHashComputer<int> : public csHashComputerIntegral<int> {}; 
+	class csHashComputer<int> : public csHashComputerIntegral<int> {};
 	template<>
-	class csHashComputer<unsigned int> : 
-		public csHashComputerIntegral<unsigned int> {}; 
+	class csHashComputer<unsigned int> :
+		public csHashComputerIntegral<unsigned int> {};
 
 	template<>
-	class csHashComputer<long> : public csHashComputerIntegral<long> {}; 
+	class csHashComputer<long> : public csHashComputerIntegral<long> {};
 	template<>
-	class csHashComputer<unsigned long> : 
-		public csHashComputerIntegral<unsigned long> {}; 
+	class csHashComputer<unsigned long> :
+		public csHashComputerIntegral<unsigned long> {};
 
-#if (CS_LONG_SIZE < 8)    
+#if (CS_LONG_SIZE < 8)
 	template<>
-	class csHashComputer<longlong> : 
-		public csHashComputerIntegral<longlong> {}; 
+	class csHashComputer<longlong> :
+		public csHashComputerIntegral<longlong> {};
 	template<>
-	class csHashComputer<ulonglong> : 
-		public csHashComputerIntegral<ulonglong> {}; 
+	class csHashComputer<ulonglong> :
+		public csHashComputerIntegral<ulonglong> {};
 #endif
 
 	template<>
@@ -178,11 +179,11 @@ namespace mix {
 	};
 
 	/**
-	* Template that can be used as a base class for hash computers for 
+	* Template that can be used as a base class for hash computers for
 	* string types (must support cast to const char*).
 	* Example:
 	* \code
-	* template<> class csHashComputer<MyString> : 
+	* template<> class csHashComputer<MyString> :
 	*   public csHashComputerString<MyString> {};
 	* \endcode
 	*/
@@ -203,11 +204,11 @@ namespace mix {
 	class csHashComputer<const char*> : public csHashComputerString<const char*> {};
 
 	/**
-	* Template that can be used as a base class for hash computers for POD 
+	* Template that can be used as a base class for hash computers for POD
 	* structs.
 	* Example:
 	* \code
-	* template<> class csHashComputer<MyStruct> : 
+	* template<> class csHashComputer<MyStruct> :
 	*   public csHashComputerStruct<MyStruct> {};
 	* \endcode
 	*/
@@ -226,13 +227,13 @@ namespace mix {
 	* A generic hash table class,
 	* which grows dynamically and whose buckets are unsorted arrays.
 	* The hash value of a key is computed using csHashComputer<>, two keys are
-	* compared using csComparator<>. You need to provide appropriate 
-	* specializations of those templates if you want use non-integral types 
+	* compared using csComparator<>. You need to provide appropriate
+	* specializations of those templates if you want use non-integral types
 	* (other than const char* and csString for which appropriate specializations
-	* are already provided) or special hash algorithms. 
+	* are already provided) or special hash algorithms.
 	*/
-	template <class T, class K = unsigned int, 
-	class ArrayMemoryAlloc = CS::Memory::AllocatorMalloc> 
+	template <class T, class K = unsigned int,
+	class ArrayMemoryAlloc = CS::Memory::AllocatorMalloc>
 	class csHash
 	{
 	public:
@@ -267,7 +268,7 @@ namespace mix {
 		{
 			static const size_t Primes[] =
 			{
-				53,         97,         193,       389,       769, 
+				53,         97,         193,       389,       769,
 				1543,       3079,       6151,      12289,     24593,
 				49157,      98317,      196613,    393241,    786433,
 				1572869,    3145739,    6291469,   12582917,  25165843,
@@ -290,7 +291,7 @@ namespace mix {
 				for (size_t j = slen; j > 0; j--)
 				{
 					const Element& srcElem = src[j - 1];
-					ElementArray& dst = 
+					ElementArray& dst =
 						Elements.Get (csHashComputer<K>::ComputeHash (srcElem.key) % Modulo);
 					if (&src != &dst)
 					{
@@ -305,15 +306,15 @@ namespace mix {
 		/**
 		* Construct a hash table with an array of the given size,
 		* which for optimisation reasons should be a prime number.
-		* 
+		*
 		* \a grow_rate is the rate at which the hash table grows:
 		* \a size doubles once there are \a size/\a grow_rate collisions.
 		* It will not grow after it reaches \a max_size.
-		* 
+		*
 		* Here are a few primes: 7, 11, 19, 29, 59, 79, 101, 127, 151, 199, 251,
 		* 307, 401, 503, 809, 1009, 1499, 2003, 3001, 5003, 12263, 25247, 36923,
 		* 50119, 70951, 90313, 104707.
-		* 
+		*
 		* For a bigger list go to http://www.utm.edu/research/primes/
 		*/
 		csHash (size_t size = 23, size_t grow_rate = 5, size_t max_size = 20000)
@@ -337,7 +338,7 @@ namespace mix {
 		void Put (const K& key, const T &value)
 		{
 			if (Elements.GetSize() == 0) Elements.SetSize (Modulo);
-			ElementArray& values = 
+			ElementArray& values =
 				Elements[csHashComputer<K>::ComputeHash (key) % Modulo];
 			values.Push (Element (key, value));
 			Size++;
@@ -348,7 +349,7 @@ namespace mix {
 		/// Get all the elements with the given key, or empty if there are none.
 		csArray<T> GetAll (const K& key) const
 		{
-			return GetAll<typename csArray<T>::ElementHandlerType, 
+			return GetAll<typename csArray<T>::ElementHandlerType,
 				typename csArray<T>::AllocatorType> (key);
 		}
 
@@ -357,14 +358,14 @@ namespace mix {
 		csArray<T, H, M> GetAll (const K& key) const
 		{
 			if (Elements.GetSize() == 0) return csArray<T> ();
-			const ElementArray& values = 
+			const ElementArray& values =
 				Elements[csHashComputer<K>::ComputeHash (key) % Modulo];
 			csArray<T> ret (values.GetSize () / 2);
 			const size_t len = values.GetSize ();
 			for (size_t i = 0; i < len; ++i)
 			{
 				const Element& v = values[i];
-				if (csComparator<K, K>::Compare (v.key, key) == 0) 
+				if (csComparator<K, K>::Compare (v.key, key) == 0)
 					ret.Push (v.value);
 			}
 			return ret;
@@ -374,7 +375,7 @@ namespace mix {
 		void PutUnique (const K& key, const T &value)
 		{
 			if (Elements.GetSize() == 0) Elements.SetSize (Modulo);
-			ElementArray& values = 
+			ElementArray& values =
 				Elements[csHashComputer<K>::ComputeHash (key) % Modulo];
 			const size_t len = values.GetSize ();
 			for (size_t i = 0; i < len; ++i)
@@ -397,11 +398,11 @@ namespace mix {
 		bool Contains (const K& key) const
 		{
 			if (Elements.GetSize() == 0) return false;
-			const ElementArray& values = 
+			const ElementArray& values =
 				Elements[csHashComputer<K>::ComputeHash (key) % Modulo];
 			const size_t len = values.GetSize ();
 			for (size_t i = 0; i < len; ++i)
-				if (csComparator<K, K>::Compare (values[i].key, key) == 0) 
+				if (csComparator<K, K>::Compare (values[i].key, key) == 0)
 					return true;
 			return false;
 		}
@@ -415,13 +416,13 @@ namespace mix {
 		{ return Contains(key); }
 
 		/**
-		* Get a pointer to the first element matching the given key, 
+		* Get a pointer to the first element matching the given key,
 		* or 0 if there is none.
 		*/
 		const T* GetElementPointer (const K& key) const
 		{
 			if (Elements.GetSize() == 0) return 0;
-			const ElementArray& values = 
+			const ElementArray& values =
 				Elements[csHashComputer<K>::ComputeHash (key) % Modulo];
 			const size_t len = values.GetSize ();
 			for (size_t i = 0; i < len; ++i)
@@ -435,13 +436,13 @@ namespace mix {
 		}
 
 		/**
-		* Get a pointer to the first element matching the given key, 
+		* Get a pointer to the first element matching the given key,
 		* or 0 if there is none.
 		*/
 		T* GetElementPointer (const K& key)
 		{
 			if (Elements.GetSize() == 0) return 0;
-			ElementArray& values = 
+			ElementArray& values =
 				Elements[csHashComputer<K>::ComputeHash (key) % Modulo];
 			const size_t len = values.GetSize ();
 			for (size_t i = 0; i < len; ++i)
@@ -463,13 +464,13 @@ namespace mix {
 		}
 
 		/**
-		* Get the first element matching the given key, or \p fallback if there is 
+		* Get the first element matching the given key, or \p fallback if there is
 		* none.
 		*/
 		const T& Get (const K& key, const T& fallback) const
 		{
 			if (Elements.GetSize() == 0) return fallback;
-			const ElementArray& values = 
+			const ElementArray& values =
 				Elements[csHashComputer<K>::ComputeHash (key) % Modulo];
 			const size_t len = values.GetSize ();
 			for (size_t i = 0; i < len; ++i)
@@ -483,13 +484,13 @@ namespace mix {
 		}
 
 		/**
-		* Get the first element matching the given key, or \p fallback if there is 
+		* Get the first element matching the given key, or \p fallback if there is
 		* none.
 		*/
 		T& Get (const K& key, T& fallback)
 		{
 			if (Elements.GetSize() == 0) return fallback;
-			ElementArray& values = 
+			ElementArray& values =
 				Elements[csHashComputer<K>::ComputeHash (key) % Modulo];
 			const size_t len = values.GetSize ();
 			for (size_t i = 0; i < len; ++i)
@@ -518,7 +519,7 @@ namespace mix {
 		{
 			bool ret = false;
 			if (Elements.GetSize() == 0) return ret;
-			ElementArray& values = 
+			ElementArray& values =
 				Elements[csHashComputer<K>::ComputeHash (key) % Modulo];
 			for (size_t i = values.GetSize (); i > 0; i--)
 			{
@@ -538,12 +539,12 @@ namespace mix {
 		{
 			bool ret = false;
 			if (Elements.GetSize() == 0) return ret;
-			ElementArray& values = 
+			ElementArray& values =
 				Elements[csHashComputer<K>::ComputeHash (key) % Modulo];
 			for (size_t i = values.GetSize (); i > 0; i--)
 			{
 				const size_t idx = i - 1;
-				if ((csComparator<K, K>::Compare (values[idx].key, key) == 0) && 
+				if ((csComparator<K, K>::Compare (values[idx].key, key) == 0) &&
 					(csComparator<T, T>::Compare (values[idx].value, value) == 0 ))
 				{
 					values.DeleteIndexFast (idx);
@@ -580,8 +581,8 @@ namespace mix {
 
 			void Seek ()
 			{
-				while ((element < size) && 
-					(csComparator<K, K>::Compare (hash->Elements[bucket][element].key, 
+				while ((element < size) &&
+					(csComparator<K, K>::Compare (hash->Elements[bucket][element].key,
 					key) != 0))
 					element++;
 			}
@@ -589,7 +590,7 @@ namespace mix {
 		protected:
 			Iterator (csHash<T, K>* hash0, const K& key0) :
 				 hash(hash0),
-					 key(key0), 
+					 key(key0),
 					 bucket(csHashComputer<K>::ComputeHash (key) % hash->Modulo),
 					 size((hash->Elements.GetSize() > 0) ? hash->Elements[bucket].GetSize () : 0)
 				 { Reset (); }
@@ -643,9 +644,9 @@ namespace mix {
 			size_t bucket, size, element;
 
 			void Zero () { bucket = element = 0; }
-			void Init () 
-			{ 
-				size = 
+			void Init ()
+			{
+				size =
 					(hash->Elements.GetSize() > 0) ? hash->Elements[bucket].GetSize () : 0;
 			}
 
@@ -666,10 +667,10 @@ namespace mix {
 			}
 
 		protected:
-			GlobalIterator (csHash<T, K> *hash0) : hash (hash0) 
-			{ 
-				Zero (); 
-				Init (); 
+			GlobalIterator (csHash<T, K> *hash0) : hash (hash0)
+			{
+				Zero ();
+				Init ();
 				FindItem ();
 			}
 
@@ -758,8 +759,8 @@ namespace mix {
 
 			void Seek ()
 			{
-				while ((element < size) && 
-					(csComparator<K, K>::Compare (hash->Elements[bucket][element].key, 
+				while ((element < size) &&
+					(csComparator<K, K>::Compare (hash->Elements[bucket][element].key,
 					key) != 0))
 					element++;
 			}
@@ -767,7 +768,7 @@ namespace mix {
 		protected:
 			ConstIterator (const csHash<T, K>* hash0, const K& key0) :
 				 hash(hash0),
-					 key(key0), 
+					 key(key0),
 					 bucket(csHashComputer<K>::ComputeHash (key) % hash->Modulo),
 					 size((hash->Elements.GetSize() > 0) ? hash->Elements[bucket].GetSize () : 0)
 				 { Reset (); }
@@ -821,9 +822,9 @@ namespace mix {
 			size_t bucket, size, element;
 
 			void Zero () { bucket = element = 0; }
-			void Init () 
-			{ 
-				size = 
+			void Init ()
+			{
+				size =
 					(hash->Elements.GetSize() > 0) ? hash->Elements[bucket].GetSize () : 0;
 			}
 
@@ -844,10 +845,10 @@ namespace mix {
 			}
 
 		protected:
-			ConstGlobalIterator (const csHash<T, K> *hash0) : hash (hash0) 
-			{ 
-				Zero (); 
-				Init (); 
+			ConstGlobalIterator (const csHash<T, K> *hash0) : hash (hash0)
+			{
+				Zero ();
+				Init ();
 				FindItem ();
 			}
 
@@ -993,6 +994,7 @@ namespace mix {
 
 }//end of namespace mix
 
+#endif /* ! __MX_HASH_H__ */
 #endif /* ! __MX_HASH_H__ */
 
 //--------------------------------------------------------------//

@@ -5,7 +5,8 @@
 
 #ifndef __MX_PRECOMPILED_H__
 #define __MX_PRECOMPILED_H__
-
+#include "../../config.h"
+#ifdef DESTRUCTION
 #ifndef _WIN32_WINNT		// Allow use of features specific to Windows XP or later.
 #define _WIN32_WINNT 0x0501	// Change this to the appropriate value to target other versions of Windows.
 #endif
@@ -58,3 +59,4 @@
 #pragma comment( lib, "libbulletdynamics.lib" )
 
 #endif /* ! __MX_PRECOMPILED_H__ */
+#endif

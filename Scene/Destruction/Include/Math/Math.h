@@ -3,7 +3,8 @@
 
 #ifndef __MATH_MATH_H__
 #define __MATH_MATH_H__
-
+#include "../../../../config.h"
+#ifdef DESTRUCTION
 #ifdef MACOS_X
 // for square root estimate instruction
 #include <ppc_intrinsics.h>
@@ -914,3 +915,4 @@ INLINE int idMath::FloatHash( const float *array, const int numFloats ) {
 }
 
 #endif /* !__MATH_MATH_H__ */
+#endif

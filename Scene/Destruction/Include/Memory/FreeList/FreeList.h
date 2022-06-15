@@ -1,5 +1,7 @@
 #ifndef __FREE_LIST_H__
 #define __FREE_LIST_H__
+#include "../../../../../config.h"
+#ifdef DESTRUCTION
 #include <memory.h>
 namespace mix {
 
@@ -228,5 +230,6 @@ private:
 
 }//end of namespace mix
 
+#endif /* !__FREE_LIST_H__ */
 #endif /* !__FREE_LIST_H__ */
 

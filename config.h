@@ -22,6 +22,8 @@
         #define LIBINPUT
     #endif
 
+
+
     //#define SOUND
 
     //#define PHYSICS
@@ -133,6 +135,7 @@
         //#define PYTHON_MINIMALTEST
         #ifdef WBULLET
             #define PHYSICS
+                #define DESTRUCTION
          //   #ifndef PHYSICS
                 //#define IRRBULLET // use on its own or with PHYSICS
             //#endif

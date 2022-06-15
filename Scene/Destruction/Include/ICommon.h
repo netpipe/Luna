@@ -7,7 +7,8 @@
 
 #ifndef __MX_ICOMMON_H__
 #define __MX_ICOMMON_H__
-
+#include "../../../config.h"
+#ifdef DESTRUCTION
 namespace mix {
 
 //
@@ -40,3 +41,4 @@ extern ICommon * GCommon;
 }//end of namespace mix
 
 #endif // !__MX_ICOMMON_H__
+#endif

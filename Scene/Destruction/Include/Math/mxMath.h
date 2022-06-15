@@ -7,7 +7,8 @@
 
 #ifndef __MX_MATH_H__
 #define __MX_MATH_H__
-
+#include "../../../../config.h"
+#ifdef DESTRUCTION
 namespace mix {
 
 //==================================================================================
@@ -210,3 +211,4 @@ private:
 
 #endif /* ! __MX_MATH_H__ */
 
+#endif

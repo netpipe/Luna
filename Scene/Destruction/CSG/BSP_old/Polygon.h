@@ -1,4 +1,5 @@
-
+#include "../../../../config.h"
+#ifdef DESTRUCTION
 inline u32 Polygon::NumVertices() const {
 	return m_NumVertices;
 }
@@ -37,3 +38,4 @@ inline void Polygon::SetNext( Polygon* face )
 
 inline const mxPlane & Polygon::GetPlane() const
 { return Plane; }
+#endif

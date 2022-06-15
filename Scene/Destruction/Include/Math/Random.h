@@ -3,7 +3,8 @@
 
 #ifndef __MATH_RANDOM_H__
 #define __MATH_RANDOM_H__
-
+#include "../../../../config.h"
+#ifdef DESTRUCTION
 /*
 ===============================================================================
 
@@ -130,4 +131,5 @@ INLINE float idRandom2::CRandomFloat( void ) {
 	return ( 2.0f * ( *(float *)&i ) - 3.0f );
 }
 
+#endif /* !__MATH_RANDOM_H__ */
 #endif /* !__MATH_RANDOM_H__ */

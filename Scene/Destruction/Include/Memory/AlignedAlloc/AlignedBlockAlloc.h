@@ -7,7 +7,8 @@ Desc:
 
 #ifndef __MX_MEMORY_ALIGNED_BLOCK_ALLOC_H__
 #define __MX_MEMORY_ALIGNED_BLOCK_ALLOC_H__
-
+#include "../../../../../config.h"
+#ifdef DESTRUCTION
 namespace mix {
 
 	// by James Johnson [kmeson@telocity.com]
@@ -79,3 +80,4 @@ namespace mix {
 	//--------------------------------------------------------------//
 	//				End Of File.									//
 	//--------------------------------------------------------------//
+#endif
