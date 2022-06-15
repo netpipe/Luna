@@ -166,7 +166,7 @@ if initloader :
 
     #input.libinput(1,1)
     if platform == "linux" or platform == "linux2":
-        input.speech("welcome to luna gaaaame engine",10,10,10,100,0,1)
+        input.speech("Hello and Hi! welcome to lluunnaa engine",10,10,10,100,0,5)
         playsound('test.wav')
         #could possibly  make sound scripts to play at specific times after eachother in another thread #enable blocking param on playsound()
    # irr.tiled("tiled/2dbasic.tmx",0)
