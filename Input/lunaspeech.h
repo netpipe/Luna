@@ -181,7 +181,7 @@ printf("testing speech");
 	pitch=vpitch;
     throat = vthroat;
     speed=vspeed;
-    mouth=vmouth;s
+    mouth=vmouth;
 
     switch (vvoice){
         case 1://Elf
