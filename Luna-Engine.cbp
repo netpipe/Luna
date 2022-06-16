@@ -125,6 +125,7 @@
 					<Add library="Xxf86vm" />
 					<Add library="GL" />
 					<Add library="Xi" />
+					<Add library="openal" />
 					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
 					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
@@ -197,6 +198,7 @@
 					<Add library="Xxf86vm" />
 					<Add library="GL" />
 					<Add library="Xi" />
+					<Add library="openal" />
 					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
 					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 					<Add directory="../LunaLibs/freetype-2.3.9/objs/.libs" />
