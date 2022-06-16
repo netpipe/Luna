@@ -130,6 +130,7 @@
 					<Add library="X11" />
 					<Add library="GL" />
 					<Add library="Xi" />
+					<Add library="openal" />
 					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>
