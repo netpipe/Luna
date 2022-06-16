@@ -368,6 +368,7 @@ irrTiled* tld;
     agEngine::audio::CAudioDevice* adevice;
 #endif
 
+
 #ifdef PYTHON
 PyMethodDef irr_function[] =
 {

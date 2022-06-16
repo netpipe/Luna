@@ -10,6 +10,7 @@ PyMethodDef irr_Sound[] =
 
 //    static Sound *m_sound2;
   //  static Sound m_default_sound_buffer;
+  int soundinit=0;
 
 PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active camera
 
@@ -17,7 +18,26 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
     char * sound;
 
     PyArg_ParseTuple(args,"isi",&param,&sound,&state);
+#ifdef AgAudio2
 
+    switch (param){
+    case 0:{
+    soundinit=1;
+ agEngine::audio::CAudioDevice* adevice = new agEngine::audio::CAudioDevice();
+ agEngine::audio::CAudioSource *test = adevice->createAudioSource( adevice->createAudioStream(sound,1));
+
+ adevice->addAudioSource( test);
+ test->play();
+
+ break;}
+ case 1:{
+if (!soundinit){
+  adevice->playAll();
+  }
+ break;
+ }
+ }
+#endif
     #ifdef SOUND
 
 
@@ -26,6 +46,7 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
 
     case 0:
       {
+
            //   managerID->initialize(1);
        // mysound=stoi(sound);
       //      mysound = managerID->create("bling","./media/bling.ogg",false);

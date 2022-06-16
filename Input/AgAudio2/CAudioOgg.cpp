@@ -1,5 +1,5 @@
 #include "../../config.h"
-#ifdef AgAudio22
+#ifdef AgAudio2
 #include "CAudioOgg.h"
 
 namespace agEngine

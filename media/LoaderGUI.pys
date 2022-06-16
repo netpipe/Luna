@@ -28,6 +28,8 @@ if initloader :
     import os
     import physics
     import gui
+    sound2 = scene.soundman(0,"../media/bling.ogg",1)
+
     #import xml
     #scene.using ('../media/lib/random.py',"1")
     #import struct
@@ -59,7 +61,7 @@ if initloader :
      #   def playsound2():
         #    playsound('../media/robocrep.ogg')
         #playsound('../media/robocrep.ogg')
-        playsound('../media/bling.ogg')
+      #  playsound('../media/bling.ogg')
 
         #playsound2()
         #seems to make quitting application harder
@@ -77,7 +79,7 @@ if initloader :
        #P.start() # Inititialize Process
       #  T = Thread(target=stest) # create thread
       #  T.start() # Launch created thread
-        stest()
+      #  stest()
 
     #clip = AudioClip(r'../media/test.mp3')
 
@@ -165,9 +167,9 @@ if initloader :
    # input.voxelLoad("test");
 
     #input.libinput(1,1)
-    if platform == "linux" or platform == "linux2":
-        input.speech("Hello and Hi! welcome to lluunnaa engine",10,10,10,100,0,5)
-        playsound('test.wav')
+    #if platform == "linux" or platform == "linux2":
+        #input.speech("Hello and Hi! welcome to lluunnaa engine",10,10,10,100,0,5)
+        #playsound('test.wav')
         #could possibly  make sound scripts to play at specific times after eachother in another thread #enable blocking param on playsound()
    # irr.tiled("tiled/2dbasic.tmx",0)
    # irr.tiled("tiled/animation.tmx",0)
@@ -206,7 +208,7 @@ image.idraw(lunaengine)
 image.idraw(iaxe)
 image.idraw(box2di)
 image.idraw(irrlichtlogo)
-
+scene.soundman(1,"",0)
 #image.iscale(lunaengine,0.5,0.5) ## need to stop repedative scaling or be able to get back to original.
 
 #print ( input.mouse(6,0,0) )#mousebutton

@@ -1,7 +1,7 @@
 #ifndef _CAUDIOOGG_H_
 #define _CAUDIOOGG_H_
 #include "../../config.h"
-#ifdef AgAudio22
+#ifdef AgAudio2
 #include <irrlicht.h>
 
 #include <AL/al.h>
