@@ -1,3 +1,5 @@
+#include "../../config.h"
+#ifdef AgAudio2
 #include "CAudioDevice.h"
 
 namespace agEngine
@@ -92,3 +94,4 @@ namespace agEngine
         }
     }
 }
+#endif

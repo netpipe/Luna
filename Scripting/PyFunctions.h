@@ -363,6 +363,11 @@ irrTiled* tld;
 //MyOIS* m_ois;
 #endif
 
+#ifdef AgAudio2
+    #include "../Input/AgAudio2/CAudioDevice.h"
+    agEngine::audio::CAudioDevice* adevice;
+#endif
+
 #ifdef PYTHON
 PyMethodDef irr_function[] =
 {

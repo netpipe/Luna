@@ -1,6 +1,7 @@
 #ifndef _CAUDIODEVICE_H_
 #define _CAUDIODEVICE_H_
-
+#include "../../config.h"
+#ifdef AgAudio2
 #include <irrlicht.h>
 #include <AL/al.h>
 #include <AL/alc.h>
@@ -49,4 +50,5 @@ namespace agEngine
     }
 }
 
+#endif
 #endif

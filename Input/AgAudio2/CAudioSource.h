@@ -1,6 +1,7 @@
 #ifndef _CAUDIOSOURCE_H_
 #define _CAUDIOSOURCE_H_
-
+#include "../../config.h"
+#ifdef AgAudio2
 #include <irrlicht.h>
 #include <AL/al.h>
 
@@ -67,4 +68,5 @@ namespace agEngine
     }
 }
 
+#endif
 #endif

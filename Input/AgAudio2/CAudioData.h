@@ -1,3 +1,5 @@
+#include "../../config.h"
+#ifdef AgAudio2
 #ifndef _CAUDIODATA_H_
 #define _CAUDIODATA_H_
 
@@ -32,4 +34,5 @@ namespace agEngine
     }
 }
 
+#endif
 #endif

@@ -1,3 +1,5 @@
+#include "../../config.h"
+#ifdef AgAudio2
 #include "CAudioStream.h"
 
 namespace agEngine
@@ -48,3 +50,4 @@ namespace agEngine
         }
     }
 }
+#endif

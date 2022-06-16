@@ -22,7 +22,7 @@
     #endif
 
 
-
+        #define AgAudio2
     //#define SOUND
 
     //#define PHYSICS
@@ -107,6 +107,7 @@
         //#define SDLSound //- seems to play and freeze needs threading
         //#define SQLITE
        // #define AgAudio
+
             #ifdef AgAudio
                 #define _DEBUG_MODE_
                 #define _PLAY_SOUND_
