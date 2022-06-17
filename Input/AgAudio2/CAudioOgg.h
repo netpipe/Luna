@@ -2,6 +2,7 @@
 #define _CAUDIOOGG_H_
 #include "../../config.h"
 #ifdef AgAudio2
+#ifdef OGG
 #include <irrlicht.h>
 
 #include <AL/al.h>
@@ -59,5 +60,6 @@ namespace agEngine
     }
 }
 
+#endif
 #endif
 #endif

@@ -1,5 +1,6 @@
 #include "../../config.h"
 #ifdef AgAudio2
+#ifdef OGG
 #include "CAudioOgg.h"
 
 namespace agEngine
@@ -248,4 +249,5 @@ namespace agEngine
         }
     }
 }
+#endif
 #endif
