@@ -398,6 +398,7 @@
 					<Add option="-DWIN32" />
 					<Add option="-DPHYSICS" />
 					<Add option="-DMTAR" />
+					<Add option="-DOGG" />
 					<Add directory="E:/irrlicht-1.8.4/include" />
 					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/include/python2.7" />
 					<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/libs/Win64" />
@@ -438,6 +439,7 @@
 					<Add option="-DMINIMAL2" />
 					<Add option="-DEXTRACOMPILE" />
 					<Add option="-DSOUND" />
+					<Add option="-DOGG" />
 					<Add directory="E:/irrlicht-1.8.4/include" />
 					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/include/python2.7" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
@@ -1017,6 +1019,9 @@
 			<Add directory="entities/OpenSteer/lib/include" />
 			<Add directory="Input/libInput/include" />
 			<Add directory="Net/irrNetLite/enet/include" />
+			<Add directory="Input/AgAudio2" />
+			<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/include" />
+			<Add directory="Input/AgAudio2/vorbis" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />
@@ -1075,6 +1080,7 @@
 			<Add directory="../LunaLibs/cAudio23/cAudio/bin/win32-gcc" />
 			<Add directory="../irrlicht-1.8.5/lib/Linux2" />
 			<Add directory="../LunaLibs/assimp-3.3.1" />
+			<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/libs" />
 		</Linker>
 		<Unit filename="DevLoop.h" />
 		<Unit filename="Equipment/Rifle.cpp" />
@@ -1123,14 +1129,6 @@
 		<Unit filename="GUI/sineGraph2d/SGraph2D.h" />
 		<Unit filename="GUI/widgets/CGUIBar.cpp" />
 		<Unit filename="GUI/widgets/CGUIBar.h" />
-		<Unit filename="Input/AgAudio/Ogg/OggFile.cpp" />
-		<Unit filename="Input/AgAudio/Ogg/OggFile.h" />
-		<Unit filename="Input/AgAudio/Sound.cpp" />
-		<Unit filename="Input/AgAudio/Sound.h" />
-		<Unit filename="Input/AgAudio/SoundSource/SoundSource.cpp" />
-		<Unit filename="Input/AgAudio/SoundSource/SoundSource.h" />
-		<Unit filename="Input/AgAudio/audio.cpp" />
-		<Unit filename="Input/AgAudio/audio.h" />
 		<Unit filename="Input/AgAudio2/CAudioData.h" />
 		<Unit filename="Input/AgAudio2/CAudioDevice.cpp" />
 		<Unit filename="Input/AgAudio2/CAudioDevice.h" />
@@ -1252,6 +1250,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Input/AgAudio2/vorbis/window.h" />
+		<Unit filename="Input/AgAudio/Ogg/OggFile.cpp" />
+		<Unit filename="Input/AgAudio/Ogg/OggFile.h" />
+		<Unit filename="Input/AgAudio/Sound.cpp" />
+		<Unit filename="Input/AgAudio/Sound.h" />
+		<Unit filename="Input/AgAudio/SoundSource/SoundSource.cpp" />
+		<Unit filename="Input/AgAudio/SoundSource/SoundSource.h" />
+		<Unit filename="Input/AgAudio/audio.cpp" />
+		<Unit filename="Input/AgAudio/audio.h" />
 		<Unit filename="Input/Compress/Compress.cpp" />
 		<Unit filename="Input/Compress/Compress.h" />
 		<Unit filename="Input/Compress/microtar/src/microtar-stdio.c">
@@ -1520,9 +1526,9 @@
 		<Unit filename="Input/Model/blender/dna249.cpp" />
 		<Unit filename="Input/Model/blender/readblend.h" />
 		<Unit filename="Input/Model/irrTiled/irrTiled.h" />
+		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/SDL/SDL_fluidlite.h" />
 		<Unit filename="Input/SDL/SDLsound.h" />
-		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/inputManager.cpp" />
 		<Unit filename="Input/inputManager.h" />
 		<Unit filename="Input/libInput/include/InputController.h" />
@@ -2456,6 +2462,8 @@
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshBuilder.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshQuery.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNode.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/Recast.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastAlloc.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastArea.cpp" />
@@ -2466,8 +2474,6 @@
 		<Unit filename="entities/AI/recast/Recast/Source/RecastMeshDetail.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRasterization.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRegion.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast_util.cpp" />
 		<Unit filename="entities/AI/recast_util.h" />
 		<Unit filename="entities/AI/recastmain.cpp" />
