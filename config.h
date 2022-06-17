@@ -21,6 +21,7 @@
         #define LIBINPUT
     #endif
 
+   //     #define AgAudio
 
      #define AgAudio2
     //#define SOUND
@@ -106,7 +107,6 @@
         //#define OPENAL2 // working with emscripten
         //#define SDLSound //- seems to play and freeze needs threading
         //#define SQLITE
-       // #define AgAudio
 
             #ifdef AgAudio
                 #define _DEBUG_MODE_

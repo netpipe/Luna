@@ -265,23 +265,6 @@
         #define GETOPT_SUPPORT 1
     #endif
 
-    #ifdef __EMSCRIPTEN__
-    ////#include "fluidlite.h"
-        #ifdef FLUIDSYNTH
-            #include "../Input/fluidsynthconfig.h"
-            #include "src/utils/fluidsynth_priv.h"
-            #include "fluidsynth.h"
-                //
-            #include "src/bindings/fluid_lash.h"
-        #endif
-    #else
-    #ifdef FLUIDSYNTH
-            #include "../Input/fluidsynthconfig.h"
-            #include "src/utils/fluidsynth_priv.h"
-            #include "fluidsynth.h"
-            #include "src/bindings/fluid_lash.h"
-    #endif //fluidsynth
-    #endif //emscripten
 
 #endif //python
 
@@ -290,20 +273,6 @@
 //Sound *m_sound;
 //Sound m_default_sound_buffer;
 //#endif
-
-#ifdef FLUIDSYNTH
-    #ifndef WITH_MIDI
-        #define WITH_MIDI 1
-    #endif
-    fluid_cmd_handler_t* cmd_handler = NULL;
-    fluid_settings_t* settings;
-    fluid_player_t* player = NULL;
-    fluid_midi_router_t* router = NULL;
-    //fluid_sequencer_t* sequencer = NULL;
-    fluid_midi_driver_t* mdriver = NULL;
-    fluid_audio_driver_t* adriver = NULL;
-    fluid_synth_t* synth = NULL;
-#endif
 
 #ifdef FT22
     CGUITTFont *fonts[6],*font,*font2;

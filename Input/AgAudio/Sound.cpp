@@ -37,7 +37,7 @@ int Sound::Create(void)
     adevice = agEngine::createDevice(false);
 
  // menuM = agEngine::SoundData::LoadAudio(std::string("../media/IrrlichtTheme.ogg"), false);
-    menuM = agEngine::SoundData::LoadAudio(std::string("../media/robocrep.ogg"), false);
+    menuM = agEngine::SoundData::LoadAudio(std::string("../media/robocrep.ogg"), true);
 //  stage1M = agEngine::SoundData::LoadAudio(std::string("media/Sounds/cell_stage01.ogg"), false);
 //  stage2M = agEngine::SoundData::LoadAudio(std::string("media/Sounds/cell_stage02.ogg"), false);
 //  stage3M = agEngine::SoundData::LoadAudio(std::string("media/Sounds/cell_stage03.ogg"), false);
@@ -50,7 +50,7 @@ int Sound::Create(void)
 //  channel1 = adevice->createASource(NULL);
 //  channel2 = adevice->createASource(NULL);
 
-  musicSource->setVolume(0.3f);
+  musicSource->setVolume(1.0f);
   musicSource->setAttenuation(0.0f);
   musicSource->setLoop(false);
   musicSource->setPosition(0.0f, 0.0f, 0.0f);

@@ -12,17 +12,20 @@ PyMethodDef irr_Sound[] =
   //  static Sound m_default_sound_buffer;
   int soundinit=0;
 
+  #ifdef AgAudio2
   agEngine::audio::CAudioSource *test3;
 agEngine::audio::CAudioStream *caudiostream ;
+#endif
 PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active camera
 
     int param,state;
     char * sound;
 
     PyArg_ParseTuple(args,"isi",&param,&sound,&state);
+    int tester = param;
 #ifdef AgAudio2
 #ifdef OGG
-int tester = param;
+
     switch (tester){
     case 0:{
       if (!soundinit){
@@ -39,18 +42,13 @@ int tester = param;
 // agEngine::audio::CAudioSource *test = adevice->createAudioSource( adevice->createAudioStream(sound,1));
 // adevice->addAudioSource( test3);
     if (!test3->isPlaying()) {
-     test3->setLoop(1);
- test3->play();
-
- }
+        test3->setLoop(1);
+        test3->play(); }
  }
   break;}
  case 2:{
     if (soundinit){
-
       adevice->playAll();
-
-
 
   }
  break;
@@ -117,6 +115,7 @@ int tester = param;
       {
 //        luna->m_sound->Create();
           Sound::m_sound->Create();
+
       }break;
     case 1:
       {
@@ -126,6 +125,10 @@ int tester = param;
       Sound::m_sound->PlayBackgroundMusic(1);
 
       }break;
+          case 2:
+      {
+     Sound::m_sound->PlayAll();
+            }break;
     }
 #endif
 //m_sound2 = luna->m_sound;
