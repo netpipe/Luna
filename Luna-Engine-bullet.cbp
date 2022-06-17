@@ -1121,7 +1121,7 @@
 			<Add directory="Physics/bullet3/src" />
 			<Add directory="../LunaLibs/polyvox-0.2.1/library/PolyVoxCore/include" />
 			<Add directory="../LunaLibs/libogg-1.1.4/include3" />
-			<Add directory="../LunaLibs/libvorbis-1.2.3/include3" />
+			<Add directory="../LunaLibs/libvorbis-1.2.3/include" />
 			<Add directory="Physics/irrBullet-0.1.9/include" />
 			<Add directory="/usr/include/irrlicht2" />
 			<Add directory="../irrlicht-1.8.5/include2" />
