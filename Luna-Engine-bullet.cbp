@@ -412,6 +412,7 @@
 					<Add library="z" />
 					<Add library="mtar" />
 					<Add library="opengl32" />
+					<Add library="openal32" />
 					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/bin" />
 					<Add directory="E:/irrlicht-1.8.4/lib/Win64-gcc" />
 					<Add directory="D:/openal-soft-1.21.1-bin/libs/Win64" />
@@ -453,14 +454,10 @@
 					<Add library="m" />
 					<Add library="WSock32" />
 					<Add library="Winmm" />
-					<Add library="libirrNetLite22" />
 					<Add library="freetype" />
 					<Add library="opengl32" />
 					<Add library="glu32" />
-					<Add library="IrrOpenSteer" />
 					<Add library="z" />
-					<Add library="SPARK" />
-					<Add library="SPARK_IRR" />
 					<Add library="cAudio" />
 					<Add library="ogg" />
 					<Add library="vorbis" />
