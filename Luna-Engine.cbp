@@ -345,6 +345,7 @@
 					<Add option="-DEXTRACOMPILE" />
 					<Add option="-DWIN32" />
 					<Add option="-DMTAR" />
+					<Add option="-DOGG" />
 					<Add directory="E:/irrlicht-1.8.4/include" />
 					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/include/python2.7" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
@@ -842,6 +843,8 @@
 			<Add directory="Input/libInput/include" />
 			<Add directory="Net/irrNetLite/enet/include" />
 			<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/include" />
+			<Add directory="Input/AgAudio2/vorbis" />
+			<Add directory="Input/AgAudio2/" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />
