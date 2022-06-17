@@ -29,7 +29,7 @@ if initloader :
     import physics
     import gui
     sound2 = scene.soundman(0,"../media/bling.ogg",1)
-
+   # scene.soundman(1,"../media/bling.ogg",1)
     #import xml
     #scene.using ('../media/lib/random.py',"1")
     #import struct
@@ -208,7 +208,7 @@ image.idraw(lunaengine)
 image.idraw(iaxe)
 image.idraw(box2di)
 image.idraw(irrlichtlogo)
-scene.soundman(1,"",0)
+#scene.soundman(2,"",0)
 #image.iscale(lunaengine,0.5,0.5) ## need to stop repedative scaling or be able to get back to original.
 
 #print ( input.mouse(6,0,0) )#mousebutton

@@ -28,12 +28,20 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
 
  adevice->addAudioSource( test);
  test->play();
-
  break;}
  case 1:{
-if (!soundinit){
+  if (soundinit){
+ agEngine::audio::CAudioSource *test = adevice->createAudioSource( adevice->createAudioStream(sound,1));
+
+ adevice->addAudioSource( test);
+ test->play();
+ }
+  break;}
+ case 2:{
+   // if (soundinit){
   adevice->playAll();
-  }
+
+ // }
  break;
  }
  }
