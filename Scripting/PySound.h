@@ -19,7 +19,7 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
 
     PyArg_ParseTuple(args,"isi",&param,&sound,&state);
 #ifdef AgAudio2
-
+#ifdef OGG
     switch (param){
     case 0:{
     soundinit=1;
@@ -37,6 +37,7 @@ if (!soundinit){
  break;
  }
  }
+#endif
 #endif
     #ifdef SOUND
 
