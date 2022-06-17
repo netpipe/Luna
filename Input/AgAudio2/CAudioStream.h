@@ -4,7 +4,11 @@
 #define _CAUDIOSTREAM_H_
 
 #include <irrlicht.h>
+#ifdef WIN32
+#include <al.h>
+#else
 #include <AL/al.h>
+#endif
 
 #include "CAudioSource.h"
 #include "CAudioData.h"
