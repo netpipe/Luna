@@ -168,7 +168,11 @@ if (init) :
 
     #jungle = scene.addJungle()
     #scene.addTree("jungle",1,terrain,1,1,1)#not working yet
-    track1 = physics.loadTrack('../media/data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
+   # track1 = physics.loadTrack('../media/data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
+    #track1 = physics.loadTrack('../media/theDam/TheDam.x',20,0,0)  # trackname , timeofday , lighting , track slot/stages
+    #scene.addAMesh("../media/theDam/TheDam.x",1); #notworking
+    #scene.addMesh("../media/theDam/LevelIndices.obj",1); #working
+    #scene.addModel("../media/theDam/TheDam.x",1);#notworking
     #track1 = scene.loadLevel('extra/maps/urban.bsp',0,0,0)  # trackname , timeofday , lighting , track slot/stages
     # scene.setPosition(terrain ,4, -100,-10,-100)
     #scene.exportScene("/home/clay/test/scene.irr")

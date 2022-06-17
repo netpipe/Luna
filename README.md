@@ -35,7 +35,7 @@ the media folder has some vegetation from arteria3d with a special licence it ca
 
 GAME folder is just for the binary and the rest of the media in there is old and for porting only, had to use ../media folder instead to be emscripten compatible.
 
-Engine itself is zlib/bsd/apache/irrlicht licence. there might also be GPL librarys used in it aswell.
+Engine itself is zlib/bsd/apache/irrlicht/lgpl licence. there might also be GPL librarys used in it aswell - had fluidsynth but its been replaced with fluidlite.
 
 there might have been GPL in the ../media/lib/ folder. thats ok the engine should still be able to run without most of the user scripts so just strip it out when distributing if you dont want to share your code, should not be an issue in final version.
 

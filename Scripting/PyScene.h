@@ -292,6 +292,27 @@ PyObject * Python::PyIrr_Animators(PyObject * self,PyObject * args){  //might ju
 }
 
 PyObject * Python::PyIrr_LoadMesh(PyObject * self,PyObject * args){
+    char * node_id;
+    int x,y,z;
+    PyArg_ParseTuple(args,"si",&node_id,&x);
+//    IMeshSceneNode *node = (IMeshSceneNode*)node_id;
+//        if ( extension == ".x" ){ //extension == "b3d"){
+//                printf ("loading x");
+
+IMesh* mesh = smgr->getMesh(node_id);
+	if (!mesh)
+	{
+		device->drop();
+		return 1;
+	}
+	IMeshSceneNode* node = smgr->addMeshSceneNode( mesh );
+
+//            IAnimatedMesh* mesh =
+        //    IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
+          //   node = smgr->addAnimatedMeshSceneNode( mesh );
+           // node->setAnimationSpeed(mesh->getAnimationSpeed()); // Fixed by r5097
+            //IAnimatedMeshSceneNode* nodeNoAssimp = smgr->addAnimatedMeshSceneNode(  );
+
 	  return Py_BuildValue("");  }
 
 
