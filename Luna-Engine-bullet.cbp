@@ -133,6 +133,8 @@
 					<Add library="GL" />
 					<Add library="Xi" />
 					<Add library="openal" />
+					<Add library="vorbis" />
+					<Add library="vorbisfile" />
 					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>
@@ -313,33 +315,146 @@
 				<Option object_output=".wd2mobjsb" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option projectCompilerOptionsRelation="1" />
 				<Option projectLinkerOptionsRelation="1" />
 				<Option projectResourceIncludeDirsRelation="1" />
 				<Compiler>
-					<Add option="-m64" />
-					<Add option="-fpermissive" />
-					<Add option="-DMINIMAL" />
-					<Add option="-DWIN32" />
-					<Add option="-DPHYSICS" />
-					<Add directory="E:/irrlicht-1.8.4/include" />
-					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/include/python2.7" />
-					<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/libs/Win64" />
+					<Add option="-I/usr/include/atk-1.0 -I/usr/include/pango-1.0" />
+					<Add option="-I/usr/include/pixman-1" />
+					<Add option="`pkg-config gtk+-2.0 --cflags`" />
+					<Add option="-Wno-narrowing" />
+					<Add option="-DPARTICLES" />
+					<Add directory="../LunaLibs/irrlicht-1.8.4/source/Irrlicht" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
+					<Add directory="../LunaLibs/net/irrNetLite22f" />
+					<Add directory="../LunaLibs/freetype-2.3.9/include" />
+					<Add directory="../LunaLibs/net/enet-1.2.1/includef" />
+					<Add directory="FileSystem/readblend" />
+					<Add directory="../LunaLibs/libtheora-1.1.1/include/theora" />
+					<Add directory="../LunaLibs/libtheoraplayer/include" />
+					<Add directory="/usr/include/AL" />
+					<Add directory="/usr/include/python" />
+					<Add directory="./entities/AI/recast/RecastDemo/Include" />
+					<Add directory="./entities/AI/recast/DebugUtils/Include" />
+					<Add directory="./entities/AI/recast/Recast/Include" />
+					<Add directory="./entities/AI/recast/Detour/Include" />
+					<Add directory="./entities/AI/recast/DetourCrowd/Include" />
+					<Add directory="./entities/AI/recast/DetourTileCache/Include" />
+					<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/include2" />
+					<Add directory="../LunaLibs/assimp-3.3.1/include" />
+					<Add directory="../LunaLibs/Scripting/sqplus-code/sqplus" />
+					<Add directory="../LunaLibs/Scripting/sqplus-code/include" />
+					<Add directory="../LunaLibs/cAudio23/cAudio/include" />
+					<Add directory="../LunaLibs/cAudio23/include" />
+					<Add directory="Scene/SPARK" />
+					<Add directory="../LunaLibs/bullet3-2.86.1/srcf" />
+					<Add directory="../LunaLibs/media/fluidsynth-emscripten/include2" />
+					<Add directory="../LunaLibs/media/fluidsynth-emscripten/2" />
+					<Add directory="../LunaLibs/SparkEngine/src" />
+					<Add directory="../LunaLibs/SparkEngine/include" />
+					<Add directory="../LunaLibs/PolyVox/library/PolyVoxCore/include3" />
+					<Add directory="../emscripten-projects/SDL/SDL_sound/src" />
+					<Add directory="../LunaLibs/zlib-1.2.3" />
+					<Add directory="/usr/include/python2.7" />
+					<Add directory="../irrlicht-1.8.4/include" />
+					<Add directory="Input/Controllers/iois/OIS/includes" />
+					<Add directory="Input/FluidLite/include/" />
+					<Add directory="Physics/bullet3/src" />
+					<Add directory="../LunaLibs/polyvox-0.2.1/library/PolyVoxCore/include" />
+					<Add directory="../LunaLibs/libogg-1.1.4/include3" />
+					<Add directory="../LunaLibs/libvorbis-1.2.3/include3" />
+					<Add directory="Physics/irrBullet-0.1.9/include" />
+					<Add directory="/usr/include/irrlicht2" />
+					<Add directory="../irrlicht-1.8.5/include2" />
+					<Add directory="entities/OpenSteer/lib/include" />
+					<Add directory="Input/libInput/include" />
+					<Add directory="Net/irrNetLite/enet/include" />
+					<Add directory="Input/AgAudio2" />
+					<Add directory="Input/AgAudio2/vorbis" />
 				</Compiler>
 				<Linker>
-					<Add option="-m64" />
-					<Add library="Irrlicht" />
+					<Add option="`pkg-config gtk+-2.0 --libs`" />
+					<Add library="GL" />
+					<Add library="openal" />
+					<Add library="Xxf86vm" />
+					<Add library="X11" />
+					<Add library="irrNetLite22" />
+					<Add library="enet" />
 					<Add library="python2.7" />
-					<Add library="m" />
+					<Add library="pthread" />
+					<Add library="theora" />
+					<Add library="theoraplayer" />
+					<Add library="assimp" />
+					<Add library="ogg" />
+					<Add library="vorbis" />
+					<Add library="vorbisfile" />
+					<Add library="PolyVoxCore" />
+					<Add library="Irrlicht" />
+					<Add library="BulletSoftBody" />
+					<Add library="BulletDynamics" />
+					<Add library="BulletCollision" />
+					<Add library="LinearMath" />
+					<Add library="freetype" />
 					<Add library="z" />
-					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/bin" />
-					<Add directory="E:/irrlicht-1.8.4/lib/Win64-gcc" />
-					<Add directory="D:/openal-soft-1.21.1-bin/libs/Win64" />
-					<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/libs/Win64" />
-					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Win32-gcc" />
-					<Add directory="../irrlicht-1.8.5/lib/Win32-gcc" />
-					<Add directory="../lunaLibs/mtar" />
-					<Add directory="../mtar" />
+					<Add library="dl" />
+					<Add library="SPARK" />
+					<Add library="SPARK_IRR" />
+					<Add library="GL" />
+					<Add library="openal" />
+					<Add library="Xxf86vm" />
+					<Add library="X11" />
+					<Add library="irrNetLite22" />
+					<Add library="enet" />
+					<Add library="python2.7" />
+					<Add library="pthread" />
+					<Add library="theora" />
+					<Add library="theoraplayer" />
+					<Add library="assimp" />
+					<Add library="ogg" />
+					<Add library="vorbis" />
+					<Add library="vorbisfile" />
+					<Add library="PolyVoxCore" />
+					<Add library="Irrlicht" />
+					<Add library="BulletSoftBody" />
+					<Add library="BulletDynamics" />
+					<Add library="BulletCollision" />
+					<Add library="LinearMath" />
+					<Add library="freetype" />
+					<Add library="z" />
+					<Add library="dl" />
+					<Add library="SPARK" />
+					<Add library="SPARK_IRR" />
+					<Add directory="../LunaLibs/freetype-2.3.9/objs/.libs" />
+					<Add directory="../LunaLibs/net/enet-1.2.1" />
+					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Linux" />
+					<Add directory="../LunaLibs/Compiled/Linux" />
+					<Add directory="../LunaLibs/libtheoraplayer/bin/Linux" />
+					<Add directory="../LunaLibs/net/irrNetLite22" />
+					<Add directory="../LunaLibs/libIrrOpenSteer_10-02-15/lib2" />
+					<Add directory="./entities/AI/recast/DebugUtils/Include/" />
+					<Add directory="../LunaLibs/assimp-3.3.1/lib" />
+					<Add directory="../LunaLibs/zlib-1.2.32" />
+					<Add directory="../LunaLibs/libtheoraplayer/" />
+					<Add directory="../LunaLibs/cAudio23/cAudio/bin/gcc" />
+					<Add directory="../LunaLibs/bullet3-2.86.1/src/BulletDynamics" />
+					<Add directory="../LunaLibs/bullet3-2.86.1/src/BulletSoftBody" />
+					<Add directory="../LunaLibs/bullet3-2.86.1/src/BulletCollision" />
+					<Add directory="../LunaLibs/bullet3-2.86.1/src/LinearMath" />
+					<Add directory="../LunaLibs/SparkEngine/lib/Linux/statics" />
+					<Add directory="../LunaLibs/PolyVox/library/PolyVoxCore" />
+					<Add directory="../LunaLibs/bullet3-2.86.1/msvc/2008/lib/Debugf" />
+					<Add directory="../LunaLibs/OpenSteer2" />
+					<Add directory="../emscripten-projects/SDL/SDL_sound/src" />
+					<Add directory="../LunaLibs/libtheora-1.1.1" />
+					<Add directory="../LunaLibs/freetype-2.3.9" />
+					<Add directory="../irrlicht-1.8.4/lib/Linux" />
+					<Add directory="../LunaLibs/polyvox-0.2.1/library/PolyVoxCore" />
+					<Add directory="../LunaLibs/libogg-1.1.4" />
+					<Add directory="../LunaLibs/libvorbis-1.2.3" />
+					<Add directory="../LunaLibs/cAudio23/cAudio/bin/win32-gcc" />
+					<Add directory="../irrlicht-1.8.5/lib/Linux2" />
+					<Add directory="../LunaLibs/assimp-3.3.1" />
+					<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/libs" />
 				</Linker>
 			</Target>
 			<Target title="windows MINIMAL64-withtar">
@@ -381,7 +496,7 @@
 				</Linker>
 			</Target>
 			<Target title="windows64-withtar">
-				<Option platforms="Windows;" />
+				<Option platforms="Windows;Unix;" />
 				<Option output="./GAME/LunaWF.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".wfobjsb64" />
@@ -400,7 +515,6 @@
 					<Add option="-DMTAR" />
 					<Add directory="E:/irrlicht-1.8.4/include" />
 					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/include/python2.7" />
-					<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/libs/Win64" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
 				</Compiler>
 				<Linker>
@@ -423,7 +537,7 @@
 				</Linker>
 			</Target>
 			<Target title="windows FULL64">
-				<Option platforms="Windows;" />
+				<Option platforms="Windows;Unix;" />
 				<Option output="./GAME/mLunaFull.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".wd2mobjs64b" />
@@ -1006,8 +1120,8 @@
 			<Add directory="Input/FluidLite/include/" />
 			<Add directory="Physics/bullet3/src" />
 			<Add directory="../LunaLibs/polyvox-0.2.1/library/PolyVoxCore/include" />
-			<Add directory="../LunaLibs/libogg-1.1.4/include" />
-			<Add directory="../LunaLibs/libvorbis-1.2.3/include" />
+			<Add directory="../LunaLibs/libogg-1.1.4/include3" />
+			<Add directory="../LunaLibs/libvorbis-1.2.3/include3" />
 			<Add directory="Physics/irrBullet-0.1.9/include" />
 			<Add directory="/usr/include/irrlicht2" />
 			<Add directory="../irrlicht-1.8.5/include2" />
@@ -1015,8 +1129,8 @@
 			<Add directory="Input/libInput/include" />
 			<Add directory="Net/irrNetLite/enet/include" />
 			<Add directory="Input/AgAudio2" />
-			<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/include" />
 			<Add directory="Input/AgAudio2/vorbis" />
+			<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/include" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />
@@ -1075,7 +1189,6 @@
 			<Add directory="../LunaLibs/cAudio23/cAudio/bin/win32-gcc" />
 			<Add directory="../irrlicht-1.8.5/lib/Linux2" />
 			<Add directory="../LunaLibs/assimp-3.3.1" />
-			<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/libs" />
 		</Linker>
 		<Unit filename="DevLoop.h" />
 		<Unit filename="Equipment/Rifle.cpp" />
@@ -1124,6 +1237,14 @@
 		<Unit filename="GUI/sineGraph2d/SGraph2D.h" />
 		<Unit filename="GUI/widgets/CGUIBar.cpp" />
 		<Unit filename="GUI/widgets/CGUIBar.h" />
+		<Unit filename="Input/AgAudio/Ogg/OggFile.cpp" />
+		<Unit filename="Input/AgAudio/Ogg/OggFile.h" />
+		<Unit filename="Input/AgAudio/Sound.cpp" />
+		<Unit filename="Input/AgAudio/Sound.h" />
+		<Unit filename="Input/AgAudio/SoundSource/SoundSource.cpp" />
+		<Unit filename="Input/AgAudio/SoundSource/SoundSource.h" />
+		<Unit filename="Input/AgAudio/audio.cpp" />
+		<Unit filename="Input/AgAudio/audio.h" />
 		<Unit filename="Input/AgAudio2/CAudioData.h" />
 		<Unit filename="Input/AgAudio2/CAudioDevice.cpp" />
 		<Unit filename="Input/AgAudio2/CAudioDevice.h" />
@@ -1139,14 +1260,6 @@
 		<Unit filename="Input/AgAudio2/ogg/framing.cpp" />
 		<Unit filename="Input/AgAudio2/ogg/ogg.h" />
 		<Unit filename="Input/AgAudio2/ogg/os_types.h" />
-		<Unit filename="Input/AgAudio/Ogg/OggFile.cpp" />
-		<Unit filename="Input/AgAudio/Ogg/OggFile.h" />
-		<Unit filename="Input/AgAudio/Sound.cpp" />
-		<Unit filename="Input/AgAudio/Sound.h" />
-		<Unit filename="Input/AgAudio/SoundSource/SoundSource.cpp" />
-		<Unit filename="Input/AgAudio/SoundSource/SoundSource.h" />
-		<Unit filename="Input/AgAudio/audio.cpp" />
-		<Unit filename="Input/AgAudio/audio.h" />
 		<Unit filename="Input/Compress/Compress.cpp" />
 		<Unit filename="Input/Compress/Compress.h" />
 		<Unit filename="Input/Compress/microtar/src/microtar-stdio.c">
@@ -1415,9 +1528,9 @@
 		<Unit filename="Input/Model/blender/dna249.cpp" />
 		<Unit filename="Input/Model/blender/readblend.h" />
 		<Unit filename="Input/Model/irrTiled/irrTiled.h" />
-		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/SDL/SDL_fluidlite.h" />
 		<Unit filename="Input/SDL/SDLsound.h" />
+		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/inputManager.cpp" />
 		<Unit filename="Input/inputManager.h" />
 		<Unit filename="Input/libInput/include/InputController.h" />
@@ -2351,8 +2464,6 @@
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshBuilder.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshQuery.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNode.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/Recast.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastAlloc.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastArea.cpp" />
@@ -2363,6 +2474,8 @@
 		<Unit filename="entities/AI/recast/Recast/Source/RecastMeshDetail.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRasterization.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRegion.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast_util.cpp" />
 		<Unit filename="entities/AI/recast_util.h" />
 		<Unit filename="entities/AI/recastmain.cpp" />
