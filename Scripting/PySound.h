@@ -35,6 +35,7 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
  test3 = adevice->createAudioSource(caudiostream );
 // needs a sound or crash ?
  adevice->addAudioSource( test3);
+
 }
  break;}
  case 1:{
@@ -42,8 +43,9 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
 // agEngine::audio::CAudioSource *test = adevice->createAudioSource( adevice->createAudioStream(sound,1));
 // adevice->addAudioSource( test3);
     if (!test3->isPlaying()) {
-        test3->setLoop(1);
-        test3->play(); }
+      //  test3->setLoop(0);
+        test3->play();
+      }
  }
   break;}
  case 2:{
