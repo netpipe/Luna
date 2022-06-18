@@ -299,6 +299,9 @@ PyObject * Python::PyIrr_LoadMesh(PyObject * self,PyObject * args){
 //        if ( extension == ".x" ){ //extension == "b3d"){
 //                printf ("loading x");
 
+switch ( x){
+case 0:{
+
 IMesh* mesh = smgr->getMesh(node_id);
 	if (!mesh)
 	{
@@ -306,6 +309,18 @@ IMesh* mesh = smgr->getMesh(node_id);
 		return 1;
 	}
 	IMeshSceneNode* node = smgr->addMeshSceneNode( mesh );
+	break;
+}
+case 1:
+{
+
+smgr->loadScene(node_id);
+break;
+}
+}
+
+
+//}
 
 //            IAnimatedMesh* mesh =
         //    IAnimatedMeshSceneNode* node = smgr->addAnimatedMeshSceneNode( mesh );
@@ -505,11 +520,26 @@ PyObject * Python::PyIrr_loadModel(PyObject * self,PyObject * args) { // if tree
 
     int action;
     char * type,*value1,*value2;
-    #ifdef ASSIMP
-IrrAssimp assimp(smgr);
-    PyArg_ParseTuple(args,"ssi",&value1,&value2,&action);
-  //  PyArg_ParseTuple(args,"sss",&value1,&value2,&type);
+        PyArg_ParseTuple(args,"ssi",&value1,&value2,&action);
+    #ifndef ASSIMP
 
+switch ( action){
+case 0:{
+IMesh* mesh = smgr->getMesh(value1);
+	if (!mesh)
+	{
+		device->drop();
+		return 1;
+	}
+	IMeshSceneNode* node = smgr->addMeshSceneNode( mesh );
+	break;
+}
+case 1:{smgr->loadScene(value1);break;}
+}
+
+	        	return Py_BuildValue("");
+    #else
+IrrAssimp assimp(smgr);
     action=0;
   //  Assimp::Importer importer;
     irr::core::stringc extension;
@@ -735,9 +765,7 @@ switch(action){
     }
 
 	return Py_BuildValue("l",node);
-	#else
-//	        }
-	        	return Py_BuildValue("");
+
     #endif
 }
 
