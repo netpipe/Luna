@@ -22,7 +22,7 @@ PyMethodDef irr_Physics[] = {
     {"bullet",Python::PyIrr_Bullet,METH_VARARGS,"PyIrr_Bullet"},
     {"VehicleParams",Python::PyIrr_VehicleParams,METH_VARARGS,"VehicleParams"},
     {"b2d",Python::PyIrr_b2Dphysics,METH_VARARGS,"box2d"},
-//    {"loadScene",Python::PyIrr_loadScene,METH_VARARGS,"box2d"},
+    {"loadScene",Python::PyIrr_loadScene,METH_VARARGS,"box2d"},
     {"bBox",Python::PyIrr_irrbulletBox,METH_VARARGS,"box2d"},
 {"bldemo",Python::PyIrr_irrbulletliquiddemo,METH_VARARGS,"box2d"},
 {"physics",Python::PyIrr_physicspause,METH_VARARGS,"physics"},
@@ -180,74 +180,103 @@ int j=1;
 
 
 
-//
-//PyObject * Python::PyIrr_loadScene(PyObject * self,PyObject * args){
-//
-//	float w,h,x,y,friction;
-//
-//	PyArg_ParseTuple(args,"f",&friction);
-//	#ifdef TEST2
-//		device->getSceneManager()->loadScene("Scenes/SimpleScene.irr");
-//
+
+PyObject * Python::PyIrr_loadScene(PyObject * self,PyObject * args){
+
+	float w,h,x,y,friction;
+	char *scenefile;
+
+	PyArg_ParseTuple(args,"sf",&scenefile,&friction);
+	#ifndef IRRBULLET
+	//	device->getSceneManager()->loadScene("Scenes/SimpleScene.irr");
+
 //	core::array<scene::ISceneNode *> nodes;
 //	device->getSceneManager()->getSceneNodesFromType(scene::ESNT_ANY, nodes); // Find all nodes
-//
-//	for (u32 i=0; i < nodes.size(); ++i)
-//	{
-//		scene::ISceneNode* node = nodes[i];
-//		stringc name = node->getName();
-//		const stringc prefix = name.subString(0,name.findFirst('_'));
-//		const stringc suffix = name.subString(name.findFirst('_')+1, name.size()-name.findFirst('_'));
-//
-//		//printf("PREFIX: %s\n", prefix.c_str());
-//		//printf("SUFFIX: %s\n", suffix.c_str());
-//
-//		if(node->getType() == scene::ESNT_MESH)
-//		{
-//		    if(prefix == "rigid")
-//            {
-//                ICollisionShape* shape = 0;
-//
-//                if(suffix == "mesh")
-//                    shape = new IGImpactMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), node->getBoundingBox().getVolume()*0.001);
-//
-//                else if(suffix == "box")
-//                    shape = new IBoxShape(node, node->getBoundingBox().getVolume()*0.001);
-//
-//                else if(suffix == "sphere")
-//                    shape = new ISphereShape(node, node->getBoundingBox().getVolume()*0.001);
-//
-//                world->addRigidBody(shape);
-//            }
-//
-//            else if(prefix == "static")
-//            {
-//                IBvhTriangleMeshShape* shape = new IBvhTriangleMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), 0.0f);
-//                IRigidBody* body = world->addRigidBody(shape);
-//            }
-//
-//            else if(prefix == "soft")
-//            {
-//                ISoftBody* softbody = world->addSoftBody(static_cast<IMeshSceneNode*>(node));
-//                softbody->setTotalMass(0.1f, false);
-//                softbody->setActivationState(EAS_DISABLE_DEACTIVATION);
-//                node->setMaterialFlag(EMF_BACK_FACE_CULLING, false);
-//                node->setAutomaticCulling(EAC_OFF);
-//
-//
-//
-//                softbody->getConfiguration().liftCoefficient = 0.0;
-//                softbody->getConfiguration().dragCoefficient = 0.0;
-//                softbody->getConfiguration().dampingCoefficient = 0.0;
-//                softbody->getConfiguration().poseMatchingCoefficient = 0.0f;
-//                softbody->getConfiguration().positionsSolverIterations = 56;
-//                softbody->updateConfiguration();
-//            }
-//		}
-//	}
-//	#endif
-//		return Py_BuildValue("");
-//	}
+
+            // modify the name if it a .pk3 file
+//    core::stringc filename ( fn );
+//    loading=false;
+//    core::stringc extension,fileNm;
+//    core::getFileNameExtension ( extension, filename );
+//    extension.make_lower();
+//    core::cutFilenameExtension ( fileNm, filename );
+//  //  fileNm.make_lower();
+//    s32 start =  fileNm.findLast('/')+1;
+//    fileNm=fileNm.subString(start,(fileNm.size()-start));
+//   stringc workdir=Device->getFileSystem()->getWorkingDirectory(); // get the current working dir
+//    stringc absolute=Device->getFileSystem()->getAbsolutePath(filename); // Absolute path
+//    absolute=absolute.subString(workdir.size()+1,absolute.size()); // relative path from the application folder
+   device->getFileSystem()->addZipFileArchive( scenefile );
+ //device->getFileSystem()->changeWorkingDirectoryTo("../media/");
+
+//    if (   extension == ".pk3" ||
+//            extension == ".zip"
+//       )
+//    {
+
+        device->getSceneManager()->loadScene("level.irr");
+      //  device->getSceneManager()->loadScene("Station.irr");
+//        return;
+//    }
+ //device->getFileSystem()->changeWorkingDirectoryTo("../GAME/");
+
+#else
+	for (u32 i=0; i < nodes.size(); ++i)
+	{
+		scene::ISceneNode* node = nodes[i];
+		stringc name = node->getName();
+		const stringc prefix = name.subString(0,name.findFirst('_'));
+		const stringc suffix = name.subString(name.findFirst('_')+1, name.size()-name.findFirst('_'));
+
+		//printf("PREFIX: %s\n", prefix.c_str());
+		//printf("SUFFIX: %s\n", suffix.c_str());
+
+		if(node->getType() == scene::ESNT_MESH)
+		{
+		    if(prefix == "rigid")
+            {
+                ICollisionShape* shape = 0;
+
+                if(suffix == "mesh")
+                    shape = new IGImpactMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), node->getBoundingBox().getVolume()*0.001);
+
+                else if(suffix == "box")
+                    shape = new IBoxShape(node, node->getBoundingBox().getVolume()*0.001);
+
+                else if(suffix == "sphere")
+                    shape = new ISphereShape(node, node->getBoundingBox().getVolume()*0.001);
+
+                world->addRigidBody(shape);
+            }
+
+            else if(prefix == "static")
+            {
+                IBvhTriangleMeshShape* shape = new IBvhTriangleMeshShape(node, static_cast<IMeshSceneNode*>(node)->getMesh(), 0.0f);
+                IRigidBody* body = world->addRigidBody(shape);
+            }
+
+            else if(prefix == "soft")
+            {
+                ISoftBody* softbody = world->addSoftBody(static_cast<IMeshSceneNode*>(node));
+                softbody->setTotalMass(0.1f, false);
+                softbody->setActivationState(EAS_DISABLE_DEACTIVATION);
+                node->setMaterialFlag(EMF_BACK_FACE_CULLING, false);
+                node->setAutomaticCulling(EAC_OFF);
+
+
+
+                softbody->getConfiguration().liftCoefficient = 0.0;
+                softbody->getConfiguration().dragCoefficient = 0.0;
+                softbody->getConfiguration().dampingCoefficient = 0.0;
+                softbody->getConfiguration().poseMatchingCoefficient = 0.0f;
+                softbody->getConfiguration().positionsSolverIterations = 56;
+                softbody->updateConfiguration();
+            }
+		}
+	}
+	#endif
+		return Py_BuildValue("");
+	}
 
 PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
 

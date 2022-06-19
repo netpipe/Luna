@@ -169,11 +169,16 @@ if (init) :
     #jungle = scene.addJungle()
     #scene.addTree("jungle",1,terrain,1,1,1)#not working yet
     track1 = physics.loadTrack('../media/data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
+  #  track1 = physics.loadTrack('../media/data/2040/2040.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
+   # track1 = physics.loadTrack('../media/data/theDam/thedam.b3d',20,0,0)  # trackname , timeofday , lighting , track slot/stages
    # track1 = physics.loadTrack('../media/data/theDam/TheDam.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
     #track1 = physics.loadTrack("../media/theDam/LevelIndices.obj",20,0,0)  # trackname , timeofday , lighting , track slot/stages
     #scene.addAMesh("../media/data/theDam/TheDam.x",0);
+    #scene.addAMesh('../media/data/theDam/thedam.b3d',0);
     #scene.addMesh("../media/theDam/LevelIndices.obj",0); #working
-   # scene.addMesh('../media/data/theDam/TheDam.stl',0); #working
+    #scene.addMesh("../media/theDam/LevelIndices.irrmesh",0); #working
+    #scene.addMesh('Station/level.irr',1);
+    #scene.addMesh('../media/data/3/Scene.irr',1); #working
     #scene.addMesh('../media/scene.irr',1); #working
     #scene.addModel("../media/theDam/TheDam.x",1);#notworking
     #track1 = scene.loadLevel('extra/maps/urban.bsp',0,0,0)  # trackname , timeofday , lighting , track slot/stages
@@ -183,6 +188,9 @@ if (init) :
     #stage = physics.loadTrack('../media/data/3/Scene.irr',20,0,0)
     #stage = physics.loadTrack('./StageData/irrb2/Hospital.irr',20,0,0)
     #table = physics.loadTrack('../media/FOOSEBALL/table_football.3ds',20,0,0)
+
+   # physics.loadScene('../media/Station.pk3',1)
+  #physics.loadScene('../media/Station/level.irr',1)
 
     #table = physics.loadTrack('../media/Pinball/DevilsPinball-table-only.3ds',20,0,0)
     #scene.setPosition(table ,0, 10,-50,10)

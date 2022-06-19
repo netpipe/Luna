@@ -313,8 +313,10 @@ IMesh* mesh = smgr->getMesh(node_id);
 }
 case 1:
 {
+// device->getFileSystem()->changeWorkingDirectoryTo("../media/");
+   smgr->loadScene(node_id);
+// device->getFileSystem()->changeWorkingDirectoryTo("../../GAME/");
 
-smgr->loadScene(node_id);
 break;
 }
 }

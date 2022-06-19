@@ -188,6 +188,7 @@ namespace Python {
     //Scene
     PyObject * PyIrr_addSphereNode(PyObject * self,PyObject * args);
     PyObject * PyIrr_loadModel(PyObject * self,PyObject * args);
+    PyObject * PyIrr_loadScene(PyObject * self,PyObject * args);
     PyObject * PyIrr_LoadTrack(PyObject * self,PyObject * args);
     PyObject * PyIrr_LoadLevel(PyObject * self,PyObject * args);
     PyObject * PyIrr_Light(PyObject * self,PyObject * args);
