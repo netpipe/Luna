@@ -1,15 +1,15 @@
 ## Luna Irrlicht Game Engine 
 fastest portable python enabled close to complete game engine around.
 
-PICK MINIMAL COMPILE and only irrlicht dependancy is needed great for basic 2d and 3d projects.
-Linux Debug works / Release uses different loop   /  also the -maindir.cbp is for running the game in  GAME directory instead of media but its not uptodate yet.
+-PICK MINIMAL COMPILE and only irrlicht dependancy is needed great for basic 2d and 3d projects.
 
-emscripten-project-testing to build emscripten version
+> emscripten-project-testing to build emscripten version
 
 When using bulletblend or gamekit to design levels youll need to use older blender 249 also need to save on 32 bit to avoid big endian issues. the converter is in FKEditor/utf32.sh
 
 https://www.youtube.com/watch?v=tGeGPyMKP3s -- fresh Compile on linux
-## WINDOWS BUILD
+
+> WINDOWS BUILD
 IMPORTANT STEP
 -windows 64 minimal is what im using as a build target in codeblocks at the moment.
 -compile irrlicht dll and dont use static lib .a files or it will crash
@@ -27,21 +27,19 @@ if you get compile errors linking just try rearranging the linking order.
 ###### CodeBlocks Tips
 In codeblocks the proper way to see the source and header files is to uncheck the display by type toggle when right clicking on workspace.
 
+GAME folder is just for the binary and the rest of the media in there is old and for porting only, had to use ../media folder instead to be emscripten compatible.
 
-###### Ffmpeg and P5 glove driver are LGPL from the libs repo.
+## Licences
+- Engine itself is zlib/bsd/apache/irrlicht/lgpl licence. there might also be GPL librarys used in it aswell - had fluidsynth but its been replaced with fluidlite. there might have been GPL in the ../media/lib/ folder. thats ok the engine should still be able to run without most of the user scripts so just strip it out when distributing if you dont want to share your code, should not be an issue in final version.
+- Ffmpeg and P5 glove driver are LGPL from the libs repo.
 engine is zlib other than sockets code being ported out for irc client and p5 glove controller/ awaiting email on that.
 have special permission to use cwiid code as zlib for engine and derivitaves but OIS looks like a better option.
+- the media folder has some vegetation from arteria3d with a special licence it can be used with Luna Games commercially for anyone.
 
-the media folder has some vegetation from arteria3d with a special licence it can be used with Luna Games commercially for anyone.
 
-###### GAME folder is just for the binary and the rest of the media in there is old and for porting only, had to use ../media folder instead to be emscripten compatible.
-
-###### Engine itself is zlib/bsd/apache/irrlicht/lgpl licence. there might also be GPL librarys used in it aswell - had fluidsynth but its been replaced with fluidlite.
-
-there might have been GPL in the ../media/lib/ folder. thats ok the engine should still be able to run without most of the user scripts so just strip it out when distributing if you dont want to share your code, should not be an issue in final version.
-
-You will need these aswell most of it compiles with codeblocks, the occasional project may still use cmake. also there are cb to makefile converters if you want them.
 
 ## Extra Github repos you'll need.
+You will need these aswell most of it compiles with codeblocks, the occasional project may still use cmake. also there are cb to makefile converters if you want them.
+
 https://github.com/tecan/LunaLibs
 https://github.com/tecan/IrrlichtDemos
