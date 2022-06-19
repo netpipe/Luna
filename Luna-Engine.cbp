@@ -99,7 +99,7 @@
 				</Linker>
 			</Target>
 			<Target title="Linux Full">
-				<Option output="./GAME/LunaE" prefix_auto="0" extension_auto="0" />
+				<Option output="./GAME/LunaF" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".Emobjs" />
 				<Option type="1" />
@@ -129,12 +129,14 @@
 					<Add library="GL" />
 					<Add library="Xi" />
 					<Add library="openal" />
+					<Add library="vorbis" />
+					<Add library="vorbisfile" />
 					<Add directory="../Box2D/Box2D/Box2D/bin/Release" />
 					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>
 			<Target title="Linux Full-SVN">
-				<Option output="./GAME/LunaE" prefix_auto="0" extension_auto="0" />
+				<Option output="./GAME/LunaSVN" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
 				<Option object_output=".Esmobjs" />
 				<Option type="1" />
@@ -868,6 +870,14 @@
 		<Unit filename="GUI/sineGraph2d/SGraph2D.h" />
 		<Unit filename="GUI/widgets/CGUIBar.cpp" />
 		<Unit filename="GUI/widgets/CGUIBar.h" />
+		<Unit filename="Input/AgAudio/Ogg/OggFile.cpp" />
+		<Unit filename="Input/AgAudio/Ogg/OggFile.h" />
+		<Unit filename="Input/AgAudio/Sound.cpp" />
+		<Unit filename="Input/AgAudio/Sound.h" />
+		<Unit filename="Input/AgAudio/SoundSource/SoundSource.cpp" />
+		<Unit filename="Input/AgAudio/SoundSource/SoundSource.h" />
+		<Unit filename="Input/AgAudio/audio.cpp" />
+		<Unit filename="Input/AgAudio/audio.h" />
 		<Unit filename="Input/AgAudio2/CAudioData.h" />
 		<Unit filename="Input/AgAudio2/CAudioDevice.cpp" />
 		<Unit filename="Input/AgAudio2/CAudioDevice.h" />
@@ -972,14 +982,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Input/AgAudio2/vorbis/window.h" />
-		<Unit filename="Input/AgAudio/Ogg/OggFile.cpp" />
-		<Unit filename="Input/AgAudio/Ogg/OggFile.h" />
-		<Unit filename="Input/AgAudio/Sound.cpp" />
-		<Unit filename="Input/AgAudio/Sound.h" />
-		<Unit filename="Input/AgAudio/SoundSource/SoundSource.cpp" />
-		<Unit filename="Input/AgAudio/SoundSource/SoundSource.h" />
-		<Unit filename="Input/AgAudio/audio.cpp" />
-		<Unit filename="Input/AgAudio/audio.h" />
 		<Unit filename="Input/Compress/Compress.cpp" />
 		<Unit filename="Input/Compress/Compress.h" />
 		<Unit filename="Input/Compress/microtar/src/microtar-stdio.c">
@@ -1242,9 +1244,9 @@
 		<Unit filename="Input/Model/blender/dna249.cpp" />
 		<Unit filename="Input/Model/blender/readblend.h" />
 		<Unit filename="Input/Model/irrTiled/irrTiled.h" />
-		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/SDL/SDL_fluidlite.h" />
 		<Unit filename="Input/SDL/SDLsound.h" />
+		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/inputManager.cpp" />
 		<Unit filename="Input/inputManager.h" />
 		<Unit filename="Input/libInput/include/InputController.h" />
@@ -1630,8 +1632,6 @@
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshBuilder.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshQuery.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNode.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/Recast.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastAlloc.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastArea.cpp" />
@@ -1642,6 +1642,8 @@
 		<Unit filename="entities/AI/recast/Recast/Source/RecastMeshDetail.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRasterization.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRegion.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast_util.cpp" />
 		<Unit filename="entities/AI/recast_util.h" />
 		<Unit filename="entities/AI/recastmain.cpp" />
@@ -1750,8 +1752,11 @@
 		<Unit filename="entities/skeleton/Skeleton.cpp" />
 		<Unit filename="entities/skeleton/Skeleton.h" />
 		<Unit filename="media/8ball.pys" />
+		<Unit filename="media/HorseRacing.pys" />
 		<Unit filename="media/LoaderGUI.pys" />
+		<Unit filename="media/MOHAA.pys" />
 		<Unit filename="media/PirateSlotMachine.pys" />
+		<Unit filename="media/Q3Arena.pys" />
 		<Unit filename="media/atest.pys" />
 		<Unit filename="media/frogger.pys" />
 		<Unit filename="media/functions-list.pys" />

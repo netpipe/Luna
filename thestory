@@ -1,15 +1,21 @@
+Engine Story
+------------
 Development for me started during highschool for OpenGL programming, had been playing commercial games wanting to make FPS clones (redfaction, quake,redneck rampage) and GTA. it had taken about 10 years to get to that spot. shifting towards Irrlicht because of its portability, completeness, and speed has given me alot of extra time to collect more gamedev items. my first gamedev project was SDL Lavivrus game engine. I was then able to assemble a gamedev team for Azadi game engine, some NVSG testing was going on alongside (cosmos game engine) not to miss anything then when we moved to irrlicht game engine the team had fell apart. FPSDemo was the first framework we had for Irrlicht then moved to Luna engine where ide kept loading it with found features and a scripting system. Initially the codebase looked a bit bloated and too amature to attract many devs. codebase has since been cleaned and is very human readable/modifiable could be used for teaching in highschools.  
 
+
+The engine name was chosen by Aaron because he had done most of the work on the last engines with sound system/scenemanagers and engine integration. Agnostic games was chosen because of our views on what its like to live here mostly "Unknowable" mainly because of religions already having talked to aliens or devine beings.
+
+What it was like working on engine
+--------
 I'de seen emscripten around during 2012 had it working then compile issues for LLVM had persisted untill looking again in 2019. porting to the newplatform was a breeze.
 
 It was a constant battle between external bothers (friends,drugs,farming,money) and telepathy mind games. to get any work on this engine done mostly just left all my friends behind and never looked back.
-
 
 money has always seemed out of reach for me mostly because what little I do get goes back into projects. Would like to spend more time on these projects when funding becomes available to me(sitting on a goldmine without a way to budge it loose)
 
 
 Things I would like to do still.
-
+--------
 Setup a NPO for time travel to get back at all the head pains that bothered me from 2014 to 2020+ probably sooner. (though im not sure altered time travel is ever a smart plan)
 
-Want all the agnostic problems to pay feels like i'm probably the most interesting and bothered person in history.
+Want all the agnostic problems to pay feels like i'm probably the most interesting and bothered person in history. 
