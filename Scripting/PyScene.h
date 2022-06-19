@@ -310,6 +310,7 @@ IMesh* mesh = smgr->getMesh(node_id);
 	}
 	IMeshSceneNode* node = smgr->addMeshSceneNode( mesh );
 	break;
+	return Py_BuildValue("l",node);
 }
 case 1:
 {

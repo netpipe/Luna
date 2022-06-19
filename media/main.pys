@@ -168,7 +168,7 @@ if (init) :
 
     #jungle = scene.addJungle()
     #scene.addTree("jungle",1,terrain,1,1,1)#not working yet
-    track1 = physics.loadTrack('../media/data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
+   # track1 = physics.loadTrack('../media/data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
   #  track1 = physics.loadTrack('../media/data/2040/2040.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
    # track1 = physics.loadTrack('../media/data/theDam/thedam.b3d',20,0,0)  # trackname , timeofday , lighting , track slot/stages
    # track1 = physics.loadTrack('../media/data/theDam/TheDam.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
@@ -177,7 +177,7 @@ if (init) :
     #scene.addAMesh('../media/data/theDam/thedam.b3d',0);
     #scene.addMesh("../media/theDam/LevelIndices.obj",0); #working
     #scene.addMesh("../media/theDam/LevelIndices.irrmesh",0); #working
-    #scene.addMesh('Station/level.irr',1);
+    #scene.addMesh('../media/Station2/building.b3d',0);
     #scene.addMesh('../media/data/3/Scene.irr',1); #working
     #scene.addMesh('../media/scene.irr',1); #working
     #scene.addModel("../media/theDam/TheDam.x",1);#notworking
