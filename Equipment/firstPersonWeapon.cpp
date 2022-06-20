@@ -2,7 +2,8 @@
  Copyright (C) 2009 McCauley404@gmail.com
  First Person Weapon - zlib/BSD code by kat104
  ******************************************************************************/
-
+#include "../config.h"
+#ifdef FPS
 #include "firstPersonWeapon.h"
 
 int aniSpeed=25;
@@ -74,17 +75,18 @@ bool firstPersonWeapon::OnEvent(const SEvent& event)
   		if (event.EventType == irr::EET_JOYSTICK_INPUT_EVENT
 			&& event.JoystickEvent.Joystick == 0)
 		{
-		printf("joystickevent");
+		//printf("joystickevent");
 			JoystickState = event.JoystickEvent;
 		}
 #endif
   return false;
 }
-
+#ifdef JOYSTICK
 	const SEvent::SJoystickEvent & firstPersonWeapon::GetJoystickState(void) const
 	{
 		return JoystickState;
 	}
+#endif
 
 bool firstPersonWeapon::isKeyDown(EKEY_CODE keyCode) const
 {
@@ -118,7 +120,7 @@ void firstPersonWeapon::update(u32 now)
   static u32 nextShoot = 0;
   #ifdef JOYSTICK
 const SEvent::SJoystickEvent & joystickData = this->GetJoystickState();
-#endif
+ #endif
   if (LEFTBUTTONCLICKED  && nextShoot < now) // shoot
   {
     shoot();
@@ -149,16 +151,25 @@ const SEvent::SJoystickEvent & joystickData = this->GetJoystickState();
 #ifdef JOYSTICK
       		float moveHorizontal =
 				(f32)joystickData.Axis[SEvent::SJoystickEvent::AXIS_X] / 32767.f;
-			if(fabs(moveHorizontal) < DEAD_ZONE)
-//                this->camera->setPosition(vector3df(100,100,100));
+			//if(fabs(moveHorizontal) < DEAD_ZONE)
+			//	moveHorizontal = 0.f;
+			printf ("%f",moveHorizontal);
 
 			float moveVertical =
 				(f32)joystickData.Axis[SEvent::SJoystickEvent::AXIS_Y] / -32767.f;
 			//if(fabs(moveVertical) < DEAD_ZONE)
 			//	moveVertical = 0.f;
-		//printf ("%f",moveVertical);
-// this->camera
-#endif
+		printf ("%f",moveVertical);
+
+//				if (joystickData.IsButtonPressed(3)){printf("button3");}
+//		if (joystickData.IsButtonPressed(2)){printf("button2");}
+//		if (joystickData.IsButtonPressed(1)){printf("button1");}
+//		if (joystickData.IsButtonPressed(0)){printf("button0");}
+
+		#endif
+
+
+
       if (isKeyDown(    KEY_SPACE))
     {    //  m_cPlayer->jump();
 
@@ -393,3 +404,4 @@ u8 firstPersonWeapon::getAmmo()
 
 
 
+#endif

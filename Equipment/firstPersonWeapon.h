@@ -8,7 +8,8 @@
 	- add progressive FOV when aiming
     - same as .obj with bump
 */
-
+#include "../config.h"
+#ifdef FPS
 #ifndef firstPersonWeapon_H
 #define firstPersonWeapon_H
 
@@ -85,4 +86,5 @@ SEvent::SJoystickEvent JoystickState;
   ~firstPersonWeapon();
 };
 
+#endif
 #endif
