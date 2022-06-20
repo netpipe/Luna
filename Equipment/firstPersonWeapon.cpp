@@ -70,16 +70,21 @@ bool firstPersonWeapon::OnEvent(const SEvent& event)
     else if(event.MouseInput.Event==EMIE_RMOUSE_PRESSED_DOWN) RIGHTBUTTONCLICKED = true;
     else if(event.MouseInput.Event==EMIE_RMOUSE_LEFT_UP     ) RIGHTBUTTONCLICKED = false;
   }
-
+#ifdef JOYSTICK
   		if (event.EventType == irr::EET_JOYSTICK_INPUT_EVENT
 			&& event.JoystickEvent.Joystick == 0)
 		{
 		printf("joystickevent");
-		//	JoystickState = event.JoystickEvent;
+			JoystickState = event.JoystickEvent;
 		}
-
+#endif
   return false;
 }
+
+	const SEvent::SJoystickEvent & firstPersonWeapon::GetJoystickState(void) const
+	{
+		return JoystickState;
+	}
 
 bool firstPersonWeapon::isKeyDown(EKEY_CODE keyCode) const
 {
@@ -111,7 +116,9 @@ void firstPersonWeapon::update(u32 now)
 {
   static u32 nextAction = 0;
   static u32 nextShoot = 0;
-
+  #ifdef JOYSTICK
+const SEvent::SJoystickEvent & joystickData = this->GetJoystickState();
+#endif
   if (LEFTBUTTONCLICKED  && nextShoot < now) // shoot
   {
     shoot();
@@ -139,9 +146,23 @@ void firstPersonWeapon::update(u32 now)
     nextAction = now + (3000/speedSkill); // makes it lock the animation for given time
   }
   }
+#ifdef JOYSTICK
+      		float moveHorizontal =
+				(f32)joystickData.Axis[SEvent::SJoystickEvent::AXIS_X] / 32767.f;
+			if(fabs(moveHorizontal) < DEAD_ZONE)
+//                this->camera->setPosition(vector3df(100,100,100));
 
+			float moveVertical =
+				(f32)joystickData.Axis[SEvent::SJoystickEvent::AXIS_Y] / -32767.f;
+			//if(fabs(moveVertical) < DEAD_ZONE)
+			//	moveVertical = 0.f;
+		//printf ("%f",moveVertical);
+// this->camera
+#endif
       if (isKeyDown(    KEY_SPACE))
     {    //  m_cPlayer->jump();
+
+
             vector3df ha = camera->getAbsolutePosition();
       //  printf("Jump position: %f %f %f \n", pos[0], pos[1], pos[2]);
         camera->setPosition(vector3df( ha.X, ha.Y+40, ha.Z));

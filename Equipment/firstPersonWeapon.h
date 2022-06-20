@@ -80,6 +80,8 @@ public:
   bool isKeyDown(EKEY_CODE keyCode) const;
   void update(u32 now);
 
+  	const SEvent::SJoystickEvent & GetJoystickState(void) const;
+SEvent::SJoystickEvent JoystickState;
   ~firstPersonWeapon();
 };
 

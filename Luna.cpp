@@ -391,8 +391,6 @@ int Luna::init(){
 //
 //    		InGameEventReceiver m_cInGameEvents(context);
 
-printf("joystick support");
-#define JOYSTICK
 #ifdef JOYSTICK
 	core::array<SJoystickInfo> joystickInfo;
 	if(device->activateJoysticks(joystickInfo))
