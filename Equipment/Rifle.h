@@ -27,7 +27,7 @@ class Rifle
 		void setScale(vector3df scale);
 		void shoot();
 		void registerIrrlichtDevice(IrrlichtDevice &device);
-
+SEvent::SJoystickEvent JoystickState;
 	private:
 
 		IrrlichtDevice *m_irrDevice;

@@ -1,4 +1,5 @@
 #include "Events.h"
+// this was used for the lobby and networking demo
 
 bool EventRec::OnEvent ( const SEvent &event )
 {

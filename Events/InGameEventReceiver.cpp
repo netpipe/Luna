@@ -11,8 +11,6 @@ InGameEventReceiver::InGameEventReceiver()
 
 bool InGameEventReceiver::OnEvent ( const SEvent &event )
 {
-		//let devloop know somehow to know when to run Lmain.py at all
-
   	if ( event.EventType == EET_GUI_EVENT )
 	{
 		s32 cid = event.GUIEvent.Caller->getID();

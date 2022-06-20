@@ -101,6 +101,7 @@
 
     #define CODEEDITOR
     #define COMPRESS
+    #define JOYSTICK
 
     #ifdef MINIMAL2 //not so minimal extras
         //#define SDLMixer // wip - might not be compatable with the engine

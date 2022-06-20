@@ -71,6 +71,13 @@ bool firstPersonWeapon::OnEvent(const SEvent& event)
     else if(event.MouseInput.Event==EMIE_RMOUSE_LEFT_UP     ) RIGHTBUTTONCLICKED = false;
   }
 
+  		if (event.EventType == irr::EET_JOYSTICK_INPUT_EVENT
+			&& event.JoystickEvent.Joystick == 0)
+		{
+		printf("joystickevent");
+		//	JoystickState = event.JoystickEvent;
+		}
+
   return false;
 }
 
@@ -78,6 +85,11 @@ bool firstPersonWeapon::isKeyDown(EKEY_CODE keyCode) const
 {
   return KeyDown[keyCode];
 }
+//
+//	const SEvent::SJoystickEvent & GetJoystickState(void) const
+//	{
+//		return JoystickState;
+//	}
 
 //void firstPersonWeapon::OnRegisterSceneNode()
 //    {
