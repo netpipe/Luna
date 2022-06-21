@@ -93,7 +93,9 @@ class Luna
 		bool bshutdown=false;
 		int countr;
 		//char * returnString="../media/gameloader.pys";
-
+#ifdef JOYSTICK
+	core::array<SJoystickInfo> joystickInfo;
+	#endif
 //		#ifdef AgAudio
 ////		Sound *m_sound;
 //     		Sound *m_sound;

@@ -76,6 +76,10 @@ public:
   u8 getAmmo();
   IAnimatedMeshSceneNode* getNode(){return node;}
   ICameraSceneNode* getCam() { return camera; }
+  #ifdef JOYSTICK
+core::array<SJoystickInfo> *joystickInfo2;
+bool setjoystick(core::array<SJoystickInfo>*);
+#endif
 
   //receiver
   bool isKeyDown(EKEY_CODE keyCode) const;

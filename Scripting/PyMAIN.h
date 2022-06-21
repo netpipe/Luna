@@ -587,6 +587,11 @@ void Python::render() {//active camera
 
         // rt->render(); //ribbon trail scenenode
 //        device->sleep(5);
+#ifdef FPS
+//if (luna->joystickInfo.size() > 0){
+//    M4->setjoystick(&luna->joystickInfo);
+//    }
+    #endif
 }
 
 

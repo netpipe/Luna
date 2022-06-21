@@ -5,6 +5,7 @@
 #include "../config.h"
 #ifdef FPS
 #include "firstPersonWeapon.h"
+#include "../Luna.h"
 
 int aniSpeed=25;
 int speedSkill=2;
@@ -86,12 +87,20 @@ bool firstPersonWeapon::OnEvent(const SEvent& event)
 	{
 		return JoystickState;
 	}
+
+bool firstPersonWeapon::setjoystick(core::array<SJoystickInfo> *joystickInfo3)
+{
+joystickInfo2=joystickInfo3;
+  return 1;
+}
 #endif
 
 bool firstPersonWeapon::isKeyDown(EKEY_CODE keyCode) const
 {
   return KeyDown[keyCode];
 }
+
+
 //
 //	const SEvent::SJoystickEvent & GetJoystickState(void) const
 //	{
@@ -148,16 +157,21 @@ const SEvent::SJoystickEvent & joystickData = this->GetJoystickState();
     nextAction = now + (3000/speedSkill); // makes it lock the animation for given time
   }
   }
+
+
 #ifdef JOYSTICK
+ const f32 DEAD_ZONE = 0.05f;
+//		if(joystickInfo2->size() > 0)
+//		{
       		float moveHorizontal =
 				(f32)joystickData.Axis[SEvent::SJoystickEvent::AXIS_X] / 32767.f;
-			//if(fabs(moveHorizontal) < DEAD_ZONE)
+			if(fabs(moveHorizontal) > DEAD_ZONE)
 			//	moveHorizontal = 0.f;
 			printf ("%f",moveHorizontal);
 
 			float moveVertical =
 				(f32)joystickData.Axis[SEvent::SJoystickEvent::AXIS_Y] / -32767.f;
-			//if(fabs(moveVertical) < DEAD_ZONE)
+			if(fabs(moveVertical) > DEAD_ZONE)
 			//	moveVertical = 0.f;
 		printf ("%f",moveVertical);
 
@@ -165,7 +179,7 @@ const SEvent::SJoystickEvent & joystickData = this->GetJoystickState();
 //		if (joystickData.IsButtonPressed(2)){printf("button2");}
 //		if (joystickData.IsButtonPressed(1)){printf("button1");}
 //		if (joystickData.IsButtonPressed(0)){printf("button0");}
-
+//}
 		#endif
 
 

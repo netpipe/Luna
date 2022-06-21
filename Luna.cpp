@@ -392,11 +392,12 @@ int Luna::init(){
 //    		InGameEventReceiver m_cInGameEvents(context);
 
 #ifdef JOYSTICK
-	core::array<SJoystickInfo> joystickInfo;
+//	core::array<SJoystickInfo> joystickInfo;
 	if(device->activateJoysticks(joystickInfo))
 	{
-		std::cout << "Joystick support is enabled and " << joystickInfo.size() << " joystick(s) are present." << std::endl;
 
+		std::cout << "Joystick support is enabled and " << joystickInfo.size() << " joystick(s) are present." << std::endl;
+    if (joystickInfo.size() > 0){
 		for(u32 joystick = 0; joystick < joystickInfo.size(); ++joystick)
 		{
 			std::cout << "Joystick " << joystick << ":" << std::endl;
@@ -426,6 +427,9 @@ int Luna::init(){
 	else
 	{
 		std::cout << "Joystick support is not enabled." << std::endl;
+	}
+	}else{
+//	device->activateJoysticks(joystickInfo)
 	}
 	#endif
 
