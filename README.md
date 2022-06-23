@@ -1,28 +1,19 @@
 ## Luna Irrlicht Game Engine 
 fastest portable python enabled close to complete game engine around.
-
--PICK MINIMAL COMPILE and only irrlicht dependancy is needed great for basic 2d and 3d projects.
-
 > emscripten-project-testing to build emscripten version
+- When using bulletblend or gamekit to design levels youll need to use older blender 249 also need to save on 32 bit to avoid big endian issues. the converter is in FKEditor/utf32.sh
 
-When using bulletblend or gamekit to design levels youll need to use older blender 249 also need to save on 32 bit to avoid big endian issues. the converter is in FKEditor/utf32.sh
-
-https://www.youtube.com/watch?v=tGeGPyMKP3s -- fresh Compile on linux
+###### https://www.youtube.com/watch?v=tGeGPyMKP3s -- fresh Compile on linux
 
 > WINDOWS BUILD
 IMPORTANT STEP
--windows 64 minimal is what im using as a build target in codeblocks at the moment.
--compile irrlicht dll and dont use static lib .a files or it will crash
--if you need the proper python support extract pydatawin.tar manually there is a bug with my mtar extractor for file permissions. i used peazip. this was the lib folder from codeblocks
+- compile irrlicht dll and dont use static lib .a files or it will crash
+- if you need the proper python support extract pydatawin.tar manually there is a bug with my mtar extractor for file permissions. i used peazip. this was the lib folder from codeblocks
+- In the game folder so media/pydata.tar needs to be extracted to GAME/lib folder unless you build mtar from the lunaLibs folder using #define COMPRESS default
+- copy the dll from irrlicht185/bin/win32-gcc/irrlicht.dll to luna/GAME/irrlicht.dll where you see your exe
 
-in the game folder so media/pydata.tar needs to be extracted to GAME/lib folder unless you build mtar from the lunaLibs folder using #define COMPRESS default
-
--copy the dll from irrlicht185/bin/win32-gcc/irrlicht.dll to luna/GAME/irrlicht.dll where you see your exe
-
-
-
-## Tips
-if you get compile errors linking just try rearranging the linking order.
+###### Tips
+If you get compile errors linking just try rearranging the linking order. or installing the libs to the spots in the codeblocks file or adding new paths if needed.
 
 ###### CodeBlocks Tips
 In codeblocks the proper way to see the source and header files is to uncheck the display by type toggle when right clicking on workspace.
@@ -41,5 +32,5 @@ have special permission to use cwiid code as zlib for engine and derivitaves but
 ## Extra Github repos you'll need.
 You will need these aswell most of it compiles with codeblocks, the occasional project may still use cmake. also there are cb to makefile converters if you want them.
 
-https://github.com/tecan/LunaLibs
-https://github.com/tecan/IrrlichtDemos
+- https://github.com/tecan/LunaLibs
+- https://github.com/tecan/IrrlichtDemos
