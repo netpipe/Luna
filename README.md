@@ -1,5 +1,5 @@
 ## Luna Irrlicht Game Engine 
-fastest portable python enabled close to complete game engine around.
+fastest portable(not on osx yet) python enabled close to complete game engine around.
 > emscripten-project-testing to build emscripten version
 - When using bulletblend or gamekit to design levels youll need to use older blender 249 also need to save on 32 bit to avoid big endian issues. the converter is in FKEditor/utf32.sh
 
