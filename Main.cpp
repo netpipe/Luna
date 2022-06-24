@@ -3,6 +3,11 @@
 
 #ifdef __APPLE__
 	#import <Cocoa/cocoa.h>
+
+#include <OpenGL/OpenGL.h>
+#include <Carbon/Carbon.h>
+#include <CoreFoundation/CFBundle.h>
+#include <CoreFoundation/CFString.h>
 #endif
 
 #ifdef WIN32

@@ -9,6 +9,8 @@
 #ifdef WINDOWS
 //#include <Windows.h>
 //#include <gl\GL.h>
+#elseif MACOSX
+#include <OpenGL/OpenGL.h>
 #else
 #include <GL/gl.h>
 #endif

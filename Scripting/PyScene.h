@@ -306,7 +306,7 @@ IMesh* mesh = smgr->getMesh(node_id);
 	if (!mesh)
 	{
 		device->drop();
-		return 1;
+	//	return 1;
 	}
 	IMeshSceneNode* node = smgr->addMeshSceneNode( mesh );
 	break;
@@ -532,7 +532,7 @@ IMesh* mesh = smgr->getMesh(value1);
 	if (!mesh)
 	{
 		device->drop();
-		return 1;
+//		return 1;
 	}
 	IMeshSceneNode* node = smgr->addMeshSceneNode( mesh );
 	break;
