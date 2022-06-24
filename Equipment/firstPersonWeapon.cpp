@@ -187,13 +187,13 @@ const SEvent::SJoystickEvent & joystickData = this->GetJoystickState();
 //		if (joystickData.IsButtonPressed(0)){printf("button0");}
 //}
 
-			if(!core::equals(moveHorizontal, 0.f) || !core::equals(moveVertical, 0.f))
-			{
-				camera->setRotation(vector3df((MOVEMENT_SPEED * moveHorizontal),0,0));
-				camera->setRotation(vector3df(0,(MOVEMENT_SPEED * moveVertical),0));
-				//camera.Y += MOVEMENT_SPEED * moveVertical;
-				//movedWithJoystick = true;
-			}
+//			if(!core::equals(moveHorizontal, 0.f) || !core::equals(moveVertical, 0.f))
+//			{
+//				camera->setRotation(vector3df((MOVEMENT_SPEED * moveHorizontal),0,0));
+//				camera->setRotation(vector3df(0,(MOVEMENT_SPEED * moveVertical),0));
+//				//camera.Y += MOVEMENT_SPEED * moveVertical;
+//				//movedWithJoystick = true;
+//			}
 
 //					if(!movedWithJoystick)
 //		{ printf ("test");
