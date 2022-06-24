@@ -372,6 +372,7 @@ PyObject * Python::PyIrr_rTexture(PyObject * self,PyObject * args){
 	test += tex_id;
 	ITexture *textmp;
     switch (rload){
+    #ifdef __MACOSX__
         case 0:{ // get from texture name "./texture/picture4.jpg"
 ///            textmp = driver->getTexture( tex_id );
       ///      driver->removeTexture( textmp );
@@ -380,6 +381,16 @@ PyObject * Python::PyIrr_rTexture(PyObject * self,PyObject * args){
 ///        textmp = node_id;
   ///      driver->removeTexture( textmp );
         }break;
+          #else
+                  case 0:{ // get from texture name "./texture/picture4.jpg"
+            textmp = driver->getTexture( tex_id );
+            driver->removeTexture( textmp );
+        }break;
+        case 1:{ // get from existing pointer
+        textmp = node_id;
+        driver->removeTexture( textmp );
+        }break;
+        #endif
         case 2:{        //reload texture
     // get from texture name "./texture/picture4.jpg"
         driver->getTexture( test );

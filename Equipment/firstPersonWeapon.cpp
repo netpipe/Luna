@@ -160,26 +160,66 @@ const SEvent::SJoystickEvent & joystickData = this->GetJoystickState();
 
 
 #ifdef JOYSTICK
+	bool movedWithJoystick = false;
+	const f32 MOVEMENT_SPEED = 5.f;
  const f32 DEAD_ZONE = 0.05f;
+ core::vector3df nodePosition = node->getPosition();
 //		if(joystickInfo2->size() > 0)
 //		{
       		float moveHorizontal =
 				(f32)joystickData.Axis[SEvent::SJoystickEvent::AXIS_X] / 32767.f;
-			if(fabs(moveHorizontal) > DEAD_ZONE)
-			//	moveHorizontal = 0.f;
-			printf ("%f",moveHorizontal);
+			if(fabs(moveHorizontal) > DEAD_ZONE){
+				moveHorizontal = 0.f;
+			//printf ("%f",moveHorizontal);
+			}
 
 			float moveVertical =
 				(f32)joystickData.Axis[SEvent::SJoystickEvent::AXIS_Y] / -32767.f;
-			if(fabs(moveVertical) > DEAD_ZONE)
-			//	moveVertical = 0.f;
-		printf ("%f",moveVertical);
+			if(fabs(moveVertical) > DEAD_ZONE){
+				moveVertical = 0.f;
 
-//				if (joystickData.IsButtonPressed(3)){printf("button3");}
+		//printf ("%f",moveVertical);
+		}
+
+				if (joystickData.IsButtonPressed(3)){shoot();printf("button3");}
 //		if (joystickData.IsButtonPressed(2)){printf("button2");}
 //		if (joystickData.IsButtonPressed(1)){printf("button1");}
 //		if (joystickData.IsButtonPressed(0)){printf("button0");}
 //}
+
+			if(!core::equals(moveHorizontal, 0.f) || !core::equals(moveVertical, 0.f))
+			{
+				camera->setRotation(vector3df((MOVEMENT_SPEED * moveHorizontal),0,0));
+				camera->setRotation(vector3df(0,(MOVEMENT_SPEED * moveVertical),0));
+				//camera.Y += MOVEMENT_SPEED * moveVertical;
+				//movedWithJoystick = true;
+			}
+
+//					if(!movedWithJoystick)
+//		{ printf ("test");
+//		core::position2di topScreenPosition(device2->getVideoDriver()->getScreenSize().Width / 2, 0);
+//			// Create a ray through the mouse cursor.
+//			core::line3df ray = smgr->getSceneCollisionManager()->getRayFromScreenCoordinates(
+//				topScreenPosition, camera);
+//
+//
+//			// And intersect the ray with a plane around the node facing towards the camera.
+//			core::plane3df plane(nodePosition, core::vector3df(0, 0, -1));
+//			core::vector3df mousePosition;
+//			if(plane.getIntersectionWithLine(ray.start, ray.getVector(), mousePosition))
+//			{
+//				// We now have a mouse position in 3d space; move towards it.
+//				core::vector3df toMousePosition(mousePosition - nodePosition);
+//				const f32 availableMovement = MOVEMENT_SPEED * 110.4;
+//
+//				if(toMousePosition.getLength() <= availableMovement)
+//					nodePosition = mousePosition; // Jump to the final position
+//				else
+//					nodePosition += toMousePosition.normalize() * availableMovement; // Move towards it
+//			}
+//		}
+//
+//		smgr->getActiveCamera()->setPosition(nodePosition);
 		#endif
 
 
