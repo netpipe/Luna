@@ -56,7 +56,7 @@
  // MINIMAL defines
     #define EVENTS
     #define FPS // for some reason it needs PHYSICS enabled
-   // #define CSG // constructive solid geometry
+   // #define CSG // constructive solid geometry OSX issue finding gl files
     #define SGRAPH2D // 2d plot graph
     #define WIND
     #define SCENE
