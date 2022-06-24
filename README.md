@@ -4,6 +4,7 @@ fastest render(not on osx yet if you exclude emscripten) python enabled close to
 - When using bulletblend or gamekit to design levels youll need to use older blender 249 also need to save on 32 bit to avoid big endian issues. the converter is in FKEditor/utf32.sh
 
 ###### https://www.youtube.com/watch?v=tGeGPyMKP3s -- fresh Compile on linux
+> MAC OSX BUILD - the xcode project needs to be used for irrlicht then i had examples compiling with codeblocks after linking it.
 
 > WINDOWS BUILD
 IMPORTANT STEP
