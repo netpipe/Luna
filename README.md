@@ -1,9 +1,10 @@
 ## Luna Irrlicht Game Engine 
-fastest portable python enabled close to complete game engine around.
-> emscripten-project-testing to build emscripten version
+fastest render(not on osx yet if you exclude emscripten) python enabled close to complete game engine around.
+> emscripten-project-testing to build emscripten version - there seem to be a few bugs with textures still also shaders need to be ported to GLES
 - When using bulletblend or gamekit to design levels youll need to use older blender 249 also need to save on 32 bit to avoid big endian issues. the converter is in FKEditor/utf32.sh
 
 ###### https://www.youtube.com/watch?v=tGeGPyMKP3s -- fresh Compile on linux
+> MAC OSX BUILD - the xcode project needs to be used for irrlicht then i had examples compiling with codeblocks after linking it. thought luna seems to be complaining about a NSScript error at the moment.
 
 > WINDOWS BUILD
 IMPORTANT STEP
