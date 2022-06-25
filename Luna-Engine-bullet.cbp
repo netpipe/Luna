@@ -1057,12 +1057,13 @@
 				<Option working_dir="GAME" />
 				<Option object_output=".dmacmobjsb" />
 				<Option type="1" />
-				<Option compiler="gcc" />
+				<Option compiler="clang" />
 				<Option projectCompilerOptionsRelation="1" />
 				<Option projectLinkerOptionsRelation="1" />
 				<Option projectResourceIncludeDirsRelation="1" />
 				<Compiler>
 					<Add option="-fpermissive" />
+					<Add option="-x objective-c++" />
 					<Add option="-DMINIMAL" />
 					<Add option="-D_IRR_STATIC_LIB_" />
 					<Add option="-DMACOSX" />
@@ -1082,8 +1083,6 @@
 					<Add library="pthread" />
 					<Add library="z" />
 					<Add library="dl" />
-					<Add library="X11" />
-					<Add library="Xxf86vm" />
 					<Add library="python2.7" />
 					<Add library="GL" />
 					<Add directory="/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries" />
