@@ -363,7 +363,7 @@ PyObject * Python::PyIrr_SetTexture(PyObject * self,PyObject * args){
 PyObject * Python::PyIrr_rTexture(PyObject * self,PyObject * args){
 	//refresh, remove, recurse or find texture
 	// reload seems to work with png not jpg for now.
-	s32 tex_id;
+	char* tex_id;
 	long node_id;
 	int rload;
 	PyArg_ParseTuple(args,"lsi",&node_id,&tex_id,&rload); //This is your new best friend, seriously
@@ -372,14 +372,14 @@ PyObject * Python::PyIrr_rTexture(PyObject * self,PyObject * args){
 	test += tex_id;
 	ITexture *textmp;
     switch (rload){
-    #ifdef __MACOSX__
+    #ifdef MACOSX
         case 0:{ // get from texture name "./texture/picture4.jpg"
-///            textmp = driver->getTexture( tex_id );
-      ///      driver->removeTexture( textmp );
+            textmp = driver->getTexture( tex_id );
+            driver->removeTexture( textmp );
         }break;
         case 1:{ // get from existing pointer
-///        textmp = node_id;
-  ///      driver->removeTexture( textmp );
+        textmp = (ITexture*)node_id;
+        driver->removeTexture( textmp );
         }break;
           #else
                   case 0:{ // get from texture name "./texture/picture4.jpg"
@@ -387,7 +387,7 @@ PyObject * Python::PyIrr_rTexture(PyObject * self,PyObject * args){
             driver->removeTexture( textmp );
         }break;
         case 1:{ // get from existing pointer
-        textmp = node_id;
+        textmp = (ITexture*)node_id;
         driver->removeTexture( textmp );
         }break;
         #endif

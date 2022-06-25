@@ -100,7 +100,9 @@
     #define LOADLEVELS
 
     #define CODEEDITOR
-    #define COMPRESS
+    #ifndef MACOSX
+        #define COMPRESS
+    #endif
     #define JOYSTICK
 
     #ifdef MINIMAL2 //not so minimal extras

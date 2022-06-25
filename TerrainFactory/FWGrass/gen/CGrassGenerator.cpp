@@ -722,7 +722,9 @@ void *CopyMeshesIntoQuadsGrass(void *mCTD)
             #else
             #ifdef WIN32
              #else
+             #ifndef MACOSX///
              pthread_yield();
+             #endif
              #endif
             #endif
 #endif
