@@ -6,7 +6,8 @@
  * modify it under the terms of the Do What The Fuck You Want To Public
  * License, Version 2, as published by Sam Hocevar. See
  * http://sam.zoy.org/wtfpl/COPYING for more details. */
-
+#include "../../../config.h"
+#ifdef XMaudio
 #pragma once
 #ifndef __has_xm_h
 #define __has_xm_h
@@ -268,4 +269,5 @@ float xm_get_panning_of_channel(xm_context_t*, uint16_t);
 }
 #endif
 
+#endif
 #endif

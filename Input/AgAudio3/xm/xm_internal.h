@@ -5,7 +5,8 @@
  * modify it under the terms of the Do What The Fuck You Want To Public
  * License, Version 2, as published by Sam Hocevar. See
  * http://sam.zoy.org/wtfpl/COPYING for more details. */
-
+#include "../../../config.h"
+#ifdef XMaudio
 #include "xm.h"
 #include <stdbool.h>
 #include <math.h>
@@ -315,3 +316,5 @@ size_t xm_get_memory_needed_for_context(const char*, size_t);
  * @returns pointer to the memory pool
  */
 char* xm_load_module(xm_context_t*, const char*, size_t, char*);
+
+#endif

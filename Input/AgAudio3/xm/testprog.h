@@ -5,7 +5,8 @@
  * modify it under the terms of the Do What The Fuck You Want To Public
  * License, Version 2, as published by Sam Hocevar. See
  * http://sam.zoy.org/wtfpl/COPYING for more details. */
-
+#include "../../../config.h"
+#ifdef XMaudio
 #include "xm.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -67,7 +68,7 @@ static void create_context_from_file(xm_context_t** ctx, uint32_t rate, const ch
 	//	FATAL_ERR("mmap() failed");
 
 	switch(xm_create_context_safe(ctx, data, size, rate)) {
-		
+
 	case 0:
 		break;
 
@@ -79,14 +80,15 @@ static void create_context_from_file(xm_context_t** ctx, uint32_t rate, const ch
 	case 2:
 		FATAL("could not create context: malloc failed\n");
 		break;
-		
+
 	default:
 		FATAL("could not create context: unknown error\n");
 		break;
-		
+
 	}
-	
+
 	delete data;
 	//(data, size);
 	fclose(xmfiledes);
 }
+#endif

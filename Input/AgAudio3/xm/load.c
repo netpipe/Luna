@@ -6,7 +6,8 @@
  * modify it under the terms of the Do What The Fuck You Want To Public
  * License, Version 2, as published by Sam Hocevar. See
  * http://sam.zoy.org/wtfpl/COPYING for more details. */
-
+#include "../../../config.h"
+#ifdef XMaudio
 #include "xm_internal.h"
 
 /* .xm files are little-endian. */
@@ -414,3 +415,4 @@ char* xm_load_module(xm_context_t* ctx, const char* moddata, size_t moddata_leng
 
 	return mempool;
 }
+#endif

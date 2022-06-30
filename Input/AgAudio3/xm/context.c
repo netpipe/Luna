@@ -5,7 +5,8 @@
  * modify it under the terms of the Do What The Fuck You Want To Public
  * License, Version 2, as published by Sam Hocevar. See
  * http://sam.zoy.org/wtfpl/COPYING for more details. */
-
+#include "../../../config.h"
+#ifdef XMaudio
 #include "xm_internal.h"
 
 #define XM_DEFENSIVE true
@@ -296,3 +297,5 @@ uint16_t xm_get_instrument_of_channel(xm_context_t* ctx, uint16_t chn) {
 	if(ch->instrument == NULL) return 0;
 	return 1 + (ch->instrument - ctx->module.instruments);
 }
+
+#endif
