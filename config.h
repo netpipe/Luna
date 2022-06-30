@@ -25,10 +25,12 @@
     //#define AgAudio2
      #define AGAUDIO3
      #ifdef AGAUDIO3
-        #define XMaudio
-        #define FLUIDLITE
+        #ifndef MACOSX
+            #define XMaudio
+            #define FLUIDLITE
+        #endif
        // #define MP3
-        //#define OGG
+    #define OGG
      #endif
     //#define SOUND
 
