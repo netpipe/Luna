@@ -32,25 +32,29 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
 // needs a sound or crash ?
  adevice->addAudioSource( test3);
 //test3->setLoop(1);
-test3->play();
+//test3->play();
 }
  break;}
- case 1:{
-  if (soundinit){
+    case 1:{
+        if (soundinit){
 // agEngine::audio::CAudioSource *test = adevice->createAudioSource( adevice->createAudioStream(sound,1));
 // adevice->addAudioSource( test3);
     if (!test3->isPlaying()) {
-        //test3->setLoop(0);
+//        //test3->setLoop(0);
         test3->play();
-      } else{
-      		adevice->playAll();
-      }
+      } //else{
+//      		adevice->playAll();
+//      }
  }
   break;}
  case 2:{
     if (soundinit){
-      adevice->playAll();
-
+     if (!test3->isPlaying()) {
+//        //test3->setLoop(0);
+//        test3->play();
+      } else{
+      		adevice->playAll();
+      }
   }
  break;
  }
@@ -95,22 +99,18 @@ test3->play();
 #endif
 #endif
     #ifdef SOUND
-
-
     // sound intensity for raycasted sound.  // surfaceRoughnessHardness/propigation factor, distance,handle
     switch (param){
-
     case 0:
       {
-
-           //   managerID->initialize(1);
-       // mysound=stoi(sound);
-      //      mysound = managerID->create("bling","./media/bling.ogg",false);
-      //   luna->manager->initialize(luna->manager->getAvailableDeviceName(0));
-      //managerID->initialize(1);
-           mysound = managerID->create(sound,sound,false);
-    //        return Py_BuildValue("l",manager
-        //    mysound->play2d(true);
+        //managerID->initialize(1);
+        //mysound=stoi(sound);
+        //mysound = managerID->create("bling","./media/bling.ogg",false);
+        //luna->manager->initialize(luna->manager->getAvailableDeviceName(0));
+        //managerID->initialize(1);
+        mysound = managerID->create(sound,sound,false);
+        //return Py_BuildValue("l",manager
+        //mysound->play2d(true);
           return Py_BuildValue("l",mysound);
       }
       break;
@@ -120,23 +120,17 @@ test3->play();
       if (state){ // play sound
        long mysound2=std::atoi(sound);
        mysound=mysound2;
-
        if( managerID) // nonzero to show initialized
         {
           mysound->play2d(true);
         }
-
       }else{ // stop sound
             mysound->stop();
       }
-
      //        return Py_BuildValue("l",managerID);
        return Py_BuildValue("l",managerID);
         //break;
-      }
-
-        break;
-
+      } break;
 //    case 2: //
 //      {
 ////            mysound->stop();
@@ -151,19 +145,17 @@ test3->play();
     switch (param){
           case 0:
       {
-//        luna->m_sound->Create();
+        //luna->m_sound->Create();
           Sound::m_sound->Create();
-
       }break;
     case 1:
       {
-      //  	luna->m_sound->Create();
+      //luna->m_sound->Create();
       //luna->m_sound->Instance()->PlayAll();
-      //	luna->m_sound->PlayBackgroundMusic(1);
+      //luna->m_sound->PlayBackgroundMusic(1);
       Sound::m_sound->PlayBackgroundMusic(1);
-
       }break;
-          case 2:
+    case 2:
       {
      Sound::m_sound->PlayAll();
             }break;
@@ -172,11 +164,6 @@ test3->play();
 //m_sound2 = luna->m_sound;
 //luna->m_sound->PlayBackgroundMusic(1);
 
-#ifdef OPENAL
-    //switch (param){
-    //case 0:
-#endif
-
 #ifdef SDLSOUND
     //switch (param){
     //case 0:
@@ -184,6 +171,7 @@ test3->play();
 
 return Py_BuildValue("");
 }
+
 #ifdef FLUIDLITE
 #include "../Input/FluidLite/include/fluidlite.h"
 #define SAMPLE_RATE 44100
@@ -193,6 +181,7 @@ return Py_BuildValue("");
 #define NUM_SAMPLES (NUM_FRAMES * NUM_CHANNELS)
 #define TIME_INTERVAL 1000000 //1500000:duration
 #endif
+
 PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active camera
 #ifdef FLUIDLITE
 //http://www.fluidsynth.org/api/index.html#MIDIPlayerMem
