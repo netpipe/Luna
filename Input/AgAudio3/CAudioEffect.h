@@ -1,6 +1,7 @@
 #ifndef _CAUDIOEFFECT_H_
 #define _CAUDIOEFFECT_H_
-
+#include "../../config.h"
+#ifdef AGAUDIO3
 #include <irrlicht.h>
 
 using namespace irr;
@@ -190,4 +191,5 @@ namespace agEngine
     }
 }
 
+#endif
 #endif

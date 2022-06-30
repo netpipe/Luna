@@ -1,6 +1,7 @@
 #ifndef _CAUDIOSTREAM_H_
 #define _CAUDIOSTREAM_H_
-
+#include "../../config.h"
+#ifdef AGAUDIO3
 #include <irrlicht.h>
 #include <AL/al.h>
 
@@ -36,4 +37,5 @@ namespace agEngine
     }
 }
 
+#endif
 #endif

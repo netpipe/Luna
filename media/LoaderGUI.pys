@@ -29,7 +29,7 @@ if initloader :
     import physics
     import gui
     sound2 = scene.soundman(0,"../media/bling.ogg",1)
-   # scene.soundman(1,"",0)
+    #scene.soundman(1,"",0)
     #scene.soundman(2,"",0)
     #scene.soundman(1,"../media/bling.ogg",1)
     #import xml
@@ -170,7 +170,7 @@ if initloader :
 
     #input.libinput(1,1)
     #if platform == "linux" or platform == "linux2":
-        #input.speech("Hello and Hi! welcome to lluunnaa engine",10,10,10,100,0,5)
+        #input.speech("aaHello and Hi! welcome to lluunnaa engine",10,10,10,100,0,5)
         #playsound('test.wav')
         #could possibly  make sound scripts to play at specific times after eachother in another thread #enable blocking param on playsound()
    # irr.tiled("tiled/2dbasic.tmx",0)
@@ -205,7 +205,7 @@ image.iposition(iaxe, physics.b2d(box2dbody,0,"bgetx",0,0,0,0,0),physics.b2d(box
 image.iposition(box2di, physics.b2d(box2dbox,0,"bgetx",0,0,0,0,0)+10,physics.b2d(box2dbox,0,"bgety",0,0,0,0,0))  #crashes if booth positions are used forsome reason
 #image.iposition(box2di, input.mouse("mgetx",0,0),input.mouse("mgety",0,0))  #crashes if booth positions are used forsome reason
 #image.iposition(iaxe, physics.b2d(box2dbody,3,1),physics.b2d(box2dbody,2,1))
-
+scene.soundman(1,"",0)
 image.idraw(lunaengine)
 image.idraw(iaxe)
 image.idraw(box2di)

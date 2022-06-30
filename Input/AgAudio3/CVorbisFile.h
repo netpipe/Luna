@@ -1,6 +1,7 @@
 #ifndef OGG_H
 #define OGG_H
-
+#include "../../config.h"
+#ifdef AGAUDIO3
 #ifdef __APPLE__
 #include <OpenAL/al.h>
 #else
@@ -55,4 +56,5 @@ namespace agEngine
     }
 }
 
+#endif
 #endif

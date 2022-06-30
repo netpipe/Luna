@@ -1,3 +1,5 @@
+#include "../../config.h"
+#ifdef AGAUDIO3
 #include "CVorbisFile.h"
 
 namespace agEngine
@@ -188,3 +190,4 @@ namespace agEngine
         }
     }
 }
+#endif

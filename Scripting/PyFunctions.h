@@ -335,6 +335,17 @@ irrTiled* tld;
 #ifdef AgAudio2
     #include "../Input/AgAudio2/CAudioDevice.h"
     agEngine::audio::CAudioDevice* adevice;
+          int soundinit=0;
+    agEngine::audio::CAudioSource *test3;
+    agEngine::audio::CAudioStream *caudiostream ;
+#endif
+
+#ifdef AGAUDIO3
+    #include "../Input/AgAudio3/CAudioDevice.h"
+    agEngine::audio::CAudioDevice* adevice;
+      int soundinit=0;
+    agEngine::audio::CAudioSource *test3;
+    agEngine::audio::CAudioStream *caudiostream ;
 #endif
 
 

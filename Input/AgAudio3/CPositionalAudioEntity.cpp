@@ -1,3 +1,5 @@
+#include "../../config.h"
+#ifdef AGAUDIO3d
 #include "CPositionalAudioEntity.h"
 
 namespace agEngine
@@ -47,3 +49,4 @@ namespace agEngine
         }
     }
 }
+#endif

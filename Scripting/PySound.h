@@ -10,12 +10,8 @@ PyMethodDef irr_Sound[] =
 
 //    static Sound *m_sound2;
   //  static Sound m_default_sound_buffer;
-  int soundinit=0;
 
-  #ifdef AgAudio2
-  agEngine::audio::CAudioSource *test3;
-agEngine::audio::CAudioStream *caudiostream ;
-#endif
+
 PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active camera
 
     int param,state;
@@ -23,6 +19,46 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
 
     PyArg_ParseTuple(args,"isi",&param,&sound,&state);
     int tester = param;
+    #ifdef AGAUDIO3
+        #ifdef OGG
+
+    switch (tester){
+    case 0:{
+      if (!soundinit){
+    soundinit=1;
+ adevice = new agEngine::audio::CAudioDevice();
+  caudiostream = adevice->createAudioStream(sound,1);
+ test3 = adevice->createAudioSource(caudiostream );
+// needs a sound or crash ?
+ adevice->addAudioSource( test3);
+//test3->setLoop(1);
+test3->play();
+}
+ break;}
+ case 1:{
+  if (soundinit){
+// agEngine::audio::CAudioSource *test = adevice->createAudioSource( adevice->createAudioStream(sound,1));
+// adevice->addAudioSource( test3);
+    if (!test3->isPlaying()) {
+        //test3->setLoop(0);
+        test3->play();
+      } else{
+      		adevice->playAll();
+      }
+ }
+  break;}
+ case 2:{
+    if (soundinit){
+      adevice->playAll();
+
+  }
+ break;
+ }
+ }
+#endif
+#endif
+
+
 #ifdef AgAudio2
 #ifdef OGG
 

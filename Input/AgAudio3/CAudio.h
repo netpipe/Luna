@@ -1,6 +1,7 @@
 #ifndef AUDIO_H
 #define AUDIO_H
-
+#include "../../config.h"
+#ifdef AGAUDIO3
 #include <string>
 #include <map>
 #include <vector>
@@ -374,4 +375,5 @@ namespace agEngine
     }
 }
 
+#endif
 #endif

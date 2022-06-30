@@ -1,6 +1,7 @@
 #ifndef _CPOSITIONALAUDIOENTITY_H_
 #define _CPOSITIONALAUDIOENTITY_H_
-
+#include "../../config.h"
+#ifdef AGAUDIO3d
 #include <irrlicht.h>
 
 #include "CBaseEntity.h"
@@ -30,4 +31,5 @@ namespace agEngine
     }
 }
 
+#endif
 #endif

@@ -5,8 +5,8 @@
 //#define SDLMixer // wip - might not be compatable with the engine
 //#define OPENAL2 // working with emscripten
 //#define SDLSound //- seems to play and freeze needs threading
-    // #define WII
-   // #define IRRc
+    //#define WII
+    //#define IRRc
    //PathFinding
     #define RECAST
     #define MINAV
@@ -15,15 +15,15 @@
             #define OPENSTEER2 // the rest of the extra plugins if its compiling good.
         #endif
     #define SPARK
-  //  #define IRRNETLITE
+    //#define IRRNETLITE
 
     #ifdef linux
         #define LIBINPUT
     #endif
 
-   //     #define AgAudio
-
-     #define AgAudio2
+    //#define AgAudio
+    //#define AgAudio2
+     #define AGAUDIO3
     //#define SOUND
 
     //#define PHYSICS

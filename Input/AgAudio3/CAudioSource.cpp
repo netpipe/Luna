@@ -1,3 +1,5 @@
+#include "../../config.h"
+#ifdef AGAUDIO3
 #include "CAudioSource.h"
 
 namespace agEngine
@@ -227,3 +229,4 @@ namespace agEngine
         }
     }
 }
+#endif
