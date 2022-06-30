@@ -1036,6 +1036,21 @@
 		<Unit filename="Input/AgAudio3/CPositionalAudioEntity.h" />
 		<Unit filename="Input/AgAudio3/CVorbisFile.cpp" />
 		<Unit filename="Input/AgAudio3/CVorbisFile.h" />
+		<Unit filename="Input/AgAudio3/xm/context.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/xm/load.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/xm/play.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/xm/testprog.h" />
+		<Unit filename="Input/AgAudio3/xm/xm.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/xm/xm.h" />
+		<Unit filename="Input/AgAudio3/xm/xm_internal.h" />
 		<Unit filename="Input/Compress/Compress.cpp" />
 		<Unit filename="Input/Compress/Compress.h" />
 		<Unit filename="Input/Compress/microtar/src/microtar-stdio.c">
