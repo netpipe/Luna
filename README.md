@@ -1,5 +1,5 @@
 ## Luna Irrlicht Game Engine 
-fastest render(not on osx yet if you exclude emscripten) python enabled close to complete game engine around.
+fastest cross platform python enabled close to complete game engine around.(runs on raspberry pi zero)
 > emscripten-project-testing to build emscripten version - there seem to be a few bugs with textures still also shaders need to be ported to GLES
 - When using bulletblend or gamekit to design levels youll need to use older blender 249 also need to save on 32 bit to avoid big endian issues. the converter is in FKEditor/utf32.sh
 
@@ -34,5 +34,5 @@ GAME folder is just for the binary and the rest of the media in there is old and
 ## Extra Github repos you'll need.
 You will need these aswell most of it compiles with codeblocks, the occasional project may still use cmake. also there are cb to makefile converters if you want them.
 
-- https://github.com/tecan/LunaLibs
-- https://github.com/tecan/IrrlichtDemos
+- https://github.com/netpipe/LunaLibs
+- https://github.com/netpipe/IrrlichtDemos
