@@ -348,6 +348,10 @@ irrTiled* tld;
     agEngine::audio::CAudioStream *caudiostream ;
 #endif
 
+#ifdef XMaudio
+    #include "../Input/AgAudio3/xm/testprog.h"
+#endif
+
 
 #ifdef PYTHON
 PyMethodDef irr_function[] =

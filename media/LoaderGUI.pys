@@ -210,8 +210,9 @@ image.idraw(lunaengine)
 image.idraw(iaxe)
 image.idraw(box2di)
 image.idraw(irrlichtlogo)
-scene.fluidlite("","",0)
-#scene.soundman(2,"",0)
+
+#scene.fluidlite("","",0)
+scene.soundman(2,"",0)
 
 #image.iscale(lunaengine,0.5,0.5) ## need to stop repedative scaling or be able to get back to original.
 

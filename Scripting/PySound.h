@@ -181,7 +181,7 @@ return Py_BuildValue("");
 #define NUM_CHANNELS 2
 #define NUM_SAMPLES (NUM_FRAMES * NUM_CHANNELS)
 #define TIME_INTERVAL 1000000 //1500000:duration
-#endif
+
 
 bool flinit=0;
 
@@ -190,6 +190,7 @@ bool flinit=0;
 	char* audio_buf;
 	long length;
 	double dlength;
+	#endif
 
 PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active camera
 

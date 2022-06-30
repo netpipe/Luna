@@ -8,6 +8,10 @@
 
 #include "xm_internal.h"
 
+#define XM_DEFENSIVE true
+#define XM_DEBUG true
+#define XM_LIBXMIZE_DELTA_SAMPLES true
+
 #define OFFSET(ptr) do {										\
 		(ptr) = (void*)((intptr_t)(ptr) + (intptr_t)(*ctxp));	\
 	} while(0)

@@ -6,7 +6,7 @@
  * License, Version 2, as published by Sam Hocevar. See
  * http://sam.zoy.org/wtfpl/COPYING for more details. */
 
-#include <xm.h>
+#include "xm.h"
 #include <stdbool.h>
 #include <math.h>
 #include <string.h>

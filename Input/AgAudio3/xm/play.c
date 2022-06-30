@@ -10,6 +10,9 @@
 #include "xm_internal.h"
 #include <inttypes.h>
 
+#define XM_DEBUG true
+#define XM_LINEAR_INTERPOLATION true
+
 /* ----- Static functions ----- */
 
 static float xm_waveform(xm_waveform_type_t, uint8_t);
@@ -284,7 +287,7 @@ static void xm_volume_slide(xm_channel_context_t* ch, uint8_t rawval) {
 	}
 }
 
-static float xm_envelope_lerp(xm_envelope_point_t* restrict a, xm_envelope_point_t* restrict b, uint16_t pos) {
+static float xm_envelope_lerp(xm_envelope_point_t* a, xm_envelope_point_t* b, uint16_t pos) {
 	/* Linear interpolation between two envelope points */
 	if(pos <= a->frame) return a->value;
 	else if(pos >= b->frame) return b->value;

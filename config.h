@@ -24,6 +24,12 @@
     //#define AgAudio
     //#define AgAudio2
      #define AGAUDIO3
+     #ifdef AGAUDIO3
+        #define XMaudio
+        #define FLUIDLITE
+       // #define MP3
+        //#define OGG
+     #endif
     //#define SOUND
 
     //#define PHYSICS
@@ -35,7 +41,6 @@
      // #define NETWORK
     #endif
  // #define SKELETON // needs to be updated
-    #define FLUIDLITE
   //#define FLUIDSYNTH //has been replaced by fluidlite
   //#define DECALS       //not used
     #define DECALS2
