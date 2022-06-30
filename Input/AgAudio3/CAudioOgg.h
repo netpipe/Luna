@@ -46,11 +46,14 @@ namespace agEngine
             bool hasFinished() const;
         private:
             FILE* file;
+                       #ifdef OGG
             SOggFile oggData;
+
             OggVorbis_File stream;
             ov_callbacks vorbisCallbacks;
-            vorbis_info* info;
 
+            vorbis_info* info;
+            #endif
             ALenum format;
 
             bool loadedInMemory;

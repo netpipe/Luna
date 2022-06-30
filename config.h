@@ -28,9 +28,9 @@
         #ifndef MACOSX
             #define XMaudio
             #define FLUIDLITE
+            #define OGG // has to be set in build config unless  we add  #include ../config.h to it
         #endif
        // #define MP3
-    #define OGG
      #endif
     //#define SOUND
 

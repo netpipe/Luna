@@ -51,9 +51,11 @@ namespace agEngine
         CAudioStream* CAudioDevice::createAudioStream(const c8* filename, bool loadToMemory)
         {
             // need to write a clause for different file types in the future
+            #ifdef OGG
             CAudioData* audioData = new CAudioOgg(filename, loadToMemory);
             CAudioStream* audStream = new CAudioStream(audioData);
             return audStream;
+    #endif
         }
 
         void CAudioDevice::playAll()

@@ -137,9 +137,9 @@ int ogg_stream_init(ogg_stream_state *os,int serialno){
     os->body_storage=16*1024;
     os->lacing_storage=1024;
 
-    os->body_data=_ogg_malloc(os->body_storage*sizeof(*os->body_data));
-    os->lacing_vals=_ogg_malloc(os->lacing_storage*sizeof(*os->lacing_vals));
-    os->granule_vals=_ogg_malloc(os->lacing_storage*sizeof(*os->granule_vals));
+    os->body_data=static_cast<unsigned char *>(_ogg_malloc(os->body_storage*sizeof(*os->body_data)));
+    os->lacing_vals=static_cast<int *>(_ogg_malloc(os->lacing_storage*sizeof(*os->lacing_vals)));
+    os->granule_vals=static_cast<long long *>(_ogg_malloc(os->lacing_storage*sizeof(*os->granule_vals)));
 
     if(!os->body_data || !os->lacing_vals || !os->granule_vals){
       ogg_stream_clear(os);
@@ -198,7 +198,7 @@ static int _os_body_expand(ogg_stream_state *os,long needed){
       return -1;
     }
     os->body_storage=body_storage;
-    os->body_data=ret;
+    os->body_data=static_cast<unsigned char *>(ret);
   }
   return 0;
 }
@@ -218,14 +218,14 @@ static int _os_lacing_expand(ogg_stream_state *os,long needed){
       ogg_stream_clear(os);
       return -1;
     }
-    os->lacing_vals=ret;
+    os->lacing_vals=static_cast<int *>(ret);
     ret=_ogg_realloc(os->granule_vals,lacing_storage*
                      sizeof(*os->granule_vals));
     if(!ret){
       ogg_stream_clear(os);
       return -1;
     }
-    os->granule_vals=ret;
+    os->granule_vals=static_cast<long long *>(ret);
     os->lacing_storage=lacing_storage;
   }
   return 0;
@@ -609,7 +609,7 @@ char *ogg_sync_buffer(ogg_sync_state *oy, long size){
       ogg_sync_clear(oy);
       return NULL;
     }
-    oy->data=ret;
+    oy->data=static_cast<unsigned char *>(ret);
     oy->storage=newsize;
   }
 
@@ -712,7 +712,7 @@ long ogg_sync_pageseek(ogg_sync_state *oy,ogg_page *og){
   oy->bodybytes=0;
 
   /* search for possible capture */
-  next=memchr(page+1,'O',bytes-1);
+  next=static_cast<unsigned char *>(memchr(page+1,'O',bytes-1));
   if(!next)
     next=oy->data+oy->fill;
 
