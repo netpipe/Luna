@@ -352,6 +352,7 @@
 					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/include/python2.7" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
 					<Add directory="entities/OpenSteer/lib/include" />
+					<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-m64" />
@@ -947,14 +948,6 @@
 		<Unit filename="GUI/sineGraph2d/SGraph2D.h" />
 		<Unit filename="GUI/widgets/CGUIBar.cpp" />
 		<Unit filename="GUI/widgets/CGUIBar.h" />
-		<Unit filename="Input/AgAudio/Ogg/OggFile.cpp" />
-		<Unit filename="Input/AgAudio/Ogg/OggFile.h" />
-		<Unit filename="Input/AgAudio/Sound.cpp" />
-		<Unit filename="Input/AgAudio/Sound.h" />
-		<Unit filename="Input/AgAudio/SoundSource/SoundSource.cpp" />
-		<Unit filename="Input/AgAudio/SoundSource/SoundSource.h" />
-		<Unit filename="Input/AgAudio/audio.cpp" />
-		<Unit filename="Input/AgAudio/audio.h" />
 		<Unit filename="Input/AgAudio2/CAudioData.h" />
 		<Unit filename="Input/AgAudio2/CAudioDevice.cpp" />
 		<Unit filename="Input/AgAudio2/CAudioDevice.h" />
@@ -1089,6 +1082,14 @@
 		</Unit>
 		<Unit filename="Input/AgAudio3/xm/xm.h" />
 		<Unit filename="Input/AgAudio3/xm/xm_internal.h" />
+		<Unit filename="Input/AgAudio/Ogg/OggFile.cpp" />
+		<Unit filename="Input/AgAudio/Ogg/OggFile.h" />
+		<Unit filename="Input/AgAudio/Sound.cpp" />
+		<Unit filename="Input/AgAudio/Sound.h" />
+		<Unit filename="Input/AgAudio/SoundSource/SoundSource.cpp" />
+		<Unit filename="Input/AgAudio/SoundSource/SoundSource.h" />
+		<Unit filename="Input/AgAudio/audio.cpp" />
+		<Unit filename="Input/AgAudio/audio.h" />
 		<Unit filename="Input/Compress/Compress.cpp" />
 		<Unit filename="Input/Compress/Compress.h" />
 		<Unit filename="Input/Compress/microtar/src/microtar-stdio.c">
@@ -1365,9 +1366,9 @@
 		<Unit filename="Input/Model/blender/dna249.cpp" />
 		<Unit filename="Input/Model/blender/readblend.h" />
 		<Unit filename="Input/Model/irrTiled/irrTiled.h" />
+		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/SDL/SDL_fluidlite.h" />
 		<Unit filename="Input/SDL/SDLsound.h" />
-		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/inputManager.cpp" />
 		<Unit filename="Input/inputManager.h" />
 		<Unit filename="Input/libInput/include/InputController.h" />
@@ -1753,6 +1754,8 @@
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshBuilder.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshQuery.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNode.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/Recast.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastAlloc.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastArea.cpp" />
@@ -1763,8 +1766,6 @@
 		<Unit filename="entities/AI/recast/Recast/Source/RecastMeshDetail.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRasterization.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRegion.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast_util.cpp" />
 		<Unit filename="entities/AI/recast_util.h" />
 		<Unit filename="entities/AI/recastmain.cpp" />
@@ -1896,7 +1897,6 @@
 				<doxyfile_dot />
 				<general />
 			</DoxyBlocks>
-			<code_completion />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

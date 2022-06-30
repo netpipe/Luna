@@ -6,7 +6,11 @@
 #ifdef __APPLE__
 #include <OpenAL/al.h>
 #else
+#ifdef WIN32
+#include <al.h>
+#else
 #include <AL/al.h>
+#endif
 #endif
 
 #include <ogg/ogg.h>

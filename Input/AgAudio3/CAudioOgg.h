@@ -5,7 +5,11 @@
 #ifdef OGG
 #include <irrlicht.h>
 
+#ifdef WIN32
+#include <al.h>
+#else
 #include <AL/al.h>
+#endif
 
 #include <ogg/ogg.h>
 #include <vorbis/codec.h>
