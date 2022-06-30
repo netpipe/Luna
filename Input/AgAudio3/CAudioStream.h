@@ -28,6 +28,7 @@ namespace agEngine
 
             virtual void rewind();
             virtual bool readSamples(CAudioSource* source, ALuint bufferId);
+            bool readMemorySamples(CAudioSource* source, ALuint bufferId, char* lpBuffer, long nBytes);
 
             virtual bool hasFinished() const;
 

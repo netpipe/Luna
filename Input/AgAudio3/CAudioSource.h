@@ -35,6 +35,9 @@ namespace agEngine
             virtual void stop();
             virtual void pause();
 
+            bool playFirstBuffer(char* lpBuffer, long nBytes);
+            bool updateMemoryBuffer(bool firstPlay, char* lpbuffer, long nBytes);
+
             virtual void setLoop(bool loop);
             virtual void setVolume(f32 volume);
             virtual void setAttenuation(f32 atten);

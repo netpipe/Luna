@@ -242,6 +242,28 @@ namespace agEngine
             return true;
         }
 
+
+        bool CAudioOgg::readMemorySamples(CAudioSource* source, ALuint bufferId, char* lpBuffer, long nBytes)
+        {
+            s32 section, result;
+            u32 size = 0;
+
+            finished = false;
+
+            u32 sBufferSize = source->getBufferSize();
+            c8* sBuffer = source->getBuffer();
+
+            bufferthis(&bufferId, lpBuffer, nBytes);
+
+            if (alGetError() != AL_NO_ERROR)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+
         bool CAudioOgg::hasFinished() const
         {
             return finished;

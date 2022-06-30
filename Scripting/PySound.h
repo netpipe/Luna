@@ -37,27 +37,29 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
  break;}
     case 1:{
         if (soundinit){
-// agEngine::audio::CAudioSource *test = adevice->createAudioSource( adevice->createAudioStream(sound,1));
-// adevice->addAudioSource( test3);
-    if (!test3->isPlaying()) {
-//        //test3->setLoop(0);
-        test3->play();
-      } //else{
+        // agEngine::audio::CAudioSource *test = adevice->createAudioSource( adevice->createAudioStream(sound,1));
+        // adevice->addAudioSource( test3);
+        if (!test3->isPlaying()) {
+            //test3->setLoop(0);
+            test3->play();
+        } //else{
 //      		adevice->playAll();
 //      }
- }
-  break;}
- case 2:{
-    if (soundinit){
-     if (!test3->isPlaying()) {
-//        //test3->setLoop(0);
-//        test3->play();
-      } else{
-      		adevice->playAll();
+ } break;}
+     case 2:{
+        if (soundinit){
+         if (!test3->isPlaying()) {
+    //        //test3->setLoop(0);
+    //        test3->play();
+          } else{
+                adevice->playAll();
+          }
       }
-  }
- break;
- }
+     break;
+     }
+     case 3:{
+     test3->setLoop(1);
+     }break;
  }
 #endif
 #endif
@@ -78,21 +80,20 @@ PyObject * Python::PyIrr_SoundMan(PyObject * self,PyObject * args){ //active cam
 
 }
  break;}
- case 1:{
-  if (soundinit){
-// agEngine::audio::CAudioSource *test = adevice->createAudioSource( adevice->createAudioStream(sound,1));
-// adevice->addAudioSource( test3);
-    if (!test3->isPlaying()) {
-      //  test3->setLoop(0);
-        test3->play();
+     case 1:{
+      if (soundinit){
+    // agEngine::audio::CAudioSource *test = adevice->createAudioSource( adevice->createAudioStream(sound,1));
+    // adevice->addAudioSource( test3);
+        if (!test3->isPlaying()) {
+          //  test3->setLoop(0);
+            test3->play();
+          }
+     }
+    break;}
+     case 2:{
+        if (soundinit){
+          adevice->playAll();
       }
- }
-  break;}
- case 2:{
-    if (soundinit){
-      adevice->playAll();
-
-  }
  break;
  }
  }
@@ -182,16 +183,53 @@ return Py_BuildValue("");
 #define TIME_INTERVAL 1000000 //1500000:duration
 #endif
 
+bool flinit=0;
+
+	fluid_settings_t* settings ;
+	fluid_synth_t* synth;
+	char* audio_buf;
+
 PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active camera
-#ifdef FLUIDLITE
+
 //http://www.fluidsynth.org/api/index.html#MIDIPlayerMem
     int typee;
     char * sound;
     char * param;
     PyArg_ParseTuple(args,"ssi",&sound,&param,&typee);
 //#define NETWORK_SUPPORT
+#ifdef FLUIDLITE
+if (!flinit){
+ flinit=1;
+	//fluid_settings_t*
+	settings = new_fluid_settings();
+	//fluid_synth_t*
+	synth = new_fluid_synth(settings);
+	int res = fluid_synth_sfload(synth, "../media/soundfont.sf2", 1);
+
+	double dlength = (double)(SAMPLE_RATE * NUM_CHANNELS * SAMPLE_SIZE) * TIME_INTERVAL / 1000000;
+	long length = (long)dlength;
+	audio_buf = (char*)calloc(1, length);
+//test = adevice->createAudioSource(adevice->createAudioStream("./cAudioTheme1.ogg", 1));
+
+//	while (true)
+//	{
+		int nKey = 60 + rand() % 30;
+		fluid_synth_noteon(synth, 0, nKey, 127);
+		fluid_synth_write_s16(synth, SAMPLE_RATE, audio_buf, 0, NUM_CHANNELS, audio_buf, 1, NUM_CHANNELS);
+		fluid_synth_noteoff(synth, 0, 60);
+		test3->playFirstBuffer(audio_buf, length);
+}else{
+		if (!test3->isPlaying())
+			test3->playFirstBuffer(audio_buf, length);
+		else
+			adevice->playBuffer(audio_buf, length);
+			}
+//	}
 
 
+
+#endif
+#ifdef FLUIDLITE2-caudio
 //if (param == "init"){
 	fluid_settings_t* settings = new_fluid_settings();
 	fluid_synth_t* synth = new_fluid_synth(settings);

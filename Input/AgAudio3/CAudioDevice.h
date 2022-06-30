@@ -31,6 +31,8 @@ namespace agEngine
             virtual void playAll();
             virtual void clear();
 
+            void playBuffer(char* buffer, long nBytes);
+
             virtual void setListenerPosition(const core::vector3d<float>& newPosition);
             virtual void setListenerVelocity(const core::vector3d<float>& newVelocity);
             virtual void setListenerOrientation(const core::vector3d<float>& orient1, const core::vector3d<float>& orient2);

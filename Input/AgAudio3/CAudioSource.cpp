@@ -115,6 +115,57 @@ namespace agEngine
             return true;
         }
 
+        bool CAudioSource::updateMemoryBuffer(bool firstPlay, char* lpbuffer, long nBytes)
+        {
+            if (!stream)
+                return false;
+
+            if (firstPlay)
+            {
+                if (!stream->readMemorySamples(this, alBuffer[0], lpbuffer, nBytes))
+                    return false;
+
+                alSourceQueueBuffers(sourceId, 1, &alBuffer[0]);
+
+                if (!stream->readMemorySamples(this, alBuffer[1], lpbuffer, nBytes))
+                {
+                    if (stream->hasFinished())
+                        return true;
+
+                    return false;
+                }
+
+                alSourceQueueBuffers(sourceId, 1, &alBuffer[1]);
+
+                return true;
+            }
+
+            ALenum state;
+            alGetSourcei(sourceId, AL_SOURCE_STATE, &state);
+            if (state == AL_STOPPED || state == AL_PAUSED)
+                return false;
+
+            s32 done = 0;
+            alGetSourcei(sourceId, AL_BUFFERS_PROCESSED, &done);
+
+            while (done--)
+            {
+                ALuint buffer;
+                alSourceUnqueueBuffers(sourceId, 1, &buffer);
+                if (stream->hasFinished())
+                {
+                    stop();
+                    continue;
+                }
+                if (!stream->readMemorySamples(this, buffer, lpbuffer, nBytes))
+                    return false;
+
+                alSourceQueueBuffers(sourceId, 1, &buffer);
+            }
+
+            return true;
+        }
+
         bool CAudioSource::isPlaying() const
         {
             ALenum state;
@@ -138,6 +189,24 @@ namespace agEngine
             alSourcePlay(sourceId);
             return true;
         }
+
+        bool CAudioSource::playFirstBuffer(char* lpBuffer, long nBytes)
+        {
+            if (!stream)
+                return false;
+
+            if (isPlaying())
+                return true;
+
+            streamPosition = 0;
+
+            if (!updateMemoryBuffer(true, lpBuffer, nBytes))
+                return false;
+
+            alSourcePlay(sourceId);
+            return true;
+        }
+
 
         void CAudioSource::stop()
         {

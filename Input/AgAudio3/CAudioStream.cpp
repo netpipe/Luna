@@ -44,6 +44,11 @@ namespace agEngine
             return attachedData->readSamples(source, bufferId);
         }
 
+        bool CAudioStream::readMemorySamples(CAudioSource* source, ALuint bufferId, char* lpBuffer, long nBytes)
+        {
+            return attachedData->readMemorySamples(source, bufferId, lpBuffer, nBytes);
+        }
+
         bool CAudioStream::hasFinished() const
         {
             return attachedData->hasFinished();

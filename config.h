@@ -1,13 +1,13 @@
 //#define NDEBUG // for testing networking
 #ifdef EXTRACOMPILE  //leftovers and extra from minimal
  #define MINIMAL2
-// #define COMPRESS //needed for empython
-//#define SDLMixer // wip - might not be compatable with the engine
-//#define OPENAL2 // working with emscripten
-//#define SDLSound //- seems to play and freeze needs threading
+    //#define COMPRESS //needed for empython
+    //#define SDLMixer // wip - might not be compatable with the engine
+    //#define OPENAL2 // working with emscripten
+    //#define SDLSound //- seems to play and freeze needs threading
     //#define WII
     //#define IRRc
-   //PathFinding
+//PathFinding
     #define RECAST
     #define MINAV
     #define OPENSTEER
@@ -20,7 +20,7 @@
     #ifdef linux
         #define LIBINPUT
     #endif
-
+//Sound
     //#define AgAudio
     //#define AgAudio2
      #define AGAUDIO3
@@ -35,16 +35,16 @@
      // #define NETWORK
     #endif
  // #define SKELETON // needs to be updated
-  //#define FLUIDLITE
+    #define FLUIDLITE
   //#define FLUIDSYNTH //has been replaced by fluidlite
   //#define DECALS       //not used
     #define DECALS2
 
 
-  #define TESSELATE
+    #define TESSELATE
   //  #define occlusion.
   //  #define FPSWEAPON // no uses diff event receiver than player so wont drive car or shoot cubes // screws with the flare2
-      #define RIBBONTRAIL
+    #define RIBBONTRAIL
   //  #define DESTRUCTION //not working
   #define FORMATIONDEMO
  // #define HUD //causes crashing

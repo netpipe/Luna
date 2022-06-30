@@ -28,6 +28,7 @@ namespace agEngine
             virtual s32 read(c8* buffer, s32 size, s32 bigEndian, s32 word, s32 signedByte, s32* bitstream) = 0;
             virtual void bufferthis(ALuint* buffer, c8* data, u32 size) = 0;
             virtual bool readSamples(CAudioSource* source, ALuint bufferId) = 0;
+            virtual bool readMemorySamples(CAudioSource* source, ALuint bufferId, char* lpBuffer, long nBytes) = 0;
             virtual bool hasFinished() const = 0;
         };
     }

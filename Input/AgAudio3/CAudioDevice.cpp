@@ -77,6 +77,12 @@ namespace agEngine
             return temp;
         }
 
+        void CAudioDevice::playBuffer(char* buffer, long nBytes)
+        {
+            for (u32 i = 0; i < sources.size(); ++i)
+                sources[i]->updateMemoryBuffer(false, buffer, nBytes);
+        }
+
         void CAudioDevice::setListenerPosition(const core::vector3d<float>& newPosition)
         {
             alListener3f(AL_POSITION, newPosition.X, newPosition.Y, newPosition.Z);
