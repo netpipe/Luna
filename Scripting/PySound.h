@@ -188,6 +188,8 @@ bool flinit=0;
 	fluid_settings_t* settings ;
 	fluid_synth_t* synth;
 	char* audio_buf;
+	long length;
+	double dlength;
 
 PyObject * Python::PyIrr_FluidSynth(PyObject * self,PyObject * args){ //active camera
 
@@ -206,8 +208,8 @@ if (!flinit){
 	synth = new_fluid_synth(settings);
 	int res = fluid_synth_sfload(synth, "../media/soundfont.sf2", 1);
 
-	double dlength = (double)(SAMPLE_RATE * NUM_CHANNELS * SAMPLE_SIZE) * TIME_INTERVAL / 1000000;
-	long length = (long)dlength;
+	dlength = (double)(SAMPLE_RATE * NUM_CHANNELS * SAMPLE_SIZE) * TIME_INTERVAL / 1000000;
+	length = (long)dlength;
 	audio_buf = (char*)calloc(1, length);
 //test = adevice->createAudioSource(adevice->createAudioStream("./cAudioTheme1.ogg", 1));
 
