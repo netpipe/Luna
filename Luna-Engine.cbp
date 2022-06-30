@@ -776,6 +776,7 @@
 					<Add option="-DTARGET_OS_MAC" />
 					<Add option="-D__APPLE__" />
 					<Add option="-D__OSX__" />
+					<Add option="-DEXTRACOMPILE" />
 				</Compiler>
 				<Linker>
 					<Add option="-framework Foundation" />
@@ -1058,7 +1059,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Input/AgAudio2/vorbis/window.h" />
-		<Unit filename="Input/AgAudio3/CAudio.cpp" />
 		<Unit filename="Input/AgAudio3/CAudio.h" />
 		<Unit filename="Input/AgAudio3/CAudioData.h" />
 		<Unit filename="Input/AgAudio3/CAudioDevice.cpp" />
