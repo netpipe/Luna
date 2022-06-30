@@ -29,7 +29,7 @@
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 
 static inline void memcpy_pad(void* dst, size_t dst_len, const void* src, size_t src_len, size_t offset) {
-	uint8_t* dst_c = dst;
+	uint8_t* dst_c = static_cast<char *> (dst);
 	const uint8_t* src_c = src;
 
 	/* how many bytes can be copied without overrunning `src` */
