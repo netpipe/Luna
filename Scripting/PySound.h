@@ -188,7 +188,7 @@ bool flinit=0;
 	fluid_settings_t* settings ;
 	fluid_synth_t* synth;
 	char* audio_buf;
-	long length;
+	long hlength;
 	double dlength;
 	#endif
 
@@ -210,7 +210,7 @@ if (!flinit){
 	int res = fluid_synth_sfload(synth, "../media/soundfont.sf2", 1);
 
 	dlength = (double)(SAMPLE_RATE * NUM_CHANNELS * SAMPLE_SIZE) * TIME_INTERVAL / 1000000;
-	length = (long)dlength;
+	hlength = (long)dlength;
 	audio_buf = (char*)calloc(1, length);
 //test = adevice->createAudioSource(adevice->createAudioStream("./cAudioTheme1.ogg", 1));
 
@@ -220,12 +220,12 @@ if (!flinit){
 		fluid_synth_noteon(synth, 0, nKey, 127);
 		fluid_synth_write_s16(synth, SAMPLE_RATE, audio_buf, 0, NUM_CHANNELS, audio_buf, 1, NUM_CHANNELS);
 		fluid_synth_noteoff(synth, 0, 60);
-		test3->playFirstBuffer(audio_buf, length);
+		test3->playFirstBuffer(audio_buf, hlength);
 }else{
 		if (!test3->isPlaying())
-			test3->playFirstBuffer(audio_buf, length);
+			test3->playFirstBuffer(audio_buf, hlength);
 		else
-			adevice->playBuffer(audio_buf, length);
+			adevice->playBuffer(audio_buf, hlength);
 			}
 //	}
 
