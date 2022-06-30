@@ -1295,7 +1295,6 @@
 		<Unit filename="Input/AgAudio3/xm/load.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Input/AgAudio3/xm/main.cpp" />
 		<Unit filename="Input/AgAudio3/xm/play.c">
 			<Option compilerVar="CC" />
 		</Unit>
