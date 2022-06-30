@@ -250,9 +250,9 @@ namespace agEngine
             unsigned int soundId;
 
             AudioDriver *device;
-
+#ifdef OGG
             OggFile *ogg;
-
+#endif
 #ifdef WITHSDL
             Sound_Sample *osound;
 #endif

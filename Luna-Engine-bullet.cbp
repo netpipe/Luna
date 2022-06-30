@@ -1089,6 +1089,45 @@
 					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Mac" />
 				</Linker>
 			</Target>
+			<Target title="MAC FULL">
+				<Option platforms="Unix;Mac;" />
+				<Option output="./GAME/mLunaF" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="GAME" />
+				<Option object_output=".dmacmobjsbf" />
+				<Option type="1" />
+				<Option compiler="clang" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Compiler>
+					<Add option="-fpermissive" />
+					<Add option="-x objective-c++" />
+					<Add option="-DMINIMAL" />
+					<Add option="-D_IRR_STATIC_LIB_" />
+					<Add option="-DMACOSX" />
+					<Add option="-D__x86_64__" />
+					<Add option="-DTARGET_OS_MAC" />
+					<Add option="-D__APPLE__" />
+					<Add option="-D__OSX__" />
+					<Add option="-DEXTRACOMPILE" />
+				</Compiler>
+				<Linker>
+					<Add option="-framework Foundation" />
+					<Add option="-framework OpenGL" />
+					<Add option="-framework Cocoa" />
+					<Add option="-framework Carbon" />
+					<Add option="-framework AppKit" />
+					<Add option="-framework IOKit" />
+					<Add library="Irrlicht" />
+					<Add library="pthread" />
+					<Add library="z" />
+					<Add library="dl" />
+					<Add library="python2.7" />
+					<Add library="GL" />
+					<Add directory="/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries" />
+					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Mac" />
+				</Linker>
+			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-I/usr/include/atk-1.0 -I/usr/include/pango-1.0" />
@@ -1273,7 +1312,6 @@
 		<Unit filename="Input/AgAudio2/ogg/framing.cpp" />
 		<Unit filename="Input/AgAudio2/ogg/ogg.h" />
 		<Unit filename="Input/AgAudio2/ogg/os_types.h" />
-		<Unit filename="Input/AgAudio3/CAudio.cpp" />
 		<Unit filename="Input/AgAudio3/CAudio.h" />
 		<Unit filename="Input/AgAudio3/CAudioData.h" />
 		<Unit filename="Input/AgAudio3/CAudioDevice.cpp" />
@@ -1333,6 +1371,7 @@
 			<Option target="Linux FULL" />
 			<Option target="Linux SVNFULL-cAudio" />
 			<Option target="MAC MINIMAL" />
+			<Option target="MAC FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISException.cpp">
 			<Option target="Linux MINIMUM2" />
@@ -1348,6 +1387,7 @@
 			<Option target="Linux FULL" />
 			<Option target="Linux SVNFULL-cAudio" />
 			<Option target="MAC MINIMAL" />
+			<Option target="MAC FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISForceFeedback.cpp">
 			<Option target="Linux MINIMUM2" />
@@ -1363,6 +1403,7 @@
 			<Option target="Linux FULL" />
 			<Option target="Linux SVNFULL-cAudio" />
 			<Option target="MAC MINIMAL" />
+			<Option target="MAC FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISInputManager.cpp">
 			<Option target="Linux MINIMUM2" />
@@ -1378,6 +1419,7 @@
 			<Option target="Linux FULL" />
 			<Option target="Linux SVNFULL-cAudio" />
 			<Option target="MAC MINIMAL" />
+			<Option target="MAC FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISJoyStick.cpp">
 			<Option target="Linux MINIMUM2" />
@@ -1393,6 +1435,7 @@
 			<Option target="Linux FULL" />
 			<Option target="Linux SVNFULL-cAudio" />
 			<Option target="MAC MINIMAL" />
+			<Option target="MAC FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISKeyboard.cpp">
 			<Option target="Linux MINIMUM2" />
@@ -1408,6 +1451,7 @@
 			<Option target="Linux FULL" />
 			<Option target="Linux SVNFULL-cAudio" />
 			<Option target="MAC MINIMAL" />
+			<Option target="MAC FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/OISObject.cpp">
 			<Option target="Linux MINIMUM2" />
@@ -1423,6 +1467,7 @@
 			<Option target="Linux FULL" />
 			<Option target="Linux SVNFULL-cAudio" />
 			<Option target="MAC MINIMAL" />
+			<Option target="MAC FULL" />
 		</Unit>
 		<Unit filename="Input/Controllers/iois/OIS/includes/OIS.h" />
 		<Unit filename="Input/Controllers/iois/OIS/includes/OISConfig.h" />
@@ -2654,6 +2699,7 @@
 				<doxyfile_dot />
 				<general />
 			</DoxyBlocks>
+			<code_completion />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
