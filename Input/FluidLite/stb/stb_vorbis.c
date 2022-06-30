@@ -68,7 +68,7 @@
 //  HEADER BEGINS HERE
 //
 #include "../../../config.h"
-#ifdef FLUIDLITE
+#ifdef SOUND
 #ifndef STB_VORBIS_INCLUDE_STB_VORBIS_H
 #define STB_VORBIS_INCLUDE_STB_VORBIS_H
 

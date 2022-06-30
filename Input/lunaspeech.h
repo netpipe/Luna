@@ -32,6 +32,7 @@ void fopen_s(FILE ** f, const char * filename, const char * mode) {
 #endif
 
 //https://stackoverflow.com/questions/1513209/is-there-a-way-to-use-fopen-s-with-gcc-or-at-least-create-a-define-about-it
+#ifdef MACOSX
 errno_t fopen_s(FILE **f, const char *name, const char *mode) {
     errno_t ret = 0;
     assert(f);
@@ -41,6 +42,7 @@ errno_t fopen_s(FILE **f, const char *name, const char *mode) {
         ret = errno;
     return ret;
 }
+#endif // MACOSX
 
 void WriteWav(char* filename, char* buffer, int bufferlength)
 {
