@@ -1124,6 +1124,7 @@
 					<Add library="dl" />
 					<Add library="python2.7" />
 					<Add library="GL" />
+					<Add library="openal" />
 					<Add directory="/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Mac" />
 				</Linker>
