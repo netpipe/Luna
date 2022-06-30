@@ -211,7 +211,7 @@ if (!flinit){
 
 	dlength = (double)(SAMPLE_RATE * NUM_CHANNELS * SAMPLE_SIZE) * TIME_INTERVAL / 1000000;
 	hlength = (long)dlength;
-	audio_buf = (char*)calloc(1, length);
+	audio_buf = (char*)calloc(1, dlength);
 //test = adevice->createAudioSource(adevice->createAudioStream("./cAudioTheme1.ogg", 1));
 
 //	while (true)
