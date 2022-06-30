@@ -12,7 +12,11 @@
 //#include "SDL.h"
 //#include "SDL_opengl.h"
 #include <memory.h>
+#ifdef MACOSX
+#include <opengl/gl.h>
+#else
 #include <GL/gl.h>
+#endif
 #ifdef WIN32
 #	define snprintf _snprintf
 #endif

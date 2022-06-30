@@ -219,7 +219,7 @@ MainCamera = smgr->getActiveCamera() ;
 	if (!terrain)
 	{
 		printf("terrain node is not valid!");
-		return;
+		return 0;
 	}
     device->getFileSystem()->addFileArchive("vegetation/_assets/_models/arteria3d_tropicalpack.zip");
 

@@ -31,6 +31,16 @@ void fopen_s(FILE ** f, const char * filename, const char * mode) {
 }
 #endif
 
+//https://stackoverflow.com/questions/1513209/is-there-a-way-to-use-fopen-s-with-gcc-or-at-least-create-a-define-about-it
+errno_t fopen_s(FILE **f, const char *name, const char *mode) {
+    errno_t ret = 0;
+    assert(f);
+    *f = fopen(name, mode);
+    /* Can't be sure about 1-to-1 mapping of errno and MS' errno_t */
+    if (!*f)
+        ret = errno;
+    return ret;
+}
 
 void WriteWav(char* filename, char* buffer, int bufferlength)
 {
@@ -168,7 +178,7 @@ void OutputSound()
 
 
 
-int lunaSpeech(std::string etest,int *vpitch,int *vmouth,int *vthroat, int *vspeed,int vmode,int vvoice)
+int lunaSpeech(std::string etest,unsigned char vpitch,unsigned char vmouth,unsigned char vthroat, unsigned char vspeed,int vmode,int vvoice)
 {
 printf("testing speech");
 //int argc;
@@ -247,7 +257,7 @@ printf("testing speech");
 
 	if (!phonetic)
 	{
-		if (!TextToPhonemes(input)) return;
+		if (!TextToPhonemes(input)) return 0;
 		if (debug)
 			printf("text translation: %s\n", output);
 
