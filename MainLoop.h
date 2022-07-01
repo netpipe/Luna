@@ -71,7 +71,7 @@ struct SAppContext
 	skin->setColor(EGDC_3D_DARK_SHADOW  ,video::SColor(255,56,56,56));
 	skin->setColor(EGDC_3D_SHADOW  ,video::SColor(255,85,85,85));
 	skin->setColor(EGDC_3D_FACE  ,video::SColor(255,170,170,170));
-	IGUIFont*  font = guienv->getFont("media/editor/fonts/arial10.xml");
+	IGUIFont*  font = guienv->getFont("../media/editor/fonts/arial10.xml");
 	if (font)
       skin->setFont(font);
 
