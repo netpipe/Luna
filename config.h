@@ -28,7 +28,7 @@
         #ifndef MACOSX
             #define XMaudio
             #define FLUIDLITE
-            #define OGG // has to be set in build config unless  we add  #include ../config.h to it
+          //  #define OGG // has to be set in build config unless  we add  #include ../config.h to it
         #endif
        // #define MP3
      #endif
@@ -43,7 +43,6 @@
      // #define NETWORK
     #endif
  // #define SKELETON // needs to be updated
-  //#define FLUIDSYNTH //has been replaced by fluidlite
   //#define DECALS       //not used
     #define DECALS2
 

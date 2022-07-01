@@ -133,8 +133,6 @@
 					<Add library="GL" />
 					<Add library="Xi" />
 					<Add library="openal" />
-					<Add library="vorbis" />
-					<Add library="vorbisfile" />
 					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>
@@ -308,7 +306,7 @@
 					<Add directory="../LunaLibs/SparkEngine/lib/Linux/static" />
 				</Linker>
 			</Target>
-			<Target title="windows MINIMAL64">
+			<Target title="windows MINIMAL64off">
 				<Option platforms="Windows;" />
 				<Option output="./GAME/mLuna.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
@@ -324,6 +322,7 @@
 					<Add option="`pkg-config gtk+-2.0 --cflags`" />
 					<Add option="-Wno-narrowing" />
 					<Add option="-DPARTICLES" />
+					<Add option="-DMINIMAL" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/source/Irrlicht" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
 					<Add directory="../LunaLibs/net/irrNetLite22f" />
@@ -460,6 +459,8 @@
 					<Add library="m" />
 					<Add library="z" />
 					<Add library="mtar" />
+					<Add library="opengl32" />
+					<Add library="freetype" />
 					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/bin" />
 					<Add directory="E:/irrlicht-1.8.4/lib/Win64-gcc" />
 					<Add directory="D:/openal-soft-1.21.1-bin/libs/Win64" />
@@ -491,6 +492,7 @@
 					<Add directory="E:/irrlicht-1.8.4/include" />
 					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/include/python2.7" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/include" />
+					<Add directory="C:/Program Files (x86)/OpenAL 1.1 SDK/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-m64" />
@@ -501,6 +503,7 @@
 					<Add library="mtar" />
 					<Add library="opengl32" />
 					<Add library="openal32" />
+					<Add library="freetype" />
 					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/bin" />
 					<Add directory="E:/irrlicht-1.8.4/lib/Win64-gcc" />
 					<Add directory="D:/openal-soft-1.21.1-bin/libs/Win64" />
@@ -511,7 +514,7 @@
 					<Add directory="../mtar" />
 				</Linker>
 			</Target>
-			<Target title="windows FULL64">
+			<Target title="windows FULL64off">
 				<Option platforms="Windows;Unix;" />
 				<Option output="./GAME/mLunaFull.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="GAME" />
@@ -549,6 +552,7 @@
 					<Add library="ogg" />
 					<Add library="vorbis" />
 					<Add library="vorbisfile" />
+					<Add library="pthread" />
 					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/bin" />
 					<Add directory="E:/irrlicht-1.8.4/lib/Win64-gcc" />
 					<Add directory="D:/openal-soft-1.21.1-bin/libs/Win64" />
@@ -1290,29 +1294,6 @@
 		<Unit filename="GUI/sineGraph2d/SGraph2D.h" />
 		<Unit filename="GUI/widgets/CGUIBar.cpp" />
 		<Unit filename="GUI/widgets/CGUIBar.h" />
-		<Unit filename="Input/AgAudio/Ogg/OggFile.cpp" />
-		<Unit filename="Input/AgAudio/Ogg/OggFile.h" />
-		<Unit filename="Input/AgAudio/Sound.cpp" />
-		<Unit filename="Input/AgAudio/Sound.h" />
-		<Unit filename="Input/AgAudio/SoundSource/SoundSource.cpp" />
-		<Unit filename="Input/AgAudio/SoundSource/SoundSource.h" />
-		<Unit filename="Input/AgAudio/audio.cpp" />
-		<Unit filename="Input/AgAudio/audio.h" />
-		<Unit filename="Input/AgAudio2/CAudioData.h" />
-		<Unit filename="Input/AgAudio2/CAudioDevice.cpp" />
-		<Unit filename="Input/AgAudio2/CAudioDevice.h" />
-		<Unit filename="Input/AgAudio2/CAudioEffect.h" />
-		<Unit filename="Input/AgAudio2/CAudioOgg.cpp" />
-		<Unit filename="Input/AgAudio2/CAudioOgg.h" />
-		<Unit filename="Input/AgAudio2/CAudioSource.cpp" />
-		<Unit filename="Input/AgAudio2/CAudioSource.h" />
-		<Unit filename="Input/AgAudio2/CAudioStream.cpp" />
-		<Unit filename="Input/AgAudio2/CAudioStream.h" />
-		<Unit filename="Input/AgAudio2/ogg/bitwise.cpp" />
-		<Unit filename="Input/AgAudio2/ogg/config_types.h" />
-		<Unit filename="Input/AgAudio2/ogg/framing.cpp" />
-		<Unit filename="Input/AgAudio2/ogg/ogg.h" />
-		<Unit filename="Input/AgAudio2/ogg/os_types.h" />
 		<Unit filename="Input/AgAudio3/CAudio.h" />
 		<Unit filename="Input/AgAudio3/CAudioData.h" />
 		<Unit filename="Input/AgAudio3/CAudioDevice.cpp" />
@@ -1625,9 +1606,9 @@
 		<Unit filename="Input/Model/blender/dna249.cpp" />
 		<Unit filename="Input/Model/blender/readblend.h" />
 		<Unit filename="Input/Model/irrTiled/irrTiled.h" />
+		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/SDL/SDL_fluidlite.h" />
 		<Unit filename="Input/SDL/SDLsound.h" />
-		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/inputManager.cpp" />
 		<Unit filename="Input/inputManager.h" />
 		<Unit filename="Input/libInput/include/InputController.h" />
@@ -2561,6 +2542,8 @@
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshBuilder.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshQuery.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNode.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/Recast.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastAlloc.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastArea.cpp" />
@@ -2571,8 +2554,6 @@
 		<Unit filename="entities/AI/recast/Recast/Source/RecastMeshDetail.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRasterization.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRegion.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast_util.cpp" />
 		<Unit filename="entities/AI/recast_util.h" />
 		<Unit filename="entities/AI/recastmain.cpp" />
@@ -2700,7 +2681,6 @@
 				<doxyfile_dot />
 				<general />
 			</DoxyBlocks>
-			<code_completion />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
