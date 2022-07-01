@@ -16,7 +16,7 @@ fi
 if [ ! -d "./GAME/mLuna" ]
 then
 echo "yes it was minimal build"
-cp ./GAME/mLunaF ./GAME/Luna.app/Contents/MacOS/GAME/mLuna
+cp ./GAME/mLuna ./GAME/Luna.app/Contents/MacOS/GAME/mLuna
 else
 echo "rebuild , no binarys present"
 fi
