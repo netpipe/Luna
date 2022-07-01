@@ -53,7 +53,11 @@ int xm_create_context_safe(xm_context_t** ctxp, const char* moddata, size_t modd
 	}
 
 	bytes_needed = xm_get_memory_needed_for_context(moddata, moddata_length);
+	#ifdef MACOSX
+	mempool = static_cast<char*>(malloc(bytes_needed));
+	#else
 	mempool = malloc(bytes_needed);
+	#endif
 	if(mempool == NULL && bytes_needed > 0) {
 		/* malloc() failed, trouble ahead */
 		DEBUG("call to malloc() failed, returned %p", (void*)mempool);
