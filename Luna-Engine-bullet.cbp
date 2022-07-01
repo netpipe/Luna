@@ -1088,6 +1088,10 @@
 					<Add directory="/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Mac" />
 				</Linker>
+				<ExtraCommands>
+					<Add after="./GAME/macDeploy.sh" />
+					<Mode after="always" />
+				</ExtraCommands>
 			</Target>
 			<Target title="MAC FULL">
 				<Option platforms="Unix;Mac;" />
@@ -1110,6 +1114,7 @@
 					<Add option="-D__APPLE__" />
 					<Add option="-D__OSX__" />
 					<Add option="-DEXTRACOMPILE" />
+					<Add option="-DWBULLET" />
 				</Compiler>
 				<Linker>
 					<Add option="-framework Foundation" />
@@ -1128,6 +1133,10 @@
 					<Add directory="/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries" />
 					<Add directory="../LunaLibs/irrlicht-1.8.4/lib/Mac" />
 				</Linker>
+				<ExtraCommands>
+					<Add after="./GAME/macDeploy.sh" />
+					<Mode after="always" />
+				</ExtraCommands>
 			</Target>
 		</Build>
 		<Compiler>
