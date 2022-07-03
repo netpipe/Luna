@@ -374,7 +374,7 @@ PyMethodDef irr_function[] =
 //https://www.dreamincode.net/forums/topic/157186-conversion-of-string-to-enum/
     std::map< std::string, EKEY_CODE > keydictionary;
 
-    enum eparamb2d{binit,binit2,brun,bgetx,bgety,brotation,bjoint};
+    enum eparamb2d{binit,binit2,brun,bgetx,bgety,brotation,bjoint,applyImpulse};
     std::map< std::string, eparamb2d > esb2d;
 
 	enum veparam{vreset,vaccelerate,vreverse,vebrake,vbrake,vlsteer,
@@ -569,6 +569,7 @@ keydictionary["KEY_KEY_CODES_COUNT"] = KEY_KEY_CODES_COUNT;
     esb2d["bgety"] = bgety;
     esb2d["brotation"] = brotation;
     esb2d["bjoint"] = bjoint;
+    esb2d["force"] = applyImpulse;
 
     veparm2["vreset"] = vreset;
     veparm2["vaccelerate"] = vaccelerate;

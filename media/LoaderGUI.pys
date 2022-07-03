@@ -224,7 +224,9 @@ scene.soundman(2,"",0)
 #standingObj=[]
 #standingObj.append(scene.add_cube(newId(),8, 200*8,200,95.99, 0,0,0, 1,1,0.125))
 #image.set_texture(standingObj[0], frogStanding)
-
+if input.getKey('KEY_KEY_G'):
+    physics.b2d(box2dbody,0,"force",100000,0,0,0,0)
+    #irr.delay(100000)
 if input.getKey('KEY_UP'):
     currentButton-=1
     irr.delay(100000)
