@@ -31,8 +31,8 @@ if (init) :
  import os
  import math
  import time
- scene.using ('../media/string.py',"1");
- scene.using ('../media/random.py',"1");
+ scene.using ('../media/lib/string.py',"1");
+ scene.using ('../media/lib/random.py',"1");
 
  ticks = time.time()
 
@@ -100,7 +100,7 @@ if (init) :
 
 # scene.addAMesh("/maps/aggressor.bsp");
  scene.addAMesh("../media/mohaa/mohdm6.bsp",1);
- physics.bBox(scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3));
+ #physics.bBox(scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3));
 
 
 

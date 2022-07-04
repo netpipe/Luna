@@ -133,7 +133,7 @@
 
         #ifndef WIN32
         #define TILED2D
-        //#define MOHAABSP
+        #define MOHAABSP
         #ifdef MOHAABSP
             #define _IRR_COMPILE_WITH_BSP_LOADER_ //seems to only compile on linux for the moment.
             #define test223 // mohaaloader linux only because of byteswap

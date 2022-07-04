@@ -31,8 +31,8 @@ if (init) :
  import os
  import math
  import time
- scene.using ('../media/string.py',"1");
- scene.using ('../media/random.py',"1");
+ scene.using ('../media/lib/string.py',"1");
+ scene.using ('../media/lib/random.py',"1");
 
  ticks = time.time()
 

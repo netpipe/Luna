@@ -368,12 +368,28 @@ PyObject * Python::PyIrr_b2Dphysics(PyObject * self,PyObject * args){
                 return Py_BuildValue("f", b3->rotation);
             }break;
 
-            case eparamb2d(applyImpulse): {
+            case eparamb2d(bapplyImpulse): {
                 Body* m_body;
                 m_body=(Body*)bptr;
                 float impulse = m_body->mass * 10;
                 m_body->AddForce(Vec2(w,h) );
 
+            }break;
+                        case eparamb2d(bvelocity): {
+                Body* m_body;
+                m_body=(Body*)bptr;
+               // float impulse = m_body->mass * 10;
+             //  Vec2 *test = m_body->velocity( );
+                //return Py_BuildValue("",m_body->velocity(););
+
+
+            }break;
+            case eparamb2d(btorque): {
+                Body* m_body;
+                m_body=(Body*)bptr;
+               // float impulse = m_body->mass * 10;
+               // m_body->torque(w );
+//m_body->Set()
             }break;
         }
         #endif
