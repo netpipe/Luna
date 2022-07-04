@@ -57,9 +57,10 @@ if (init) :
 
 
  camera = scene.addCamera(1, 0,0,0)
+ #camera = scene.addCamera(3,0,200,0) its actually using cubes in 2d
  #core dump
  #scene.setCamera(0,camera,0,20,0)
- scene.decals(1,camera)
+ #scene.decals(1,camera)
  Light1 = scene.Light(10,0,100,0,"111111")
 
  ###################### LOADING TEXTURES ########################
@@ -113,9 +114,9 @@ if (init) :
  #unfortunately couldnt find the text functions in engine
  #1-10 numbers, 11-36 alphabet, 37-39 other
  font=[]
- for i in range(40):
-  if not i==0:
-   font.append(image.load_texture(base+"/font/font"+str(i)+".png"))
+ #for i in range(40):
+ # if not i==0:
+ #  font.append(image.load_texture(base+"/font/font"+str(i)+".png"))
 
 ########################## TEXTURES LOADED ############################
 
