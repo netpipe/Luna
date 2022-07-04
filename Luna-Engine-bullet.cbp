@@ -2460,6 +2460,13 @@
 		<Unit filename="Scene/occlusion/OcclusionCulling.h" />
 		<Unit filename="Scene/occlusion/Renderer.cpp" />
 		<Unit filename="Scene/occlusion/Renderer.h" />
+		<Unit filename="Scene/octtree/IOctreSceneManager.cpp" />
+		<Unit filename="Scene/octtree/IOctreSceneManager.h" />
+		<Unit filename="Scene/octtree/IOctree.cpp" />
+		<Unit filename="Scene/octtree/IOctree.h" />
+		<Unit filename="Scene/octtree/IOctreeNode.cpp" />
+		<Unit filename="Scene/octtree/IOctreeNode.h" />
+		<Unit filename="Scene/octtree/main.cpp" />
 		<Unit filename="Scene/particles.h" />
 		<Unit filename="Scene/spriteManager/BmFont.cpp" />
 		<Unit filename="Scene/spriteManager/BmFont.h" />
