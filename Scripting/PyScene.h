@@ -392,7 +392,8 @@ scene::ISceneNode* node=0;
 
 	 //          node->setAutomaticCulling(EAC_OFF);
    //  node->setMaterialFlag(EMF_LIGHTING, true);
-        mesh =  cmesh.getMesh(0,0,0,1);
+       // mesh =  cmesh.getMesh(0,0,0,1);
+        mesh =  (IAnimatedMesh*)cmesh.getMesh(0,0,0,1);
 
 #endif
         }else{
