@@ -164,7 +164,8 @@ namespace Python {
     PyObject * PyIrr_irrbulletBox(PyObject * self,PyObject * args);
     PyObject * PyIrr_irrbulletliquiddemo(PyObject * self,PyObject * args);
     PyObject * PyIrr_physicspause(PyObject * self,PyObject * args);
-
+    PyObject * PyIrr_bulletimpulse(PyObject * self,PyObject * args);
+    PyObject * PyIrr_bullettorque(PyObject * self,PyObject * args);
 
     //GUI
     PyObject * PyIrr_addHUD(PyObject * self,PyObject * args);

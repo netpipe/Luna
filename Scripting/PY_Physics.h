@@ -26,15 +26,42 @@ PyMethodDef irr_Physics[] = {
     {"bBox",Python::PyIrr_irrbulletBox,METH_VARARGS,"box2d"},
 {"bldemo",Python::PyIrr_irrbulletliquiddemo,METH_VARARGS,"box2d"},
 {"physics",Python::PyIrr_physicspause,METH_VARARGS,"physics"},
+{"impulse",Python::PyIrr_bulletimpulse,METH_VARARGS,"physics"},
+{"torque",Python::PyIrr_bullettorque,METH_VARARGS,"physics"},
 	{NULL,NULL,0,NULL}
 	};
 
-	PyObject * Python::PyIrr_physicspause(PyObject * self,PyObject * args){
+    PyObject * Python::PyIrr_bulletimpulse(PyObject * self,PyObject * args){
+	float w,z,x,y;
+	int friction;
+	long bbodyptr;
+	PyArg_ParseTuple(args,"lfff",&bbodyptr,&w,&y,&z);
+    // get deltatime
+     #ifdef PHYSICS
+    IRigidBody* test = bbodyptr;
+                test->applyCentralImpulse(core::vector3df(x,y,z,ERBTS_LOCAL);
+            #endif
+    	return Py_BuildValue("");
+    }
 
+    PyObject * Python::PyIrr_bullettorque(PyObject * self,PyObject * args){
+	float w,z,x,y;
+	int friction;
+	long bbodyptr;
+	PyArg_ParseTuple(args,"lfff",&bbodyptr,&x,&y,&z);
+    // get deltatime     DeltaTime*(0.14f*z)),
+         #ifdef PHYSICS
+    IRigidBody* test = bbodyptr;
+            test->applyTorqueImpulse(core::vector3df(x,y,z,ERBTS_LOCAL);
+            #endif
+    	return Py_BuildValue("");
+    }
+
+
+	PyObject * Python::PyIrr_physicspause(PyObject * self,PyObject * args){
 	float w,z,x,y;
 	int friction;
 	//PyArg_ParseTuple(args,"f",&z);
-
 	PyArg_ParseTuple(args,"i",&friction);
 
 	switch (friction){
@@ -51,6 +78,7 @@ PyMethodDef irr_Physics[] = {
 
     	return Py_BuildValue("");
     }
+
 
 	PyObject * Python::PyIrr_irrbulletliquiddemo(PyObject * self,PyObject * args){
 
