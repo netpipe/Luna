@@ -128,7 +128,7 @@ class Vehicle{
             float wheelSpacingX2,
             float wheelScaleFactor2
     );
-
+btRigidBody*        m_carChassis;
   private:
 
     btBroadphaseInterface*	    m_overlappingPairCache;

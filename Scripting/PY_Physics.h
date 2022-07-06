@@ -572,6 +572,9 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
 				vector3df position = vehicle->getPosition();
 				return Py_BuildValue("f",position.Z);
 			}break;
+            case veparam(vrigidbody):{
+				return Py_BuildValue("l",vehicle->m_carChassis());
+			}break;
        }
 
     } else if (state==12) {   //get vars

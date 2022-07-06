@@ -378,7 +378,7 @@ PyMethodDef irr_function[] =
     std::map< std::string, eparamb2d > esb2d;
 
 	enum veparam{vreset,vaccelerate,vreverse,vebrake,vbrake,vlsteer,
-	vrsteer,vsteerreset,vrender,vsetpos,vgetx,vgety,vgetz,vstate};
+	vrsteer,vsteerreset,vrender,vsetpos,vgetx,vgety,vgetz,vstate,vrigidbody};
     std::map< std::string, veparam > veparm2;
 
     //mouseparam
@@ -587,6 +587,7 @@ keydictionary["KEY_KEY_CODES_COUNT"] = KEY_KEY_CODES_COUNT;
     veparm2["vgety"] = vgety;
     veparm2["vgetz"] = vgetz;
     veparm2["vstate"] = vstate;
+    veparm2["vrigidbody"] = vrigidbody;
 
     mparam2["mset"] = mset;
     mparam2["mgetx"] = mgetx;
@@ -596,7 +597,6 @@ keydictionary["KEY_KEY_CODES_COUNT"] = KEY_KEY_CODES_COUNT;
     mparam2["mlmouse"] = mlmouse;
     mparam2["mrmouse"] = mrmouse;
     mparam2["mmmouse"] = mmmouse;
-
 
     gp2["gpinit"] = gpinit;
     gp2["gprefresh"] = gprefresh;
