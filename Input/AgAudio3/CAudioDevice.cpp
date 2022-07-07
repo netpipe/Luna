@@ -2,6 +2,11 @@
 #ifdef AGAUDIO3
 #include "CAudioDevice.h"
 
+#include <string>
+
+#include "CAudioOgg.h"
+#include "CAudioWav.h"
+
 namespace agEngine
 {
     namespace audio
@@ -50,18 +55,39 @@ namespace agEngine
 
         CAudioStream* CAudioDevice::createAudioStream(const c8* filename, bool loadToMemory)
         {
-            // need to write a clause for different file types in the future
-            #ifdef OGG
-            CAudioData* audioData = new CAudioOgg(filename, loadToMemory);
-            CAudioStream* audStream = new CAudioStream(audioData);
-            return audStream;
-    #endif
+            std::string filename_str = filename;
+            std::string extension = filename_str.substr(filename_str.rfind(".") + 1);
+
+            CAudioData* audioData = NULL;
+
+            if (extension == "ogg")
+            {
+                audioData = new CAudioOgg(filename, loadToMemory);
+            }
+            else if (extension == "wav")
+            {
+                audioData = new CAudioWav(filename, loadToMemory);
+            }
+
+            if (audioData != NULL)
+            {
+                CAudioStream* audStream = new CAudioStream(audioData);
+                return audStream;
+            }
+
+            return NULL;
         }
 
         void CAudioDevice::playAll()
         {
             for (u32 i = 0; i < sources.size(); ++i)
                 sources[i]->updateBuffer(false);
+        }
+
+        void CAudioDevice::playBuffer(char* buffer, long nBytes)
+        {
+            for (u32 i = 0; i < sources.size(); ++i)
+                sources[i]->updateMemoryBuffer(false, buffer, nBytes);
         }
 
         void CAudioDevice::clear()
@@ -77,12 +103,6 @@ namespace agEngine
             u32 temp = sourceCount;
             ++sourceCount;
             return temp;
-        }
-
-        void CAudioDevice::playBuffer(char* buffer, long nBytes)
-        {
-            for (u32 i = 0; i < sources.size(); ++i)
-                sources[i]->updateMemoryBuffer(false, buffer, nBytes);
         }
 
         void CAudioDevice::setListenerPosition(const core::vector3d<float>& newPosition)

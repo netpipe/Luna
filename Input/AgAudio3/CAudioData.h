@@ -1,5 +1,4 @@
-#ifndef _CAUDIODATA_H_
-#define _CAUDIODATA_H_
+#pragma once
 #include "../../config.h"
 #ifdef AGAUDIO3
 #include <irrlicht.h>
@@ -33,6 +32,4 @@ namespace agEngine
         };
     }
 }
-
-#endif
 #endif

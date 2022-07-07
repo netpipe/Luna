@@ -1,18 +1,10 @@
-#ifndef _CAUDIODEVICE_H_
-#define _CAUDIODEVICE_H_
+#pragma once
 #include "../../config.h"
 #ifdef AGAUDIO3
 #include <irrlicht.h>
-#ifdef WIN32
-#include <al.h>
-#include <alc.h>
-#else
 #include <AL/al.h>
 #include <AL/alc.h>
-#endif
-
 #include "CAudioSource.h"
-#include "CAudioOgg.h"
 
 using namespace irr;
 
@@ -57,6 +49,5 @@ namespace agEngine
         };
     }
 }
+#endif
 
-#endif
-#endif

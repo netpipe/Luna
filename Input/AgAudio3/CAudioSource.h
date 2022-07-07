@@ -1,13 +1,8 @@
-#ifndef _CAUDIOSOURCE_H_
-#define _CAUDIOSOURCE_H_
+#pragma once
 #include "../../config.h"
 #ifdef AGAUDIO3
 #include <irrlicht.h>
-#ifdef WIN32
-#include <al.h>
-#else
 #include <AL/al.h>
-#endif
 
 #include "CAudioDevice.h"
 #include "CAudioStream.h"
@@ -32,15 +27,15 @@ namespace agEngine
             virtual void rewind();
             virtual bool updateBuffer(bool firstPlay=true);
 
+            bool playFirstBuffer(char* lpBuffer, long nBytes);
+            bool updateMemoryBuffer(bool firstPlay, char* lpbuffer, long nBytes);
+
             virtual void setSourceId(u32 value);
 
             virtual bool isPlaying() const;
             virtual bool play();
             virtual void stop();
             virtual void pause();
-
-            bool playFirstBuffer(char* lpBuffer, long nBytes);
-            bool updateMemoryBuffer(bool firstPlay, char* lpbuffer, long nBytes);
 
             virtual void setLoop(bool loop);
             virtual void setVolume(f32 volume);
@@ -74,6 +69,4 @@ namespace agEngine
         };
     }
 }
-
-#endif
 #endif

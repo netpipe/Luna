@@ -1,6 +1,6 @@
+#pragma once
 #include "../../config.h"
 #ifdef AGAUDIO3
-#ifdef OGG
 #include <irrlicht.h>
 
 #include <AL/al.h>
@@ -17,18 +17,31 @@ namespace agEngine
 {
     namespace audio
     {
-        struct SOggFile
+        struct SWavFile
         {
+            char ChunkID[4];
+            u32 ChunkSize;
+            char Format[4];
+            char Subchunk1ID[4];
+            u32 Subchunk1Size;
+            u16 AudioFormat;
+            u16 NumChannels;
+            u32 SampleRate;
+            u32 ByteRate;
+            u16 BlockAlign;
+            u16 BitsPerSample;
+            u32 Subchunk2Size;
+
             c8* dataPtr;
             u32 dataSize;
             u32 dataRead;
         };
 
-        class CAudioOgg : public CAudioData
+        class CAudioWav : public CAudioData
         {
         public:
-            CAudioOgg(const core::stringc& filename, bool loadToMemory = false);
-            ~CAudioOgg();
+            CAudioWav(const core::stringc& filename, bool loadToMemory = false);
+            ~CAudioWav();
 
             s32 open(const core::stringc& filename, bool loadToMemory = false);
             void close();
@@ -45,10 +58,7 @@ namespace agEngine
             bool hasFinished() const;
         private:
             FILE* file;
-            SOggFile oggData;
-            OggVorbis_File stream;
-            ov_callbacks vorbisCallbacks;
-            vorbis_info* info;
+            SWavFile wavData;
 
             ALenum format;
 
@@ -58,5 +68,4 @@ namespace agEngine
         };
     }
 }
-#endif // OGG
-#endif // OGG
+#endif

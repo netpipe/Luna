@@ -197,6 +197,8 @@ namespace agEngine
 
         void CAudioOgg::close()
         {
+            delete oggData.dataPtr;
+
             if (!loadedInMemory)
                 fclose(file);
         }
@@ -243,7 +245,6 @@ namespace agEngine
             return true;
         }
 
-
         bool CAudioOgg::readMemorySamples(CAudioSource* source, ALuint bufferId, char* lpBuffer, long nBytes)
         {
             s32 section, result;
@@ -264,12 +265,12 @@ namespace agEngine
             return true;
         }
 
-
         bool CAudioOgg::hasFinished() const
         {
             return finished;
         }
     }
 }
-#endif // AGAUDIO3
-#endif
+#endif // OGG
+#endif // OGG
+

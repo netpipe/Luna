@@ -1068,7 +1068,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Input/AgAudio2/vorbis/window.h" />
-		<Unit filename="Input/AgAudio3/CAudio.h" />
 		<Unit filename="Input/AgAudio3/CAudioData.h" />
 		<Unit filename="Input/AgAudio3/CAudioDevice.cpp" />
 		<Unit filename="Input/AgAudio3/CAudioDevice.h" />
@@ -1079,10 +1078,10 @@
 		<Unit filename="Input/AgAudio3/CAudioSource.h" />
 		<Unit filename="Input/AgAudio3/CAudioStream.cpp" />
 		<Unit filename="Input/AgAudio3/CAudioStream.h" />
+		<Unit filename="Input/AgAudio3/CAudioWav.cpp" />
+		<Unit filename="Input/AgAudio3/CAudioWav.h" />
 		<Unit filename="Input/AgAudio3/CPositionalAudioEntity.cpp" />
 		<Unit filename="Input/AgAudio3/CPositionalAudioEntity.h" />
-		<Unit filename="Input/AgAudio3/CVorbisFile.cpp" />
-		<Unit filename="Input/AgAudio3/CVorbisFile.h" />
 		<Unit filename="Input/AgAudio3/xm/context.c">
 			<Option compilerVar="CC" />
 		</Unit>
