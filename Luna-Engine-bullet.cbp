@@ -1306,7 +1306,6 @@
 		<Unit filename="GUI/sineGraph2d/SGraph2D.h" />
 		<Unit filename="GUI/widgets/CGUIBar.cpp" />
 		<Unit filename="GUI/widgets/CGUIBar.h" />
-		<Unit filename="Input/AgAudio3/CAudio.h" />
 		<Unit filename="Input/AgAudio3/CAudioData.h" />
 		<Unit filename="Input/AgAudio3/CAudioDevice.cpp" />
 		<Unit filename="Input/AgAudio3/CAudioDevice.h" />
@@ -1317,6 +1316,8 @@
 		<Unit filename="Input/AgAudio3/CAudioSource.h" />
 		<Unit filename="Input/AgAudio3/CAudioStream.cpp" />
 		<Unit filename="Input/AgAudio3/CAudioStream.h" />
+		<Unit filename="Input/AgAudio3/CAudioWav.cpp" />
+		<Unit filename="Input/AgAudio3/CAudioWav.h" />
 		<Unit filename="Input/AgAudio3/CPositionalAudioEntity.cpp" />
 		<Unit filename="Input/AgAudio3/CPositionalAudioEntity.h" />
 		<Unit filename="Input/AgAudio3/CVorbisFile.cpp" />
