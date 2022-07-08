@@ -59,12 +59,13 @@ namespace agEngine
             std::string extension = filename_str.substr(filename_str.rfind(".") + 1);
 
             CAudioData* audioData = NULL;
-
+#ifdef OGG
             if (extension == "ogg")
             {
                 audioData = new CAudioOgg(filename, loadToMemory);
             }
-            else if (extension == "wav")
+            #endif
+            if (extension == "wav")
             {
                 audioData = new CAudioWav(filename, loadToMemory);
             }
