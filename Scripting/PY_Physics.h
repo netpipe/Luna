@@ -37,7 +37,7 @@ PyMethodDef irr_Physics[] = {
 	long bbodyptr;
 	PyArg_ParseTuple(args,"lfff",&bbodyptr,&w,&y,&z);
     // get deltatime
-     #ifdef PHYSICS
+     #ifdef PHYSICS2
     IRigidBody* test = bbodyptr;
                 test->applyCentralImpulse(core::vector3df(x,y,z,ERBTS_LOCAL);
             #endif
@@ -50,7 +50,7 @@ PyMethodDef irr_Physics[] = {
 	long bbodyptr;
 	PyArg_ParseTuple(args,"lfff",&bbodyptr,&x,&y,&z);
     // get deltatime     DeltaTime*(0.14f*z)),
-         #ifdef PHYSICS
+         #ifdef PHYSICS2
     IRigidBody* test = bbodyptr;
             test->applyTorqueImpulse(core::vector3df(x,y,z,ERBTS_LOCAL);
             #endif
@@ -573,7 +573,7 @@ PyObject * Python::PyIrr_VehicleParams(PyObject * self,PyObject * args){
 				return Py_BuildValue("f",position.Z);
 			}break;
             case veparam(vrigidbody):{
-				return Py_BuildValue("l",vehicle->m_carChassis());
+				return Py_BuildValue("l",vehicle->m_carChassis);
 			}break;
        }
 

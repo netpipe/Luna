@@ -140,7 +140,7 @@ btRigidBody*        m_carChassis;
     btCollisionShape*	  m_shootBoxShape;
     btVehicleRaycaster*	m_vehicleRayCaster;
     btRaycastVehicle*	  m_vehicle;
-    btRigidBody*        m_carChassis;
+
 
     btAlignedObjectArray<btCollisionShape*> m_collisionShapes;
 
