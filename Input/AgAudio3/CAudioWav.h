@@ -3,11 +3,11 @@
 #ifdef AGAUDIO3
 #include <irrlicht.h>
 
+#ifdef WIN32
+#include <al.h>
+#else
 #include <AL/al.h>
-
-#include <ogg/ogg.h>
-#include <vorbis/codec.h>
-#include <vorbis/vorbisfile.h>
+#endif
 
 #include "CAudioData.h"
 
