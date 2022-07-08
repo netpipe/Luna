@@ -67,6 +67,7 @@ namespace agEngine
             #endif
             if (extension == "wav")
             {
+            printf ("loading wave file");
                 audioData = new CAudioWav(filename, loadToMemory);
             }
 
