@@ -21,18 +21,16 @@
         #define LIBINPUT
     #endif
 //Sound
-    //#define AgAudio
-    //#define AgAudio2
      #define AGAUDIO3
      #ifdef AGAUDIO3
         #ifndef MACOSX
-            #define XMaudio
+           // #define XMaudio
             #define FLUIDLITE
           //  #define OGG // has to be set in build config unless  we add  #include ../config.h to it
         #endif
        // #define MP3
      #endif
-    //#define SOUND
+    //#define SOUND // cAudio
 
     //#define PHYSICS
     //#ifndef PHYSICS
@@ -117,11 +115,6 @@
         //#define SDLSound //- seems to play and freeze needs threading
         //#define SQLITE
 
-            #ifdef AgAudio
-                #define _DEBUG_MODE_
-                #define _PLAY_SOUND_
-            #endif
-         //   #define SOUND
         //#define SDLSound
         #define SPEECH
         //  #define POLYVOX
@@ -129,7 +122,6 @@
         #define FLARES
         #define FLARE2  // more realistic and working
         #define ENVVEG  // IGE_SceneNode_Vegetation
-        //#define OPENAL2
 
         #ifndef WIN32
         #define TILED2D
@@ -178,19 +170,10 @@
  #endif
 
 //for AgAudio
-
-//#define AgAudio // not working with emscripten
 //#ifdef __EMSCRIPTEN__
-#ifdef AgAudio
-  #define _DEBUG_MODE_
-  #define _PLAY_SOUND_
-#endif
-
 //#define SDLMixer // wip - might not be compatable with the engine
 //#define OPENAL2 // working with emscripten
 //#define SDLSound //- seems to play and freeze needs threading
-
-
 
     // #define WII
   //  #define IRRCD   // irrlicht Collision Detection

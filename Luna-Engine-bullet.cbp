@@ -507,6 +507,7 @@
 					<Add library="opengl32" />
 					<Add library="openal32" />
 					<Add library="freetype" />
+					<Add library="pthread" />
 					<Add directory="C:/Program Files/CodeBlocks/MinGW/opt/bin" />
 					<Add directory="E:/irrlicht-1.8.4/lib/Win64-gcc" />
 					<Add directory="D:/openal-soft-1.21.1-bin/libs/Win64" />
@@ -1320,21 +1321,6 @@
 		<Unit filename="Input/AgAudio3/CAudioWav.h" />
 		<Unit filename="Input/AgAudio3/CPositionalAudioEntity.cpp" />
 		<Unit filename="Input/AgAudio3/CPositionalAudioEntity.h" />
-		<Unit filename="Input/AgAudio3/xm/context.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="Input/AgAudio3/xm/load.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="Input/AgAudio3/xm/play.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="Input/AgAudio3/xm/testprog.h" />
-		<Unit filename="Input/AgAudio3/xm/xm.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="Input/AgAudio3/xm/xm.h" />
-		<Unit filename="Input/AgAudio3/xm/xm_internal.h" />
 		<Unit filename="Input/Compress/Compress.cpp" />
 		<Unit filename="Input/Compress/Compress.h" />
 		<Unit filename="Input/Compress/microtar/src/microtar-stdio.c">
