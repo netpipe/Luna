@@ -2,8 +2,11 @@
 #include "../../config.h"
 #ifdef AGAUDIO3
 #include <irrlicht.h>
+#ifdef WIN32
+#include <al.h>
+#else
 #include <AL/al.h>
-
+#endif
 #include "CAudioSource.h"
 #include "CAudioData.h"
 

@@ -28,7 +28,9 @@ if initloader :
     import os
     import physics
     import gui
+    import socket
     sound2 = scene.soundman(0,"../media/bling.ogg",1)
+   # sound2 = scene.soundman(0,"../media/test.wav",1)
     #scene.soundman(1,"",0)
     #scene.soundman(2,"",0)
     #scene.soundman(1,"../media/bling.ogg",1)

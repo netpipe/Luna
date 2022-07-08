@@ -970,6 +970,101 @@
 		<Unit filename="Input/AgAudio3/CAudioWav.h" />
 		<Unit filename="Input/AgAudio3/CPositionalAudioEntity.cpp" />
 		<Unit filename="Input/AgAudio3/CPositionalAudioEntity.h" />
+		<Unit filename="Input/AgAudio3/ogg/bitwise.cpp" />
+		<Unit filename="Input/AgAudio3/ogg/crctable.h" />
+		<Unit filename="Input/AgAudio3/ogg/framing.cpp" />
+		<Unit filename="Input/AgAudio3/ogg/ogg.h" />
+		<Unit filename="Input/AgAudio3/ogg/os_types.h" />
+		<Unit filename="Input/AgAudio3/vorbis/Makefile.in" />
+		<Unit filename="Input/AgAudio3/vorbis/analysis.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/backends.h" />
+		<Unit filename="Input/AgAudio3/vorbis/bitrate.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/bitrate.h" />
+		<Unit filename="Input/AgAudio3/vorbis/block.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/codebook.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/codebook.h" />
+		<Unit filename="Input/AgAudio3/vorbis/codec.h" />
+		<Unit filename="Input/AgAudio3/vorbis/codec_internal.h" />
+		<Unit filename="Input/AgAudio3/vorbis/envelope.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/envelope.h" />
+		<Unit filename="Input/AgAudio3/vorbis/floor0.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/floor1.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/highlevel.h" />
+		<Unit filename="Input/AgAudio3/vorbis/info.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/lookup.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/lookup.h" />
+		<Unit filename="Input/AgAudio3/vorbis/lookup_data.h" />
+		<Unit filename="Input/AgAudio3/vorbis/lookups.pl" />
+		<Unit filename="Input/AgAudio3/vorbis/lpc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/lpc.h" />
+		<Unit filename="Input/AgAudio3/vorbis/lsp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/lsp.h" />
+		<Unit filename="Input/AgAudio3/vorbis/mapping0.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/masking.h" />
+		<Unit filename="Input/AgAudio3/vorbis/mdct.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/mdct.h" />
+		<Unit filename="Input/AgAudio3/vorbis/misc.h" />
+		<Unit filename="Input/AgAudio3/vorbis/os.h" />
+		<Unit filename="Input/AgAudio3/vorbis/psy.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/psy.h" />
+		<Unit filename="Input/AgAudio3/vorbis/registry.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/registry.h" />
+		<Unit filename="Input/AgAudio3/vorbis/res0.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/scales.h" />
+		<Unit filename="Input/AgAudio3/vorbis/sharedbook.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/smallft.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/smallft.h" />
+		<Unit filename="Input/AgAudio3/vorbis/synthesis.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/vorbisenc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/vorbisenc.h" />
+		<Unit filename="Input/AgAudio3/vorbis/vorbisfile.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/vorbisfile.h" />
+		<Unit filename="Input/AgAudio3/vorbis/window.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Input/AgAudio3/vorbis/window.h" />
 		<Unit filename="Input/AgAudio3/xm/context.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -1261,9 +1356,9 @@
 		<Unit filename="Input/Model/blender/dna249.cpp" />
 		<Unit filename="Input/Model/blender/readblend.h" />
 		<Unit filename="Input/Model/irrTiled/irrTiled.h" />
+		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/SDL/SDL_fluidlite.h" />
 		<Unit filename="Input/SDL/SDLsound.h" />
-		<Unit filename="Input/SDLMixer.h" />
 		<Unit filename="Input/inputManager.cpp" />
 		<Unit filename="Input/inputManager.h" />
 		<Unit filename="Input/libInput/include/InputController.h" />
@@ -1656,6 +1751,8 @@
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshBuilder.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNavMeshQuery.cpp" />
 		<Unit filename="entities/AI/recast/Detour/Source/DetourNode.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
+		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/Recast.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastAlloc.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastArea.cpp" />
@@ -1666,8 +1763,6 @@
 		<Unit filename="entities/AI/recast/Recast/Source/RecastMeshDetail.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRasterization.cpp" />
 		<Unit filename="entities/AI/recast/Recast/Source/RecastRegion.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/PerfTimer.cpp" />
-		<Unit filename="entities/AI/recast/RecastDemo/Source/SampleInterfaces.cpp" />
 		<Unit filename="entities/AI/recast_util.cpp" />
 		<Unit filename="entities/AI/recast_util.h" />
 		<Unit filename="entities/AI/recastmain.cpp" />
