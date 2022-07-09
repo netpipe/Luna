@@ -133,6 +133,7 @@ float Terrain::getHeight2(float x, float z){
 //    }
 //
 //    return (total);
+return 0;
 };
 
 ITerrainSceneNode* Terrain::Terrain2(vector3df t_position,vector3df t_scale,char *hmap,char *tex,char* dmap){
@@ -1256,7 +1257,7 @@ s32 seed = 0;
 //		}
 
 
-
+return 0;
 }
 #endif
 
