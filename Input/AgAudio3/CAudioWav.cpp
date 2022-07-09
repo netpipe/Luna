@@ -153,7 +153,7 @@ namespace agEngine
             source->setStreamPosition(getPosition());
 
             if (result == 0)
-                return false;
+                finished = true;
 
             bufferthis(&bufferId, sBuffer, result);
 
