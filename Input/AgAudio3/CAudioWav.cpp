@@ -57,12 +57,33 @@ namespace agEngine
             u32 fileSize = ftell(file);
 
             fseek(file, offset, SEEK_SET);
-            wavData.dataPtr = new c8[fileSize - offset];
 
-            fread(wavData.dataPtr, 1, fileSize - offset, file);
+            if (wavData.BitsPerSample == 16)
+            {
+                wavData.dataPtr = new c8[fileSize - offset];
+                fread(wavData.dataPtr, 1, fileSize - offset, file);
 
-            wavData.dataRead = 0;
-            wavData.dataSize = fileSize - offset;
+                wavData.dataRead = 0;
+                wavData.dataSize = fileSize - offset;
+            }
+            else if(wavData.BitsPerSample == 8)
+            {
+                c8* tmp_buf = new c8[fileSize - offset];
+                fread(tmp_buf, 1, fileSize - offset, file);
+
+                wavData.dataPtr = new c8[(fileSize - offset) * 2];
+
+                for (long i = 0; i < (fileSize - offset); i++)
+                {
+                    int16_t sample16 = (int16_t)(tmp_buf[i] - 0x80) << 8;
+
+                    memcpy(wavData.dataPtr + i * 2, &sample16, 2);
+
+                    int pp = 0;
+                }
+                wavData.dataRead = 0;
+                wavData.dataSize = (fileSize - offset) * 2;
+            }
 
             if (wavData.NumChannels == 1)
             {

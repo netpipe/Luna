@@ -28,8 +28,9 @@ if initloader :
     import os
     import physics
     import gui
-    sound2 = scene.soundman(0,"../media/bling.ogg",1)
-   # sound2 = scene.soundman(0,"../media/test.wav",1)
+    #sound2 = scene.soundman(0,"../media/bling.ogg",1)
+    #sound2 = scene.soundman(0,"../media/bling.wav",1)
+    sound2 = scene.soundman(0,"../media/test.wav",1)
     #scene.soundman(1,"",0)
     #scene.soundman(2,"",0)
     #scene.soundman(1,"../media/bling.ogg",1)
@@ -171,7 +172,8 @@ if initloader :
 
     #input.libinput(1,1)
     #if platform == "linux" or platform == "linux2":
-        #input.speech("aaHello and Hi! welcome to lluunnaa engine",10,10,10,100,0,5)
+    input.speech("aaHello and Hi!lluunnaa engine",10,10,10,100,0,5)
+    scene.soundman(1,"",0)
         #playsound('test.wav')
         #could possibly  make sound scripts to play at specific times after eachother in another thread #enable blocking param on playsound()
    # irr.tiled("tiled/2dbasic.tmx",0)
