@@ -56,10 +56,10 @@ if initloader :
         #    archive.printdir()
 
         #import gi #if you get an error on this with linux then delete the Luna/GAME/lib folder
-        #scene.using ('../media/lib/notify2.py',"1")
-        #init("notify2 test suite")
-        #n = Notification("Luna Engine", "Test Message, Welcome!")
-        #n.show()
+        scene.using ('../media/lib/notify2.py',"1")
+        init("notify2 test suite")
+        n = Notification("Luna Engine", "Test Message, Welcome!")
+        n.show()
 
         scene.using ('../media/lib/playsound.py',"1")
      #   def playsound2():
