@@ -90,7 +90,7 @@
     #define SCALC
     #define SPRITES
     //#define SKELETON  // needs to be updated
-    #define PostProcess
+    //#define PostProcess // crashes on GL4ES from shader issue
 
     #define TREES       //very cpu intensive does not work with emscripten yet.
     #define forest
