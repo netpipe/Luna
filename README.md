@@ -16,7 +16,9 @@ IMPORTANT STEP
 - copy the dll from irrlicht185/bin/win32-gcc/irrlicht.dll to luna/GAME/irrlicht.dll where you see your exe
 
 ###### Tips
-If you get compile errors linking just try rearranging the linking order. or installing the libs to the spots in the codeblocks file or adding new paths if needed.
+- If you get compile errors linking just try rearranging the linking order. or installing the libs to the spots in the codeblocks file or adding new paths if needed.
+
+- use python 2.7 instead of python 3 or you will get compile error.
 
 ###### CodeBlocks Tips
 In codeblocks the proper way to see the source and header files is to uncheck the display by type toggle when right clicking on workspace.
