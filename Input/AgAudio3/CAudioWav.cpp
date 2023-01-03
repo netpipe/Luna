@@ -1,6 +1,7 @@
 #include "../../config.h"
 #ifdef AGAUDIO3
 #include "CAudioWav.h"
+#include <stdint.h>
 #define stricmp strcasecmp
 #define strnicmp strncasecmp
 
