@@ -696,7 +696,7 @@ void Python::registerIrrDevice(Luna *luna1,IrrlichtDevice &Device,InGameEventRec
 
     //skin = guienv->getSkin();
 #ifdef BOX2DLITE
-    InitDemo(0); //
+  //  InitDemo(0); //
 #endif
 initkeys();
 }

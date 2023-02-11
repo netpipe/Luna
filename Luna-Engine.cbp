@@ -1448,7 +1448,6 @@
 		<Unit filename="Physics/Box2D_Lite/World.cpp" />
 		<Unit filename="Physics/Box2D_Lite/World.h" />
 		<Unit filename="Physics/Box2D_Lite/glut.h" />
-		<Unit filename="Physics/Box2D_Lite/main.cpp" />
 		<Unit filename="Physics/Collision.cpp" />
 		<Unit filename="Physics/Collision.hpp" />
 		<Unit filename="Physics/Physics.cpp" />
