@@ -35,7 +35,9 @@ if init:
     sortedS=[]
     order=0
     visibility={"Numpad":False,"Keyboard":False}
-
+    Buttons=[]
+    numButtons=[]
+    Horses=[]
     mouseCoord=[0,0]
     mbtn=0
     UIState=0 #0 brand new, 1 started playing, 2 watching, 3 continue or submit, 4 lost- quit or play again
@@ -340,8 +342,6 @@ irr.delay(50000)
 #    count=0
 
 
-Buttons=[]
-numButtons=[]
 
 for bt in Buttons:
     if bt["visible"]:
@@ -362,20 +362,20 @@ for bt in numButtons:
         image.idraw(smallButtonIm)
         write(int(bt["val"]),coord1=(bt["x"]+7,bt["y"]+4),length=16)
 
-#if canvas["visible"]:
-#    image.iposition(canvasIm,canvas["x"],canvas["y"])
-#    image.idraw(canvasIm)
-#    r=10
-#    if len(sortedS)<10:r=len(sortedS)
-#    for i in range(r):
-#        write(str(i+1)+". "+str(sortedS[i][0])+" - "+str(sortedS[i][1]),(canvas["x"],canvas["y"]+i*16))
+if canvas["visible"]:
+    image.iposition(canvasIm,canvas["x"],canvas["y"])
+    image.idraw(canvasIm)
+    r=10
+    if len(sortedS)<10:r=len(sortedS)
+    for i in range(r):
+        write(str(i+1)+". "+str(sortedS[i][0])+" - "+str(sortedS[i][1]),(canvas["x"],canvas["y"]+i*16))
 
 
 # for i in range(8):
 #     for j in range(8):
 #         image.iposition(grassIm[0],i*62,j*62)
 #         image.idraw(grassIm[0])
-Horses=[]
+
 for horse in Horses:
     horse["x"]+=horse["velocity"]
     horse["anim"]+=horse["velocity"]*animSpeed
