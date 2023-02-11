@@ -14,7 +14,7 @@ def sin(x):
             exp += 2
             denom += 2
             positive = True
-    return round(result,12)
+    return round(result,12)*3.14/180/100
     
 
 def cos(x):
@@ -33,7 +33,7 @@ def cos(x):
             exp += 2
             denom += 2
             positive = True
-    return round(result, 12)
+    return round(result,12)*3.14/180/100
     
 
 def tan(x):

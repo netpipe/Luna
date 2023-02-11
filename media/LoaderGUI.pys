@@ -61,7 +61,7 @@ if initloader :
         #n = Notification("Luna Engine", "Test Message, Welcome!")
         #n.show()
         scene.using ('../media/lib/trig.py',"1")
-        #print sin(35)
+        print sin(35)
         #print
         scene.using ('../media/lib/playsound.py',"1")
      #   def playsound2():

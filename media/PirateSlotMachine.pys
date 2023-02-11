@@ -135,7 +135,7 @@ print("after dot")
 print("uiTimer:"+str(uiTimer))
 if uiState==1:
  print("before actual game")
- scene.setPosition(white,0, 0,0,110)
+ #scene.setPosition(white,0, 0,0,110)
  if not determined:
   ######################
   iconChoice=[randint(0,4),randint(0,4),randint(0,4)]
