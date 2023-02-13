@@ -234,17 +234,22 @@ if input.getKey('KEY_KEY_G'):
     #irr.delay(100000)
 if input.getKey('KEY_UP'):
     currentButton-=1
-    irr.delay(100000)
+    physics.b2d(box2dbody,0,"force",0,-100000,0,0,0)
+    irr.delay(1000)
 elif input.getKey('KEY_DOWN'):
     currentButton+=1
+    physics.b2d(box2dbody,0,"force",0,100000,0,0,0)
     irr.delay(100000)
 elif input.getKey('KEY_LEFT'):
-    currentButton-=15
-    irr.delay(100000)
+  #  currentButton-=15
+    physics.b2d(box2dbody,0,"force",-100000,0,0,0,0)
+    irr.delay(1000)
 elif input.getKey('KEY_RIGHT'):
-    currentButton+=15
-    irr.delay(100000)
+   # currentButton+=15
+    physics.b2d(box2dbody,0,"force",100000,0,0,0,0)
+    irr.delay(1000)
 
+physics.b2d(box2dbody,0,"force",0,-220000,0,0,0)
 irr.delay(15000)
 
 currentButton %= len(pysList)

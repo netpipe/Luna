@@ -1,4 +1,6 @@
-
+def radians(degrees):
+    return degrees*3.1415/180
+    
 PI=3.141592653589793
 def sin(x):
     if x>2*PI:
