@@ -1,0 +1,74 @@
+if (init):
+    import irr
+    import scene
+    import input
+    import image
+    import time
+    import socket
+    import os
+    
+    scene.using ('../media/libs/trig.py',"1");
+    id=100
+    def newId():
+        global id
+        id+=1
+        return id
+
+    #camera = scene.addCamera(2,0,50,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
+
+    def radians(degrees):
+        return degrees*3.1415/180
+    carImg=image.load_texture("../media/racing/car.png")
+    car=scene.add_cube(newId(),12, 0,0,64, 0,0,90, 0.5,0.25,1/8)
+    pos=[0,0]
+    velocity=0
+    accel=.01
+    direction=90
+    angAccel=5
+    image.set_texture(car,carImg)
+    init=0
+
+irr.delay(10000)
+if input.getKey('KEY_ESCAPE') :
+    irr.exit()
+
+if input.getKey('KEY_UP') :
+    velocity+=accel
+
+
+if input.getKey('KEY_DOWN') :
+    velocity-=accel
+    
+if input.getKey('KEY_RIGHT') :
+    ang=angAccel*velocity
+    if ang>3:
+        ang=3
+    elif ang<-3:
+        ang=-3
+    direction-=ang
+
+
+if input.getKey('KEY_LEFT') :
+    ang=angAccel*velocity
+    if ang>3:
+        ang=3
+    elif ang<-3:
+        ang=-3
+    direction+=ang
+
+#friction
+velocity*=0.975
+
+if direction >180:
+    direction-=360
+elif direction <180:
+    direction+=360
+#check if velocity is higher than max
+if velocity>1:
+    velocity=1
+elif velocity<-.5:
+    velocity=-0.5
+pos[0]+=cos(radians(direction))*velocity
+pos[1]+=sin(radians(direction))*velocity
+scene.rotation(car,0,0,direction)
+scene.setPosition(car,0,pos[0],pos[1],64)

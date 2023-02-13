@@ -1,4 +1,10 @@
+
+PI=3.141592653589793
 def sin(x):
+    if x>2*PI:
+        x-=2*PI
+    elif x<2*PI:
+        x+=2*PI
     result = x
     positive = False
     exp = 3
@@ -14,10 +20,14 @@ def sin(x):
             exp += 2
             denom += 2
             positive = True
-    return round(result,12)*3.14/180/100
+    return float(result)
     
 
 def cos(x):
+    if x>2*PI:
+        x-=2*PI
+    elif x<2*PI:
+        x+=2*PI
     result = 1
     positive = False
     exp = 2
@@ -33,7 +43,7 @@ def cos(x):
             exp += 2
             denom += 2
             positive = True
-    return round(result,12)*3.14/180/100
+    return float(result)
     
 
 def tan(x):
@@ -69,3 +79,4 @@ def factorial(x):
     for i in range(1,x + 1):
         product *= i
     return product
+

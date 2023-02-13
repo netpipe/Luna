@@ -271,7 +271,7 @@ if init:
     image.iposition(mapIm,0,0)
 
     dist=128/numOfHorses
-    Horses=[]
+
 
     for i in range(numOfHorses):
         gap=i*dist
