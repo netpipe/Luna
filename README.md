@@ -20,6 +20,21 @@ IMPORTANT STEP
 
 - use python 2.7 instead of python 3 or you will get compile error.
 
+- developing with luna is really straight forward, connecting the c++ side of things to python is really the only thing youd need to add new features.
+
+the process is like this.
+- PythonManager.h has the function holder initializers like "Py_InitModule("scene",irr_Scene); there are lots already so we wont need to change them"
+
+- add your function into the scripting folder where you see fit
+- at the top of the file you would find PyMethodDef irr_Scene[] =     and add function here
+	{"add_cube",Python::PyIrr_AddCubeSceneNode,METH_VARARGS,"Adds a cube scene node"},
+
+- find PyFunctions and add your headers at the top of this file or in the file you picked like PyScene.h
+
+- find PyMain.h and add the function like "PyObject * PyIrr_AddCubeSceneNode(PyObject * self,PyObject * args);"  with the other ones listed
+
+- then they are called from python like scene.addcube
+
 ###### CodeBlocks Tips
 In codeblocks the proper way to see the source and header files is to uncheck the display by type toggle when right clicking on workspace.
 
