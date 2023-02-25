@@ -6,7 +6,7 @@ if (init):
     import time
     import socket
     import os
-
+    gui.codeeditor(1) #shader editor #cpu limiter incase of bad code
     scene.using ('../media/libs/trig.py',"1");
     id=100
     def newId():
