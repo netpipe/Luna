@@ -29,7 +29,7 @@ the process is like this.
 - at the top of the file you would find PyMethodDef irr_Scene[] =     and add function here
 	{"add_cube",Python::PyIrr_AddCubeSceneNode,METH_VARARGS,"Adds a cube scene node"},
 
-- find PyFunctions and add your headers at the top of this file or in the file you picked like PyScene.h
+- find PyFunctions and add your headers at the top of this file or in the file you picked like PyScene.h also its safe to place c++ code inside a header so please use/look in them
 
 - find PyMain.h and add the function like "PyObject * PyIrr_AddCubeSceneNode(PyObject * self,PyObject * args);"  with the other ones listed
 
