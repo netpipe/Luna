@@ -55,10 +55,10 @@ if direction >180:
 elif direction <180:
     direction+=360
 #check if velocity is higher than max
-if velocity>1:
-    velocity=1
-elif velocity<-.5:
-    velocity=-0.5
+#if velocity>1:
+#    velocity=1
+#elif velocity<-.5:
+#    velocity=-0.5
 pos[0]+=cos(radians(lastaccel))*velocity
 pos[1]+=sin(radians(lastaccel))*velocity
 scene.rotation(car,0,0,direction)

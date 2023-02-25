@@ -6,27 +6,114 @@ if (init):
     import time
     import socket
     import os
-
+    
     scene.using ('../media/libs/trig.py',"1");
     id=100
     def newId():
         global id
         id+=1
         return id
+    
+    class PID:
+        def __init__(self,p,i,d):
+            self.p=p
+            self.i=i
+            self.d=d
+            self.lastError=0
+            self.integral=0
 
-    #camera = scene.addCamera(2,0,50,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
+        def update(self,error):
+            der=-error+self.lastError
+            if abs(self.integral)>10:
+                self.integral=10*self.integral/abs(self.integral)
+            self.integral+=error
+            output=error*self.p+der*self.d+self.integral*self.i
+            self.lastError=error
+
+            if output>1:
+                output=1
+            elif output<-1:
+                output=-1
+            return output
+
+
+    class CarNPC:
+        def __init__(self,pos,carimage) :
+            self.pos=pos
+            self.direction=-90
+            self.accel=.05
+            self.velocity=0
+            self.angAccel=6
+            self.pidDir=PID(4,0.01,1.5)
+            self.pidSpeed=PID(5,0.05,0.0)
+            self.route=[[30.5,2.5],[40,.5],[42,-6],[37,-12],[13,-22],[-20,-30],[-43,-32],[-55.5,-27.5],[-50,-19],[-28,-22],[-11,-19],[-7,-11],[-14,-2.3],[-35,0],
+                [-60,2.7],[-66,10],[-60,19],[-35,17.5],[-9,29.5],[27.5,19],[51,29],[63,22],[62,16],[-11,15],[-23,10],[-12,2.5]]
+            self.currentWP=0
+            self.cube=scene.add_cube(newId(),12, self.pos[0],self.pos[1],64, 0,0,0, 0.25,0.125,0.01)
+            image.set_texture(self.cube,carimage)
+        def update(self):
+            if self.direction >180:
+                self.direction-=360
+            elif self.direction <180:
+                self.direction+=360
+            target=self.route[self.currentWP]
+            # print(self.currentWP)
+            distVec=[target[0]-self.pos[0],target[1]-self.pos[1]]
+            dist=(distVec[0]*distVec[0]+distVec[1]*distVec[1])**.5
+            unitDist=[distVec[0]/dist,distVec[1]/dist]
+            print("dist",dist)
+            if abs(dist) < 4:
+                self.currentWP+=1
+            self.currentWP%=len(self.route)
+            speedSignal=self.pidSpeed.update(dist)
+            angError=atan2(distVec[0],distVec[1])-radians(self.direction)
+            angError%=2*PI
+            if angError>PI:
+                angError-=2*PI
+            elif angError<-PI:
+                angError+=2*PI
+            
+            dirSignal=self.pidDir.update(angError)
+            print("angerror",self.currentWP)
+            print(dirSignal)
+            ang=self.angAccel*dirSignal*self.velocity
+            if ang<-1:
+                ang-=4
+            elif ang>1:
+                ang+=4
+            if ang>10:
+                ang=10
+            elif ang<-10:
+                ang=-10
+            self.direction+=ang
+            self.velocity+=self.accel*speedSignal
+            if self.velocity>1:
+                self.velocity=1
+            elif self.velocity<-.5:
+                self.velocity=-.5
+            
+            self.pos[0]+=cos(radians(self.direction))*self.velocity
+            self.pos[1]+=sin(radians(self.direction))*self.velocity
+            self.velocity*=0.97
+            scene.rotation(self.cube,0,0,self.direction)
+            scene.setPosition(self.cube,0,self.pos[0],self.pos[1],64)
+            
 
     carImg=image.load_texture("../media/racing/car.png")
-    car=scene.add_cube(newId(),12, 0,0,64, 0,0,90, 0.5,0.25,1/8)
+    trackImg=image.load_texture("../media/racing/racetrack.png")
+    npc=CarNPC([20,2.5],carImg)
+    car=scene.add_cube(newId(),12, 0,0,64, 0,0,90, 0.25,0.125,0.01)
+    racetrack=scene.add_cube(newId(),144, 0,0,65, 0,0,0, 1,.5,0.01)
+    image.set_texture(racetrack,trackImg)
     pos=[0,0]
     velocity=0
-    accel=.01
+    accel=.05
     direction=90
-    angAccel=5
+    angAccel=8
     image.set_texture(car,carImg)
     init=0
-
-irr.delay(20000)
+npc.update()
+irr.delay(10000)
 if input.getKey('KEY_ESCAPE') :
     irr.exit()
 
@@ -36,22 +123,22 @@ if input.getKey('KEY_UP') :
 
 if input.getKey('KEY_DOWN') :
     velocity-=accel
-
+    
 if input.getKey('KEY_RIGHT') :
-    ang=angAccel*velocity
-    if ang>3:
-        ang=3
-    elif ang<-3:
-        ang=-3
+    ang=angAccel*velocity+3
+    if ang>8:
+        ang=8
+    elif ang<-8:
+        ang=-8
     direction-=ang
 
 
 if input.getKey('KEY_LEFT') :
-    ang=angAccel*velocity
-    if ang>3:
-        ang=3
-    elif ang<-3:
-        ang=-3
+    ang=angAccel*velocity+3
+    if ang>8:
+        ang=8
+    elif ang<-8:
+        ang=-8
     direction+=ang
 
 #friction
@@ -70,3 +157,4 @@ pos[0]+=cos(radians(direction))*velocity
 pos[1]+=sin(radians(direction))*velocity
 scene.rotation(car,0,0,direction)
 scene.setPosition(car,0,pos[0],pos[1],64)
+print(pos)
