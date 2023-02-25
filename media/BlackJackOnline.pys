@@ -1,0 +1,305 @@
+if (init):
+    import irr
+    import scene
+    import input
+    import image
+    import time
+    import socket
+    import os
+    MSGLEN=1024
+    
+
+    class mysocket:
+        '''demonstration class only
+      - coded for clarity, not efficiency
+      taken from python 2.7 socket documentation
+    '''
+
+        def __init__(self, sock=None):
+            if sock is None:
+                self.sock = socket.socket(
+                    socket.AF_INET, socket.SOCK_STREAM)
+            else:
+                self.sock = sock
+
+        def connect(self, host, port):
+            global server
+            print(port)
+            self.host=host
+            localIP=socket.gethostbyname(socket.gethostname())
+            if  localIP==host:
+                server=True
+                self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+                self.sock.bind((host, int(port)))
+                self.sock.listen(1)
+            else:
+                sock.connect((host,int(port)))
+        def mysend(self, msg):
+            global turn
+            self.sock.sendall('POST '+msg+'\n\nHTTP/1.1\r\nHOST: '+self.host+'\r\n\r\n')
+            reply=""
+            while True:
+                data = self.sock.recv(2048)
+                if not data: break
+                reply += data
+
+            # get image size
+            size = -1
+            tmp = reply.split('\r\n')
+            for line in tmp:
+               if "Content-Length:" in line:
+                  size = int(line.split()[1])
+                  break
+
+            headers =  reply.split('\r\n\r\n')[0]
+            data = reply.split('\r\n\r\n')[1]
+            if data!=hand2:
+                turn=True
+                hand2=data
+
+        def myreceive(self):
+            msg = ''
+            while len(msg) < MSGLEN:
+                chunk = self.sock.recv(MSGLEN-len(msg))
+                if chunk == '':
+                    raise RuntimeError("socket connection broken")
+                msg = msg + chunk
+            return msg
+        def shut(self):
+            self.sock.shutdown(0)
+
+    font="fontlucida.png"
+    def write(txt,coord1=(0,0),length=640,color=(0,0,0),alpha=255):
+        scene.drawtext(str(txt), font, coord1[0],coord1[1],coord1[0]+64,coord1[1]+16,alpha,color[0],color[1],color[2])
+    id=100
+    deckCount=1
+    turn=True
+    server=False
+    def newId():
+        global id
+        id+=1
+        return id
+    
+    scene.using ('../media/lib/random.py',"1");
+    myr.time_reseed();
+    ######### SOCKETS ###############
+    adresses={}
+    with open("../media/BlackJackOnlineSettings.txt",'r') as tf:
+        for line in tf.readlines():
+            sp=line.strip().split("=")
+            temp=sp[1].split(':')
+            adresses[sp[0]]=[temp[0],int(temp[1])]
+    sock=mysocket()
+    sock.connect(*adresses["host"])
+    #################################
+    cardNames=os.listdir("../media/cards/")
+    cardImages={}
+    for name in cardNames:
+        cardImages[name]=image.load_texture("../media/cards/"+name)
+
+    
+    cards=[]
+    j=0
+    nameArray=list(cardImages.keys())
+
+    for i in range(deckCount):
+        for j in range(len(nameArray)):
+            cards.append([scene.add_cube(newId(),12, -500,-500,64, 0,0,0, 1,1.527,1/8),nameArray[j],-500,-500,64])
+            image.set_texture(cards[-1][0],cardImages[nameArray[j]])
+            j=+1
+            
+    buttons={"Play":[0,0,True],"Hit":[-36,-48,False],"Stand":[36,-48,False],"Blackjack!":[0,0,False],"You win!":[0,0,False],"You lose!":[0,0,False]}
+    for key,value in buttons.items():
+        value.append(scene.add_cube(newId(),12, -500,-500,64, 0,0,0, 1,.25,1/8))
+        image.set_texture(value[-1],image.load_texture("../media/blackJack/"+key+".png"))
+    smallButton=[scene.add_cube(newId(),4, -500,-500,64, 0,0,0, 1,1,1/8),0,-48,-48,64]
+    image.set_texture(smallButton[0],image.load_texture("../media/blackJack/smallButton.png"))
+    msg=""
+    def hit():
+        global turn,sock,msg
+        turn=False
+        msg=""
+        num=randint(0,52)
+        hand1.append(cards.pop(num))
+        for i in range(len(hand1)):
+            if hand1[i]!="s":
+                hand1[i][2]=-24+i*8
+                hand1[i][3]=-30
+                hand1[i][4]+=0.1
+                res = [int(i) for j in hand1[i][1].split() if j.isdigit()]
+            else:
+                res="s"
+            if len(res)>1:
+                msg+="a"
+            else:
+                msg+=str(res[0])
+    def stand():
+        global turn,msg
+        hand1.append("s")
+        msg+="s"
+        turn=False
+    def play():
+        global turn,server
+        #connect sockets
+        buttons["Play"][2]=False
+        buttons["Hit"][2]=True
+        buttons["Stand"][2]=True
+        hit()
+        turn=True
+        hit()
+        turn=server
+    hand1=[]
+    hand2=""
+    choice=0
+    init=0
+    start=True
+    # scene.using ('../media/lib/random.py',"1");
+    # myr.time_reseed();
+
+    # with open("../media/BlackJackOnlineSettings.txt",'r') as fl:
+    #     adresses=[x.split("=")[1] for x in fl.readlines()]
+    def handle_request(request):
+        global hand2,turn
+        print(request)
+        """Handles the HTTP request."""
+        if request=='':
+            return 'HTTP/1.0 400 BAD REQUEST\n\nBad request'
+        headers = request.split('\n')
+        data = headers[0].split()[1]
+        if data!=hand2:
+            turn=True
+            hand2=data
+        try:
+            response = 'HTTP/1.0 200 OK\n\n' + msg
+        except :
+            response = 'HTTP/1.0 500 Server error\n\nunexpected error has occured'
+
+        return response
+    client_connection, client_address = sock.sock.accept()
+#################################
+
+if start:
+    turn=server
+    start=False
+
+if server:
+    
+
+    # Get the client request
+    request = client_connection.recv(1024).decode()
+    print(request)
+    # Return an HTTP response
+    response = handle_request(request)
+    client_connection.sendall(response.encode())
+    # Close connection
+else:
+    temp=sock.mysend(msg)
+    if temp!=hand2:
+        turn=True
+        hand2=temp
+###change between hit and stand
+if input.getKey('KEY_RIGHT') :
+    choice+=1
+    choice%=2
+elif input.getKey('KEY_LEFT') :
+    choice-=1
+    choice%=2
+    keyHit=True
+
+### make the choice
+elif input.getKey('KEY_SPACE'):
+    if turn:
+        if buttons["Play"][2]:
+            play()
+        elif buttons["Hit"][2]:
+            if choice:
+                stand()
+            else:
+                play()
+        turn=False
+
+    
+
+## display the choice
+if buttons["Hit"][2]:
+    smallButton[2]=-48+96*choice
+    scene.setPosition(*smallButton)
+else:
+    scene.setPosition(smallButton[0],0,-500,-500,64)
+   
+for key,value in buttons.items():
+    if value[2]:
+        print(key,value)
+        scene.setPosition(value[3],0,value[0],value[1],64)
+    else:
+        scene.setPosition(value[3],0,-500,-500,64)
+
+
+
+for c in hand1:
+    scene.setPosition(c[0],0,c[2],c[3],c[4])
+
+points1=0
+aces=0
+finish=False
+for l in msg:
+    if l =="a":
+        points1+=10
+    elif l =="s":
+        finish=True
+    elif l == "1":
+        aces+=1
+    else:
+        points1+=int(l)
+for i in range(aces):
+    if points1<=10:
+        points1+=11
+    else :
+        points1+=1
+points2=0
+aces=0
+for l in hand2:
+    if l =="a":
+        points2+=10
+    elif l =="s":
+        finish=True
+    elif l == "1":
+        aces+=1
+    else:
+        points2+=int(l)
+for i in range(aces):
+    if points2<=10:
+        points2+=11
+    else :
+        points2+=1
+if points1>=21 or points2 >=21 or finish:
+    if points2==points1:
+        pass
+    elif points1>points2:
+        if points1==21:
+            # hand1 wins blackjack
+            pass
+        elif points1<21:
+            #hand1 wins
+            pass
+        else :
+            # hand2 wins
+            pass
+    elif points2>points1:
+        if points2<=21:
+            # hand2 wins blackjack
+            pass
+        elif points2<21:
+            #hand1 wins
+            pass
+        else:
+            # hand1 wins
+            pass
+
+
+if input.getKey('KEY_ESCAPE') :
+    sock.shut()
+    irr.exit()
+    
+
+irr.delay(20000)
