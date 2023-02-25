@@ -1,5 +1,6 @@
 ![luna](DVDS.JPG)
-###### https://www.youtube.com/watch?v=Otpbys_9pNU
+###### https://www.youtube.com/watch?v=Otpbys_9pNU 2d racing
+###### https://www.youtube.com/watch?v=5RlfyGkj0QA 3d racing with physics
 
 ## Luna Irrlicht Game Engine 
 fastest cross platform python enabled close to complete game engine around.(runs on raspberry pi zero)
@@ -54,5 +55,5 @@ GAME folder is just for the binary and the rest of the media in there is old and
 ## Extra Github repos you'll need.
 You will need these aswell most of it compiles with codeblocks, the occasional project may still use cmake. also there are cb to makefile converters if you want them.
 
-- https://github.com/netpipe/LunaLibs
+- https://github.com/netpipe/LunaLibs - not needed unless you need bullet physics, youll need irrlicht 1.8.5 or greator though
 - https://github.com/netpipe/IrrlichtDemos
