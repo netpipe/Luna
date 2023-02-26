@@ -263,7 +263,7 @@ if init:
     buttonIm=addImage(location+"button.png",128,32)
     smallButtonIm=addImage(location+"smallButton.png",24,24)
     canvasIm=addImage(location+"canvas.png",128,192)
-    image.iscale(canvas,3,3)
+    #image.iscale(canvas,3,3)
     # image.iscale(buttonIm,2,1)
     # image.iscale(smallButtonIm,0.5,0.5)
     # image.iscale(mapIm,1,1)
@@ -276,9 +276,6 @@ if init:
     for i in range(numOfHorses):
         gap=i*dist
         Horses.append({"x":32,"y":200+gap,"velocity":0,"accel":0,"anim":0,"order":0})
-
-
-
 
 input.mouse("mvisible",0,0)
 if input.mouse("mlmouse",0,0): #mouse left button
@@ -341,12 +338,10 @@ irr.delay(50000)
 #if count>10:
 #    count=0
 
-
-
 for bt in Buttons:
     if bt["visible"]:
         image.iposition(buttonIm,bt["x"],bt["y"])
-        image.idraw(buttonIm)
+      #  image.idraw(buttonIm)
         if bt["variable"]:
             write(bt["text"]+" "+str(bt["val"]),coord1=(bt["x"]+64-3*len(bt["text"]+" "+str(bt["val"])),bt["y"]+8))
         else:
@@ -386,7 +381,7 @@ for horse in Horses:
     image.iposition(horseIm[int(horse["anim"])],horse["x"],horse["y"])
     if horse["velocity"] ==0:
         image.iposition(horseIm[-1],horse["x"],horse["y"])
-        image.idraw(horseIm[-1])
+        image.idraw(horseIm[0])
     else:
         image.idraw(horseIm[int(horse["anim"])])
 
