@@ -28,7 +28,8 @@ if initloader :
     import os
     import physics
     import gui
-    image.screenshot("./test.jpg")
+    
+    #image.screenshot("./test.jpg")
     #sound2 = scene.soundman(0,"../media/bling.ogg",1)
     #sound2 = scene.soundman(0,"../media/bling.wav",1)
    # sound2 = scene.soundman(0,"../media/test.wav",1)
