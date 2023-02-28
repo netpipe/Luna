@@ -1678,7 +1678,9 @@
 		<Unit filename="Scripting/PyExtras.h" />
 		<Unit filename="Scripting/PyFunctions.h" />
 		<Unit filename="Scripting/PyGUI.h" />
-		<Unit filename="Scripting/PyImage.h" />
+		<Unit filename="Scripting/PyImage.h">
+			<Option virtualFolder="media/" />
+		</Unit>
 		<Unit filename="Scripting/PyInput.h" />
 		<Unit filename="Scripting/PyMAIN.h" />
 		<Unit filename="Scripting/PyMath.h" />

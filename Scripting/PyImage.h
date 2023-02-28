@@ -14,6 +14,7 @@ PyMethodDef irr_Image[] =
 	{"load_texture",Python::PyIrr_LoadTexture,METH_VARARGS,"Loads a texture"},
 	{"set_texture",Python::PyIrr_SetTexture,METH_VARARGS,"Adds a texture to a scene node"},
 	{"remove_texture",Python::PyIrr_rTexture,METH_VARARGS,"Adds a texture to a scene node"},
+	{"screenshot",Python::PyIrr_ScreenShot,METH_VARARGS,"screenshot"},
 
 	{"checkbounds",Python::PyIrr_icheckBounds,METH_VARARGS,"checkBounds"},
 	{"getbounds",Python::PyIrr_igetBounds,METH_VARARGS,"getbounds"},
@@ -71,6 +72,36 @@ PyObject * Python::PyIrr_iScale(PyObject * self,PyObject * args){
 	node->SetScale(news);
 
 #endif
+return Py_BuildValue("");
+
+}
+
+
+
+PyObject * Python::PyIrr_ScreenShot(PyObject * self,PyObject * args){
+   	char* name;
+
+	PyArg_ParseTuple(args,"s",&name);
+
+	irr::video::IImage* image = 0;
+	image = driver->createScreenShot();
+
+	if (image) //should always be true, but you never know. ;)
+	{
+		//construct a filename, consisting of local time and file extension
+		irr::c8 filename[64];
+//		snprintf(filename, 64, name, device->timer->getRealTime());
+
+		//write screenshot to file
+		if (driver->writeImageToFile(image, name))
+			device->getLogger()->log(L"Screenshot taken.");
+		else
+			device->getLogger()->log(L"Failed to take screenshot. Maybe you need to create the capture folder.");
+
+		//Don't forget to drop image since we don't need it anymore.
+		image->drop();
+	}
+
 return Py_BuildValue("");
 
 }
