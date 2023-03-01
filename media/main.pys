@@ -101,7 +101,7 @@ if (init) :
     #scene.soundman(1,str(sound2),2)#unloadsound / clear sounds
 
     camera = scene.addCamera(3,0,200,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
-    scene.fpsweapon(camera,0)
+   # scene.fpsweapon(camera,0)
     scene.decals(1,camera)
 
 
@@ -128,7 +128,7 @@ if (init) :
     # irr.files("../media/cards.zip")
     flashlight=scene.flashlight(0,0)
 
-    chopper=physics.chopper("../media/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
+    chopper=physics.chopper(1,"../media/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
     #scene.setPosition(chopper,5,20,200,20)
 
     #scene.recast("../media/dungeon.obj")
