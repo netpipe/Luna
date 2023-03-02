@@ -368,7 +368,7 @@ ycoord=input.mouse("mgety",0,0)
 #if input.getKey('KEY_KEY_F') :
 
 
-
+#physics.chopper(chopper,"throttle",1,1,1)
 
 if input.getKey('KEY_F2') : #could have a release action
  print "setting cube position"
@@ -381,7 +381,8 @@ if input.getKey('KEY_F2') : #could have a release action
 if input.getKey('KEY_F3') : #could have a release action
  #if lasttime > 10:
  #image.iposition(hand2[1], randint(1,200),100)
- physics.chopper(chopper,"pitchdown",1,1,1)
+ physics.chopper(chopper,"pitchDown",1,1,1)
+ #physics.chopper(chopper,"rollRight",1,1,1)
   #lasttime = 0
  irr.delay(111);
  #irr.delay(111000);

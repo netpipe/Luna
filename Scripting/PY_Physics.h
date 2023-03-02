@@ -656,18 +656,19 @@ if (chopperptr == 1){
      //device->getSceneManager()->isCulled(node);
 }else{
 	ChopperControl *chopperControl = (ChopperControl *)chopperptr;
-     if (strcmp(path, "pitchDown") ){ chopperControl->pitchDown(); }
-     if (strcmp(path, "pitchUp") ){ chopperControl->pitchUp(); }
-     if (strcmp(path, "turnLeft") ){ chopperControl->turnLeft(); }
-     if (strcmp(path, "turnRight") ){ chopperControl->turnRight(); }
-     if (strcmp(path, "rollLeft") ){ chopperControl->rollLeft(); }
-     if (strcmp(path, "rollRight") ){ chopperControl->rollRight(); }
-     if (strcmp(path, "resetRoll") ){ chopperControl->resetRoll(); }
-     if (strcmp(path, "hover") ){ chopperControl->hover(); }
-     if (strcmp(path, "resetPitch") ){ chopperControl->resetPitch(); }
-     if (strcmp(path, "brake") ){ chopperControl->brake(); }
-     if (strcmp(path, "stop") ){ chopperControl->stop(); }
-     if (strcmp(path, "throttle") ){ chopperControl->throttle(); }
+//	string test = path;
+     if (!strcmp(path, "pitchDown") ){ chopperControl->pitchDown(); }
+     if (!strcmp(path, "pitchUp") ){ chopperControl->pitchUp(); }
+     if (!strcmp(path, "turnLeft") ){ chopperControl->turnLeft(); }
+     if (!strcmp(path, "turnRight") ){ chopperControl->turnRight(); }
+     if (!strcmp(path, "rollLeft") ){ chopperControl->rollLeft(); }
+     if (!strcmp(path, "rollRight") ){ chopperControl->rollRight(); }
+     if (!strcmp(path, "resetRoll") ){ chopperControl->resetRoll(); }
+     if (!strcmp(path, "hover") ){ chopperControl->hover(); }
+     if (!strcmp(path, "resetPitch") ){ chopperControl->resetPitch(); }
+     if (!strcmp(path, "brake") ){ chopperControl->brake(); }
+     if (!strcmp(path, "stop") ){ chopperControl->stop(); }
+     if (!strcmp(path, "throttle") ){ chopperControl->throttle(); }
 }
 
 	return Py_BuildValue("l",chopperControl);
