@@ -660,11 +660,10 @@ if (chopperptr == 1){
      if (strcmp(path, "pitchUp") ){ chopperControl->pitchUp(); }
      if (strcmp(path, "turnLeft") ){ chopperControl->turnLeft(); }
      if (strcmp(path, "turnRight") ){ chopperControl->turnRight(); }
-     if (strcmp(path, "hover") ){ chopperControl->hover(); }
      if (strcmp(path, "rollLeft") ){ chopperControl->rollLeft(); }
-     if (strcmp(path, "turnLeft") ){ chopperControl->turnLeft(); }
+     if (strcmp(path, "rollRight") ){ chopperControl->rollRight(); }
      if (strcmp(path, "resetRoll") ){ chopperControl->resetRoll(); }
-     if (strcmp(path, "pitchDown") ){ chopperControl->hover(); }
+     if (strcmp(path, "hover") ){ chopperControl->hover(); }
      if (strcmp(path, "resetPitch") ){ chopperControl->resetPitch(); }
      if (strcmp(path, "brake") ){ chopperControl->brake(); }
      if (strcmp(path, "stop") ){ chopperControl->stop(); }

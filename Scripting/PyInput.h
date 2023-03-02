@@ -1062,7 +1062,7 @@ void Python::CheckKeyStates(){
 
         //  printf("Jump position: %f %f %f \n", pos[0], pos[1], pos[2]);
      //   camera->setPosition(vector3df( ha.X, ha.Y+40, ha.Z));
-        chopperControl->checkKey();
+//        chopperControl->checkKey();
         chopperControl->update();
         chopperControl->updateAbsolutePosition();
 
