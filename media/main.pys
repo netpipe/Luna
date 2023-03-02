@@ -376,12 +376,15 @@ if input.getKey('KEY_F2') : #could have a release action
  scene.addSphereNode("../media/data/textures/material/marble1_256.png",scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3),5,500) #xyz radius mass
  #scene.setPosition(cube_id,1,1,1)
  #physics.bBox(scene.getCamera(camera,1),scene.getCamera(camera,2),scene.getCamera(camera,3));
+ #irr.delay(111000);
 
 if input.getKey('KEY_F3') : #could have a release action
  #if lasttime > 10:
- image.iposition(hand2[1], randint(1,200),100)
+ #image.iposition(hand2[1], randint(1,200),100)
+ physics.chopper(chopper,"pitchdown",1,1,1)
   #lasttime = 0
- irr.delay(111000);
+ irr.delay(111);
+ #irr.delay(111000);
 
 if input.getKey('KEY_ESCAPE') :
     #nend=1

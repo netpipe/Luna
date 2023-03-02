@@ -636,11 +636,13 @@ PyObject * Python::PyIrr_addHelicopter(PyObject * self,PyObject * args) {
 	// return scene node and assign camera vector or parrent camera to scene.
 	vector3df loc;
 	char * path;
-	long *chopperptr;
+	long chopperptr;
 	PyArg_ParseTuple(args,"lsfff",&chopperptr,&path,&loc.X,&loc.Y,&loc.Z);
 #ifdef CHOPPER
 
-//printf("l",chopperptr);
+
+
+
 if (chopperptr == 1){
 //active camera
   //  #ifdef CHOPPER
@@ -653,19 +655,20 @@ if (chopperptr == 1){
  //   #endif
      //device->getSceneManager()->isCulled(node);
 }else{
-chopperControl=*chopperptr;
-     if (path == "pitchDown"){ chopperControl->pitchDown(); }
-//            if (m_cInGameEvents->getKeyState( KEY_KEY_A )) { this->turnLeft(); }
-//            if (m_cInGameEvents->getKeyState( KEY_KEY_S )) { this->pitchUp(); }
-//            if (m_cInGameEvents->getKeyState( KEY_KEY_D )) { this->turnRight(); }
-//            if (m_cInGameEvents->getKeyState( KEY_KEY_H )) { this->hover(); }
-//            if (m_cInGameEvents->getKeyState( KEY_KEY_Q )) { this->rollLeft(); }
-//            if (m_cInGameEvents->getKeyState( KEY_KEY_E )) { this->rollRight(); }
-//            if (m_cInGameEvents->getKeyState( KEY_KEY_R )) { this->resetRoll(); this->resetPitch(); }
-//            if (m_cInGameEvents->getKeyState( KEY_KEY_Z )) { this->brake(); }
-//            if (m_cInGameEvents->getKeyState( KEY_KEY_X )) { this->stop(); }
-//            if (m_cInGameEvents->getKeyState( KEY_KEY_C )) { this->throttle(); }
-//
+	ChopperControl *chopperControl = (ChopperControl *)chopperptr;
+     if (strcmp(path, "pitchDown") ){ chopperControl->pitchDown(); }
+     if (strcmp(path, "pitchUp") ){ chopperControl->pitchUp(); }
+     if (strcmp(path, "turnLeft") ){ chopperControl->turnLeft(); }
+     if (strcmp(path, "turnRight") ){ chopperControl->turnRight(); }
+     if (strcmp(path, "hover") ){ chopperControl->hover(); }
+     if (strcmp(path, "rollLeft") ){ chopperControl->rollLeft(); }
+     if (strcmp(path, "turnLeft") ){ chopperControl->turnLeft(); }
+     if (strcmp(path, "resetRoll") ){ chopperControl->resetRoll(); }
+     if (strcmp(path, "pitchDown") ){ chopperControl->hover(); }
+     if (strcmp(path, "resetPitch") ){ chopperControl->resetPitch(); }
+     if (strcmp(path, "brake") ){ chopperControl->brake(); }
+     if (strcmp(path, "stop") ){ chopperControl->stop(); }
+     if (strcmp(path, "throttle") ){ chopperControl->throttle(); }
 }
 
 	return Py_BuildValue("l",chopperControl);
