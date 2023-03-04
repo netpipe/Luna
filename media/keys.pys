@@ -59,7 +59,7 @@ if input.getKey('KEY_RIGHT') :
 
 
 #Reset Steering
-if not input.getKey('KEY_DOWN') and not input.getKey('KEY_KEY_D') :
+if not input.getKey('KEY_LEFT') and not input.getKey('KEY_RIGHT') :
  physics.VehicleParams(car1,"vsteerreset",0,0,0,0)
 
 
