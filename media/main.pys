@@ -169,7 +169,9 @@ if (init) :
     #jungle = scene.addJungle()
     #scene.addTree("jungle",1,terrain,1,1,1)#not working yet
     track1 = physics.loadTrack('../media/data/3/huge.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
-   # track1 = physics.loadTrack('../media/racing/clubsilo_packed.b3d',20,0,0)  # trackname , timeofday , lighting , track slot/stages
+   # track1 = physics.loadTrack('../media/racing/track.b3d',20,0,0)  # trackname , timeofday , lighting , track slot/stages
+   # track1 = physics.loadTrack('../media/racing/track.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
+    #track1 = physics.loadTrack('../media/racing/Scene.irr',20,0,0)  # trackname , timeofday , lighting , track slot/stages
 
   #  track1 = physics.loadTrack('../media/data/2040/2040.3ds',20,0,0)  # trackname , timeofday , lighting , track slot/stages
    # track1 = physics.loadTrack('../media/data/theDam/thedam.b3d',20,0,0)  # trackname , timeofday , lighting , track slot/stages
