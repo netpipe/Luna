@@ -35,10 +35,10 @@ accelerating = 0
 if input.getKey('KEY_SPACE') :
  physics.VehicleParams(car1,"vbrake",10,0,0,0)
 
-if (driving and input.getKey('KEY_KEY_W') ):
+if (driving and input.getKey('KEY_UP') ):
  physics.VehicleParams(car1,"vaccelerate",0,0,0,0) #acceleration
  accelerating=1
-if (driving and input.getKey('KEY_KEY_W')==0 ):
+if (driving and input.getKey('KEY_UP')==0 ):
  accelerating=0
 
 if (input.getKey('KEY_KEY_E') ):
@@ -48,18 +48,18 @@ if (input.getKey('KEY_KEY_E') ):
  #scene.setCamera(camera,100,-100,-100)
 
 # physics.VehicleParams(car2,2,0,0) #acceleration
-if input.getKey('KEY_KEY_A') :
+if input.getKey('KEY_LEFT') :
  physics.VehicleParams(car1,"vlsteer",0,0,0,0)
  rsteer=1
 
-if input.getKey('KEY_KEY_D') :
+if input.getKey('KEY_RIGHT') :
  physics.VehicleParams(car1,"vrsteer",0,0,0,0)
  rsteer=1
 
 
 
 #Reset Steering
-if not input.getKey('KEY_KEY_A') and not input.getKey('KEY_KEY_D') :
+if not input.getKey('KEY_DOWN') and not input.getKey('KEY_KEY_D') :
  physics.VehicleParams(car1,"vsteerreset",0,0,0,0)
 
 
@@ -82,11 +82,6 @@ if input.getKey('KEY_KEY_R') :
  physics.VehicleParams(car1,"vsetpos",0,0,-10,0) #position
 if input.getKey('KEY_KEY_E') :
  physics.VehicleParams(car1,"vaccelerate",0,0,0,0) #acceleration
-
-if input.getKey('KEY_UP') :
- physics.VehicleParams(car1,"vaccelerate",0,0,0,0)
-# print "UP-ARROW"
-# irr.setPosition(cube_id,50,55,50)
 
 
 #if input.getKey('KEY_F1') :
