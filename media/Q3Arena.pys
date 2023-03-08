@@ -108,7 +108,7 @@ if (init) :
 
  flashlight=scene.flashlight(0,0)
 
- chopper=physics.chopper("../media/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
+ chopper=physics.chopper(1,"../media/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..
  #scene.setPosition(chopper,5,20,200,20)
 
 # scene.recast("../media/dungeon.obj")
@@ -315,9 +315,11 @@ if input.getKey('KEY_F2') : #could have a release action
 
 if input.getKey('KEY_F3') : #could have a release action
  #if lasttime > 10:
- image.iposition(hand2[1], randint(1,200),100)
+ #image.iposition(hand2[1], randint(1,200),100)
   #lasttime = 0
- irr.delay(111000);
+ physics.chopper(chopper,"pitchDown",1,1,1)
+ irr.delay(111);
+
 
 if input.getKey('KEY_ESCAPE') :
  irr.exit()

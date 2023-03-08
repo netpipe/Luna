@@ -69,10 +69,10 @@ if(init):
         #T.start() # Launch created thread
         #del T
 
-        import multiprocessing
-        from multiprocessing import Process
-        P = Process(name="playsound",target=joystick)
-        P.start() # Inititialize Process
+       # import multiprocessing
+       # from multiprocessing import Process
+       # P = Process(name="playsound",target=joystick)
+       # P.start() # Inititialize Process
 
 
 
@@ -147,9 +147,9 @@ if(init):
        hand1.append(image.iadd(card1,i*10,i*10,i*10+55,i*10+84,0,0,55,84))
 
     init=0
-print(data)
-#image.idraw(hand1[0])
-image.idraw(hand1[1])
+#print(data)
+image.idraw(hand1[0])
+#image.idraw(hand1[1])
 #image.idraw(hand2[0])
 
 
