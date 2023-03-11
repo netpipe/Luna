@@ -7,7 +7,6 @@ Implementation RSA in Python
 - http://wangcong.org/blog/?p=253
 """
 import math
-import random
 import sys
 
 
@@ -25,7 +24,7 @@ def rsa(m, p, q, d=False):
 
     if not d:
         # k as described in RFC 2313
-        k = int(math.log(n) / math.log(2) / 8 + 1)
+        k = int(log2(n,10) / log2(2,10) / 8 + 1)
         m = '\x00\x02' + random_bytes(k - len(m) - 3) + '\x00' + m  # padding
 
     ret, s = [], True               # init ret and while loop
@@ -60,4 +59,12 @@ def decrypt(s, d, n):
     return rsa(s, d, n, True)
 
 
-
+def log2(number,base):
+	'''function to find the logarithm
+https://github.com/AlexRomantsov/logarithm'''
+	number, base = float(number), float(base)
+	result = 0.0
+	while(number >= base):
+		number/=base
+		result += 1
+	return result

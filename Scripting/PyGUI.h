@@ -26,10 +26,20 @@ PyMethodDef irr_gui[] =
 };
 
 PyObject * Python::PyIrr_CodeEditor(PyObject * self,PyObject * args) {//active camera
+    char *  message;
+    int *  message2;
+	PyArg_ParseTuple(args,"i",&message2);
+
 #ifdef CODEEDITOR
+//if (!strcmp(message,"1")){
+if (message ==1 ){
 	bCodeEditor=1;
 	device->getCursorControl()->setVisible(true);
 	//return Py_BuildValue("l",luna->receiver);
+	} else {
+
+
+	}
 #endif
 return Py_BuildValue("");
 }

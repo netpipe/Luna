@@ -48,7 +48,7 @@ if (init) :
  ticks = time.time()
 
  responses = ["Not so sure", "42","41", "Most likely", "Absolutely not", "Outlook is good", "I see good things happening", "Never",
-"Negative", "Could be", "Unclear, ask again", "Yes", "No", "Possible, but not probable","get extra","clean","wait for it"]
+"Negative", "Could be", "Unclear, ask again", "Yes","Looks good","Be Careful", "No", "Possible, but not probable","get extra","clean","wait for it"]
 
  myr.time_reseed();
  #print randint(1,8);
