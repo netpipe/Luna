@@ -61,7 +61,7 @@ if (init):
             distVec=[target[0]-self.pos[0],target[1]-self.pos[1]]
             dist=(distVec[0]*distVec[0]+distVec[1]*distVec[1])**.5
             unitDist=[distVec[0]/dist,distVec[1]/dist]
-            print("dist",dist)
+            #print("dist",dist)
             if abs(dist) < 4:
                 self.currentWP+=1
             self.currentWP%=len(self.route)
@@ -74,8 +74,8 @@ if (init):
                 angError+=2*PI
             
             dirSignal=self.pidDir.update(angError)
-            print("angerror",self.currentWP)
-            print(dirSignal)
+            #print("angerror",self.currentWP)
+            #print(dirSignal)
             ang=self.angAccel*dirSignal*self.velocity
             if ang<-1:
                 ang-=4
@@ -126,19 +126,19 @@ if input.getKey('KEY_DOWN') :
     
 if input.getKey('KEY_RIGHT') :
     ang=angAccel*velocity+2
-    if ang>8:
-        ang=8
-    elif ang<-8:
-        ang=-8
+    if ang>7:
+        ang=7
+    elif ang<-7:
+        ang=-7
     direction-=ang
 
 
 if input.getKey('KEY_LEFT') :
     ang=angAccel*velocity+2
-    if ang>8:
-        ang=8
-    elif ang<-8:
-        ang=-8
+    if ang>7:
+        ang=7
+    elif ang<-7:
+        ang=-7
     direction+=ang
     
 if input.getKey('KEY_SPACE') :
