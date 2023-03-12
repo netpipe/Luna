@@ -1,4 +1,4 @@
-import random, time
+import time
 
 def gcd(a, b):
     while b != 0:
@@ -8,7 +8,7 @@ def gcd(a, b):
 def rabin_miller(n, k):
     s = n - 1
     for _ in range(k):
-        a = random.randrange(2, n - 1)
+        a = myr.randrange(2, n - 1)
         x = pow(a, s, n)
         if x in [1, -1]:
             continue
@@ -18,7 +18,7 @@ def rabin_miller(n, k):
 
 def generate_random_prime(bits):
     while True:
-        x = random.randrange(2 ** (bits - 1) + 1, 2 ** bits - 1, 2)
+        x = myr.randrange(2 ** (bits - 1) + 1, 2 ** bits - 1, 2)
         if pow(2, x - 1, x) == 1:
             if rabin_miller(x, 40):
                 return x

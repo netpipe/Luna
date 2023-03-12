@@ -48,7 +48,7 @@ def rsa(m, p, q, d=False):
 
 def random_bytes(size):
     size = max(8, size)
-    return ''.join(chr(random.randrange(1, 256)) for i in xrange(size))
+    return ''.join(chr(myr.randrange(1, 256)) for i in xrange(size))
 
 
 def encrypt(plain, e, n):

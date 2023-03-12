@@ -1,0 +1,135 @@
+#################################
+##  _
+## | |
+## | |    _   _ _ __   __ _
+## | |   | | | | '_ \ / _` |
+## | |___| |_| | | | | (_| |
+## |______\__,_|_| |_|\__,_|
+##    Luna Game Engine
+#################################
+##Title: LoaderGUI
+##Description
+#
+
+#################################
+
+if initloader :
+    import irr
+    import scene
+    import input
+    import image
+    import time
+    import os
+    import physics
+    import gui
+    
+    from sys import platform
+
+    def addImage(loc,width,height):
+     return image.iadd(loc,0,0,width,height,0,0,width,height)
+
+    id=100
+    def newId():
+      global id
+      id+=1
+      return id
+
+    font="fontlucida.png"
+    location= "../media/LoaderGUI/"
+
+#scan for zip files
+    cwd=os.getcwd()
+    os.chdir("../media/")
+    cwd=os.getcwd()
+    flist= os.listdir(cwd)
+    pysList=[x for x in flist if x.endswith(".pys")]
+
+    zipFiles=[x for x in flist if x.endswith(".zip")]
+
+    camera = scene.addCamera(3, 0,0,-10)
+    scene.decals(1,camera)
+    Light = scene.Light(10,0,100,0,"111111")
+    print("camera added")
+    #physics.opensteer(0) #might be from updating irrlicht still need to look at it closer
+
+    colors=[]
+  #  for i in range(3):
+      #  colors.append(image.load_texture(location+"color"+str(i)+".png"))
+    print("colors added")
+
+
+ #   background= scene.add_cube(newId(),256, 0,0,96, 0,0,0, 1,1,0.01)
+  #  image.set_texture(background,colors[2])
+
+    print("before buttons")
+    buttons=[]
+    currentButton=0
+ #   for i in range(len(zipFiles)):
+  #      buttons.append(scene.add_cube(newId(),1, -84+(4+len(zipFiles[i])*0.5) +128*(i//15) ,56-(i*8),90, 0,0,0, 8+len(pysList[i]),6,0.01))
+   #     image.set_texture(buttons[i],colors[0])
+    print("objects added")
+    initloader=0
+
+    #frogStanding= image.load_texture(base+"frogStanding.png")
+
+
+
+#input.gamepad(0,"gpinit",1)
+#input.gamepad(0,"gprun",1)
+#input.gamepad(0,"gprefresh",1)
+#input.gamepad(0,"wiiled",2)
+#input.gamepad(0,"gpdpad",1)
+#print(input.gamepad(0,"accy",1))
+#input.OIS("",1)
+
+
+input.mouse("mvisible",0,0)
+
+#######Loop
+
+if input.getKey('KEY_UP'):
+    currentButton-=1
+    physics.b2d(box2dbody,0,"force",0,-100000,0,0,0)
+    irr.delay(1000)
+elif input.getKey('KEY_DOWN'):
+    currentButton+=1
+    physics.b2d(box2dbody,0,"force",0,100000,0,0,0)
+    irr.delay(100000)
+
+
+irr.delay(15000)
+
+currentButton %= len(zipFiles)
+
+
+if input.mouse("mlmouse",0,0): #mousebutton
+    xcoord=input.mouse("mgetx",0,0)
+    ycoord=input.mouse("mgety",0,0)
+    mbtn=1
+    scene.soundman(1,"",0)
+
+else:
+   mbtn=0
+
+for i in range(len(zipFiles)):
+    scene.drawtext(zipFiles[i],font, 32,46+i*47,128,160+i*47,255,255,244,255)
+    if mbtn:
+    #  print(xcoord)
+    #  print(46*i-47)
+    #  print(ycoord)
+      if ycoord > 46+i*47 and ycoord < 46+i*47+100 and xcoord > 5 and xcoord < 200: # buggy still need proper measures
+        loaderResult=zipFiles[i]
+        print("button pushed2")
+   #if i == currentButton:
+   #image.set_texture(buttons[currentButton],colors[1])
+   #else:
+   #image.set_texture(buttons[i],colors[0])
+    scene.drawtext(str(currentButton), font, 0,0,128,128,255,55,44,255)
+
+if input.getKey('KEY_SPACE'):
+    loaderResult=zipFiles[currentButton]
+    initloader=1
+
+if input.getKey('KEY_ESCAPE') :
+ irr.exit()
+
