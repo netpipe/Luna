@@ -125,7 +125,7 @@ if input.getKey('KEY_DOWN') :
     velocity-=accel
     
 if input.getKey('KEY_RIGHT') :
-    ang=angAccel*velocity+3
+    ang=angAccel*velocity+2
     if ang>8:
         ang=8
     elif ang<-8:
@@ -134,12 +134,15 @@ if input.getKey('KEY_RIGHT') :
 
 
 if input.getKey('KEY_LEFT') :
-    ang=angAccel*velocity+3
+    ang=angAccel*velocity+2
     if ang>8:
         ang=8
     elif ang<-8:
         ang=-8
     direction+=ang
+    
+if input.getKey('KEY_SPACE') :
+    velocity*=0.875
 
 #friction
 velocity*=0.975
@@ -157,4 +160,4 @@ pos[0]+=cos(radians(direction))*velocity
 pos[1]+=sin(radians(direction))*velocity
 scene.rotation(car,0,0,direction)
 scene.setPosition(car,0,pos[0],pos[1],64)
-print(pos)
+#print(pos)

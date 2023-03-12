@@ -106,7 +106,7 @@ if input.mouse("mlmouse",0,0): #mousebutton
     xcoord=input.mouse("mgetx",0,0)
     ycoord=input.mouse("mgety",0,0)
     mbtn=1
-    scene.soundman(1,"",0)
+
 
 else:
    mbtn=0
@@ -129,6 +129,7 @@ for i in range(len(zipFiles)):
 if input.getKey('KEY_SPACE'):
     loaderResult=zipFiles[currentButton]
     initloader=1
+    # irr.files("../media/cards.zip")
 
 if input.getKey('KEY_ESCAPE') :
  irr.exit()
