@@ -1,0 +1,91 @@
+#################################
+##  _
+## | |
+## | |    _   _ _ __   __ _
+## | |   | | | | '_ \ / _` |
+## | |___| |_| | | | | (_| |
+## |______\__,_|_| |_|\__,_|
+##    Luna Game Engine
+#################################
+##Title: Minimalist example
+#checking cpu usage
+#
+#################################
+##INITIALIZE
+##called externally so it is set from functions.py or init.py
+#################################
+if(init):
+    import irr
+    import scene
+    import input
+    import image
+    import time
+
+    scene.using ('../media/lib/random.py',"1");
+    camera = scene.addCamera(1,0,200,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
+    #scene.fpsweapon(camera,0)
+    #scene.decals(1,camera)
+
+
+ #shoot decals from camera
+
+    Light1 = scene.Light(10,100,150,1,"111111") # type , vector, color
+    
+    terrain = scene.addTerrain(1,-100,-103,-100,5,1,5,"../media/terrain-heightmap.bmp","../media/terrain.jpg","../media/detailmap.bmp") # needs to be bmp to work with emscripten
+    scene.setPosition(terrain,4,-111,-20,22)
+    
+    chopper=physics.chopper(1,"../media/models/vehicles/chopper/Helicopter 2.obj",1,1,1) # type, physical properties - speed , weight etc..  
+    
+    #scene.addAMesh("../media/data/theDam/TheDam.x",0);
+    
+    myr=myrandom()
+    #print [myr.getuniform() for x in range(20)] 
+    
+    
+#################################
+    init = 0 #initialization finish - needs whitespace infront
+#################################
+##MAIN LOOP gets ran everytime
+#################################
+
+xcoord=input.mouse("mgetx",0,0)
+ycoord=input.mouse("mgety",0,0)
+
+if input.getKey('KEY_KEY_W') : #could have a release action
+ physics.chopper(chopper,"pitchDown",1,1,1)
+ irr.delay(111);
+ 
+if input.getKey('KEY_KEY_A') : #could have a release action
+ physics.chopper(chopper,"rollLeft",1,1,1)
+ irr.delay(111);
+ 
+if input.getKey('KEY_KEY_S') : #could have a release action
+ physics.chopper(chopper,"pitchUp",1,1,1)
+ irr.delay(111);
+ 
+if input.getKey('KEY_KEY_D') : #could have a release action
+ physics.chopper(chopper,"rollRight",1,1,1)
+ irr.delay(111);
+ 
+if input.getKey('KEY_KEY_Z') : #could have a release action
+ physics.chopper(chopper,"throttle",1,1,1)
+ irr.delay(111);
+ 
+if input.getKey('KEY_KEY_X') : #could have a release action
+ physics.chopper(chopper,"brake",1,1,1)
+ irr.delay(111);
+ 
+ 
+ 
+if input.getKey('KEY_KEY_E') : #could have a release action
+ physics.chopper(chopper,"pitchDown",1,1,1)
+ irr.delay(111);
+ 
+if input.getKey('KEY_KEY_Q') :
+ physics.chopper(chopper,"pitchDown",1,1,1)
+ irr.delay(111);
+
+if input.getKey('KEY_ESCAPE') :
+ irr.exit()
+
+irr.delay(4000);
