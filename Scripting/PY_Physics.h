@@ -654,6 +654,7 @@ if (chopperptr == 1){
  //   camera->bindTargetAndRotation(node);
  //   #endif
      //device->getSceneManager()->isCulled(node);
+     	return Py_BuildValue("l",chopperControl);
 }else{
 	ChopperControl *chopperControl = (ChopperControl *)chopperptr;
 //	string test = path;
@@ -669,9 +670,14 @@ if (chopperptr == 1){
      if (!strcmp(path, "brake") ){ chopperControl->brake(); }
      if (!strcmp(path, "stop") ){ chopperControl->stop(); }
      if (!strcmp(path, "throttle") ){ chopperControl->throttle(); }
+    // if (!strcmp(path, "ascend") ){ chopperControl->ascend(); }
+     if (!strcmp(path, "Node") ){	return Py_BuildValue("l",chopperControl->Node); }
+//     if (!strcmp(path, "getx") ){ return Py_BuildValue("l",chopperControl->Node.X;) }
+//     if (!strcmp(path, "gety") ){ return Py_BuildValue("l",chopperControl->Node.Y;) }
+//     if (!strcmp(path, "getz") ){ return Py_BuildValue("l",chopperControl->Node.Z;) }
 }
 
-	return Py_BuildValue("l",chopperControl);
+
 #endif
 	return Py_BuildValue("");
 }

@@ -75,15 +75,18 @@ if input.getKey('KEY_KEY_X') : #could have a release action
  physics.chopper(chopper,"brake",1,1,1)
  irr.delay(111);
  
- 
+testnode = physics.chopper(chopper,"Node",1,1,1)
+scene.setCamera(0,camera,scene.getPosition(testnode,0),scene.getPosition(testnode,1),scene.getPosition(testnode,2))
  
 if input.getKey('KEY_KEY_E') : #could have a release action
- physics.chopper(chopper,"pitchDown",1,1,1)
+ physics.chopper(chopper,"turnRight",1,1,1)
  irr.delay(111);
  
 if input.getKey('KEY_KEY_Q') :
- physics.chopper(chopper,"pitchDown",1,1,1)
+ physics.chopper(chopper,"turnLeft",1,1,1)
  irr.delay(111);
+ 
+ #physics.chopper(chopper,"hover",1,1,1) after a delay or add friction to braking and throttle
 
 if input.getKey('KEY_ESCAPE') :
  irr.exit()

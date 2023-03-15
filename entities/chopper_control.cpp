@@ -177,6 +177,7 @@
     ////////////////////////////////////////////////////////////////////////////////
     void ChopperControl::update()
     {
+    //possibly check throttle/brake here too add friction
             u32 time = Device->getTimer()->getTime();
             f32 deltaTime = f32(time - LastTime) * 0.001f;
 
