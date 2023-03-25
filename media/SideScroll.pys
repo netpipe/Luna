@@ -1,0 +1,61 @@
+#################################
+##  _
+## | |
+## | |    _   _ _ __   __ _
+## | |   | | | | '_ \ / _` |
+## | |___| |_| | | | | (_| |
+## |______\__,_|_| |_|\__,_|
+##    Luna Game Engine
+#################################
+##Title: Minimalist example
+#checking cpu usage
+#
+#################################
+##INITIALIZE
+##called externally so it is set from functions.py or init.py
+#################################
+if(init):
+    import irr
+    import scene
+    import input
+    import image
+    import time
+    #import socket
+    import os
+    
+    id=100
+    def newId():
+        global id
+        id+=1
+        return id   
+         
+    camera = scene.addCamera(2,0,50,0) 
+    input.mouse("mvisible",0,0)
+      
+    playerImg=image.load_texture("../media/HorseRacing/Tiles/tile0-0.png")
+    playern=scene.add_cube(newId(),10, 0,0,20, 0,0,0, 1,.5,0.01)
+    image.set_texture(playern,playerImg)
+      
+    trackImg=image.load_texture("../media/HorseRacing/Tiles/map1.png")
+    background=scene.add_cube(newId(),144, 0,0,65, 0,0,0, 1,.5,0.01)
+    image.set_texture(background,trackImg)
+    
+
+    scene.using ('../media/lib/random.py',"1");
+    myr=myrandom()
+    #import shuffle
+    myr.time_reseed();
+
+#################################
+    init = 0 #initialization finish - needs whitespace infront
+#################################
+##MAIN LOOP gets ran everytime
+#################################
+
+#scene.rotation(playern,0,0,20)
+#scene.setPosition(playern,0,randint(1,10),1,10)
+scene.setCamera(1,camera,0,randint(1,100),0)
+if input.getKey('KEY_ESCAPE') :
+ irr.exit()
+
+irr.delay(200000)

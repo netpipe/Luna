@@ -17,6 +17,7 @@ if (init):
     #camera = scene.addCamera(2,0,50,0) # 1 regular , 2 FPS , 3 fps-with keymap other types, 4 rpg, << todo types  / active / vector
 
     carImg=image.load_texture("../media/racing/car.png")
+    carImg2=image.load_texture("../media/racing/car2.png")
     car=scene.add_cube(newId(),12, 0,0,64, 0,0,90, 0.5,0.25,1/8)
     pos=[0,0]
     velocity=0
@@ -34,10 +35,11 @@ if input.getKey('KEY_ESCAPE') :
 if input.getKey('KEY_UP') :
     velocity+=accel
     lastaccel=direction
-
+    image.set_texture(car,carImg2)
+    
 if input.getKey('KEY_DOWN') :
     velocity-=accel
-   
+    image.set_texture(car,carImg)
 
 if input.getKey('KEY_RIGHT') :
     ang=angAccel

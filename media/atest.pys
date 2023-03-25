@@ -148,8 +148,12 @@ if(init):
 
     init=0
 #print(data)
+
+image.iposition(hand1[0], randint(1,100),100)
+image.iposition(hand1[1], randint(1,100),100)
+
 image.idraw(hand1[0])
-#image.idraw(hand1[1])
+image.idraw(hand1[1])
 #image.idraw(hand2[0])
 
 

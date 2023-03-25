@@ -123,6 +123,8 @@ PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args){
 //if (!strcmp(message, "") ){  }
 	if (node != -1){
 		stringw ha=message;
+        //stringw font4w=font4;
+        //guienv->getSkin()->setFont(guienv->getFont(font4w.c_str()));
 	    gui::IGUIFont* font2 = (gui::IGUIFont *) node;
         font2->draw(ha.c_str(), core::recti(x + (150 * 0), y, x1 + (150 * 0), y1 + 20), video::SColor(r, g, b, a));
         return Py_BuildValue("l",font2);
