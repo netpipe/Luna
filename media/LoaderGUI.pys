@@ -126,7 +126,7 @@ if initloader :
     pysList.remove("net.pys")
     pysList.remove("functions-list.pys")
     pysList.remove("archiveLoader.pys")
-    #pysList.remove("archiveLoader.pys")
+    pysList.remove("BlackJackOnline.pys")
     
     camera = scene.addCamera(3, 0,0,-10)
     scene.decals(1,camera)
@@ -188,7 +188,7 @@ if initloader :
     #irr.tiled("tiled/3dbasic.tmx",0)
     #irr.tiled("tiled/animation.tmx",0)
   #  irr.tiled("../media/tiled/animation.tmx",0)
-#irr.tiled("",2) #animated = 2 regular 1 and init =0
+#irr.tiled("",2) #animated = 2 regular 1 and init =0 3 3d
 
 #    irr.tiled("../media/tiled/3dbasic.tmx",0)
 #irr.tiled("",3)

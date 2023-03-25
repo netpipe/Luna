@@ -30,14 +30,14 @@ X11Mouse::X11Mouse(XIDeviceInfo* device_info, X11InputController* controller)
 				m_minY = min;
 				m_maxY = max;
 			} else {
-				printf("WARN: %s cannot handle valuator info %s\n", device_info->name, name);
+			//	printf("WARN: %s cannot handle valuator info %s\n", device_info->name, name);
 			}
 			XFree(name);
 		}
 	}
 
-	printf("Created X11 device with minX: %f, maxX: %f, minY: %f, maxY: %f\n",
-		m_minX, m_maxX, m_minY, m_maxY);
+//	printf("Created X11 device with minX: %f, maxX: %f, minY: %f, maxY: %f\n",
+//		m_minX, m_maxX, m_minY, m_maxY);
 }
 
 double X11Mouse::MinimumX() {
@@ -66,7 +66,7 @@ MouseStatePtr X11Mouse::getMouseState() {
 	XDeviceState* device_state = m_controller->getXDeviceState(deviceId());
 
 	if (!device_state) {
-		printf("Failed to get X11 device state\n");
+//		printf("Failed to get X11 device state\n");
 	}
 
 	mouse_state = MouseStatePtr(new MouseState);
@@ -80,13 +80,13 @@ MouseStatePtr X11Mouse::getMouseState() {
 			auto val_state = (XValuatorState *) cls;
 
 			if (val_state->num_valuators < 2) {
-				printf("Error reading mouse state, valuators less than 2\n");
+//				printf("Error reading mouse state, valuators less than 2\n");
 				return nullptr;
 			}
 
 			mouse_state->x = val_state->valuators[0];
 			mouse_state->y = val_state->valuators[1];
-            printf("pressure pen %i" ,val_state->valuators[2]);
+//            printf("pressure pen %i" ,val_state->valuators[2]);
 			break;
 		}
 		case ButtonClass:

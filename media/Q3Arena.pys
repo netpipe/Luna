@@ -57,7 +57,7 @@ if (init) :
  scene.fpsweapon(camera,0)
  #scene.decals(1,camera)
 
-
+ scene.recast("../media/dungeon.obj")
  #shoot decals from camera
 
  Light1 = scene.Light(10,100,150,1,"111111") # type , vector, color
