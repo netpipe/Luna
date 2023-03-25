@@ -54,7 +54,8 @@ if(init):
 
 #scene.rotation(playern,0,0,20)
 #scene.setPosition(playern,0,randint(1,10),1,10)
-scene.setCamera(1,camera,0,randint(1,100),0)
+scene.setCamera(1,camera,0,randint(1,100),0) #rotation
+#scene.setCamera(0,camera,0,randint(1,100),0) #location
 if input.getKey('KEY_ESCAPE') :
  irr.exit()
 
