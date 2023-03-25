@@ -12,17 +12,9 @@ Focus List
 TODO LIST - seems like good spot as any to putit
     - OpenSteer dependancy has glut and GLU linker dependancy's remove those
     - dirt on tires with particles and a ribbon node for the dirt with life
+    - gui features like input boxes connected to scripting.
+    - python compile and run scripts with reloading seems easily doable if you can reuse variables integrate with GUI script editor
 
-
-
-
-
-
-    - networking
-        -chat support
-        -time based movement to reduce lag issues
-        -picture / file send support
-        -self updater for specific files / maybe git ?
 
 
 

@@ -127,22 +127,22 @@ if(init):
       if deck[i][1]=="Club":
        print(deck[i][0], "of", deck[i][1])
        #card1="\"" + str(deck[i][0]) + "CLUBS.jpg"
-       card1="./media/" + str(deck[i][0]) + "CLUBS.png"
+       card1="../media/" + str(deck[i][0]) + "CLUBS.png"
        del deck[i]
        hand1.append(image.iadd(card1,i*10,i*10,i*10+55,i*10+84,0,0,55,84))
       if deck[i][1]=="Spade":
        print(deck[i][0], "of", deck[i][1])
-       card1="./media/" + str(deck[i][0]) + "SPADES.png"
+       card1="../media/" + str(deck[i][0]) + "SPADES.png"
        del deck[i]
        hand1.append(image.iadd(card1,i*10,i*10,i*10+55,i*10+84,0,0,55,84))
       if deck[i][1]=="Diamond":
        print(deck[i][0], "of", deck[i][1])
-       card1="./media/" + str(deck[i][0]) + "DIAMONDS.png"
+       card1="../media/" + str(deck[i][0]) + "DIAMONDS.png"
        del deck[i]
        hand1.append(image.iadd(card1,i*10,i*10,i*10+55,i*10+84,0,0,55,84))
       if deck[i][1]=="Heart":
        print(deck[i][0], "of", deck[i][1])
-       card1="./media/" + str(deck[i][0]) + "HEARTS.png"
+       card1="../media/" + str(deck[i][0]) + "HEARTS.png"
        del deck[i]
        hand1.append(image.iadd(card1,i*10,i*10,i*10+55,i*10+84,0,0,55,84))
 

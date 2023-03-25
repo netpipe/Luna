@@ -84,16 +84,16 @@ if(uiTimer>20) and uiState==0:
   scene.setPosition(icons[i],0, 32*(i+1),200,96.5)
  #scene.setPosition(white,0, 0,0,100)
  print("before text")
- scene.drawtext("press up and down to change\nmenu option",font,384,96,512,104,255,55,44,255)
- scene.drawtext("play",font,448,416,464,424,255,55,44,255)
- scene.drawtext("quit",font,448,472,464,480,255,55,44,255)
- scene.drawtext("Odds to get all 3 slots is 4%",font,32,640,96,672,255,55,44,255)
- scene.drawtext("Odds to get at least 2 slots is 48%",font,32,704,96,736,255,55,44,255)
+ scene.drawtext(-1,"press up and down to change\nmenu option",font,384,96,512,104,255,55,44,255)
+ scene.drawtext(-1,"play",font,448,416,464,424,255,55,44,255)
+ scene.drawtext(-1,"quit",font,448,472,464,480,255,55,44,255)
+ scene.drawtext(-1,"Odds to get all 3 slots is 4%",font,32,640,96,672,255,55,44,255)
+ scene.drawtext(-1,"Odds to get at least 2 slots is 48%",font,32,704,96,736,255,55,44,255)
  print("after text")
 
 elif uiTimer<=20 and uiState==0:
  print("before text1")
- scene.drawtext("Pirate Slot Machine",font,384,8,512,64,255,55,44,255)
+ scene.drawtext(-1,"Pirate Slot Machine",font,384,8,512,64,255,55,44,255)
  print("after text")
 elif uiState==-1 and uiTimer>250:
  uiState=0
@@ -161,13 +161,13 @@ if uiState==1:
 if recovered==0 and uiTimer<250:
 
   if winState==0:
-   scene.drawtext("LOSER",font,384,704,448,736,255,55,44,255)
+   scene.drawtext(-1,"LOSER",font,384,704,448,736,255,55,44,255)
    print("loser")
   elif winState==1:
-   scene.drawtext("GOOD JOB",font,384,704,448,736,255,55,44,255)
+   scene.drawtext(-1,"GOOD JOB",font,384,704,448,736,255,55,44,255)
    print("good job")
   else:
-   scene.drawtext("WINNER",font,384,704,448,736,255,55,44,255)
+   scene.drawtext(-1,"WINNER",font,384,704,448,736,255,55,44,255)
    print("winner")
 
 irr.delay(30000)

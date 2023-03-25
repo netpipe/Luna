@@ -97,9 +97,10 @@ PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args){
     char *  font4;
 	//Must make this useful someday, not today
 	char * message;
+	long node;
 	s32 x,y,x1,y1;
 	s32 r,g,b,a;
-	PyArg_ParseTuple(args,"ssiiiiiiii",&message,&font4,&x,&y,&x1,&y1,&r,&g,&b,&a); //may only need x,y when using ft2
+	PyArg_ParseTuple(args,"lssiiiiiiii",&node,&message,&font4,&x,&y,&x1,&y1,&r,&g,&b,&a); //may only need x,y when using ft2
 
 	//IGUIFont * font2 = (IGUIFont *)font;
 
@@ -117,6 +118,17 @@ PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args){
 	//  wprintf("%s\n", model);
 	//	guienv->addStaticText(conv_message,rect<s32>(x,y,x1,y1),SColor(255,255,255,255));
 	//	delete [] conv_message;
+
+
+//if (!strcmp(message, "") ){  }
+	if (node != -1){
+		stringw ha=message;
+	    gui::IGUIFont* font2 = (gui::IGUIFont *) node;
+        font2->draw(ha.c_str(), core::recti(x + (150 * 0), y, x1 + (150 * 0), y1 + 20), video::SColor(r, g, b, a));
+        return Py_BuildValue("l",font2);
+}else{
+
+
 #ifdef FT22
     face.load("./media/kochi-gothic-subst.ttf");
 	face2.load("./media/kochi-gothic-subst.ttf");
@@ -125,6 +137,7 @@ PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args){
     font2->attach(&face,24); // scale this number with the screen
     font2->AntiAlias=1;
     font2->draw(L"Hello TrueType",rect<s32>(0,240,640,240),SColor(255,255,64,64),false);
+    return Py_BuildValue("");
 #else
 	stringw ha=message;
 	stringw font4w=font4;
@@ -171,7 +184,10 @@ PyObject * Python::PyIrr_DrawText(PyObject * self,PyObject * args){
 //
 //        fonts->drawText("the quick brown fox\njumped over\n the lazy dog", 0, 0, w, h, BmFont::ALIGN_CENTER | BmFont::ALIGN_MIDDLE);
 //
-#endif
+
+	return Py_BuildValue("l",font2);
+	#endif
+	}
 	return Py_BuildValue("");
 };
 

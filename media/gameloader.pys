@@ -32,9 +32,12 @@ locBase="../media/"
 #    scene.using(locBase+loaderResult,"1");
 
 #else:
-if loaderResult.endswith(".pys"): #or loaderResult.endswith(".zip"):
-    #if loaderResult.endswith(".zip")
+if loaderResult.endswith(".pys"):
      scene.using(locBase+loaderResult,"1")
+     
+#if loaderResult.endswith(".zip"):
+#     irr.files("../media/"+loaderResult)
+ #    scene.using(locBase+loaderResult,"1")
 
 else:
     scene.using('../media/LoaderGUI.pys',"1"); #work in progress

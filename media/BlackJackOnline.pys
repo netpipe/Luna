@@ -70,7 +70,7 @@ if (init):
 
     font="fontlucida.png"
     def write(txt,coord1=(0,0),length=640,color=(0,0,0),alpha=255):
-        scene.drawtext(str(txt), font, coord1[0],coord1[1],coord1[0]+64,coord1[1]+16,alpha,color[0],color[1],color[2])
+        scene.drawtext(-1,str(txt), font, coord1[0],coord1[1],coord1[0]+64,coord1[1]+16,alpha,color[0],color[1],color[2])
     id=100
     deckCount=1
     turn=True

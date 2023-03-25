@@ -45,7 +45,8 @@ if initloader :
     pysList=[x for x in flist if x.endswith(".pys")]
 
     zipFiles=[x for x in flist if x.endswith(".zip")]
-
+    zipFiles.remove("cards.zip")
+    
     camera = scene.addCamera(3, 0,0,-10)
     scene.decals(1,camera)
     Light = scene.Light(10,0,100,0,"111111")
@@ -72,6 +73,11 @@ if initloader :
 
     #frogStanding= image.load_texture(base+"frogStanding.png")
 
+
+    #testing only
+#initloader=1
+#irr.files("../media/topdownRacing.zip")
+#loaderResult="topdownRacing.pys"
 
 
 #input.gamepad(0,"gpinit",1)
@@ -112,7 +118,7 @@ else:
    mbtn=0
 
 for i in range(len(zipFiles)):
-    scene.drawtext(zipFiles[i],font, 32,46+i*47,128,160+i*47,255,255,244,255)
+    scene.drawtext(-1,zipFiles[i],font, 32,46+i*47,128,160+i*47,255,255,244,255)
     if mbtn:
     #  print(xcoord)
     #  print(46*i-47)
@@ -124,13 +130,14 @@ for i in range(len(zipFiles)):
    #image.set_texture(buttons[currentButton],colors[1])
    #else:
    #image.set_texture(buttons[i],colors[0])
-    scene.drawtext(str(currentButton), font, 0,0,128,128,255,55,44,255)
+    scene.drawtext(-1,str(currentButton), font, 0,0,128,128,255,55,44,255)
 
 if input.getKey('KEY_SPACE'):
+    #irr.files("../media/"+zipFiles[currentButton])
     loaderResult=zipFiles[currentButton]
     initloader=1
-    # irr.files("../media/cards.zip")
 
+    
 if input.getKey('KEY_ESCAPE') :
  irr.exit()
 
