@@ -125,8 +125,9 @@ if initloader :
     pysList.remove("keys.pys")
     pysList.remove("net.pys")
     pysList.remove("functions-list.pys")
+    pysList.remove("archiveLoader.pys")
     #pysList.remove("archiveLoader.pys")
-
+    
     camera = scene.addCamera(3, 0,0,-10)
     scene.decals(1,camera)
     Light = scene.Light(10,0,100,0,"111111")
