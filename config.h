@@ -8,7 +8,7 @@
     //#define WII
     //#define IRRc
 //PathFinding
-    #define RECAST
+
     #define MINAV
     #define OPENSTEER
         #ifdef OPENSTEER
@@ -131,6 +131,8 @@
             #define test223 // mohaaloader linux only because of byteswap
         #endif
         #endif
+
+        #define RECAST
         //#define OIS2
         //#define OIS2_LINUX_JOY_DEBUG
         //#define PYTHON_MINIMALTEST

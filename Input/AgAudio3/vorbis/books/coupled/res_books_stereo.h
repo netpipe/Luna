@@ -15,7 +15,7 @@
 
  ********************************************************************/
 
-#include "codebook.h"
+#include "../../codebook.h"
 static const long _vq_quantlist__16c0_s_p1_0[] = {
         1,
         0,
@@ -437,7 +437,7 @@ static const long _vq_lengthlist__16c0_s_p1_0[] = {
 };
 
 static const float _vq_quantthresh__16c0_s_p1_0[] = {
-        -0.5, 0.5, 
+        -0.5, 0.5,
 };
 
 static const long _vq_quantmap__16c0_s_p1_0[] = {
@@ -514,7 +514,7 @@ static const long _vq_lengthlist__16c0_s_p3_0[] = {
 };
 
 static const float _vq_quantthresh__16c0_s_p3_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__16c0_s_p3_0[] = {
@@ -561,7 +561,7 @@ static const long _vq_lengthlist__16c0_s_p4_0[] = {
 };
 
 static const float _vq_quantthresh__16c0_s_p4_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__16c0_s_p4_0[] = {
@@ -609,7 +609,7 @@ static const long _vq_lengthlist__16c0_s_p5_0[] = {
 };
 
 static const float _vq_quantthresh__16c0_s_p5_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__16c0_s_p5_0[] = {
@@ -678,8 +678,8 @@ static const long _vq_lengthlist__16c0_s_p6_0[] = {
 };
 
 static const float _vq_quantthresh__16c0_s_p6_0[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__16c0_s_p6_0[] = {
@@ -722,7 +722,7 @@ static const long _vq_lengthlist__16c0_s_p7_0[] = {
 };
 
 static const float _vq_quantthresh__16c0_s_p7_0[] = {
-        -5.5, 5.5, 
+        -5.5, 5.5,
 };
 
 static const long _vq_quantmap__16c0_s_p7_0[] = {
@@ -773,8 +773,8 @@ static const long _vq_lengthlist__16c0_s_p7_1[] = {
 };
 
 static const float _vq_quantthresh__16c0_s_p7_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__16c0_s_p7_1[] = {
@@ -831,8 +831,8 @@ static const long _vq_lengthlist__16c0_s_p8_0[] = {
 };
 
 static const float _vq_quantthresh__16c0_s_p8_0[] = {
-        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5, 
-        12.5, 17.5, 22.5, 27.5, 
+        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5,
+        12.5, 17.5, 22.5, 27.5,
 };
 
 static const long _vq_quantmap__16c0_s_p8_0[] = {
@@ -872,7 +872,7 @@ static const long _vq_lengthlist__16c0_s_p8_1[] = {
 };
 
 static const float _vq_quantthresh__16c0_s_p8_1[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__16c0_s_p8_1[] = {
@@ -913,7 +913,7 @@ static const long _vq_lengthlist__16c0_s_p9_0[] = {
 };
 
 static const float _vq_quantthresh__16c0_s_p9_0[] = {
-        -157.5, 157.5, 
+        -157.5, 157.5,
 };
 
 static const long _vq_quantmap__16c0_s_p9_0[] = {
@@ -975,8 +975,8 @@ static const long _vq_lengthlist__16c0_s_p9_1[] = {
 };
 
 static const float _vq_quantthresh__16c0_s_p9_1[] = {
-        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5, 
-        31.5, 52.5, 73.5, 94.5, 115.5, 136.5, 
+        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5,
+        31.5, 52.5, 73.5, 94.5, 115.5, 136.5,
 };
 
 static const long _vq_quantmap__16c0_s_p9_1[] = {
@@ -1058,9 +1058,9 @@ static const long _vq_lengthlist__16c0_s_p9_2[] = {
 };
 
 static const float _vq_quantthresh__16c0_s_p9_2[] = {
-        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, 
-        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 
-        6.5, 7.5, 8.5, 9.5, 
+        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5,
+        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5,
+        6.5, 7.5, 8.5, 9.5,
 };
 
 static const long _vq_quantmap__16c0_s_p9_2[] = {
@@ -1550,7 +1550,7 @@ static const long _vq_lengthlist__16c1_s_p1_0[] = {
 };
 
 static const float _vq_quantthresh__16c1_s_p1_0[] = {
-        -0.5, 0.5, 
+        -0.5, 0.5,
 };
 
 static const long _vq_quantmap__16c1_s_p1_0[] = {
@@ -1627,7 +1627,7 @@ static const long _vq_lengthlist__16c1_s_p3_0[] = {
 };
 
 static const float _vq_quantthresh__16c1_s_p3_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__16c1_s_p3_0[] = {
@@ -1674,7 +1674,7 @@ static const long _vq_lengthlist__16c1_s_p4_0[] = {
 };
 
 static const float _vq_quantthresh__16c1_s_p4_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__16c1_s_p4_0[] = {
@@ -1722,7 +1722,7 @@ static const long _vq_lengthlist__16c1_s_p5_0[] = {
 };
 
 static const float _vq_quantthresh__16c1_s_p5_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__16c1_s_p5_0[] = {
@@ -1791,8 +1791,8 @@ static const long _vq_lengthlist__16c1_s_p6_0[] = {
 };
 
 static const float _vq_quantthresh__16c1_s_p6_0[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__16c1_s_p6_0[] = {
@@ -1835,7 +1835,7 @@ static const long _vq_lengthlist__16c1_s_p7_0[] = {
 };
 
 static const float _vq_quantthresh__16c1_s_p7_0[] = {
-        -5.5, 5.5, 
+        -5.5, 5.5,
 };
 
 static const long _vq_quantmap__16c1_s_p7_0[] = {
@@ -1886,8 +1886,8 @@ static const long _vq_lengthlist__16c1_s_p7_1[] = {
 };
 
 static const float _vq_quantthresh__16c1_s_p7_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__16c1_s_p7_1[] = {
@@ -1944,8 +1944,8 @@ static const long _vq_lengthlist__16c1_s_p8_0[] = {
 };
 
 static const float _vq_quantthresh__16c1_s_p8_0[] = {
-        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5, 
-        12.5, 17.5, 22.5, 27.5, 
+        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5,
+        12.5, 17.5, 22.5, 27.5,
 };
 
 static const long _vq_quantmap__16c1_s_p8_0[] = {
@@ -1985,7 +1985,7 @@ static const long _vq_lengthlist__16c1_s_p8_1[] = {
 };
 
 static const float _vq_quantthresh__16c1_s_p8_1[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__16c1_s_p8_1[] = {
@@ -2041,8 +2041,8 @@ static const long _vq_lengthlist__16c1_s_p9_0[] = {
 };
 
 static const float _vq_quantthresh__16c1_s_p9_0[] = {
-        -1732.5, -1417.5, -1102.5, -787.5, -472.5, -157.5, 157.5, 472.5, 
-        787.5, 1102.5, 1417.5, 1732.5, 
+        -1732.5, -1417.5, -1102.5, -787.5, -472.5, -157.5, 157.5, 472.5,
+        787.5, 1102.5, 1417.5, 1732.5,
 };
 
 static const long _vq_quantmap__16c1_s_p9_0[] = {
@@ -2105,8 +2105,8 @@ static const long _vq_lengthlist__16c1_s_p9_1[] = {
 };
 
 static const float _vq_quantthresh__16c1_s_p9_1[] = {
-        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5, 
-        31.5, 52.5, 73.5, 94.5, 115.5, 136.5, 
+        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5,
+        31.5, 52.5, 73.5, 94.5, 115.5, 136.5,
 };
 
 static const long _vq_quantmap__16c1_s_p9_1[] = {
@@ -2188,9 +2188,9 @@ static const long _vq_lengthlist__16c1_s_p9_2[] = {
 };
 
 static const float _vq_quantthresh__16c1_s_p9_2[] = {
-        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, 
-        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 
-        6.5, 7.5, 8.5, 9.5, 
+        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5,
+        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5,
+        6.5, 7.5, 8.5, 9.5,
 };
 
 static const long _vq_quantmap__16c1_s_p9_2[] = {
@@ -2275,7 +2275,7 @@ static const long _vq_lengthlist__16c2_s_p1_0[] = {
 };
 
 static const float _vq_quantthresh__16c2_s_p1_0[] = {
-        -0.5, 0.5, 
+        -0.5, 0.5,
 };
 
 static const long _vq_quantmap__16c2_s_p1_0[] = {
@@ -2352,7 +2352,7 @@ static const long _vq_lengthlist__16c2_s_p2_0[] = {
 };
 
 static const float _vq_quantthresh__16c2_s_p2_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__16c2_s_p2_0[] = {
@@ -2399,7 +2399,7 @@ static const long _vq_lengthlist__16c2_s_p3_0[] = {
 };
 
 static const float _vq_quantthresh__16c2_s_p3_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__16c2_s_p3_0[] = {
@@ -2468,8 +2468,8 @@ static const long _vq_lengthlist__16c2_s_p4_0[] = {
 };
 
 static const float _vq_quantthresh__16c2_s_p4_0[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__16c2_s_p4_0[] = {
@@ -2512,7 +2512,7 @@ static const long _vq_lengthlist__16c2_s_p5_0[] = {
 };
 
 static const float _vq_quantthresh__16c2_s_p5_0[] = {
-        -5.5, 5.5, 
+        -5.5, 5.5,
 };
 
 static const long _vq_quantmap__16c2_s_p5_0[] = {
@@ -2563,8 +2563,8 @@ static const long _vq_lengthlist__16c2_s_p5_1[] = {
 };
 
 static const float _vq_quantthresh__16c2_s_p5_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__16c2_s_p5_1[] = {
@@ -2621,8 +2621,8 @@ static const long _vq_lengthlist__16c2_s_p6_0[] = {
 };
 
 static const float _vq_quantthresh__16c2_s_p6_0[] = {
-        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5, 
-        12.5, 17.5, 22.5, 27.5, 
+        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5,
+        12.5, 17.5, 22.5, 27.5,
 };
 
 static const long _vq_quantmap__16c2_s_p6_0[] = {
@@ -2662,7 +2662,7 @@ static const long _vq_lengthlist__16c2_s_p6_1[] = {
 };
 
 static const float _vq_quantthresh__16c2_s_p6_1[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__16c2_s_p6_1[] = {
@@ -2718,8 +2718,8 @@ static const long _vq_lengthlist__16c2_s_p7_0[] = {
 };
 
 static const float _vq_quantthresh__16c2_s_p7_0[] = {
-        -60.5, -49.5, -38.5, -27.5, -16.5, -5.5, 5.5, 16.5, 
-        27.5, 38.5, 49.5, 60.5, 
+        -60.5, -49.5, -38.5, -27.5, -16.5, -5.5, 5.5, 16.5,
+        27.5, 38.5, 49.5, 60.5,
 };
 
 static const long _vq_quantmap__16c2_s_p7_0[] = {
@@ -2771,8 +2771,8 @@ static const long _vq_lengthlist__16c2_s_p7_1[] = {
 };
 
 static const float _vq_quantthresh__16c2_s_p7_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__16c2_s_p7_1[] = {
@@ -2835,8 +2835,8 @@ static const long _vq_lengthlist__16c2_s_p8_0[] = {
 };
 
 static const float _vq_quantthresh__16c2_s_p8_0[] = {
-        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5, 
-        31.5, 52.5, 73.5, 94.5, 115.5, 136.5, 
+        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5,
+        31.5, 52.5, 73.5, 94.5, 115.5, 136.5,
 };
 
 static const long _vq_quantmap__16c2_s_p8_0[] = {
@@ -2918,9 +2918,9 @@ static const long _vq_lengthlist__16c2_s_p8_1[] = {
 };
 
 static const float _vq_quantthresh__16c2_s_p8_1[] = {
-        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, 
-        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 
-        6.5, 7.5, 8.5, 9.5, 
+        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5,
+        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5,
+        6.5, 7.5, 8.5, 9.5,
 };
 
 static const long _vq_quantmap__16c2_s_p8_1[] = {
@@ -2978,8 +2978,8 @@ static const long _vq_lengthlist__16c2_s_p9_0[] = {
 };
 
 static const float _vq_quantthresh__16c2_s_p9_0[] = {
-        -5120.5, -4189.5, -3258.5, -2327.5, -1396.5, -465.5, 465.5, 1396.5, 
-        2327.5, 3258.5, 4189.5, 5120.5, 
+        -5120.5, -4189.5, -3258.5, -2327.5, -1396.5, -465.5, 465.5, 1396.5,
+        2327.5, 3258.5, 4189.5, 5120.5,
 };
 
 static const long _vq_quantmap__16c2_s_p9_0[] = {
@@ -3048,8 +3048,8 @@ static const long _vq_lengthlist__16c2_s_p9_1[] = {
 };
 
 static const float _vq_quantthresh__16c2_s_p9_1[] = {
-        -367.5, -318.5, -269.5, -220.5, -171.5, -122.5, -73.5, -24.5, 
-        24.5, 73.5, 122.5, 171.5, 220.5, 269.5, 318.5, 367.5, 
+        -367.5, -318.5, -269.5, -220.5, -171.5, -122.5, -73.5, -24.5,
+        24.5, 73.5, 122.5, 171.5, 220.5, 269.5, 318.5, 367.5,
 };
 
 static const long _vq_quantmap__16c2_s_p9_1[] = {
@@ -3112,10 +3112,10 @@ static const long _vq_lengthlist__16c2_s_p9_2[] = {
 };
 
 static const float _vq_quantthresh__16c2_s_p9_2[] = {
-        -12.5, -11.5, -10.5, -9.5, -8.5, -7.5, -6.5, -5.5, 
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 
-        11.5, 12.5, 
+        -12.5, -11.5, -10.5, -9.5, -8.5, -7.5, -6.5, -5.5,
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5,
+        11.5, 12.5,
 };
 
 static const long _vq_quantmap__16c2_s_p9_2[] = {
@@ -3585,7 +3585,7 @@ static const long _vq_lengthlist__8c0_s_p1_0[] = {
 };
 
 static const float _vq_quantthresh__8c0_s_p1_0[] = {
-        -0.5, 0.5, 
+        -0.5, 0.5,
 };
 
 static const long _vq_quantmap__8c0_s_p1_0[] = {
@@ -3662,7 +3662,7 @@ static const long _vq_lengthlist__8c0_s_p3_0[] = {
 };
 
 static const float _vq_quantthresh__8c0_s_p3_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__8c0_s_p3_0[] = {
@@ -3709,7 +3709,7 @@ static const long _vq_lengthlist__8c0_s_p4_0[] = {
 };
 
 static const float _vq_quantthresh__8c0_s_p4_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__8c0_s_p4_0[] = {
@@ -3757,7 +3757,7 @@ static const long _vq_lengthlist__8c0_s_p5_0[] = {
 };
 
 static const float _vq_quantthresh__8c0_s_p5_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__8c0_s_p5_0[] = {
@@ -3826,8 +3826,8 @@ static const long _vq_lengthlist__8c0_s_p6_0[] = {
 };
 
 static const float _vq_quantthresh__8c0_s_p6_0[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__8c0_s_p6_0[] = {
@@ -3870,7 +3870,7 @@ static const long _vq_lengthlist__8c0_s_p7_0[] = {
 };
 
 static const float _vq_quantthresh__8c0_s_p7_0[] = {
-        -5.5, 5.5, 
+        -5.5, 5.5,
 };
 
 static const long _vq_quantmap__8c0_s_p7_0[] = {
@@ -3921,8 +3921,8 @@ static const long _vq_lengthlist__8c0_s_p7_1[] = {
 };
 
 static const float _vq_quantthresh__8c0_s_p7_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__8c0_s_p7_1[] = {
@@ -3979,8 +3979,8 @@ static const long _vq_lengthlist__8c0_s_p8_0[] = {
 };
 
 static const float _vq_quantthresh__8c0_s_p8_0[] = {
-        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5, 
-        12.5, 17.5, 22.5, 27.5, 
+        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5,
+        12.5, 17.5, 22.5, 27.5,
 };
 
 static const long _vq_quantmap__8c0_s_p8_0[] = {
@@ -4020,7 +4020,7 @@ static const long _vq_lengthlist__8c0_s_p8_1[] = {
 };
 
 static const float _vq_quantthresh__8c0_s_p8_1[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__8c0_s_p8_1[] = {
@@ -4061,7 +4061,7 @@ static const long _vq_lengthlist__8c0_s_p9_0[] = {
 };
 
 static const float _vq_quantthresh__8c0_s_p9_0[] = {
-        -157.5, 157.5, 
+        -157.5, 157.5,
 };
 
 static const long _vq_quantmap__8c0_s_p9_0[] = {
@@ -4123,8 +4123,8 @@ static const long _vq_lengthlist__8c0_s_p9_1[] = {
 };
 
 static const float _vq_quantthresh__8c0_s_p9_1[] = {
-        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5, 
-        31.5, 52.5, 73.5, 94.5, 115.5, 136.5, 
+        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5,
+        31.5, 52.5, 73.5, 94.5, 115.5, 136.5,
 };
 
 static const long _vq_quantmap__8c0_s_p9_1[] = {
@@ -4206,9 +4206,9 @@ static const long _vq_lengthlist__8c0_s_p9_2[] = {
 };
 
 static const float _vq_quantthresh__8c0_s_p9_2[] = {
-        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, 
-        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 
-        6.5, 7.5, 8.5, 9.5, 
+        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5,
+        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5,
+        6.5, 7.5, 8.5, 9.5,
 };
 
 static const long _vq_quantmap__8c0_s_p9_2[] = {
@@ -4677,7 +4677,7 @@ static const long _vq_lengthlist__8c1_s_p1_0[] = {
 };
 
 static const float _vq_quantthresh__8c1_s_p1_0[] = {
-        -0.5, 0.5, 
+        -0.5, 0.5,
 };
 
 static const long _vq_quantmap__8c1_s_p1_0[] = {
@@ -4754,7 +4754,7 @@ static const long _vq_lengthlist__8c1_s_p3_0[] = {
 };
 
 static const float _vq_quantthresh__8c1_s_p3_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__8c1_s_p3_0[] = {
@@ -4801,7 +4801,7 @@ static const long _vq_lengthlist__8c1_s_p4_0[] = {
 };
 
 static const float _vq_quantthresh__8c1_s_p4_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__8c1_s_p4_0[] = {
@@ -4849,7 +4849,7 @@ static const long _vq_lengthlist__8c1_s_p5_0[] = {
 };
 
 static const float _vq_quantthresh__8c1_s_p5_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__8c1_s_p5_0[] = {
@@ -4918,8 +4918,8 @@ static const long _vq_lengthlist__8c1_s_p6_0[] = {
 };
 
 static const float _vq_quantthresh__8c1_s_p6_0[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__8c1_s_p6_0[] = {
@@ -4962,7 +4962,7 @@ static const long _vq_lengthlist__8c1_s_p7_0[] = {
 };
 
 static const float _vq_quantthresh__8c1_s_p7_0[] = {
-        -5.5, 5.5, 
+        -5.5, 5.5,
 };
 
 static const long _vq_quantmap__8c1_s_p7_0[] = {
@@ -5013,8 +5013,8 @@ static const long _vq_lengthlist__8c1_s_p7_1[] = {
 };
 
 static const float _vq_quantthresh__8c1_s_p7_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__8c1_s_p7_1[] = {
@@ -5071,8 +5071,8 @@ static const long _vq_lengthlist__8c1_s_p8_0[] = {
 };
 
 static const float _vq_quantthresh__8c1_s_p8_0[] = {
-        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5, 
-        12.5, 17.5, 22.5, 27.5, 
+        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5,
+        12.5, 17.5, 22.5, 27.5,
 };
 
 static const long _vq_quantmap__8c1_s_p8_0[] = {
@@ -5112,7 +5112,7 @@ static const long _vq_lengthlist__8c1_s_p8_1[] = {
 };
 
 static const float _vq_quantthresh__8c1_s_p8_1[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__8c1_s_p8_1[] = {
@@ -5168,8 +5168,8 @@ static const long _vq_lengthlist__8c1_s_p9_0[] = {
 };
 
 static const float _vq_quantthresh__8c1_s_p9_0[] = {
-        -1732.5, -1417.5, -1102.5, -787.5, -472.5, -157.5, 157.5, 472.5, 
-        787.5, 1102.5, 1417.5, 1732.5, 
+        -1732.5, -1417.5, -1102.5, -787.5, -472.5, -157.5, 157.5, 472.5,
+        787.5, 1102.5, 1417.5, 1732.5,
 };
 
 static const long _vq_quantmap__8c1_s_p9_0[] = {
@@ -5232,8 +5232,8 @@ static const long _vq_lengthlist__8c1_s_p9_1[] = {
 };
 
 static const float _vq_quantthresh__8c1_s_p9_1[] = {
-        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5, 
-        31.5, 52.5, 73.5, 94.5, 115.5, 136.5, 
+        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5,
+        31.5, 52.5, 73.5, 94.5, 115.5, 136.5,
 };
 
 static const long _vq_quantmap__8c1_s_p9_1[] = {
@@ -5315,9 +5315,9 @@ static const long _vq_lengthlist__8c1_s_p9_2[] = {
 };
 
 static const float _vq_quantthresh__8c1_s_p9_2[] = {
-        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, 
-        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 
-        6.5, 7.5, 8.5, 9.5, 
+        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5,
+        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5,
+        6.5, 7.5, 8.5, 9.5,
 };
 
 static const long _vq_quantmap__8c1_s_p9_2[] = {
@@ -5807,7 +5807,7 @@ static const long _vq_lengthlist__44c2_s_p1_0[] = {
 };
 
 static const float _vq_quantthresh__44c2_s_p1_0[] = {
-        -0.5, 0.5, 
+        -0.5, 0.5,
 };
 
 static const long _vq_quantmap__44c2_s_p1_0[] = {
@@ -5884,7 +5884,7 @@ static const long _vq_lengthlist__44c2_s_p2_0[] = {
 };
 
 static const float _vq_quantthresh__44c2_s_p2_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c2_s_p2_0[] = {
@@ -5961,7 +5961,7 @@ static const long _vq_lengthlist__44c2_s_p3_0[] = {
 };
 
 static const float _vq_quantthresh__44c2_s_p3_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c2_s_p3_0[] = {
@@ -6008,7 +6008,7 @@ static const long _vq_lengthlist__44c2_s_p4_0[] = {
 };
 
 static const float _vq_quantthresh__44c2_s_p4_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c2_s_p4_0[] = {
@@ -6056,7 +6056,7 @@ static const long _vq_lengthlist__44c2_s_p5_0[] = {
 };
 
 static const float _vq_quantthresh__44c2_s_p5_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c2_s_p5_0[] = {
@@ -6125,8 +6125,8 @@ static const long _vq_lengthlist__44c2_s_p6_0[] = {
 };
 
 static const float _vq_quantthresh__44c2_s_p6_0[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44c2_s_p6_0[] = {
@@ -6169,7 +6169,7 @@ static const long _vq_lengthlist__44c2_s_p7_0[] = {
 };
 
 static const float _vq_quantthresh__44c2_s_p7_0[] = {
-        -5.5, 5.5, 
+        -5.5, 5.5,
 };
 
 static const long _vq_quantmap__44c2_s_p7_0[] = {
@@ -6220,8 +6220,8 @@ static const long _vq_lengthlist__44c2_s_p7_1[] = {
 };
 
 static const float _vq_quantthresh__44c2_s_p7_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__44c2_s_p7_1[] = {
@@ -6278,8 +6278,8 @@ static const long _vq_lengthlist__44c2_s_p8_0[] = {
 };
 
 static const float _vq_quantthresh__44c2_s_p8_0[] = {
-        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5, 
-        12.5, 17.5, 22.5, 27.5, 
+        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5,
+        12.5, 17.5, 22.5, 27.5,
 };
 
 static const long _vq_quantmap__44c2_s_p8_0[] = {
@@ -6319,7 +6319,7 @@ static const long _vq_lengthlist__44c2_s_p8_1[] = {
 };
 
 static const float _vq_quantthresh__44c2_s_p8_1[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c2_s_p8_1[] = {
@@ -6375,8 +6375,8 @@ static const long _vq_lengthlist__44c2_s_p9_0[] = {
 };
 
 static const float _vq_quantthresh__44c2_s_p9_0[] = {
-        -1215.5, -994.5, -773.5, -552.5, -331.5, -110.5, 110.5, 331.5, 
-        552.5, 773.5, 994.5, 1215.5, 
+        -1215.5, -994.5, -773.5, -552.5, -331.5, -110.5, 110.5, 331.5,
+        552.5, 773.5, 994.5, 1215.5,
 };
 
 static const long _vq_quantmap__44c2_s_p9_0[] = {
@@ -6433,8 +6433,8 @@ static const long _vq_lengthlist__44c2_s_p9_1[] = {
 };
 
 static const float _vq_quantthresh__44c2_s_p9_1[] = {
-        -93.5, -76.5, -59.5, -42.5, -25.5, -8.5, 8.5, 25.5, 
-        42.5, 59.5, 76.5, 93.5, 
+        -93.5, -76.5, -59.5, -42.5, -25.5, -8.5, 8.5, 25.5,
+        42.5, 59.5, 76.5, 93.5,
 };
 
 static const long _vq_quantmap__44c2_s_p9_1[] = {
@@ -6503,8 +6503,8 @@ static const long _vq_lengthlist__44c2_s_p9_2[] = {
 };
 
 static const float _vq_quantthresh__44c2_s_p9_2[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44c2_s_p9_2[] = {
@@ -6994,7 +6994,7 @@ static const long _vq_lengthlist__44c3_s_p1_0[] = {
 };
 
 static const float _vq_quantthresh__44c3_s_p1_0[] = {
-        -0.5, 0.5, 
+        -0.5, 0.5,
 };
 
 static const long _vq_quantmap__44c3_s_p1_0[] = {
@@ -7071,7 +7071,7 @@ static const long _vq_lengthlist__44c3_s_p2_0[] = {
 };
 
 static const float _vq_quantthresh__44c3_s_p2_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c3_s_p2_0[] = {
@@ -7148,7 +7148,7 @@ static const long _vq_lengthlist__44c3_s_p3_0[] = {
 };
 
 static const float _vq_quantthresh__44c3_s_p3_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c3_s_p3_0[] = {
@@ -7195,7 +7195,7 @@ static const long _vq_lengthlist__44c3_s_p4_0[] = {
 };
 
 static const float _vq_quantthresh__44c3_s_p4_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c3_s_p4_0[] = {
@@ -7243,7 +7243,7 @@ static const long _vq_lengthlist__44c3_s_p5_0[] = {
 };
 
 static const float _vq_quantthresh__44c3_s_p5_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c3_s_p5_0[] = {
@@ -7312,8 +7312,8 @@ static const long _vq_lengthlist__44c3_s_p6_0[] = {
 };
 
 static const float _vq_quantthresh__44c3_s_p6_0[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44c3_s_p6_0[] = {
@@ -7356,7 +7356,7 @@ static const long _vq_lengthlist__44c3_s_p7_0[] = {
 };
 
 static const float _vq_quantthresh__44c3_s_p7_0[] = {
-        -5.5, 5.5, 
+        -5.5, 5.5,
 };
 
 static const long _vq_quantmap__44c3_s_p7_0[] = {
@@ -7407,8 +7407,8 @@ static const long _vq_lengthlist__44c3_s_p7_1[] = {
 };
 
 static const float _vq_quantthresh__44c3_s_p7_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__44c3_s_p7_1[] = {
@@ -7465,8 +7465,8 @@ static const long _vq_lengthlist__44c3_s_p8_0[] = {
 };
 
 static const float _vq_quantthresh__44c3_s_p8_0[] = {
-        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5, 
-        12.5, 17.5, 22.5, 27.5, 
+        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5,
+        12.5, 17.5, 22.5, 27.5,
 };
 
 static const long _vq_quantmap__44c3_s_p8_0[] = {
@@ -7506,7 +7506,7 @@ static const long _vq_lengthlist__44c3_s_p8_1[] = {
 };
 
 static const float _vq_quantthresh__44c3_s_p8_1[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c3_s_p8_1[] = {
@@ -7562,8 +7562,8 @@ static const long _vq_lengthlist__44c3_s_p9_0[] = {
 };
 
 static const float _vq_quantthresh__44c3_s_p9_0[] = {
-        -1402.5, -1147.5, -892.5, -637.5, -382.5, -127.5, 127.5, 382.5, 
-        637.5, 892.5, 1147.5, 1402.5, 
+        -1402.5, -1147.5, -892.5, -637.5, -382.5, -127.5, 127.5, 382.5,
+        637.5, 892.5, 1147.5, 1402.5,
 };
 
 static const long _vq_quantmap__44c3_s_p9_0[] = {
@@ -7626,8 +7626,8 @@ static const long _vq_lengthlist__44c3_s_p9_1[] = {
 };
 
 static const float _vq_quantthresh__44c3_s_p9_1[] = {
-        -110.5, -93.5, -76.5, -59.5, -42.5, -25.5, -8.5, 8.5, 
-        25.5, 42.5, 59.5, 76.5, 93.5, 110.5, 
+        -110.5, -93.5, -76.5, -59.5, -42.5, -25.5, -8.5, 8.5,
+        25.5, 42.5, 59.5, 76.5, 93.5, 110.5,
 };
 
 static const long _vq_quantmap__44c3_s_p9_1[] = {
@@ -7696,8 +7696,8 @@ static const long _vq_lengthlist__44c3_s_p9_2[] = {
 };
 
 static const float _vq_quantthresh__44c3_s_p9_2[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44c3_s_p9_2[] = {
@@ -8187,7 +8187,7 @@ static const long _vq_lengthlist__44c4_s_p1_0[] = {
 };
 
 static const float _vq_quantthresh__44c4_s_p1_0[] = {
-        -0.5, 0.5, 
+        -0.5, 0.5,
 };
 
 static const long _vq_quantmap__44c4_s_p1_0[] = {
@@ -8264,7 +8264,7 @@ static const long _vq_lengthlist__44c4_s_p2_0[] = {
 };
 
 static const float _vq_quantthresh__44c4_s_p2_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c4_s_p2_0[] = {
@@ -8341,7 +8341,7 @@ static const long _vq_lengthlist__44c4_s_p3_0[] = {
 };
 
 static const float _vq_quantthresh__44c4_s_p3_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c4_s_p3_0[] = {
@@ -8388,7 +8388,7 @@ static const long _vq_lengthlist__44c4_s_p4_0[] = {
 };
 
 static const float _vq_quantthresh__44c4_s_p4_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c4_s_p4_0[] = {
@@ -8436,7 +8436,7 @@ static const long _vq_lengthlist__44c4_s_p5_0[] = {
 };
 
 static const float _vq_quantthresh__44c4_s_p5_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c4_s_p5_0[] = {
@@ -8505,8 +8505,8 @@ static const long _vq_lengthlist__44c4_s_p6_0[] = {
 };
 
 static const float _vq_quantthresh__44c4_s_p6_0[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44c4_s_p6_0[] = {
@@ -8549,7 +8549,7 @@ static const long _vq_lengthlist__44c4_s_p7_0[] = {
 };
 
 static const float _vq_quantthresh__44c4_s_p7_0[] = {
-        -5.5, 5.5, 
+        -5.5, 5.5,
 };
 
 static const long _vq_quantmap__44c4_s_p7_0[] = {
@@ -8600,8 +8600,8 @@ static const long _vq_lengthlist__44c4_s_p7_1[] = {
 };
 
 static const float _vq_quantthresh__44c4_s_p7_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__44c4_s_p7_1[] = {
@@ -8658,8 +8658,8 @@ static const long _vq_lengthlist__44c4_s_p8_0[] = {
 };
 
 static const float _vq_quantthresh__44c4_s_p8_0[] = {
-        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5, 
-        12.5, 17.5, 22.5, 27.5, 
+        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5,
+        12.5, 17.5, 22.5, 27.5,
 };
 
 static const long _vq_quantmap__44c4_s_p8_0[] = {
@@ -8699,7 +8699,7 @@ static const long _vq_lengthlist__44c4_s_p8_1[] = {
 };
 
 static const float _vq_quantthresh__44c4_s_p8_1[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c4_s_p8_1[] = {
@@ -8755,8 +8755,8 @@ static const long _vq_lengthlist__44c4_s_p9_0[] = {
 };
 
 static const float _vq_quantthresh__44c4_s_p9_0[] = {
-        -1732.5, -1417.5, -1102.5, -787.5, -472.5, -157.5, 157.5, 472.5, 
-        787.5, 1102.5, 1417.5, 1732.5, 
+        -1732.5, -1417.5, -1102.5, -787.5, -472.5, -157.5, 157.5, 472.5,
+        787.5, 1102.5, 1417.5, 1732.5,
 };
 
 static const long _vq_quantmap__44c4_s_p9_0[] = {
@@ -8819,8 +8819,8 @@ static const long _vq_lengthlist__44c4_s_p9_1[] = {
 };
 
 static const float _vq_quantthresh__44c4_s_p9_1[] = {
-        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5, 
-        31.5, 52.5, 73.5, 94.5, 115.5, 136.5, 
+        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5,
+        31.5, 52.5, 73.5, 94.5, 115.5, 136.5,
 };
 
 static const long _vq_quantmap__44c4_s_p9_1[] = {
@@ -8902,9 +8902,9 @@ static const long _vq_lengthlist__44c4_s_p9_2[] = {
 };
 
 static const float _vq_quantthresh__44c4_s_p9_2[] = {
-        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, 
-        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 
-        6.5, 7.5, 8.5, 9.5, 
+        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5,
+        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5,
+        6.5, 7.5, 8.5, 9.5,
 };
 
 static const long _vq_quantmap__44c4_s_p9_2[] = {
@@ -9394,7 +9394,7 @@ static const long _vq_lengthlist__44c5_s_p1_0[] = {
 };
 
 static const float _vq_quantthresh__44c5_s_p1_0[] = {
-        -0.5, 0.5, 
+        -0.5, 0.5,
 };
 
 static const long _vq_quantmap__44c5_s_p1_0[] = {
@@ -9471,7 +9471,7 @@ static const long _vq_lengthlist__44c5_s_p2_0[] = {
 };
 
 static const float _vq_quantthresh__44c5_s_p2_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c5_s_p2_0[] = {
@@ -9548,7 +9548,7 @@ static const long _vq_lengthlist__44c5_s_p3_0[] = {
 };
 
 static const float _vq_quantthresh__44c5_s_p3_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c5_s_p3_0[] = {
@@ -9595,7 +9595,7 @@ static const long _vq_lengthlist__44c5_s_p4_0[] = {
 };
 
 static const float _vq_quantthresh__44c5_s_p4_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c5_s_p4_0[] = {
@@ -9643,7 +9643,7 @@ static const long _vq_lengthlist__44c5_s_p5_0[] = {
 };
 
 static const float _vq_quantthresh__44c5_s_p5_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c5_s_p5_0[] = {
@@ -9712,8 +9712,8 @@ static const long _vq_lengthlist__44c5_s_p6_0[] = {
 };
 
 static const float _vq_quantthresh__44c5_s_p6_0[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44c5_s_p6_0[] = {
@@ -9756,7 +9756,7 @@ static const long _vq_lengthlist__44c5_s_p7_0[] = {
 };
 
 static const float _vq_quantthresh__44c5_s_p7_0[] = {
-        -5.5, 5.5, 
+        -5.5, 5.5,
 };
 
 static const long _vq_quantmap__44c5_s_p7_0[] = {
@@ -9807,8 +9807,8 @@ static const long _vq_lengthlist__44c5_s_p7_1[] = {
 };
 
 static const float _vq_quantthresh__44c5_s_p7_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__44c5_s_p7_1[] = {
@@ -9865,8 +9865,8 @@ static const long _vq_lengthlist__44c5_s_p8_0[] = {
 };
 
 static const float _vq_quantthresh__44c5_s_p8_0[] = {
-        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5, 
-        12.5, 17.5, 22.5, 27.5, 
+        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5,
+        12.5, 17.5, 22.5, 27.5,
 };
 
 static const long _vq_quantmap__44c5_s_p8_0[] = {
@@ -9906,7 +9906,7 @@ static const long _vq_lengthlist__44c5_s_p8_1[] = {
 };
 
 static const float _vq_quantthresh__44c5_s_p8_1[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c5_s_p8_1[] = {
@@ -9968,8 +9968,8 @@ static const long _vq_lengthlist__44c5_s_p9_0[] = {
 };
 
 static const float _vq_quantthresh__44c5_s_p9_0[] = {
-        -2320.5, -1963.5, -1606.5, -1249.5, -892.5, -535.5, -178.5, 178.5, 
-        535.5, 892.5, 1249.5, 1606.5, 1963.5, 2320.5, 
+        -2320.5, -1963.5, -1606.5, -1249.5, -892.5, -535.5, -178.5, 178.5,
+        535.5, 892.5, 1249.5, 1606.5, 1963.5, 2320.5,
 };
 
 static const long _vq_quantmap__44c5_s_p9_0[] = {
@@ -10038,8 +10038,8 @@ static const long _vq_lengthlist__44c5_s_p9_1[] = {
 };
 
 static const float _vq_quantthresh__44c5_s_p9_1[] = {
-        -157.5, -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 
-        10.5, 31.5, 52.5, 73.5, 94.5, 115.5, 136.5, 157.5, 
+        -157.5, -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5,
+        10.5, 31.5, 52.5, 73.5, 94.5, 115.5, 136.5, 157.5,
 };
 
 static const long _vq_quantmap__44c5_s_p9_1[] = {
@@ -10122,9 +10122,9 @@ static const long _vq_lengthlist__44c5_s_p9_2[] = {
 };
 
 static const float _vq_quantthresh__44c5_s_p9_2[] = {
-        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, 
-        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 
-        6.5, 7.5, 8.5, 9.5, 
+        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5,
+        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5,
+        6.5, 7.5, 8.5, 9.5,
 };
 
 static const long _vq_quantmap__44c5_s_p9_2[] = {
@@ -10209,7 +10209,7 @@ static const long _vq_lengthlist__44c6_s_p1_0[] = {
 };
 
 static const float _vq_quantthresh__44c6_s_p1_0[] = {
-        -0.5, 0.5, 
+        -0.5, 0.5,
 };
 
 static const long _vq_quantmap__44c6_s_p1_0[] = {
@@ -10286,7 +10286,7 @@ static const long _vq_lengthlist__44c6_s_p2_0[] = {
 };
 
 static const float _vq_quantthresh__44c6_s_p2_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c6_s_p2_0[] = {
@@ -10333,7 +10333,7 @@ static const long _vq_lengthlist__44c6_s_p3_0[] = {
 };
 
 static const float _vq_quantthresh__44c6_s_p3_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c6_s_p3_0[] = {
@@ -10402,8 +10402,8 @@ static const long _vq_lengthlist__44c6_s_p4_0[] = {
 };
 
 static const float _vq_quantthresh__44c6_s_p4_0[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44c6_s_p4_0[] = {
@@ -10446,7 +10446,7 @@ static const long _vq_lengthlist__44c6_s_p5_0[] = {
 };
 
 static const float _vq_quantthresh__44c6_s_p5_0[] = {
-        -5.5, 5.5, 
+        -5.5, 5.5,
 };
 
 static const long _vq_quantmap__44c6_s_p5_0[] = {
@@ -10497,8 +10497,8 @@ static const long _vq_lengthlist__44c6_s_p5_1[] = {
 };
 
 static const float _vq_quantthresh__44c6_s_p5_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__44c6_s_p5_1[] = {
@@ -10555,8 +10555,8 @@ static const long _vq_lengthlist__44c6_s_p6_0[] = {
 };
 
 static const float _vq_quantthresh__44c6_s_p6_0[] = {
-        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5, 
-        12.5, 17.5, 22.5, 27.5, 
+        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5,
+        12.5, 17.5, 22.5, 27.5,
 };
 
 static const long _vq_quantmap__44c6_s_p6_0[] = {
@@ -10596,7 +10596,7 @@ static const long _vq_lengthlist__44c6_s_p6_1[] = {
 };
 
 static const float _vq_quantthresh__44c6_s_p6_1[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c6_s_p6_1[] = {
@@ -10652,8 +10652,8 @@ static const long _vq_lengthlist__44c6_s_p7_0[] = {
 };
 
 static const float _vq_quantthresh__44c6_s_p7_0[] = {
-        -60.5, -49.5, -38.5, -27.5, -16.5, -5.5, 5.5, 16.5, 
-        27.5, 38.5, 49.5, 60.5, 
+        -60.5, -49.5, -38.5, -27.5, -16.5, -5.5, 5.5, 16.5,
+        27.5, 38.5, 49.5, 60.5,
 };
 
 static const long _vq_quantmap__44c6_s_p7_0[] = {
@@ -10705,8 +10705,8 @@ static const long _vq_lengthlist__44c6_s_p7_1[] = {
 };
 
 static const float _vq_quantthresh__44c6_s_p7_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__44c6_s_p7_1[] = {
@@ -10769,8 +10769,8 @@ static const long _vq_lengthlist__44c6_s_p8_0[] = {
 };
 
 static const float _vq_quantthresh__44c6_s_p8_0[] = {
-        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5, 
-        31.5, 52.5, 73.5, 94.5, 115.5, 136.5, 
+        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5,
+        31.5, 52.5, 73.5, 94.5, 115.5, 136.5,
 };
 
 static const long _vq_quantmap__44c6_s_p8_0[] = {
@@ -10852,9 +10852,9 @@ static const long _vq_lengthlist__44c6_s_p8_1[] = {
 };
 
 static const float _vq_quantthresh__44c6_s_p8_1[] = {
-        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, 
-        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 
-        6.5, 7.5, 8.5, 9.5, 
+        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5,
+        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5,
+        6.5, 7.5, 8.5, 9.5,
 };
 
 static const long _vq_quantmap__44c6_s_p8_1[] = {
@@ -10912,8 +10912,8 @@ static const long _vq_lengthlist__44c6_s_p9_0[] = {
 };
 
 static const float _vq_quantthresh__44c6_s_p9_0[] = {
-        -3503.5, -2866.5, -2229.5, -1592.5, -955.5, -318.5, 318.5, 955.5, 
-        1592.5, 2229.5, 2866.5, 3503.5, 
+        -3503.5, -2866.5, -2229.5, -1592.5, -955.5, -318.5, 318.5, 955.5,
+        1592.5, 2229.5, 2866.5, 3503.5,
 };
 
 static const long _vq_quantmap__44c6_s_p9_0[] = {
@@ -10970,8 +10970,8 @@ static const long _vq_lengthlist__44c6_s_p9_1[] = {
 };
 
 static const float _vq_quantthresh__44c6_s_p9_1[] = {
-        -269.5, -220.5, -171.5, -122.5, -73.5, -24.5, 24.5, 73.5, 
-        122.5, 171.5, 220.5, 269.5, 
+        -269.5, -220.5, -171.5, -122.5, -73.5, -24.5, 24.5, 73.5,
+        122.5, 171.5, 220.5, 269.5,
 };
 
 static const long _vq_quantmap__44c6_s_p9_1[] = {
@@ -11057,12 +11057,12 @@ static const long _vq_lengthlist__44c6_s_p9_2[] = {
 };
 
 static const float _vq_quantthresh__44c6_s_p9_2[] = {
-        -23.5, -22.5, -21.5, -20.5, -19.5, -18.5, -17.5, -16.5, 
-        -15.5, -14.5, -13.5, -12.5, -11.5, -10.5, -9.5, -8.5, 
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
-        8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 
-        16.5, 17.5, 18.5, 19.5, 20.5, 21.5, 22.5, 23.5, 
+        -23.5, -22.5, -21.5, -20.5, -19.5, -18.5, -17.5, -16.5,
+        -15.5, -14.5, -13.5, -12.5, -11.5, -10.5, -9.5, -8.5,
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
+        8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5,
+        16.5, 17.5, 18.5, 19.5, 20.5, 21.5, 22.5, 23.5,
 };
 
 static const long _vq_quantmap__44c6_s_p9_2[] = {
@@ -11151,7 +11151,7 @@ static const long _vq_lengthlist__44c7_s_p1_0[] = {
 };
 
 static const float _vq_quantthresh__44c7_s_p1_0[] = {
-        -0.5, 0.5, 
+        -0.5, 0.5,
 };
 
 static const long _vq_quantmap__44c7_s_p1_0[] = {
@@ -11228,7 +11228,7 @@ static const long _vq_lengthlist__44c7_s_p2_0[] = {
 };
 
 static const float _vq_quantthresh__44c7_s_p2_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c7_s_p2_0[] = {
@@ -11275,7 +11275,7 @@ static const long _vq_lengthlist__44c7_s_p3_0[] = {
 };
 
 static const float _vq_quantthresh__44c7_s_p3_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c7_s_p3_0[] = {
@@ -11344,8 +11344,8 @@ static const long _vq_lengthlist__44c7_s_p4_0[] = {
 };
 
 static const float _vq_quantthresh__44c7_s_p4_0[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44c7_s_p4_0[] = {
@@ -11388,7 +11388,7 @@ static const long _vq_lengthlist__44c7_s_p5_0[] = {
 };
 
 static const float _vq_quantthresh__44c7_s_p5_0[] = {
-        -5.5, 5.5, 
+        -5.5, 5.5,
 };
 
 static const long _vq_quantmap__44c7_s_p5_0[] = {
@@ -11439,8 +11439,8 @@ static const long _vq_lengthlist__44c7_s_p5_1[] = {
 };
 
 static const float _vq_quantthresh__44c7_s_p5_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__44c7_s_p5_1[] = {
@@ -11497,8 +11497,8 @@ static const long _vq_lengthlist__44c7_s_p6_0[] = {
 };
 
 static const float _vq_quantthresh__44c7_s_p6_0[] = {
-        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5, 
-        12.5, 17.5, 22.5, 27.5, 
+        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5,
+        12.5, 17.5, 22.5, 27.5,
 };
 
 static const long _vq_quantmap__44c7_s_p6_0[] = {
@@ -11538,7 +11538,7 @@ static const long _vq_lengthlist__44c7_s_p6_1[] = {
 };
 
 static const float _vq_quantthresh__44c7_s_p6_1[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c7_s_p6_1[] = {
@@ -11594,8 +11594,8 @@ static const long _vq_lengthlist__44c7_s_p7_0[] = {
 };
 
 static const float _vq_quantthresh__44c7_s_p7_0[] = {
-        -60.5, -49.5, -38.5, -27.5, -16.5, -5.5, 5.5, 16.5, 
-        27.5, 38.5, 49.5, 60.5, 
+        -60.5, -49.5, -38.5, -27.5, -16.5, -5.5, 5.5, 16.5,
+        27.5, 38.5, 49.5, 60.5,
 };
 
 static const long _vq_quantmap__44c7_s_p7_0[] = {
@@ -11647,8 +11647,8 @@ static const long _vq_lengthlist__44c7_s_p7_1[] = {
 };
 
 static const float _vq_quantthresh__44c7_s_p7_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__44c7_s_p7_1[] = {
@@ -11711,8 +11711,8 @@ static const long _vq_lengthlist__44c7_s_p8_0[] = {
 };
 
 static const float _vq_quantthresh__44c7_s_p8_0[] = {
-        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5, 
-        31.5, 52.5, 73.5, 94.5, 115.5, 136.5, 
+        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5,
+        31.5, 52.5, 73.5, 94.5, 115.5, 136.5,
 };
 
 static const long _vq_quantmap__44c7_s_p8_0[] = {
@@ -11794,9 +11794,9 @@ static const long _vq_lengthlist__44c7_s_p8_1[] = {
 };
 
 static const float _vq_quantthresh__44c7_s_p8_1[] = {
-        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, 
-        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 
-        6.5, 7.5, 8.5, 9.5, 
+        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5,
+        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5,
+        6.5, 7.5, 8.5, 9.5,
 };
 
 static const long _vq_quantmap__44c7_s_p8_1[] = {
@@ -11854,8 +11854,8 @@ static const long _vq_lengthlist__44c7_s_p9_0[] = {
 };
 
 static const float _vq_quantthresh__44c7_s_p9_0[] = {
-        -3503.5, -2866.5, -2229.5, -1592.5, -955.5, -318.5, 318.5, 955.5, 
-        1592.5, 2229.5, 2866.5, 3503.5, 
+        -3503.5, -2866.5, -2229.5, -1592.5, -955.5, -318.5, 318.5, 955.5,
+        1592.5, 2229.5, 2866.5, 3503.5,
 };
 
 static const long _vq_quantmap__44c7_s_p9_0[] = {
@@ -11912,8 +11912,8 @@ static const long _vq_lengthlist__44c7_s_p9_1[] = {
 };
 
 static const float _vq_quantthresh__44c7_s_p9_1[] = {
-        -269.5, -220.5, -171.5, -122.5, -73.5, -24.5, 24.5, 73.5, 
-        122.5, 171.5, 220.5, 269.5, 
+        -269.5, -220.5, -171.5, -122.5, -73.5, -24.5, 24.5, 73.5,
+        122.5, 171.5, 220.5, 269.5,
 };
 
 static const long _vq_quantmap__44c7_s_p9_1[] = {
@@ -11999,12 +11999,12 @@ static const long _vq_lengthlist__44c7_s_p9_2[] = {
 };
 
 static const float _vq_quantthresh__44c7_s_p9_2[] = {
-        -23.5, -22.5, -21.5, -20.5, -19.5, -18.5, -17.5, -16.5, 
-        -15.5, -14.5, -13.5, -12.5, -11.5, -10.5, -9.5, -8.5, 
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
-        8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 
-        16.5, 17.5, 18.5, 19.5, 20.5, 21.5, 22.5, 23.5, 
+        -23.5, -22.5, -21.5, -20.5, -19.5, -18.5, -17.5, -16.5,
+        -15.5, -14.5, -13.5, -12.5, -11.5, -10.5, -9.5, -8.5,
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
+        8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5,
+        16.5, 17.5, 18.5, 19.5, 20.5, 21.5, 22.5, 23.5,
 };
 
 static const long _vq_quantmap__44c7_s_p9_2[] = {
@@ -12093,7 +12093,7 @@ static const long _vq_lengthlist__44c8_s_p1_0[] = {
 };
 
 static const float _vq_quantthresh__44c8_s_p1_0[] = {
-        -0.5, 0.5, 
+        -0.5, 0.5,
 };
 
 static const long _vq_quantmap__44c8_s_p1_0[] = {
@@ -12170,7 +12170,7 @@ static const long _vq_lengthlist__44c8_s_p2_0[] = {
 };
 
 static const float _vq_quantthresh__44c8_s_p2_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c8_s_p2_0[] = {
@@ -12217,7 +12217,7 @@ static const long _vq_lengthlist__44c8_s_p3_0[] = {
 };
 
 static const float _vq_quantthresh__44c8_s_p3_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c8_s_p3_0[] = {
@@ -12286,8 +12286,8 @@ static const long _vq_lengthlist__44c8_s_p4_0[] = {
 };
 
 static const float _vq_quantthresh__44c8_s_p4_0[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44c8_s_p4_0[] = {
@@ -12330,7 +12330,7 @@ static const long _vq_lengthlist__44c8_s_p5_0[] = {
 };
 
 static const float _vq_quantthresh__44c8_s_p5_0[] = {
-        -5.5, 5.5, 
+        -5.5, 5.5,
 };
 
 static const long _vq_quantmap__44c8_s_p5_0[] = {
@@ -12381,8 +12381,8 @@ static const long _vq_lengthlist__44c8_s_p5_1[] = {
 };
 
 static const float _vq_quantthresh__44c8_s_p5_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__44c8_s_p5_1[] = {
@@ -12439,8 +12439,8 @@ static const long _vq_lengthlist__44c8_s_p6_0[] = {
 };
 
 static const float _vq_quantthresh__44c8_s_p6_0[] = {
-        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5, 
-        12.5, 17.5, 22.5, 27.5, 
+        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5,
+        12.5, 17.5, 22.5, 27.5,
 };
 
 static const long _vq_quantmap__44c8_s_p6_0[] = {
@@ -12480,7 +12480,7 @@ static const long _vq_lengthlist__44c8_s_p6_1[] = {
 };
 
 static const float _vq_quantthresh__44c8_s_p6_1[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c8_s_p6_1[] = {
@@ -12536,8 +12536,8 @@ static const long _vq_lengthlist__44c8_s_p7_0[] = {
 };
 
 static const float _vq_quantthresh__44c8_s_p7_0[] = {
-        -60.5, -49.5, -38.5, -27.5, -16.5, -5.5, 5.5, 16.5, 
-        27.5, 38.5, 49.5, 60.5, 
+        -60.5, -49.5, -38.5, -27.5, -16.5, -5.5, 5.5, 16.5,
+        27.5, 38.5, 49.5, 60.5,
 };
 
 static const long _vq_quantmap__44c8_s_p7_0[] = {
@@ -12589,8 +12589,8 @@ static const long _vq_lengthlist__44c8_s_p7_1[] = {
 };
 
 static const float _vq_quantthresh__44c8_s_p7_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__44c8_s_p7_1[] = {
@@ -12653,8 +12653,8 @@ static const long _vq_lengthlist__44c8_s_p8_0[] = {
 };
 
 static const float _vq_quantthresh__44c8_s_p8_0[] = {
-        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5, 
-        31.5, 52.5, 73.5, 94.5, 115.5, 136.5, 
+        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5,
+        31.5, 52.5, 73.5, 94.5, 115.5, 136.5,
 };
 
 static const long _vq_quantmap__44c8_s_p8_0[] = {
@@ -12736,9 +12736,9 @@ static const long _vq_lengthlist__44c8_s_p8_1[] = {
 };
 
 static const float _vq_quantthresh__44c8_s_p8_1[] = {
-        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, 
-        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 
-        6.5, 7.5, 8.5, 9.5, 
+        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5,
+        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5,
+        6.5, 7.5, 8.5, 9.5,
 };
 
 static const long _vq_quantmap__44c8_s_p8_1[] = {
@@ -12808,8 +12808,8 @@ static const long _vq_lengthlist__44c8_s_p9_0[] = {
 };
 
 static const float _vq_quantthresh__44c8_s_p9_0[] = {
-        -6982.5, -6051.5, -5120.5, -4189.5, -3258.5, -2327.5, -1396.5, -465.5, 
-        465.5, 1396.5, 2327.5, 3258.5, 4189.5, 5120.5, 6051.5, 6982.5, 
+        -6982.5, -6051.5, -5120.5, -4189.5, -3258.5, -2327.5, -1396.5, -465.5,
+        465.5, 1396.5, 2327.5, 3258.5, 4189.5, 5120.5, 6051.5, 6982.5,
 };
 
 static const long _vq_quantmap__44c8_s_p9_0[] = {
@@ -12885,9 +12885,9 @@ static const long _vq_lengthlist__44c8_s_p9_1[] = {
 };
 
 static const float _vq_quantthresh__44c8_s_p9_1[] = {
-        -416.5, -367.5, -318.5, -269.5, -220.5, -171.5, -122.5, -73.5, 
-        -24.5, 24.5, 73.5, 122.5, 171.5, 220.5, 269.5, 318.5, 
-        367.5, 416.5, 
+        -416.5, -367.5, -318.5, -269.5, -220.5, -171.5, -122.5, -73.5,
+        -24.5, 24.5, 73.5, 122.5, 171.5, 220.5, 269.5, 318.5,
+        367.5, 416.5,
 };
 
 static const long _vq_quantmap__44c8_s_p9_1[] = {
@@ -12974,12 +12974,12 @@ static const long _vq_lengthlist__44c8_s_p9_2[] = {
 };
 
 static const float _vq_quantthresh__44c8_s_p9_2[] = {
-        -23.5, -22.5, -21.5, -20.5, -19.5, -18.5, -17.5, -16.5, 
-        -15.5, -14.5, -13.5, -12.5, -11.5, -10.5, -9.5, -8.5, 
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
-        8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 
-        16.5, 17.5, 18.5, 19.5, 20.5, 21.5, 22.5, 23.5, 
+        -23.5, -22.5, -21.5, -20.5, -19.5, -18.5, -17.5, -16.5,
+        -15.5, -14.5, -13.5, -12.5, -11.5, -10.5, -9.5, -8.5,
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
+        8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5,
+        16.5, 17.5, 18.5, 19.5, 20.5, 21.5, 22.5, 23.5,
 };
 
 static const long _vq_quantmap__44c8_s_p9_2[] = {
@@ -13068,7 +13068,7 @@ static const long _vq_lengthlist__44c9_s_p1_0[] = {
 };
 
 static const float _vq_quantthresh__44c9_s_p1_0[] = {
-        -0.5, 0.5, 
+        -0.5, 0.5,
 };
 
 static const long _vq_quantmap__44c9_s_p1_0[] = {
@@ -13145,7 +13145,7 @@ static const long _vq_lengthlist__44c9_s_p2_0[] = {
 };
 
 static const float _vq_quantthresh__44c9_s_p2_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c9_s_p2_0[] = {
@@ -13192,7 +13192,7 @@ static const long _vq_lengthlist__44c9_s_p3_0[] = {
 };
 
 static const float _vq_quantthresh__44c9_s_p3_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c9_s_p3_0[] = {
@@ -13261,8 +13261,8 @@ static const long _vq_lengthlist__44c9_s_p4_0[] = {
 };
 
 static const float _vq_quantthresh__44c9_s_p4_0[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44c9_s_p4_0[] = {
@@ -13305,7 +13305,7 @@ static const long _vq_lengthlist__44c9_s_p5_0[] = {
 };
 
 static const float _vq_quantthresh__44c9_s_p5_0[] = {
-        -5.5, 5.5, 
+        -5.5, 5.5,
 };
 
 static const long _vq_quantmap__44c9_s_p5_0[] = {
@@ -13356,8 +13356,8 @@ static const long _vq_lengthlist__44c9_s_p5_1[] = {
 };
 
 static const float _vq_quantthresh__44c9_s_p5_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__44c9_s_p5_1[] = {
@@ -13414,8 +13414,8 @@ static const long _vq_lengthlist__44c9_s_p6_0[] = {
 };
 
 static const float _vq_quantthresh__44c9_s_p6_0[] = {
-        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5, 
-        12.5, 17.5, 22.5, 27.5, 
+        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5,
+        12.5, 17.5, 22.5, 27.5,
 };
 
 static const long _vq_quantmap__44c9_s_p6_0[] = {
@@ -13455,7 +13455,7 @@ static const long _vq_lengthlist__44c9_s_p6_1[] = {
 };
 
 static const float _vq_quantthresh__44c9_s_p6_1[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c9_s_p6_1[] = {
@@ -13511,8 +13511,8 @@ static const long _vq_lengthlist__44c9_s_p7_0[] = {
 };
 
 static const float _vq_quantthresh__44c9_s_p7_0[] = {
-        -60.5, -49.5, -38.5, -27.5, -16.5, -5.5, 5.5, 16.5, 
-        27.5, 38.5, 49.5, 60.5, 
+        -60.5, -49.5, -38.5, -27.5, -16.5, -5.5, 5.5, 16.5,
+        27.5, 38.5, 49.5, 60.5,
 };
 
 static const long _vq_quantmap__44c9_s_p7_0[] = {
@@ -13564,8 +13564,8 @@ static const long _vq_lengthlist__44c9_s_p7_1[] = {
 };
 
 static const float _vq_quantthresh__44c9_s_p7_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__44c9_s_p7_1[] = {
@@ -13628,8 +13628,8 @@ static const long _vq_lengthlist__44c9_s_p8_0[] = {
 };
 
 static const float _vq_quantthresh__44c9_s_p8_0[] = {
-        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5, 
-        31.5, 52.5, 73.5, 94.5, 115.5, 136.5, 
+        -136.5, -115.5, -94.5, -73.5, -52.5, -31.5, -10.5, 10.5,
+        31.5, 52.5, 73.5, 94.5, 115.5, 136.5,
 };
 
 static const long _vq_quantmap__44c9_s_p8_0[] = {
@@ -13711,9 +13711,9 @@ static const long _vq_lengthlist__44c9_s_p8_1[] = {
 };
 
 static const float _vq_quantthresh__44c9_s_p8_1[] = {
-        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, 
-        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 
-        6.5, 7.5, 8.5, 9.5, 
+        -9.5, -8.5, -7.5, -6.5, -5.5, -4.5, -3.5, -2.5,
+        -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5,
+        6.5, 7.5, 8.5, 9.5,
 };
 
 static const long _vq_quantmap__44c9_s_p8_1[] = {
@@ -13789,9 +13789,9 @@ static const long _vq_lengthlist__44c9_s_p9_0[] = {
 };
 
 static const float _vq_quantthresh__44c9_s_p9_0[] = {
-        -7913.5, -6982.5, -6051.5, -5120.5, -4189.5, -3258.5, -2327.5, -1396.5, 
-        -465.5, 465.5, 1396.5, 2327.5, 3258.5, 4189.5, 5120.5, 6051.5, 
-        6982.5, 7913.5, 
+        -7913.5, -6982.5, -6051.5, -5120.5, -4189.5, -3258.5, -2327.5, -1396.5,
+        -465.5, 465.5, 1396.5, 2327.5, 3258.5, 4189.5, 5120.5, 6051.5,
+        6982.5, 7913.5,
 };
 
 static const long _vq_quantmap__44c9_s_p9_0[] = {
@@ -13867,9 +13867,9 @@ static const long _vq_lengthlist__44c9_s_p9_1[] = {
 };
 
 static const float _vq_quantthresh__44c9_s_p9_1[] = {
-        -416.5, -367.5, -318.5, -269.5, -220.5, -171.5, -122.5, -73.5, 
-        -24.5, 24.5, 73.5, 122.5, 171.5, 220.5, 269.5, 318.5, 
-        367.5, 416.5, 
+        -416.5, -367.5, -318.5, -269.5, -220.5, -171.5, -122.5, -73.5,
+        -24.5, 24.5, 73.5, 122.5, 171.5, 220.5, 269.5, 318.5,
+        367.5, 416.5,
 };
 
 static const long _vq_quantmap__44c9_s_p9_1[] = {
@@ -13956,12 +13956,12 @@ static const long _vq_lengthlist__44c9_s_p9_2[] = {
 };
 
 static const float _vq_quantthresh__44c9_s_p9_2[] = {
-        -23.5, -22.5, -21.5, -20.5, -19.5, -18.5, -17.5, -16.5, 
-        -15.5, -14.5, -13.5, -12.5, -11.5, -10.5, -9.5, -8.5, 
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
-        8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 
-        16.5, 17.5, 18.5, 19.5, 20.5, 21.5, 22.5, 23.5, 
+        -23.5, -22.5, -21.5, -20.5, -19.5, -18.5, -17.5, -16.5,
+        -15.5, -14.5, -13.5, -12.5, -11.5, -10.5, -9.5, -8.5,
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
+        8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5,
+        16.5, 17.5, 18.5, 19.5, 20.5, 21.5, 22.5, 23.5,
 };
 
 static const long _vq_quantmap__44c9_s_p9_2[] = {
@@ -14454,7 +14454,7 @@ static const long _vq_lengthlist__44c0_s_p1_0[] = {
 };
 
 static const float _vq_quantthresh__44c0_s_p1_0[] = {
-        -0.5, 0.5, 
+        -0.5, 0.5,
 };
 
 static const long _vq_quantmap__44c0_s_p1_0[] = {
@@ -14531,7 +14531,7 @@ static const long _vq_lengthlist__44c0_s_p2_0[] = {
 };
 
 static const float _vq_quantthresh__44c0_s_p2_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c0_s_p2_0[] = {
@@ -14578,7 +14578,7 @@ static const long _vq_lengthlist__44c0_s_p3_0[] = {
 };
 
 static const float _vq_quantthresh__44c0_s_p3_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c0_s_p3_0[] = {
@@ -14626,7 +14626,7 @@ static const long _vq_lengthlist__44c0_s_p4_0[] = {
 };
 
 static const float _vq_quantthresh__44c0_s_p4_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c0_s_p4_0[] = {
@@ -14695,8 +14695,8 @@ static const long _vq_lengthlist__44c0_s_p5_0[] = {
 };
 
 static const float _vq_quantthresh__44c0_s_p5_0[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44c0_s_p5_0[] = {
@@ -14739,7 +14739,7 @@ static const long _vq_lengthlist__44c0_s_p6_0[] = {
 };
 
 static const float _vq_quantthresh__44c0_s_p6_0[] = {
-        -5.5, 5.5, 
+        -5.5, 5.5,
 };
 
 static const long _vq_quantmap__44c0_s_p6_0[] = {
@@ -14790,8 +14790,8 @@ static const long _vq_lengthlist__44c0_s_p6_1[] = {
 };
 
 static const float _vq_quantthresh__44c0_s_p6_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__44c0_s_p6_1[] = {
@@ -14848,8 +14848,8 @@ static const long _vq_lengthlist__44c0_s_p7_0[] = {
 };
 
 static const float _vq_quantthresh__44c0_s_p7_0[] = {
-        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5, 
-        12.5, 17.5, 22.5, 27.5, 
+        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5,
+        12.5, 17.5, 22.5, 27.5,
 };
 
 static const long _vq_quantmap__44c0_s_p7_0[] = {
@@ -14889,7 +14889,7 @@ static const long _vq_lengthlist__44c0_s_p7_1[] = {
 };
 
 static const float _vq_quantthresh__44c0_s_p7_1[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c0_s_p7_1[] = {
@@ -14966,7 +14966,7 @@ static const long _vq_lengthlist__44c0_s_p8_0[] = {
 };
 
 static const float _vq_quantthresh__44c0_s_p8_0[] = {
-        -331.5, -110.5, 110.5, 331.5, 
+        -331.5, -110.5, 110.5, 331.5,
 };
 
 static const long _vq_quantmap__44c0_s_p8_0[] = {
@@ -15022,8 +15022,8 @@ static const long _vq_lengthlist__44c0_s_p8_1[] = {
 };
 
 static const float _vq_quantthresh__44c0_s_p8_1[] = {
-        -93.5, -76.5, -59.5, -42.5, -25.5, -8.5, 8.5, 25.5, 
-        42.5, 59.5, 76.5, 93.5, 
+        -93.5, -76.5, -59.5, -42.5, -25.5, -8.5, 8.5, 25.5,
+        42.5, 59.5, 76.5, 93.5,
 };
 
 static const long _vq_quantmap__44c0_s_p8_1[] = {
@@ -15092,8 +15092,8 @@ static const long _vq_lengthlist__44c0_s_p8_2[] = {
 };
 
 static const float _vq_quantthresh__44c0_s_p8_2[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44c0_s_p8_2[] = {
@@ -15581,7 +15581,7 @@ static const long _vq_lengthlist__44c0_sm_p1_0[] = {
 };
 
 static const float _vq_quantthresh__44c0_sm_p1_0[] = {
-        -0.5, 0.5, 
+        -0.5, 0.5,
 };
 
 static const long _vq_quantmap__44c0_sm_p1_0[] = {
@@ -15658,7 +15658,7 @@ static const long _vq_lengthlist__44c0_sm_p2_0[] = {
 };
 
 static const float _vq_quantthresh__44c0_sm_p2_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c0_sm_p2_0[] = {
@@ -15705,7 +15705,7 @@ static const long _vq_lengthlist__44c0_sm_p3_0[] = {
 };
 
 static const float _vq_quantthresh__44c0_sm_p3_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c0_sm_p3_0[] = {
@@ -15753,7 +15753,7 @@ static const long _vq_lengthlist__44c0_sm_p4_0[] = {
 };
 
 static const float _vq_quantthresh__44c0_sm_p4_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c0_sm_p4_0[] = {
@@ -15822,8 +15822,8 @@ static const long _vq_lengthlist__44c0_sm_p5_0[] = {
 };
 
 static const float _vq_quantthresh__44c0_sm_p5_0[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44c0_sm_p5_0[] = {
@@ -15866,7 +15866,7 @@ static const long _vq_lengthlist__44c0_sm_p6_0[] = {
 };
 
 static const float _vq_quantthresh__44c0_sm_p6_0[] = {
-        -5.5, 5.5, 
+        -5.5, 5.5,
 };
 
 static const long _vq_quantmap__44c0_sm_p6_0[] = {
@@ -15917,8 +15917,8 @@ static const long _vq_lengthlist__44c0_sm_p6_1[] = {
 };
 
 static const float _vq_quantthresh__44c0_sm_p6_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__44c0_sm_p6_1[] = {
@@ -15975,8 +15975,8 @@ static const long _vq_lengthlist__44c0_sm_p7_0[] = {
 };
 
 static const float _vq_quantthresh__44c0_sm_p7_0[] = {
-        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5, 
-        12.5, 17.5, 22.5, 27.5, 
+        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5,
+        12.5, 17.5, 22.5, 27.5,
 };
 
 static const long _vq_quantmap__44c0_sm_p7_0[] = {
@@ -16016,7 +16016,7 @@ static const long _vq_lengthlist__44c0_sm_p7_1[] = {
 };
 
 static const float _vq_quantthresh__44c0_sm_p7_1[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c0_sm_p7_1[] = {
@@ -16063,7 +16063,7 @@ static const long _vq_lengthlist__44c0_sm_p8_0[] = {
 };
 
 static const float _vq_quantthresh__44c0_sm_p8_0[] = {
-        -773.5, -552.5, -331.5, -110.5, 110.5, 331.5, 552.5, 773.5, 
+        -773.5, -552.5, -331.5, -110.5, 110.5, 331.5, 552.5, 773.5,
 };
 
 static const long _vq_quantmap__44c0_sm_p8_0[] = {
@@ -16120,8 +16120,8 @@ static const long _vq_lengthlist__44c0_sm_p8_1[] = {
 };
 
 static const float _vq_quantthresh__44c0_sm_p8_1[] = {
-        -93.5, -76.5, -59.5, -42.5, -25.5, -8.5, 8.5, 25.5, 
-        42.5, 59.5, 76.5, 93.5, 
+        -93.5, -76.5, -59.5, -42.5, -25.5, -8.5, 8.5, 25.5,
+        42.5, 59.5, 76.5, 93.5,
 };
 
 static const long _vq_quantmap__44c0_sm_p8_1[] = {
@@ -16190,8 +16190,8 @@ static const long _vq_lengthlist__44c0_sm_p8_2[] = {
 };
 
 static const float _vq_quantthresh__44c0_sm_p8_2[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44c0_sm_p8_2[] = {
@@ -16679,7 +16679,7 @@ static const long _vq_lengthlist__44c1_s_p1_0[] = {
 };
 
 static const float _vq_quantthresh__44c1_s_p1_0[] = {
-        -0.5, 0.5, 
+        -0.5, 0.5,
 };
 
 static const long _vq_quantmap__44c1_s_p1_0[] = {
@@ -16756,7 +16756,7 @@ static const long _vq_lengthlist__44c1_s_p2_0[] = {
 };
 
 static const float _vq_quantthresh__44c1_s_p2_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c1_s_p2_0[] = {
@@ -16803,7 +16803,7 @@ static const long _vq_lengthlist__44c1_s_p3_0[] = {
 };
 
 static const float _vq_quantthresh__44c1_s_p3_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c1_s_p3_0[] = {
@@ -16851,7 +16851,7 @@ static const long _vq_lengthlist__44c1_s_p4_0[] = {
 };
 
 static const float _vq_quantthresh__44c1_s_p4_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c1_s_p4_0[] = {
@@ -16920,8 +16920,8 @@ static const long _vq_lengthlist__44c1_s_p5_0[] = {
 };
 
 static const float _vq_quantthresh__44c1_s_p5_0[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44c1_s_p5_0[] = {
@@ -16964,7 +16964,7 @@ static const long _vq_lengthlist__44c1_s_p6_0[] = {
 };
 
 static const float _vq_quantthresh__44c1_s_p6_0[] = {
-        -5.5, 5.5, 
+        -5.5, 5.5,
 };
 
 static const long _vq_quantmap__44c1_s_p6_0[] = {
@@ -17015,8 +17015,8 @@ static const long _vq_lengthlist__44c1_s_p6_1[] = {
 };
 
 static const float _vq_quantthresh__44c1_s_p6_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__44c1_s_p6_1[] = {
@@ -17073,8 +17073,8 @@ static const long _vq_lengthlist__44c1_s_p7_0[] = {
 };
 
 static const float _vq_quantthresh__44c1_s_p7_0[] = {
-        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5, 
-        12.5, 17.5, 22.5, 27.5, 
+        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5,
+        12.5, 17.5, 22.5, 27.5,
 };
 
 static const long _vq_quantmap__44c1_s_p7_0[] = {
@@ -17114,7 +17114,7 @@ static const long _vq_lengthlist__44c1_s_p7_1[] = {
 };
 
 static const float _vq_quantthresh__44c1_s_p7_1[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c1_s_p7_1[] = {
@@ -17170,8 +17170,8 @@ static const long _vq_lengthlist__44c1_s_p8_0[] = {
 };
 
 static const float _vq_quantthresh__44c1_s_p8_0[] = {
-        -1215.5, -994.5, -773.5, -552.5, -331.5, -110.5, 110.5, 331.5, 
-        552.5, 773.5, 994.5, 1215.5, 
+        -1215.5, -994.5, -773.5, -552.5, -331.5, -110.5, 110.5, 331.5,
+        552.5, 773.5, 994.5, 1215.5,
 };
 
 static const long _vq_quantmap__44c1_s_p8_0[] = {
@@ -17228,8 +17228,8 @@ static const long _vq_lengthlist__44c1_s_p8_1[] = {
 };
 
 static const float _vq_quantthresh__44c1_s_p8_1[] = {
-        -93.5, -76.5, -59.5, -42.5, -25.5, -8.5, 8.5, 25.5, 
-        42.5, 59.5, 76.5, 93.5, 
+        -93.5, -76.5, -59.5, -42.5, -25.5, -8.5, 8.5, 25.5,
+        42.5, 59.5, 76.5, 93.5,
 };
 
 static const long _vq_quantmap__44c1_s_p8_1[] = {
@@ -17298,8 +17298,8 @@ static const long _vq_lengthlist__44c1_s_p8_2[] = {
 };
 
 static const float _vq_quantthresh__44c1_s_p8_2[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44c1_s_p8_2[] = {
@@ -17787,7 +17787,7 @@ static const long _vq_lengthlist__44c1_sm_p1_0[] = {
 };
 
 static const float _vq_quantthresh__44c1_sm_p1_0[] = {
-        -0.5, 0.5, 
+        -0.5, 0.5,
 };
 
 static const long _vq_quantmap__44c1_sm_p1_0[] = {
@@ -17864,7 +17864,7 @@ static const long _vq_lengthlist__44c1_sm_p2_0[] = {
 };
 
 static const float _vq_quantthresh__44c1_sm_p2_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c1_sm_p2_0[] = {
@@ -17911,7 +17911,7 @@ static const long _vq_lengthlist__44c1_sm_p3_0[] = {
 };
 
 static const float _vq_quantthresh__44c1_sm_p3_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c1_sm_p3_0[] = {
@@ -17959,7 +17959,7 @@ static const long _vq_lengthlist__44c1_sm_p4_0[] = {
 };
 
 static const float _vq_quantthresh__44c1_sm_p4_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44c1_sm_p4_0[] = {
@@ -18028,8 +18028,8 @@ static const long _vq_lengthlist__44c1_sm_p5_0[] = {
 };
 
 static const float _vq_quantthresh__44c1_sm_p5_0[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44c1_sm_p5_0[] = {
@@ -18072,7 +18072,7 @@ static const long _vq_lengthlist__44c1_sm_p6_0[] = {
 };
 
 static const float _vq_quantthresh__44c1_sm_p6_0[] = {
-        -5.5, 5.5, 
+        -5.5, 5.5,
 };
 
 static const long _vq_quantmap__44c1_sm_p6_0[] = {
@@ -18123,8 +18123,8 @@ static const long _vq_lengthlist__44c1_sm_p6_1[] = {
 };
 
 static const float _vq_quantthresh__44c1_sm_p6_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__44c1_sm_p6_1[] = {
@@ -18181,8 +18181,8 @@ static const long _vq_lengthlist__44c1_sm_p7_0[] = {
 };
 
 static const float _vq_quantthresh__44c1_sm_p7_0[] = {
-        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5, 
-        12.5, 17.5, 22.5, 27.5, 
+        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5,
+        12.5, 17.5, 22.5, 27.5,
 };
 
 static const long _vq_quantmap__44c1_sm_p7_0[] = {
@@ -18222,7 +18222,7 @@ static const long _vq_lengthlist__44c1_sm_p7_1[] = {
 };
 
 static const float _vq_quantthresh__44c1_sm_p7_1[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44c1_sm_p7_1[] = {
@@ -18278,8 +18278,8 @@ static const long _vq_lengthlist__44c1_sm_p8_0[] = {
 };
 
 static const float _vq_quantthresh__44c1_sm_p8_0[] = {
-        -1215.5, -994.5, -773.5, -552.5, -331.5, -110.5, 110.5, 331.5, 
-        552.5, 773.5, 994.5, 1215.5, 
+        -1215.5, -994.5, -773.5, -552.5, -331.5, -110.5, 110.5, 331.5,
+        552.5, 773.5, 994.5, 1215.5,
 };
 
 static const long _vq_quantmap__44c1_sm_p8_0[] = {
@@ -18336,8 +18336,8 @@ static const long _vq_lengthlist__44c1_sm_p8_1[] = {
 };
 
 static const float _vq_quantthresh__44c1_sm_p8_1[] = {
-        -93.5, -76.5, -59.5, -42.5, -25.5, -8.5, 8.5, 25.5, 
-        42.5, 59.5, 76.5, 93.5, 
+        -93.5, -76.5, -59.5, -42.5, -25.5, -8.5, 8.5, 25.5,
+        42.5, 59.5, 76.5, 93.5,
 };
 
 static const long _vq_quantmap__44c1_sm_p8_1[] = {
@@ -18406,8 +18406,8 @@ static const long _vq_lengthlist__44c1_sm_p8_2[] = {
 };
 
 static const float _vq_quantthresh__44c1_sm_p8_2[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44c1_sm_p8_2[] = {
@@ -18895,7 +18895,7 @@ static const long _vq_lengthlist__44cn1_s_p1_0[] = {
 };
 
 static const float _vq_quantthresh__44cn1_s_p1_0[] = {
-        -0.5, 0.5, 
+        -0.5, 0.5,
 };
 
 static const long _vq_quantmap__44cn1_s_p1_0[] = {
@@ -18972,7 +18972,7 @@ static const long _vq_lengthlist__44cn1_s_p2_0[] = {
 };
 
 static const float _vq_quantthresh__44cn1_s_p2_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44cn1_s_p2_0[] = {
@@ -19019,7 +19019,7 @@ static const long _vq_lengthlist__44cn1_s_p3_0[] = {
 };
 
 static const float _vq_quantthresh__44cn1_s_p3_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44cn1_s_p3_0[] = {
@@ -19067,7 +19067,7 @@ static const long _vq_lengthlist__44cn1_s_p4_0[] = {
 };
 
 static const float _vq_quantthresh__44cn1_s_p4_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44cn1_s_p4_0[] = {
@@ -19136,8 +19136,8 @@ static const long _vq_lengthlist__44cn1_s_p5_0[] = {
 };
 
 static const float _vq_quantthresh__44cn1_s_p5_0[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44cn1_s_p5_0[] = {
@@ -19180,7 +19180,7 @@ static const long _vq_lengthlist__44cn1_s_p6_0[] = {
 };
 
 static const float _vq_quantthresh__44cn1_s_p6_0[] = {
-        -5.5, 5.5, 
+        -5.5, 5.5,
 };
 
 static const long _vq_quantmap__44cn1_s_p6_0[] = {
@@ -19231,8 +19231,8 @@ static const long _vq_lengthlist__44cn1_s_p6_1[] = {
 };
 
 static const float _vq_quantthresh__44cn1_s_p6_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__44cn1_s_p6_1[] = {
@@ -19289,8 +19289,8 @@ static const long _vq_lengthlist__44cn1_s_p7_0[] = {
 };
 
 static const float _vq_quantthresh__44cn1_s_p7_0[] = {
-        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5, 
-        12.5, 17.5, 22.5, 27.5, 
+        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5,
+        12.5, 17.5, 22.5, 27.5,
 };
 
 static const long _vq_quantmap__44cn1_s_p7_0[] = {
@@ -19330,7 +19330,7 @@ static const long _vq_lengthlist__44cn1_s_p7_1[] = {
 };
 
 static const float _vq_quantthresh__44cn1_s_p7_1[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44cn1_s_p7_1[] = {
@@ -19407,7 +19407,7 @@ static const long _vq_lengthlist__44cn1_s_p8_0[] = {
 };
 
 static const float _vq_quantthresh__44cn1_s_p8_0[] = {
-        -331.5, -110.5, 110.5, 331.5, 
+        -331.5, -110.5, 110.5, 331.5,
 };
 
 static const long _vq_quantmap__44cn1_s_p8_0[] = {
@@ -19463,8 +19463,8 @@ static const long _vq_lengthlist__44cn1_s_p8_1[] = {
 };
 
 static const float _vq_quantthresh__44cn1_s_p8_1[] = {
-        -93.5, -76.5, -59.5, -42.5, -25.5, -8.5, 8.5, 25.5, 
-        42.5, 59.5, 76.5, 93.5, 
+        -93.5, -76.5, -59.5, -42.5, -25.5, -8.5, 8.5, 25.5,
+        42.5, 59.5, 76.5, 93.5,
 };
 
 static const long _vq_quantmap__44cn1_s_p8_1[] = {
@@ -19533,8 +19533,8 @@ static const long _vq_lengthlist__44cn1_s_p8_2[] = {
 };
 
 static const float _vq_quantthresh__44cn1_s_p8_2[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44cn1_s_p8_2[] = {
@@ -20022,7 +20022,7 @@ static const long _vq_lengthlist__44cn1_sm_p1_0[] = {
 };
 
 static const float _vq_quantthresh__44cn1_sm_p1_0[] = {
-        -0.5, 0.5, 
+        -0.5, 0.5,
 };
 
 static const long _vq_quantmap__44cn1_sm_p1_0[] = {
@@ -20099,7 +20099,7 @@ static const long _vq_lengthlist__44cn1_sm_p2_0[] = {
 };
 
 static const float _vq_quantthresh__44cn1_sm_p2_0[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44cn1_sm_p2_0[] = {
@@ -20146,7 +20146,7 @@ static const long _vq_lengthlist__44cn1_sm_p3_0[] = {
 };
 
 static const float _vq_quantthresh__44cn1_sm_p3_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44cn1_sm_p3_0[] = {
@@ -20194,7 +20194,7 @@ static const long _vq_lengthlist__44cn1_sm_p4_0[] = {
 };
 
 static const float _vq_quantthresh__44cn1_sm_p4_0[] = {
-        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 
+        -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5,
 };
 
 static const long _vq_quantmap__44cn1_sm_p4_0[] = {
@@ -20263,8 +20263,8 @@ static const long _vq_lengthlist__44cn1_sm_p5_0[] = {
 };
 
 static const float _vq_quantthresh__44cn1_sm_p5_0[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44cn1_sm_p5_0[] = {
@@ -20307,7 +20307,7 @@ static const long _vq_lengthlist__44cn1_sm_p6_0[] = {
 };
 
 static const float _vq_quantthresh__44cn1_sm_p6_0[] = {
-        -5.5, 5.5, 
+        -5.5, 5.5,
 };
 
 static const long _vq_quantmap__44cn1_sm_p6_0[] = {
@@ -20358,8 +20358,8 @@ static const long _vq_lengthlist__44cn1_sm_p6_1[] = {
 };
 
 static const float _vq_quantthresh__44cn1_sm_p6_1[] = {
-        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 
-        3.5, 4.5, 
+        -4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5,
+        3.5, 4.5,
 };
 
 static const long _vq_quantmap__44cn1_sm_p6_1[] = {
@@ -20416,8 +20416,8 @@ static const long _vq_lengthlist__44cn1_sm_p7_0[] = {
 };
 
 static const float _vq_quantthresh__44cn1_sm_p7_0[] = {
-        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5, 
-        12.5, 17.5, 22.5, 27.5, 
+        -27.5, -22.5, -17.5, -12.5, -7.5, -2.5, 2.5, 7.5,
+        12.5, 17.5, 22.5, 27.5,
 };
 
 static const long _vq_quantmap__44cn1_sm_p7_0[] = {
@@ -20457,7 +20457,7 @@ static const long _vq_lengthlist__44cn1_sm_p7_1[] = {
 };
 
 static const float _vq_quantthresh__44cn1_sm_p7_1[] = {
-        -1.5, -0.5, 0.5, 1.5, 
+        -1.5, -0.5, 0.5, 1.5,
 };
 
 static const long _vq_quantmap__44cn1_sm_p7_1[] = {
@@ -20504,7 +20504,7 @@ static const long _vq_lengthlist__44cn1_sm_p8_0[] = {
 };
 
 static const float _vq_quantthresh__44cn1_sm_p8_0[] = {
-        -773.5, -552.5, -331.5, -110.5, 110.5, 331.5, 552.5, 773.5, 
+        -773.5, -552.5, -331.5, -110.5, 110.5, 331.5, 552.5, 773.5,
 };
 
 static const long _vq_quantmap__44cn1_sm_p8_0[] = {
@@ -20561,8 +20561,8 @@ static const long _vq_lengthlist__44cn1_sm_p8_1[] = {
 };
 
 static const float _vq_quantthresh__44cn1_sm_p8_1[] = {
-        -93.5, -76.5, -59.5, -42.5, -25.5, -8.5, 8.5, 25.5, 
-        42.5, 59.5, 76.5, 93.5, 
+        -93.5, -76.5, -59.5, -42.5, -25.5, -8.5, 8.5, 25.5,
+        42.5, 59.5, 76.5, 93.5,
 };
 
 static const long _vq_quantmap__44cn1_sm_p8_1[] = {
@@ -20631,8 +20631,8 @@ static const long _vq_lengthlist__44cn1_sm_p8_2[] = {
 };
 
 static const float _vq_quantthresh__44cn1_sm_p8_2[] = {
-        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5, 
-        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 
+        -7.5, -6.5, -5.5, -4.5, -3.5, -2.5, -1.5, -0.5,
+        0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5,
 };
 
 static const long _vq_quantmap__44cn1_sm_p8_2[] = {

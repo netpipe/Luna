@@ -16,8 +16,8 @@
  ********************************************************************/
 
 #include "vorbis/codec.h"
-#include "backends.h"
-#include "books/coupled/res_books_stereo.h"
+#include "../backends.h"
+#include "../books/coupled/res_books_stereo.h"
 
 /***** residue backends *********************************************/
 

@@ -46,7 +46,7 @@ if (init) :
 
  #box2d add body attach it to 2d graphic
  #physics.box2d("test.png",1)
-
+ scene.recast("../media/dungeon.obj")
 
  sound2 = scene.soundman(0,"../media/robocrep.ogg",0) #create sound device // seems to crash RDP sessions and this is what i've been using for now. so i will leave sound off.
  scene.soundman(1,str(sound2),1)#play sound   // seems to crash RDP sessions and this is what i've been using for now. so i will leave sound off.
@@ -57,7 +57,7 @@ if (init) :
  scene.fpsweapon(camera,0)
  #scene.decals(1,camera)
 
- scene.recast("../media/dungeon.obj")
+
  #shoot decals from camera
 
  Light1 = scene.Light(10,100,150,1,"111111") # type , vector, color

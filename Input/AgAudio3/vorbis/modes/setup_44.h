@@ -15,9 +15,9 @@
 
  ********************************************************************/
 
-#include "modes/floor_all.h"
-#include "modes/residue_44.h"
-#include "modes/psych_44.h"
+#include "floor_all.h"
+#include "residue_44.h"
+#include "psych_44.h"
 
 static const double rate_mapping_44_stereo[12]={
   22500.,32000.,40000.,48000.,56000.,64000.,
