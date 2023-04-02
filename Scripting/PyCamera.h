@@ -219,7 +219,31 @@ PyObject * Python::PyIrr_GetCamera(PyObject * self,PyObject * args){
     }else if (param==3){
     		v = cam->getPosition();
     	return Py_BuildValue("f", v.Z);
+    }else if (param==4){
+    		v = cam->getUpVector();
+    	return Py_BuildValue("f", v.X);
     }
+    else if (param==5){
+    		v = cam->getUpVector();
+    	return Py_BuildValue("f", v.Y);
+    }
+    else if (param==6){
+    		v = cam->getUpVector();
+    	return Py_BuildValue("f", v.Z);
+    }
+    else if (param==7){
+    		v = cam->getTarget();
+    	return Py_BuildValue("f", v.X);
+    }
+    else if (param==8){
+    		v = cam->getTarget();
+    	return Py_BuildValue("f", v.Y);
+    }
+    else if (param==9){
+    		v = cam->getTarget();
+    	return Py_BuildValue("f", v.Z);
+    }
+    //getUpVector  gettarget
 
 	return Py_BuildValue("");
 }
