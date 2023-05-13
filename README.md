@@ -4,7 +4,7 @@
 
 ## Luna Irrlicht Game Engine 
 fastest cross platform python enabled close to complete game engine around.(runs on raspberry pi zero)
-> emscripten-project-testing to build emscripten version - there seem to be a few bugs with textures still also shaders need to be ported to GLES
+> emscripten-project-testing to build emscripten version - there seem to be a few bugs with textures still also shaders need to be ported to GLES. also the media folder should be kept light for tar/untar so maybe some cleaning is required.
 - When using bulletblend or gamekit to design levels youll need to use older blender 249 also need to save on 32 bit to avoid big endian issues. the converter is in FKEditor/utf32.sh
 
 ###### https://www.youtube.com/watch?v=tGeGPyMKP3s -- fresh Compile on linux
