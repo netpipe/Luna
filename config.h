@@ -19,7 +19,10 @@
 
     #ifdef linux
         #define LIBINPUT
+          #define VIDEO
     #endif
+
+
 //Sound
      #define AGAUDIO3
      #ifdef AGAUDIO3
@@ -166,7 +169,7 @@
 
  #ifndef __EMSCRIPTEN__
  #define SOUND
- //#define VIDEO
+ #define VIDEO
 
  //todo put in simple openal sound
  #endif

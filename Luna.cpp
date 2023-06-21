@@ -303,8 +303,8 @@ int Luna::shutdown(){
 	#endif
 
 	#ifdef VIDEO
- //     delete vidmaster;
-	 delete videoPlayer;
+//      delete vidmaster;
+	// delete videoPlayer;
 	#endif
 
 	#ifdef NDEBUG

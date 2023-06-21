@@ -1,5 +1,6 @@
 #ifndef PYGUI_H_INCLUDED
 #define PYGUI_H_INCLUDED
+
 #ifdef PYTHON
 #include <iostream> // for strings
 using namespace std;
@@ -20,6 +21,7 @@ PyMethodDef irr_gui[] =
 	{"bar",Python::PyIrr_GUIBar,METH_VARARGS,"bar"},
 	{"sgraph",Python::PyIrr_sineGraph2d,METH_VARARGS,"sgraph"},
 	{"slider",Python::PyIrr_GUIslider,METH_VARARGS,"slider"},
+    {"addvideo",Python::PyIrr_addVideo,METH_VARARGS,"PyIrr_addVideo"},
 
 	{NULL,NULL,0,NULL}
 

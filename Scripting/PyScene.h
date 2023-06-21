@@ -50,7 +50,7 @@ reminder to actually check the names match with unstable ide's and whatnot
     {"tesselate",Python::PyIrr_tesselateImage,METH_VARARGS,"PyIrr_tesselateImage"},
     {"atmosphere",Python::PyIrr_atmosphere,METH_VARARGS,"PyIrr_atmosphere"},
 
-    {"addvideo",Python::PyIrr_addVideo,METH_VARARGS,"PyIrr_addVideo"},
+//    {"addvideo",Python::PyIrr_addVideo,METH_VARARGS,"PyIrr_addVideo"},
     {"decals",Python::PyIrr_DecalManager,METH_VARARGS,"PyIrr_DecalManager"},
     {"addwater",Python::PyIrr_WaterPlane,METH_VARARGS,"water plane reflective"},
     {"setPosition",Python::PyIrr_setPosition,METH_VARARGS,"setPosition"},

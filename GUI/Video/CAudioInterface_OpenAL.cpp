@@ -1,3 +1,4 @@
+#include "../../config.h"
 #ifdef VIDEO
 #include "CAudioInterface_OpenAL.h"
 #include <climits>

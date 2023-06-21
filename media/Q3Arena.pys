@@ -57,6 +57,7 @@ if (init) :
  scene.fpsweapon(camera,0)
  #scene.decals(1,camera)
 
+ video1=gui.addvideo("../media/bunny.ogg",10.0,10.0,10.0)	# has to be loaded after soundman or crash
 
  #shoot decals from camera
 

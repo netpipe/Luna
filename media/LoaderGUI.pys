@@ -28,7 +28,8 @@ if initloader :
     import os
     import physics
     import gui
-    
+
+    #video1=gui.addvideo("../media/bunny.ogg",10.0,10.0,10.0)	# has to be loaded after soundman or crash
     #image.screenshot("./test.jpg")
     #sound2 = scene.soundman(0,"../media/bling.ogg",1)
     #sound2 = scene.soundman(0,"../media/bling.wav",1)
@@ -127,7 +128,7 @@ if initloader :
     pysList.remove("functions-list.pys")
     pysList.remove("archiveLoader.pys")
     pysList.remove("BlackJackOnline.pys")
-    
+
     camera = scene.addCamera(3, 0,0,-10)
     scene.decals(1,camera)
     Light = scene.Light(10,0,100,0,"111111")

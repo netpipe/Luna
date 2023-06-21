@@ -1,3 +1,4 @@
+#include "../../config.h"
 #ifdef VIDEO
 #include "CVideoMaster.h"
 #include <TheoraDataSource.h>

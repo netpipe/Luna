@@ -1,3 +1,4 @@
+#include "../../config.h"
 #ifdef VIDEO
 #ifndef CLASS_AUDIO_INTERFACE_OPEN_AL_H_INC
 #define CLASS_AUDIO_INTERFACE_OPEN_AL_H_INC
