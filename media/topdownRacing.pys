@@ -7,7 +7,7 @@ if (init):
     import socket
     import os
     
-    scene.using ('../media/libs/trig.py',"1");
+    scene.using ('../media/lib/trig.py',"1");
     id=100
     def newId():
         global id
