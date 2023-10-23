@@ -1,0 +1,72 @@
+#################################
+#INITIALIZE
+#called externally so it is set from functions.py or init.py
+#################################
+if (init) :
+    import irr
+    import physics
+    #if (EXTRAS)
+    import extras
+    import scene
+    import input
+    import image
+    #import sound
+    #import luna
+    import net
+    import gui
+    #https://stackoverflow.com/questions/2968408/how-do-i-program-a-simple-irc-bot-in-python
+    import socket
+    import ssl
+    import time
+
+    server = "chat.freenode.net"
+    port = 6697
+    channel = "#meLon"
+    botnick = "meLon-Test"
+    password = "YOURPASSWORD"
+
+    ### Tail
+    tail_files = [
+        '/tmp/file-to-tail.txt'
+    ]
+
+    irc_C = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #defines the socket
+    irc = ssl.wrap_socket(irc_C)
+
+    print "Establishing connection to [%s]" % (server)
+    # Connect
+    irc.connect((server, port))
+    irc.setblocking(False)
+    #irc.send("PASS %s\n" % (password))
+    irc.send("USER "+ botnick +" "+ botnick +" "+ botnick +" :meLon-Test\n")
+    irc.send("NICK "+ botnick +"\n")
+    #irc.send("PRIVMSG nickserv :identify %s %s\r\n" % (botnick, password))
+    irc.send("JOIN "+ channel +"\n")
+    count=0
+    init=0;
+
+if (count > 1000):
+    #irc.send("MSG "+ channel + " testing" + "\n")
+    time.sleep(2)
+    irr.delay(100000)
+    #try:
+    text=irc.recv(2040)
+    print text
+    count=0
+    
+    # Prevent Timeout
+    if text.find('PING') != -1:
+        irc.send('PONG ' + text.split() [1] + '\r\n')
+    #except Exception:
+    
+count=count+1
+
+irr.delay(100000)
+
+#if input.getKey('KEY_SPACE'):
+#     result=choice(responses)
+#     irr.delay(50000)
+
+if input.getKey('KEY_ESCAPE') :
+ irr.exit()
+
