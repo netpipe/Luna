@@ -46,7 +46,7 @@ if (init) :
     init=0;
 
 if (count > 1000):
-    #irc.send("MSG "+ channel + " testing" + "\n")
+    #irc.send("MSG "+ channel + " :testing" + "\n")
     time.sleep(2)
     irr.delay(100000)
     #try:
