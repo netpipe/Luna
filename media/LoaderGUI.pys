@@ -124,7 +124,7 @@ if initloader :
     pysList.remove("LoaderGUI.pys")
     pysList.remove("gameloader.pys")
     pysList.remove("keys.pys")
-    pysList.remove("net.pys")
+    #pysList.remove("net.pys")
     pysList.remove("functions-list.pys")
     pysList.remove("archiveLoader.pys")
     pysList.remove("BlackJackOnline.pys")
