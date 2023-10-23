@@ -19,10 +19,10 @@ if (init) :
     import ssl
     import time
 
-    server = "chat.freenode.net"
+    server = "irc.libera.chat" #"chat.freenode.net"
     port = 6697
-    channel = "#meLon"
-    botnick = "meLon-Test"
+    channel = "#testing123"
+    botnick = "LunaBot123"
     password = "YOURPASSWORD"
 
     ### Tail
@@ -37,16 +37,17 @@ if (init) :
     # Connect
     irc.connect((server, port))
     irc.setblocking(False)
-    #irc.send("PASS %s\n" % (password))
+    irc.send("PASS %s\n" % (password))
     irc.send("USER "+ botnick +" "+ botnick +" "+ botnick +" :meLon-Test\n")
     irc.send("NICK "+ botnick +"\n")
     #irc.send("PRIVMSG nickserv :identify %s %s\r\n" % (botnick, password))
     irc.send("JOIN "+ channel +"\n")
     count=0
     init=0;
+    
+irr.delay(100000)
+if (count > 100):
 
-if (count > 1000):
-    #irc.send("MSG "+ channel + " :testing" + "\n")
     time.sleep(2)
     irr.delay(100000)
     #try:
@@ -61,12 +62,16 @@ if (count > 1000):
     
 count=count+1
 
-irr.delay(100000)
 
-#if input.getKey('KEY_SPACE'):
+
+if input.getKey('KEY_SPACE'):
 #     result=choice(responses)
-#     irr.delay(50000)
+    #irc.send("JOIN "+ channel +"\n")
+    irc.send("PRIVMSG "+ channel + " :testing123" + "\n")
+    irr.delay(50000)
 
 if input.getKey('KEY_ESCAPE') :
  irr.exit()
+ 
+ 
 

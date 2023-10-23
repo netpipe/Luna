@@ -1,0 +1,66 @@
+#################################
+#INITIALIZE
+#called externally so it is set from functions.py or init.py
+#################################
+if (init) :
+    import irr
+    import physics
+    #if (EXTRAS)
+    import extras
+    import scene
+    import input
+    import image
+    #import sound
+    #import luna
+    import net
+    import gui
+    import socket
+    import sys
+    #import fcntl
+    import re
+    server = "irc.us.libera.chat" #"irc.freenode.net"       #settings
+    channel = "#testing123"
+    botnick = "botname2334"
+    count=0
+    irc = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #defines the socket
+    print "connecting to:"+server
+    irc.connect((server, 6667))  
+    #fcntl.fcntl(irc, fcntl.F_SETFL, os.O_NONBLOCK)   
+                      
+    irr.delay(100000)
+    #connects to the server
+    #irc.send("PASS %s\n" % (password))
+    irc.send("USER "+ botnick +" "+ botnick +" "+ botnick +" :This-is-a-fun-bot\n") #user authentication
+    irc.send("NICK "+ botnick +"\n")                            #sets nick
+    irc.send("PRIVMSG nickserv :iNOOPE\r\n")    #auth
+    irc.send("JOIN "+ channel +"\n")        #join the chan
+    init=0
+
+if (count > 100):
+    text=irc.recv(2040)  #receive the text
+    print text   #print text to console
+    count=0
+    for line in text: 
+     if line.find('PING') != -1:                          #check if 'PING' is found
+      irc.send('PONG ' + line.split() [1] + '\r\n') #returnes 'PONG' back to the server (prevents pinging out!)
+    #for line in text: 
+    # match = re.search(r'PING (.*)', text)
+    #if match:
+    #   print(line)
+    #   print(match.group(0)) 
+     
+count=count+1
+
+
+
+if input.getKey('KEY_SPACE'):
+#     result=choice(responses)
+     irr.delay(50000)
+     #irc.send("JOIN "+ channel +"\n")
+     irc.send("PRIVMSG "+ channel + " :testing123\r\n")
+     irc.send("PRIVMSG netpipe :iNOOPE\r\n")
+if input.getKey('KEY_ESCAPE') :
+ #irc.send("PRIVMSG netpipe :iNOOPE\r\n")
+ irr.exit()
+ 
+irr.delay(100000)
